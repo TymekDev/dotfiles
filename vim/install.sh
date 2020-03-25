@@ -4,8 +4,16 @@ script_dir=$(dirname $0)
 sh $script_dir/../symlink_config.sh $script_dir/.vimrc $HOME/dotfiles
 
 # Creating directories used in the .vimrc
-echo "\e[36m[vim]\e[0m \e[33m~/.vim:\e[0m \e[94mcreating subdirectories\e[0m"
-mkdir -p $HOME/.vim/tmp $HOME/.vim/bundle
+vim_dirs="$HOME/.vim/tmp $HOME/.vim/bundle"
+for vim_dir in $vim_dirs; do
+    echo -n "\e[36m[vim]\e[0m \e[33mcreating ~/.vim subdirectories:\e[0m "
+    if [ -e "$vim_dir" ]; then
+        echo "\e[94mskipped\e[0m (directory already exists $vim_dir)"
+    else
+        mkdir -p $vim_dir
+        echo "\e[92mcreated directory \e[0m ($vim_dir)"
+    fi
+done
 
 # Cloning into Vundle.vim repository if git is installed
 echo -n "\e[36m[vim]\e[0m \e[33mintalling Vundle:\e[0m "
