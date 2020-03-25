@@ -1,2 +1,4 @@
 # Linking .profile file
-sh $(dirname $0)/../install_config.sh ./.profile $HOME
+echo -n "\e[36m[profile]\e[0m "
+script_dir=$(dirname $0)
+sh $script_dir/../symlink_config.sh $script_dir/.profile $HOME/dotfiles

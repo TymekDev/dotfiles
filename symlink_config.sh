@@ -8,22 +8,22 @@ src_file_path="$(cd `dirname $1`; pwd)/$file_name"
 dest_file_path="$(cd $2; pwd)/$file_name"
 
 # For storing which files were created by this script
-log_file=${3:-install_config.log}
+log_file=${3:-symlink_config.log}
 
-echo -n "$file_name install: "
+echo -n "\e[33m$file_name linking:\e[0m "
 
 # If file exists then skip it
-if [ -f "$dest_file_path" ]; then
-    echo "skipped (file already exists $dest_file_path)"
+if [ -e "$dest_file_path" ]; then
+    echo "\e[94mskipped\e[0m (file already exists $dest_file_path)"
 else 
     # Catch the (error) output of the command 
     error=$(ln -s $src_file_path $dest_file_path 2>&1)
 
     # Check the exit status of the last command (ln)
     if [ $? -eq 0 ]; then
-        echo "symlink created ($src_file_path -> $dest_file_path)"
+        echo "\e[92msymlink created\e[0m ($dest_file_path -> $src_file_path)"
         echo "[$(date '+%Y-%m-%d %H:%M:%S')] $dest_file_path" >> $log_file
     else
-        echo "failed to create symlink: $error"
+        echo "\e[91mfailed to create symlink:\e[0m $error"
     fi
 fi
