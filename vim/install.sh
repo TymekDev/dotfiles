@@ -1,7 +1,7 @@
 # Linking .vimrc file
 echo -n "\e[36m[vim]\e[0m "
 script_dir=$(dirname $0)
-sh $script_dir/../symlink_config.sh $script_dir/.vimrc $HOME/dotfiles
+sh $script_dir/../symlink_config.sh $script_dir/.vimrc $HOME
 
 # Creating directories used in the .vimrc
 vim_dirs="$HOME/.vim/tmp $HOME/.vim/bundle"
