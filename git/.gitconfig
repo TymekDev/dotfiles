@@ -1,0 +1,14 @@
+[color "decorate"]
+    branch = cyan
+    head = bold magenta
+    remoteBranch = green
+    stash = red
+[alias]
+    loggs = log --graph --decorate --format=\"%C(blue)%h%C(auto)%d%C(reset) %s %C(bold cyan)<%cn>%C(reset)\" -15
+    loggs2 = log --graph --decorate --format=\"%C(blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(bold cyan)%an%C(reset)%C(auto)%d%C(reset)%n%w(100,20,20)%s\" -10
+    logg = loggs --all
+    logg2 = loggs2 --all
+[core]
+    editor = vim
+[credential]
+    helper = store

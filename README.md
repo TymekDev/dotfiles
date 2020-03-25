@@ -10,7 +10,7 @@ Each category has a separate directory with a brief `README.md` and `install.sh`
 script (which basically creates symlinks to the default locations).
 
 The `install.sh` scripts were written to not overwrite anything but I cannot
-guarantee it as I am still learing shell scripting so.. **use at your own
+guarantee it as I am still learing shell scripting so... **use at your own
 risk!**
 
 
