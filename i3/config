@@ -1,8 +1,16 @@
 # Non-default settings ---------------------------------------------------------
-set $mod Mod4                  # Changing modifier to Super
-font pango:JetBrains Mono 10   # Changing font for status and window titles
-bindsym $mod+Return exec kitty # Setting terminal emulator
-focus_follows_mouse no         # Disable focus on mouseover (clicking still works)
+
+# Changing modifier to Super
+set $mod Mod4
+
+# Changing font for status and window titles
+font pango:JetBrains Mono 10
+
+# Setting terminal emulator
+bindsym $mod+Return exec kitty
+
+# Disable focus on mouseover (clicking still works)
+focus_follows_mouse no
 
 # Setting default display for each workspace
 workspace 1 output eDP-1-1
