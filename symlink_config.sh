@@ -5,7 +5,7 @@
 # Expanding the paths, it helps when "~" or "." was given
 file_name=$(basename "$1")
 src_file_path="$(cd `dirname $1`; pwd)/$file_name"
-dest_file_path="$(cd $2; pwd)/$file_name"
+dest_file_path="$(mkdir -p $2; cd $2; pwd)/$file_name"
 
 # For storing which files were created by this script
 log_file=${3:-symlink_config.log}
