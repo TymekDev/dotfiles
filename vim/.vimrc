@@ -17,7 +17,7 @@ filetype plugin indent on
 
 
 " [-------------------- General --------------------]
-source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/defaults.vim
 
 colorscheme delek
 let $LANG="en_US"
@@ -39,7 +39,6 @@ set laststatus=2                " Always display status line
 set mouse=
 set wrap
 set textwidth=80
-set ff=unix
 
 " Set temp directories
 set directory^=~/.vim/tmp//
@@ -104,6 +103,7 @@ vnoremap ,vt "9y :+1,$s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
 vnoremap ,va "9y :%s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
 
 " Replace trailing and all literal matches of clipboard contents
+nnoremap ,cr ciw<C-R>0<ESC>
 nnoremap ,ct :+1,$s/\V<C-R>=escape(@*, '/\')<CR>//g<Left><Left>
 nnoremap ,ca :%s/\V<C-R>=escape(@*, '/\')<CR>//g<Left><Left>
 
