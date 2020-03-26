@@ -12,6 +12,11 @@ bindsym $mod+Return exec kitty
 # Disable focus on mouseover (clicking still works)
 focus_follows_mouse no
 
+# Moving the tray to my primary screen
+bar {
+    tray_output eDP-1-1
+}
+
 # Setting default display for each workspace
 workspace 1 output eDP-1-1
 workspace 2 output eDP-1-1
