@@ -1,0 +1,34 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+        markup = "pango"
+}
+
+order += "wireless _first_"
+order += "battery all"
+order += "tztime local"
+
+wireless _first_ {
+        format_up = "WiFi: <span color='#34ccff'>%essid</span> <span color='#ffffff'>(%quality)</span>"
+        format_down = "WiFi: down"
+        format_quality = "%d%s"
+}
+
+battery all {
+        format = "%status ⚡%percentage %remaining"
+        status_bat = "BAT"
+        status_full = ""
+        format_percentage = "%0.f%s"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M"
+}
