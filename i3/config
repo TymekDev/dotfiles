@@ -22,6 +22,9 @@ bar {
 # Setting up the wallpaper
 exec_always --no-startup-id ~/.fehbg
 
+# Setting the displays
+exec_always --no-startup-id autorandr -c
+
 # Setting default display for each workspace
 workspace 1 output eDP-1-1
 workspace 2 output eDP-1-1
