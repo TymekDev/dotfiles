@@ -5,7 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="simple"
 CASE_SENSITIVE="true"
-plugins=(git)
+plugins=(git fzf fzf-tab)
 
 source $ZSH/oh-my-zsh.sh
 
