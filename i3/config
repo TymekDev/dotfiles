@@ -17,6 +17,9 @@ bar {
     tray_output eDP-1-1
 }
 
+# Setting up the wallpaper
+exec_always --no-startup-id ~/.fehbg
+
 # Setting default display for each workspace
 workspace 1 output eDP-1-1
 workspace 2 output eDP-1-1
