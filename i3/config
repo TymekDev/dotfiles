@@ -25,6 +25,9 @@ exec_always --no-startup-id ~/.fehbg
 # Setting the displays
 exec_always --no-startup-id autorandr -c
 
+# Inverting the touchpad
+exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" "1"
+
 # Disabling touchpad if mouse is plugged in
 # Note: this is based on mouse and touchpad names
 exec_always --no-startup-id xinput | grep -q "Mouse" && xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
