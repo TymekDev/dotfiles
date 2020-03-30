@@ -11,10 +11,10 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'ervandew/supertab'
 Plugin 'preservim/nerdtree'
 Plugin 'hashivim/vim-terraform'
+Plugin 'OmniSharp/omnisharp-vim'
 
 call vundle#end()
 filetype plugin indent on
-
 
 " [-------------------- General --------------------]
 source $VIMRUNTIME/defaults.vim
@@ -160,6 +160,10 @@ nnoremap ,ei /{<CR>o<ESC>"9po<ESC>
 " [-------------------- Terraform --------------------]
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+
+
+" [-------------------- OmniSharp --------------------]
+let g:OmniSharp_server_stdio = 1
 
 
 " [-------------------- Functions --------------------]
