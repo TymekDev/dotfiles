@@ -38,3 +38,9 @@ fi
 if [ -d "/usr/local/go/bin" ]; then
     PATH="$PATH:/usr/local/go/bin"
 fi
+
+
+# Exports ----------------------------------------------------------------------
+
+# Export to make the UnityEngine autocomplete work with omnisharp-vim
+export FrameworkPathOverride=/lib/mono/4.5
