@@ -16,6 +16,7 @@ Plugin 'OmniSharp/omnisharp-vim'
 call vundle#end()
 filetype plugin indent on
 
+
 " [-------------------- General --------------------]
 source $VIMRUNTIME/defaults.vim
 
@@ -44,6 +45,9 @@ set textwidth=80
 set directory^=~/.vim/tmp//
 set backupdir^=~/.vim/tmp//
 set undodir^=~/.vim/tmp//
+
+" Set tags search path
+set tags=./tags,tags;~
 
 
 " [--------------------- Coloring --------------------]
