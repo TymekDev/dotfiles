@@ -17,6 +17,7 @@ alias gd="git diff --color-words"
 alias gd2="git diff"
 alias gs="git status"
 
+alias glb="git lb"
 alias gg="git logg"
 alias gg2="git logg2"
 alias ggs="git loggs"
