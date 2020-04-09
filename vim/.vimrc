@@ -12,6 +12,7 @@ Plugin 'ervandew/supertab'
 Plugin 'preservim/nerdtree'
 Plugin 'hashivim/vim-terraform'
 Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'lervag/vimtex'
 
 call vundle#end()
 filetype plugin indent on
