@@ -41,6 +41,7 @@ set laststatus=2                " Always display status line
 set mouse=
 set wrap
 set textwidth=80
+set spelllang=en,pl
 
 " Set temp directories
 set directory^=~/.vim/tmp//
