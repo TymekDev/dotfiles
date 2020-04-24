@@ -132,7 +132,7 @@ vnoremap ,agq <ESC>`<i`<ESC>`>la`<ESC>
 "   - assuming entry header format:
 "       '<anything><version num><optional something without numbers> (DATE)',
 "   - first line in the file is the entry header.
-nnoremap ,ncl ggyyP/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)dT(
+nnoremap ,ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
             \"=strftime("%Y-%m-%d")<C-m>Po<ESC>O<Tab>
 
 
