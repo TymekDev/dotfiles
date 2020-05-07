@@ -40,7 +40,7 @@ set autochdir                   " Update working dir on change of split / tab
 set laststatus=2                " Always display status line
 set mouse=
 set wrap
-set textwidth=80
+set textwidth=0
 set spelllang=en,pl
 
 " Set temp directories
