@@ -12,7 +12,7 @@ Plugin 'ervandew/supertab'
 Plugin 'preservim/nerdtree'
 Plugin 'hashivim/vim-terraform'
 Plugin 'OmniSharp/omnisharp-vim'
-Plugin 'lervag/vimtex'
+"Plugin 'lervag/vimtex'
 
 call vundle#end()
 filetype plugin indent on
@@ -59,7 +59,7 @@ highlight ToDo ctermbg=gray ctermfg=black
 augroup vimrc_autocmds
     autocmd!
     " 81st sign (but not a newline)
-    autocmd BufEnter,WinEnter * call matchadd('OverLength', '\%81v.', 100)
+    " autocmd BufEnter,WinEnter * call matchadd('OverLength', '\%81v.', 100)
     " Matching TODOs: 'TODO:', 'TODO(...):'
     autocmd BufEnter,WinEnter * call matchadd('ToDo', 'TODO\(([^ ]*)\)\?:', 99)
 augroup END
