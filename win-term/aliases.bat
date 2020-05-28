@@ -1,0 +1,15 @@
+:: This file should be invoked by the Command Line: cmd.exe /k aliases.bat.
+@echo off
+
+doskey cd=cd /d $*
+
+doskey gd=git diff --color-words $*
+doskey gd2=git diff $*
+doskey gf=git fetch $*
+doskey gs=git status $*
+
+doskey glb=git lb $*
+doskey gg=git logg $*
+doskey gg2=git logg2 $*
+doskey ggs=git loggs $*
+doskey ggs2=git loggs2 $*
