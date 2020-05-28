@@ -15,6 +15,7 @@ source $ZSH/oh-my-zsh.sh
 # Git (for more details see .gitconfig)
 alias gd="git diff --color-words"
 alias gd2="git diff"
+alias gf="git fetch"
 alias gs="git status"
 
 alias glb="git lb"
