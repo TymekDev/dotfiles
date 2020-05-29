@@ -21,7 +21,8 @@
             "fontFace": "JetBrains Mono Medium",
             "fontSize": 11,
             "hidden": true,
-            "scrollbarState": "hidden"
+            "scrollbarState": "hidden",
+            "padding": "2, 1"
         },
         "list":
         [
@@ -76,4 +77,3 @@
         { "command": { "action": "resizePane", "direction": "right" }, "keys": "alt+shift+l" }
     ]
 }
-
