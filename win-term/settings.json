@@ -17,9 +17,9 @@
         "defaults":
         {
             "closeOnExit": "always",
-            "cursorShape": "filledBox",
-            "fontFace": "JetBrains Mono Medium",
-            "fontSize": 11,
+            "cursorShape": "emptyBox",
+            "fontFace": "JetBrains Mono",
+            "fontSize": 10,
             "hidden": true,
             "scrollbarState": "hidden",
             "padding": "2, 1"
@@ -32,6 +32,15 @@
                 "commandline": "cmd.exe /k %userprofile%/aliases.bat",
                 "hidden": false,
                 "colorScheme": "Cobalt2"
+            },
+            {
+                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                "name": "Ubuntu 20.04",
+                "hidden": false,
+                "source": "Windows.Terminal.Wsl",
+                // Note: the icon is located under:
+                // %LOCALAPPDATA%/packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState
+                "icon": "ms-appdata:///local/ubuntu-icon.png"
             }
         ]
     },
@@ -63,7 +72,7 @@
 
     "keybindings":
     [
-      	{ "command": { "action": "splitPane", "split": "vertical" }, "keys": "ctrl+alt+l" },
+          { "command": { "action": "splitPane", "split": "vertical" }, "keys": "ctrl+alt+l" },
         { "command": { "action": "splitPane", "split": "horizontal" }, "keys": "ctrl+alt+j" },
 
         { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+h" },
