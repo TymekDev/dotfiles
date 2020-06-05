@@ -14,4 +14,4 @@ doskey gg2=git logg2 $*
 doskey ggs=git loggs $*
 doskey ggs2=git loggs2 $*
 
-set PROMPT=$E[1m$E[33m[$T$H$H$H]$S$E[32m$P$G$S
+set PROMPT=$E[1m$E[33m[$T$H$H$H]$S$E[32m$P$G$S$E[0m
