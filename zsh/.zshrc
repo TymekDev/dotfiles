@@ -46,3 +46,6 @@ fi
 
 # Export to make the UnityEngine autocomplete work with omnisharp-vim
 export FrameworkPathOverride=/lib/mono/4.5
+
+# Load ls color fix.
+eval "$(dircolors ~/.dircolors)"
