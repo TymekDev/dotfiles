@@ -47,5 +47,6 @@ fi
 # Export to make the UnityEngine autocomplete work with omnisharp-vim
 export FrameworkPathOverride=/lib/mono/4.5
 
-# Load ls color fix.
-eval "$(dircolors ~/.dircolors)"
+# ls and tab completion color fix for Windows dirs.
+LS_COLORS=$LS_COLORS:'ow=01;34:'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
