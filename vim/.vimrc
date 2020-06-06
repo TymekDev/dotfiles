@@ -42,6 +42,7 @@ set mouse=
 set wrap
 set textwidth=0
 set spelllang=en,pl
+set pastetoggle=<F2>
 
 " Set temp directories
 set directory^=~/.vim/tmp//
