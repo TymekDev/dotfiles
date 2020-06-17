@@ -3,12 +3,15 @@
 
 doskey cd=cd /d $*
 
-doskey gd=git diff --color-words $*
-doskey gd2=git diff $*
 doskey gf=git fetch $*
 doskey gs=git status $*
-
 doskey glb=git lb $*
+
+doskey gd=git diff --color-words $*
+doskey gd2=git diff $*
+doskey gds=git diff --color-words --staged $*
+doskey gds2=git diff --staged $*
+
 doskey gg=git logg $*
 doskey gg2=git logg2 $*
 doskey ggs=git loggs $*
