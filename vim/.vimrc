@@ -9,7 +9,8 @@ Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'ervandew/supertab'
-Plugin 'preservim/nerdtree'
+Plugin 'francoiscabrol/ranger.vim'
+Plugin 'rbgrouleff/bclose.vim'
 Plugin 'hashivim/vim-terraform'
 Plugin 'OmniSharp/omnisharp-vim'
 "Plugin 'lervag/vimtex'
@@ -74,7 +75,6 @@ set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 " [-------------------- Keybinds --------------------]
 noremap <C-x>l :set hlsearch!<CR>
 nnoremap ,h :set hlsearch<CR>/<C-r><C-w><CR>``
-nnoremap <C-n>t :NERDTree<CR>
 
 inoremap <C-j> <C-x><C-o>
 inoremap <C-l> <C-x><C-n>
@@ -171,6 +171,11 @@ let g:terraform_fmt_on_save=1
 
 " [-------------------- OmniSharp --------------------]
 let g:OmniSharp_server_stdio = 1
+
+
+" [--------------------- Ranger --------------------]
+let g:ranger_map_keys = 0
+let g:ranger_replace_netrw = 1 
 
 
 " [-------------------- Functions --------------------]
