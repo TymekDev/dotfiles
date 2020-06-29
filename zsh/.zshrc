@@ -47,16 +47,3 @@ fi
 if [ -d "/usr/local/go/bin" ]; then
     PATH="$PATH:/usr/local/go/bin"
 fi
-
-
-# Exports ----------------------------------------------------------------------
-
-# Export to make the UnityEngine autocomplete work with omnisharp-vim
-export FrameworkPathOverride=/lib/mono/4.5
-
-# ls and tab completion color fix for Windows dirs.
-LS_COLORS=$LS_COLORS:'ow=01;34:'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# Clipboard sharing between Windows and WSL via VcXsrv.
-export DISPLAY=localhost:0.0
