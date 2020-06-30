@@ -130,6 +130,10 @@ bindsym $mod+backslash exec firefox
 # Printscreen remapping
 bindsym Print exec flameshot gui
 
+# File manager bindings
+bindsym $mod+n exec kitty ranger
+bindsym $mod+Shift+n exec nautilus
+
 # Changing dmenu to rofi
 # Theme: https://github.com/davatorium/rofi-themes/blob/c16c7e91a313e4f325d631832381f628778feea1/User%20Themes/slate.rasi
 bindsym $mod+d exec rofi -modi run -show run -theme slate -lines 5 -sort -disable-history
