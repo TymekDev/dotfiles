@@ -76,6 +76,9 @@ exec_always --no-startup-id ~/.fehbg
 # Setting the displays
 exec_always --no-startup-id autorandr -c
 
+# Start xbindkeys for remapping
+exec_always --no-startup-id xbindkeys
+
 # Disabling touchpad if mouse is plugged in
 exec_always --no-startup-id xinput | grep -q "Mouse" && xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
 
