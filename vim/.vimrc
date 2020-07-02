@@ -11,8 +11,9 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'ervandew/supertab'
 Plugin 'francoiscabrol/ranger.vim'
 Plugin 'rbgrouleff/bclose.vim'
-Plugin 'hashivim/vim-terraform'
-Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'tyru/caw.vim'
+"Plugin 'hashivim/vim-terraform'
+"Plugin 'OmniSharp/omnisharp-vim'
 "Plugin 'lervag/vimtex'
 
 call vundle#end()
