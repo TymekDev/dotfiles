@@ -74,7 +74,7 @@ set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 
 " [-------------------- Keybinds --------------------]
-noremap <C-x>l :set hlsearch!<CR>
+noremap <Leader>l :set hlsearch!<CR>
 nnoremap ,h :set hlsearch<CR>/<C-r><C-w><CR>``
 
 inoremap <C-j> <C-x><C-o>
