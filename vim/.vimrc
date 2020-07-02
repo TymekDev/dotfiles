@@ -161,8 +161,8 @@ nnoremap ,em ?^package\s[A-z]*$<CR>wviw"9y''
 
 nnoremap ,ei /{<CR>o<ESC>"9po<ESC>
 
-:let @f = ",ef,ei"
-:let @m = ",em,ei"	
+let @f = ",ef,ei"
+let @m = ",em,ei"	
 
 
 " [-------------------- Terraform --------------------]
