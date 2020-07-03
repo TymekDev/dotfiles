@@ -120,6 +120,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
+# Window specific behavior -----------------------------------------------------
+for_window [class="Nautilus"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="Lutris"] floating enable
+
+
 # Applications and other keybindings -------------------------------------------
 # Terminal keybinding
 bindsym $mod+Return exec kitty
@@ -162,3 +168,4 @@ bar {
     tray_output primary
     status_command i3status
 }
+
