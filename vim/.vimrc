@@ -75,7 +75,7 @@ set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 " [-------------------- Keybinds --------------------]
 noremap <Leader>l :set hlsearch!<CR>
-nnoremap ,h :set hlsearch<CR>/<C-r><C-w><CR>``
+nnoremap <Leader>h :set hlsearch<CR>/<C-r><C-w><CR>``
 
 inoremap <C-j> <C-x><C-o>
 inoremap <C-l> <C-x><C-n>
@@ -88,53 +88,53 @@ nnoremap 0gt :tablast<CR>
 
 
 " [-------------------- Window size adjustments --------------------]
-nmap ,nm :vertical res 85<CR>
-nmap nm :vertical res +10<CR>
-nmap mn :vertical res -10<CR>
-nmap rt :res +10<CR>
-nmap tr :res -10<CR>
+nmap <Leader>nm :vertical res 85<CR>
+nmap <Leader>rl :vertical res +10<CR>
+nmap <Leader>rh :vertical res -10<CR>
+nmap <Leader>rk :res +10<CR>
+nmap <Leader>rj :res -10<CR>
 
 
 " [-------------------- Replacements --------------------]
 " Find, replace word, replace trailing and replace all words, respectively
-nnoremap ,wr :s/<C-R><C-W>//g<Left><Left>
-nnoremap ,wt :+1,$s/<C-R><C-W>//g<Left><Left>
-nnoremap ,wa :%s/<C-R><C-W>//g<Left><Left>
+nnoremap <Leader>wr :s/<C-R><C-W>//g<Left><Left>
+nnoremap <Leader>wt :+1,$s/<C-R><C-W>//g<Left><Left>
+nnoremap <Leader>wa :%s/<C-R><C-W>//g<Left><Left>
 
 " Replace current match, trailing matches and all matches of selection
 " Info:
 "   "9y                     yanks selection to selected 'clipboard' number 9
 "   \V                      stands for literal (no regex) 
 "   =escape(@9, '/\')<CR>   returns escaped string from 'clipboard' number 9
-vnoremap ,vr "9y :s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
-vnoremap ,vt "9y :+1,$s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
-vnoremap ,va "9y :%s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
+vnoremap <Leader>vr "9y :s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
+vnoremap <Leader>vt "9y :+1,$s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
+vnoremap <Leader>va "9y :%s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
 
 " Replace trailing and all literal matches of clipboard contents
-nnoremap ,cr ciw<C-R>0<ESC>
-nnoremap ,ct :+1,$s/\V<C-R>=escape(@*, '/\')<CR>//g<Left><Left>
-nnoremap ,ca :%s/\V<C-R>=escape(@*, '/\')<CR>//g<Left><Left>
+nnoremap <Leader>cr ciw<C-R>0<ESC>
+nnoremap <Leader>ct :+1,$s/\V<C-R>=escape(@*, '/\')<CR>//g<Left><Left>
+nnoremap <Leader>ca :%s/\V<C-R>=escape(@*, '/\')<CR>//g<Left><Left>
 
-nnoremap ,uf mu:call UnicodeFlatten()<CR>`u
-nnoremap ,ue mu:call UnicodeExpand()<CR>`u
+nnoremap <Leader>uf mu:call UnicodeFlatten()<CR>`u
+nnoremap <Leader>ue mu:call UnicodeExpand()<CR>`u
 
 
 " [-------------------- Other --------------------]
 " Adding quotes to current word.
-nnoremap ,aq  viw<ESC>`<i"<ESC>`>la"<ESC>
-nnoremap ,asq viw<ESC>`<i'<ESC>`>la'<ESC>
-nnoremap ,agq viw<ESC>`<i`<ESC>`>la`<ESC>
+nnoremap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
+nnoremap <Leader>asq viw<ESC>`<i'<ESC>`>la'<ESC>
+nnoremap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
 
 " Adding quotes to selection.
-vnoremap ,aq  <ESC>`<i"<ESC>`>la"<ESC>
-vnoremap ,asq <ESC>`<i'<ESC>`>la'<ESC>
-vnoremap ,agq <ESC>`<i`<ESC>`>la`<ESC>
+vnoremap <Leader>aq  <ESC>`<i"<ESC>`>la"<ESC>
+vnoremap <Leader>asq <ESC>`<i'<ESC>`>la'<ESC>
+vnoremap <Leader>agq <ESC>`<i`<ESC>`>la`<ESC>
 
 " New entry in ChangeLog:
 "   - assuming entry header format:
 "       '<anything><version num><optional something without numbers> (DATE)',
 "   - first line in the file is the entry header.
-nnoremap ,ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
+nnoremap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
             \"=strftime("%Y-%m-%d")<C-m>Po<ESC>O<Tab>
 
 
@@ -149,20 +149,20 @@ hi htmlBold ctermfg=70
 let g:go_fmt_command = 'goimports'
 
 " Creates fName const for function
-nnoremap ,ef ?^package\s[A-z]*$<CR>wviw"9y''
+nnoremap <Leader>ef ?^package\s[A-z]*$<CR>wviw"9y''
     \0w:let @9 = "<C-R>9.<C-R><C-W>"<CR>
     \:let @9 = "const fName = \"<C-R>9\""<CR>
 
 " Creates fName const for method
-nnoremap ,em ?^package\s[A-z]*$<CR>wviw"9y''
+nnoremap <Leader>em ?^package\s[A-z]*$<CR>wviw"9y''
     \0WW:let @9 = "<C-R>9.<C-R><C-W>"<CR>
     \W:let @9 = "<C-R>9.<C-R><C-W>"<CR>
     \:let @9 = "const fName = \"<C-R>9\""<CR>
 
-nnoremap ,ei /{<CR>o<ESC>"9po<ESC>
+nnoremap <Leader>ei /{<CR>o<ESC>"9po<ESC>
 
-let @f = ",ef,ei"
-let @m = ",em,ei"	
+let @f = "<Leader>ef<Leader>ei"
+let @m = "<Leader>em<Leader>ei"	
 
 
 " [-------------------- Terraform --------------------]
