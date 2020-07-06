@@ -1,0 +1,9 @@
+{
+    "kitty": "terminal",
+    "ranger": "folder-open",
+    "org.gnome.Nautilus": "folder-open",
+    "firefox": "firefox",
+    "steam": "steam",
+    "telegram": "telegram",
+    "WineDesktop - Wine desktop": "wine-glass-alt"
+}
