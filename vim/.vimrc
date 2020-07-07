@@ -12,6 +12,7 @@ Plugin 'ervandew/supertab'
 Plugin 'francoiscabrol/ranger.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'tyru/caw.vim'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 "Plugin 'hashivim/vim-terraform'
 "Plugin 'OmniSharp/omnisharp-vim'
 "Plugin 'lervag/vimtex'
@@ -85,6 +86,8 @@ nnoremap <S-Enter> O<ESC>
 
 nnoremap <C-n> :tabnew<CR>
 nnoremap 0gt :tablast<CR>
+
+noremap <Leader>rnu :set rnu!<CR>
 
 
 " [-------------------- Window size adjustments --------------------]
