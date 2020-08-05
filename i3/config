@@ -149,6 +149,7 @@ bindsym $mod+r mode "resize"
 for_window [class="Nautilus"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="Lutris"] floating enable
+for_window [class="Wine"] floating disable
 
 
 # Applications and other keybindings -------------------------------------------
