@@ -13,6 +13,7 @@ Plugin 'francoiscabrol/ranger.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'tyru/caw.vim'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'davidhalter/jedi-vim'
 "Plugin 'hashivim/vim-terraform'
 "Plugin 'OmniSharp/omnisharp-vim'
 "Plugin 'lervag/vimtex'
@@ -164,9 +165,6 @@ nnoremap <Leader>em ?^package\s[A-z]*$<CR>wviw"9y''
 
 nnoremap <Leader>ei /{<CR>o<ESC>"9po<ESC>
 
-let @f = "<Leader>ef<Leader>ei"
-let @m = "<Leader>em<Leader>ei"	
-
 
 " [-------------------- Terraform --------------------]
 let g:terraform_align=1
@@ -180,6 +178,10 @@ let g:OmniSharp_server_stdio = 1
 " [--------------------- Ranger --------------------]
 let g:ranger_map_keys = 0
 let g:ranger_replace_netrw = 1 
+
+
+" [-------------------- Python --------------------]
+let g:jedi#popup_on_dot = 0
 
 
 " [-------------------- Functions --------------------]
