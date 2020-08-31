@@ -142,12 +142,6 @@ nnoremap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
             \"=strftime("%Y-%m-%d")<C-m>Po<ESC>O<Tab>
 
 
-" [-------------------- Markdown --------------------]
-" Color markdown italic and bold
-hi htmlItalic ctermfg=79
-hi htmlBold ctermfg=70
-
-
 " [-------------------- Go --------------------]
 " Golang Autoformatting
 let g:go_fmt_command = 'goimports'
