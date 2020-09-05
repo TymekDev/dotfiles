@@ -5,6 +5,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'fatih/vim-go'                       " Go IDE
 Plugin 'godlygeek/tabular'                  " Required by vim-markdown
 Plugin 'plasticboy/vim-markdown'            " Text coloring for markdown
 Plugin 'francoiscabrol/ranger.vim'          " Add support for ranger as directory viewer
@@ -138,6 +139,8 @@ nnoremap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
 
 
 " [-------------------- Go --------------------]
+let g:go_fmt_command = 'goimports'
+
 " Creates fName const for function
 nnoremap <Leader>ef ?^package\s[A-z]*$<CR>wviw"9y''
     \0w:let @9 = "<C-R>9.<C-R><C-W>"<CR>
