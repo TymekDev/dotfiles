@@ -5,7 +5,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'ervandew/supertab'
@@ -13,7 +12,7 @@ Plugin 'francoiscabrol/ranger.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'tyru/caw.vim'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'davidhalter/jedi-vim'
+Plugin 'ycm-core/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
@@ -140,9 +139,6 @@ nnoremap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
 
 
 " [-------------------- Go --------------------]
-" Golang Autoformatting
-let g:go_fmt_command = 'goimports'
-
 " Creates fName const for function
 nnoremap <Leader>ef ?^package\s[A-z]*$<CR>wviw"9y''
     \0w:let @9 = "<C-R>9.<C-R><C-W>"<CR>
@@ -160,10 +156,6 @@ nnoremap <Leader>ei /{<CR>o<ESC>"9po<ESC>
 " [--------------------- Ranger --------------------]
 let g:ranger_map_keys = 0
 let g:ranger_replace_netrw = 1 
-
-
-" [-------------------- Python --------------------]
-let g:jedi#popup_on_dot = 0
 
 
 " [-------------------- Functions --------------------]
