@@ -160,6 +160,10 @@ let g:ranger_map_keys = 0
 let g:ranger_replace_netrw = 1 
 
 
+" [--------------------- YouCompleteMe --------------------]
+nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
+
+
 " [-------------------- Functions --------------------]
 " Functions substitutes polish diacritic signs with their ASCII equivalents
 function! UnicodeFlatten() 
