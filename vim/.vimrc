@@ -5,14 +5,14 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'ervandew/supertab'
-Plugin 'francoiscabrol/ranger.vim'
-Plugin 'rbgrouleff/bclose.vim'
-Plugin 'tyru/caw.vim'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'ycm-core/YouCompleteMe'
+Plugin 'godlygeek/tabular'                  " Required by vim-markdown
+Plugin 'plasticboy/vim-markdown'            " Text coloring for markdown
+Plugin 'ervandew/supertab'                  " Tab completion
+Plugin 'francoiscabrol/ranger.vim'          " Add support for ranger as directory viewer
+Plugin 'rbgrouleff/bclose.vim'              " Required by ranger.vim
+Plugin 'tyru/caw.vim'                       " Commenting and uncommenting text
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Turns on relative line numbers
+Plugin 'ycm-core/YouCompleteMe'             " Syntax completion
 
 call vundle#end()
 filetype plugin indent on
