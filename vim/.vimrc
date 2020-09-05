@@ -14,9 +14,6 @@ Plugin 'rbgrouleff/bclose.vim'
 Plugin 'tyru/caw.vim'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'davidhalter/jedi-vim'
-"Plugin 'hashivim/vim-terraform'
-"Plugin 'OmniSharp/omnisharp-vim'
-"Plugin 'lervag/vimtex'
 
 call vundle#end()
 filetype plugin indent on
@@ -158,15 +155,6 @@ nnoremap <Leader>em ?^package\s[A-z]*$<CR>wviw"9y''
     \:let @9 = "const fName = \"<C-R>9\""<CR>
 
 nnoremap <Leader>ei /{<CR>o<ESC>"9po<ESC>
-
-
-" [-------------------- Terraform --------------------]
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
-
-
-" [-------------------- OmniSharp --------------------]
-let g:OmniSharp_server_stdio = 1
 
 
 " [--------------------- Ranger --------------------]
