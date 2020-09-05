@@ -7,7 +7,6 @@ call vundle#begin()
 
 Plugin 'godlygeek/tabular'                  " Required by vim-markdown
 Plugin 'plasticboy/vim-markdown'            " Text coloring for markdown
-Plugin 'ervandew/supertab'                  " Tab completion
 Plugin 'francoiscabrol/ranger.vim'          " Add support for ranger as directory viewer
 Plugin 'rbgrouleff/bclose.vim'              " Required by ranger.vim
 Plugin 'tyru/caw.vim'                       " Commenting and uncommenting text
