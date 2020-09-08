@@ -28,7 +28,7 @@ set fileencoding=utf-8
 
 set tabstop=4
 set shiftwidth=4
-set expandtab
+" set expandtab
 set number
 set clipboard=unnamedplus       " Share paste/yank clipboard with system | Windows: unnamed / Unix: unnamedplus
 set lazyredraw                  " Fastens scrolling 
@@ -53,9 +53,10 @@ set undodir^=~/.vim/tmp//
 set tags=./tags,tags;~
 
 " Add character for trailing spaces at lines ends and tabs
+" Line character: <C-v>u23b8
 " Shelf character: <C-v>u02fd
 set list
-set listchars=tab:\ \ ,trail:˽
+set listchars=tab:⎸\ ,trail:˽
 
 
 " [--------------------- Coloring --------------------]
