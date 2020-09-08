@@ -52,6 +52,11 @@ set undodir^=~/.vim/tmp//
 " Set tags search path
 set tags=./tags,tags;~
 
+" Add character for trailing spaces at lines ends and tabs
+" Shelf character: <C-v>u02fd
+set list
+set listchars=tab:\ \ ,trail:˽
+
 
 " [--------------------- Coloring --------------------]
 highlight OverLength ctermbg=yellow ctermfg=black
