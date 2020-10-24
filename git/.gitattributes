@@ -1,0 +1,6 @@
+*.bib diff=bibtex
+*.css diff=css
+*.go diff=golang
+*.md diff=markdown
+*.py diff=python
+*.tex diff=tex
