@@ -3,9 +3,19 @@ echo -n "\e[36m[git]\e[0m "
 script_dir=$(dirname $0)
 sh $script_dir/../symlink_config.sh $script_dir/.gitconfig $HOME
 
+# Linking .gitattributes file
+echo -n "\e[36m[git]\e[0m "
+script_dir=$(dirname $0)
+sh $script_dir/../symlink_config.sh $script_dir/.gitattributes $HOME
+
 # git configuration
 git --version > /dev/null 2>&1
 if [ $? -eq 0 ]; then
+
+    # Setting global .gitattributes file
+    echo -n "\e[36m[git]\e[0m \e[33msetting global .gitattributes file:\e[0m "
+    git config --global core.attributesfile $HOME/.gitattributes
+    echo -n "\e[92mdone\e[0m\n"
 
     # Updating name (only if it was provided)
     echo -n "\e[36m[git]\e[0m \e[33mprovide name (press enter to skip):\e[0m "
