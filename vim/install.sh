@@ -15,6 +15,10 @@ for vim_dir in $vim_dirs; do
     fi
 done
 
+# Linking $HOME/.vim/after
+echo -n "\e[36m[vim]\e[0m "
+sh $script_dir/../symlink_config.sh $script_dir/after $HOME/.vim
+
 # Cloning into Vundle.vim repository if git is installed
 echo -n "\e[36m[vim]\e[0m \e[33mintalling Vundle:\e[0m "
 vundle_dir="$HOME/.vim/bundle/Vundle.vim"
