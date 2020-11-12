@@ -15,8 +15,8 @@ echo -n "\e[33m$file_name linking:\e[0m "
 # If file exists then skip it
 if [ -e "$dest_file_path" ]; then
     echo "\e[94mskipped\e[0m (file already exists $dest_file_path)"
-else 
-    # Catch the (error) output of the command 
+else
+    # Catch the (error) output of the command
     error=$(ln -s $src_file_path $dest_file_path 2>&1)
 
     # Check the exit status of the last command (ln)

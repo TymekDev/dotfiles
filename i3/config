@@ -137,7 +137,7 @@ mode "resize" {
     bindsym Shift+j resize shrink height 15 px or 15 ppt
     bindsym Shift+k resize grow height 15 px or 15 ppt
     bindsym Shift+l resize grow width 15 px or 15 ppt
-    
+
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
 }

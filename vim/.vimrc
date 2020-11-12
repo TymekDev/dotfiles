@@ -31,7 +31,7 @@ set shiftwidth=4
 " set expandtab
 set number
 set clipboard=unnamedplus       " Share paste/yank clipboard with system | Windows: unnamed / Unix: unnamedplus
-set lazyredraw                  " Fastens scrolling 
+set lazyredraw                  " Fastens scrolling
 set backspace=indent,eol,start  " More flexible backspace
 set nohlsearch                  " Disably highlight search on startup
 set splitright                  " Set vertical split to the right
@@ -110,7 +110,7 @@ nnoremap <Leader>wa :%s/<C-R><C-W>//g<Left><Left>
 " Replace current match, trailing matches and all matches of selection
 " Info:
 "   "9y                     yanks selection to selected 'clipboard' number 9
-"   \V                      stands for literal (no regex) 
+"   \V                      stands for literal (no regex)
 "   =escape(@9, '/\')<CR>   returns escaped string from 'clipboard' number 9
 vnoremap <Leader>vr "9y :s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
 vnoremap <Leader>vt "9y :+1,$s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
@@ -163,7 +163,7 @@ nnoremap <Leader>ei /{<CR>o<ESC>"9po<ESC>
 
 " [--------------------- Ranger --------------------]
 let g:ranger_map_keys = 0
-let g:ranger_replace_netrw = 1 
+let g:ranger_replace_netrw = 1
 
 
 " [--------------------- YouCompleteMe --------------------]
@@ -172,7 +172,7 @@ nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
 
 " [-------------------- Functions --------------------]
 " Functions substitutes polish diacritic signs with their ASCII equivalents
-function! UnicodeFlatten() 
+function! UnicodeFlatten()
     for r in [["u0105", "a"], ["u0107", "c"], ["u0119", "e"], ["u0142", "l"],
              \["u0144", "n"], ["u00F3", "o"], ["u015B", "s"], ["u017C", "z"],
              \["u017A", "z"], ["u0104", "A"], ["u0106", "C"], ["u0118", "E"],
@@ -183,7 +183,7 @@ function! UnicodeFlatten()
 endfunction
 
 " Functions substitutes polish diacritic signs with their UTF-8 codes
-function! UnicodeExpand() 
+function! UnicodeExpand()
     for r in ["u0105", "u0107", "u0119", "u0142", "u0144", "u00F3",
              \"u015B", "u017C", "u017A", "u0104", "u0106", "u0118",
              \"u0141", "u0143", "u00D3", "u015A", "u017B", "u0179"]

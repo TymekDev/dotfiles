@@ -2,7 +2,7 @@
 
 This repository contains all the configuration files I use. These files contain
 little to no explaination what they actually configure but still might be of use
-for someone. 
+for someone.
 
 
 ### Structure
