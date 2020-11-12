@@ -13,6 +13,7 @@ Plugin 'rbgrouleff/bclose.vim'              " Required by ranger.vim
 Plugin 'tyru/caw.vim'                       " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Turns on relative line numbers
 Plugin 'ycm-core/YouCompleteMe'             " Syntax completion
+Plugin 'unblevable/quick-scope'             " Unique letters in line highlight
 
 call vundle#end()
 filetype plugin indent on
@@ -164,6 +165,11 @@ nnoremap <Leader>ei /{<CR>o<ESC>"9po<ESC>
 " [--------------------- Ranger --------------------]
 let g:ranger_map_keys = 0
 let g:ranger_replace_netrw = 1
+
+
+" [--------------------- quick-scope --------------------]
+nmap <Leader>q <Plug>(QuickScopeToggle)
+xmap <Leader>q <Plug>(QuickScopeToggle)
 
 
 " [--------------------- YouCompleteMe --------------------]
