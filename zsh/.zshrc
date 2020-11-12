@@ -47,3 +47,8 @@ fi
 if [ -d "/usr/local/go/bin" ]; then
     PATH="$PATH:/usr/local/go/bin"
 fi
+
+# Adding Tarsnap backup scripts to PATH
+if [ -d "$HOME/.tarsnap/bin" ]; then
+    PATH="$PATH:$HOME/.tarsnap/bin"
+fi
