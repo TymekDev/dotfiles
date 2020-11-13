@@ -14,6 +14,7 @@ Plugin 'tyru/caw.vim'                       " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Turns on relative line numbers
 Plugin 'ycm-core/YouCompleteMe'             " Syntax completion
 Plugin 'unblevable/quick-scope'             " Unique letters in line highlight
+Plugin 'justinmk/vim-sneak'                 " Quick movement to characters between lines
 
 call vundle#end()
 filetype plugin indent on
@@ -170,6 +171,19 @@ let g:ranger_replace_netrw = 1
 " [--------------------- quick-scope --------------------]
 nmap <Leader>q <Plug>(QuickScopeToggle)
 xmap <Leader>q <Plug>(QuickScopeToggle)
+
+let g:qs_hi_priority = 11 " Just to be more than default used by vim-sneak
+highlight QuickScopePrimary ctermfg=5
+highlight QuickScopeSecondary ctermfg=6
+
+
+" [--------------------- vim-sneak --------------------]
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+
+highlight Sneak ctermfg=8 ctermbg=0
 
 
 " [--------------------- YouCompleteMe --------------------]
