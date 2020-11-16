@@ -62,16 +62,7 @@ set listchars=tab:⎸\ ,trail:˽
 
 
 " [--------------------- Coloring --------------------]
-highlight OverLength ctermbg=yellow ctermfg=black
-highlight TODO ctermbg=gray ctermfg=black
 
-augroup vimrc_autocmds
-    autocmd!
-    " 81st sign (but not a newline)
-    " autocmd BufEnter,WinEnter * call matchadd('OverLength', '\%81v.', 100)
-    " Matching TODOs: 'TODO:', 'TODO(...):'
-    autocmd BufEnter,WinEnter * call matchadd('TODO', 'TODO\(([^ ]*)\)\?:', 99)
-augroup END
 
 
 " [-------------------- Status line --------------------]
