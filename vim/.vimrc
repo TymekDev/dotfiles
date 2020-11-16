@@ -169,10 +169,11 @@ let g:ranger_replace_netrw = 1
 
 
 " [--------------------- quick-scope --------------------]
+let g:qs_hi_priority = 20
+
 nmap <Leader>q <Plug>(QuickScopeToggle)
 xmap <Leader>q <Plug>(QuickScopeToggle)
 
-let g:qs_hi_priority = 11 " Just to be more than default used by vim-sneak
 highlight QuickScopePrimary ctermfg=5
 highlight QuickScopeSecondary ctermfg=6
 
