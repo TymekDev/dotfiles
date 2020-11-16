@@ -15,6 +15,7 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Turns on relative line numbers
 Plugin 'ycm-core/YouCompleteMe'             " Syntax completion
 Plugin 'unblevable/quick-scope'             " Unique letters in line highlight
 Plugin 'justinmk/vim-sneak'                 " Quick movement to characters between lines
+Plugin 'tpope/vim-repeat'                   " Allows repeating vim-sneak movements
 
 call vundle#end()
 filetype plugin indent on
