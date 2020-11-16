@@ -178,6 +178,8 @@ highlight QuickScopeSecondary ctermfg=6
 
 
 " [--------------------- vim-sneak --------------------]
+map <Leader>s <Plug>Sneak_s
+map <Leader>S <Plug>Sneak_S
 map f <Plug>Sneak_f
 map F <Plug>Sneak_F
 map t <Plug>Sneak_t
