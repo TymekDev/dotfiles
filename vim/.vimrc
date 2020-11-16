@@ -23,7 +23,6 @@ filetype plugin indent on
 " [-------------------- General --------------------]
 source $VIMRUNTIME/defaults.vim
 
-colorscheme delek
 let $LANG="en_US"
 set encoding=utf-8
 set fileencoding=utf-8
@@ -62,7 +61,23 @@ set listchars=tab:⎸\ ,trail:˽
 
 
 " [--------------------- Coloring --------------------]
+function! CustomHighlights() abort
+    hi QuickScopePrimary    ctermfg=magenta
+    hi QuickScopeSecondary  ctermfg=darkcyan
+    hi Sneak                ctermfg=darkgray
+endfunction
 
+function! ColorSchemeOverride() abort
+    hi Identifier ctermfg=cyan
+endfunction
+
+augroup ApplyHighlights
+    autocmd!
+    autocmd ColorScheme * call CustomHighlights()
+                      \ | call ColorSchemeOverride()
+augroup END
+
+colorscheme delek
 
 
 " [-------------------- Status line --------------------]
@@ -165,9 +180,6 @@ let g:qs_hi_priority = 20
 nmap <Leader>q <Plug>(QuickScopeToggle)
 xmap <Leader>q <Plug>(QuickScopeToggle)
 
-highlight QuickScopePrimary ctermfg=5
-highlight QuickScopeSecondary ctermfg=6
-
 
 " [--------------------- vim-sneak --------------------]
 map <Leader>s <Plug>Sneak_s
@@ -176,8 +188,6 @@ map f <Plug>Sneak_f
 map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
-
-highlight Sneak ctermfg=8 ctermbg=0
 
 
 " [--------------------- YouCompleteMe --------------------]
