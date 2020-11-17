@@ -81,6 +81,8 @@ augroup END
 
 
 " [--------------------- Coloring --------------------]
+syntax on
+
 function! CustomHighlights() abort
     hi QuickScopePrimary    ctermfg=magenta
     hi QuickScopeSecondary  ctermfg=darkcyan
