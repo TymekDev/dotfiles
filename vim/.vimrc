@@ -87,7 +87,7 @@ syntax on
 function! CustomHighlights() abort
     hi QuickScopePrimary    ctermfg=magenta
     hi QuickScopeSecondary  ctermfg=darkcyan
-    hi Sneak                ctermfg=darkgray
+    hi Sneak                ctermfg=darkgray ctermbg=black
 endfunction
 
 function! ColorSchemeOverride() abort
