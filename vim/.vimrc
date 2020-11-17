@@ -22,29 +22,38 @@ filetype plugin indent on
 
 
 " [-------------------- General --------------------]
-source $VIMRUNTIME/defaults.vim
-
 let $LANG="en_US"
 set encoding=utf-8
 set fileencoding=utf-8
 
-set tabstop=4
-set shiftwidth=4
-" set expandtab
-set number
-set clipboard=unnamedplus       " Share paste/yank clipboard with system | Windows: unnamed / Unix: unnamedplus
-set lazyredraw                  " Fastens scrolling
-set backspace=indent,eol,start  " More flexible backspace
-set nohlsearch                  " Disably highlight search on startup
-set splitright                  " Set vertical split to the right
-set splitbelow                  " Set horizontal split to the below
-set autochdir                   " Update working dir on change of split / tab
-set laststatus=2                " Always display status line
+set autochdir
+set backspace=indent,eol,start
+set clipboard=unnamedplus " Windows: unnamed / Unix: unnamedplus
+set expandtab
+set laststatus=2
+set lazyredraw
 set mouse=
-set wrap
-set textwidth=0
-set spelllang=en,pl
+set nohlsearch
+set number
 set pastetoggle=<F2>
+set shiftwidth=4
+set spelllang=en,pl
+set splitbelow
+set splitright
+set tabstop=4
+set textwidth=0
+set wrap
+
+" Useful settings from defaults.vim
+set display=truncate
+set history=500
+set incsearch
+set nolangremap
+set scrolloff=5
+set showcmd
+set ttimeout
+set ttimeoutlen=100
+set wildmenu
 
 " Set temp directories
 set directory^=~/.vim/tmp//
@@ -59,6 +68,15 @@ set tags=./tags,tags;~
 " Shelf character: <C-v>u02fd
 set list
 set listchars=tab:⎸\ ,trail:˽
+
+" Moving cursor to last known position on an edit of a non-commit file
+augroup CursorLastPosition
+    autocmd!
+    autocmd BufReadPost *
+        \   if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+        \ |     exe "normal! g`\""
+        \ | endif
+augroup END
 
 
 " [--------------------- Coloring --------------------]
