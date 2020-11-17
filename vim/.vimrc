@@ -30,6 +30,7 @@ set autochdir
 set backspace=indent,eol,start
 set clipboard=unnamedplus " Windows: unnamed / Unix: unnamedplus
 set expandtab
+set formatoptions+=j
 set laststatus=2
 set lazyredraw
 set mouse=
