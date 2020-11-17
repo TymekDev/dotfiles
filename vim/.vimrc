@@ -75,7 +75,7 @@ set listchars=tab:⎸\ ,trail:˽
 augroup CursorLastPosition
     autocmd!
     autocmd BufReadPost *
-        \   if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+        \   if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' && &ft !~# 'diff'
         \ |     exe "normal! g`\""
         \ | endif
 augroup END
