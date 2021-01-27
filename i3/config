@@ -17,18 +17,6 @@ bindsym $mod+Shift+l move right
 
 
 # Workspaces -------------------------------------------------------------------
-# Default display for each workspace
-workspace 1 output eDP-1-1
-workspace 2 output eDP-1-1
-workspace 3 output eDP-1-1
-workspace 4 output eDP-1-1
-workspace 5 output eDP-1-1
-workspace 6 output HDMI-1-1 eDP-1-1
-workspace 7 output HDMI-1-1 eDP-1-1
-workspace 8 output HDMI-1-1 eDP-1-1
-workspace 9 output HDMI-1-1 eDP-1-1
-workspace 10 output HDMI-1-1 eDP-1-1
-
 # Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -98,12 +86,6 @@ exec_always --no-startup-id xbindkeys
 
 # Icons for workspaces
 exec_always --no-startup-id exec i3-workspace-names-daemon -u
-
-# Disabling touchpad if mouse is plugged in
-exec_always --no-startup-id xinput | grep -q "Mouse" && xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
-
-# Inverting the touchpad scroll
-exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" "1"
 
 
 # Container control keybindings ------------------------------------------------
@@ -195,6 +177,6 @@ bar {
     separator_symbol "|"
     tray_output primary
     status_command i3status
-    font pango:FontAwesome
+    font pango:FontAwesome 10
 }
 
