@@ -13,7 +13,7 @@ general {
 }
 
 order += "wireless _first_"
-order += "battery all"
+order += "ethernet eth0"
 order += "tztime local"
 
 wireless _first_ {
@@ -22,11 +22,9 @@ wireless _first_ {
         format_quality = "%d%s"
 }
 
-battery all {
-        format = "%status ⚡%percentage %remaining"
-        status_bat = "BAT"
-        status_full = ""
-        #format_percentage = "%0.f%s"
+ethernet _first_ {
+        format_up = "Eth: %ip (%speed)"
+        format_down = ""
 }
 
 tztime local {
