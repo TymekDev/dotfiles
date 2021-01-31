@@ -79,7 +79,7 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id ~/.fehbg
 
 # Setting the displays
-exec_always --no-startup-id autorandr -c
+exec_always --no-startup-id xrandr --output default --primary
 
 # Start xbindkeys for remapping
 exec_always --no-startup-id xbindkeys
@@ -138,7 +138,7 @@ for_window [class="Wine"] floating disable
 
 # Applications and other keybindings -------------------------------------------
 # Terminal keybinding
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec MESA_GL_VERSION_OVERRIDE=3.3 kitty
 
 # Browser keybinding
 bindsym $mod+backslash exec firefox
