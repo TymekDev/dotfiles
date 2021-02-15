@@ -38,6 +38,12 @@ New-Alias -Name gds -Value Get-GitDiffStaged -Force -Option AllScope
 function Get-GitDiffStaged2 { & git diff --staged $args }
 New-Alias -Name gds2 -Value Get-GitDiffStaged2 -Force -Option AllScope
 
+function Get-GitDiffCommit { & git diff --color-words "$($args[0])~1" "$($args[0])" ($args | Select -Skip 1) }
+New-Alias -Name gdc -Value Get-GitDiffCommit -Force -Option AllScope
+
+function Get-GitDiffCommit2 { & git diff "$($args[0])~1" "$($args[0])" ($args | Select -Skip 1) }
+New-Alias -Name gdc2 -Value Get-GitDiffCommit2 -Force -Option AllScope
+
 ## git logg
 function Get-GitLog { & git logg $args }
 New-Alias -Name gg -Value Get-GitLog -Force -Option AllScope
