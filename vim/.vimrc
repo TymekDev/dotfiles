@@ -123,6 +123,8 @@ nnoremap <C-n> :tabnew<CR>
 nnoremap 0gt :tablast<CR>
 
 noremap <Leader>rnu :set rnu!<CR>
+nnoremap <silent> <Leader>c :execute "set colorcolumn="
+                  \ . (&colorcolumn == "" ? "+1" : "")<CR>
 
 
 " [-------------------- Window size adjustments --------------------]
