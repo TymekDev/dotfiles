@@ -147,11 +147,6 @@ vnoremap <Leader>vr "9y :s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
 vnoremap <Leader>vt "9y :+1,$s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
 vnoremap <Leader>va "9y :%s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
 
-" Replace trailing and all literal matches of clipboard contents
-nnoremap <Leader>cr ciw<C-R>0<ESC>
-nnoremap <Leader>ct :+1,$s/\V<C-R>=escape(@*, '/\')<CR>//g<Left><Left>
-nnoremap <Leader>ca :%s/\V<C-R>=escape(@*, '/\')<CR>//g<Left><Left>
-
 nnoremap <Leader>uf mu:call UnicodeFlatten()<CR>`u
 nnoremap <Leader>ue mu:call UnicodeExpand()<CR>`u
 
