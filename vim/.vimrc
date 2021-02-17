@@ -43,7 +43,7 @@ set spelllang=en,pl
 set splitbelow
 set splitright
 set tabstop=2
-set textwidth=0
+set textwidth=80
 set wrap
 
 " Useful settings from defaults.vim
