@@ -29,6 +29,7 @@ set fileencoding=utf-8
 set autochdir
 set backspace=indent,eol,start
 set clipboard=unnamedplus " Windows: unnamed / Unix: unnamedplus
+set colorcolumn=+1
 set expandtab
 set formatoptions+=j
 set laststatus=2
