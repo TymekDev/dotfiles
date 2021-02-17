@@ -37,12 +37,12 @@ set mouse=
 set nohlsearch
 set number
 set pastetoggle=<F2>
-set shiftwidth=4
+set shiftwidth=2
 set showbreak=+++
 set spelllang=en,pl
 set splitbelow
 set splitright
-set tabstop=4
+set tabstop=2
 set textwidth=0
 set wrap
 
