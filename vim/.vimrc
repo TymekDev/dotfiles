@@ -70,7 +70,7 @@ set tags=./tags,tags;~
 " Line character: <C-v>u23b8
 " Shelf character: <C-v>u02fd
 set list
-set listchars=tab:⎸\ ,trail:˽
+set listchars=tab:\|\ ,trail:˽
 
 " Moving cursor to last known position on an edit of a non-commit file
 augroup CursorLastPosition
