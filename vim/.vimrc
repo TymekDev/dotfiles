@@ -67,7 +67,6 @@ set undodir^=~/.vim/tmp//
 set tags=./tags,tags;~
 
 " Add character for trailing spaces at lines ends and tabs
-" Line character: <C-v>u23b8
 " Shelf character: <C-v>u02fd
 set list
 set listchars=tab:\|\ ,trail:˽
