@@ -13,17 +13,17 @@ general {
 }
 
 order += "wireless _first_"
-order += "ethernet eth0"
+order += "ethernet _first_"
 order += "tztime local"
 
 wireless _first_ {
         format_up = "WiFi: <span color='#34ccff'>%essid</span> <span color='#ffffff'>(%quality)</span>"
-        format_down = "WiFi: down"
+        format_down = ""
         format_quality = "%d%s"
 }
 
 ethernet _first_ {
-        format_up = "Eth: %ip (%speed)"
+        format_up = "Ethernet"
         format_down = ""
 }
 
