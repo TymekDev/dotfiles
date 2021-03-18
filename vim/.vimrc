@@ -14,7 +14,6 @@ Plugin 'tyru/caw.vim'                       " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Turns on relative line numbers
 Plugin 'ycm-core/YouCompleteMe'             " Syntax completion
 Plugin 'unblevable/quick-scope'             " Unique letters in line highlight
-Plugin 'justinmk/vim-sneak'                 " Quick movement to characters between lines
 Plugin 'tpope/vim-repeat'                   " Allows repeating vim-sneak movements
 
 call vundle#end()
@@ -87,7 +86,6 @@ syntax on
 function! CustomHighlights() abort
     hi QuickScopePrimary    ctermfg=magenta
     hi QuickScopeSecondary  ctermfg=darkcyan
-    hi Sneak                ctermfg=darkgray ctermbg=black
     hi ColorColumn          ctermbg=darkgray
 endfunction
 
@@ -200,15 +198,6 @@ let g:qs_hi_priority = 20
 
 nmap <Leader>q <Plug>(QuickScopeToggle)
 xmap <Leader>q <Plug>(QuickScopeToggle)
-
-
-" [--------------------- vim-sneak --------------------]
-map <Leader>s <Plug>Sneak_s
-map <Leader>S <Plug>Sneak_S
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
 
 
 " [--------------------- YouCompleteMe --------------------]
