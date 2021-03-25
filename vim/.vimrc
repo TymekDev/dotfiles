@@ -148,6 +148,9 @@ nmap <C-8> :tabnext 8<CR>
 nmap <C-9> :tabnext 9<CR>
 nmap <C-0> :tablast<CR>
 
+nmap <C-h> :tabprevious<CR>
+nmap <C-l> :tabnext<CR>
+
 nmap gh <C-w>h
 nmap gj <C-w>j
 nmap gk <C-w>k
