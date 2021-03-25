@@ -112,42 +112,12 @@ nnoremap <Leader>h :set hlsearch<CR>/<C-r><C-w><CR>``
 inoremap <C-j> <C-x><C-o>
 inoremap <C-l> <C-x><C-n>
 
-nnoremap <Enter> o<ESC>
-nnoremap <S-Enter> O<ESC>
-
-nnoremap <C-n> :tabnew<CR>
-nnoremap 0gt :tablast<CR>
-
 noremap <Leader>rnu :set rnu!<CR>
 nnoremap <silent> <Leader>c :execute "set colorcolumn="
                   \ . (&colorcolumn == "" ? "+1" : "")<CR>
 
 
-" [-------------------- Window size adjustments --------------------]
-nmap <Leader>nm :vertical res 85<CR>
-nmap <Leader>rl :vertical res +10<CR>
-nmap <Leader>rh :vertical res -10<CR>
-nmap <Leader>rk :res +10<CR>
-nmap <Leader>rj :res -10<CR>
 
-
-" [-------------------- Replacements --------------------]
-" Find, replace word, replace trailing and replace all words, respectively
-nnoremap <Leader>wr :s/<C-R><C-W>//g<Left><Left>
-nnoremap <Leader>wt :+1,$s/<C-R><C-W>//g<Left><Left>
-nnoremap <Leader>wa :%s/<C-R><C-W>//g<Left><Left>
-
-" Replace current match, trailing matches and all matches of selection
-" Info:
-"   "9y                     yanks selection to selected 'clipboard' number 9
-"   \V                      stands for literal (no regex)
-"   =escape(@9, '/\')<CR>   returns escaped string from 'clipboard' number 9
-vnoremap <Leader>vr "9y :s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
-vnoremap <Leader>vt "9y :+1,$s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
-vnoremap <Leader>va "9y :%s/\V<C-R>=escape(@9, '/\')<CR>//g<Left><Left>
-
-nnoremap <Leader>uf mu:call UnicodeFlatten()<CR>`u
-nnoremap <Leader>ue mu:call UnicodeExpand()<CR>`u
 
 
 " [-------------------- Other --------------------]
@@ -155,11 +125,6 @@ nnoremap <Leader>ue mu:call UnicodeExpand()<CR>`u
 nnoremap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
 nnoremap <Leader>asq viw<ESC>`<i'<ESC>`>la'<ESC>
 nnoremap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
-
-" Adding quotes to selection.
-vnoremap <Leader>aq  <ESC>`<i"<ESC>`>la"<ESC>
-vnoremap <Leader>asq <ESC>`<i'<ESC>`>la'<ESC>
-vnoremap <Leader>agq <ESC>`<i`<ESC>`>la`<ESC>
 
 " New entry in ChangeLog:
 "   - assuming entry header format:
@@ -195,25 +160,3 @@ xmap <Leader>q <Plug>(QuickScopeToggle)
 
 " [--------------------- YouCompleteMe --------------------]
 nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
-
-
-" [-------------------- Functions --------------------]
-" Functions substitutes polish diacritic signs with their ASCII equivalents
-function! UnicodeFlatten()
-    for r in [["u0105", "a"], ["u0107", "c"], ["u0119", "e"], ["u0142", "l"],
-             \["u0144", "n"], ["u00F3", "o"], ["u015B", "s"], ["u017C", "z"],
-             \["u017A", "z"], ["u0104", "A"], ["u0106", "C"], ["u0118", "E"],
-             \["u0141", "L"], ["u0143", "N"], ["u00D3", "O"], ["u015A", "S"],
-             \["u017B", "Z"], ["u0179", "Z"]]
-        silent! execute ":s/\\%" . r[0] . "/" . r[1] . "/g"
-    endfor
-endfunction
-
-" Functions substitutes polish diacritic signs with their UTF-8 codes
-function! UnicodeExpand()
-    for r in ["u0105", "u0107", "u0119", "u0142", "u0144", "u00F3",
-             \"u015B", "u017C", "u017A", "u0104", "u0106", "u0118",
-             \"u0141", "u0143", "u00D3", "u015A", "u017B", "u0179"]
-        silent! execute ":s/\\%" . r . "/\\\\" . r . "/g"
-    endfor
-endfunction
