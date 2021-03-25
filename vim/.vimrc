@@ -106,14 +106,14 @@ set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
 
 " [-------------------- Keybinds --------------------]
-noremap <Leader>l :set hlsearch!<CR>
-nnoremap <Leader>h :set hlsearch<CR>/<C-r><C-w><CR>``
+map <Leader>l :set hlsearch!<CR>
+nmap <Leader>h :set hlsearch<CR>/<C-r><C-w><CR>``
 
-inoremap <C-j> <C-x><C-o>
-inoremap <C-l> <C-x><C-n>
+imap <C-j> <C-x><C-o>
+imap <C-l> <C-x><C-n>
 
-noremap <Leader>rnu :set rnu!<CR>
-nnoremap <silent> <Leader>c :execute "set colorcolumn="
+map <Leader>rnu :set rnu!<CR>
+nmap <silent> <Leader>c :execute "set colorcolumn="
                   \ . (&colorcolumn == "" ? "+1" : "")<CR>
 
 
@@ -122,15 +122,15 @@ nnoremap <silent> <Leader>c :execute "set colorcolumn="
 
 " [-------------------- Other --------------------]
 " Adding quotes to current word.
-nnoremap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
-nnoremap <Leader>asq viw<ESC>`<i'<ESC>`>la'<ESC>
-nnoremap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
+nmap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
+nmap <Leader>asq viw<ESC>`<i'<ESC>`>la'<ESC>
+nmap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
 
 " New entry in ChangeLog:
 "   - assuming entry header format:
 "       '<anything><version num><optional something without numbers> (DATE)',
 "   - first line in the file is the entry header.
-nnoremap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
+nmap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
             \"=strftime("%Y-%m-%d")<C-m>Po<ESC>O<Tab>
 
 
@@ -138,17 +138,17 @@ nnoremap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
 let g:go_fmt_command = 'goimports'
 
 " Creates fName const for function
-nnoremap <Leader>ef ?^package\s[A-z]*$<CR>wviw"9y''
+nmap <Leader>ef ?^package\s[A-z]*$<CR>wviw"9y''
     \0w:let @9 = "<C-R>9.<C-R><C-W>"<CR>
     \:let @9 = "const fName = \"<C-R>9\""<CR>
 
 " Creates fName const for method
-nnoremap <Leader>em ?^package\s[A-z]*$<CR>wviw"9y''
+nmap <Leader>em ?^package\s[A-z]*$<CR>wviw"9y''
     \0WW:let @9 = "<C-R>9.<C-R><C-W>"<CR>
     \W:let @9 = "<C-R>9.<C-R><C-W>"<CR>
     \:let @9 = "const fName = \"<C-R>9\""<CR>
 
-nnoremap <Leader>ei /{<CR>o<ESC>"9po<ESC>
+nmap <Leader>ei /{<CR>o<ESC>"9po<ESC>
 
 
 " [--------------------- quick-scope --------------------]
@@ -159,4 +159,4 @@ xmap <Leader>q <Plug>(QuickScopeToggle)
 
 
 " [--------------------- YouCompleteMe --------------------]
-nnoremap <Leader>j :YcmCompleter GoToDefinition<CR>
+nmap <Leader>j :YcmCompleter GoToDefinition<CR>
