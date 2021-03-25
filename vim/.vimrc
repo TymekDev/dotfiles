@@ -116,8 +116,24 @@ map <Leader>rnu :set rnu!<CR>
 nmap <silent> <Leader>c :execute "set colorcolumn="
                   \ . (&colorcolumn == "" ? "+1" : "")<CR>
 
+" [-------------------- Tabs and windows --------------------]
+nmap <C-n> :tabnew 
 
+nmap <C-1> :tabnext 1<CR>
+nmap <C-2> :tabnext 2<CR>
+nmap <C-3> :tabnext 3<CR>
+nmap <C-4> :tabnext 4<CR>
+nmap <C-5> :tabnext 5<CR>
+nmap <C-6> :tabnext 6<CR>
+nmap <C-7> :tabnext 7<CR>
+nmap <C-8> :tabnext 8<CR>
+nmap <C-9> :tabnext 9<CR>
+nmap <C-0> :tablast<CR>
 
+nmap gh <C-w>h
+nmap gj <C-w>j
+nmap gk <C-w>k
+nmap gl <C-w>l
 
 
 " [-------------------- Other --------------------]
