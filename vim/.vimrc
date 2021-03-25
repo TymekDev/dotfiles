@@ -8,8 +8,6 @@ call vundle#begin()
 Plugin 'fatih/vim-go'                       " Go IDE
 Plugin 'godlygeek/tabular'                  " Required by vim-markdown
 Plugin 'plasticboy/vim-markdown'            " Text coloring for markdown
-Plugin 'francoiscabrol/ranger.vim'          " Add support for ranger as directory viewer
-Plugin 'rbgrouleff/bclose.vim'              " Required by ranger.vim
 Plugin 'tyru/caw.vim'                       " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Turns on relative line numbers
 Plugin 'ycm-core/YouCompleteMe'             " Syntax completion
@@ -186,11 +184,6 @@ nnoremap <Leader>em ?^package\s[A-z]*$<CR>wviw"9y''
     \:let @9 = "const fName = \"<C-R>9\""<CR>
 
 nnoremap <Leader>ei /{<CR>o<ESC>"9po<ESC>
-
-
-" [--------------------- Ranger --------------------]
-let g:ranger_map_keys = 0
-let g:ranger_replace_netrw = 1
 
 
 " [--------------------- quick-scope --------------------]
