@@ -1,4 +1,6 @@
-" [-------------------- Plugins --------------------]
+" ------------------------------------------------------------------------------
+" -- Plugins
+" ------------------------------------------------------------------------------
 set nocompatible
 filetype off
 
@@ -18,7 +20,9 @@ call vundle#end()
 filetype plugin indent on
 
 
-" [-------------------- General --------------------]
+" ------------------------------------------------------------------------------
+" -- General settings
+" ------------------------------------------------------------------------------
 let $LANG="en_US"
 set encoding=utf-8
 set fileencoding=utf-8
@@ -31,6 +35,8 @@ set expandtab
 set formatoptions+=j
 set laststatus=2
 set lazyredraw
+set list
+set listchars=tab:\|\ ,trail:˽ " Shelf character: <C-v>u02fd
 set mouse=
 set nohlsearch
 set number
@@ -41,10 +47,21 @@ set spelllang=en,pl
 set splitbelow
 set splitright
 set tabstop=2
+set tags=./tags,tags;~
 set textwidth=80
 set wrap
 
-" Useful settings from defaults.vim
+set directory^=~/.vim/tmp//
+set backupdir^=~/.vim/tmp//
+set undodir^=~/.vim/tmp//
+
+" Default with ruler set and a path changed an absolute one
+set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+
+" ------------------------------------------------------------------------------
+" -- Extracted from defaults.vim
+" ------------------------------------------------------------------------------
 set display=truncate
 set history=500
 set incsearch
@@ -54,19 +71,6 @@ set showcmd
 set ttimeout
 set ttimeoutlen=100
 set wildmenu
-
-" Set temp directories
-set directory^=~/.vim/tmp//
-set backupdir^=~/.vim/tmp//
-set undodir^=~/.vim/tmp//
-
-" Set tags search path
-set tags=./tags,tags;~
-
-" Add character for trailing spaces at lines ends and tabs
-" Shelf character: <C-v>u02fd
-set list
-set listchars=tab:\|\ ,trail:˽
 
 " Moving cursor to last known position on an edit of a non-commit file
 augroup CursorLastPosition
@@ -78,7 +82,9 @@ augroup CursorLastPosition
 augroup END
 
 
-" [--------------------- Coloring --------------------]
+" ------------------------------------------------------------------------------
+" -- Coloring
+" ------------------------------------------------------------------------------
 syntax on
 
 function! CustomHighlights() abort
@@ -100,12 +106,9 @@ augroup END
 colorscheme delek
 
 
-" [-------------------- Status line --------------------]
-" Default with ruler set and a path changed an absolute one
-set statusline=%<%F\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
-
-" [-------------------- Keybinds --------------------]
+" ------------------------------------------------------------------------------
+" -- Mappings
+" ------------------------------------------------------------------------------
 map <Leader>l :set hlsearch!<CR>
 nmap <Leader>h :set hlsearch<CR>/<C-r><C-w><CR>``
 
@@ -116,7 +119,22 @@ map <Leader>rnu :set rnu!<CR>
 nmap <silent> <Leader>c :execute "set colorcolumn="
                   \ . (&colorcolumn == "" ? "+1" : "")<CR>
 
-" [-------------------- Tabs and windows --------------------]
+" Adding quotes to current word.
+nmap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
+nmap <Leader>asq viw<ESC>`<i'<ESC>`>la'<ESC>
+nmap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
+
+" New entry in ChangeLog:
+"   - assuming entry header format:
+"       '<anything><version num><optional something without numbers> (DATE)',
+"   - first line in the file is the entry header.
+nmap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
+            \"=strftime("%Y-%m-%d")<C-m>Po<ESC>O<Tab>
+
+
+" ------------------------------------------------------------------------------
+" -- Tabs and windows
+" ------------------------------------------------------------------------------
 nmap <C-n> :tabnew 
 
 nmap <C-1> :tabnext 1<CR>
@@ -136,21 +154,9 @@ nmap gk <C-w>k
 nmap gl <C-w>l
 
 
-" [-------------------- Other --------------------]
-" Adding quotes to current word.
-nmap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
-nmap <Leader>asq viw<ESC>`<i'<ESC>`>la'<ESC>
-nmap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
-
-" New entry in ChangeLog:
-"   - assuming entry header format:
-"       '<anything><version num><optional something without numbers> (DATE)',
-"   - first line in the file is the entry header.
-nmap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
-            \"=strftime("%Y-%m-%d")<C-m>Po<ESC>O<Tab>
-
-
-" [-------------------- Go --------------------]
+" ------------------------------------------------------------------------------
+" -- vim-go
+" ------------------------------------------------------------------------------
 let g:go_fmt_command = 'goimports'
 
 " Creates fName const for function
@@ -167,12 +173,16 @@ nmap <Leader>em ?^package\s[A-z]*$<CR>wviw"9y''
 nmap <Leader>ei /{<CR>o<ESC>"9po<ESC>
 
 
-" [--------------------- quick-scope --------------------]
+" ------------------------------------------------------------------------------
+" -- quick-scope
+" ------------------------------------------------------------------------------
 let g:qs_hi_priority = 20
 
 nmap <Leader>q <Plug>(QuickScopeToggle)
 xmap <Leader>q <Plug>(QuickScopeToggle)
 
 
-" [--------------------- YouCompleteMe --------------------]
+" ------------------------------------------------------------------------------
+" -- YouCompleteMe
+" ------------------------------------------------------------------------------
 nmap <Leader>j :YcmCompleter GoToDefinition<CR>
