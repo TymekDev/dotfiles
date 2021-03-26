@@ -135,18 +135,7 @@ nmap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
 " -- Tabs and windows
 " ------------------------------------------------------------------------------
 nmap <C-n> :tabnew 
-
-nmap <C-1> :tabnext 1<CR>
-nmap <C-2> :tabnext 2<CR>
-nmap <C-3> :tabnext 3<CR>
-nmap <C-4> :tabnext 4<CR>
-nmap <C-5> :tabnext 5<CR>
-nmap <C-6> :tabnext 6<CR>
-nmap <C-7> :tabnext 7<CR>
-nmap <C-8> :tabnext 8<CR>
-nmap <C-9> :tabnext 9<CR>
 nmap <C-0> :tablast<CR>
-
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 
