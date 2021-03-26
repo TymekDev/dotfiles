@@ -189,8 +189,8 @@ augroup switch.vim
   autocmd FileType go let b:switch_custom_definitions =
     \ [
     \   {
-    \     '\verrors.Wrap\(([^,]*), fName\)':             '\1',
-    \     '\v(Wrap\()@!([[:alnum:]\.]*[eE]rr(or)?)\w@!': 'errors.Wrap(\2, fName)',
+    \     '\verrors.Wrap\(([^,]*), fName\)':               '\1',
+    \     '\v%(Wrap\()@<!([[:alnum:]\.]*[eE]rr(or)?)\w@!': 'errors.Wrap(\1, fName)',
     \   }
     \ ]
 augroup END
