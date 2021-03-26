@@ -14,6 +14,7 @@ Plugin 'tyru/caw.vim'                      " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Turns on relative line numbers
 Plugin 'ycm-core/YouCompleteMe'            " Syntax completion
 Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
+Plugin 'AndrewRadev/switch.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -178,3 +179,18 @@ xmap <Leader>q <Plug>(QuickScopeToggle)
 " -- YouCompleteMe
 " ------------------------------------------------------------------------------
 nmap <Leader>j :YcmCompleter GoToDefinition<CR>
+
+
+" ------------------------------------------------------------------------------
+" -- switch.vim
+" ------------------------------------------------------------------------------
+augroup switch.vim
+  autocmd!
+  autocmd FileType go let b:switch_custom_definitions =
+    \ [
+    \   {
+    \     '\verrors.Wrap\(([^,]*), fName\)':             '\1',
+    \     '\v(Wrap\()@!([[:alnum:]\.]*[eE]rr(or)?)\w@!': 'errors.Wrap(\2, fName)',
+    \   }
+    \ ]
+augroup END
