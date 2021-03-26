@@ -7,13 +7,13 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'fatih/vim-go'                       " Go IDE
-Plugin 'godlygeek/tabular'                  " Required by vim-markdown
-Plugin 'plasticboy/vim-markdown'            " Text coloring for markdown
-Plugin 'tyru/caw.vim'                       " Commenting and uncommenting text
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Turns on relative line numbers
-Plugin 'ycm-core/YouCompleteMe'             " Syntax completion
-Plugin 'unblevable/quick-scope'             " Unique letters in line highlight
+Plugin 'fatih/vim-go'                      " Go IDE
+Plugin 'godlygeek/tabular'                 " Required by vim-markdown
+Plugin 'plasticboy/vim-markdown'           " Text coloring for markdown
+Plugin 'tyru/caw.vim'                      " Commenting and uncommenting text
+Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Turns on relative line numbers
+Plugin 'ycm-core/YouCompleteMe'            " Syntax completion
+Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 
 call vundle#end()
 filetype plugin indent on
@@ -73,11 +73,11 @@ set wildmenu
 
 " Moving cursor to last known position on an edit of a non-commit file
 augroup CursorLastPosition
-    autocmd!
-    autocmd BufReadPost *
-        \   if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' && &ft !~# 'diff'
-        \ |     exe "normal! g`\""
-        \ | endif
+  autocmd!
+  autocmd BufReadPost *
+    \   if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' && &ft !~# 'diff'
+    \ |   exe "normal! g`\""
+    \ | endif
 augroup END
 
 
@@ -87,19 +87,20 @@ augroup END
 syntax on
 
 function! CustomHighlights() abort
-    hi QuickScopePrimary    ctermfg=magenta
-    hi QuickScopeSecondary  ctermfg=darkcyan
-    hi ColorColumn          ctermbg=darkgray
+  hi QuickScopePrimary   ctermfg=magenta
+  hi QuickScopeSecondary ctermfg=darkcyan
+  hi ColorColumn         ctermbg=darkgray
 endfunction
 
 function! ColorSchemeOverride() abort
-    hi Identifier ctermfg=cyan
+  hi Identifier ctermfg=cyan
 endfunction
 
 augroup ApplyHighlights
-    autocmd!
-    autocmd ColorScheme * call CustomHighlights()
-                      \ | call ColorSchemeOverride()
+  autocmd!
+  autocmd ColorScheme *
+    \   call CustomHighlights()
+    \ | call ColorSchemeOverride()
 augroup END
 
 colorscheme delek
@@ -116,7 +117,7 @@ imap <C-l> <C-x><C-n>
 
 map <Leader>rnu :set rnu!<CR>
 nmap <silent> <Leader>c :execute "set colorcolumn="
-                  \ . (&colorcolumn == "" ? "+1" : "")<CR>
+  \ . (&colorcolumn == "" ? "+1" : "")<CR>
 
 " Adding quotes to current word.
 nmap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
@@ -125,10 +126,10 @@ nmap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
 
 " New entry in ChangeLog:
 "   - assuming entry header format:
-"       '<anything><version num><optional something without numbers> (DATE)',
+"     '<anything><version num><optional something without numbers> (DATE)',
 "   - first line in the file is the entry header.
 nmap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
-            \"=strftime("%Y-%m-%d")<C-m>Po<ESC>O<Tab>
+  \"=strftime("%Y-%m-%d")<C-m>Po<ESC>O<Tab>
 
 
 " ------------------------------------------------------------------------------
@@ -152,14 +153,14 @@ let g:go_fmt_command = 'goimports'
 
 " Creates fName const for function
 nmap <Leader>ef ?^package\s[A-z]*$<CR>wviw"9y''
-    \0w:let @9 = "<C-R>9.<C-R><C-W>"<CR>
-    \:let @9 = "const fName = \"<C-R>9\""<CR>
+  \0w:let @9 = "<C-R>9.<C-R><C-W>"<CR>
+  \:let @9 = "const fName = \"<C-R>9\""<CR>
 
 " Creates fName const for method
 nmap <Leader>em ?^package\s[A-z]*$<CR>wviw"9y''
-    \0WW:let @9 = "<C-R>9.<C-R><C-W>"<CR>
-    \W:let @9 = "<C-R>9.<C-R><C-W>"<CR>
-    \:let @9 = "const fName = \"<C-R>9\""<CR>
+  \0WW:let @9 = "<C-R>9.<C-R><C-W>"<CR>
+  \W:let @9 = "<C-R>9.<C-R><C-W>"<CR>
+  \:let @9 = "const fName = \"<C-R>9\""<CR>
 
 nmap <Leader>ei /{<CR>o<ESC>"9po<ESC>
 
