@@ -14,7 +14,6 @@ Plugin 'tyru/caw.vim'                       " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Turns on relative line numbers
 Plugin 'ycm-core/YouCompleteMe'             " Syntax completion
 Plugin 'unblevable/quick-scope'             " Unique letters in line highlight
-Plugin 'tpope/vim-repeat'                   " Allows repeating vim-sneak movements
 
 call vundle#end()
 filetype plugin indent on
