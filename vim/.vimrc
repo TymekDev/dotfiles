@@ -43,6 +43,7 @@ set number
 set pastetoggle=<F2>
 set shiftwidth=2
 set showbreak=+++
+set smarttab
 set spelllang=en,pl
 set splitbelow
 set splitright
