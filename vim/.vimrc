@@ -15,6 +15,7 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Turns on relative line numbers
 Plugin 'ycm-core/YouCompleteMe'            " Syntax completion
 Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 Plugin 'AndrewRadev/switch.vim'
+Plugin 'preservim/tagbar'
 
 call vundle#end()
 filetype plugin indent on
@@ -50,6 +51,7 @@ set splitright
 set tabstop=2
 set tags=./tags,tags;~
 set textwidth=80
+set updatetime=400 " Used by CursorHold to update tagbar
 set wrap
 
 set directory^=~/.vim/tmp//
@@ -180,6 +182,21 @@ xmap <Leader>q <Plug>(QuickScopeToggle)
 " -- YouCompleteMe
 " ------------------------------------------------------------------------------
 nmap <Leader>j :YcmCompleter GoToDefinition<CR>
+
+
+" ------------------------------------------------------------------------------
+" -- tagbar
+" ------------------------------------------------------------------------------
+let g:tagbar_sort = 0
+let g:tagbar_indent = 1
+let g:tagbar_show_visibility = 0
+
+nmap <Leader>t :TagbarToggle<CR>
+
+augroup Tagbar
+  autocmd!
+  autocmd FileType * nested :call tagbar#autoopen(0)
+augroup END
 
 
 " ------------------------------------------------------------------------------
