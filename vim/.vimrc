@@ -51,7 +51,7 @@ set splitright
 set tabstop=2
 set tags=./tags,tags;~
 set textwidth=80
-set updatetime=400 " Used by CursorHold to update tagbar
+set updatetime=1000 " Used by CursorHold to update tagbar
 set wrap
 
 set directory^=~/.vim/tmp//
