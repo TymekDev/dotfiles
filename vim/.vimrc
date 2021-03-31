@@ -94,6 +94,7 @@ function! CustomHighlights() abort
   hi QuickScopePrimary   ctermfg=magenta
   hi QuickScopeSecondary ctermfg=darkcyan
   hi ColorColumn         ctermbg=darkgray
+  hi TagbarHighlight     ctermfg=magenta
 endfunction
 
 function! ColorSchemeOverride() abort
