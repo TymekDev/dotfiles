@@ -194,11 +194,6 @@ let g:tagbar_show_visibility = 0
 
 nmap <Leader>t :TagbarToggle<CR>
 
-augroup Tagbar
-  autocmd!
-  autocmd FileType * nested :call tagbar#autoopen(0)
-augroup END
-
 
 " ------------------------------------------------------------------------------
 " -- switch.vim
