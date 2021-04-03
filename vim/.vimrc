@@ -39,6 +39,7 @@ set lazyredraw
 set list
 set listchars=tab:\|\ ,trail:˽ " Shelf character: <C-v>u02fd
 set mouse=
+set nofoldenable
 set nohlsearch
 set number
 set pastetoggle=<F2>
