@@ -118,6 +118,9 @@ colorscheme delek
 map <Leader>l :set hlsearch!<CR>
 nmap <Leader>h :set hlsearch<CR>/<C-r><C-w><CR>``
 
+nmap go o
+nmap gO O
+
 imap <C-j> <C-x><C-o>
 imap <C-l> <C-x><C-n>
 
