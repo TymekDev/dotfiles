@@ -16,6 +16,7 @@ Plugin 'ycm-core/YouCompleteMe'            " Syntax completion
 Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'preservim/tagbar'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -212,3 +213,9 @@ augroup switch.vim
     \   }
     \ ]
 augroup END
+
+
+" ------------------------------------------------------------------------------
+" -- rust.vim
+" ------------------------------------------------------------------------------
+let g:rustfmt_autosave = 1
