@@ -17,6 +17,7 @@ Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'preservim/tagbar'
 Plugin 'rust-lang/rust.vim'
+Plugin 'ervandew/supertab'
 
 call vundle#end()
 filetype plugin indent on
