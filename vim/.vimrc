@@ -206,13 +206,22 @@ nmap <Leader>t :TagbarToggle<CR>
 " ------------------------------------------------------------------------------
 augroup switch.vim
   autocmd!
-  autocmd FileType go let b:switch_custom_definitions =
+  autocmd FileType * let b:switch_custom_definitions =
+    \ [
+    \   {
+    \     'FALSE': 'TRUE',
+    \     'TRUE': 'FALSE',
+    \   }
+    \ ]
+
+  autocmd FileType go let b:switch_custom_definitions = extend(
     \ [
     \   {
     \     '\verrors.Wrap\(([^,]*), fName\)':               '\1',
     \     '\v%(Wrap\()@<!([[:alnum:]\.]*[eE]rr(or)?)\w@!': 'errors.Wrap(\1, fName)',
     \   }
     \ ]
+  \ , b:switch_custom_definitions)
 augroup END
 
 
