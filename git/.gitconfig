@@ -4,12 +4,12 @@
 	remoteBranch = green
 	stash = red
 [alias]
-	loggs = log --graph --decorate --format=\"%C(blue)%h%C(auto)%d%C(reset) %s %C(bold cyan)<%cn>%C(reset)\" -15
-	loggs2 = log --graph --decorate --format=\"%C(blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(bold cyan)%an%C(reset)%C(auto)%d%C(reset)%n%w(100,20,20)%s\" -10
+	loggs = log --graph --decorate --format='%C(blue)%h%C(auto)%d%C(reset) %s %C(bold cyan)<%cn>%C(reset)' -15
+	loggs2 = log --graph --decorate --format='%C(blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(bold cyan)%an%C(reset)%C(auto)%d%C(reset)%n%w(100,20,20)%s' -10
 	logg = loggs --all
 	logg2 = loggs2 --all
 	# Source: https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
-	lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+	lb = ! git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '! seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
 [credential]
 	helper = store
 [core]
