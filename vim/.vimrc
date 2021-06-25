@@ -117,6 +117,9 @@ colorscheme delek
 " ------------------------------------------------------------------------------
 " -- Mappings
 " ------------------------------------------------------------------------------
+let mapleader = " "
+let maplocalleader = " "
+
 map <Leader>l :set hlsearch!<CR>
 nmap <Leader>h :set hlsearch<CR>/<C-r><C-w><CR>``
 
