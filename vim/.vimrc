@@ -232,3 +232,12 @@ augroup END
 " -- rust.vim
 " ------------------------------------------------------------------------------
 let g:rustfmt_autosave = 1
+
+
+" ------------------------------------------------------------------------------
+" -- Settings overrides
+" ------------------------------------------------------------------------------
+augroup Overrides
+  autocmd!
+  autocmd BufNewFile,BufRead *.csv setlocal tw=0
+augroup END
