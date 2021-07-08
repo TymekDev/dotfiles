@@ -5,20 +5,18 @@ little to no explaination what they actually configure but still might be of use
 for someone.
 
 
-### Structure
-Each category has a separate directory with a brief `README.md` and `install.sh`
-script (which basically creates symlinks to the default locations).
-
-The `install.sh` scripts were written to not overwrite anything but I cannot
-guarantee it as I am still learing shell scripting so... **use at your own
-risk!**
-
-
 ### Installation
+#### Symlink Config Files
 ```
-# Install all files configs
-sh install_all.sh
+printf ".config .vim" \
+  | xargs -d ' ' -I dir \
+    xargs -n 1 \
+    bash -c "ls -A dir | xargs -n 1 -I {} ./symlink_config.sh dir/{} $HOME/dir"
 
-# Installing single config
-sh profile/install.sh
+printf ".gitconfig .gitconfig.private .vimrc .zshrc" \
+  | xargs -d ' ' -I {} \
+  ./symlink_config.sh {} $HOME
 ```
+
+#### Install dependencies
+TODO
