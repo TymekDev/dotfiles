@@ -16,20 +16,16 @@ source $ZSH/oh-my-zsh.sh
 # -- Aliases
 # ------------------------------------------------------------------------------
 
-# Git (for more details see .gitconfig)
 alias gf="git fetch"
 alias gs="git status"
-alias glb="git lb"
 
-alias gd="git diff --color-words"
-alias gd2="git diff"
-alias gds="git diff --color-words --staged"
-alias gds2="git diff --staged"
+alias gd="git diff"
+alias gds="git diff --staged"
 
-alias gg="git logg"
-alias gg2="git logg2"
-alias ggs="git loggs"
-alias ggs2="git loggs2"
+alias gg="git lg"
+alias gg2="git lg2"
+alias ggs="git lgs"
+alias ggs2="git lgs2"
 
 alias R=radian
 alias r=R
