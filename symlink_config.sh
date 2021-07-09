@@ -1,3 +1,4 @@
+#! /bin/bash
 # Note: this script does not have any error handling whatsoever. You are
 #       supposed to provide correct arguments, that is source file path
 #       and destination directory.
