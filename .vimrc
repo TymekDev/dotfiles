@@ -215,5 +215,10 @@ let g:rustfmt_autosave = 1
 " ------------------------------------------------------------------------------
 augroup Overrides
   autocmd!
-  autocmd BufNewFile,BufRead *.csv setlocal tw=0
+
+  autocmd FileType r
+  \   setlocal textwidth=140
+
+  autocmd BufNewFile,BufRead *.csv
+  \   setlocal tw=0
 augroup END
