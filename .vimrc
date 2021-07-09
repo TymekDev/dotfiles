@@ -12,7 +12,6 @@ Plugin 'godlygeek/tabular'                 " Required by vim-markdown
 Plugin 'plasticboy/vim-markdown'           " Text coloring for markdown
 Plugin 'tyru/caw.vim'                      " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Turns on relative line numbers
-Plugin 'ycm-core/YouCompleteMe'            " Syntax completion
 Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'preservim/tagbar'
@@ -186,12 +185,6 @@ let g:qs_hi_priority = 20
 
 nmap <Leader>q <Plug>(QuickScopeToggle)
 xmap <Leader>q <Plug>(QuickScopeToggle)
-
-
-" ------------------------------------------------------------------------------
-" -- YouCompleteMe
-" ------------------------------------------------------------------------------
-nmap <Leader>j :YcmCompleter GoToDefinition<CR>
 
 
 " ------------------------------------------------------------------------------
