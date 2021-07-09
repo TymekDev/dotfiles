@@ -8,14 +8,13 @@ for someone.
 ### Installation
 #### Symlink Config Files
 ```
-printf ".config .vim" \
+printf ".config\0.vim" \
   | xargs -d ' ' -I dir \
-    xargs -n 1 \
-    bash -c "ls -A dir | xargs -n 1 -I {} ./symlink_config.sh dir/{} $HOME/dir"
+      xargs -n 1 bash -c "ls -A dir | xargs -n 1 -I {} ./symlink_config.sh dir/{} $HOME/dir"
 
-printf ".gitconfig .gitconfig.private .vimrc .zshrc" \
-  | xargs -d ' ' -I {} \
-  ./symlink_config.sh {} $HOME
+printf ".gitconfig\0.gitconfig.private\0.vimrc\0.zshrc" \
+  | xargs -0 -I {} \
+      ./symlink_config.sh {} $HOME
 ```
 
 #### Install dependencies
