@@ -32,8 +32,8 @@
 	# [d]elete [m]erged
 	dm = "! git branch --merged | grep -vE '(\\*|main|master)' | xargs -n 1 git branch -d"
 
-	# [d]iff [b]ranch
-	db = "! f() { git diff $(git merge-base ${1:-main} HEAD)..HEAD; }; f"
+	# [d]iff [b]ranch | It detects whether repository uses master or main
+	db = "! f() { git diff $(git merge-base ${1:-$(git branch -a | sed -nE 's/.*origin\\/HEAD -> origin\\/(.*)/\\1/p')} HEAD)..HEAD; }; f"
 
 	# [d]iff [c]ommit
 	dc = "! f() { REF=${1:-HEAD}; git diff $REF~1 $REF ${@:2}; }; f"
