@@ -14,7 +14,6 @@ Plugin 'tyru/caw.vim'                      " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Turns on relative line numbers
 Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 Plugin 'AndrewRadev/switch.vim'
-Plugin 'preservim/tagbar'
 Plugin 'rust-lang/rust.vim'
 Plugin 'ervandew/supertab'
 
@@ -181,20 +180,11 @@ xmap <Leader>q <Plug>(QuickScopeToggle)
 
 
 " ------------------------------------------------------------------------------
-" -- tagbar
-" ------------------------------------------------------------------------------
-let g:tagbar_sort = 0
-let g:tagbar_indent = 1
-let g:tagbar_show_visibility = 0
-
-nmap <Leader>t :TagbarToggle<CR>
-
-
-" ------------------------------------------------------------------------------
 " -- switch.vim
 " ------------------------------------------------------------------------------
 augroup switch.vim
   autocmd!
+
   autocmd FileType * let b:switch_custom_definitions =
     \ [
     \   {
