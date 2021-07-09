@@ -31,6 +31,9 @@ alias gg2="git logg2"
 alias ggs="git loggs"
 alias ggs2="git loggs2"
 
+alias R=radian
+alias r=R
+
 
 # ------------------------------------------------------------------------------
 # -- Path updates
