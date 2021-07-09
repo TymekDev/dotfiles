@@ -137,13 +137,6 @@ nmap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
 nmap <Leader>asq viw<ESC>`<i'<ESC>`>la'<ESC>
 nmap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
 
-" New entry in ChangeLog:
-"   - assuming entry header format:
-"     '<anything><version num><optional something without numbers> (DATE)',
-"   - first line in the file is the entry header.
-nmap <Leader>ncl gg:1co0<CR>/[0-9]\([^0-9]+\)\? (<CR><C-a>$F)"_dT(
-  \"=strftime("%Y-%m-%d")<C-m>Po<ESC>O<Tab>
-
 
 " ------------------------------------------------------------------------------
 " -- Tabs and windows
