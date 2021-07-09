@@ -1,18 +1,53 @@
+[core]
+	editor = vim
+
+[credential]
+	helper = store
+
 [color "decorate"]
 	branch = cyan
 	head = bold magenta
 	remoteBranch = green
 	stash = red
+
+[pull]
+	rebase = false
+
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+[delta]
+	line-numbers = true
+
+[includeIf "gitdir:~/projects/**"]
+	path = ~/.gitconfig.private
+
+[includeIf "gitdir:~/work/**"]
+	path = ~/.gitconfig.work
+
 [alias]
-	loggs = log --graph --decorate --format='%C(blue)%h%C(auto)%d%C(reset) %s %C(bold cyan)<%cn>%C(reset)' -15
-	loggs2 = log --graph --decorate --format='%C(blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(bold cyan)%an%C(reset)%C(auto)%d%C(reset)%n%w(100,20,20)%s' -10
-	logg = loggs --all
-	logg2 = loggs2 --all
-	# Source: https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
-	lb = ! git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '! seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
-[credential]
-	helper = store
-[core]
-	editor = vim
-[include]
-	path = .gitconfig.private
+	# [d]elete [m]erged
+	dm = "! git branch --merged | grep -vE '(\\*|main|master)' | xargs -n 1 git branch -d"
+
+	# [d]iff [b]ranch
+	db = "! f() { git diff $(git merge-base ${1:-main} HEAD)..HEAD; }; f"
+
+	# [d]iff [c]ommit
+	dc = "! f() { REF=${1:-HEAD}; git diff $REF~1 $REF ${@:2}; }; f"
+
+	# [f]ind [c]ode
+	fc = "! f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S $1; }; f"
+
+	# [l]ast [b]ranches | Source: https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
+	lb = "! git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '! seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'"
+
+	# [l]og [g]raph
+	lg = "lgs --all"
+	lg2 = "lgs2 --all"
+
+	# [l]og [g]raph [s]ingle
+	lgs = "log --graph --decorate --format='%C(blue)%h%C(auto)%d%C(reset) %s %C(bold cyan)<%cn>%C(reset)' -15"
+	lgs2 = "log --graph --decorate --format='%C(blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(bold cyan)%an%C(reset)%C(auto)%d%C(reset)%n%w(100,20,20)%s' -10"
