@@ -14,8 +14,8 @@ Plugin 'tyru/caw.vim'                      " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Turns on relative line numbers
 Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 Plugin 'AndrewRadev/switch.vim'
-Plugin 'rust-lang/rust.vim'
 Plugin 'ervandew/supertab'
+Plugin 'dense-analysis/ale'
 
 call vundle#end()
 filetype plugin indent on
@@ -208,6 +208,12 @@ augroup END
 " -- rust.vim
 " ------------------------------------------------------------------------------
 let g:rustfmt_autosave = 1
+
+
+" ------------------------------------------------------------------------------
+" -- ale
+" ------------------------------------------------------------------------------
+let g:ale_linters = {'rust': ['analyzer']}
 
 
 " ------------------------------------------------------------------------------
