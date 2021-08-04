@@ -215,6 +215,11 @@ let g:rustfmt_autosave = 1
 " ------------------------------------------------------------------------------
 let g:ale_linters = {'rust': ['analyzer']}
 
+augroup Rust
+  autocmd!
+  autocmd FileType rust setlocal omnifunc=ale#completion#OmniFunc
+augroup END
+
 
 " ------------------------------------------------------------------------------
 " -- Settings overrides
