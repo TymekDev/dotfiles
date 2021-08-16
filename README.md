@@ -8,7 +8,7 @@ for someone.
 ### Symlink Config Files
 ```
 printf ".config\0.vim" \
-  | xargs -d ' ' -I dir \
+  | xargs -0 -I dir \
       xargs -n 1 bash -c "ls -A dir | xargs -n 1 -I {} ./symlink_config.sh dir/{} $HOME/dir"
 
 printf ".fehbg\0.gitconfig\0.gitconfig.private\0.vimrc\0.zshrc" \
