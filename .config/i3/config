@@ -50,7 +50,7 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id ~/.fehbg
 
 # Setting the displays
-exec_always --no-startup-id xrandr --output HDMI-1 --primary
+exec_always --no-startup-id xrandr --output DP-2 --primary
 
 # Start xbindkeys for remapping
 exec_always --no-startup-id xbindkeys
