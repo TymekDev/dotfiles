@@ -156,6 +156,7 @@ bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'Do you want shutdown system?
 font pango:JetBrains Mono 12
 
 focus_follows_mouse no
+mouse_warping none
 
 bar {
     separator_symbol "|"
