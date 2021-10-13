@@ -28,6 +28,9 @@
 [includeIf "gitdir:~/work/**"]
 	path = ~/.gitconfig.work
 
+[init]
+	templateDir = ~/.git-template
+
 [alias]
 	# [d]elete [m]erged
 	dm = "! git branch --merged | grep -vE '(\\*|main|master)' | xargs -n 1 git branch -d"

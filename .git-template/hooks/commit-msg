@@ -1,0 +1,3 @@
+#!/bin/bash
+MSG_FILE=$1
+cz check --commit-msg-file $MSG_FILE
