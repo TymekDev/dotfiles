@@ -40,6 +40,7 @@ sudo apt update && sudo apt install -y \
   python3 \
   ranger \
   rofi \
+  sqlite3 \
   tree \
   unzip \
   vim-gtk \
@@ -54,6 +55,7 @@ make
 sudo make install && cd .. && rm -r R-4.1.0 R-4.1.0.tar.gz
 
 python3 -m pip install \
+  Commitizen \
   i3-workspace-names-daemon \
   radian
 
@@ -109,6 +111,7 @@ pkg install \
   golang \
   moreutils \
   openssh \
+  sqlite3 \
   vim \
   zsh
 
