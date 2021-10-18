@@ -37,6 +37,7 @@ sudo apt update && sudo apt install -y \
   i3 \
   jq \
   kitty \
+  moreutils \
   python3 \
   ranger \
   rofi \
@@ -94,7 +95,6 @@ Other things I use:
 ```
 sudo apt install -y \
   blueman \
-  moreutils \
   pavucontrol \
   telegram-desktop
 ```
