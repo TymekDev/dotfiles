@@ -65,6 +65,10 @@ sh -c "$(curl -Lo- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tool
 git clone https://github.com/Aloxaf/fzf-tab ~ZSH_CUSTOM/plugins/fzf-tab
 rm ~/.zshrc && ./symlink_config.sh .zshrc $HOME && source ~/.zshrc
 
+# Vundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qa
+
 # Universal ctags
 git clone https://github.com/universal-ctags/ctags.git
 cd ctags
@@ -114,15 +118,4 @@ pkg install \
   sqlite3 \
   vim \
   zsh
-
-# oh-my-zsh
-sh -c "$(curl -Lo- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/Aloxaf/fzf-tab ~ZSH_CUSTOM/plugins/fzf-tab
-rm ~/.zshrc && ./symlink_config.sh .zshrc $HOME && source ~/.zshrc
-
-# Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-# Vim setup
-vim +PluginInstall +GoInstallBinaries +qa
 ```
