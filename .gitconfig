@@ -4,12 +4,6 @@
 [credential]
   helper = store
 
-[color "decorate"]
-  branch = cyan
-  head = bold magenta
-  remoteBranch = green
-  stash = red
-
 [pull]
   rebase = false
 
