@@ -4,18 +4,6 @@
 [credential]
   helper = store
 
-[pull]
-  rebase = false
-
-[pager]
-  diff = delta
-  log = delta
-  reflog = delta
-  show = delta
-
-[delta]
-  line-numbers = true
-
 [includeIf "gitdir:~/projects/**"]
   path = ~/.gitconfig.private
 
@@ -24,6 +12,18 @@
 
 [init]
   templateDir = ~/.git-template
+
+[pager]
+  diff   = delta
+  log    = delta
+  reflog = delta
+  show   = delta
+
+[delta]
+  line-numbers = true
+
+[pull]
+  rebase = false
 
 [alias]
   # [d]elete [m]erged
