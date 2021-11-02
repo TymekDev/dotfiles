@@ -22,10 +22,8 @@ alias gs="git status"
 alias gd="git diff"
 alias gds="git diff --staged"
 
-alias gg="git lg"
-alias gg2="git lg2"
-alias ggs="git lgs"
-alias ggs2="git lgs2"
+alias gg="git g"
+alias ggs="git gs"
 
 alias R=radian
 alias r=R
