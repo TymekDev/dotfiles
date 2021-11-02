@@ -33,28 +33,20 @@ alias r=R
 
 
 # ------------------------------------------------------------------------------
-# -- Path updates
+# -- PATH updates
 # ------------------------------------------------------------------------------
 
-# Defaults from .bashrc
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
+PATHS=(
+  "$HOME/.local/bin"
+  "$HOME/.tarsnap/bin"
+  "$HOME/bin"
+  "$HOME/go/bin"
+  "/usr/local/go/bin"
+)
 
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+for p in $PATHS; do
+  if [ -d $p ]; then
+    PATH=$p:$PATH
+  fi
+done
 
-# Adding Go to PATH
-if [ -d "$HOME/go/bin" ]; then
-    PATH="$PATH:$HOME/go/bin"
-fi
-
-if [ -d "/usr/local/go/bin" ]; then
-    PATH="$PATH:/usr/local/go/bin"
-fi
-
-# Adding Tarsnap backup scripts to PATH
-if [ -d "$HOME/.tarsnap/bin" ]; then
-    PATH="$PATH:$HOME/.tarsnap/bin"
-fi
