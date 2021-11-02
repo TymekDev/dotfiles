@@ -16,15 +16,18 @@ source $ZSH/oh-my-zsh.sh
 # -- Aliases
 # ------------------------------------------------------------------------------
 
-alias gf="git fetch"
-alias gs="git status"
+# Basics
+alias cf='f() { cd $(find ${1:-.} -type d | fzf --height 60%) }; f' # [c]d [f]uzzy
 
-alias gd="git diff"
-alias gds="git diff --staged"
+# Git
+alias gd="git diff"           # [g]it [d]iff
+alias gds="git diff --staged" # [g]it [d]iff [s]taged
+alias gf="git fetch"          # [g]it [f]etch
+alias gg="git g"              # [g]it [g]raph
+alias ggs="git gs"            # [g]it [g]raph [s]ingle
+alias gs="git status"         # [g]it [s]tatus
 
-alias gg="git g"
-alias ggs="git gs"
-
+# Other
 alias R=radian
 alias r=R
 
