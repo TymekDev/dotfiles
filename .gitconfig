@@ -33,7 +33,7 @@
   db = "! f() { git diff $(git merge-base ${1:-$(git branch -a | sed -nE 's/.*origin\\/HEAD -> origin\\/(.*)/\\1/p')} HEAD)..HEAD; }; f"
 
   # [d]iff [c]ommit
-  dc = "! f() { REF=${1:-HEAD}; git diff $REF~1 $REF ${@:2}; }; f"
+  dc = "! f() { REF=${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f"
 
   # [f]ind [c]ode
   fc = "! f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S $1; }; f"
