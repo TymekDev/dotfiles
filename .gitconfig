@@ -33,9 +33,9 @@
   # [f]ind [c]ode
   fc = "! f() { git fl -S $1; }; f"
   # [f]ormat [l]og
-  fl = "log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --date=short"
+  fl = "log --format='%C(yellow)%h  %C(blue)%ad  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short"
   # [g]raph
-  g = "fl --graph --all"
+  g  = "fl --graph --all"
   # [g]raph [s]ingle
   gs = "fl --graph"
   # [l]ast [b]ranches | Source: https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
