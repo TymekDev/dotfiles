@@ -150,6 +150,7 @@ vim +PluginInstall +GoInstallBinaries +qa
 
 sh -c "$(curl -Lo- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/Aloxaf/fzf-tab ~ZSH_CUSTOM/plugins/fzf-tab
+rm ~/.zshrc
 ```
 
 ### Symlink Config Files
