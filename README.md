@@ -107,15 +107,32 @@ sudo apt install -y \
 Download and install [F-Droid](https://f-droid.org/) and then install
 [Termux](https://f-droid.org/packages/com.termux/) via F-Droid.
 
-```
-pkg install \
+<details>
+<summary><strong>Packages Installation</strong></summary>
+<pre><code>pkg install \
+  asciinema \
   bat \
+  build-essential \
+  ctags \
+  curl \
+  entr \
   fzf \
   git \
+  git-delta \
   golang \
+  hugo \
+  jq \
   moreutils \
   openssh \
+  ripgrep \
   sqlite3 \
+  tree \
+  unzip \
   vim \
   zsh
-```
+</code></pre>
+</details>
+
+#### Styling
+Install [Termux:Styling](https://f-droid.org/packages/com.termux.styling/),
+then set theme and font.
