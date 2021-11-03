@@ -4,6 +4,11 @@ This repository contains all the configuration files I use. These files contain
 little to no explaination what they actually configure but still might be of use
 for someone.
 
+Suggested way of cloning this repository:
+```
+git clone --recurse-submodules --remote-submodules git@github.com:tmakowski/dotfiles
+```
+
 If you want to avoid copying, then run `eval "$(bat -r start:end README.md)"`
 replacing `start` and `end` with line numbers of the section you want to run.
 
@@ -140,15 +145,11 @@ then set theme and font.
 ### Vim Plugins and oh-my-zsh
 ```
 # oh-my-zsh
+# Vim Plugins
+vim +PluginInstall +GoInstallBinaries +qa
+
 sh -c "$(curl -Lo- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/Aloxaf/fzf-tab ~ZSH_CUSTOM/plugins/fzf-tab
-
-# Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qa
-
-# vim-go
-vim +GoInstallBinaries +qa
 ```
 
 ### Symlink Config Files
