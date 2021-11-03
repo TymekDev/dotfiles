@@ -17,8 +17,8 @@ source $ZSH/oh-my-zsh.sh
 # ------------------------------------------------------------------------------
 
 # Basics
-alias cf="f() { cd $(find ${1:-.} -type d | fzf --height 60%) }; f" # [c]d [f]uzzy
-alias cb="cd $OLDPWD"                                               # [c]d [b]ack
+alias cf='f() { cd $(find ${1:-.} -type d | fzf --height 60%) }; f' # [c]d [f]uzzy
+alias cb='cd $OLDPWD'                                               # [c]d [b]ack
 
 # Git
 alias gd="git diff"           # [g]it [d]iff
