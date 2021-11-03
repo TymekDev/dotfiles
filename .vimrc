@@ -127,6 +127,8 @@ nmap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
 nmap <Leader>asq viw<ESC>`<i'<ESC>`>la'<ESC>
 nmap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
 
+cabbrev h vert h
+cabbrev help vert help
 
 " ------------------------------------------------------------------------------
 " -- Tabs and windows
