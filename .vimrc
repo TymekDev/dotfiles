@@ -16,6 +16,8 @@ Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'ervandew/supertab'
 Plugin 'dense-analysis/ale'
+Plugin 'itchyny/lightline.vim'
+Plugin 'sainnhe/gruvbox-material'
 
 call vundle#end()
 filetype plugin indent on
@@ -91,25 +93,13 @@ augroup END
 " ------------------------------------------------------------------------------
 syntax on
 
-function! CustomHighlights() abort
-  hi QuickScopePrimary   ctermfg=magenta
-  hi QuickScopeSecondary ctermfg=darkcyan
-  hi ColorColumn         ctermbg=darkgray
-  hi TagbarHighlight     ctermfg=magenta
-endfunction
+if has('termguicolors')
+  set termguicolors
+endif
 
-function! ColorSchemeOverride() abort
-  hi Identifier ctermfg=cyan
-endfunction
-
-augroup ApplyHighlights
-  autocmd!
-  autocmd ColorScheme *
-    \   call CustomHighlights()
-    \ | call ColorSchemeOverride()
-augroup END
-
-colorscheme delek
+let g:lightline = { 'colorscheme': 'gruvbox_material' }
+let g:gruvbox_material_diagnostic_line_highlight = 1
+colorscheme gruvbox-material
 
 
 " ------------------------------------------------------------------------------
