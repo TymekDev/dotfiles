@@ -16,6 +16,7 @@ Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'ervandew/supertab'
 Plugin 'dense-analysis/ale'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'sainnhe/gruvbox-material'
 
