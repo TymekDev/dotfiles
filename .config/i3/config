@@ -60,7 +60,7 @@ workspace 10 output DP-1
 exec --no-startup-id nm-applet
 
 # Setting up wallpaper
-exec_always --no-startup-id ~/.fehbg
+exec_always --no-startup-id feh --no-fehbg --bg-fill '/home/tmakowski/.wallpaper'
 
 # Setting the displays
 exec_always --no-startup-id xrandr --output DP-2 --primary
