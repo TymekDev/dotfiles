@@ -19,6 +19,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'sainnhe/gruvbox-material'
+Plugin 'junegunn/vim-easy-align'
 
 call vundle#end()
 filetype plugin indent on
@@ -212,6 +213,13 @@ augroup Rust
   autocmd!
   autocmd FileType rust setlocal omnifunc=ale#completion#OmniFunc
 augroup END
+
+
+" ------------------------------------------------------------------------------
+" -- vim-easy-align
+" ------------------------------------------------------------------------------
+nmap <Leader>a <Plug>(EasyAlign)
+vmap <Leader>a <Plug>(EasyAlign)
 
 
 " ------------------------------------------------------------------------------
