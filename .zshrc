@@ -20,6 +20,9 @@ source $ZSH/oh-my-zsh.sh
 alias cf='f() { cd $(find ${1:-.} -type d | fzf --height 60%) }; f' # [c]d [f]uzzy
 alias cb='cd $OLDPWD'                                               # [c]d [b]ack
 
+# Vim
+alias vf='f() { vim $(find ${1:-.} -type f | fzf --height 60%) }; f'
+
 # Git
 alias gd="git diff"           # [g]it [d]iff
 alias gds="git diff --staged" # [g]it [d]iff [s]taged
