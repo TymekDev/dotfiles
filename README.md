@@ -141,6 +141,9 @@ Download and install [F-Droid](https://f-droid.org/) and then install
 Install [Termux:Styling](https://f-droid.org/packages/com.termux.styling/),
 then set theme and font.
 
+### Enabling Storage
+Run `termux-setup-storage` and grant permissions to Termux app.
+
 ## Common
 ### Vim Plugins and oh-my-zsh
 ```
