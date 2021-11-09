@@ -20,6 +20,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'sainnhe/gruvbox-material'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'sheerun/vim-polyglot'
 
 call vundle#end()
 filetype plugin indent on
