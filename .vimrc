@@ -35,6 +35,7 @@ set fileencoding=utf-8
 
 set autochdir
 set backspace=indent,eol,start
+set background=dark
 let &clipboard = match(system("uname -s"), "Darwin") != -1 ? "unnamed" : "unnamedplus" " Windows/Mac: unnamed / Unix: unnamedplus
 set colorcolumn=+1
 set expandtab
