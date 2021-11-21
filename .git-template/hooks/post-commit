@@ -1,0 +1,7 @@
+#! /bin/bash
+if command -v ctags &> /dev/null; then
+  ctags -R . || echo "tags update failed"
+else
+  echo "ctags not found"
+  exit 1
+fi
