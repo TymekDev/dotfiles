@@ -1,2 +1,7 @@
 #! /bin/bash
-cz check --commit-msg-file $1
+if command -v cz &> /dev/null; then
+  cz check --commit-msg-file $1
+else
+  echo "cz command not found (install with: pip3 install Commitizen)"
+  exit 1
+fi
