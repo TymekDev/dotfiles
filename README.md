@@ -103,6 +103,40 @@ mkdir -p ~/.local/share/rofi/themes
 curl -Lso ~/.local/share/rofi/themes/slate.rasi https://raw.githubusercontent.com/davatorium/rofi-themes/c16c7e91a313e4f325d631832381f628778feea1/User%20Themes/slate.rasi
 ```
 
+### `betterlockscreen`
+<details>
+<summary><strong>Build and configure</strong></summary>
+<pre><code>sudo apt install -y \
+  autoconf \
+  gcc \
+  make \
+  pkg-config \
+  libpam0g-dev \
+  libcairo2-dev \
+  libfontconfig1-dev \
+  libxcb-composite0-dev \
+  libev-dev \
+  libx11-xcb-dev \
+  libxcb-xkb-dev \
+  libxcb-xinerama0-dev \
+  libxcb-randr0-dev \
+  libxcb-image0-dev \
+  libxcb-util-dev \
+  libxcb-xrm-dev \
+  libxcb-xtest0-dev \
+  libxkbcommon-dev \
+  libxkbcommon-x11-dev \
+  libjpeg-dev
+git clone https://github.com/Raymo111/i3lock-color
+cd i3lock-color
+./install-i3lock-color.sh && cd .. && rm -rf i3lock-color
+git clone https://github.com/betterlockscreen/betterlockscreen
+cd betterlockscreen
+./install.sh && cd .. && rm -rf i3lock-color
+betterlockscreen -u ~/.wallpaper --fx dimblur
+</code></pre>
+</details>
+
 Additionally:
 * Place your wallpaper under `~/.wallpaper` for `.fehbg` to work
 * Hide `flameshot` system tray icon and make it run on start-up
