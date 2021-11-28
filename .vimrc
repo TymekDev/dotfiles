@@ -47,6 +47,7 @@ set listchars=tab:\|\ ,trail:˽ " Shelf character: <C-v>u02fd
 set mouse=
 set nofoldenable
 set nohlsearch
+set nojoinspaces
 set number
 set pastetoggle=<F2>
 set shiftwidth=2
