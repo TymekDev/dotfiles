@@ -5,13 +5,13 @@
   helper = store
 
 [includeIf "gitdir:~/projects/**"]
-  path = ~/.gitconfig.private
+  path = ~/.gitconfig_private
 
 [includeIf "gitdir:~/work/**"]
-  path = ~/.gitconfig.work
+  path = ~/.gitconfig_work
 
 [init]
-  templateDir = ~/.git-template
+  templateDir = ~/.git_template
 
 [pager]
   diff   = delta
