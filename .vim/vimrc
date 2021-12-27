@@ -60,7 +60,7 @@ set tabstop=2
 set tags=./tags,tags;~
 set textwidth=80
 set updatetime=1000 " Used by CursorHold to update tagbar
-set wrap
+set nowrap
 
 set directory^=~/.vim/tmp//
 set backupdir^=~/.vim/tmp//
