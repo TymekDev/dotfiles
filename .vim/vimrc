@@ -236,4 +236,7 @@ augroup Overrides
 
   autocmd BufNewFile,BufRead *.csv
   \   setlocal tw=0
+
+  autocmd FileType html
+  \ setlocal tw=0
 augroup END
