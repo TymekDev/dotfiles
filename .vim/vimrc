@@ -21,6 +21,8 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'sainnhe/gruvbox-material'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'jpalardy/vim-slime'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
@@ -52,11 +54,12 @@ set number
 set pastetoggle=<F2>
 set shiftwidth=2
 set showbreak=+++
+set smartindent
 set smarttab
 set spelllang=en,pl
 set splitbelow
 set splitright
-set tabstop=2
+set tabstop=2 softtabstop=2
 set tags=./tags,tags;~
 set textwidth=80
 set updatetime=1000 " Used by CursorHold to update tagbar
@@ -129,6 +132,8 @@ nmap <silent> <Leader>c :execute "set colorcolumn="
 nmap <Leader>aq  viw<ESC>`<i"<ESC>`>la"<ESC>
 nmap <Leader>asq viw<ESC>`<i'<ESC>`>la'<ESC>
 nmap <Leader>agq viw<ESC>`<i`<ESC>`>la`<ESC>
+
+nmap <leader><CR> :so $MYVIMRC<CR>
 
 cabbrev h vert h
 cabbrev help vert help
