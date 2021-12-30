@@ -232,10 +232,10 @@ augroup Overrides
   autocmd!
 
   autocmd FileType r
-  \   setlocal textwidth=140
+  \ setlocal textwidth=140
 
   autocmd BufNewFile,BufRead *.csv
-  \   setlocal tw=0
+  \ setlocal tw=0
 
   autocmd FileType html
   \ setlocal tw=0
