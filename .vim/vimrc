@@ -10,7 +10,6 @@ call vundle#begin()
 Plugin 'fatih/vim-go'                      " Go IDE
 Plugin 'godlygeek/tabular'                 " Required by vim-markdown
 Plugin 'plasticboy/vim-markdown'           " Text coloring for markdown
-Plugin 'tyru/caw.vim'                      " Commenting and uncommenting text
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' " Turns on relative line numbers
 Plugin 'unblevable/quick-scope'            " Unique letters in line highlight
 Plugin 'AndrewRadev/switch.vim'
@@ -24,6 +23,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 filetype plugin indent on
