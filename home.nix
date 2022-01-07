@@ -9,7 +9,6 @@
 
   home.packages = with pkgs; [
     asciinema
-    bat
     betterlockscreen
     blueman
     curl
@@ -52,6 +51,13 @@
   ];
 
   programs = {
+    bat = {
+      enable = true;
+      config = {
+        theme = "gruvbox-dark";
+      };
+    };
+
     home-manager.enable = true;
 
     kitty = {
