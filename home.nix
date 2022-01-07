@@ -20,7 +20,6 @@
     flameshot
     fzf
     gimp
-    git
     go_1_17
     htop
     hugo
@@ -59,6 +58,53 @@
     };
 
     home-manager.enable = true;
+
+    git = {
+      enable = true;
+      userName = "Tymoteusz Makowski";
+      aliases = {
+        # [d]iff [c]ommit
+        dc = "! f() { REF=\${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f";
+        # [d]elete [m]erged
+        dm = "! git branch --merged | grep -vE '(\\*|main|master)' | xargs -n 1 git branch -d";
+        # [f]ind [c]ode ([s]ingle)
+        fc = "fl --all -S";
+        fcs = "fl -S";
+        # [f]ormat [l]og
+        fl = "log --format='%C(yellow)%h  %C(blue)%ad  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short";
+        # [g]raph ([s]ingle)
+        g  = "fl --graph --all";
+        gs = "fl --graph";
+        # [l]ast [b]ranches | Source: https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
+        lb = "! git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '! seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'";
+        # [p]ush [o]rigin
+        po = "! f() { git push -u origin $(git branch --show-current); }; f";
+      };
+      delta = {
+        enable = true;
+        options = {
+          line-numbers = true;
+          navigate = true;
+          theme = "gruvbox-dark";
+        };
+      };
+      extraConfig = {
+        core.editor = "vim";
+        credential.helper = "store";
+        init.templateDir = "~/.config/git/template";
+        pull.rebase = false;
+      };
+      includes = [
+        {
+          condition = "gitdir:~/projects/**";
+          contents.user.email = "t@makowski.sh";
+        }
+        {
+          condition = "gitdir:~/work/**";
+          contents.user.email = "tymoteusz@appsilon.com";
+        }
+      ];
+    };
 
     kitty = {
       enable = true;
@@ -99,5 +145,10 @@
         color15 #d4be98
       '';
     };
+  };
+
+  xdg.configFile."git/template" = {
+    source = ./config/git/template;
+    recursive = true;
   };
 }
