@@ -150,6 +150,11 @@
     recursive = true;
   };
 
+  xdg.dataFile.wallpaper = {
+    source = ./config/wallpaper;
+    onChange = "${pkgs.betterlockscreen}/bin/betterlockscreen --update ${config.xdg.dataFile.wallpaper.target} --fx dimblur";
+  };
+
   xsession.windowManager.i3 = {
     enable = true;
     config = {
@@ -201,6 +206,7 @@
       startup = [
         { command = "nm-applet"; notification = false; }
         { command = "${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --primary"; notification = false; }
+        { command = "${pkgs.betterlockscreen}/bin/betterlockscreen --wall"; notification = false; }
       ];
       window = {
         commands = [
