@@ -11,6 +11,7 @@
     asciinema
     betterlockscreen
     blueman
+    cz-cli
     curl
     delta
     entr
