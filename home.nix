@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   home = {
@@ -150,5 +150,82 @@
   xdg.configFile."git/template" = {
     source = ./config/git/template;
     recursive = true;
+  };
+
+  xsession.windowManager.i3 = {
+    enable = true;
+    config = {
+      terminal = "nixGL kitty";
+      modifier = "Mod4";
+      fonts = {
+        names = [ "JetBrains Mono" ];
+        size = 12.0;
+      };
+      keybindings = let mod = config.xsession.windowManager.i3.config.modifier; in lib.mkOptionDefault {
+        # Movement
+        "${mod}+h" = "focus left";
+        "${mod}+j" = "focus down";
+        "${mod}+k" = "focus up";
+        "${mod}+l" = "focus right";
+        "${mod}+Shift+h" = "move left";
+        "${mod}+Shift+j" = "move down";
+        "${mod}+Shift+k" = "move up";
+        "${mod}+Shift+l" = "move right";
+        # Focus
+        "${mod}+x" = "focus child";
+        # Split direction
+        "${mod}+v" = "split h";
+        "${mod}+Shift+v" = "split v";
+        # Layouts
+        "${mod}+s" = "layout stacking";
+        "${mod}+w" = "layout tabbed";
+        "${mod}+e" = "layout toggle split";
+        # Misc
+        "Print" = "exec flameshot gui";
+        # TODO: "${mod}+d" = "exec rofi";
+        # FIXME: system auth does not appear to work
+        # "${mod}+BackSpace" = "exec betterlockscreen -l dimblur";
+        "${mod}+backslash" = "exec firefox";
+        "${mod}+Shift+s" = ''
+          exec "i3-nagbar -t warning -m 'Do you want shutdown system?' -B 'Yes, shutdown system' 'systemctl poweroff'"
+        '';
+      };
+      modes.resize = {
+        "h" = "resize shrink width 5 px or 5 ppt";
+        "j" = "resize shrink height 5 px or 5 ppt";
+        "k" = "resize grow height 5 px or 5 ppt";
+        "l" = "resize grow width 5 px or 5 ppt";
+        "Shift+h" = "resize shrink width 15 px or 15 ppt";
+        "Shift+j" = "resize shrink height 15 px or 15 ppt";
+        "Shift+k" = "resize grow height 15 px or 15 ppt";
+        "Shift+l" = "resize grow width 15 px or 15 ppt";
+        "Escape" = "mode default";
+        "${config.xsession.windowManager.i3.config.modifier}+r" = "mode default";
+      };
+      startup = [
+        { command = "nm-applet"; notification = false; }
+        { command = "xrandr --output DP-2 --primary"; notification = false; }
+      ];
+      window.commands = [
+        { command = "border pixel 1"; criteria.class = "^.*"; }
+        { command = "floating enable"; criteria.class="Nautilus"; }
+        { command = "floating enable"; criteria.class="Steam"; }
+        { command = "floating enable"; criteria.class="Lutris"; }
+        { command = "floating enable"; criteria.class="galaxyclient"; }
+        { command = "floating disable"; criteria.class="Wine"; }
+      ];
+      workspaceOutputAssign = [
+        { workspace = "1"; output = "DP-2"; }
+        { workspace = "2"; output = "DP-2"; }
+        { workspace = "3"; output = "DP-2"; }
+        { workspace = "4"; output = "DP-2"; }
+        { workspace = "5"; output = "DP-2"; }
+        { workspace = "6"; output = "DP-1"; }
+        { workspace = "7"; output = "DP-1"; }
+        { workspace = "8"; output = "DP-1"; }
+        { workspace = "9"; output = "DP-1"; }
+        { workspace = "10"; output = "DP-1"; }
+      ];
+    };
   };
 }
