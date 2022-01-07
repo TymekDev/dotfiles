@@ -206,14 +206,17 @@
         { command = "nm-applet"; notification = false; }
         { command = "xrandr --output DP-2 --primary"; notification = false; }
       ];
-      window.commands = [
-        { command = "border pixel 1"; criteria.class = "^.*"; }
-        { command = "floating enable"; criteria.class="Nautilus"; }
-        { command = "floating enable"; criteria.class="Steam"; }
-        { command = "floating enable"; criteria.class="Lutris"; }
-        { command = "floating enable"; criteria.class="galaxyclient"; }
-        { command = "floating disable"; criteria.class="Wine"; }
-      ];
+      window = {
+        commands = [
+          { command = "border pixel 1"; criteria.class = "^.*"; }
+          { command = "floating enable"; criteria.class="Nautilus"; }
+          { command = "floating enable"; criteria.class="Steam"; }
+          { command = "floating enable"; criteria.class="Lutris"; }
+          { command = "floating enable"; criteria.class="galaxyclient"; }
+          { command = "floating disable"; criteria.class="Wine"; }
+        ];
+        hideEdgeBorders = "smart";
+      };
       workspaceOutputAssign = [
         { workspace = "1"; output = "DP-2"; }
         { workspace = "2"; output = "DP-2"; }
