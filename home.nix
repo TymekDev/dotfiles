@@ -179,14 +179,12 @@
         "${mod}+w" = "layout tabbed";
         "${mod}+e" = "layout toggle split";
         # Misc
-        "Print" = "exec flameshot gui";
-        # TODO: "${mod}+d" = "exec rofi";
+        "Print" = "exec ${pkgs.flameshot}/bin/flameshot gui";
+        # TODO: "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi";
         # FIXME: system auth does not appear to work
-        # "${mod}+BackSpace" = "exec betterlockscreen -l dimblur";
-        "${mod}+backslash" = "exec firefox";
-        "${mod}+Shift+s" = ''
-          exec "i3-nagbar -t warning -m 'Do you want shutdown system?' -B 'Yes, shutdown system' 'systemctl poweroff'"
-        '';
+        # "${mod}+BackSpace" = "exec ${pkgs.betterlockscreen}/bin/betterlockscreen -l dimblur";
+        "${mod}+backslash" = "exec ${pkgs.firefox}/bin/firefox";
+        "${mod}+Shift+s" = "exec ${pkgs.i3}/bin/i3-nagbar -t warning -m 'Do you want shutdown system?' -B 'Yes, shutdown system' 'systemctl poweroff'";
       };
       modes.resize = {
         "h" = "resize shrink width 5 px or 5 ppt";
@@ -202,7 +200,7 @@
       };
       startup = [
         { command = "nm-applet"; notification = false; }
-        { command = "xrandr --output DP-2 --primary"; notification = false; }
+        { command = "${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --primary"; notification = false; }
       ];
       window = {
         commands = [
