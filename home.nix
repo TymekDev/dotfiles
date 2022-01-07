@@ -14,7 +14,7 @@
     curl
     delta
     entr
-    # TODO: firefox
+    firefox
     fish
     flameshot
     fzf
