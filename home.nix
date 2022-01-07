@@ -166,7 +166,8 @@
   xsession.windowManager.i3 = {
     enable = true;
     config = {
-      terminal = "nixGL kitty";
+      # FIXME: make this not require nixGL
+      terminal = "nixGL ${pkgs.kitty}/bin/kitty";
       modifier = "Mod4";
       fonts = {
         names = [ "JetBrains Mono" ];
