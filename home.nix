@@ -5,47 +5,46 @@
     username = "tmakowski";
     homeDirectory = "/home/tmakowski";
     stateVersion = "22.05";
+    packages = with pkgs; [
+      asciinema
+      betterlockscreen
+      blueman
+      cz-cli
+      curl
+      delta
+      entr
+      firefox
+      fish
+      flameshot
+      fzf
+      gimp
+      go_1_17
+      htop
+      hugo
+      jq
+      kazam
+      moreutils
+      mpv
+      ncdu
+      pandoc
+      pavucontrol
+      python3
+      ripgrep
+      # TODO: rofi
+      sqlite
+      tdesktop
+      tree
+      universal-ctags
+      unzip
+      vim
+      wine
+      zip
+      zsh
+      # TODO: install unfree packages
+      # discord
+      # steam
+    ];
   };
-
-  home.packages = with pkgs; [
-    asciinema
-    betterlockscreen
-    blueman
-    cz-cli
-    curl
-    delta
-    entr
-    firefox
-    fish
-    flameshot
-    fzf
-    gimp
-    go_1_17
-    htop
-    hugo
-    jq
-    kazam
-    moreutils
-    mpv
-    ncdu
-    pandoc
-    pavucontrol
-    python3
-    ripgrep
-    # TODO: rofi
-    sqlite
-    tdesktop
-    tree
-    universal-ctags
-    unzip
-    vim
-    wine
-    zip
-    zsh
-    # TODO: install unfree packages
-    # discord
-    # steam
-  ];
 
   programs = {
     bat = {
@@ -145,14 +144,16 @@
     };
   };
 
-  xdg.configFile."git/template" = {
-    source = ./config/git/template;
-    recursive = true;
-  };
+  xdg = {
+    configFile."git/template" = {
+      source = ./config/git/template;
+      recursive = true;
+    };
 
-  xdg.dataFile.wallpaper = {
-    source = ./config/wallpaper;
-    onChange = "${pkgs.betterlockscreen}/bin/betterlockscreen --update ${config.xdg.dataFile.wallpaper.target} --fx dimblur";
+    dataFile.wallpaper = {
+      source = ./config/wallpaper;
+      onChange = "${pkgs.betterlockscreen}/bin/betterlockscreen --update ${config.xdg.dataFile.wallpaper.target} --fx dimblur";
+    };
   };
 
   xsession.windowManager.i3 = {
