@@ -15,7 +15,6 @@
       entr
       firefox
       fish
-      flameshot
       fzf
       gimp
       go_1_17
@@ -141,6 +140,14 @@
         color7 #d4be98
         color15 #d4be98
       '';
+    };
+  };
+
+  services.flameshot = {
+    enable = true;
+    settings.General = {
+      disabledTrayIcon = true;
+      showStartupLaunchMessage = false;
     };
   };
 
