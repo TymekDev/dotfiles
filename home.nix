@@ -23,8 +23,6 @@
     go_1_17
     htop
     hugo
-    i3
-    i3status
     jq
     kazam
     moreutils
