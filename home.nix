@@ -14,7 +14,6 @@
     curl
     delta
     entr
-    feh
     # TODO: firefox
     fish
     flameshot
