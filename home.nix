@@ -240,7 +240,7 @@
         # FIXME: system auth does not appear to work
         # "${mod}+BackSpace" = "exec ${pkgs.betterlockscreen}/bin/betterlockscreen -l dimblur";
         "${mod}+backslash" = "exec ${pkgs.firefox}/bin/firefox";
-        "${mod}+Shift+s" = "exec ${pkgs.i3}/bin/i3-nagbar -t warning -m 'Do you want shutdown system?' -B 'Yes, shutdown system' 'systemctl poweroff'";
+        "${mod}+Shift+s" = "exec \"${pkgs.i3}/bin/i3-nagbar -t warning -m 'Do you want shutdown system?' -B 'Yes, shutdown system' 'systemctl poweroff'\"";
       };
       modes.resize = {
         "h" = "resize shrink width 5 px or 5 ppt";
