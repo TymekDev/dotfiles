@@ -84,12 +84,6 @@
           theme = "gruvbox-dark";
         };
       };
-      extraConfig = {
-        core.editor = "vim";
-        credential.helper = "store";
-        init.templateDir = "~/.config/git/template";
-        pull.rebase = false;
-      };
       includes = [
         {
           condition = "gitdir:~/projects/**";
@@ -100,6 +94,12 @@
           contents.user.email = "tymoteusz@appsilon.com";
         }
       ];
+      extraConfig = {
+        core.editor = "vim";
+        credential.helper = "store";
+        init.templateDir = "~/.config/git/template";
+        pull.rebase = false;
+      };
     };
 
     kitty = {
@@ -166,9 +166,9 @@
   xsession.windowManager.i3 = {
     enable = true;
     config = {
+      modifier = "Mod4";
       # FIXME: make this not require nixGL
       terminal = "nixGL ${pkgs.kitty}/bin/kitty";
-      modifier = "Mod4";
       fonts = {
         names = [ "JetBrains Mono" ];
         size = 12.0;
