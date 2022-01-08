@@ -5,6 +5,12 @@
     username = "tmakowski";
     homeDirectory = "/home/tmakowski";
     stateVersion = "22.05";
+    file = {
+      ".vim" = {
+        source = ./.vim;
+        recursive = true;
+      };
+    };
     # List of packages not defined down below
     # NOTE: some packages don't have explicit config definitions (e.g. are used only in i3 keybindings)
     packages = with pkgs; [
