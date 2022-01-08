@@ -29,6 +29,7 @@
       pavucontrol
       python3
       ripgrep
+      rWrapper
       sqlite
       tdesktop
       tree
