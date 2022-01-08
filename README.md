@@ -16,6 +16,13 @@ A last commit without home-manager was [`10a3d35`].
 1. Clone this repository: `git clone git@github:tmakowski/dotfiles ~/.config/nixpkgs`
 1. Build [home-manager] configuration: `home-manager switch`
 
+### Enable fish
+Make sure `which fish` returns Nix version of `fish`.
+```
+which fish | sudo tee -a /etc/shells
+chsh -s `which fish`
+```
+
 
 ## Contact
 If you have any questions feel free to reach out to me at t@makowski.sh.
