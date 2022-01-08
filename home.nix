@@ -96,7 +96,7 @@
       extraConfig = {
         core.editor = "vim";
         credential.helper = "store";
-        init.templateDir = "~/.config/git/template";
+        init.templateDir = "${config.xdg.dataFile."git/template".target}";
         pull.rebase = false;
       };
     };
@@ -160,13 +160,13 @@
     };
   };
 
-  xdg = {
-    configFile."git/template" = {
-      source = ./config/git/template;
+  xdg.dataFile = {
+    "git/template" = {
+      source = ./share/git/template;
       recursive = true;
     };
 
-    dataFile.wallpaper = {
+    wallpaper = {
       source = ./share/wallpaper;
       onChange = "${pkgs.betterlockscreen}/bin/betterlockscreen --update ${config.xdg.dataFile.wallpaper.target} --fx dimblur";
     };
