@@ -5,15 +5,15 @@
     username = "tmakowski";
     homeDirectory = "/home/tmakowski";
     stateVersion = "22.05";
+    # List of packages not defined down below
+    # NOTE: some packages don't have explicit config definitions (e.g. are used only in i3 keybindings)
     packages = with pkgs; [
       asciinema
-      betterlockscreen
       blueman
       cz-cli
       curl
       delta
       entr
-      firefox
       fish
       fzf
       gimp
