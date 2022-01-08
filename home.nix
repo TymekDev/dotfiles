@@ -29,7 +29,6 @@
       pavucontrol
       python3
       ripgrep
-      # TODO: rofi
       sqlite
       tdesktop
       tree
@@ -141,6 +140,16 @@
         color15 #d4be98
       '';
     };
+
+    rofi = {
+      enable = true;
+      terminal = "${config.xsession.windowManager.i3.config.terminal}";
+      theme = "slate";
+      extraConfig = {
+        "disable-history" = true;
+        "sort" = true;
+      };
+    };
   };
 
   services.flameshot = {
@@ -190,11 +199,12 @@
         "${mod}+Shift+v" = "split v";
         # Layouts
         "${mod}+s" = "layout stacking";
-        "${mod}+w" = "layout tabbed";
+        "${mod}+t" = "layout tabbed";
         "${mod}+e" = "layout toggle split";
         # Misc
         "Print" = "exec ${pkgs.flameshot}/bin/flameshot gui";
-        # TODO: "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi";
+        "${mod}+w" = "exec ${pkgs.rofi}/bin/rofi -show window";
+        "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show run";
         # FIXME: system auth does not appear to work
         # "${mod}+BackSpace" = "exec ${pkgs.betterlockscreen}/bin/betterlockscreen -l dimblur";
         "${mod}+backslash" = "exec ${pkgs.firefox}/bin/firefox";
