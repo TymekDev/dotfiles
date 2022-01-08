@@ -258,6 +258,7 @@
         { command = "nm-applet"; notification = false; }
         { command = "${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --primary"; notification = false; }
         { command = "${pkgs.betterlockscreen}/bin/betterlockscreen --wall"; notification = false; }
+        { command = "${pkgs.flameshot}/bin/flameshot"; notification = false; }
       ];
       window = {
         commands = [
