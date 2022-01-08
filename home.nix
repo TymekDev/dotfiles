@@ -83,6 +83,9 @@
           theme = "gruvbox-dark";
         };
       };
+      ignores = [
+        "tags"
+      ];
       includes = [
         {
           condition = "gitdir:~/projects/**";
