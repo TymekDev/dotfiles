@@ -167,7 +167,7 @@
     };
 
     dataFile.wallpaper = {
-      source = ./config/wallpaper;
+      source = ./share/wallpaper;
       onChange = "${pkgs.betterlockscreen}/bin/betterlockscreen --update ${config.xdg.dataFile.wallpaper.target} --fx dimblur";
     };
   };
