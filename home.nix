@@ -4,13 +4,13 @@
   home = {
     username = "tmakowski";
     homeDirectory = "/home/tmakowski";
-    stateVersion = "22.05";
+    stateVersion = "21.11";
     # List of packages not defined down below
     # NOTE: some packages don't have explicit config definitions (e.g. are used only in i3 keybindings)
     packages = with pkgs; [
       asciinema
       blueman
-      cz-cli
+      commitizen
       curl
       delta
       entr
