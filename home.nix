@@ -192,9 +192,8 @@
         "${mod}+Shift+j" = "move down";
         "${mod}+Shift+k" = "move up";
         "${mod}+Shift+l" = "move right";
-        # Focus
+        # Focus & splits
         "${mod}+x" = "focus child";
-        # Split direction
         "${mod}+v" = "split h";
         "${mod}+Shift+v" = "split v";
         # Layouts
@@ -230,11 +229,11 @@
       window = {
         commands = [
           { command = "border pixel 1"; criteria.class = "^.*"; }
-          { command = "floating enable"; criteria.class="Nautilus"; }
-          { command = "floating enable"; criteria.class="Steam"; }
-          { command = "floating enable"; criteria.class="Lutris"; }
-          { command = "floating enable"; criteria.class="galaxyclient"; }
-          { command = "floating disable"; criteria.class="Wine"; }
+          { command = "floating enable"; criteria.class = "Nautilus"; }
+          { command = "floating enable"; criteria.class = "Steam"; }
+          { command = "floating enable"; criteria.class = "Lutris"; }
+          { command = "floating enable"; criteria.class = "galaxyclient"; }
+          { command = "floating disable"; criteria.class = "Wine"; }
         ];
         hideEdgeBorders = "smart";
       };
