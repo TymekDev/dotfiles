@@ -37,7 +37,6 @@
       vim
       wine
       zip
-      zsh
       # TODO: install unfree packages
       # discord
       # steam
@@ -55,6 +54,33 @@
       config = {
         theme = "gruvbox-dark";
       };
+    };
+
+    fish = {
+      enable = true;
+      shellAbbrs = {
+        ga   = "git add";
+        gap  = "git add -p";
+        gb   = "git branch";
+        gc   = "git commit";
+        gca  = "git commit --amend --no-edit";
+        gcae = "git commit --amend";
+        gcm  = "git commit -m ";
+        gco  = "git checkout";
+        gd   = "git diff";
+        gds  = "git diff --staged";
+        gf   = "git fetch";
+        gg   = "git g";
+        ggs  = "git gs";
+        gl   = "git pull";
+        gm   = "git merge";
+        gp   = "git push";
+        gs   = "git status";
+      };
+      shellAliases = {
+        g = "git";
+      };
+      shellInit = "fish_add_path \$HOME/.tarsnap/bin";
     };
 
     git = {
