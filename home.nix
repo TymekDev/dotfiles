@@ -45,14 +45,14 @@
   };
 
   programs = {
+    home-manager.enable = true;
+
     bat = {
       enable = true;
       config = {
         theme = "gruvbox-dark";
       };
     };
-
-    home-manager.enable = true;
 
     git = {
       enable = true;
