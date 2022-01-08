@@ -10,7 +10,6 @@ A last commit without home-manager was [`10a3d35`].
 
 
 ## Setup
-**NOTE:** I follow Nixpkgs 21.11 channel and a respective home-manager
 1. [Install Nix]
 1. [Install Home Manager]
 1. [Install nixGL] - non-Nix drivers are not recognized by Nix [kitty], see [#80936]
