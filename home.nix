@@ -42,6 +42,9 @@
       # discord
       # steam
     ];
+    sessionVariables = {
+      EDITOR = "vim";
+    };
   };
 
   programs = {
