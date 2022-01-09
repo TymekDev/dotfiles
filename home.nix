@@ -202,6 +202,7 @@
               set termguicolors
             endif
             colorscheme gruvbox-material
+            syntax on
           '';
         }
         {
