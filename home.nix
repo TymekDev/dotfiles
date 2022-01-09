@@ -65,10 +65,10 @@
         gc   = "git commit";
         gca  = "git commit --amend --no-edit";
         gcae = "git commit --amend";
-        gcm  = "git commit -m ";
+        gcm  = "git commit -m";
         gco  = "git checkout";
         gcp  = "git cherry-pick";
-        gcpm = "git commit -pm ";
+        gcpm = "git commit -pm";
         gd   = "git diff";
         gds  = "git diff --staged";
         gf   = "git fetch";
