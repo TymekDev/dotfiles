@@ -180,6 +180,63 @@
       '';
     };
 
+    neovim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [
+        ale
+        {
+          plugin = gruvbox-material;
+          config = ''
+            let g:gruvbox_material_diagnostic_line_highlight = 1
+            if has('termguicolors')
+              set termguicolors
+            endif
+            colorscheme gruvbox-material
+          '';
+        }
+        {
+          plugin = lightline-vim;
+          config = ''
+            let g:lightline = { 'colorscheme': 'gruvbox_material' }
+          '';
+        }
+        {
+          plugin = quick-scope;
+          config = ''
+            let g:qs_hi_priority = 20
+
+            nmap <Leader>q <Plug>(QuickScopeToggle)
+            xmap <Leader>q <Plug>(QuickScopeToggle)
+          '';
+        }
+        supertab
+        tabular
+        vim-commentary
+        {
+          plugin = vim-easy-align;
+          config = ''
+            nmap <Leader>a <Plug>(EasyAlign)
+            vmap <Leader>a <Plug>(EasyAlign)
+          '';
+        }
+        vim-fugitive
+        vim-gitgutter
+        {
+          plugin = vim-go;
+          config = ''
+            let g:go_fmt_command = 'goimports'
+          '';
+        }
+        vim-markdown
+        vim-numbertoggle
+        vim-polyglot
+        vim-repeat
+        vim-surround
+      ];
+      viAlias = true;
+      vimAlias = true;
+    };
+
     rofi = {
       enable = true;
       terminal = "${config.xsession.windowManager.i3.config.terminal}";
