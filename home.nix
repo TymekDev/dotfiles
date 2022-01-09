@@ -81,7 +81,10 @@
       shellAliases = {
         g = "git";
       };
-      shellInit = "fish_add_path \$HOME/.tarsnap/bin";
+      shellInit = ''
+        bind \cj accept-autosuggestion execute
+        fish_add_path \$HOME/.tarsnap/bin
+      '';
     };
 
     git = {
