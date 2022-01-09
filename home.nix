@@ -220,7 +220,12 @@
           '';
         }
         vim-fugitive
-        vim-gitgutter
+        {
+          plugin = vim-gitgutter;
+          config = ''
+            let g:gitgutter_map_keys = 0
+          '';
+        }
         {
           plugin = vim-go;
           config = ''
