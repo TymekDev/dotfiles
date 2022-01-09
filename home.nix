@@ -184,6 +184,7 @@
       enable = true;
       plugins = with pkgs.vimPlugins; [
         ale
+        fzf-vim
         supertab
         tabular
         vim-commentary
