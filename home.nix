@@ -182,6 +182,10 @@
 
     neovim = {
       enable = true;
+      extraConfig = with builtins; concatStringsSep "\n" [
+        "${readFile ./nvim/sets.vim}"
+        "${readFile ./nvim/maps.vim}"
+      ];
       plugins = with pkgs.vimPlugins; [
         ale
         fzf-vim
