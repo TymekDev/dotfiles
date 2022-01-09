@@ -21,4 +21,3 @@ nnoremap <C-l> :tabnext<CR>
 " Misc
 nmap <Leader>h :set hlsearch!<CR>
 nmap <Leader><CR> :source $MYVIMRC<CR>
-
