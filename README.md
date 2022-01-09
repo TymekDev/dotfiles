@@ -29,7 +29,7 @@ If you have any questions feel free to reach out to me at t@makowski.sh.
 
 
 ## License
-**Disclaimer:** I am not an author of the wallpaper at `share/wallpaper` and I do not claim any rights to it.
+**Disclaimer:** I am not an author of the image at `share/wallpaper.jpg` and I do not claim any rights to it.
 
 [MIT License](LICENSE.md)
 
