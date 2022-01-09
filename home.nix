@@ -67,6 +67,7 @@
         gcae = "git commit --amend";
         gcm  = "git commit -m ";
         gco  = "git checkout";
+        gcp  = "git cherry-pick";
         gd   = "git diff";
         gds  = "git diff --staged";
         gf   = "git fetch";
