@@ -80,7 +80,8 @@
         gs   = "git status";
       };
       shellAliases = {
-        g = "git";
+        g  = "git";
+        nv = "nvim";
       };
       shellInit = ''
         bind \cj accept-autosuggestion execute
