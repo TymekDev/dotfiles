@@ -10,8 +10,8 @@
     packages = with pkgs; [
       asciinema
       blueman
-      cz-cli
       curl
+      cz-cli
       delta
       entr
       fish
@@ -28,8 +28,8 @@
       pandoc
       pavucontrol
       python3
-      ripgrep
       rWrapper
+      ripgrep
       sqlite
       tdesktop
       tree
