@@ -5,12 +5,6 @@
     username = "tmakowski";
     homeDirectory = "/home/tmakowski";
     stateVersion = "22.05";
-    file = {
-      ".vim" = {
-        source = ./.vim;
-        recursive = true;
-      };
-    };
     # List of packages not defined down below
     # NOTE: some packages don't have explicit config definitions (e.g. are used only in i3 keybindings)
     packages = with pkgs; [
@@ -41,7 +35,6 @@
       tree
       universal-ctags
       unzip
-      vim
       wine
       zip
       # TODO: install unfree packages
@@ -178,6 +171,74 @@
         color7 #d4be98
         color15 #d4be98
       '';
+    };
+
+    neovim = {
+      enable = true;
+      extraConfig = with builtins; concatStringsSep "\n" [
+        "${readFile ./nvim/sets.vim}"
+        "${readFile ./nvim/maps.vim}"
+      ];
+      plugins = with pkgs.vimPlugins; [
+        ale
+        fzf-vim
+        supertab
+        tabular
+        vim-commentary
+        vim-fugitive
+        vim-markdown
+        vim-numbertoggle
+        vim-polyglot
+        vim-repeat
+        vim-surround
+        {
+          plugin = gruvbox-material;
+          config = ''
+            let g:gruvbox_material_diagnostic_line_highlight = 1
+            if has('termguicolors')
+              set termguicolors
+            endif
+            colorscheme gruvbox-material
+            syntax on
+          '';
+        }
+        {
+          plugin = lightline-vim;
+          config = ''
+            let g:lightline = { 'colorscheme': 'gruvbox_material' }
+          '';
+        }
+        {
+          plugin = quick-scope;
+          config = ''
+            let g:qs_hi_priority = 20
+
+            nmap <Leader>q <Plug>(QuickScopeToggle)
+            xmap <Leader>q <Plug>(QuickScopeToggle)
+          '';
+        }
+        {
+          plugin = vim-easy-align;
+          config = ''
+            nmap <Leader>a <Plug>(EasyAlign)
+            vmap <Leader>a <Plug>(EasyAlign)
+          '';
+        }
+        {
+          plugin = vim-gitgutter;
+          config = ''
+            let g:gitgutter_map_keys = 0
+          '';
+        }
+        {
+          plugin = vim-go;
+          config = ''
+            let g:go_fmt_command = 'goimports'
+          '';
+        }
+      ];
+      viAlias = true;
+      vimAlias = true;
     };
 
     rofi = {
