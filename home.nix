@@ -184,6 +184,15 @@
       enable = true;
       plugins = with pkgs.vimPlugins; [
         ale
+        supertab
+        tabular
+        vim-commentary
+        vim-fugitive
+        vim-markdown
+        vim-numbertoggle
+        vim-polyglot
+        vim-repeat
+        vim-surround
         {
           plugin = gruvbox-material;
           config = ''
@@ -209,9 +218,6 @@
             xmap <Leader>q <Plug>(QuickScopeToggle)
           '';
         }
-        supertab
-        tabular
-        vim-commentary
         {
           plugin = vim-easy-align;
           config = ''
@@ -219,7 +225,6 @@
             vmap <Leader>a <Plug>(EasyAlign)
           '';
         }
-        vim-fugitive
         {
           plugin = vim-gitgutter;
           config = ''
@@ -232,11 +237,6 @@
             let g:go_fmt_command = 'goimports'
           '';
         }
-        vim-markdown
-        vim-numbertoggle
-        vim-polyglot
-        vim-repeat
-        vim-surround
       ];
       viAlias = true;
       vimAlias = true;
