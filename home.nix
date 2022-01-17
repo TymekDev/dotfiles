@@ -78,10 +78,12 @@
         gm   = "git merge";
         gp   = "git push";
         gs   = "git status";
+
+        sv = "sudo nvim";
       };
       shellAliases = {
         g  = "git";
-        nv = "nvim";
+        v = "nvim";
       };
       shellInit = ''
         bind \cj accept-autosuggestion execute
