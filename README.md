@@ -1,8 +1,5 @@
 # dotfiles _the Nix way_
 
-
-## General Information
-
 dotfiles rewritten to use [home-manager] to install programs and manage their configuration files
 based on a single [`home.nix`](home.nix). Inspired by [Alex Pearce's dotfiles] and [his blog post].
 
