@@ -341,6 +341,7 @@
           { command = "floating enable"; criteria.class = "Lutris"; }
           { command = "floating enable"; criteria.class = "galaxyclient"; }
           { command = "floating disable"; criteria.class = "Wine"; }
+          { command = "no_focus"; criteria.class = "Steam"; }
         ];
         hideEdgeBorders = "smart";
       };
