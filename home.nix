@@ -199,7 +199,6 @@
         vim-numbertoggle
         vim-polyglot
         vim-repeat
-        vim-surround
         {
           plugin = gruvbox-material;
           config = ''
@@ -243,6 +242,12 @@
           plugin = vim-go;
           config = ''
             let g:go_fmt_command = 'goimports'
+          '';
+        }
+        {
+          plugin = vim-surround;
+          config = ''
+            vmap <C-[> S{kJl
           '';
         }
       ];
