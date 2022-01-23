@@ -247,7 +247,7 @@
         {
           plugin = vim-surround;
           config = ''
-            vmap <C-[> S{kJl
+            vmap <Leader>[ S{kJl
           '';
         }
       ];
