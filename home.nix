@@ -79,11 +79,11 @@
         gp   = "git push";
         gs   = "git status";
 
-        sv = "sudo nvim";
+        sv = "sudo vim";
       };
       shellAliases = {
         g  = "git";
-        v = "nvim";
+        v = "vim";
       };
       shellInit = ''
         bind \cj accept-autosuggestion execute
