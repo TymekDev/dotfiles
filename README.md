@@ -10,7 +10,7 @@ A last commit without home-manager was [`10a3d35`].
 1. [Install Nix]
 1. [Install Home Manager]
 1. [Install nixGL] - non-Nix drivers are not recognized by Nix [kitty], see [#80936]
-1. Clone this repository: `git clone --recurse-submodules git@github:tmakowski/dotfiles ~/.config/nixpkgs`
+1. Clone this repository: `git clone git@github:tmakowski/dotfiles ~/.config/nixpkgs`
 1. Build [home-manager] configuration: `home-manager switch`
 
 ### Enable fish
