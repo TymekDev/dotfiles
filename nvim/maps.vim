@@ -21,3 +21,15 @@ nnoremap <C-l> :tabnext<CR>
 " Misc
 nmap <Leader>h :set hlsearch!<CR>
 nmap <Leader><CR> :source $MYVIMRC<CR>
+
+
+" quick-scope
+nmap <Leader>q <Plug>(QuickScopeToggle)
+xmap <Leader>q <Plug>(QuickScopeToggle)
+
+" vim-easy-align
+nmap <Leader>a <Plug>(EasyAlign)
+vmap <Leader>a <Plug>(EasyAlign)
+
+" vim-surround
+vmap <Leader>[ S{kJl

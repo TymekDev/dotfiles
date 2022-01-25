@@ -195,11 +195,13 @@
         supertab
         tabular
         vim-commentary
+        vim-easy-align
         vim-fugitive
         vim-markdown
         vim-numbertoggle
         vim-polyglot
         vim-repeat
+        vim-surround
         {
           plugin = gruvbox-material;
           config = ''
@@ -221,16 +223,6 @@
           plugin = quick-scope;
           config = ''
             let g:qs_hi_priority = 20
-
-            nmap <Leader>q <Plug>(QuickScopeToggle)
-            xmap <Leader>q <Plug>(QuickScopeToggle)
-          '';
-        }
-        {
-          plugin = vim-easy-align;
-          config = ''
-            nmap <Leader>a <Plug>(EasyAlign)
-            vmap <Leader>a <Plug>(EasyAlign)
           '';
         }
         {
@@ -243,12 +235,6 @@
           plugin = vim-go;
           config = ''
             let g:go_fmt_command = 'goimports'
-          '';
-        }
-        {
-          plugin = vim-surround;
-          config = ''
-            vmap <Leader>[ S{kJl
           '';
         }
       ];
