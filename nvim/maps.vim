@@ -32,4 +32,5 @@ nmap <Leader>a <Plug>(EasyAlign)
 vmap <Leader>a <Plug>(EasyAlign)
 
 " vim-surround
+nmap <Leader>[ V<Leader>[
 vmap <Leader>[ S{kJl
