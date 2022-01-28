@@ -138,7 +138,7 @@
       extraConfig = {
         core.editor = "vim";
         credential.helper = "store";
-        init.templateDir = "${config.xdg.dataFile."git/template".target}";
+        init.templateDir = "~/${config.xdg.dataFile."git/template".target}";
         pull.rebase = false;
       };
     };
