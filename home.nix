@@ -9,17 +9,20 @@
     # NOTE: some packages don't have explicit config definitions (e.g. are used only in i3 keybindings)
     packages = with pkgs; [
       asciinema
+      betterlockscreen
       blueman
       curl
       cz-cli
       delta
       entr
+      feh # Required by betterlockscreen
       fish
       fzf
       gimp
       go_1_17
       htop
       hugo
+      i3
       jq
       kazam
       moreutils
