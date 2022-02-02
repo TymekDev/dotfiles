@@ -8,6 +8,7 @@
     # List of packages not defined down below
     # NOTE: some packages don't have explicit config definitions (e.g. are used only in i3 keybindings)
     packages = with pkgs; [
+      autorandr
       asciinema
       betterlockscreen
       blueman
@@ -327,9 +328,9 @@
       };
       startup = [
         { command = "nm-applet"; notification = false; }
-        { command = "${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --primary"; notification = false; }
         { command = "${pkgs.betterlockscreen}/bin/betterlockscreen --wall"; notification = false; }
         { command = "${pkgs.flameshot}/bin/flameshot"; notification = false; }
+        { command = "${pkgs.autorandr}/bin/autorandr --change"; notification = false; }
       ];
       window = {
         commands = [
