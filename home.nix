@@ -17,6 +17,7 @@
       delta
       entr
       feh # Required by betterlockscreen
+      firefox
       fish
       fzf
       gimp
