@@ -16,6 +16,7 @@
       cz-cli
       delta
       entr
+      fd
       feh # Required by betterlockscreen
       firefox
       fish
