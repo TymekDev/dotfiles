@@ -21,3 +21,6 @@ set tabstop=2 softtabstop=2
 set ttimeoutlen=100
 set undofile
 set updatetime=50
+
+" R
+let r_indent_align_args = 0
