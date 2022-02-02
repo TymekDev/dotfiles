@@ -72,6 +72,7 @@
         gca  = "git commit --amend --no-edit";
         gcae = "git commit --amend";
         gcam = "git commit -am";
+        gcb  = "git checkout -b";
         gcm  = "git commit -m";
         gco  = "git checkout";
         gcp  = "git cherry-pick";
