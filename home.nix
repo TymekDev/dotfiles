@@ -267,15 +267,17 @@
     };
   };
 
-  xdg.dataFile = {
-    "git/template" = {
-      source = ./share/git/template;
-      recursive = true;
-    };
+  xdg = {
+    dataFile = {
+      "git/template" = {
+        source = ./share/git/template;
+        recursive = true;
+      };
 
-    "wallpaper.jpg" = {
-      source = ./share/wallpaper.jpg;
-      onChange = "${pkgs.betterlockscreen}/bin/betterlockscreen --update ${config.xdg.dataFile."wallpaper.jpg".target} --fx dimblur";
+      "wallpaper.jpg" = {
+        source = ./share/wallpaper.jpg;
+        onChange = "${pkgs.betterlockscreen}/bin/betterlockscreen --update ${config.xdg.dataFile."wallpaper.jpg".target} --fx dimblur";
+      };
     };
   };
 
