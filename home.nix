@@ -268,6 +268,12 @@
   };
 
   xdg = {
+    configFile = {
+      "rofi/slate.rasi" = {
+        source = ./.config/rofi/slate.rasi;
+      };
+    };
+
     dataFile = {
       "git/template" = {
         source = ./share/git/template;
