@@ -151,6 +151,8 @@
         credential.helper = "store";
         init.templateDir = "~/${config.xdg.dataFile."git/template".target}";
         pull.rebase = false;
+        remote.origin.fetch = "+refs/heads/*:refs/remotes/origin/*";
+        worktree.guessRemote = true;
       };
     };
 
