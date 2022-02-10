@@ -88,6 +88,7 @@
         gm   = "git merge";
         gp   = "git push";
         gs   = "git status";
+        gwt  = "git worktree";
 
         sv = "sudo vim";
       };
