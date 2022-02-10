@@ -233,6 +233,7 @@
           plugin = quick-scope;
           config = ''
             let g:qs_hi_priority = 20
+            let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
           '';
         }
         {
