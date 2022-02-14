@@ -108,6 +108,20 @@
       enable = true;
       userName = "Tymoteusz Makowski";
       aliases = {
+        # [c]lone [b]are
+        cb = builtins.replaceStrings ["\n"] [""] ''
+          ! f() {
+            URL="''${1:?missing URL}";
+            NAME="`echo $URL | sed 's/.*\/// ; s/\.git$//'`";
+            if [ $# -ge 1 ]; then
+              shift 1;
+            fi;
+            git clone --bare $URL $NAME $@;
+            git -C $NAME config --local remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*";
+            git -C $NAME fetch
+          };
+          f
+        '';
         # [d]iff [c]ommit
         dc = "! f() { REF=\${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f";
         # [d]elete [m]erged
@@ -151,7 +165,7 @@
         credential.helper = "store";
         init.templateDir = "~/${config.xdg.dataFile."git/template".target}";
         pull.rebase = false;
-        remote.origin.fetch = "+refs/heads/*:refs/remotes/origin/*";
+        # remote.origin.fetch = "+refs/heads/*:refs/remotes/origin/*";
         worktree.guessRemote = true;
       };
     };
