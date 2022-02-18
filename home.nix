@@ -118,7 +118,7 @@
             fi;
             git clone --bare $URL $NAME $@;
             git -C $NAME config --local remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*";
-            git -C $NAME fetch
+            git -C $NAME fetch;
           };
           f
         '';
