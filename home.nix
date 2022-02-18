@@ -32,6 +32,7 @@
       kazam
       moreutils
       mpv
+      neovim
       ncdu
       pandoc
       pavucontrol
@@ -50,7 +51,7 @@
       # steam
     ];
     sessionVariables = {
-      EDITOR = "vim";
+      EDITOR = "nvim";
     };
   };
 
@@ -90,11 +91,12 @@
         gs   = "git status";
         gwt  = "git worktree";
 
-        sv = "sudo vim";
+        sv = "sudo nvim";
       };
       shellAliases = {
-        g  = "git";
-        v = "vim";
+        g = "git";
+        v = "nvim";
+        nv = "nvim";
       };
       shellInit = ''
         bind \cj accept-autosuggestion execute
@@ -161,7 +163,7 @@
         }
       ];
       extraConfig = {
-        core.editor = "vim";
+        core.editor = "nvim";
         credential.helper = "store";
         init.templateDir = "~/${config.xdg.dataFile."git/template".target}";
         pull.rebase = false;
@@ -208,66 +210,6 @@
         color7 #d4be98
         color15 #d4be98
       '';
-    };
-
-    neovim = {
-      enable = true;
-      extraConfig = with builtins; concatStringsSep "\n" [
-        "${readFile ./nvim/sets.vim}"
-        "${readFile ./nvim/maps.vim}"
-      ];
-      plugins = with pkgs.vimPlugins; [
-        ale
-        fzf-vim
-        supertab
-        tabular
-        vim-commentary
-        vim-easy-align
-        vim-fugitive
-        vim-markdown
-        vim-numbertoggle
-        vim-polyglot
-        vim-repeat
-        vim-surround
-        {
-          plugin = gruvbox-material;
-          config = ''
-            let g:gruvbox_material_diagnostic_line_highlight = 1
-            if has('termguicolors')
-              set termguicolors
-            endif
-            colorscheme gruvbox-material
-            syntax on
-          '';
-        }
-        {
-          plugin = lightline-vim;
-          config = ''
-            let g:lightline = { 'colorscheme': 'gruvbox_material' }
-          '';
-        }
-        {
-          plugin = quick-scope;
-          config = ''
-            let g:qs_hi_priority = 20
-            let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-          '';
-        }
-        {
-          plugin = vim-gitgutter;
-          config = ''
-            let g:gitgutter_map_keys = 0
-          '';
-        }
-        {
-          plugin = vim-go;
-          config = ''
-            let g:go_fmt_command = 'goimports'
-          '';
-        }
-      ];
-      viAlias = true;
-      vimAlias = true;
     };
 
     rofi = {
