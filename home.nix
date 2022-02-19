@@ -46,14 +46,16 @@
       unzip
       wine
       zip
-      # TODO: install unfree packages
-      # discord
-      # steam
+
+      # Unfree
+      discord
     ];
     sessionVariables = {
       EDITOR = "nvim";
     };
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   programs = {
     home-manager.enable = true;
