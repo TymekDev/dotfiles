@@ -1,7 +1,6 @@
 call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go'
 Plug 'itchyny/lightline.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
