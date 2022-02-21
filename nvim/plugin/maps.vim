@@ -14,14 +14,17 @@ nnoremap gl <C-w>l
 nnoremap gf <C-w>_<C-w>\|
 
 " Tabs
-nnoremap <C-n> :tabnew 
-nnoremap <C-h> :tabprevious<CR>
-nnoremap <C-l> :tabnext<CR>
+nnoremap <C-n> <Cmd>tabnew 
+nnoremap <C-h> <Cmd>tabprevious<CR>
+nnoremap <C-l> <Cmd>tabnext<CR>
+
+" Quickfix List
+nnoremap <C-j> <Cmd>cnext<CR>
+nnoremap <C-k> <Cmd>cprev<CR>
 
 " Misc
-nmap <Leader>h :set hlsearch!<CR>
-nmap <Leader><CR> :source $MYVIMRC<CR>
-
+nmap <Leader>h <Cmd>set hlsearch!<CR>
+nmap <Leader><CR> <Cmd>source $MYVIMRC<CR>
 
 " quick-scope
 nmap <Leader>q <Plug>(QuickScopeToggle)
