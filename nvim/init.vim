@@ -1,7 +1,6 @@
 call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go'
 Plug 'itchyny/lightline.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -16,9 +15,15 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 
+" Neovim exclusive
+Plug 'neovim/nvim-lspconfig'
+
 call plug#end()
 
 
+" ----------------------------------------------------------------------------
+"  Plugin setup
+" ----------------------------------------------------------------------------
 " airblade/vim-gitgutter
 let g:gitgutter_map_keys = 0
 
@@ -50,3 +55,9 @@ syntax on
 " unblevable/quick-scope
 let g:qs_hi_priority = 20
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+
+" ----------------------------------------------------------------------------
+"  Lua
+" ----------------------------------------------------------------------------
+lua require("init")
