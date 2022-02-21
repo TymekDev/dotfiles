@@ -32,7 +32,6 @@
       kazam
       moreutils
       mpv
-      neovim
       ncdu
       pandoc
       pavucontrol
