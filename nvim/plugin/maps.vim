@@ -18,6 +18,9 @@ nnoremap <C-n> <Cmd>tabnew
 nnoremap <C-h> <Cmd>tabprevious<CR>
 nnoremap <C-l> <Cmd>tabnext<CR>
 
+" Quickfix List
+nnoremap <C-j> <Cmd>cnext<CR>
+nnoremap <C-k> <Cmd>cprev<CR>
 
 " Misc
 nmap <Leader>h <Cmd>set hlsearch!<CR>
