@@ -14,7 +14,7 @@ nnoremap gl <C-w>l
 nnoremap gf <C-w>_<C-w>\|
 
 " Tabs
-nnoremap <C-n> <Cmd>tabnew 
+nnoremap <C-n> :tabnew 
 nnoremap <C-h> <Cmd>tabprevious<CR>
 nnoremap <C-l> <Cmd>tabnext<CR>
 
