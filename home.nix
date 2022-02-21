@@ -36,7 +36,6 @@
       pandoc
       pavucontrol
       python3
-      rWrapper
       ripgrep
       sqlite
       tdesktop
