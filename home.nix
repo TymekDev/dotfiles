@@ -100,8 +100,8 @@
       shellInit = ''
         bind \cj accept-autosuggestion execute
         bind \ck forward-word
-        fish_add_path \$HOME/.local/bin
-        fish_add_path \$HOME/.tarsnap/bin
+        fish_add_path $HOME/.local/bin
+        fish_add_path $HOME/.tarsnap/bin
       '';
     };
 
