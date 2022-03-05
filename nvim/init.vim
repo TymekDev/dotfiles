@@ -35,10 +35,6 @@ call plug#end()
 let g:gitgutter_map_keys = 0
 
 
-" fatih/vim-go
-let g:go_fmt_command = 'goimports'
-
-
 " itchyny/lightline.vim
 let g:lightline = {
   \   'colorscheme': 'gruvbox_material',
