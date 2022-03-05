@@ -15,6 +15,17 @@ require('lspconfig').gopls.setup{
   end,
 }
 
+-- CSS
+require('lspconfig').stylelint_lsp.setup{
+  capabilities = capabilities,
+}
+
+-- HTML
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig').html.setup{
+  capabilities = capabilities,
+}
+
 
 -- Setup nvim-cmp
 vim.opt.completeopt={"menu", "menuone", "noselect"}
