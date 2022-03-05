@@ -35,7 +35,6 @@
       ncdu
       pandoc
       pavucontrol
-      python3
       ripgrep
       sqlite
       tdesktop
