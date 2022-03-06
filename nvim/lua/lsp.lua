@@ -1,9 +1,14 @@
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local addFormatAutocmd = function()
+  vim.api.nvim_command('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+end
+
 
 -- CSS
 require('lspconfig').stylelint_lsp.setup{
   capabilities = capabilities,
+  on_attach = addFormatAutocmd,
   settings = {
     stylelintplus = {
       autoFixOnFormat = true,
@@ -16,6 +21,7 @@ require('lspconfig').stylelint_lsp.setup{
 require('lspconfig').gopls.setup{
   capabilities = capabilities,
   on_attach = function()
+    addFormatAutocmd()
     -- TODO: explore what other options `vim.lsp.` offers
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, {buffer=0})
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {buffer=0})
@@ -35,4 +41,5 @@ require('lspconfig').gopls.setup{
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig').html.setup{
   capabilities = capabilities,
+  on_attach = addFormatAutocmd,
 }
