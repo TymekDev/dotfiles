@@ -1,4 +1,5 @@
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local addFormatAutocmd = function()
   vim.api.nvim_command('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
@@ -37,8 +38,6 @@ require('lspconfig').gopls.setup{
 
 
 -- HTML
--- NOTE: I am not sure if this should be last as it alters capabilities
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig').html.setup{
   capabilities = capabilities,
   on_attach = addFormatAutocmd,
