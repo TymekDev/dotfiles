@@ -24,8 +24,11 @@ nnoremap <C-k> <Cmd>cprev<CR>
 
 " Misc
 nmap <Leader>h <Cmd>set hlsearch!<CR>
-nmap <Leader>y "+y
 nmap <Leader><CR> <Cmd>source $MYVIMRC<CR>
+
+" Yanking
+nmap <Leader>y "+y
+nmap <Leader><Leader>y <Cmd>%y+<CR>
 
 " quick-scope
 nmap <Leader>q <Plug>(QuickScopeToggle)
