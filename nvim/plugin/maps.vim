@@ -26,9 +26,11 @@ nnoremap <C-k> <Cmd>cprev<CR>
 nmap <Leader>h <Cmd>set hlsearch!<CR>
 nmap <Leader><CR> <Cmd>source $MYVIMRC<CR>
 
-" Yanking
+" Yanking and pasting
 nmap <Leader>y "+y
 nmap <Leader><Leader>y <Cmd>%y+<CR>
+nmap <Leader>p "+p
+nmap <Leader>P "+P
 
 " quick-scope
 nmap <Leader>q <Plug>(QuickScopeToggle)
