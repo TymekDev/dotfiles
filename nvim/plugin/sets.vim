@@ -17,6 +17,8 @@ set sidescrolloff=5
 set signcolumn=yes
 set smartindent
 set spelllang=en,pl
+set splitbelow
+set splitright
 set tabstop=2 softtabstop=2
 set ttimeoutlen=100
 set undofile
