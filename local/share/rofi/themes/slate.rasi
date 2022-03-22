@@ -1,5 +1,3 @@
-/* Source: https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/slate.rasi */
-
 * {
   background-color: #282C33;
   border-color: #2e343f;
