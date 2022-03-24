@@ -1,6 +1,6 @@
-@theme "slate"
-
 configuration {
   disable-history: true;
   sort: true;
 }
+
+@theme "slate"
