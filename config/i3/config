@@ -106,6 +106,7 @@ bindsym $mod+r mode "resize"
 
 
 # Window specific behavior -----------------------------------------------------
+for_window [class="^.*"] border pixel 1
 for_window [class="Steam"] floating enable
 
 
