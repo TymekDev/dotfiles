@@ -139,9 +139,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # System shutdown
 bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'Do you want shutdown system?' -B 'Yes, shutdown system' 'systemctl poweroff'"
 
-# Lock screen
-bindsym $mod+BackSpace exec betterlockscreen -l dimblur
-
 
 # Customization settings -------------------------------------------------------
 font pango:JetBrains Mono 12
