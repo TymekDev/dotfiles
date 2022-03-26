@@ -1,5 +1,3 @@
-require("lsp")
-
 -- Setup nvim-cmp
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 

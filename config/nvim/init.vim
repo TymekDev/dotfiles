@@ -64,3 +64,4 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 "  Lua
 " ----------------------------------------------------------------------------
 lua require("init")
+lua require("lsp")
