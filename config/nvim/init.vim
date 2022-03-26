@@ -1,6 +1,7 @@
 call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
+Plug 'cohama/lexima.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -33,6 +34,16 @@ call plug#end()
 " ----------------------------------------------------------------------------
 " airblade/vim-gitgutter
 let g:gitgutter_map_keys = 0
+
+
+" cohama/lexima.vim
+" See: https://github.com/cohama/lexima.vim/issues/129#issuecomment-1028725217
+call lexima#add_rule({'char': '(', 'at': '\%#\S\|\S\%#'})
+call lexima#add_rule({'char': '[', 'at': '\%#\S\|\S\%#'})
+call lexima#add_rule({'char': '{', 'at': '\%#\S\|\S\%#'})
+call lexima#add_rule({'char': '"', 'at': '\%#\S\|\S\%#'})
+call lexima#add_rule({'char': "'", 'at': '\%#\S\|\S\%#'})
+call lexima#add_rule({'char': '`', 'at': '\%#\S\|\S\%#'})
 
 
 " itchyny/lightline.vim

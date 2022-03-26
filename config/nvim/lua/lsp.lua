@@ -42,3 +42,9 @@ require("lspconfig").html.setup{
   capabilities = capabilities,
   on_attach = addFormatAutocmd,
 }
+
+
+-- R
+require("lspconfig").r_language_server.setup{
+  capabilities = capabilities,
+}
