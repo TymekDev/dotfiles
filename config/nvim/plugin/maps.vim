@@ -32,6 +32,9 @@ nmap <Leader><Leader>y <Cmd>%y+<CR>
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 
+" fzf.vim
+nnoremap <C-p> <Cmd>Files<CR>
+
 " quick-scope
 nmap <Leader>q <Plug>(QuickScopeToggle)
 xmap <Leader>q <Plug>(QuickScopeToggle)
