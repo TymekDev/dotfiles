@@ -32,6 +32,9 @@ nmap <Leader><Leader>y <Cmd>%y+<CR>
 nmap <Leader>p "+p
 nmap <Leader>P "+P
 
+" goyo.vim
+nnoremap <Leader>G <Cmd>Goyo<CR>
+
 " fzf.vim
 nnoremap <C-p> <Cmd>Files<CR>
 
