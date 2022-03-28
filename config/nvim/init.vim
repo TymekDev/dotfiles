@@ -69,7 +69,8 @@ function! s:goyo_enter()
   set noshowcmd
   set scrolloff=999
   Limelight
-  " ...
+  set number
+  set relativenumber
 endfunction
 
 function! s:goyo_leave()
@@ -79,9 +80,8 @@ function! s:goyo_leave()
   endif
   set showmode
   set showcmd
-  set scrolloff=5
+  set scrolloff=8
   Limelight!
-  " ...
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
