@@ -33,7 +33,8 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 
 " goyo.vim
-nnoremap <Leader>G <Cmd>Goyo<CR>
+nnoremap <Leader>G <Cmd>Goyo \| set number relativenumber<CR>
+nnoremap <Leader><Leader>G <Cmd>Goyo<CR>
 
 " fzf.vim
 nnoremap <C-p> <Cmd>Files<CR>

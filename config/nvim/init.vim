@@ -69,8 +69,6 @@ function! s:goyo_enter()
   set noshowcmd
   set scrolloff=999
   Limelight
-  set number
-  set relativenumber
 endfunction
 
 function! s:goyo_leave()
