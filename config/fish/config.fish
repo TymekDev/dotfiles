@@ -28,6 +28,7 @@ alias nv nvim
 
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
+bind \cp "nvim +:Files"
 
 set -x EDITOR nvim
 
