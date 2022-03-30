@@ -2,7 +2,7 @@
 
 
 ## Setup
-1. Clone this repository: `git clone --recurse-submodules git@github.com:tmakowski/dotfiles`
+1. Clone this repository: `git clone --recurse-submodules git@github.com:TymekDev/dotfiles`
 1. Run `make` to restow config files
 1. [Install Neovim from source]
 1. [Install vim-plug] and run `:PlugInstall` in Neovim
