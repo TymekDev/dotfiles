@@ -37,6 +37,7 @@
   theme = "gruvbox-dark"
 
 [init]
+  defaultBranch = main
   templateDir = "~/.local/share/git/template"
 
 [pull]
