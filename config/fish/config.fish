@@ -26,6 +26,7 @@ alias g  git
 alias r  radian
 alias nv nvim
 
+bind \cf "tmux-sessionizer"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
 bind \cp "nvim +:Files"
