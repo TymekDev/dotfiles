@@ -1,0 +1,8 @@
+bash
+css
+golang
+html
+javascript
+r
+sass
+tmux
