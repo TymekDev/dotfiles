@@ -3,6 +3,10 @@
 selected=$(fd --type directory --exact-depth 1 . ~ ~/personal ~/work 2>/dev/null | fzf)
 selected_name=$(basename "$selected" | tr . _)
 
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
 if  [[ -z $(pgrep tmux) ]]; then
     tmux new-session -s $selected_name -c $selected
     exit 0
