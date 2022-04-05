@@ -27,7 +27,7 @@ alias r  radian
 alias nv nvim
 
 bind \ca accept-autosuggestion
-bind \cf "stty sane; tmux-sessionizer"
+bind \cs "stty sane; tmux-sessionizer"
 bind \cg "stty sane; nvim +Git +only"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word

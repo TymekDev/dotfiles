@@ -25,7 +25,7 @@ nnoremap <C-k> <Cmd>cprev<CR>
 " Misc
 nmap <Leader>h <Cmd>set hlsearch!<CR>
 nmap <Leader><CR> <Cmd>source $MYVIMRC<CR>
-nnoremap <silent> <C-f> <Cmd>silent !tmux neww tmux-sessionizer<CR>
+nnoremap <silent> <C-s> <Cmd>silent !tmux neww tmux-sessionizer<CR>
 nnoremap <silent> <C-_> <Cmd>silent !tmux neww tmux-cht.sh<CR>
 
 " Yanking and pasting
