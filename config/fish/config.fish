@@ -27,12 +27,12 @@ alias r  radian
 alias nv nvim
 
 bind \ca accept-autosuggestion
-bind \cf "tmux-sessionizer"
-bind \cg "nvim +Git +only"
+bind \cf "stty sane; tmux-sessionizer"
+bind \cg "stty sane; nvim +Git +only"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
-bind \cp "nvim +:Files"
-bind \c_ "tmux-cht.sh"
+bind \cp "stty sane; nvim +Files"
+bind \c_ "stty sane; tmux-cht.sh"
 
 set -x EDITOR nvim
 
