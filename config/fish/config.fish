@@ -26,7 +26,6 @@ alias g  git
 alias r  radian
 alias nv nvim
 
-bind \ca accept-autosuggestion
 bind \cs "stty sane; tmux-sessionizer"
 bind \cg "stty sane; nvim +Git +only"
 bind \cj accept-autosuggestion execute
