@@ -1,3 +1,5 @@
+local lspconfig = require("lspconfig")
+
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -7,7 +9,7 @@ end
 
 
 -- CSS
-require("lspconfig").stylelint_lsp.setup{
+lspconfig.stylelint_lsp.setup{
   capabilities = capabilities,
   on_attach = addFormatAutocmd,
   settings = {
@@ -19,7 +21,7 @@ require("lspconfig").stylelint_lsp.setup{
 
 
 -- Golang
-require("lspconfig").gopls.setup{
+lspconfig.gopls.setup{
   capabilities = capabilities,
   on_attach = function()
     addFormatAutocmd()
@@ -38,14 +40,14 @@ require("lspconfig").gopls.setup{
 
 
 -- HTML
-require("lspconfig").html.setup{
+lspconfig.html.setup{
   capabilities = capabilities,
   on_attach = addFormatAutocmd,
 }
 
 
 -- R
-require("lspconfig").r_language_server.setup{
+lspconfig.r_language_server.setup{
   capabilities = capabilities,
   on_attach = addFormatAutocmd,
 }
