@@ -19,6 +19,9 @@ local on_attach = function(client)
   -- TODO: add rename
 end
 
+lspconfig.eslint.setup{
+  capabilities = capabilities,
+}
 
 -- Golang
 lspconfig.gopls.setup{
