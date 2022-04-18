@@ -50,3 +50,14 @@ lspconfig.r_language_server.setup{
   capabilities = capabilities,
   on_attach = on_attach,
 }
+
+
+-- null-ls
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  on_attach = on_attach,
+  sources = {
+    null_ls.builtins.formatting.prettier,
+  },
+})
