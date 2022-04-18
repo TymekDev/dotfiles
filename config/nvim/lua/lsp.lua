@@ -19,28 +19,10 @@ local on_attach = function(client)
   -- TODO: add rename
 end
 
-lspconfig.eslint.setup{
-  capabilities = capabilities,
-}
-
--- Golang
-lspconfig.gopls.setup{
-  capabilities = capabilities,
-}
-
-
--- HTML
-lspconfig.html.setup{
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
-
--- R
-lspconfig.r_language_server.setup{
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+lspconfig.eslint.setup{capabilities=capabilities}
+lspconfig.gopls.setup{capabilities=capabilities}
+lspconfig.html.setup{capabilities=capabilities,on_attach=on_attach}
+lspconfig.r_language_server.setup{capabilities=capabilities,on_attach=on_attach}
 
 
 -- null-ls
