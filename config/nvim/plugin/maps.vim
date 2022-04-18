@@ -28,6 +28,12 @@ nmap <Leader><CR> <Cmd>source $MYVIMRC<CR>
 nnoremap <silent> <C-s> <Cmd>silent !tmux neww tmux-sessionizer<CR>
 nnoremap <silent> <C-_> <Cmd>silent !tmux neww tmux-cht.sh<CR>
 
+nnoremap J mzJ`z
+nnoremap <Leader>j :m .+1<CR>==
+nnoremap <Leader>k :m .-2<CR>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " Yanking and pasting
 nmap <Leader>y "+y
 nmap <Leader><Leader>y <Cmd>%y+<CR>
