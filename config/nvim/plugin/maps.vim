@@ -37,14 +37,13 @@ vnoremap <Leader>k :m '<-2<CR>gv=gv
 " Yanking and pasting
 nmap <Leader>y "+y
 nmap <Leader><Leader>y <Cmd>%y+<CR>
-nmap <Leader>p "+p
-nmap <Leader>P "+P
 
 " goyo.vim
 nnoremap <Leader>G <Cmd>Goyo<CR>
 
 " fzf.vim
-nnoremap <C-p> <Cmd>Files<CR>
+nnoremap <C-p> <Cmd>GFiles<CR>
+nnoremap <Leader><C-p> <Cmd>Files<CR>
 
 " quick-scope
 nmap <Leader>q <Plug>(QuickScopeToggle)
