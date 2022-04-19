@@ -30,7 +30,7 @@ bind \cs "stty sane; tmux-sessionizer"
 bind \cg "stty sane; nvim +Git +only"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
-bind \cp "stty sane; nvim +Files"
+bind \cp "stty sane; nvim +GFiles"
 bind \c_ "stty sane; tmux-cht.sh"
 
 set -x EDITOR nvim
