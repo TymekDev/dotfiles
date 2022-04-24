@@ -12,6 +12,7 @@ local on_attach = function(client)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0})
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0})
+  vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, {buffer=0})
   -- TODO: explore what other options `vim.diagnostic.` offers
   vim.keymap.set("n", "<Leader>k", vim.diagnostic.goto_prev, {buffer=0})
   vim.keymap.set("n", "<Leader>j", vim.diagnostic.goto_next, {buffer=0})
@@ -19,7 +20,6 @@ local on_attach = function(client)
   -- TODO: add rename
 end
 
-lspconfig.eslint.setup{capabilities=capabilities}
 lspconfig.gopls.setup{capabilities=capabilities}
 lspconfig.html.setup{capabilities=capabilities,on_attach=on_attach}
 lspconfig.r_language_server.setup{capabilities=capabilities,on_attach=on_attach}
@@ -32,9 +32,11 @@ local nls_formatting = null_ls.builtins.formatting
 null_ls.setup({
   on_attach = on_attach,
   sources = {
+    null_ls.builtins.code_actions.eslint,
+    null_ls.builtins.diagnostics.eslint,
     nls_formatting.gofmt,
     nls_formatting.goimports,
     nls_formatting.prettier,
-    nls_formatting.stylelint
+    nls_formatting.stylelint,
   },
 })
