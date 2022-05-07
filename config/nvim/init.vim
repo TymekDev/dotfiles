@@ -93,6 +93,20 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 
 " ----------------------------------------------------------------------------
+"  Other
+" ----------------------------------------------------------------------------
+" Validate HTML with https://validator.w3.org
+" FIXME: open the list only if it is non-empty
+augroup Validator
+  autocmd!
+  autocmd BufWritePost *.html call setqflist([], 'r', {
+    \   'lines': systemlist('curl -sH "Content-Type: text/html; charset=utf-8" --data-binary @'..expand('%')..' "https://validator.w3.org/nu/?out=gnu"'),
+    \   'efm': ':%l.%c-%e.%k: %t%.%#: %m'
+    \ }) | copen
+augroup END
+
+
+" ----------------------------------------------------------------------------
 "  Lua
 " ----------------------------------------------------------------------------
 lua require("init")
