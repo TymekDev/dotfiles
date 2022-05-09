@@ -44,6 +44,7 @@ nnoremap <Leader>G <Cmd>Goyo<CR>
 " fzf.vim
 nnoremap <C-p> <Cmd>GFiles<CR>
 nnoremap <Leader><C-p> <Cmd>Files<CR>
+nnoremap <Leader><C-o> <Cmd>Rg<CR>
 
 " quick-scope
 nmap <Leader>q <Plug>(QuickScopeToggle)
