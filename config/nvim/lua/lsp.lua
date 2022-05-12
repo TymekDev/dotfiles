@@ -14,8 +14,8 @@ local on_attach = function(client)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {buffer=0})
   vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, {buffer=0})
   -- TODO: explore what other options `vim.diagnostic.` offers
-  vim.keymap.set("n", "<Leader>k", vim.diagnostic.goto_prev, {buffer=0})
-  vim.keymap.set("n", "<Leader>j", vim.diagnostic.goto_next, {buffer=0})
+  vim.keymap.set("n", "<Leader>dk", vim.diagnostic.goto_prev, {buffer=0})
+  vim.keymap.set("n", "<Leader>dj", vim.diagnostic.goto_next, {buffer=0})
   vim.keymap.set("n", "<Leader>q", vim.diagnostic.setqflist, {buffer=0})
   -- TODO: add rename
 end
