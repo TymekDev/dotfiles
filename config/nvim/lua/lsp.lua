@@ -20,6 +20,7 @@ local on_attach = function(client)
   -- TODO: add rename
 end
 
+lspconfig.eslint.setup{capabilities=capabilities}
 lspconfig.gopls.setup{capabilities=capabilities}
 lspconfig.html.setup{capabilities=capabilities,on_attach=on_attach}
 lspconfig.r_language_server.setup{capabilities=capabilities,on_attach=on_attach}
