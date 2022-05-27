@@ -18,6 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 
 " Neovim exclusive
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
