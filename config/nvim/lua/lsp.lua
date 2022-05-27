@@ -36,6 +36,7 @@ lspconfig.eslint.setup(config())
 lspconfig.gopls.setup(config())
 lspconfig.html.setup(config())
 lspconfig.r_language_server.setup(config())
+lspconfig.rust_analyzer.setup(config())
 
 
 -- null-ls
