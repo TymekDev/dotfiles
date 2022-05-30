@@ -1,6 +1,5 @@
 local lspconfig = require("lspconfig")
 local null_ls = require("null-ls")
-local nls_formatting = null_ls.builtins.formatting
 
 
 -- Helpers
@@ -32,19 +31,23 @@ end
 
 
 -- LSP
-lspconfig.eslint.setup(config())
+lspconfig.eslint.setup(config({ filetypes = { "javascript", "javascriptreact", "javascript.jsx", "vue" } }))
 lspconfig.gopls.setup(config())
 lspconfig.html.setup(config())
 lspconfig.r_language_server.setup(config())
 lspconfig.rust_analyzer.setup(config())
+lspconfig.tsserver.setup(config({ filetypes = { "typescript", "typescriptreact", "typescript.tsx" } }))
 
 
 -- null-ls
+local nls_diagnostics = null_ls.builtins.diagnostics
+local nls_formatting = null_ls.builtins.formatting
 null_ls.setup({
   on_attach = on_attach(),
   sources = {
     null_ls.builtins.code_actions.eslint,
-    null_ls.builtins.diagnostics.eslint,
+    nls_diagnostics.eslint,
+    nls_diagnostics.tsc,
     nls_formatting.gofmt,
     nls_formatting.goimports,
     nls_formatting.prettier,
