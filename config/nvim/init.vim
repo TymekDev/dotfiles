@@ -28,7 +28,7 @@ Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSInstall all'}
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'windwp/nvim-ts-autotag'
 
