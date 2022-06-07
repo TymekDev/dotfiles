@@ -9,7 +9,12 @@ local function on_attach()
 
   return function(client)
     if client.server_capabilities.documentFormattingProvider then
-      vim.api.nvim_command("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = 0,
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
     end
     -- TODO: explore what other options `vim.lsp.` offers
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
