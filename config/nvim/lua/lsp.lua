@@ -9,7 +9,7 @@ local function on_attach()
 
   return function(client)
     if client.server_capabilities.document_formatting then
-      vim.api.nvim_command("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()")
+      vim.api.nvim_command("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
     end
     -- TODO: explore what other options `vim.lsp.` offers
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
