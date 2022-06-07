@@ -42,11 +42,15 @@ cmp.setup({
     ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), {"i", "c"}),
   },
   sources = cmp.config.sources({
-    { name = "nvim_lsp" },
     { name = "luasnip" },
+    { name = "nvim_lsp" },
     { name = "buffer" },
   })
 })
+
+
+-- Snippets
+require("luasnip.loaders.from_vscode").lazy_load()
 
 
 -- Setup nvim-treesitter
