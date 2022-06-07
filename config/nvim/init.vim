@@ -29,6 +29,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSInstall all'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'windwp/nvim-ts-autotag'
 
