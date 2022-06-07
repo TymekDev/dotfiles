@@ -8,7 +8,7 @@ local function on_attach()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   return function(client)
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.documentFormattingProvider then
       vim.api.nvim_command("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
     end
     -- TODO: explore what other options `vim.lsp.` offers
