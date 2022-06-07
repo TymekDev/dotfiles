@@ -7,8 +7,10 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/gv.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'rust-lang/rust.vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
@@ -17,21 +19,30 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 
-" Neovim exclusive
+" Common
+Plug 'nvim-lua/plenary.nvim'
+Plug 'numToStr/Comment.nvim'
+
+" Treesitter
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-Plug 'L3MON4D3/LuaSnip'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSInstall all'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'windwp/nvim-ts-autotag'
+
+" LSP
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'neovim/nvim-lspconfig'
+
+" cmp
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'numToStr/Comment.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSInstall all'}
-Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'windwp/nvim-ts-autotag'
+
+" Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'rafamadriz/friendly-snippets'
 
 call plug#end()
 
