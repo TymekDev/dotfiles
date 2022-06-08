@@ -1,5 +1,6 @@
 call plug#begin()
 
+Plug 'AndrewRadev/switch.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'cohama/lexima.vim'
 Plug 'itchyny/lightline.vim'
@@ -51,6 +52,20 @@ call plug#end()
 " ----------------------------------------------------------------------------
 "  Plugin setup
 " ----------------------------------------------------------------------------
+" AndrewRadev/switch.vim
+let g:switch_custom_definitions = [
+      \   " snake_case <-> camelCase
+      \   {
+      \     '\<[a-z0-9]\+_\k\+\>': {
+      \       '_\(.\)': '\U\1'
+      \     },
+      \     '\<[a-z0-9]\+[A-Z]\k\+\>': {
+      \       '\([A-Z]\)': '_\l\1'
+      \     },
+      \   }
+      \ ]
+
+
 " airblade/vim-gitgutter
 let g:gitgutter_map_keys = 0
 
