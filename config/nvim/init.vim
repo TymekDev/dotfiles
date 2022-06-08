@@ -54,7 +54,6 @@ call plug#end()
 " ----------------------------------------------------------------------------
 " AndrewRadev/switch.vim
 let g:switch_custom_definitions = [
-      \   " snake_case <-> camelCase
       \   {
       \     '\<[a-z0-9]\+_\k\+\>': {
       \       '_\(.\)': '\U\1'
@@ -68,16 +67,6 @@ let g:switch_custom_definitions = [
 
 " airblade/vim-gitgutter
 let g:gitgutter_map_keys = 0
-
-
-" cohama/lexima.vim
-" See: https://github.com/cohama/lexima.vim/issues/129#issuecomment-1028725217
-call lexima#add_rule({'char': '(', 'at': '\%#\S\{-1,})'})
-call lexima#add_rule({'char': '[', 'at': '\%#\S\{-1,}]'})
-call lexima#add_rule({'char': '{', 'at': '\%#\S\{-1,}}'})
-call lexima#add_rule({'char': '"', 'at': '"\S\{-1,}\%#\|\%#\S\{-1,}"'})
-call lexima#add_rule({'char': "'", 'at': "'\S\{-1,}\%#\|\%#\S\{-1,}'"})
-call lexima#add_rule({'char': '`', 'at': '`\S\{-1,}\%#\|\%#\S\{-1,}`'})
 
 
 " itchyny/lightline.vim
