@@ -4,5 +4,6 @@ golang
 html
 javascript
 r
+rust
 sass
 tmux
