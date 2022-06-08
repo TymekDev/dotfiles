@@ -110,6 +110,11 @@ let g:qs_hi_priority = 20
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 
+" nvim-treesitter/nvim-treesitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
+
 " ----------------------------------------------------------------------------
 "  Other
 " ----------------------------------------------------------------------------
