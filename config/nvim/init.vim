@@ -76,7 +76,7 @@ let g:lightline = {
   \ }
 
 
-" Plug 'junegunn/goyo.vim'
+" junegunn/goyo.vim
 let g:goyo_width = 85
 let g:goyo_linenr = 1
 
