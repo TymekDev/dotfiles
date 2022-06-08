@@ -39,6 +39,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'

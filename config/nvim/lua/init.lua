@@ -21,6 +21,14 @@ require("Comment").setup{
 -- Setup nvim-cmp
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 
+
+local source_mapping = {
+  buffer = "[Buf]",
+  nvim_lsp = "[LSP]",
+  cmp_tabnine = "[TN]",
+  path = "[Path]",
+}
+
 local cmp = require("cmp")
 cmp.setup({
   snippet = {
@@ -41,7 +49,21 @@ cmp.setup({
     ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), {"i", "c"}),
     ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), {"i", "c"}),
   },
+  formatting = {
+    format = function(entry, vim_item)
+      local menu = source_mapping[entry.source.name]
+      -- Add prediction %
+      if entry.source.name == "cmp_tabnine" then
+        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+          menu = entry.completion_item.data.detail .. " " .. menu
+        end
+      end
+      vim_item.menu = menu
+      return vim_item
+    end,
+  },
   sources = cmp.config.sources({
+    { name = "cmp_tabnine" },
     { name = "luasnip" },
     { name = "nvim_lsp" },
     { name = "buffer" },
