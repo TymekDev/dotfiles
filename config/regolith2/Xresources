@@ -1,3 +1,4 @@
 # i3 splits are not like Vim splits. Let's make them behave like Vim splits.
 i3-wm.binding.split_h: $mod+v
 i3-wm.binding.split_v: $mod+s
+i3-wm.gaps.focus_follows_mouse: yes
