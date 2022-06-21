@@ -2,3 +2,4 @@
 i3-wm.binding.split_h: $mod+v
 i3-wm.binding.split_v: $mod+s
 i3-wm.gaps.focus_follows_mouse: yes
+i3xrocks.date.format2: %Y-%m-%d %H:%M
