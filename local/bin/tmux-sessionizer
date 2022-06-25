@@ -1,6 +1,6 @@
 #!/bin/bash
 
-selected=$(fd --type directory --exact-depth 1 . ~ ~/personal ~/personal/frontendmasters ~/personal/playground ~/personal/zadanka ~/work 2>/dev/null | fzf)
+selected=$(find ~ ~/personal ~/personal/frontendmasters ~/personal/playground ~/personal/zadanka ~/work -maxdepth 1 -mindepth 1 -type d 2>/dev/null | fzf)
 selected_name=$(basename "$selected" | tr . _)
 
 if [[ -z $selected ]]; then
