@@ -20,6 +20,7 @@ abbr --add glg  git log
 abbr --add gm   git merge
 abbr --add gp   git push
 abbr --add gs   git status
+abbr --add gsw  git switch
 abbr --add gwt  git worktree
 
 alias g  git
