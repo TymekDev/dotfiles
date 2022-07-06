@@ -55,7 +55,7 @@ nmap <Leader>a <Plug>(EasyAlign)
 vmap <Leader>a <Plug>(EasyAlign)
 
 " vim-fugitive
-nmap <C-g> <Cmd>Git<CR>
+nmap <C-g> <Cmd>vert Git<CR>
 nmap <Leader>gf <Cmd>Git fetch<CR>
 nmap <Leader>gp <Cmd>Git push<CR>
 
