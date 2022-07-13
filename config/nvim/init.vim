@@ -86,10 +86,12 @@ let g:goyo_linenr = 1
 
 function! s:goyo_enter()
   Limelight
+  set scrolloff=999
 endfunction
 
 function! s:goyo_leave()
   Limelight!
+  set scrolloff=8
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
