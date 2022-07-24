@@ -10,7 +10,7 @@
 
 
 ## Contact
-If you have any questions feel free to reach out to me at t@makowski.sh.
+If you have any questions feel free to reach out to me at tymek.makowski@gmail.com.
 
 
 ## License
