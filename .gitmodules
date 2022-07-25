@@ -1,3 +1,7 @@
 [submodule "config/kitty/gruvbox-material-kitty"]
 	path = config/kitty/gruvbox-material-kitty
 	url = https://github.com/rsaihe/gruvbox-material-kitty
+[submodule "local/share/jrnl"]
+	path = local/share/jrnl
+	url = git@github.com:TymekDev/jrnl
+	branch = main
