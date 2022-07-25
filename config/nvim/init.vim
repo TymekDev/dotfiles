@@ -129,6 +129,11 @@ augroup Validator
     \ }) | cwindow
 augroup END
 
+augroup jrnl
+  autocmd!
+  autocmd BufReadPost *.jrnl set textwidth=79 colorcolumn=+1
+augroup END
+
 
 " ----------------------------------------------------------------------------
 "  Lua
