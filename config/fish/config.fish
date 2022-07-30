@@ -37,6 +37,7 @@ bind \c_ "stty sane; tmux-cht.sh"
 
 set -x EDITOR nvim
 
+fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.npm-global/bin
 fish_add_path ~/.tarsnap/bin
