@@ -43,9 +43,11 @@
 [merge]
   tool = "nvim"
 
-[mergetool "nvim"]
+[difftool "nvim"]
   cmd = nvim -d -c 'cd "$GIT_PREFIX"' -c 'wincmd l' "$LOCAL" "$REMOTE"
-  layout = "(LOCAL,BASE,REMOTE)/MERGED"
+
+[mergetool "nvim"]
+  cmd = nvim -d -c 'cd "$GIT_PREFIX"' -c 'wincmd J' "$MERGED" "$LOCAL" "$BASE" "$REMOTE"
 
 [pull]
   rebase = false
