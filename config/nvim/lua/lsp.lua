@@ -36,6 +36,7 @@ end
 
 
 -- LSP
+lspconfig.cssls.setup(config())
 lspconfig.eslint.setup(config({ filetypes = { "javascript", "javascriptreact", "javascript.jsx", "vue" } }))
 lspconfig.gopls.setup(config())
 lspconfig.html.setup(config())
