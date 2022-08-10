@@ -29,7 +29,7 @@
   editor = "nvim"
 
 [credential]
-  helper = "store"
+  helper = "cache"
 
 [delta]
   line-numbers = true
