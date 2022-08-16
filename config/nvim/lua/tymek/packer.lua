@@ -1,0 +1,157 @@
+local fn = vim.fn
+local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+  vim.cmd [[packadd packer.nvim]]
+end
+
+return require("packer").startup(function(use)
+  use "wbthomason/packer.nvim"
+
+
+  -- LSP and stuff
+  use {
+    "neovim/nvim-lspconfig",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-path",
+    {
+      "L3MON4D3/LuaSnip",
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    },
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
+  }
+
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = "nvim-lua/plenary.nvim",
+  }
+
+  use {
+    "tzachar/cmp-tabnine",
+    cmd = "./install.sh",
+    opt = true,
+    config = function()
+      require("cmp_tabnine.config").setup({
+        max_lines = 1000,
+        max_num_results = 20,
+        sort = true,
+        run_on_every_keystroke = true,
+        snippet_placeholder = "..",
+      })
+    end,
+  }
+
+
+  -- Treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSInstall all",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = true,
+        },
+      })
+      vim.opt.foldmethod = "expr"
+      vim.opt.foldexpr = "nvimtreesitter#foldexpr()"
+    end,
+  }
+  -- FIXME: make this work
+  -- "nvim-treesitter/nvim-treesitter-context",
+
+
+  -- Git stuff
+  use "junegunn/gv.vim"
+  use "tpope/vim-fugitive"
+
+  use {
+    "airblade/vim-gitgutter",
+    setup = function()
+      vim.g.gitgutter_map_keys = 0
+    end,
+  }
+
+  -- Movements & editing
+  use "cohama/lexima.vim"
+  use "junegunn/vim-easy-align"
+  use "tpope/vim-abolish"
+  use "tpope/vim-repeat"
+  use "tpope/vim-surround"
+
+  use {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  }
+
+  use {
+    "unblevable/quick-scope",
+    config = function()
+      vim.g.qs_hi_priority = 20
+      vim.g.qs_highlight_on_keys = {"f", "F", "t", "T"}
+    end,
+  }
+
+
+  -- Project navigation
+  use {
+    "junegunn/fzf.vim",
+    requires = { "junegunn/fzf", run = ":call fzf#install()" },
+  }
+
+
+  -- UI
+  use "jeffkreeftmeijer/vim-numbertoggle"
+  use "junegunn/limelight.vim"
+
+  use {
+    "arcticicestudio/nord-vim",
+    config = function()
+      if vim.fn.has("termguicolors") == 1 then
+        vim.opt.termguicolors = true
+      end
+      -- Make vim-fugitive diffs less... prominent
+      vim.api.nvim_set_hl(0, "diffAdded", { ctermfg = 2, fg = "#a3be8c" })
+      vim.api.nvim_set_hl(0, "diffRemoved", { ctermfg = 1, fg = "#bf616a" })
+    end,
+  }
+
+  use {
+    "junegunn/goyo.vim",
+    config = function()
+      -- TODO: add mappings
+      vim.g.goyo_width = 85
+      vim.g.goyo_linenr = 1
+    end,
+  }
+
+  use {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("lualine").setup({
+        options = {
+          theme = "nord",
+        },
+      })
+    end,
+  }
+
+
+  -- Others
+  use { "rust-lang/rust.vim", ft = "rust" }
+  use { "tpope/vim-markdown", ft = "markdown" }
+
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require("packer").sync()
+  end
+end)
