@@ -6,6 +6,7 @@ set expandtab
 set history=1000
 set list
 set listchars=tab:>\ ,trail:˽,extends:>,precedes:<,nbsp:+ " Shelf character for trail: <C-v>u02fd
+set mouse=
 set nohlsearch
 set noswapfile
 set nowrap
