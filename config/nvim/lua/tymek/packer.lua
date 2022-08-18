@@ -108,20 +108,11 @@ return require("packer").startup(function(use)
 
 
   -- UI
+  use "arcticicestudio/nord-vim"
   use "jeffkreeftmeijer/vim-numbertoggle"
   use "junegunn/limelight.vim"
-
-  use {
-    "arcticicestudio/nord-vim",
-    config = function()
-      if vim.fn.has("termguicolors") == 1 then
-        vim.opt.termguicolors = true
-      end
-      -- Make vim-fugitive diffs less... prominent
-      vim.api.nvim_set_hl(0, "diffAdded", { ctermfg = 2, fg = "#a3be8c" })
-      vim.api.nvim_set_hl(0, "diffRemoved", { ctermfg = 1, fg = "#bf616a" })
-    end,
-  }
+  use "nvim-lualine/lualine.nvim"
+  use "tjdevries/colorbuddy.nvim"
 
   use {
     "junegunn/goyo.vim",
@@ -129,17 +120,6 @@ return require("packer").startup(function(use)
       -- TODO: add mappings
       vim.g.goyo_width = 85
       vim.g.goyo_linenr = 1
-    end,
-  }
-
-  use {
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup({
-        options = {
-          theme = "nord",
-        },
-      })
     end,
   }
 

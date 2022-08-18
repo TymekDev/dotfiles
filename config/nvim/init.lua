@@ -1,7 +1,5 @@
 require("tymek")
 
-vim.cmd("colorscheme nord")
-
 -- TODO: create a toggleable user command from this
 --[[
 -- Validate HTML with https://validator.w3.org
