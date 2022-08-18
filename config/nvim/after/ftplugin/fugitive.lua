@@ -1,7 +1,5 @@
-local function nnoremap_cmd(lhs, cmd)
-  require("tymek.keymap").nnoremap(lhs, function() vim.cmd(cmd) end, { buffer = 0 })
-end
+local nnoremap = require("tymek.keymap").nnoremap
 
-nnoremap_cmd("<Leader>gf", "Git fetch")
-nnoremap_cmd("<Leader>gl", "Git pull")
-nnoremap_cmd("<Leader>gp", "Git push")
+nnoremap("<Leader>gf", "Git fetch", { cmd = true })
+nnoremap("<Leader>gl", "Git pull", { cmd = true })
+nnoremap("<Leader>gp", "Git push", { cmd = true })
