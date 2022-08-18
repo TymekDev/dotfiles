@@ -4,7 +4,7 @@ o.expandtab = true
 o.history = 1000
 o.hlsearch = false
 o.list = true
-o.listchars:append({ trail = "˽", extends = ">", precedes = "<" })
+o.listchars:append({ trail = "˽", extends = ">", precedes = "<", eol = "↲" })
 o.mouse = nil
 o.number = true
 o.scrolloff = 8
