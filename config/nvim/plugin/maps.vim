@@ -19,8 +19,8 @@ nnoremap <silent> <C-s> <Cmd>silent !tmux neww tmux-sessionizer<CR>
 nnoremap <silent> <C-_> <Cmd>silent !tmux neww tmux-cht.sh<CR>
 
 nnoremap <expr> J 'mz' .. v:count1 .. 'J`z'
-nnoremap <Leader>j :m .+1<CR>==
-nnoremap <Leader>k :m .-2<CR>==
+" nnoremap <Leader>j :m .+1<CR>==
+" nnoremap <Leader>k :m .-2<CR>==
 vnoremap <Leader>j :m '>+1<CR>gv=gv
 vnoremap <Leader>k :m '<-2<CR>gv=gv
 
