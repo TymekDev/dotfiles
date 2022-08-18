@@ -1,4 +1,6 @@
-local nnoremap = require("tymek.keymap").nnoremap
+local function nnoremap(lhs, rhs)
+  require("tymek.keymap").nnoremap(lhs, rhs, { buffer = 0 })
+end
 
 local function on_attach(client)
   if client.server_capabilities.documentFormattingProvider then
