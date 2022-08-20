@@ -14,3 +14,5 @@ nnoremap("<C-h>", "tabprevious", { cmd = true })
 nnoremap("<C-j>", "cnext", { cmd = true })
 nnoremap("<C-k>", "cprev", { cmd = true })
 nnoremap("<C-l>", "tabnext", { cmd = true })
+
+nnoremap("<Leader><C-e>", "Ex", { cmd = true })
