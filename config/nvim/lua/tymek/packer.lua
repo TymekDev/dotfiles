@@ -50,7 +50,8 @@ return require("packer").startup(function(use)
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSInstall all",
+    -- FIXME: replace this with specific languages
+    -- run = ":TSInstall all",
     config = function()
       require("nvim-treesitter.configs").setup({
         highlight = {
