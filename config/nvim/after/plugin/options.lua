@@ -1,5 +1,6 @@
 local o = vim.opt
 
+o.colorcolumn = "+1"
 o.expandtab = true
 o.history = 1000
 o.hlsearch = false
