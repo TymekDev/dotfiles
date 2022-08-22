@@ -4,7 +4,7 @@ end
 
 -- NOTE: colorscheme has to be set before changing highlight groups
 vim.cmd("colorscheme nord")
-require("lualine").setup({ options = { theme = "nord" }})
+require("lualine").setup()
 
 
 -- Overrides
