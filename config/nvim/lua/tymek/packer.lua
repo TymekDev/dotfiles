@@ -116,6 +116,14 @@ return require("packer").startup(function(use)
   use "tjdevries/colorbuddy.nvim"
 
   use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup()
+    end
+  }
+
+  use {
     "junegunn/goyo.vim",
     config = function()
       -- TODO: add mappings
