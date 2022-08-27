@@ -6,9 +6,6 @@ inoremap <C-f> <C-x><C-f>
 inoremap <C-j> <C-x><C-o>
 inoremap <C-l> <C-x><C-n>
 
-" Splits
-nnoremap gf <C-w>_<C-w>\|
-
 " Tabs
 nnoremap <C-n> :tabnew 
 
