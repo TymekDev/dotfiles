@@ -112,7 +112,6 @@ return require("packer").startup(function(use)
   use "arcticicestudio/nord-vim"
   use "jeffkreeftmeijer/vim-numbertoggle"
   use "junegunn/limelight.vim"
-  use "nvim-lualine/lualine.nvim"
   use "tjdevries/colorbuddy.nvim"
 
   use {
@@ -130,6 +129,11 @@ return require("packer").startup(function(use)
       vim.g.goyo_width = 85
       vim.g.goyo_linenr = 1
     end,
+  }
+
+  use {
+    "nvim-lualine/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
 
 
