@@ -139,6 +139,7 @@ return require("packer").startup(function(use)
 
   -- Others
   use { "rust-lang/rust.vim", ft = "rust" }
+  use { "tpope/vim-eunuch" }
   use { "tpope/vim-markdown", ft = "markdown" }
 
 
