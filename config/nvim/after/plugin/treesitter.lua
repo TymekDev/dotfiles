@@ -3,6 +3,9 @@ require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true,
   },
+  playground = {
+    enable = true,
+  },
 })
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvimtreesitter#foldexpr()"
