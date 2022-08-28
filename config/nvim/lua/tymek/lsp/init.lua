@@ -19,9 +19,9 @@ local function on_attach(client)
   nnoremap("<Leader>r", vim.lsp.buf.rename)
   nnoremap("<Leader>ca", vim.lsp.buf.code_action)
 
-  nnoremap("<Leader>dk", vim.diagnostic.goto_prev)
-  nnoremap("<Leader>dj", vim.diagnostic.goto_next)
-  nnoremap("<Leader>q", vim.diagnostic.setqflist)
+  nnoremap("gj", vim.diagnostic.goto_next)
+  nnoremap("gk", vim.diagnostic.goto_prev)
+  nnoremap("gq", vim.diagnostic.setqflist)
 end
 
 
