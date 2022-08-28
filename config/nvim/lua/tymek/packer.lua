@@ -48,21 +48,7 @@ return require("packer").startup(function(use)
 
 
   -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    -- FIXME: replace this with specific languages
-    -- run = ":TSInstall all",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = true,
-        },
-      })
-      vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "nvimtreesitter#foldexpr()"
-    end,
-  }
+  use "nvim-treesitter/nvim-treesitter"
   -- FIXME: make this work
   -- "nvim-treesitter/nvim-treesitter-context",
 
