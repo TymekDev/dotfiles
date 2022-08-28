@@ -50,11 +50,9 @@ return require("packer").startup(function(use)
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/playground",
   }
-  -- FIXME: make this work
-  -- "nvim-treesitter/nvim-treesitter-context",
-
 
   -- Git stuff
   use "junegunn/gv.vim"
