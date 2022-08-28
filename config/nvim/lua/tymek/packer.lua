@@ -119,7 +119,7 @@ return require("packer").startup(function(use)
         dimming = {
           inactive = true,
         },
-        context = 1,
+        context = 0,
       })
     end,
   }
