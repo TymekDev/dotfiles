@@ -45,3 +45,5 @@ cmp.setup({
     { name = "buffer" },
   }),
 })
+
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
