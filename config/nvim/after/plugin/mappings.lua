@@ -16,3 +16,7 @@ nnoremap("<C-k>", "cprev", { cmd = true })
 nnoremap("<C-l>", "tabnext", { cmd = true })
 
 nnoremap("<Leader><C-e>", "Ex", { cmd = true })
+
+
+-- Plugins
+nnoremap("<Leader>T", "Twilight", { cmd = true })

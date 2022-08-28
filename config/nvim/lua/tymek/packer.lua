@@ -111,7 +111,6 @@ return require("packer").startup(function(use)
   -- UI
   use "arcticicestudio/nord-vim"
   use "jeffkreeftmeijer/vim-numbertoggle"
-  use "junegunn/limelight.vim"
   use "tjdevries/colorbuddy.nvim"
 
   use {
@@ -120,6 +119,18 @@ return require("packer").startup(function(use)
     config = function()
       require("todo-comments").setup({
         signs = false,
+      })
+    end,
+  }
+
+  use {
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup({
+        dimming = {
+          inactive = true,
+        },
+        context = 1,
       })
     end,
   }
