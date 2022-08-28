@@ -121,7 +121,7 @@ return require("packer").startup(function(use)
       require("todo-comments").setup({
         signs = false,
       })
-    end
+    end,
   }
 
   use {
