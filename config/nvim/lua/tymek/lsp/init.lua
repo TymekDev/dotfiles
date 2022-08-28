@@ -11,17 +11,17 @@ local function on_attach(client)
       end,
     })
   end
-  -- TODO: explore what other options `vim.lsp.` offers
+
   nnoremap("K", vim.lsp.buf.hover)
   nnoremap("gd", vim.lsp.buf.definition)
   nnoremap("gt", vim.lsp.buf.type_definition)
   nnoremap("gi", vim.lsp.buf.implementation)
+  nnoremap("<Leader>r", vim.lsp.buf.rename)
   nnoremap("<Leader>ca", vim.lsp.buf.code_action)
-  -- TODO: explore what other options `vim.diagnostic.` offers
+
   nnoremap("<Leader>dk", vim.diagnostic.goto_prev)
   nnoremap("<Leader>dj", vim.diagnostic.goto_next)
   nnoremap("<Leader>q", vim.diagnostic.setqflist)
-  -- TODO: add rename
 end
 
 
