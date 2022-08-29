@@ -1,3 +1,4 @@
+-- NOTE: there are also LSP-specifc mappings inside lua/tymek/lsp/init.lua
 local nnoremap = require("tymek.keymap").nnoremap
 
 nnoremap("<Leader>h", "<C-w>h")
