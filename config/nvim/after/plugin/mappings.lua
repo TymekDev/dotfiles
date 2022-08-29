@@ -16,3 +16,10 @@ nnoremap("<Leader><C-g>", "Git", { cmd = true })
 
 nnoremap("<Leader>T", "Twilight", { cmd = true })
 nnoremap("<Leader>K", function() vim.fn.jobstart({ "xdg-open", vim.fn.expand("<cWORD>"):match("https?://.*[^) ]") }) end)
+
+nnoremap("gf", function()
+  vim.cmd({
+    cmd = "edit",
+    args = { vim.fn.expand("%:p:h") .. "/" .. vim.fn.expand("<cfile>") }
+  })
+end)
