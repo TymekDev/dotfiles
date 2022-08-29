@@ -41,9 +41,6 @@ xmap <Leader>q <Plug>(QuickScopeToggle)
 nmap <Leader>a <Plug>(EasyAlign)
 vmap <Leader>a <Plug>(EasyAlign)
 
-" vim-fugitive
-nmap <C-g> <Cmd>Git<CR>
-
 " vim-surround
 nmap <Leader>[ V<Leader>[
 vmap <Leader>[ S{kJl

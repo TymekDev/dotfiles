@@ -12,6 +12,7 @@ nnoremap("<C-k>", "cprev", { cmd = true })
 nnoremap("<C-l>", "tabnext", { cmd = true })
 
 nnoremap("<Leader><C-e>", "Ex", { cmd = true })
+nnoremap("<Leader><C-g>", "Git", { cmd = true })
 
 nnoremap("<Leader>K", function() vim.fn.jobstart({ "xdg-open", vim.fn.expand("<cWORD>"):match("https?://.*[^) ]") }) end)
 
