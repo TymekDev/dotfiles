@@ -118,6 +118,12 @@ return require("packer").startup(function(use)
           inactive = true,
         },
         context = 0,
+        expand = {
+          -- markdown
+          "paragraph",
+          "fenced_code_block",
+          "list",
+        }
       })
     end,
   }
