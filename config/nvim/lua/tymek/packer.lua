@@ -66,7 +66,6 @@ return require("packer").startup(function(use)
   }
 
   -- Movements & editing
-  use "cohama/lexima.vim"
   use "junegunn/vim-easy-align"
   use "tpope/vim-abolish"
   use "tpope/vim-repeat"
@@ -146,7 +145,6 @@ return require("packer").startup(function(use)
   -- Others
   use { "rust-lang/rust.vim", ft = "rust" }
   use { "tpope/vim-eunuch" }
-  use { "tpope/vim-markdown", ft = "markdown" }
 
 
   -- Automatically set up your configuration after cloning packer.nvim
