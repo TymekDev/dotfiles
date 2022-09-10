@@ -1,3 +1,12 @@
 [user]
   name = "Tymoteusz Makowski"
   email = "tymek.makowski@gmail.com"
+
+[sendemail]
+  smtpserver = "smtp.gmail.com"
+  smtpuser = "tymek.makowski@gmail.com"
+  smtpencryption = "tls"
+  smtpserverport = 587
+
+[include]
+  path = "~/.config/git/personal.smtpPass"
