@@ -146,6 +146,21 @@ return require("packer").startup(function(use)
   use { "rust-lang/rust.vim", ft = "rust" }
   use { "tpope/vim-eunuch" }
 
+  use {
+    "nvim-neorg/neorg",
+    config = function()
+        require("neorg").setup({
+          load = {
+            ["core.defaults"] = {},
+            ["core.norg.completion"] = { config = { engine = "nvim-cmp" } },
+            ["core.norg.concealer"] = {},
+            ["core.norg.qol.toc"] = {},
+          },
+        })
+    end,
+    requires = "nvim-lua/plenary.nvim"
+  }
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

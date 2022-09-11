@@ -42,6 +42,7 @@ cmp.setup({
     { name = "cmp_tabnine" },
     { name = "luasnip" },
     { name = "nvim_lsp" },
+    { name = "neorg" },
     { name = "buffer" },
   }),
 })
