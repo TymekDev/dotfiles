@@ -11,7 +11,11 @@ return require("packer").startup(function(use)
 
   -- LSP and stuff
   use {
-    "neovim/nvim-lspconfig",
+    {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+    },
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
@@ -85,6 +89,13 @@ return require("packer").startup(function(use)
     end,
   }
 
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup()
+    end,
+  }
+
 
   -- Project navigation
   use {
@@ -132,6 +143,15 @@ return require("packer").startup(function(use)
       -- TODO: add mappings
       vim.g.goyo_width = 85
       vim.g.goyo_linenr = 1
+    end,
+  }
+
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup({
+        show_current_context = true,
+      })
     end,
   }
 

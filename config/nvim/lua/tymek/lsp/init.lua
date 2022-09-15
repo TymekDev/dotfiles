@@ -25,6 +25,8 @@ local function on_attach(client)
 end
 
 
+require("mason").setup()
+require("mason-lspconfig").setup({ automatic_installation = true })
 require("tymek.lsp.cmp")
 require("tymek.lsp.lspconfig").setup(on_attach)
 require("tymek.lsp.null-ls").setup(on_attach)
