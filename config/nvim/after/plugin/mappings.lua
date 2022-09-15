@@ -1,5 +1,7 @@
 -- NOTE: there are also LSP-specifc mappings inside lua/tymek/lsp/init.lua
 local nnoremap = require("tymek.keymap").nnoremap
+local xnoremap = require("tymek.keymap").xnoremap
+
 
 nnoremap("<Leader>h", "<C-w>h")
 nnoremap("<Leader>j", "<C-w>j")
@@ -10,6 +12,8 @@ nnoremap("<C-h>", "tabprevious", { cmd = true })
 nnoremap("<C-j>", "cnext", { cmd = true, count = true })
 nnoremap("<C-k>", "cprev", { cmd = true, count = true })
 nnoremap("<C-l>", "tabnext", { cmd = true })
+
+xnoremap("<Leader>p", '"_dP')
 
 nnoremap("<Leader><C-e>", "Ex", { cmd = true })
 nnoremap("<Leader><C-g>", "Git", { cmd = true })
