@@ -73,6 +73,7 @@ return require("packer").startup(function(use)
   use "junegunn/vim-easy-align"
   use "tpope/vim-abolish"
   use "tpope/vim-repeat"
+  use "tpope/vim-rsi"
   use "tpope/vim-surround"
 
   use {
