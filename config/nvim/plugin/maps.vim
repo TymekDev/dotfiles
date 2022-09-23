@@ -21,10 +21,6 @@ nnoremap <expr> J 'mz' .. v:count1 .. 'J`z'
 vnoremap <Leader>j :m '>+1<CR>gv=gv
 vnoremap <Leader>k :m '<-2<CR>gv=gv
 
-" Yanking and pasting
-nmap <Leader>y "+y
-nmap <Leader><Leader>y <Cmd>%y+<CR>
-
 " goyo.vim
 nnoremap <Leader>G <Cmd>Goyo<CR>
 

@@ -3,6 +3,7 @@ local nnoremap = require("tymek.keymap").nnoremap
 local xnoremap = require("tymek.keymap").xnoremap
 
 
+-- Movements
 nnoremap("<Leader>h", "<C-w>h")
 nnoremap("<Leader>j", "<C-w>j")
 nnoremap("<Leader>k", "<C-w>k")
@@ -13,11 +14,19 @@ nnoremap("<C-j>", "cnext", { cmd = true, count = true })
 nnoremap("<C-k>", "cprev", { cmd = true, count = true })
 nnoremap("<C-l>", "tabnext", { cmd = true })
 
-xnoremap("<Leader>p", '"_dP')
 
+-- Registers
+xnoremap("<Leader>p", '"_dP') -- don't overwrite paste register
+nnoremap("<Leader>y", '"+y') -- copy to system register
+xnoremap("<Leader>y", '"+y')
+
+
+-- Opens a new buffer
 nnoremap("<Leader><C-e>", "Ex", { cmd = true })
 nnoremap("<Leader><C-g>", "Git", { cmd = true })
 
+
+-- Other
 nnoremap("<Leader>T", "Twilight", { cmd = true })
 nnoremap("<Leader>K", function() vim.fn.jobstart({ "xdg-open", vim.fn.expand("<cWORD>"):match("https?://.*[^) ]") }) end)
 
