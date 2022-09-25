@@ -16,5 +16,5 @@ Color.new("yellow", "#EBCB8B")
 
 Group.new("diffAdded",   colors.green, colors.none, styles.none)
 Group.new("diffRemoved", colors.red,   colors.none, styles.none)
-Group.new("QuickScopePrimary", colors.yellow, colors.none, styles.undercurl)
+Group.new("QuickScopePrimary", colors.yellow, colors.none, styles.none)
 Group.new("QuickScopeSecondary", colors.none, colors.none, styles.none)
