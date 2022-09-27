@@ -18,8 +18,6 @@ local function setup(on_attach)
 
   require("lspconfig").html.setup(config())
 
-  require("lspconfig").r_language_server.setup(config())
-
   require("lspconfig").rust_analyzer.setup(config())
 
   require("lspconfig").tsserver.setup(config({
