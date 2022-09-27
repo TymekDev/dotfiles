@@ -43,3 +43,8 @@ fish_add_path ~/.npm-global/bin
 fish_add_path ~/.tarsnap/bin
 fish_add_path ~/go/bin
 fish_add_path /usr/local/go/bin
+
+if test (uname) = "Darwin"
+  set -x SHELL /opt/homebrew/bin/fish
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+end
