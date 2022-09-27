@@ -1,3 +1,6 @@
 [submodule "config/kitty/gruvbox-material-kitty"]
 	path = config/kitty/gruvbox-material-kitty
 	url = https://github.com/rsaihe/gruvbox-material-kitty
+[submodule "local/share/tmux/plugins/tpm"]
+	path = local/share/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
