@@ -8,7 +8,7 @@ o.list = true
 o.listchars:append({ trail = "˽", extends = ">", precedes = "<", eol = "↲" })
 o.mouse = nil
 o.number = true
-o.scrolloff = 8
+o.scrolloff = 5
 o.shiftwidth = 2
 o.shortmess:append({ c = true })
 o.sidescrolloff = 5
