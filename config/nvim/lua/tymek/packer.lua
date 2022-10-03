@@ -149,6 +149,7 @@ return require("packer").startup(function(use)
 
   use {
     "lukas-reineke/indent-blankline.nvim",
+    event = "ColorScheme",
     config = function()
       require("indent_blankline").setup({
         show_current_context = true,
