@@ -107,9 +107,8 @@ return require("packer").startup(function(use)
 
 
   -- UI
-  use "arcticicestudio/nord-vim"
+  use "folke/tokyonight.nvim"
   use "jeffkreeftmeijer/vim-numbertoggle"
-  use "tjdevries/colorbuddy.nvim"
 
   use {
     "folke/todo-comments.nvim",
