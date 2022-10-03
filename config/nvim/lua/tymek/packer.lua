@@ -87,6 +87,7 @@ return require("packer").startup(function(use)
     "unblevable/quick-scope",
     config = function()
       vim.g.qs_hi_priority = 20
+      vim.g.qs_second_highlight = 0
     end,
   }
 
