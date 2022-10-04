@@ -7,7 +7,7 @@ local function on_attach(client)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = 0,
       callback = function()
-        vim.lsp.buf.format()
+        vim.lsp.buf.format({ async = true })
       end,
     })
   end
@@ -16,6 +16,7 @@ local function on_attach(client)
   nnoremap("gd", vim.lsp.buf.definition)
   nnoremap("gt", vim.lsp.buf.type_definition)
   nnoremap("gi", vim.lsp.buf.implementation)
+  nnoremap("gr", vim.lsp.buf.references)
   nnoremap("<Leader>r", vim.lsp.buf.rename)
   nnoremap("<Leader>ca", vim.lsp.buf.code_action)
 
