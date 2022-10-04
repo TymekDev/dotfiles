@@ -37,8 +37,7 @@ return require("packer").startup(function(use)
 
   use {
     "tzachar/cmp-tabnine",
-    cmd = "./install.sh",
-    opt = true,
+    run = "./install.sh",
     config = function()
       require("cmp_tabnine.config").setup({
         max_lines = 1000,
