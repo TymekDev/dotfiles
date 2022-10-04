@@ -42,9 +42,16 @@ cmp.setup({
     { name = "cmp_tabnine" },
     { name = "luasnip" },
     { name = "nvim_lsp" },
-    { name = "neorg" },
     { name = "buffer" },
   }),
+})
+
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = "cmdline" },
+    { name = "fuzzy_path" },
+  })
 })
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
