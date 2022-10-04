@@ -1,19 +1,19 @@
 local M = {}
 
 local function setup(on_attach)
-  local diag = require("null-ls").builtins.diagnostics
-  local fmt = require("null-ls").builtins.formatting
+  local prettier = require("null-ls").builtins.formatting.prettier
+  prettier.filetypes = vim.tbl_filter(function(x) return x ~= "markdown" end, prettier.filetypes)
 
   require("null-ls").setup({
     on_attach = on_attach,
     sources = {
       require("null-ls").builtins.code_actions.eslint,
-      diag.eslint,
-      diag.tsc,
-      fmt.gofmt,
-      fmt.goimports,
-      fmt.prettier,
-      fmt.stylelint,
+      require("null-ls").builtins.diagnostics.eslint,
+      require("null-ls").builtins.diagnostics.tsc,
+      require("null-ls").builtins.formatting.gofmt,
+      require("null-ls").builtins.formatting.goimports,
+      require("null-ls").builtins.formatting.stylelint,
+      prettier,
     },
   })
 end
