@@ -29,10 +29,6 @@ nnoremap <C-p> <Cmd>GFiles<CR>
 nnoremap <Leader><C-p> <Cmd>Files<CR>
 nnoremap <Leader><C-o> <Cmd>Rg<CR>
 
-" quick-scope
-nmap <Leader>q <Plug>(QuickScopeToggle)
-xmap <Leader>q <Plug>(QuickScopeToggle)
-
 " vim-easy-align
 nmap <Leader>a <Plug>(EasyAlign)
 vmap <Leader>a <Plug>(EasyAlign)
