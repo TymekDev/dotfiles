@@ -7,7 +7,7 @@ local function on_attach(client)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = 0,
       callback = function()
-        vim.lsp.buf.format({ async = true })
+        vim.lsp.buf.format()
       end,
     })
   end
