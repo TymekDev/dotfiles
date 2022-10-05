@@ -24,4 +24,6 @@ o.tabstop = 2
 o.ttimeoutlen = 100
 o.undofile = true
 o.updatetime = 50
+-- TODO: winwidth should be local and depend on numberwidth, number of signs, and textwidth
+o.winwidth = 87
 o.wrap = false
