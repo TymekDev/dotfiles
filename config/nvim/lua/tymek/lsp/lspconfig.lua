@@ -11,7 +11,7 @@ local function setup(on_attach)
   require("lspconfig").cssls.setup(config())
 
   require("lspconfig").eslint.setup(config({
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "vue" }
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "vue" },
   }))
 
   require("lspconfig").gopls.setup(config())
@@ -21,7 +21,7 @@ local function setup(on_attach)
   require("lspconfig").rust_analyzer.setup(config())
 
   require("lspconfig").tsserver.setup(config({
-    filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   }))
 end
 

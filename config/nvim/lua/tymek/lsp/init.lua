@@ -25,7 +25,6 @@ local function on_attach(client)
   nnoremap("gq", vim.diagnostic.setqflist)
 end
 
-
 require("mason").setup()
 require("mason-lspconfig").setup({ automatic_installation = true })
 require("tymek.lsp.cmp")
