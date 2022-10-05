@@ -19,6 +19,7 @@ abbr --add gl   git pull
 abbr --add glg  git log
 abbr --add gm   git merge
 abbr --add gp   git push
+abbr --add gpf  git push --force-with-lease
 abbr --add gs   git status
 abbr --add gsw  git switch
 abbr --add gwt  git worktree
