@@ -48,6 +48,9 @@ cmp.setup({
 
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
+  completion = {
+    autocomplete = false,
+  },
   sources = cmp.config.sources({
     { name = "cmdline" },
     { name = "fuzzy_path" },
