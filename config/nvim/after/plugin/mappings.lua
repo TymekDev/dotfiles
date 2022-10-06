@@ -9,10 +9,13 @@ nnoremap("<Leader>j", "<C-w>j")
 nnoremap("<Leader>k", "<C-w>k")
 nnoremap("<Leader>l", "<C-w>l")
 
-nnoremap("<C-h>", "tabprevious", { cmd = true })
+nnoremap("<Leader><C-h>", "tabprevious", { cmd = true })
+nnoremap("<Leader><C-l>", "tabnext", { cmd = true })
+
+nnoremap("<C-h>", "colder", { cmd = true })
 nnoremap("<C-j>", "cnext", { cmd = true, count = true })
 nnoremap("<C-k>", "cprev", { cmd = true, count = true })
-nnoremap("<C-l>", "tabnext", { cmd = true })
+nnoremap("<C-l>", "cnewer", { cmd = true })
 
 
 -- Registers
