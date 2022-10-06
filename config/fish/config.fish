@@ -2,10 +2,10 @@ abbr --add ga   git add
 abbr --add gap  git add -p
 abbr --add gb   git branch
 abbr --add gc   git commit
-abbr --add gca  git commit --amend --no-edit
-abbr --add gcae git commit --amend
+abbr --add gca  git commit --amend
 abbr --add gcam git commit -am
 abbr --add gcb  git checkout -b
+abbr --add gce  git commit --amend --no-edit
 abbr --add gcm  git commit -m
 abbr --add gco  git checkout
 abbr --add gcp  git cherry-pick
