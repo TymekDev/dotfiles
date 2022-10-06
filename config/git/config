@@ -31,10 +31,8 @@
 [credential]
   helper = "cache"
 
-[delta]
-  line-numbers = true
-  navigate = true
-  theme = "gruvbox-dark"
+[diff]
+  external = "difft"
 
 [init]
   defaultBranch = main
