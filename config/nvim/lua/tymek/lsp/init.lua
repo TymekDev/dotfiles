@@ -15,14 +15,13 @@ local function on_attach(client)
   nnoremap("K", vim.lsp.buf.hover)
   nnoremap("gd", vim.lsp.buf.definition)
   nnoremap("gt", vim.lsp.buf.type_definition)
-  nnoremap("gi", vim.lsp.buf.implementation)
-  nnoremap("gr", vim.lsp.buf.references)
-  nnoremap("<Leader>r", vim.lsp.buf.rename)
-  nnoremap("<Leader>ca", vim.lsp.buf.code_action)
+  nnoremap("gr", vim.lsp.buf.rename)
 
-  nnoremap("gj", vim.diagnostic.goto_next)
-  nnoremap("gk", vim.diagnostic.goto_prev)
-  nnoremap("gq", vim.diagnostic.setqflist)
+  nnoremap("gqc", vim.lsp.buf.outgoing_calls)  -- [c]alls
+  nnoremap("gqd", vim.diagnostic.setqflist)    -- [d]iagnostics
+  nnoremap("gqi", vim.lsp.buf.implementation)  -- [i]mplementation
+  nnoremap("gqr", vim.lsp.buf.references)      -- [r]eferences
+  nnoremap("gqs", vim.lsp.buf.document_symbol) -- [s]ybmol
 end
 
 require("mason").setup()
