@@ -162,6 +162,7 @@ return require("packer").startup(function(use)
 
 
   -- Others
+  use "TymekDev/repos.nvim"
   use { "rust-lang/rust.vim", ft = "rust" }
   use { "tpope/vim-eunuch" }
 
