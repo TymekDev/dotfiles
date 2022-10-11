@@ -33,6 +33,5 @@ nnoremap("<Leader><C-g>", { cmd = "Git" })
 nnoremap("<Leader>Q", { cmd = "QuickScopeToggle" })
 nnoremap("<Leader>W", { cmd = "WiderActiveBufToggle" })
 nnoremap("<Leader>T", { cmd = "Twilight" })
-nnoremap("<Leader>K", function() vim.fn.jobstart({ "xdg-open", vim.fn.expand("<cWORD>"):match("https?://.*[^) ]") }) end)
 
 nnoremap("gf", { cmd = "edit", args = { "%:p:h/<cfile>" }, magic = { file = true } })
