@@ -137,15 +137,6 @@ return require("packer").startup(function(use)
   }
 
   use {
-    "junegunn/goyo.vim",
-    config = function()
-      -- TODO: add mappings
-      vim.g.goyo_width = 85
-      vim.g.goyo_linenr = 1
-    end,
-  }
-
-  use {
     "lukas-reineke/indent-blankline.nvim",
     event = "ColorScheme",
     config = function()

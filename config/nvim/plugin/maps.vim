@@ -19,9 +19,6 @@ nnoremap <expr> J 'mz' .. v:count1 .. 'J`z'
 vnoremap <Leader>j :m '>+1<CR>gv=gv
 vnoremap <Leader>k :m '<-2<CR>gv=gv
 
-" goyo.vim
-nnoremap <Leader>G <Cmd>Goyo<CR>
-
 " fzf.vim
 nnoremap <C-p> <Cmd>GFiles<CR>
 nnoremap <Leader><C-p> <Cmd>Files<CR>
