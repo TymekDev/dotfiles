@@ -1,5 +1,5 @@
 local nnoremap = require("tymek.keymap").nnoremap
 
-nnoremap("<Leader>gf", "Git fetch", { cmd = true })
-nnoremap("<Leader>gl", "Git pull", { cmd = true })
-nnoremap("<Leader>gp", "Git push", { cmd = true })
+nnoremap("<Leader>gf", { cmd = "Git fetch" })
+nnoremap("<Leader>gl", { cmd = "Git pull" })
+nnoremap("<Leader>gp", { cmd = "Git push" })

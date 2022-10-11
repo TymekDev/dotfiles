@@ -9,13 +9,13 @@ nnoremap("<Leader>j", "<C-w>j")
 nnoremap("<Leader>k", "<C-w>k")
 nnoremap("<Leader>l", "<C-w>l")
 
-nnoremap("<Leader><C-h>", "tabprevious", { cmd = true })
-nnoremap("<Leader><C-l>", "tabnext", { cmd = true })
+nnoremap("<Leader><C-h>", { cmd = "tabprevious" })
+nnoremap("<Leader><C-l>", { cmd = "tabnext" })
 
-nnoremap("<C-h>", "colder", { cmd = true })
-nnoremap("<C-j>", "cnext", { cmd = true, count = true })
-nnoremap("<C-k>", "cprev", { cmd = true, count = true })
-nnoremap("<C-l>", "cnewer", { cmd = true })
+nnoremap("<C-h>", { cmd = "colder" })
+nnoremap("<C-j>", { cmd = "cnext", count = true })
+nnoremap("<C-k>", { cmd = "cprev", count = true })
+nnoremap("<C-l>", { cmd = "cnewer" })
 
 
 -- Registers
@@ -25,19 +25,14 @@ xnoremap("<Leader>y", '"+y')
 
 
 -- Opens a new buffer
-nnoremap("<Leader><C-e>", "Ex", { cmd = true })
-nnoremap("<Leader><C-g>", "Git", { cmd = true })
+nnoremap("<Leader><C-e>", { cmd = "Ex" })
+nnoremap("<Leader><C-g>", { cmd = "Git" })
 
 
 -- Other
-nnoremap("<Leader>Q", "QuickScopeToggle", { cmd = true })
-nnoremap("<Leader>W", "WiderActiveBufToggle", { cmd = true })
-nnoremap("<Leader>T", "Twilight", { cmd = true })
+nnoremap("<Leader>Q", { cmd = "QuickScopeToggle" })
+nnoremap("<Leader>W", { cmd = "WiderActiveBufToggle" })
+nnoremap("<Leader>T", { cmd = "Twilight" })
 nnoremap("<Leader>K", function() vim.fn.jobstart({ "xdg-open", vim.fn.expand("<cWORD>"):match("https?://.*[^) ]") }) end)
 
-nnoremap("gf", function()
-  vim.cmd({
-    cmd = "edit",
-    args = { vim.fn.expand("%:p:h") .. "/" .. vim.fn.expand("<cfile>") }
-  })
-end)
+nnoremap("gf", { cmd = "edit", args = { "%:p:h/<cfile>" }, magic = { file = true } })

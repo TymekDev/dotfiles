@@ -2,15 +2,14 @@ local M = {}
 
 local function keymap(mode)
   return function(lhs, rhs, opts)
-    _rhs = rhs
-    if opts ~= nil and opts.cmd == true then
-      if opts.count == true then
-        _rhs = function() vim.cmd(vim.api.nvim_eval("v:count1") .. rhs) end
-        opts.count = nil
-      else
-        _rhs = function() vim.cmd(rhs) end
+    local _rhs = rhs
+    if type(rhs) == "table" then
+      _rhs = function()
+        if rhs.count == true then
+          rhs.count = vim.api.nvim_eval("v:count1")
+        end
+        vim.api.nvim_cmd(rhs, {})
       end
-      opts.cmd = nil
     end
     vim.keymap.set(mode, lhs, _rhs, opts)
   end
