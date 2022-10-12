@@ -9,7 +9,7 @@ o.listchars:append({ extends = ">", precedes = "<", eol = "⏎" })
 o.mouse = nil
 o.number = true
 o.relativenumber = true
-o.scrolloff = 5
+o.scrolloff = 3
 o.shiftwidth = 2
 o.shortmess:append({ c = true })
 o.sidescrolloff = 5
