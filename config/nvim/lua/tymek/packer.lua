@@ -161,6 +161,9 @@ return require("packer").startup(function(use)
   use { "rust-lang/rust.vim", ft = "rust" }
   use { "tpope/vim-eunuch" }
 
+  -- Builtins 
+  vim.api.nvim_cmd({ cmd = "packadd", args = { "cfilter" } }, {})
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
