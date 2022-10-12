@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/playground",
+    "rrethy/nvim-treesitter-endwise",
     "windwp/nvim-ts-autotag",
   }
 
