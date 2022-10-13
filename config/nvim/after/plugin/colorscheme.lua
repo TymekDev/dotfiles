@@ -11,5 +11,3 @@ require("tokyonight").setup({
 })
 
 vim.cmd("colorscheme tokyonight")
-
-require("lualine").setup()
