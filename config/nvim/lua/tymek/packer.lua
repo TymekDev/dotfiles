@@ -116,7 +116,7 @@ return require("packer").startup(function(use)
 
 
   -- UI
-  use "folke/tokyonight.nvim"
+  use "TymekDev/tokyonight.nvim"
 
   use {
     "folke/todo-comments.nvim",
