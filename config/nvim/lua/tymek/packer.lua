@@ -71,7 +71,7 @@ return require("packer").startup(function(use)
     end,
   }
 
-  -- Movements & editing
+  -- Movements, editing, and navigation
   use "junegunn/vim-easy-align"
   use "tpope/vim-abolish"
   use "tpope/vim-repeat"
@@ -88,6 +88,12 @@ return require("packer").startup(function(use)
     config = function()
       require("Comment").setup()
     end,
+  }
+
+  use {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    requires = "nvim-lua/plenary.nvim",
   }
 
   use {
