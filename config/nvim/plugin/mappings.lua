@@ -17,6 +17,12 @@ nnoremap("<C-j>", { cmd = "cnext", count = true })
 nnoremap("<C-k>", { cmd = "cprev", count = true })
 nnoremap("<C-l>", { cmd = "cnewer" })
 
+nnoremap("g;", require("harpoon.mark").add_file)
+nnoremap("gh", function() require("harpoon.ui").nav_file(1) end)
+nnoremap("gj", function() require("harpoon.ui").nav_file(2) end)
+nnoremap("gk", function() require("harpoon.ui").nav_file(3) end)
+nnoremap("gl", function() require("harpoon.ui").nav_file(4) end)
+
 
 -- Registers
 xnoremap("<Leader>p", '"_dP') -- don't overwrite paste register
@@ -25,6 +31,7 @@ xnoremap("<Leader>y", '"+y')
 
 
 -- Opens a new buffer
+nnoremap("<Leader><C-h>", require("harpoon.ui").toggle_quick_menu)
 nnoremap("<Leader><C-e>", { cmd = "Ex" })
 nnoremap("<Leader><C-g>", { cmd = "Git" })
 
