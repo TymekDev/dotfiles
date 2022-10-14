@@ -3,7 +3,7 @@ local nnoremap = require("tymek.keymap").nnoremap
 local xnoremap = require("tymek.keymap").xnoremap
 
 
--- Movements
+-- Splits, tabs, and QuickFix list
 nnoremap("<Leader>h", "<C-w>h")
 nnoremap("<Leader>j", "<C-w>j")
 nnoremap("<Leader>k", "<C-w>k")
@@ -17,12 +17,10 @@ nnoremap("<C-j>", { cmd = "cnext", count = true })
 nnoremap("<C-k>", { cmd = "cprev", count = true })
 nnoremap("<C-l>", { cmd = "cnewer" })
 
-nnoremap("g<C-h>", require("harpoon.ui").toggle_quick_menu)
-nnoremap("g;", require("harpoon.mark").add_file)
-nnoremap("gh", function() require("harpoon.ui").nav_file(1) end)
-nnoremap("gj", function() require("harpoon.ui").nav_file(2) end)
-nnoremap("gk", function() require("harpoon.ui").nav_file(3) end)
-nnoremap("gl", function() require("harpoon.ui").nav_file(4) end)
+
+-- Special buffers
+nnoremap("<Leader><C-e>", { cmd = "Ex" })
+nnoremap("<Leader><C-g>", { cmd = "Git" })
 
 
 -- Registers
@@ -31,14 +29,20 @@ nnoremap("<Leader>y", '"+y') -- copy to system register
 xnoremap("<Leader>y", '"+y')
 
 
--- Opens a new buffer
-nnoremap("<Leader><C-e>", { cmd = "Ex" })
-nnoremap("<Leader><C-g>", { cmd = "Git" })
-
-
--- Other
+-- Toggles
 nnoremap("<Leader>Q", { cmd = "QuickScopeToggle" })
 nnoremap("<Leader>W", { cmd = "WiderActiveBufToggle" })
 nnoremap("<Leader>T", { cmd = "Twilight" })
 
+
+-- Others
 nnoremap("gf", { cmd = "edit", args = { "%:p:h/<cfile>" }, magic = { file = true } })
+
+
+-- Harpoon
+nnoremap("<Leader>gg", require("harpoon.ui").toggle_quick_menu)
+nnoremap("<Leader>g;", require("harpoon.mark").add_file)
+nnoremap("<Leader>gh", function() require("harpoon.ui").nav_file(1) end)
+nnoremap("<Leader>gj", function() require("harpoon.ui").nav_file(2) end)
+nnoremap("<Leader>gk", function() require("harpoon.ui").nav_file(3) end)
+nnoremap("<Leader>gl", function() require("harpoon.ui").nav_file(4) end)
