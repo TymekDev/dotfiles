@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- NOTE: there are also LSP-specifc mappings inside lua/tymek/lsp/init.lua
 local nnoremap = require("tymek.keymap").nnoremap
 local xnoremap = require("tymek.keymap").xnoremap
@@ -18,9 +20,12 @@ nnoremap("<C-k>", { cmd = "cprev", count = true })
 nnoremap("<C-l>", { cmd = "cnewer" })
 
 
--- Special buffers
+-- Special buffers and external commands
 nnoremap("<Leader><C-e>", { cmd = "Ex" })
 nnoremap("<Leader><C-g>", { cmd = "Git" })
+
+nnoremap("<C-s>", "<Cmd>silent !tmux neww tmux-sessionizer<CR>")
+nnoremap("<C-_>", "<Cmd>silent !tmux neww tmux-cht.sh<CR>")
 
 
 -- Registers
@@ -33,6 +38,14 @@ xnoremap("<Leader>y", '"+y')
 nnoremap("<Leader>Q", { cmd = "QuickScopeToggle" })
 nnoremap("<Leader>W", { cmd = "WiderActiveBufToggle" })
 nnoremap("<Leader>T", { cmd = "Twilight" })
+
+
+-- Editing
+xnoremap("<C-j>", ":m '>+1<CR>gv=gv") -- move selection up and reindent
+xnoremap("<C-k>", ":m '<-2<CR>gv=gv") -- move selection down and reindent
+
+nnoremap("<Leader>a", "<Plug>(EasyAlign)")
+xnoremap("<Leader>a", "<Plug>(EasyAlign)")
 
 
 -- Harpoon
