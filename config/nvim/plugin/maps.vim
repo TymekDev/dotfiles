@@ -3,8 +3,6 @@ let maplocalleader = ' '
 
 " ^X mode
 inoremap <C-f> <C-x><C-f>
-inoremap <C-j> <C-x><C-o>
-inoremap <C-l> <C-x><C-n>
 
 " Misc
 nnoremap <silent> <C-s> <Cmd>silent !tmux neww tmux-sessionizer<CR>

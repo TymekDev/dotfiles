@@ -35,10 +35,6 @@ nnoremap("<Leader>W", { cmd = "WiderActiveBufToggle" })
 nnoremap("<Leader>T", { cmd = "Twilight" })
 
 
--- Others
-nnoremap("gf", { cmd = "edit", args = { "%:p:h/<cfile>" }, magic = { file = true } })
-
-
 -- Harpoon
 nnoremap("<Leader>gg", require("harpoon.ui").toggle_quick_menu)
 nnoremap("<Leader>g;", require("harpoon.mark").add_file)
