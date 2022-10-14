@@ -167,14 +167,8 @@ return require("packer").startup(function(use)
 
   -- Others
   use "TymekDev/repos.nvim"
+  use "TymekDev/vim-eunuch"
   use { "rust-lang/rust.vim", ft = "rust" }
-
-  use {
-    "TymekDev/vim-eunuch",
-    config = function()
-      vim.g.eunuch_find_command = "fd"
-    end,
-  }
 
 
   -- Builtins 
