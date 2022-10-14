@@ -9,8 +9,8 @@ nnoremap("<Leader>j", "<C-w>j")
 nnoremap("<Leader>k", "<C-w>k")
 nnoremap("<Leader>l", "<C-w>l")
 
-nnoremap("<Leader><C-h>", { cmd = "tabprevious" })
-nnoremap("<Leader><C-l>", { cmd = "tabnext" })
+nnoremap("<C-p>", { cmd = "tabprevious" })
+nnoremap("<C-n>", { cmd = "tabnext" })
 
 nnoremap("<C-h>", { cmd = "colder" })
 nnoremap("<C-j>", { cmd = "cnext", count = true })
