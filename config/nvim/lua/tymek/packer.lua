@@ -79,6 +79,11 @@ return require("packer").startup(function(use)
   use "tpope/vim-surround"
 
   use {
+    "ThePrimeagen/git-worktree.nvim",
+    requires = "nvim-lua/plenary.nvim",
+  }
+
+  use {
     "ThePrimeagen/harpoon",
     requires = "nvim-lua/plenary.nvim",
   }
