@@ -25,15 +25,13 @@ abbr --add gsw  git switch
 abbr --add gwt  git worktree
 
 alias g  git
-alias r  radian
 alias nv nvim
 
 bind \cs "stty sane; tmux-sessionizer"
 bind \cg "stty sane; nvim +Git +only"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
-bind \co "stty sane; nvim +Rg"
-bind \cp "stty sane; nvim +GFiles"
+bind \cn "stty sane; nvim ."
 bind \c_ "stty sane; tmux-cht.sh"
 
 set -x EDITOR nvim
