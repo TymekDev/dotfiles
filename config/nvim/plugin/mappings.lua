@@ -55,3 +55,11 @@ nnoremap("<Leader>gh", function() require("harpoon.ui").nav_file(1) end)
 nnoremap("<Leader>gj", function() require("harpoon.ui").nav_file(2) end)
 nnoremap("<Leader>gk", function() require("harpoon.ui").nav_file(3) end)
 nnoremap("<Leader>gl", function() require("harpoon.ui").nav_file(4) end)
+
+
+-- Telescope
+nnoremap("<Leader>ff", require("telescope.builtin").find_files) -- FIXME: does not find hidden files
+nnoremap("<Leader>fg", require("telescope.builtin").live_grep)
+
+nnoremap("<Leader>gwt", require("telescope").extensions.git_worktree.create_git_worktree)
+nnoremap("gwt", require("telescope").extensions.git_worktree.git_worktrees)
