@@ -114,13 +114,6 @@ return require("packer").startup(function(use)
   }
 
 
-  -- Project navigation
-  use {
-    "junegunn/fzf.vim",
-    requires = { "junegunn/fzf", run = ":call fzf#install()" },
-  }
-
-
   -- UI
   use "TymekDev/tokyonight.nvim"
 

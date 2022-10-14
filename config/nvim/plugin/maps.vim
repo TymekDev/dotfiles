@@ -19,11 +19,6 @@ nnoremap <expr> J 'mz' .. v:count1 .. 'J`z'
 vnoremap <Leader>j :m '>+1<CR>gv=gv
 vnoremap <Leader>k :m '<-2<CR>gv=gv
 
-" fzf.vim
-nnoremap <C-p> <Cmd>GFiles<CR>
-nnoremap <Leader><C-p> <Cmd>Files<CR>
-nnoremap <Leader><C-o> <Cmd>Rg<CR>
-
 " vim-easy-align
 nmap <Leader>a <Plug>(EasyAlign)
 vmap <Leader>a <Plug>(EasyAlign)
