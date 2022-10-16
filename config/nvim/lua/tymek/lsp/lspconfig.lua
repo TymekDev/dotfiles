@@ -20,6 +20,24 @@ local function setup(on_attach)
 
   require("lspconfig").rust_analyzer.setup(config())
 
+  require("lspconfig").sumneko_lua.setup(config({
+    settings = {
+      Lua = {
+        runtime = { version = "LuaJIT",
+        },
+        diagnostics = {
+          globals = { "vim" },
+        },
+        workspace = {
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+  }))
+
   require("lspconfig").tsserver.setup(config({
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   }))
