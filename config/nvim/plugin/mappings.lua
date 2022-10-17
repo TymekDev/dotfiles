@@ -50,12 +50,12 @@ xnoremap("<Leader>a", "<Plug>(EasyAlign)")
 
 
 -- Harpoon
-nnoremap("<Leader>gg", require("harpoon.ui").toggle_quick_menu)
-nnoremap("<Leader>g;", require("harpoon.mark").add_file)
-nnoremap("<Leader>gh", function() require("harpoon.ui").nav_file(1) end)
-nnoremap("<Leader>gj", function() require("harpoon.ui").nav_file(2) end)
-nnoremap("<Leader>gk", function() require("harpoon.ui").nav_file(3) end)
-nnoremap("<Leader>gl", function() require("harpoon.ui").nav_file(4) end)
+nnoremap("ghq", require("harpoon.ui").toggle_quick_menu)
+nnoremap("gha", require("harpoon.mark").add_file)
+nnoremap("gh1", function() require("harpoon.ui").nav_file(1) end)
+nnoremap("gh2", function() require("harpoon.ui").nav_file(2) end)
+nnoremap("gh3", function() require("harpoon.ui").nav_file(3) end)
+nnoremap("gh4", function() require("harpoon.ui").nav_file(4) end)
 
 
 -- Telescope
