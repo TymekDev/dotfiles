@@ -186,6 +186,14 @@ return require("packer").startup(function(use)
   use "TymekDev/vim-eunuch"
   use { "rust-lang/rust.vim", ft = "rust" }
 
+  use {
+    "ray-x/go.nvim",
+    ft = "go",
+    config = function()
+      require("go").setup()
+    end,
+  }
+
 
   -- Builtins
   vim.api.nvim_cmd({ cmd = "packadd", args = { "cfilter" } }, {})
