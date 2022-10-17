@@ -31,7 +31,7 @@ bind \cs "stty sane; tmux-sessionizer"
 bind \cg "stty sane; nvim +Git +only"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
-bind \cn "stty sane; nvim ."
+bind \cn 'stty sane; nvim -c \'lua require("telescope").extensions.file_browser.file_browser({ initial_mode = "normal" })\''
 bind \c_ "stty sane; tmux-cht.sh"
 
 set -x EDITOR nvim

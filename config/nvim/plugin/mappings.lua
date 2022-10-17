@@ -64,6 +64,7 @@ nnoremap("gh4", function() require("harpoon.ui").nav_file(4) end)
 
 -- Telescope
 nnoremap("<Leader>fq", require("telescope.builtin").quickfix) -- [q]uickfix
+nnoremap("<Leader>fd", require("telescope").extensions.file_browser.file_browser) -- [d]irs
 nnoremap("<Leader>ff", require("telescope.builtin").find_files) -- [f]iles
 nnoremap("<Leader>fg", require("telescope.builtin").live_grep) -- [g]rep
 nnoremap("<Leader>fh", require("telescope.builtin").help_tags) -- [h]elp
