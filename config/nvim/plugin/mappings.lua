@@ -38,6 +38,7 @@ xnoremap("<Leader>y", '"+y')
 nnoremap("<Leader>Q", { cmd = "QuickScopeToggle" })
 nnoremap("<Leader>W", { cmd = "WiderActiveBufToggle" })
 nnoremap("<Leader>T", { cmd = "Twilight" })
+nnoremap("<Leader>Z", { cmd = "ZenMode" })
 
 
 -- Editing

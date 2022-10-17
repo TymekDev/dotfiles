@@ -152,6 +152,17 @@ return require("packer").startup(function(use)
   }
 
   use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup({
+        plugins = {
+          twilight = { enabled = false },
+        },
+      })
+    end,
+  }
+
+  use {
     "lukas-reineke/indent-blankline.nvim",
     event = "ColorScheme",
     config = function()
