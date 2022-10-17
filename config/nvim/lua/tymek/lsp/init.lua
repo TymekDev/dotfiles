@@ -17,9 +17,9 @@ local function on_attach(client)
   nnoremap("gt", vim.lsp.buf.type_definition)
   nnoremap("gr", vim.lsp.buf.rename)
 
-  nnoremap("gqd", vim.diagnostic.setqflist)    -- [d]iagnostics
-  nnoremap("gqi", vim.lsp.buf.implementation)  -- [i]mplementation
-  nnoremap("gqr", vim.lsp.buf.references)      -- [r]eferences
+  nnoremap("gqd", vim.diagnostic.setqflist) -- [d]iagnostics
+  nnoremap("gqi", vim.lsp.buf.implementation) -- [i]mplementation
+  nnoremap("gqr", vim.lsp.buf.references) -- [r]eferences
   nnoremap("gqs", vim.lsp.buf.document_symbol) -- [s]ybmol
 end
 
