@@ -11,6 +11,9 @@ nnoremap("<Leader>j", "<C-w>j")
 nnoremap("<Leader>k", "<C-w>k")
 nnoremap("<Leader>l", "<C-w>l")
 
+nnoremap("<Leader><C-x>", { cmd = "new" })
+nnoremap("<Leader><C-v>", { cmd = "vnew" })
+nnoremap("<Leader><C-n>", { cmd = "tabnew" })
 nnoremap("<C-p>", { cmd = "tabprevious" })
 nnoremap("<C-n>", { cmd = "tabnext" })
 
