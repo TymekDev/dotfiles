@@ -14,7 +14,13 @@ local function setup(on_attach)
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "vue" },
   }))
 
-  require("lspconfig").gopls.setup(config())
+  require("lspconfig").gopls.setup(config({
+    settings = {
+      gopls = {
+        gofumpt = true,
+      },
+    },
+  }))
 
   require("lspconfig").html.setup(config())
 

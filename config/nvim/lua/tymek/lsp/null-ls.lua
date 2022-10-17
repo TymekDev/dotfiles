@@ -10,8 +10,6 @@ local function setup(on_attach)
       require("null-ls").builtins.code_actions.eslint,
       require("null-ls").builtins.diagnostics.eslint,
       require("null-ls").builtins.diagnostics.tsc,
-      require("null-ls").builtins.formatting.gofmt,
-      require("null-ls").builtins.formatting.goimports,
       require("null-ls").builtins.formatting.stylelint,
       prettier,
     },
