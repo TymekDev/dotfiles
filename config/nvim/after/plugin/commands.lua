@@ -1,4 +1,20 @@
 vim.api.nvim_create_user_command("Startup", function()
+  local worktrees = vim.split(vim.fn.system({ "git", "worktree", "list" }), "\n", { plain = true, trimempty = true })
+
+  if worktrees[1]:find("%(bare%)$") ~= nil then
+    if #worktrees == 1 then
+      -- Empty bare repo
+      require("telescope").extensions.git_worktree.create_git_worktree()
+      return
+    end
+    if vim.fn.getcwd() == worktrees[1]:gsub("%s*%(bare%)$", "") then
+      -- Root of non-empty bare repo
+      require("telescope").extensions.git_worktree.git_worktrees()
+      return
+    end
+  end
+
+  -- No repo, non-bare repo, and a worktree of bare repo
   require("telescope.builtin").find_files()
 end, {})
 
