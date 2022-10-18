@@ -1,3 +1,6 @@
+vim.api.nvim_create_user_command("Startup", require("telescope.builtin").find_files, {})
+
+
 local wider_active_buf = vim.opt.winwidth:get() > vim.opt.winwidth._info.default
 vim.api.nvim_create_user_command(
   "WiderActiveBufToggle",

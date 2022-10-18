@@ -82,6 +82,11 @@ return require("packer").startup(function(use)
   use {
     "ThePrimeagen/git-worktree.nvim",
     requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("git-worktree").setup({
+        update_on_change_command = "Startup",
+      })
+    end,
   }
 
   use {
