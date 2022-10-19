@@ -1,4 +1,6 @@
-local nnoremap = require("tymek.keymap").nnoremap
+local nnoremap = function(lhs, rhs)
+  require("tymek.keymap").nnoremap(lhs, rhs, { buffer = 0 })
+end
 
 nnoremap("<Leader>gf", { cmd = "Git", args = { "fetch" } })
 nnoremap("<Leader>gl", { cmd = "Git", args = { "pull" } })
