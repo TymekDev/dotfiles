@@ -21,6 +21,12 @@ local function on_attach(client)
   nnoremap("gqi", vim.lsp.buf.implementation) -- [i]mplementation
   nnoremap("gqr", vim.lsp.buf.references) -- [r]eferences
   nnoremap("gqs", vim.lsp.buf.document_symbol) -- [s]ybmol
+
+  nnoremap("<Leader>fd", require("telescope.builtin").diagnostics)
+  nnoremap("<Leader>fi", require("telescope.builtin").lsp_implementations)
+  nnoremap("<Leader>fr", require("telescope.builtin").lsp_references)
+  nnoremap("<Leader>fs", require("telescope.builtin").lsp_document_symbols)
+  nnoremap("<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 end
 
 require("mason").setup()
