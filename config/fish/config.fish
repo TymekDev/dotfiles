@@ -25,6 +25,7 @@ abbr --add gsw  git switch
 abbr --add gwt  git worktree
 
 alias g  git
+alias ls "exa --git --group-directories-first --time-style long-iso"
 alias nv nvim
 
 bind \cs "stty sane; tmux-sessionizer"
