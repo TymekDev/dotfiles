@@ -22,7 +22,16 @@ local function setup(on_attach)
     },
   }))
 
-  require("lspconfig").html.setup(config())
+  require("lspconfig").html.setup(config({
+    settings = {
+      html = {
+        format = {
+          unformatted = { "dd" },
+          wrapLineLength = 0,
+        },
+      },
+    },
+  }))
 
   require("lspconfig").rust_analyzer.setup(config())
 
