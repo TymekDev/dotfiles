@@ -3,7 +3,9 @@ require("repos").setup({
     ["sso"] = function(root)
       vim.opt.makeprg = "make -C " .. root
       vim.opt.shellpipe = "2>/dev/null | sed 's#^[^[:blank:]]#" .. root .. "/src/&#' | tee"
-      vim.opt.textwidth = 0
+      if vim.filetype.match({ buf = 0 }) == "go" then
+        vim.opt.textwidth = 0
+      end
     end,
   },
 })
