@@ -27,7 +27,6 @@ nnoremap("<C-l>", { cmd = "cnewer" })
 nnoremap("<Leader><C-e>", { cmd = "Ex" })
 nnoremap("<Leader><C-g>", { cmd = "Git" })
 
-nnoremap("<C-c>", function() vim.cmd("silent !tmux neww -c " .. vim.fn.getcwd()) end)
 nnoremap("<C-s>", "<Cmd>silent !tmux neww tmux-sessionizer<CR>")
 nnoremap("<C-_>", "<Cmd>silent !tmux neww tmux-cht.sh<CR>")
 
