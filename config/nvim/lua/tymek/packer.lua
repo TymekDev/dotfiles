@@ -61,6 +61,7 @@ return require("packer").startup(function(use)
     "windwp/nvim-ts-autotag",
   }
 
+
   -- Git stuff
   use "junegunn/gv.vim"
   use "tpope/vim-fugitive"
@@ -71,6 +72,7 @@ return require("packer").startup(function(use)
       vim.g.gitgutter_map_keys = 0
     end,
   }
+
 
   -- Movements, editing, and navigation
   use "junegunn/vim-easy-align"
