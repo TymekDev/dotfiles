@@ -10,9 +10,7 @@ local function setup(on_attach)
 
   require("lspconfig").cssls.setup(config())
 
-  require("lspconfig").eslint.setup(config({
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "vue" },
-  }))
+  require("lspconfig").eslint.setup(config())
 
   require("lspconfig").gopls.setup(config({
     settings = {
