@@ -8,6 +8,8 @@ local function setup(on_attach)
     return vim.tbl_deep_extend("force", { capabilities = capabilities, on_attach = on_attach }, _config or {})
   end
 
+  require("lspconfig").astro.setup(config())
+
   require("lspconfig").cssls.setup(config())
 
   require("lspconfig").eslint.setup(config())
