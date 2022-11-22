@@ -63,6 +63,7 @@ nnoremap("gh4", function() require("harpoon.ui").nav_file(4) end)
 
 -- Telescope
 nnoremap("<Leader>fq", require("telescope.builtin").quickfix) -- [q]uickfix
+-- FIXME: when paths are too long file_browser does not truncate them on picker startup
 nnoremap("<Leader>fe", function() require("telescope").extensions.file_browser.file_browser({ cwd = "%:h" }) end) -- [e]xplore (:Ex)
 nnoremap("<Leader>ff", require("telescope.builtin").find_files) -- [f]iles
 nnoremap("<Leader>fg", require("telescope.builtin").live_grep) -- [g]rep
