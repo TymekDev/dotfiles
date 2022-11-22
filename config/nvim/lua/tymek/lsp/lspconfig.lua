@@ -53,6 +53,8 @@ local function setup(on_attach)
     },
   }))
 
+  require("lspconfig").tailwindcss.setup(config())
+
   require("lspconfig").tsserver.setup(config({
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   }))
