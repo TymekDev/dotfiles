@@ -1,3 +1,25 @@
+local qs_initial
+vim.api.nvim_create_user_command("PlainMode", function()
+  require("zen-mode").toggle({
+    window = {
+      options = {
+        signcolumn = "no", -- disable signcolumn
+        number = false, -- disable number column
+        relativenumber = false, -- disable relative numbers
+        list = false, -- disable whitespace characters
+      },
+    },
+    on_open = function()
+      qs_initial = vim.g.qs_enable
+      vim.g.qs_enable = 0
+    end,
+    on_close = function()
+      vim.g.qs_enable = qs_initial
+    end,
+  })
+end, {})
+
+
 vim.api.nvim_create_user_command("Startup", function()
   local worktrees = vim.split(vim.fn.system({ "git", "worktree", "list" }), "\n", { plain = true, trimempty = true })
 
