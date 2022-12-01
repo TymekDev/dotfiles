@@ -40,6 +40,7 @@ xnoremap("<Leader>y", '"+y')
 -- Toggles
 nnoremap("<Leader>Q", { cmd = "QuickScopeToggle" })
 nnoremap("<Leader>W", { cmd = "WiderActiveBufToggle" })
+nnoremap("<Leader>R", function() vim.o.relativenumber = not vim.o.relativenumber end)
 nnoremap("<Leader>T", { cmd = "Twilight" })
 nnoremap("<Leader>P", { cmd = "PlainMode" })
 nnoremap("<Leader>Z", { cmd = "ZenMode" })
