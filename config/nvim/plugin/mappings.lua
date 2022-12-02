@@ -47,9 +47,6 @@ nnoremap("<Leader>Z", { cmd = "ZenMode" })
 
 
 -- Editing
-xnoremap("<C-j>", ":m '>+1<CR>gv=gv") -- move selection up and reindent
-xnoremap("<C-k>", ":m '<-2<CR>gv=gv") -- move selection down and reindent
-
 nnoremap("<Leader>a", "<Plug>(EasyAlign)")
 xnoremap("<Leader>a", "<Plug>(EasyAlign)")
 
