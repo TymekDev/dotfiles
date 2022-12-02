@@ -199,6 +199,13 @@ return require("packer").startup(function(use)
   use { "rust-lang/rust.vim", ft = "rust" }
 
   use {
+    "nvim-neorg/neorg",
+    tag = "*",
+    run = ":Neorg sync-parsers",
+    requires = "nvim-lua/plenary.nvim",
+  }
+
+  use {
     "ray-x/go.nvim",
     ft = "go",
     config = function()
