@@ -22,6 +22,9 @@ nnoremap("<C-j>", { cmd = "cnext", count = true })
 nnoremap("<C-k>", { cmd = "cprev", count = true })
 nnoremap("<C-l>", { cmd = "cnewer" })
 
+nnoremap("<C-u>", "<C-u>zz")
+nnoremap("<C-d>", "<C-d>zz")
+
 
 -- Special buffers and external commands
 nnoremap("<Leader><C-e>", { cmd = "Ex" })
