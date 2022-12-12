@@ -31,6 +31,7 @@ nnoremap("N", "Nzzzv")
 
 -- Special buffers and external commands
 nnoremap("<Leader><C-e>", { cmd = "Ex" })
+nnoremap("<Leader><C-u>", { cmd = "UndotreeToggle" })
 nnoremap("<Leader><C-g>", { cmd = "Git" })
 
 nnoremap("<C-s>", "<Cmd>silent !tmux neww tmux-sessionizer<CR>")

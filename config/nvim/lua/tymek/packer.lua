@@ -76,6 +76,7 @@ return require("packer").startup(function(use)
 
   -- Movements, editing, and navigation
   use "junegunn/vim-easy-align"
+  use "mbbill/undotree"
   use "tpope/vim-abolish"
   use "tpope/vim-repeat"
   use "tpope/vim-rsi"
