@@ -25,6 +25,9 @@ nnoremap("<C-l>", { cmd = "cnewer" })
 nnoremap("<C-u>", "<C-u>zz")
 nnoremap("<C-d>", "<C-d>zz")
 
+nnoremap("n", "nzzzv")
+nnoremap("N", "Nzzzv")
+
 
 -- Special buffers and external commands
 nnoremap("<Leader><C-e>", { cmd = "Ex" })
@@ -38,6 +41,8 @@ nnoremap("<C-_>", "<Cmd>silent !tmux neww tmux-cht.sh<CR>")
 xnoremap("<Leader>p", '"_dP') -- don't overwrite paste register
 nnoremap("<Leader>y", '"+y') -- copy to system register
 xnoremap("<Leader>y", '"+y')
+nnoremap("<Leader>Y", '"+Y')
+xnoremap("<Leader>Y", '"+Y')
 
 
 -- Toggles
