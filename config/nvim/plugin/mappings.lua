@@ -25,16 +25,16 @@ vim.keymap.set("n", "<C-h>", function() -- Previous quickfix list
 end)
 
 vim.keymap.set("n", "<C-j>", function() -- Next quickfix entry (with wrapping)
-  local ok, _ = pcall(vim.cmd.cnext, { count = vim.api.nvim_eval("v:count1") })
-  if ok == false then
+  local ok, msg = pcall(vim.cmd.cnext, { count = vim.api.nvim_eval("v:count1") })
+  if ok == false and msg == "Vim:E553: No more items" then
     vim.cmd.cfirst()
   end
   vim.cmd.cwindow()
 end)
 
 vim.keymap.set("n", "<C-k>", function() -- Previous quickfix entry (with wrapping)
-  local ok, _ = pcall(vim.cmd.cprev, { count = vim.api.nvim_eval("v:count1") })
-  if ok == false then
+  local ok, msg = pcall(vim.cmd.cprev, { count = vim.api.nvim_eval("v:count1") })
+  if ok == false and msg == "Vim:E553: No more items" then
     vim.cmd.clast()
   end
   vim.cmd.cwindow()
