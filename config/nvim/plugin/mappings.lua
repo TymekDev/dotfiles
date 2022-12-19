@@ -5,28 +5,45 @@ local nnoremap = require("tymek.keymap").nnoremap
 local xnoremap = require("tymek.keymap").xnoremap
 
 
--- Splits, tabs, and QuickFix list
-nnoremap("<Leader>h", "<C-w>h")
-nnoremap("<Leader>j", "<C-w>j")
-nnoremap("<Leader>k", "<C-w>k")
-nnoremap("<Leader>l", "<C-w>l")
+vim.keymap.set("n", "<Leader>h", "<C-w>h")
+vim.keymap.set("n", "<Leader>j", "<C-w>j")
+vim.keymap.set("n", "<Leader>k", "<C-w>k")
+vim.keymap.set("n", "<Leader>l", "<C-w>l")
 
-nnoremap("<Leader><C-x>", { cmd = "new" })
-nnoremap("<Leader><C-v>", { cmd = "vnew" })
-nnoremap("<Leader><C-n>", { cmd = "tabnew" })
-nnoremap("<C-p>", { cmd = "tabprevious" })
-nnoremap("<C-n>", { cmd = "tabnext" })
+vim.keymap.set("n", "<C-p>", vim.cmd.tabprevious)
+vim.keymap.set("n", "<C-n>", vim.cmd.tabnext)
 
-nnoremap("<C-h>", { cmd = "colder" })
-nnoremap("<C-j>", { cmd = "cnext", count = true })
-nnoremap("<C-k>", { cmd = "cprev", count = true })
-nnoremap("<C-l>", { cmd = "cnewer" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Half screen up and center on cursor
+vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Half screen down and center on cursor
 
-nnoremap("<C-u>", "<C-u>zz")
-nnoremap("<C-d>", "<C-d>zz")
+vim.keymap.set("n", "n", "nzzzv") -- Next search result, center on cursor, and open folds
+vim.keymap.set("n", "N", "Nzzzv") -- Previous search result, center on cursor, and open folds
 
-nnoremap("n", "nzzzv")
-nnoremap("N", "Nzzzv")
+vim.keymap.set("n", "<C-h>", function() -- Previous quickfix list
+  vim.cmd.colder({ count = vim.api.nvim_eval("v:count1") })
+  vim.cmd.cwindow()
+end)
+
+vim.keymap.set("n", "<C-j>", function() -- Next quickfix entry (with wrapping)
+  local ok, _ = pcall(vim.cmd.cnext, { count = vim.api.nvim_eval("v:count1") })
+  if ok == false then
+    vim.cmd.cfirst()
+  end
+  vim.cmd.cwindow()
+end)
+
+vim.keymap.set("n", "<C-k>", function() -- Previous quickfix entry (with wrapping)
+  local ok, _ = pcall(vim.cmd.cprev, { count = vim.api.nvim_eval("v:count1") })
+  if ok == false then
+    vim.cmd.clast()
+  end
+  vim.cmd.cwindow()
+end)
+
+vim.keymap.set("n", "<C-l>", function() -- Next quickfix list
+  vim.cmd.cnewer({ count = vim.api.nvim_eval("v:count1") })
+  vim.cmd.cwindow()
+end)
 
 
 -- Special buffers and external commands
