@@ -76,6 +76,10 @@ nnoremap("<Leader>Z", { cmd = "ZenMode" })
 nnoremap("<Leader>a", "<Plug>(EasyAlign)")
 xnoremap("<Leader>a", "<Plug>(EasyAlign)")
 
+-- TODO: make these work with count (jump & fix N times) and .
+vim.keymap.set("n", "zf", "]s1z=") -- Fix next bad word with first suggestion
+vim.keymap.set("n", "zF", "[s1z=") -- Fix previous bad word with first suggestion
+
 
 -- Harpoon
 nnoremap("ghq", require("harpoon.ui").toggle_quick_menu)
