@@ -25,6 +25,9 @@
   # [o]pen [c]onflicts
   oc = "! nvim $(git status --porcelain | sed -n 's/^UU *//p' | sed \"s#^#$(git rev-parse --show-toplevel)/#\")"
 
+  # [o]pen [m]odified
+  om = "! nvim $(git status --porcelain | sed -n 's/^ M *//p' | sed \"s#^#$(git rev-parse --show-toplevel)/#\")"
+
 [core]
   editor = "nvim"
 
