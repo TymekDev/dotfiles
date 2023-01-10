@@ -12,14 +12,14 @@ abbr --add gcp  git cherry-pick
 abbr --add gcpm git commit -pm
 abbr --add gd   git diff
 abbr --add gds  git diff --staged
+abbr --add gec  git ec
+abbr --add gem  git em
 abbr --add gf   git fetch
 abbr --add gg   git g
 abbr --add ggs  git gs
 abbr --add gl   git pull
 abbr --add glg  git log
 abbr --add gm   git merge
-abbr --add goc  git oc
-abbr --add gom  git om
 abbr --add gp   git push
 abbr --add gpf  git push --force-with-lease
 abbr --add gs   git status
