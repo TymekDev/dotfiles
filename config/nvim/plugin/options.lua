@@ -2,6 +2,7 @@ local o = vim.opt
 
 o.colorcolumn = "+1"
 o.expandtab = true
+o.foldlevelstart = 99
 o.history = 1000
 o.hlsearch = false
 o.list = true
