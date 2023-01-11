@@ -2,6 +2,9 @@
   # [c]lone [b]are
   cb = "! f() {  URL=\"${1:?missing URL}\";  NAME=\"${2:-`echo $URL | sed 's#^.*/## ; s/\\.git$//'`}\";  while [ $# -ge 1 ]; do shift 1;  done;  git clone --bare $URL $NAME $@;  git -C $NAME config --local remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\";  git -C $NAME fetch;};f"
 
+  # [d]iff [b]ranch
+  db = "! f() { git diff --color-words --no-ext-diff $(git merge-base ${1:?missing source branch} @)..@; }; f"
+
   # [d]iff [c]ommit
   dc = "! f() { REF=${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f"
 
