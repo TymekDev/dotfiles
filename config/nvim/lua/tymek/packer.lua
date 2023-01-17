@@ -193,18 +193,11 @@ return require("packer").startup(function(use)
     end,
   }
 
-
   -- Others
   use "TymekDev/repos.nvim"
   use "TymekDev/vim-eunuch"
   use { "rust-lang/rust.vim", ft = "rust" }
 
-  use {
-    "nvim-neorg/neorg",
-    tag = "*",
-    run = ":Neorg sync-parsers",
-    requires = "nvim-lua/plenary.nvim",
-  }
 
   use {
     "ray-x/go.nvim",
