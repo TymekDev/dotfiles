@@ -10,8 +10,8 @@ vim.keymap.set("n", "<Leader>j", "<C-w>j")
 vim.keymap.set("n", "<Leader>k", "<C-w>k")
 vim.keymap.set("n", "<Leader>l", "<C-w>l")
 
-vim.keymap.set("n", "<C-p>", vim.cmd.tabprevious)
-vim.keymap.set("n", "<C-n>", vim.cmd.tabnext)
+vim.keymap.set({ "n", "x" }, "<C-p>", vim.cmd.tabprevious)
+vim.keymap.set({ "n", "x" }, "<C-n>", vim.cmd.tabnext)
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Half screen up and center on cursor
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Half screen down and center on cursor
@@ -51,7 +51,7 @@ nnoremap("<Leader><C-e>", { cmd = "Ex" })
 nnoremap("<Leader><C-u>", { cmd = "UndotreeToggle" })
 nnoremap("<Leader><C-g>", { cmd = "Git" })
 
-nnoremap("<C-s>", "<Cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux neww tmux-sessionizer<CR>")
 nnoremap("<C-_>", "<Cmd>silent !tmux neww tmux-cht.sh<CR>")
 
 
