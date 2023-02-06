@@ -14,11 +14,11 @@ local function current_file_url()
   local remote_url = system_call({ "git", "remote", "get-url", remote })
 
   local repo = string.gsub(remote_url, "^[^:]*:", "") --
-  local branch = string.gsub(ref, "^[^/]*/", "")
+  local revision = system_call({ "git", "rev-parse", "@" })
   local file = vim.fn.expand("%")
   local line = vim.api.nvim_win_get_cursor(0)[1]
 
-  return string.format("https://github.com/%s/blob/%s/%s#L%d", repo, branch, file, line)
+  return string.format("https://github.com/%s/blob/%s/%s#L%d", repo, revision, file, line)
 end
 
 M.open = function()
