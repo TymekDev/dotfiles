@@ -49,3 +49,8 @@ if test (uname) = "Darwin"
   set -x SHELL /opt/homebrew/bin/fish
   eval "$(/opt/homebrew/bin/brew shellenv)"
 end
+
+# pnpm
+set -gx PNPM_HOME "/Users/tymek/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end
