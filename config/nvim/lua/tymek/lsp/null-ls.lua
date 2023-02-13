@@ -2,7 +2,7 @@ local M = {}
 
 local function setup(on_attach)
   local prettier = require("null-ls").builtins.formatting.prettier
-  prettier.filetypes = vim.tbl_filter(function(x) return x ~= "markdown" end, prettier.filetypes)
+  prettier.filetypes = vim.tbl_filter(function(x) return x ~= "markdown" and x ~= "yaml" end, prettier.filetypes)
   table.insert(prettier.filetypes, "astro")
 
   require("null-ls").setup({
