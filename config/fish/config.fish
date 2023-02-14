@@ -38,6 +38,8 @@ bind \cn "stty sane; nvim +Startup"
 bind \c_ "stty sane; tmux-cht.sh"
 
 set -x EDITOR nvim
+set -x GOKRAZY_PARENT_DIR ~/personal
+set -x GOKRAZY_INSTANCE gokrazy
 
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
