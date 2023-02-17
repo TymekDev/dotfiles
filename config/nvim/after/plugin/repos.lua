@@ -9,6 +9,10 @@ require("repos").setup({
           vim.opt_local.textwidth = 0
         end,
       })
+
+      vim.keymap.set({ "n", "x" }, "<Leader>go", function()
+        require("tymek.git").open({ "", "labs", "master" })
+      end)
     end,
   },
 })

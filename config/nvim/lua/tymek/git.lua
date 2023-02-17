@@ -4,10 +4,21 @@ local function system_call(tbl)
   return string.gsub(vim.fn.system(tbl), "\n$", "")
 end
 
+local function try_refs(refs)
+  local result
+  for _, ref in ipairs(refs) do
+    result = system_call({ "git", "rev-parse", "--symbolic-full-name", ref .. "@{upstream}" })
+    if string.find(result, "fatal", 1, true) == false then
+      break
+    end
+  end
+  return result
+end
+
 -- TODO: check for SSH vs HTTPS
 -- TODO: check for different remote vendors
-local function current_file_url()
-  local ref = system_call({ "git", "rev-parse", "--symbolic-full-name", "@{upstream}" })
+local function current_file_url(refs)
+  local ref = try_refs(refs)
   ref = string.gsub(ref, "^refs/remotes/", "")
 
   local remote = string.match(ref, "^[^/]*")
@@ -21,8 +32,11 @@ local function current_file_url()
   return string.format("https://github.com/%s/blob/%s/%s#L%d", repo, revision, file, line)
 end
 
-M.open = function()
-  vim.fn.system({ "open", current_file_url() })
+M.open = function(refs)
+  if type(refs) ~= "table" then
+    refs = { "", "main", "master" }
+  end
+  vim.fn.system({ "open", current_file_url(refs) })
 end
 
 return M
