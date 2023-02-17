@@ -19,3 +19,11 @@ require("nvim-treesitter.configs").setup({
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+require("treesitter-context").setup({
+  patterns = {
+    go = {
+      "func_literal",
+    },
+  },
+})
