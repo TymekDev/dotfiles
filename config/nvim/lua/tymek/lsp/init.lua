@@ -16,13 +16,16 @@ local function on_attach(client)
   nnoremap("gd", vim.lsp.buf.definition)
   nnoremap("gt", vim.lsp.buf.type_definition)
   nnoremap("gr", vim.lsp.buf.rename)
-  nnoremap("gk", vim.diagnostic.open_float)
+  nnoremap("gK", vim.diagnostic.open_float)
   nnoremap("gca", vim.lsp.buf.code_action)
 
   nnoremap("gqd", vim.diagnostic.setqflist) -- [d]iagnostics
   nnoremap("gqi", vim.lsp.buf.implementation) -- [i]mplementation
   nnoremap("gqr", vim.lsp.buf.references) -- [r]eferences
   nnoremap("gqs", vim.lsp.buf.document_symbol) -- [s]ybmol
+
+  vim.keymap.set({ "n", "x" }, "gj", vim.diagnostic.goto_next, { buffer = true })
+  vim.keymap.set({ "n", "x" }, "gk", vim.diagnostic.goto_prev, { buffer = true })
 
   nnoremap("<Leader>fd", require("telescope.builtin").diagnostics)
   nnoremap("<Leader>fi", require("telescope.builtin").lsp_implementations)
