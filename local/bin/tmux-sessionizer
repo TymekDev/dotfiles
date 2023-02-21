@@ -1,6 +1,6 @@
 #!/bin/bash
 
-selected=$(find ~ ~/personal ~/personal/frontendmasters ~/personal/playground ~/personal/zadanka ~/work -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null | fzf-tmux -h)
+selected=$(find ~ ~/personal ~/personal/frontendmasters ~/personal/gokrazy/www ~/personal/playground ~/personal/zadanka ~/work -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null | fzf-tmux -h)
 selected_name=$(basename "$selected" | tr . _)
 
 if [[ -z $selected ]]; then
