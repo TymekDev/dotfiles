@@ -53,7 +53,13 @@ local function setup(on_attach)
     },
   }))
 
-  require("lspconfig").tailwindcss.setup(config())
+  require("lspconfig").tailwindcss.setup(config({
+    settings = {
+      tailwindCSS = {
+        classAttributes = { "class", "className", "classList", "class:list", "ngClass" },
+      },
+    },
+  }))
 
   require("lspconfig").tsserver.setup(config({
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
