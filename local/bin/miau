@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+~/go/bin/miau --addr 192.168.1.225 $@
