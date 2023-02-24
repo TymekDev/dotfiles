@@ -42,10 +42,10 @@ set -x GOKRAZY_PARENT_DIR ~/personal
 set -x GOKRAZY_INSTANCE gokrazy
 
 fish_add_path ~/.cargo/bin
-fish_add_path ~/.local/bin
 fish_add_path ~/.npm-global/bin
 fish_add_path ~/go/bin
 fish_add_path /usr/local/go/bin
+fish_add_path --move ~/.local/bin
 
 if test (uname) = "Darwin"
   set -x SHELL /opt/homebrew/bin/fish
