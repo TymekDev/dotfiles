@@ -54,5 +54,5 @@ end
 
 # pnpm
 set -gx PNPM_HOME "/Users/tymek/Library/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
+fish_add_path $PNPM_HOME
 # pnpm end
