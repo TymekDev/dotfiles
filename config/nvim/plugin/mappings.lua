@@ -78,6 +78,9 @@ nnoremap("<Leader>Z", { cmd = "ZenMode" })
 nnoremap("<Leader>a", "<Plug>(EasyAlign)")
 xnoremap("<Leader>a", "<Plug>(EasyAlign)")
 
+vim.keymap.set("n", "<Leader>t", ":t.<Left><Left>")
+vim.keymap.set("n", "<Leader>m", ":m.<Left><Left>")
+
 -- TODO: make these work with count (jump & fix N times) and .
 vim.keymap.set("n", "zf", "]s1z=") -- Fix next bad word with first suggestion
 vim.keymap.set("n", "zF", "[s1z=") -- Fix previous bad word with first suggestion
