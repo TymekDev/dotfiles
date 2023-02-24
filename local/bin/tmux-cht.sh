@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 selected=$(cat ~/.local/share/cht.sh/* | fzf)
 
 if [[ -z $selected ]]; then
