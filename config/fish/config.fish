@@ -22,6 +22,8 @@ abbr --add glg  git log
 abbr --add gm   git merge
 abbr --add gp   git push
 abbr --add gpf  git push --force-with-lease
+abbr --add gr   git rebase --autostash --interactive
+abbr --add grc  git rebase --continue
 abbr --add gs   git status
 abbr --add gsw  git switch
 abbr --add gwt  git worktree
