@@ -38,6 +38,7 @@ bind \cj accept-autosuggestion execute
 bind \ck forward-word
 bind \cn "stty sane; nvim +Startup"
 bind \c_ "stty sane; tmux-cht.sh"
+bind -k nul 'stty sane; test "$TMUX" || tmux attach || tmux-sessionizer'
 
 set -x EDITOR nvim
 set -x GOKRAZY_PARENT_DIR ~/personal
