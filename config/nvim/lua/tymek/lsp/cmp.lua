@@ -21,7 +21,7 @@ cmp.setup({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ["<C-j>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "c" }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<C-j>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
     ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
   },
@@ -47,6 +47,14 @@ cmp.setup({
     { name = "buffer" },
   }),
 })
+
+cmp.event:on("menu_opened", function()
+  vim.keymap.set({ "i", "c" }, "<C-j>", cmp.mapping.confirm({ select = true }))
+end)
+
+cmp.event:on("menu_closed", function()
+  vim.keymap.set({ "i", "c" }, "<C-j>", cmp.mapping.complete())
+end)
 
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
