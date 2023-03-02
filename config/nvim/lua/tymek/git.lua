@@ -8,7 +8,7 @@ local function try_refs(refs)
   local result
   for _, ref in ipairs(refs) do
     result = system_call({ "git", "rev-parse", "--symbolic-full-name", ref .. "@{upstream}" })
-    if string.find(result, "fatal", 1, true) == false then
+    if string.find(result, "fatal", 1, true) == nil then
       break
     end
   end
