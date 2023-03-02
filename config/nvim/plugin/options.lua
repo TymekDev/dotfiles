@@ -7,7 +7,7 @@ o.history = 1000
 o.hlsearch = false
 o.list = true
 o.listchars:append({ extends = ">", precedes = "<", eol = "⏎" })
-o.mouse = nil
+o.mouse = "n"
 o.number = true
 o.relativenumber = true
 o.scrolloff = 3
