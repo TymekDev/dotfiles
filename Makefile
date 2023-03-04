@@ -56,20 +56,20 @@ from-scratch: brew install
 
 .PHONY: brew
 brew:
-	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	[ -x ${BREW} ] || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 .PHONY: install
 install: ${BREW_FORMULAE} ${BREW_CASKS}
 
 .PHONY: ${BREW_CASKS}
-${BREW_CASKS}:
+${BREW_CASKS}: brew
 	${BREW} install --cask $@
 
 .PHONY: ${BREW_FORMULAE}
-${BREW_FORMULAE}:
+${BREW_FORMULAE}: brew
 	${BREW} install $@
 
 .PHONY: ${BREW_HEAD}
-${BREW_HEAD}:
+${BREW_HEAD}: brew
 	${BREW} install --HEAD $@
 
