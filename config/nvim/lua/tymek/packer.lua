@@ -52,6 +52,16 @@ return require("packer").startup(function(use)
   }
 
 
+  -- DAP & co.
+  use {
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    "thehamsta/nvim-dap-virtual-text",
+    "leoluz/nvim-dap-go",
+    -- "nvim-telescope/telescope-dap.nvim",
+  }
+
+
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
