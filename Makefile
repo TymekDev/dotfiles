@@ -6,6 +6,7 @@ BREW_CASKS = 1password \
 						 brave-browser \
 						 discord \
 						 docker \
+						 font-jetbrains-mono-nerd-font \
 						 gimp \
 						 karabiner-elements \
 						 kitty \
@@ -57,6 +58,7 @@ from-scratch: brew install
 .PHONY: brew
 brew:
 	[ -x ${BREW} ] || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	${BREW} tap homebrew/cask-fonts
 
 .PHONY: install
 install: ${BREW_FORMULAE} ${BREW_CASKS}
@@ -72,4 +74,3 @@ ${BREW_FORMULAE}: brew
 .PHONY: ${BREW_HEAD}
 ${BREW_HEAD}: brew
 	${BREW} install --HEAD $@
-
