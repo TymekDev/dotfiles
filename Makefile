@@ -61,7 +61,7 @@ brew:
 	${BREW} tap homebrew/cask-fonts
 
 .PHONY: install
-install: ${BREW_FORMULAE} ${BREW_CASKS}
+install: ${BREW_FORMULAE} ${BREW_CASKS} rust
 
 .PHONY: ${BREW_CASKS}
 ${BREW_CASKS}: brew
@@ -74,3 +74,7 @@ ${BREW_FORMULAE}: brew
 .PHONY: ${BREW_HEAD}
 ${BREW_HEAD}: brew
 	${BREW} install --HEAD $@
+
+.PHONY: rust
+rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
