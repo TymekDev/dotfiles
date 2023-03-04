@@ -107,3 +107,15 @@ nnoremap("<Leader>fb", require("telescope.builtin").current_buffer_fuzzy_find) -
 
 nnoremap("<Leader>gwt", require("telescope").extensions.git_worktree.create_git_worktree)
 nnoremap("gwt", require("telescope").extensions.git_worktree.git_worktrees)
+
+-- TODO: refactor using which-key.nvim
+local function git(args)
+  return function()
+    require("plenary.job"):new({ command = "git", args = args }):start()
+  end
+end
+
+vim.keymap.set("n", "<Leader>Gl", git({ "pull" }))
+vim.keymap.set("n", "<Leader>Gp", git({ "push" }))
+vim.keymap.set("n", "<Leader>gp", require("gitsigns").prev_hunk)
+vim.keymap.set("n", "<Leader>gn", require("gitsigns").next_hunk)
