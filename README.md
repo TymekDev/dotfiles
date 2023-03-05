@@ -1,18 +1,46 @@
-# dotfiles
+# TymekDev's dotfiles
+
+Hey 👋 This repo holds config files for the tools that I use.
+The list of tools can be found at the top of [`Makefile`][].
+
+[`Makefile`]: Makefile
+
+Explore, get inspired, and beware, because _here be dragons!_
+If you have any questions feel free to reach out to me at tymek.makowski@gmail.com, enjoy!
 
 ## Setup
 
-1. Clone this repository and its submodules: `git clone --recurse-submodules git@github.com:TymekDev/dotfiles`
-1. Install (I use latest versions):
-    - Neovim (nightly)
-    - fish
-    - tmux
-    - kitty
-    - exa
-    - fzf
-1. Run `make` to restow config files
-1. Run `:PackerSync` in Neovim
-1. Run `<prefix>I` in tmux
+Currently I exclusively use MacOS, therefore [`Makefile`][] heavily relies on [`brew`][].
+
+[`brew`]: https://brew.sh/
+
+The minimal setup can be done using:
+
+```sh
+make dotfiles
+```
+
+Running `make dotfiles` will:
+- force install [tpm][] (`~/.config/tmux/plugins/tpm` gets deleted before cloning)
+- install `brew` if it is missing
+- install `stow` if it is missing
+- run `stow` to place [`config`](config) and [`local`](local) contents into `~/.config` and `~/.local` respectively
+
+[tpm]: https://github.com/tmux-plugins/tpm
+
+### Install on Clean OS
+
+If you have a clean MacOS, then the following commands will get you up to speed:
+
+```sh
+xcode-select --install
+mkdir ~/personal
+git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles
+cd ~/personal/dotfiles
+make from-scratch
+```
+
+In addition to what `make dotfiles` does, `make from-scratch` installs all tools and sets `fish` to be the default shell.
 
 ## Notable Commits in History
 
@@ -23,9 +51,6 @@
 [home-manager]: https://github.com/nix-community/home-manager
 [`2d5d745`]: https://github.com/TymekDev/dotfiles/commit/2d5d74539d6d9e3f77b0ebee929179ddf1538112
 
-## Contact
-
-If you have any questions feel free to reach out to me at tymek.makowski@gmail.com.
 
 ## License
 
