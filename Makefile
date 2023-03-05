@@ -41,14 +41,14 @@ BREW_FORMULAE = asciinema \
 BREW_HEAD = nvim
 
 .PHONY: restow
-restow:
-	stow --restow --verbose --target ~/.config config
-	stow --restow --verbose --target ~/.local local
+restow: stow
+	${BREW_BIN}/stow --restow --verbose --target ~/.config config
+	${BREW_BIN}/stow --restow --verbose --target ~/.local local
 
 .PHONY: unstow
-unstow:
-	stow --delete --verbose --target ~/.config config
-	stow --delete --verbose --target ~/.local local
+unstow: stow
+	${BREW_BIN}/stow --delete --verbose --target ~/.config config
+	${BREW_BIN}/stow --delete --verbose --target ~/.local local
 
 .PHONY: from-scratch
 from-scratch: brew install
