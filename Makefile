@@ -90,4 +90,3 @@ install-tpm: install-tmux
 	mkdir -p ~/.config/tmux/plugins
 	[ -e ~/.config/tmux/plugins/tpm ] && rm -rf ~/.config/tmux/plugins/tpm
 	git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-
