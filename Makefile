@@ -38,7 +38,11 @@ BREW_FORMULAE = asciinema \
 								tarsnap \
 								tmux \
 								watch
-BREW_HEAD = nvim
+BREW_HEADS = nvim
+
+INSTALL_CASKS = $(addprefix install-,${BREW_CASKS})
+INSTALL_FORMULAE = $(addprefix install-,${BREW_FORMULAE})
+INSTALL_HEADS = $(addprefix install-,${BREW_HEADS})
 
 .PHONY: restow
 restow: install-stow
@@ -67,18 +71,18 @@ install-brew:
 	${BREW} tap homebrew/cask-fonts
 
 .PHONY: install
-install: $(addprefix install-,${BREW_CASKS}) $(addprefix install-,${BREW_FORMULAE}) install-rust install-tpm
+install: ${INSTALL_CASKS} ${INSTALL_FORMULAE} ${INSTALL_HEADS} install-rust install-tpm
 
-.PHONY: $(addprefix install-,${BREW_CASKS})
-$(addprefix install-,${BREW_CASKS}): install-brew
+.PHONY: ${INSTALL_CASKS} 
+${INSTALL_CASKS}: install-brew
 	TARGET=$(subst install-,,$@) [ -x ${BREW_BIN}/$$TARGET ] || ${BREW} install --cask $$TARGET
 
-.PHONY: $(addprefix install-,${BREW_FORMULAE})
-$(addprefix install-,${BREW_FORMULAE}): install-brew
+.PHONY: ${INSTALL_FORMULAE}
+${INSTALL_FORMULAE}: install-brew
 	TARGET=$(subst install-,,$@) [ -x ${BREW_BIN}/$$TARGET ] || ${BREW} install $$TARGET
 
-.PHONY: $(addprefix install-,${BREW_HEAD})
-$(addprefix install-,${BREW_HEAD}): install-brew
+.PHONY: ${INSTALL_HEADS}
+${INSTALL_HEADS}: install-brew
 	TARGET=$(subst install-,,$@) [ -x ${BREW_BIN}/$$TARGET ] || ${BREW} install --HEAD $$TARGET
 
 .PHONY: install-rust
