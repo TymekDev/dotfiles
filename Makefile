@@ -46,6 +46,7 @@ INSTALL_HEADS = $(addprefix install-,${BREW_HEADS})
 
 .PHONY: restow
 restow: install-stow
+	mkdir -p ~/.config ~/.local
 	${BREW_BIN}/stow --restow --verbose --target ~/.config config
 	${BREW_BIN}/stow --restow --verbose --target ~/.local local
 
@@ -75,15 +76,15 @@ install: ${INSTALL_CASKS} ${INSTALL_FORMULAE} ${INSTALL_HEADS} install-rust inst
 
 .PHONY: ${INSTALL_CASKS} 
 ${INSTALL_CASKS}: install-brew
-	TARGET=$(subst install-,,$@) [ -x ${BREW_BIN}/$$TARGET ] || ${BREW} install --cask $$TARGET
+	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install --cask $(subst install-,,$@)
 
 .PHONY: ${INSTALL_FORMULAE}
 ${INSTALL_FORMULAE}: install-brew
-	TARGET=$(subst install-,,$@) [ -x ${BREW_BIN}/$$TARGET ] || ${BREW} install $$TARGET
+	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install $(subst install-,,$@)
 
 .PHONY: ${INSTALL_HEADS}
 ${INSTALL_HEADS}: install-brew
-	TARGET=$(subst install-,,$@) [ -x ${BREW_BIN}/$$TARGET ] || ${BREW} install --HEAD $$TARGET
+	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install --HEAD $(subst install-,,$@)
 
 .PHONY: install-rust
 install-rust:
@@ -92,5 +93,4 @@ install-rust:
 .PHONY: install-tpm
 install-tpm: install-tmux
 	mkdir -p ~/.config/tmux/plugins
-	[ -e ~/.config/tmux/plugins/tpm ] && rm -rf ~/.config/tmux/plugins/tpm
-	git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+	[ -e ~/.config/tmux/plugins/tpm ] || git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
