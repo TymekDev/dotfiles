@@ -104,6 +104,9 @@ nnoremap("<Leader>fh", require("telescope.builtin").help_tags) -- [h]elp
 nnoremap("<Leader>fc", require("telescope.builtin").commands) -- [c]ommands
 nnoremap("<Leader>fch", require("telescope.builtin").command_history) -- [c]ommand history
 nnoremap("<Leader>fb", require("telescope.builtin").current_buffer_fuzzy_find) -- [b]uffer
+-- TODO: fish counterparts
+vim.keymap.set({ "n", "x", "i" }, "<C-f>", require("telescope.builtin").find_files)
+vim.keymap.set({ "n", "x", "i" }, "<C-g>", require("telescope.builtin").live_grep)
 
 nnoremap("<Leader>gwt", require("telescope").extensions.git_worktree.create_git_worktree)
 nnoremap("gwt", require("telescope").extensions.git_worktree.git_worktrees)
