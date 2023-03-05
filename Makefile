@@ -67,7 +67,7 @@ install-brew:
 	${BREW} tap homebrew/cask-fonts
 
 .PHONY: install
-install: ${BREW_FORMULAE} ${BREW_CASKS} install-rust install-tpm
+install: $(addprefix install-,${BREW_CASKS}) $(addprefix install-,${BREW_FORMULAE}) install-rust install-tpm
 
 .PHONY: $(addprefix install-,${BREW_CASKS})
 $(addprefix install-,${BREW_CASKS}): install-brew
