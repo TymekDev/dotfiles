@@ -41,12 +41,12 @@ BREW_FORMULAE = asciinema \
 BREW_HEAD = nvim
 
 .PHONY: restow
-restow: stow
+restow: install-stow
 	${BREW_BIN}/stow --restow --verbose --target ~/.config config
 	${BREW_BIN}/stow --restow --verbose --target ~/.local local
 
 .PHONY: unstow
-unstow: stow
+unstow: install-stow
 	${BREW_BIN}/stow --delete --verbose --target ~/.config config
 	${BREW_BIN}/stow --delete --verbose --target ~/.local local
 
@@ -56,37 +56,37 @@ from-scratch: install dotfiles
 	chsh -s ${BREW_BIN}/fish
 	git remote set-url origin git@github.com:TymekDev/dotfiles
 
-.PHONY: brew
-brew:
+.PHONY: install-brew
+install-brew:
 	[ -x ${BREW} ] || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	${BREW} tap homebrew/cask-fonts
 
 .PHONY: install
-install: ${BREW_FORMULAE} ${BREW_CASKS} rust
+install: ${BREW_FORMULAE} ${BREW_CASKS} install-rust install-tpm
 
-.PHONY: ${BREW_CASKS}
-${BREW_CASKS}: brew
-	[ -x ${BREW_BIN}/$@ ] || ${BREW} install --cask $@
+.PHONY: $(addprefix install-,${BREW_CASKS})
+$(addprefix install-,${BREW_CASKS}): install-brew
+	TARGET=$(subst install-,,$@) [ -x ${BREW_BIN}/$$TARGET ] || ${BREW} install --cask $$TARGET
 
-.PHONY: ${BREW_FORMULAE}
-${BREW_FORMULAE}: brew
-	[ -x ${BREW_BIN}/$@ ] || ${BREW} install $@
+.PHONY: $(addprefix install-,${BREW_FORMULAE})
+$(addprefix install-,${BREW_FORMULAE}): install-brew
+	TARGET=$(subst install-,,$@) [ -x ${BREW_BIN}/$$TARGET ] || ${BREW} install $$TARGET
 
-.PHONY: ${BREW_HEAD}
-${BREW_HEAD}: brew
-	[ -x ${BREW_BIN}/$@ ] || ${BREW} install --HEAD $@
+.PHONY: $(addprefix install-,${BREW_HEAD})
+$(addprefix install-,${BREW_HEAD}): install-brew
+	TARGET=$(subst install-,,$@) [ -x ${BREW_BIN}/$$TARGET ] || ${BREW} install --HEAD $$TARGET
 
-.PHONY: rust
-rust:
+.PHONY: install-rust
+install-rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-.PHONY: tpm
-tpm: tmux
+.PHONY: install-tpm
+install-tpm: install-tmux
 	mkdir -p ~/.config/tmux/plugins
 	[ -e ~/.config/tmux/plugins/tpm ] && rm -rf ~/.config/tmux/plugins/tpm
 	git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 .PHONY: dotfiles
-dotfiles: tpm restow
+dotfiles: install-tpm restow
 	[ -n "$$TMUX" ] && tmux source-file ~/.config/tmux/tmux.conf
 	~/.config/tmux/plugins/tpm/bin/install_plugins
