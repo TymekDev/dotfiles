@@ -51,10 +51,10 @@ unstow: stow
 	${BREW_BIN}/stow --delete --verbose --target ~/.local local
 
 .PHONY: from-scratch
-from-scratch: brew install
+from-scratch: install dotfiles
 	${BREW_BIN}/fish | sudo tee -a /etc/shells
 	chsh -s ${BREW_BIN}/fish
-	mkdir ~/personal ~/work
+	git remote set-url origin git@github.com:TymekDev/dotfiles
 
 .PHONY: brew
 brew:
@@ -79,3 +79,14 @@ ${BREW_HEAD}: brew
 .PHONY: rust
 rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+.PHONY: tpm
+tpm: tmux
+	mkdir -p ~/.config/tmux/plugins
+	[ -e ~/.config/tmux/plugins/tpm ] && rm -rf ~/.config/tmux/plugins/tpm
+	git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+
+.PHONY: dotfiles
+dotfiles: tpm restow
+	[ -n "$$TMUX" ] && tmux source-file ~/.config/tmux/tmux.conf
+	~/.config/tmux/plugins/tpm/bin/install_plugins
