@@ -56,6 +56,11 @@ from-scratch: install dotfiles
 	chsh -s ${BREW_BIN}/fish
 	git remote set-url origin git@github.com:TymekDev/dotfiles
 
+.PHONY: dotfiles
+dotfiles: install-tpm restow
+	[ -n "$$TMUX" ] && tmux source-file ~/.config/tmux/tmux.conf
+	~/.config/tmux/plugins/tpm/bin/install_plugins
+
 .PHONY: install-brew
 install-brew:
 	[ -x ${BREW} ] || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -86,7 +91,3 @@ install-tpm: install-tmux
 	[ -e ~/.config/tmux/plugins/tpm ] && rm -rf ~/.config/tmux/plugins/tpm
 	git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
-.PHONY: dotfiles
-dotfiles: install-tpm restow
-	[ -n "$$TMUX" ] && tmux source-file ~/.config/tmux/tmux.conf
-	~/.config/tmux/plugins/tpm/bin/install_plugins
