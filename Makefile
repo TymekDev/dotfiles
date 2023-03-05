@@ -54,6 +54,7 @@ unstow: stow
 from-scratch: brew install
 	${BREW_BIN}/fish | sudo tee -a /etc/shells
 	chsh -s ${BREW_BIN}/fish
+	mkdir ~/personal ~/work
 
 .PHONY: brew
 brew:
@@ -65,15 +66,15 @@ install: ${BREW_FORMULAE} ${BREW_CASKS} rust
 
 .PHONY: ${BREW_CASKS}
 ${BREW_CASKS}: brew
-	${BREW} install --cask $@
+	[ -x ${BREW_BIN}/$@ ] || ${BREW} install --cask $@
 
 .PHONY: ${BREW_FORMULAE}
 ${BREW_FORMULAE}: brew
-	${BREW} install $@
+	[ -x ${BREW_BIN}/$@ ] || ${BREW} install $@
 
 .PHONY: ${BREW_HEAD}
 ${BREW_HEAD}: brew
-	${BREW} install --HEAD $@
+	[ -x ${BREW_BIN}/$@ ] || ${BREW} install --HEAD $@
 
 .PHONY: rust
 rust:
