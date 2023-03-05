@@ -42,6 +42,14 @@ make from-scratch
 
 In addition to what `make dotfiles` does, `make from-scratch` installs all tools and sets `fish` to be the default shell.
 
+### Additional `make` Targets
+
+Other than `dotfiles` and `from-scratch`, the following targets are available:
+- `restow` - runs `stow --restow` to update or place configs in place
+- `unstow` - runs `stow --delete` to undo `restow` target
+- `install` - installs everything with `install-` prefix
+- `install-*` - numerous targets for installing tools, one at a time
+
 ## Notable Commits in History
 
 - Commit deleting unused configs: ([`b9d3554`][]) _chore: remove unused configs_
