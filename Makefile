@@ -62,7 +62,7 @@ from-scratch: install dotfiles
 	git remote set-url origin git@github.com:TymekDev/dotfiles
 
 .PHONY: dotfiles
-dotfiles: install-tpm restow
+dotfiles: install-tpm restow nvim
 	[ -n "$$TMUX" ] && tmux source-file ~/.config/tmux/tmux.conf
 	~/.config/tmux/plugins/tpm/bin/install_plugins
 
@@ -94,3 +94,8 @@ install-rust:
 install-tpm: install-tmux
 	mkdir -p ~/.config/tmux/plugins
 	[ -e ~/.config/tmux/plugins/tpm ] || git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+
+# TODO: close nvim automaically after update
+.PHONY: nvim
+nvim: install-nvim
+	nvim +PackerSync
