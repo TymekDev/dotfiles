@@ -22,8 +22,8 @@ abbr --add glg  git log
 abbr --add gm   git merge
 abbr --add gp   git push
 abbr --add gpf  git push --force-with-lease
-abbr --add gr   git rebase --autostash --interactive
-abbr --add grc  git rebase --continue
+abbr --add grb  git rebase --autostash --interactive
+abbr --add grbc git rebase --continue
 abbr --add grs  git restore
 abbr --add grss git restore --staged
 abbr --add gs   git status
