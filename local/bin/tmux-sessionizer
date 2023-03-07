@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
-selected=$(find ~ ~/personal ~/personal/frontendmasters ~/personal/gokrazy/www ~/personal/playground ~/personal/zadanka ~/work ~/work/sso ~/work/sso/feature ~/work/sso/hotfix  -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null | fzf-tmux -h)
+dirs=(
+  ~
+  ~/personal
+  ~/personal/frontendmasters
+  ~/personal/gokrazy/www
+  ~/personal/playground
+  ~/personal/zadanka
+  ~/work
+  ~/work/sso
+  ~/work/sso/feature
+  ~/work/sso/hotfix
+)
+selected=$(find ${dirs[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null | fzf-tmux -h)
 selected_name=$(basename "$selected" | tr . _)
 
 if [[ -z $selected ]]; then
