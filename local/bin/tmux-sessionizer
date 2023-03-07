@@ -12,7 +12,7 @@ dirs=(
   ~/work/sso/feature
   ~/work/sso/hotfix
 )
-selected=$(find ${dirs[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null | fzf-tmux -h)
+selected=$(find ${dirs[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null | sed "s,^$HOME,~," | fzf-tmux -h | sed "s,^~,$HOME," )
 selected_name=$(basename "$selected" | tr . _)
 
 if [[ -z $selected ]]; then
