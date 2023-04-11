@@ -34,6 +34,7 @@ abbr --add gwt  git worktree
 abbr --add ta tmux attach-session
 
 alias g  git
+alias k  kubectl
 alias ls "exa --git --group-directories-first --time-style long-iso"
 alias nv nvim
 
