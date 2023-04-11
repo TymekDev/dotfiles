@@ -36,12 +36,11 @@ alias ls "exa --git --group-directories-first --time-style long-iso"
 alias nv nvim
 
 bind \cs "stty sane; tmux-sessionizer"
-bind \cg "stty sane; nvim +Git +only"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
-bind \cn "stty sane; nvim +Startup"
+bind \cf "stty sane; nvim +'Telescope find_files'"
+bind \cg "stty sane; nvim +'Telescope live_grep'"
 bind \c_ "stty sane; tmux-cht.sh"
-bind -k nul 'stty sane; test "$TMUX" || tmux attach || tmux-sessionizer'
 
 set -x EDITOR nvim
 set -x GOKRAZY_PARENT_DIR ~/personal
