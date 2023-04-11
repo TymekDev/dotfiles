@@ -27,6 +27,7 @@ BREW_FORMULAE = asciinema \
 								fish \
 								fzf \
 								go \
+								gh \
 								ijq \
 								imagemagick \
 								jq \
