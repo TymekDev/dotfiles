@@ -2,7 +2,6 @@ local o = vim.opt
 
 o.colorcolumn = "+1"
 o.expandtab = true
-o.foldlevelstart = 99
 o.history = 1000
 o.hlsearch = false
 o.lazyredraw = true
@@ -10,6 +9,7 @@ o.list = true
 o.listchars:append({ extends = ">", precedes = "<", eol = "⏎" })
 o.mouse = "n"
 o.number = true
+o.foldenable = false
 o.relativenumber = true
 o.scrolloff = 3
 o.shiftwidth = 2
