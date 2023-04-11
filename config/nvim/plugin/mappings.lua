@@ -97,17 +97,15 @@ nnoremap("gh4", function() require("harpoon.ui").nav_file(4) end)
 
 
 -- Telescope
-nnoremap("<Leader>fq", require("telescope.builtin").quickfix) -- [q]uickfix
+nnoremap("<Leader>fq", require("telescope.builtin").quickfix)                                                       -- [q]uickfix
 nnoremap("<Leader>fe", function() require("telescope").extensions.file_browser.file_browser({ cwd = "%:p:h" }) end) -- [e]xplore (:Ex)
-nnoremap("<Leader>ff", require("telescope.builtin").find_files) -- [f]iles
-nnoremap("<Leader>fg", require("telescope.builtin").live_grep) -- [g]rep
-nnoremap("<Leader>fh", require("telescope.builtin").help_tags) -- [h]elp
-nnoremap("<Leader>fc", require("telescope.builtin").commands) -- [c]ommands
-nnoremap("<Leader>fch", require("telescope.builtin").command_history) -- [c]ommand history
-nnoremap("<Leader>fb", require("telescope.builtin").current_buffer_fuzzy_find) -- [b]uffer
--- TODO: fish counterparts
-vim.keymap.set({ "n", "x", "i" }, "<C-f>", require("telescope.builtin").find_files)
-vim.keymap.set({ "n", "x", "i" }, "<C-g>", require("telescope.builtin").live_grep)
+vim.keymap.set({ "n", "x", "i" }, "<C-f>", require("telescope.builtin").find_files)                                 -- [f]iles
+vim.keymap.set({ "n", "x", "i" }, "<C-g>", require("telescope.builtin").live_grep)                                  -- [g]rep
+nnoremap("<Leader>fh", require("telescope.builtin").help_tags)                                                      -- [h]elp
+nnoremap("<Leader>fc", require("telescope.builtin").commands)                                                       -- [c]ommands
+nnoremap("<Leader>fch", require("telescope.builtin").command_history)                                               -- [c]ommand history
+nnoremap("<Leader>fb", require("telescope.builtin").current_buffer_fuzzy_find)                                      -- [b]uffer
+
 
 nnoremap("<Leader>gwt", require("telescope").extensions.git_worktree.create_git_worktree)
 nnoremap("gwt", require("telescope").extensions.git_worktree.git_worktrees)
