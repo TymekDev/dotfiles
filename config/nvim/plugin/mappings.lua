@@ -121,3 +121,6 @@ vim.keymap.set("n", "<Leader>Gl", git({ "pull" }))
 vim.keymap.set("n", "<Leader>Gp", git({ "push" }))
 vim.keymap.set("n", "<Leader>gp", require("gitsigns").prev_hunk)
 vim.keymap.set("n", "<Leader>gn", require("gitsigns").next_hunk)
+
+
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
