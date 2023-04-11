@@ -31,6 +31,8 @@ abbr --add gs   git status
 abbr --add gsw  git switch
 abbr --add gwt  git worktree
 
+abbr --add ta tmux attach-session
+
 alias g  git
 alias ls "exa --git --group-directories-first --time-style long-iso"
 alias nv nvim
