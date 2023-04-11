@@ -51,8 +51,8 @@ nnoremap("<Leader><C-e>", { cmd = "Ex" })
 nnoremap("<Leader><C-u>", { cmd = "UndotreeToggle" })
 nnoremap("<Leader><C-g>", { cmd = "Git" })
 
-vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux neww tmux-sessionizer<CR>")
-nnoremap("<C-_>", "<Cmd>silent !tmux neww tmux-cht.sh<CR>")
+vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
+nnoremap("<C-_>", "<Cmd>silent !tmux run-shell tmux-cht.sh<CR>")
 
 vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
 
