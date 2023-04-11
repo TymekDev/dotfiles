@@ -12,7 +12,7 @@ abbr --add gcp  git cherry-pick
 abbr --add gcpm git commit -pm
 abbr --add gd   git diff
 abbr --add gds  git diff --staged
-abbr --add gec  git ec
+abbr --add gec  git ec # TODO: change this to fish function or else gitsigns in Neovim breaks
 abbr --add gem  git em
 abbr --add gf   git fetch
 abbr --add gg   git g
@@ -22,6 +22,7 @@ abbr --add glg  git log
 abbr --add gm   git merge
 abbr --add gp   git push
 abbr --add gpf  git push --force-with-lease
+abbr --add gpr  gh pr view --web
 abbr --add grb  git rebase --autostash --interactive
 abbr --add grbc git rebase --continue
 abbr --add grs  git restore
