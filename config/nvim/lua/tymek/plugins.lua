@@ -37,6 +37,36 @@ local plugins = {
     end,
   },
   {
+    "nvim-lualine/lualine.nvim", -- TODO: review config
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("lualine").setup()
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim", -- TODO: review config
+    dependencies = { "nvim-treesitter/nvim-treesitter-context", "nvim-treesitter/nvim-treesitter"  },
+    config = function()
+      require("indent_blankline").setup({
+        show_current_context = true,
+      })
+    end,
+  },
+  {
+    "folke/todo-comments.nvim", -- TODO: review config
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("todo-comments").setup()
+    end,
+  },
+  {
+    -- TODO: add mappings (stage_hunk, next_hunk, prev_hunk)
+    "lewis6991/gitsigns.nvim", -- TODO: review config
+    config = function()
+      require("gitsigns").setup()
+    end
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("nvim-treesitter.configs").setup({
