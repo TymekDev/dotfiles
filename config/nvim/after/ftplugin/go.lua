@@ -4,3 +4,4 @@ vim.opt_local.tabstop = 4
 
 vim.cmd.iabbrev("iferr if err")
 vim.cmd.iabbrev("returnn return n")
+vim.cmd.iabbrev("returne return e")
