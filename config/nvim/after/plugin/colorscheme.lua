@@ -10,4 +10,4 @@ require("tokyonight").setup({
   end,
 })
 
-vim.cmd("colorscheme tokyonight")
+vim.api.nvim_cmd({ cmd = "colorscheme", args = { "tokyonight" } }, {})
