@@ -1,4 +1,4 @@
--- bootstrap start
+-- lazy.nvim bootstrap start
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -11,9 +11,15 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
--- bootstrap end
+-- lazy.nvim bootstrap end
 
-require("lazy").setup({
+local opts = {
+  install = {
+    colorscheme = { "tokyonight" },
+  },
+}
+
+local plugins = {
   {
     "TymekDev/tokyonight.nvim",
     lazy = false,
@@ -62,9 +68,6 @@ require("lazy").setup({
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   },
-},
-{
-  install = {
-    colorscheme = { "tokyonight" },
-  },
-})
+}
+
+require("lazy").setup(plugins, opts)
