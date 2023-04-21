@@ -28,6 +28,10 @@ abbr --add grbc git rebase --continue
 abbr --add grs  git restore
 abbr --add grss git restore --staged
 abbr --add gs   git status
+abbr --add gst  git stash
+abbr --add gstl git stash list
+abbr --add gstp git stash pop
+abbr --add gsts git stash show -p
 abbr --add gsw  git switch
 abbr --add gwt  git worktree
 
@@ -55,10 +59,12 @@ fish_add_path ~/go/bin
 fish_add_path /usr/local/go/bin
 fish_add_path --move ~/.local/bin
 
+# homebrew
 if test (uname) = "Darwin"
   set -x SHELL /opt/homebrew/bin/fish
   eval "$(/opt/homebrew/bin/brew shellenv)"
 end
+# homebrew end
 
 # pnpm
 set -gx PNPM_HOME "/Users/tymek/Library/pnpm"
