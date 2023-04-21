@@ -29,5 +29,42 @@ require("lazy").setup({
 
       vim.api.nvim_cmd({ cmd = "colorscheme", args = { "tokyonight" } }, {})
     end,
-  }
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      -- See: https://github.com/nvim-telescope/telescope.nvim/issues/559
+      local function wrap(action)
+        return function(prompt_bufnr)
+          vim.cmd.stopinsert()
+          vim.schedule(function() action(prompt_bufnr) end)
+        end
+      end
+
+      local actions = require("telescope.actions")
+      require("telescope").setup({
+        defaults = {
+          mappings = {
+            i = {
+              ["<CR>"] = wrap(actions.select_default),
+              ["<C-x>"] = wrap(actions.select_horizontal),
+              ["<C-v>"] = wrap(actions.select_vertical),
+              ["<C-t>"] = wrap(actions.select_tab),
+            },
+          },
+        },
+      })
+    end,
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  },
+},
+{
+  install = {
+    colorscheme = { "tokyonight" },
+  },
 })
