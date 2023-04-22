@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+: ${1:?INPUT .cast file path missing}
+: ${2:?OUTPUT .webp path missing}
+
+gif_name="$(mktemp -t cast2webp).gif"
+agg --font-family 'JetBrainsMono Nerd Font' $1 $gif_name
+ffmpeg -i $gif_name -lossless 1 -loop 0 $2
