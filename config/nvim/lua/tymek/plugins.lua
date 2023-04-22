@@ -56,7 +56,9 @@ local plugins = {
     "folke/todo-comments.nvim", -- TODO: review config
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("todo-comments").setup()
+      require("todo-comments").setup({
+        signs = false,
+      })
     end,
   },
   {
@@ -135,6 +137,58 @@ local plugins = {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   },
+  {
+    "unblevable/quick-scope",
+    config = function()
+      vim.g.qs_hi_priority = 20
+      vim.g.qs_second_highlight = 0
+    end,
+  },
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup({
+        fast_wrap = {},
+      })
+    end,
+  },
+  {
+    "numToStr/Comment.nvim", -- TODO: review config
+    config = function()
+      require("Comment").setup()
+    end,
+  },
+  "junegunn/vim-easy-align", -- TODO: review config
+  "tpope/vim-fugitive",
+  {
+    "junegunn/gv.vim",
+    dependencies = { "tpope/vim-fugitive" },
+  },
+  {
+    "TymekDev/repos.nvim",
+    config = function()
+      require("repos").setup({
+        callbacks = {
+          ["sso"] = function(root)
+            vim.opt.makeprg = "make -C " .. root
+            vim.opt.shellpipe = "2>/dev/null | sed 's#^[^[:blank:]]#" .. root .. "/src/&#' | tee"
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = { "go", "markdown" },
+              callback = function()
+                vim.opt_local.textwidth = 0
+              end,
+            })
+
+            vim.keymap.set({ "n", "x" }, "<Leader>go", function()
+              require("tymek.git").open({ "", "labs", "master" })
+            end)
+          end,
+        },
+      })
+    end,
+  },
+  "tpope/vim-surround",
+  "tpope/vim-repeat",
 }
 
 require("lazy").setup(plugins, opts)
