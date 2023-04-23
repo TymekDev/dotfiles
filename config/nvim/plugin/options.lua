@@ -21,6 +21,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.tabstop = 2
+vim.opt.termguicolors = true
 vim.opt.ttimeoutlen = 100
 vim.opt.undofile = true
 vim.opt.updatetime = 50
