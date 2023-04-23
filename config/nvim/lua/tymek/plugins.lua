@@ -13,6 +13,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- lazy.nvim bootstrap end
 
+
+local function lsp_on_attach(client)
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = 0,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+  end
+end
+
 local opts = {
   install = {
     colorscheme = { "tokyonight" },
@@ -194,6 +206,87 @@ local plugins = {
   "tpope/vim-abolish",
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      local function config(_config)
+        return vim.tbl_deep_extend("force", { capabilities = capabilities, on_attach = lsp_on_attach }, _config or {})
+      end
+
+      require("lspconfig").astro.setup(config())
+
+      require("lspconfig").cssls.setup(config())
+
+      require("lspconfig").eslint.setup(config())
+
+      require("lspconfig").gopls.setup(config({
+        settings = {
+          gopls = {
+            gofumpt = true,
+          },
+        },
+      }))
+
+      require("lspconfig").html.setup(config({
+        settings = {
+          html = {
+            format = {
+              unformatted = { "dd" },
+              wrapLineLength = 0,
+            },
+          },
+        },
+      }))
+
+      require("lspconfig").lua_ls.setup(config({
+        settings = {
+          Lua = {
+            runtime = {
+              version = "LuaJIT",
+            },
+            diagnostics = {
+              globals = { "vim" },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+            },
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      }))
+
+      require("lspconfig").rust_analyzer.setup(config())
+
+      require("lspconfig").tailwindcss.setup(config({
+        settings = {
+          tailwindCSS = {
+            classAttributes = { "class", "className", "classList", "class:list", "ngClass" },
+          },
+        },
+      }))
+
+      require("lspconfig").tsserver.setup(config({
+        filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+      }))
+
+      require("lspconfig").yamlls.setup(config({
+        settings = {
+          yaml = {
+            schemas = {
+              kubernetes = "*.k8s.yaml",
+              ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+              ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+              ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+            },
+          },
+        },
+      }))
+    end,
   },
   {
     "williamboman/mason.nvim",
@@ -216,7 +309,7 @@ local plugins = {
     "jose-elias-alvarez/null-ls.nvim", -- TODO: review config
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-
+      -- Disable prettier for markdown and yaml, enable for astro
       local prettier = require("null-ls").builtins.formatting.prettier
       prettier.filetypes = vim.tbl_filter(function(x)
         return x ~= "markdown" and x ~= "yaml"
@@ -224,7 +317,7 @@ local plugins = {
       table.insert(prettier.filetypes, "astro")
 
       require("null-ls").setup({
-        on_attach = require("tymek.lsp.on_attach"),
+        on_attach = lsp_on_attach,
         sources = {
           require("null-ls").builtins.formatting.goimports,
           prettier,
