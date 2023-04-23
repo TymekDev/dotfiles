@@ -5,7 +5,11 @@
   "indent-blankline.nvim": { "branch": "master", "commit": "018bd04d80c9a73d399c1061fa0c3b14a7614399" },
   "lazy.nvim": { "branch": "main", "commit": "5c89dc52f42e5058a46b0912d7d9042f564e44e0" },
   "lualine.nvim": { "branch": "master", "commit": "84ffb80e452d95e2c46fa29a98ea11a240f7843e" },
+  "mason-lspconfig.nvim": { "branch": "main", "commit": "463e5e7441c17c0f9fba35b3016e7691a78983b9" },
+  "mason.nvim": { "branch": "main", "commit": "d76949e3b92a8a184bac683227c1024920fe763b" },
+  "null-ls.nvim": { "branch": "main", "commit": "920947793ce6e59616644cb4766d442121508bf3" },
   "nvim-autopairs": { "branch": "master", "commit": "7566a86f44bb72ba2b1a609f528a27d93241502d" },
+  "nvim-lspconfig": { "branch": "master", "commit": "cf95480e876ef7699bf08a1d02aa0ae3f4d5f353" },
   "nvim-treesitter": { "branch": "master", "commit": "654216eb04f3fdf0f847ff2d410319fba6cee847" },
   "nvim-treesitter-context": { "branch": "master", "commit": "8b6861ebf0ba88e5f57796372eb194787705d25a" },
   "nvim-ts-autotag": { "branch": "main", "commit": "26761ba6848d814605a629bc8d2694eeb1e48007" },
@@ -18,8 +22,11 @@
   "telescope.nvim": { "branch": "0.1.x", "commit": "9de317bdea2bc393074651179c4fc7f93e9b2d56" },
   "todo-comments.nvim": { "branch": "main", "commit": "8febc60a76feefd8203077ef78b6a262ea1a41f9" },
   "tokyonight.nvim": { "branch": "main", "commit": "dc01a37b78eadb3fbd18cc37c38c756aef316a5f" },
+  "vim-abolish": { "branch": "master", "commit": "cb3dcb220262777082f63972298d57ef9e9455ec" },
   "vim-easy-align": { "branch": "master", "commit": "12dd6316974f71ce333e360c0260b4e1f81169c3" },
+  "vim-eunuch": { "branch": "master", "commit": "291ef1f8c8996ca7715df1032a35a27b12d7b5cf" },
   "vim-fugitive": { "branch": "master", "commit": "e6651a79facf5cc2b7c554fdc19eb8a9fe89602c" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
+  "vim-rsi": { "branch": "master", "commit": "4c673fb6c70652a09682c50a0e308184731ca70b" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" }
 }

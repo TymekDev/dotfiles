@@ -189,6 +189,45 @@ local plugins = {
   },
   "tpope/vim-surround",
   "tpope/vim-repeat",
+  "tpope/vim-rsi",
+  "tpope/vim-eunuch",
+  "tpope/vim-abolish",
+  "neovim/nvim-lspconfig",
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
+    config = function()
+      require("mason-lspconfig").setup({
+        automatic_installation = true,
+      })
+    end,
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim", -- TODO: review config
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+
+      local prettier = require("null-ls").builtins.formatting.prettier
+      prettier.filetypes = vim.tbl_filter(function(x)
+        return x ~= "markdown" and x ~= "yaml"
+      end, prettier.filetypes)
+      table.insert(prettier.filetypes, "astro")
+
+      require("null-ls").setup({
+        on_attach = require("tymek.lsp.on_attach"),
+        sources = {
+          require("null-ls").builtins.formatting.goimports,
+          prettier,
+        },
+      })
+    end,
+  },
 }
 
 require("lazy").setup(plugins, opts)
