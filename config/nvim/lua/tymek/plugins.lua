@@ -192,15 +192,19 @@ local plugins = {
   "tpope/vim-rsi",
   "tpope/vim-eunuch",
   "tpope/vim-abolish",
-  "neovim/nvim-lspconfig",
+  {
+    "neovim/nvim-lspconfig",
+  },
   {
     "williamboman/mason.nvim",
+    priority = 89,
     config = function()
       require("mason").setup()
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    priority = 88,
     dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
