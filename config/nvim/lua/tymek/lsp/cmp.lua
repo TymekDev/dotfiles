@@ -8,21 +8,9 @@ local source_mapping = {
 local cmp = require("cmp")
 cmp.setup({
   snippet = {
-    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end,
-  },
-  mapping = {
-    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<C-e>"] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ["<C-j>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-    ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
   },
   formatting = {
     format = function(entry, vim_item)
@@ -47,14 +35,6 @@ cmp.setup({
   }),
 })
 
-cmp.event:on("menu_opened", function()
-  vim.keymap.set({ "i", "c" }, "<C-j>", cmp.mapping.confirm({ select = true }))
-end)
-
-cmp.event:on("menu_closed", function()
-  vim.keymap.set({ "i", "c" }, "<C-j>", cmp.mapping.complete())
-end)
-
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   completion = {
@@ -65,5 +45,3 @@ cmp.setup.cmdline(":", {
     { name = "fuzzy_path" },
   })
 })
-
-vim.opt.completeopt = { "menu", "menuone", "noselect" }

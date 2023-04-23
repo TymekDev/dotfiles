@@ -158,3 +158,24 @@ nnoremap("<Leader>fi", require("telescope.builtin").lsp_implementations)
 nnoremap("<Leader>fr", require("telescope.builtin").lsp_references)
 nnoremap("<Leader>fs", require("telescope.builtin").lsp_document_symbols)
 nnoremap("<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+
+
+-- TODO: clean these up. Maybe?
+vim.keymap.set({ "i", "c" }, "<C-b>", require("cmp").mapping.scroll_docs(-4))
+vim.keymap.set({ "i", "c" }, "<C-f>", require("cmp").mapping.scroll_docs(4))
+vim.keymap.set({ "i", "c" }, "<C-n>", require("cmp").mapping.select_next_item())
+vim.keymap.set({ "i", "c" }, "<C-p>", require("cmp").mapping.select_prev_item())
+
+vim.keymap.set("i", "<C-e>", require("cmp").mapping.abort())
+vim.keymap.set("c", "<C-e>", require("cmp").mapping.close())
+
+vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
+
+-- Alternate between menu opening and completion
+require("cmp").event:on("menu_opened", function()
+  vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.confirm({ select = true }))
+end)
+
+require("cmp").event:on("menu_closed", function()
+  vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
+end)

@@ -1,4 +1,5 @@
 vim.opt.colorcolumn = "+1"
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.expandtab = true
 vim.opt.foldenable = false
 vim.opt.history = 1000
