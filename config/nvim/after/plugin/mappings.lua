@@ -161,6 +161,7 @@ nnoremap("<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbol
 
 
 -- TODO: clean these up. Maybe?
+-- FIXME: these should have fallbacks OR act only if cmp is visible.
 vim.keymap.set({ "i", "c" }, "<C-b>", require("cmp").mapping.scroll_docs(-4))
 vim.keymap.set({ "i", "c" }, "<C-f>", require("cmp").mapping.scroll_docs(4))
 vim.keymap.set({ "i", "c" }, "<C-n>", require("cmp").mapping.select_next_item())
@@ -169,13 +170,10 @@ vim.keymap.set({ "i", "c" }, "<C-p>", require("cmp").mapping.select_prev_item())
 vim.keymap.set("i", "<C-e>", require("cmp").mapping.abort())
 vim.keymap.set("c", "<C-e>", require("cmp").mapping.close())
 
-vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
-
--- Alternate between menu opening and completion
-require("cmp").event:on("menu_opened", function()
-  vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.confirm({ select = true }))
-end)
-
-require("cmp").event:on("menu_closed", function()
-  vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
+vim.keymap.set({ "i", "c" }, "<C-j>", function()
+  if require("cmp").visible() then
+    require("cmp").mapping.confirm({ select = true })()
+  else
+    require("cmp").mapping.complete()()
+  end
 end)
