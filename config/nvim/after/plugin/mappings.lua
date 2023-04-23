@@ -1,3 +1,4 @@
+-- TODO: move to which-key.nvim
 vim.g.mapleader = " "
 
 -- NOTE: there are also LSP-specifc mappings inside lua/tymek/lsp/init.lua
