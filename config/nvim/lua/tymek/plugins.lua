@@ -333,6 +333,7 @@ local plugins = {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lsp",
       {
         "saadparwaiz1/cmp_luasnip",
@@ -345,6 +346,7 @@ local plugins = {
           },
         },
       },
+      "hrsh7th/cmp-path",
     },
     config = function()
       require("cmp").setup({
@@ -354,8 +356,13 @@ local plugins = {
           end,
         },
         sources = require("cmp").config.sources({
+          { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
+          {
+            name = "path",
+            option = { trailing_slash = true },
+          },
         }),
       })
     end,
@@ -372,6 +379,28 @@ local plugins = {
     end,
   },
   "github/copilot.vim",
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap" },
+    config = function()
+      require("dapui").setup()
+    end,
+  },
+  {
+    "thehamsta/nvim-dap-virtual-text",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("nvim-dap-virtual-text").setup()
+    end,
+  },
+  {
+    "leoluz/nvim-dap-go",
+    dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
+    build = ":MasonInstall delve",
+    config = function()
+      require("dap-go").setup()
+    end,
+  },
 }
 
 require("lazy").setup(plugins, opts)
