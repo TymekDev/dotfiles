@@ -222,6 +222,17 @@ local plugins = {
     end,
   },
   {
+    "jay-babu/mason-null-ls.nvim",
+    priority = 87,
+    dependencies = { "jose-elias-alvarez/null-ls.nvim", "williamboman/mason.nvim" },
+    config = function()
+      require("mason-null-ls").setup({
+        automatic_installation = true,
+        ensure_installed = { "gofumpt" },
+      })
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
