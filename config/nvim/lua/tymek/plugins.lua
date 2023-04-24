@@ -328,7 +328,6 @@ local plugins = {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
       {
         "saadparwaiz1/cmp_luasnip",
@@ -343,28 +342,30 @@ local plugins = {
       },
     },
     config = function()
-      local cmp = require("cmp")
-
-      cmp.setup.cmdline(":", {
-        sources = cmp.config.sources({
-          { name = "cmdline" },
-        })
-      })
-
-      cmp.setup({
+      require("cmp").setup({
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
           end,
         },
-        sources = cmp.config.sources({
+        sources = require("cmp").config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
         }),
       })
     end,
   },
-
+  {
+    "hrsh7th/cmp-cmdline",
+    dependencies = { "hrsh7th/nvim-cmp" },
+    config = function()
+      require("cmp").setup.cmdline(":", {
+        sources = require("cmp").config.sources({
+          { name = "cmdline" },
+        })
+      })
+    end,
+  },
 }
 
 require("lazy").setup(plugins, opts)
