@@ -320,18 +320,14 @@ local plugins = {
     "jose-elias-alvarez/null-ls.nvim", -- TODO: review config
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      -- Disable prettier for markdown and yaml, enable for astro
-      local prettierd = require("null-ls").builtins.formatting.prettierd
-      prettierd.filetypes = vim.tbl_filter(function(x)
-        return x ~= "markdown" and x ~= "yaml"
-      end, prettierd.filetypes)
-      table.insert(prettierd.filetypes, "astro")
-
       require("null-ls").setup({
         on_attach = lsp_on_attach,
         sources = {
           require("null-ls").builtins.formatting.goimports,
-          prettierd,
+          require("null-ls").builtins.formatting.prettierd.with({
+            extra_filetypes = { "astro" },
+            disabled_filetypes = { "markdown", "yaml" }
+          }),
         },
       })
     end,
