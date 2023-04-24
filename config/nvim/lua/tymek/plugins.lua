@@ -371,6 +371,7 @@ local plugins = {
       })
     end,
   },
+  "github/copilot.vim",
 }
 
 require("lazy").setup(plugins, opts)
