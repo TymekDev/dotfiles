@@ -1,3 +1,4 @@
+-- TODO: move to which-key.nvim
 vim.g.mapleader = " "
 
 -- NOTE: there are also LSP-specifc mappings inside lua/tymek/lsp/init.lua
@@ -16,8 +17,8 @@ vim.keymap.set({ "n", "x" }, "<C-n>", vim.cmd.tabnext)
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Half screen up and center on cursor
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Half screen down and center on cursor
 
-vim.keymap.set("n", "n", "nzzzv") -- Next search result, center on cursor, and open folds
-vim.keymap.set("n", "N", "Nzzzv") -- Previous search result, center on cursor, and open folds
+vim.keymap.set("n", "n", "nzzzv")       -- Next search result, center on cursor, and open folds
+vim.keymap.set("n", "N", "Nzzzv")       -- Previous search result, center on cursor, and open folds
 
 vim.keymap.set("n", "<C-h>", function() -- Previous quickfix list
   vim.cmd.colder({ count = vim.api.nvim_eval("v:count1") })
@@ -60,7 +61,7 @@ vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
 
 -- Registers
 xnoremap("<Leader>p", '"_dP') -- don't overwrite paste register
-nnoremap("<Leader>y", '"+y') -- copy to system register
+nnoremap("<Leader>y", '"+y')  -- copy to system register
 xnoremap("<Leader>y", '"+y')
 nnoremap("<Leader>Y", '"+Y')
 xnoremap("<Leader>Y", '"+Y')
@@ -124,3 +125,89 @@ vim.keymap.set("n", "<Leader>gn", require("gitsigns").next_hunk)
 
 
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+
+
+-- TODO: clean these up, possibly make them nop
+nnoremap("K", vim.lsp.buf.hover)
+nnoremap("gd", vim.lsp.buf.definition)
+nnoremap("gt", vim.lsp.buf.type_definition)
+nnoremap("gr", vim.lsp.buf.rename)
+nnoremap("gK", vim.diagnostic.open_float)
+nnoremap("gca", vim.lsp.buf.code_action)
+
+nnoremap("gqd", vim.diagnostic.setqflist)    -- [d]iagnostics
+nnoremap("gqi", vim.lsp.buf.implementation)  -- [i]mplementation
+nnoremap("gqr", vim.lsp.buf.references)      -- [r]eferences
+nnoremap("gqs", vim.lsp.buf.document_symbol) -- [s]ybmol
+
+-- gn/gp + gk vs gj/gk + gK
+vim.keymap.set({ "n", "x" }, "gj", vim.diagnostic.goto_next, { buffer = true })
+vim.keymap.set({ "n", "x" }, "gk", vim.diagnostic.goto_prev, { buffer = true })
+
+vim.keymap.set("n", "<Leader>gd", function()
+  vim.cmd.vsplit()
+  vim.lsp.buf.definition()
+end, { buffer = true })
+vim.keymap.set("n", "<Leader>gt", function()
+  vim.cmd.vsplit()
+  vim.lsp.buf.type_definition()
+end, { buffer = true })
+
+nnoremap("<Leader>fd", require("telescope.builtin").diagnostics)
+nnoremap("<Leader>fi", require("telescope.builtin").lsp_implementations)
+nnoremap("<Leader>fr", require("telescope.builtin").lsp_references)
+nnoremap("<Leader>fs", require("telescope.builtin").lsp_document_symbols)
+nnoremap("<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+
+
+-- TODO: clean these up. Maybe?
+-- FIXME: these should have fallbacks OR act only if cmp is visible.
+vim.keymap.set({ "i", "c" }, "<C-b>", require("cmp").mapping.scroll_docs(-4))
+vim.keymap.set({ "i", "c" }, "<C-f>", require("cmp").mapping.scroll_docs(4))
+vim.keymap.set({ "i", "c" }, "<C-n>", require("cmp").mapping.select_next_item())
+vim.keymap.set({ "i", "c" }, "<C-p>", require("cmp").mapping.select_prev_item())
+
+vim.keymap.set("i", "<C-e>", require("cmp").mapping.abort())
+vim.keymap.set("c", "<C-e>", require("cmp").mapping.close())
+
+vim.keymap.set({ "i", "c" }, "<C-j>", function()
+  if require("cmp").visible() then
+    require("cmp").mapping.confirm({ select = true })()
+  else
+    require("cmp").mapping.complete()()
+  end
+end)
+
+
+-- TODO: sort this out
+--
+-- <leader>dn next
+-- <leader>di in
+-- <leader>do out
+
+-- local dap, dapui = require("dap"), require("dapui")
+-- dap.listeners.after.event_initialized["dapui_config"] = function()
+--   dapui.open()
+-- end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--   dapui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--   dapui.close()
+-- end
+
+-- require("dap").continue()
+-- require("dap").toggle_breakpoint()
+-- step_into
+-- step_over
+-- step_out
+-- set_breakpoint(vim.fn.input("Breakpoint condition: "))
+-- ? run_last
+
+-- require("dapui").toggle()
+-- eval()
+-- ? disable dap console
+-- make splits bigger
+
+-- require("dap-go").debug_test()
+-- ? debug_last_test()
