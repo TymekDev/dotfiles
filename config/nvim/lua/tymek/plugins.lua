@@ -378,7 +378,21 @@ local plugins = {
       })
     end,
   },
-  "github/copilot.vim",
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = "<M-j>", -- TODO: move this to mappings
+          },
+        },
+      })
+    end,
+  },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap" },
