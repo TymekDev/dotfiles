@@ -17,8 +17,8 @@ vim.keymap.set({ "n", "x" }, "<C-n>", vim.cmd.tabnext)
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Half screen up and center on cursor
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Half screen down and center on cursor
 
-vim.keymap.set("n", "n", "nzzzv") -- Next search result, center on cursor, and open folds
-vim.keymap.set("n", "N", "Nzzzv") -- Previous search result, center on cursor, and open folds
+vim.keymap.set("n", "n", "nzzzv")       -- Next search result, center on cursor, and open folds
+vim.keymap.set("n", "N", "Nzzzv")       -- Previous search result, center on cursor, and open folds
 
 vim.keymap.set("n", "<C-h>", function() -- Previous quickfix list
   vim.cmd.colder({ count = vim.api.nvim_eval("v:count1") })
@@ -61,7 +61,7 @@ vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
 
 -- Registers
 xnoremap("<Leader>p", '"_dP') -- don't overwrite paste register
-nnoremap("<Leader>y", '"+y') -- copy to system register
+nnoremap("<Leader>y", '"+y')  -- copy to system register
 xnoremap("<Leader>y", '"+y')
 nnoremap("<Leader>Y", '"+Y')
 xnoremap("<Leader>Y", '"+Y')
