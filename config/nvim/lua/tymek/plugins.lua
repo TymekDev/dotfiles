@@ -57,7 +57,7 @@ local plugins = {
   },
   {
     "lukas-reineke/indent-blankline.nvim", -- TODO: review config
-    dependencies = { "nvim-treesitter/nvim-treesitter-context", "nvim-treesitter/nvim-treesitter"  },
+    dependencies = { "nvim-treesitter/nvim-treesitter-context", "nvim-treesitter/nvim-treesitter" },
     config = function()
       require("indent_blankline").setup({
         show_current_context = true,
@@ -324,7 +324,7 @@ local plugins = {
           require("null-ls").builtins.formatting.goimports,
           require("null-ls").builtins.formatting.prettierd.with({
             extra_filetypes = { "astro" },
-            disabled_filetypes = { "markdown", "yaml" }
+            disabled_filetypes = { "markdown", "yaml" },
           }),
         },
       })
