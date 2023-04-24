@@ -247,8 +247,6 @@ local plugins = {
 
       require("lspconfig").cssls.setup(config())
 
-      require("lspconfig").eslint.setup(config())
-
       require("lspconfig").gopls.setup(config({
         settings = {
           gopls = {
