@@ -150,8 +150,8 @@ nnoremap("<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbol
 
 -- TODO: clean these up. Maybe?
 -- FIXME: these should have fallbacks OR act only if cmp is visible.
-vim.keymap.set({ "i", "c" }, "<C-b>", require("cmp").mapping.scroll_docs(-4))
-vim.keymap.set({ "i", "c" }, "<C-f>", require("cmp").mapping.scroll_docs(4))
+vim.keymap.set({ "i", "c" }, "<C-u>", require("cmp").mapping.scroll_docs(-4))
+vim.keymap.set({ "i", "c" }, "<C-d>", require("cmp").mapping.scroll_docs(4))
 vim.keymap.set({ "i", "c" }, "<C-n>", require("cmp").mapping.select_next_item())
 vim.keymap.set({ "i", "c" }, "<C-p>", require("cmp").mapping.select_prev_item())
 
