@@ -25,7 +25,6 @@ Running `make dotfiles` will:
 - install `brew` if it is missing
 - install `stow` if it is missing
 - run `stow` to place [`config`](config) and [`local`](local) contents into `~/.config` and `~/.local` respectively
-- run `nvim +PackerSync` to update dependencies (**NOTE:** nvim has to be manually closed to proceed, I will sort it out one day)
 - source `~/.config/tmux/tmux.conf` configuration if `tmux` is running
 - install `tmux` plugins
 
@@ -50,11 +49,8 @@ In addition to what `make dotfiles` does, `make from-scratch` installs all tools
 Other than `dotfiles` and `from-scratch`, the following targets are available:
 - `restow` - runs `stow --restow` to update or place configs in place
 - `unstow` - runs `stow --delete` to undo `restow` target
-- `nvim` - installs plugins using [packer.nvim][]
 - `install` - installs everything with `install-` prefix
 - `install-*` - numerous targets for installing tools, one at a time
-
-[packer.nvim]: https://github.com/wbthomason/packer.nvim
 
 ## Notable Commits in History
 
