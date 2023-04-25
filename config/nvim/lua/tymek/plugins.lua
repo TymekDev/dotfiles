@@ -206,21 +206,21 @@ local plugins = {
   "tpope/vim-abolish",
   {
     "folke/neodev.nvim",
-    priority = 90,
+    priority = 90, -- NOTE: has to be set up before nvim-lspconfig
     config = function()
       require("neodev").setup()
     end,
   },
   {
     "williamboman/mason.nvim",
-    priority = 89,
+    priority = 89, -- NOTE: has to be set up before mason-lspconfig.nvim
     config = function()
       require("mason").setup()
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    priority = 88,
+    priority = 88, -- NOTE: has to be set up before nvim-lspconfig
     dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
@@ -230,7 +230,7 @@ local plugins = {
   },
   {
     "jay-babu/mason-null-ls.nvim",
-    priority = 87,
+    priority = 87, -- NOTE: has to be set up before null-ls.nvim
     dependencies = { "jose-elias-alvarez/null-ls.nvim", "williamboman/mason.nvim" },
     config = function()
       require("mason-null-ls").setup({
