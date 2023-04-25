@@ -57,11 +57,15 @@ Other than `dotfiles` and `from-scratch`, the following targets are available:
 - Commit deleting unused configs: ([`b9d3554`][]) _chore: remove unused configs_
 - Commit removing [home-manager][]: ([`2d5d745`][]) _refactor: purge home-manager and Nix_
 - Commit adding setup automation using `make`: ([`7ac8ddf`][]) _Merge branch 'make-magic'_
+- Commit switching from [packer.nvim][] to [lazy.nvim][]: ([`1ad9d73`][]) _Merge pull request #8 from TymekDev/lazy.nvim_
 
 [`b9d3554`]: https://github.com/TymekDev/dotfiles/commit/b9d35545c8cac900655c77b28ea1eb28c4b3e0ce
 [home-manager]: https://github.com/nix-community/home-manager
 [`2d5d745`]: https://github.com/TymekDev/dotfiles/commit/2d5d74539d6d9e3f77b0ebee929179ddf1538112
 [`7ac8ddf`]: https://github.com/TymekDev/dotfiles/commit/7ac8ddfef4f80cf7da00452e4f4b3777b2b016f1
+[packer.nvim]: https://github.com/wbthomason/packer.nvim
+[lazy.nvim]: https://github.com/folke/lazy.nvim
+[`1ad9d73`]: https://github.com/TymekDev/dotfiles/commit/1ad9d73abd3099247377322dea3b3524c8dd77f3
 
 
 ## License
