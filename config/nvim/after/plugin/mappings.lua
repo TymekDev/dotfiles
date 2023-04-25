@@ -88,15 +88,6 @@ vim.keymap.set("n", "zf", "]s1z=") -- Fix next bad word with first suggestion
 vim.keymap.set("n", "zF", "[s1z=") -- Fix previous bad word with first suggestion
 
 
--- Harpoon
-nnoremap("ghq", require("harpoon.ui").toggle_quick_menu)
-nnoremap("gha", require("harpoon.mark").add_file)
-nnoremap("gh1", function() require("harpoon.ui").nav_file(1) end)
-nnoremap("gh2", function() require("harpoon.ui").nav_file(2) end)
-nnoremap("gh3", function() require("harpoon.ui").nav_file(3) end)
-nnoremap("gh4", function() require("harpoon.ui").nav_file(4) end)
-
-
 -- Telescope
 nnoremap("<Leader>fq", require("telescope.builtin").quickfix)                                                       -- [q]uickfix
 nnoremap("<Leader>fe", function() require("telescope").extensions.file_browser.file_browser({ cwd = "%:p:h" }) end) -- [e]xplore (:Ex)
@@ -107,9 +98,6 @@ nnoremap("<Leader>fc", require("telescope.builtin").commands)                   
 nnoremap("<Leader>fch", require("telescope.builtin").command_history)                                               -- [c]ommand history
 nnoremap("<Leader>fb", require("telescope.builtin").current_buffer_fuzzy_find)                                      -- [b]uffer
 
-
-nnoremap("<Leader>gwt", require("telescope").extensions.git_worktree.create_git_worktree)
-nnoremap("gwt", require("telescope").extensions.git_worktree.git_worktrees)
 
 -- TODO: refactor using which-key.nvim
 local function git(args)
