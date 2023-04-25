@@ -205,6 +205,13 @@ local plugins = {
   "tpope/vim-eunuch",
   "tpope/vim-abolish",
   {
+    "folke/neodev.nvim",
+    priority = 90,
+    config = function()
+      require("neodev").setup()
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     priority = 89,
     config = function()
