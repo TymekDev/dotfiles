@@ -91,8 +91,8 @@ vim.keymap.set("n", "zF", "[s1z=") -- Fix previous bad word with first suggestio
 -- Telescope
 nnoremap("<Leader>fq", require("telescope.builtin").quickfix)                                                       -- [q]uickfix
 nnoremap("<Leader>fe", function() require("telescope").extensions.file_browser.file_browser({ cwd = "%:p:h" }) end) -- [e]xplore (:Ex)
-vim.keymap.set({ "n", "x", "i" }, "<C-f>", require("telescope.builtin").find_files)                                 -- [f]iles
-vim.keymap.set({ "n", "x", "i" }, "<C-g>", require("telescope.builtin").live_grep)                                  -- [g]rep
+vim.keymap.set({ "n", "x" }, "<C-f>", require("telescope.builtin").find_files)                                      -- [f]iles
+vim.keymap.set({ "n", "x" }, "<C-g>", require("telescope.builtin").live_grep)                                       -- [g]rep
 nnoremap("<Leader>fh", require("telescope.builtin").help_tags)                                                      -- [h]elp
 nnoremap("<Leader>fc", require("telescope.builtin").commands)                                                       -- [c]ommands
 nnoremap("<Leader>fch", require("telescope.builtin").command_history)                                               -- [c]ommand history
@@ -116,7 +116,7 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 
 -- TODO: clean these up, possibly make them nop
-nnoremap("K", vim.lsp.buf.hover)
+nnoremap("K", vim.lsp.buf.hover) -- FIXME: this breaks links in :help
 nnoremap("gd", vim.lsp.buf.definition)
 nnoremap("gt", vim.lsp.buf.type_definition)
 nnoremap("gr", vim.lsp.buf.rename)
