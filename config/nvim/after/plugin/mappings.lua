@@ -155,7 +155,6 @@ vim.keymap.set({ "i", "c" }, "<C-d>", require("cmp").mapping.scroll_docs(4))
 vim.keymap.set({ "i", "c" }, "<C-n>", require("cmp").mapping.select_next_item())
 vim.keymap.set({ "i", "c" }, "<C-p>", require("cmp").mapping.select_prev_item())
 
-vim.keymap.set("i", "<C-e>", require("cmp").mapping.abort())
 vim.keymap.set("c", "<C-e>", require("cmp").mapping.close())
 
 vim.keymap.set({ "i", "c" }, "<C-j>", function()
