@@ -9,7 +9,7 @@
   dc = "! f() { REF=${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f"
 
   # [d]elete [m]erged
-  dm = "! git branch --merged | grep -vE '(\\*|main|master)' | xargs -n 1 git branch -d"
+  dm = "! git branch --merged | grep -vE '(\\*|main|master)' | sed 's,^[+\\*] ,,' | xargs -n 1 git branch -d"
 
   # [f]ind [c]ode ([s]ingle)
   fc = "fl --all -S"
