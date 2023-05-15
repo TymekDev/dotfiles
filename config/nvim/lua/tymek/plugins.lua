@@ -437,14 +437,6 @@ local plugins = {
       require("dap-go").setup()
     end,
   },
-  {
-    "folke/neodev.nvim",
-    priority = 79,
-    lazy = false,
-    config = function()
-      require("neodev").setup()
-    end,
-  },
 }
 
 require("lazy").setup(plugins, opts)
