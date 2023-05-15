@@ -329,11 +329,21 @@ local plugins = {
       require("null-ls").setup({
         on_attach = lsp_on_attach,
         sources = {
+          -- TODO: browse through linters, formatters etc.
+          -- TODO: add linters!
           require("null-ls").builtins.formatting.goimports,
           require("null-ls").builtins.formatting.prettierd.with({
             extra_filetypes = { "astro" },
             disabled_filetypes = { "markdown", "yaml" },
           }),
+          -- require("null-ls").builtins.diagnostics.checkmake,
+          -- require("null-ls").builtins.diagnostics.commitlint,
+          -- require("null-ls").builtins.diagnostics.eslint_d, -- TODO: is this needed with LSP, prettier, etc.?
+          -- require("null-ls").builtins.diagnostics.fish,
+          require("null-ls").builtins.diagnostics.golangci_lint, -- FIXME: golangci-lint works only if go.mod is in repository's root
+          -- require("null-ls").builtins.diagnostics.luacheck,
+          -- require("null-ls").builtins.diagnostics.shellcheck,
+          -- require("null-ls").builtins.diagnostics.tsc,
         },
       })
     end,
