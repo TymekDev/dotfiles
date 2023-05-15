@@ -1,5 +1,7 @@
 SHELL = /bin/sh
 
+# TODO: add wezterm installation, include terminfo
+
 BREW = ${BREW_BIN}/brew
 BREW_BIN = /opt/homebrew/bin
 BREW_CASKS = 1password \
