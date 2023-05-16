@@ -11,11 +11,16 @@ config.window_padding = {
   left = 0,
 }
 
+local function cmd_to_meta(key)
+  return { key = key, mods = "CMD", action = wezterm.action.SendKey({ key = key, mods = "META" }) }
+end
+
 config.keys = {
-  { key = "e", mods = "CMD", action = wezterm.action.SendKey({ key = "e", mods = "META" }) },
-  { key = "f", mods = "CMD", action = wezterm.action.SendKey({ key = "f", mods = "META" }) },
-  { key = "h", mods = "CMD", action = wezterm.action.SendKey({ key = "h", mods = "META" }) },
-  { key = "b", mods = "CMD", action = wezterm.action.SendKey({ key = "b", mods = "META" }) },
+  cmd_to_meta("e"), -- fish           edit current command with $EDITOR
+  cmd_to_meta("f"), -- fish & vim-rsi forward one word
+  cmd_to_meta("h"), -- fish           open manpage for current command
+  cmd_to_meta("j"), -- copilot.lua    accept suggestion
+  cmd_to_meta("b"), -- fish & vim-rsi backward one word
 }
 
 return config
