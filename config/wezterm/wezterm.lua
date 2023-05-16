@@ -14,6 +14,7 @@ config.window_padding = {
 config.keys = {
   { key = "e", mods = "CMD", action = wezterm.action.SendKey({ key = "e", mods = "META" }) },
   { key = "f", mods = "CMD", action = wezterm.action.SendKey({ key = "f", mods = "META" }) },
+  { key = "h", mods = "CMD", action = wezterm.action.SendKey({ key = "h", mods = "META" }) },
   { key = "b", mods = "CMD", action = wezterm.action.SendKey({ key = "b", mods = "META" }) },
 }
 
