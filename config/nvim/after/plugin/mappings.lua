@@ -14,13 +14,13 @@ vim.keymap.set("n", "<Leader>l", "<C-w>l")
 vim.keymap.set({ "n", "x" }, "<C-p>", vim.cmd.tabprevious)
 vim.keymap.set({ "n", "x" }, "<C-n>", vim.cmd.tabnext)
 
-vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Half screen up and center on cursor
-vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Half screen down and center on cursor
+vim.keymap.set({ "n", "x" }, "<C-u>", "<C-u>zz") -- Half screen up and center on cursor
+vim.keymap.set({ "n", "x" }, "<C-d>", "<C-d>zz") -- Half screen down and center on cursor
 
-vim.keymap.set("n", "n", "nzzzv")       -- Next search result, center on cursor, and open folds
-vim.keymap.set("n", "N", "Nzzzv")       -- Previous search result, center on cursor, and open folds
+vim.keymap.set("n", "n", "nzzzv")                -- Next search result, center on cursor, and open folds
+vim.keymap.set("n", "N", "Nzzzv")                -- Previous search result, center on cursor, and open folds
 
-vim.keymap.set("n", "<C-h>", function() -- Previous quickfix list
+vim.keymap.set("n", "<C-h>", function()          -- Previous quickfix list
   vim.cmd.colder({ count = vim.api.nvim_eval("v:count1") })
   vim.cmd.cwindow()
 end)
