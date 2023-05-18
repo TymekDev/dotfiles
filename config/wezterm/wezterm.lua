@@ -17,10 +17,12 @@ end
 
 config.keys = {
   cmd_to_meta("e"), -- fish           edit current command with $EDITOR
+  cmd_to_meta("d"), -- fish & vim-rsi delete one word forward
   cmd_to_meta("f"), -- fish & vim-rsi forward one word
   cmd_to_meta("h"), -- fish           open manpage for current command
   cmd_to_meta("j"), -- copilot.lua    accept suggestion
   cmd_to_meta("b"), -- fish & vim-rsi backward one word
+  cmd_to_meta("."), -- fish           insert previous command's last argument
 }
 
 return config
