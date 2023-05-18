@@ -1,7 +1,5 @@
 SHELL = /bin/sh
 
-# TODO: add wezterm installation, include terminfo
-
 BREW = ${BREW_BIN}/brew
 BREW_BIN = /opt/homebrew/bin
 BREW_CASKS = 1password \
@@ -11,7 +9,6 @@ BREW_CASKS = 1password \
 						 font-jetbrains-mono-nerd-font \
 						 gimp \
 						 karabiner-elements \
-						 kitty \
 						 obs \
 						 raycast \
 						 runelite \
@@ -75,7 +72,7 @@ install-brew:
 	${BREW} tap homebrew/cask-fonts
 
 .PHONY: install
-install: ${INSTALL_CASKS} ${INSTALL_FORMULAE} ${INSTALL_HEADS} install-rust install-tpm
+install: ${INSTALL_CASKS} ${INSTALL_FORMULAE} ${INSTALL_HEADS} install-rust install-tpm install-wezterm
 
 .PHONY: ${INSTALL_CASKS} 
 ${INSTALL_CASKS}: install-brew
@@ -97,3 +94,11 @@ install-rust:
 install-tpm: install-tmux
 	mkdir -p ~/.config/tmux/plugins
 	[ -e ~/.config/tmux/plugins/tpm ] || git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+
+.PHONY: install-wezterm
+install-wezterm:
+	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install --cask $(subst install-,,$@)
+	tempfile=$$(mktemp) \
+		&& curl -o $$tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
+		&& tic -x -o ~/.terminfo $$tempfile \
+		&& rm $$tempfile
