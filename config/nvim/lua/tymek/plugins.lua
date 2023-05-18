@@ -373,10 +373,6 @@ local plugins = {
             require("luasnip").lsp_expand(args.body)
           end,
         },
-        -- FIXME: cmp mappings should be defined here to not mes
-        mappings = {
-          ["<C-e>"] = require("cmp").mapping(require("cmp").mapping.abort(), { "i" }),
-        },
         sources = require("cmp").config.sources({
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },

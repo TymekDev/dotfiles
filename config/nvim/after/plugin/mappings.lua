@@ -148,23 +148,20 @@ nnoremap("<Leader>fs", require("telescope.builtin").lsp_document_symbols)
 nnoremap("<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 
 
--- TODO: clean these up. Maybe?
--- FIXME: these should have fallbacks OR act only if cmp is visible.
-vim.keymap.set({ "i", "c" }, "<C-u>", require("cmp").mapping.scroll_docs(-4))
-vim.keymap.set({ "i", "c" }, "<C-d>", require("cmp").mapping.scroll_docs(4))
-vim.keymap.set({ "i", "c" }, "<C-n>", require("cmp").mapping.select_next_item())
-vim.keymap.set({ "i", "c" }, "<C-p>", require("cmp").mapping.select_prev_item())
-
-vim.keymap.set("c", "<C-e>", require("cmp").mapping.close())
-
-vim.keymap.set({ "i", "c" }, "<C-j>", function()
-  if require("cmp").visible() then
-    require("cmp").mapping.confirm({ select = true })()
-  else
-    require("cmp").mapping.complete()()
-  end
-end)
-
+vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
+require("cmp").setup({
+  mapping = {
+    ["<C-e>"] = require("cmp").mapping({
+      i = require("cmp").mapping.abort(),
+      c = require("cmp").mapping.close(),
+    }),
+    ["<C-u>"] = require("cmp").mapping(require("cmp").mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-d>"] = require("cmp").mapping(require("cmp").mapping.scroll_docs(4), { "i", "c" }),
+    ["<C-n>"] = require("cmp").mapping(require("cmp").mapping.select_next_item(), { "i", "c" }),
+    ["<C-p>"] = require("cmp").mapping(require("cmp").mapping.select_prev_item(), { "i", "c" }),
+    ["<C-j>"] = require("cmp").mapping(require("cmp").mapping.confirm({ select = true }), { "i", "c" }),
+  },
+})
 
 -- TODO: sort this out
 --
