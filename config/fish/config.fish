@@ -70,3 +70,10 @@ end
 set -gx PNPM_HOME "/Users/tymek/Library/pnpm"
 fish_add_path $PNPM_HOME
 # pnpm end
+
+# tokyonight
+set -l THEME_PATH $HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/tokyonight_storm.fish
+if test -e $THEME_PATH
+  source $THEME_PATH
+end
+# tokyonight end
