@@ -47,7 +47,6 @@ bind \cj accept-autosuggestion execute
 bind \ck forward-word
 bind \cf "stty sane; nvim +'Telescope find_files'"
 bind \cg "stty sane; nvim +'Telescope live_grep'"
-bind \c_ "stty sane; tmux-cht.sh"
 
 set -x EDITOR nvim
 set -x GOKRAZY_PARENT_DIR ~/personal
