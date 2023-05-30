@@ -120,6 +120,7 @@ nnoremap("gd", vim.lsp.buf.definition)
 nnoremap("gt", vim.lsp.buf.type_definition)
 nnoremap("gr", vim.lsp.buf.rename)
 nnoremap("gK", vim.diagnostic.open_float)
+vim.keymap.set("n", "<Leader>K", vim.lsp.buf.signature_help)
 nnoremap("gca", vim.lsp.buf.code_action)
 
 nnoremap("gqd", vim.diagnostic.setqflist)    -- [d]iagnostics
