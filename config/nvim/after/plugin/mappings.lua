@@ -129,17 +129,17 @@ nnoremap("gqr", vim.lsp.buf.references)      -- [r]eferences
 nnoremap("gqs", vim.lsp.buf.document_symbol) -- [s]ybmol
 
 -- gn/gp + gk vs gj/gk + gK
-vim.keymap.set({ "n", "x" }, "gj", vim.diagnostic.goto_next, { buffer = true })
-vim.keymap.set({ "n", "x" }, "gk", vim.diagnostic.goto_prev, { buffer = true })
+vim.keymap.set({ "n", "x" }, "gj", vim.diagnostic.goto_next)
+vim.keymap.set({ "n", "x" }, "gk", vim.diagnostic.goto_prev)
 
 vim.keymap.set("n", "<Leader>gd", function()
   vim.cmd.vsplit()
   vim.lsp.buf.definition()
-end, { buffer = true })
+end)
 vim.keymap.set("n", "<Leader>gt", function()
   vim.cmd.vsplit()
   vim.lsp.buf.type_definition()
-end, { buffer = true })
+end)
 
 nnoremap("<Leader>fd", require("telescope.builtin").diagnostics)
 nnoremap("<Leader>fi", require("telescope.builtin").lsp_implementations)
