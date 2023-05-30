@@ -23,6 +23,8 @@ local function lsp_on_attach(client)
       end,
     })
   end
+
+  require("lsp-inlayhints").on_attach(client, vim.api.nvim_get_current_buf())
 end
 
 local opts = {
@@ -259,6 +261,15 @@ local plugins = {
         settings = {
           gopls = {
             gofumpt = true,
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              -- parameterNames = true, -- I don't find these very useful
+              rangeVariableTypes = true,
+            },
           },
         },
       }))
@@ -305,6 +316,20 @@ local plugins = {
 
       require("lspconfig").tsserver.setup(config({
         filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+        settings = {
+          typescript = {
+            inlayHints = {
+              -- includeInlayParameterNameHints = "all", -- I don't find these very useful
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+        },
       }))
 
       require("lspconfig").yamlls.setup(config({
@@ -439,6 +464,12 @@ local plugins = {
       require("lsp_signature").setup({
         hint_enable = false,
       })
+    end,
+  },
+  {
+    "lvimuser/lsp-inlayhints.nvim",
+    config = function()
+      require("lsp-inlayhints").setup()
     end,
   },
 }
