@@ -24,7 +24,10 @@ local function current_file_url(refs)
   local remote = string.match(ref, "^[^/]*")
   local remote_url = system_call({ "git", "remote", "get-url", remote })
 
-  local repo = string.gsub(remote_url, "^[^:]*:", "") --
+
+  remote_url = string.gsub(remote_url, "^ssh://", "")
+  remote_url = string.gsub(remote_url, "/$", "")
+  local repo = string.gsub(remote_url, "^git@github%.com.", "")
   local revision = system_call({ "git", "rev-parse", "@" })
   local file = vim.fn.expand("%")
   local line = vim.api.nvim_win_get_cursor(0)[1]
