@@ -144,7 +144,7 @@ end)
 nnoremap("<Leader>fd", require("telescope.builtin").diagnostics)
 nnoremap("<Leader>fi", require("telescope.builtin").lsp_implementations)
 nnoremap("<Leader>fr", require("telescope.builtin").lsp_references)
-nnoremap("<Leader>fs", require("telescope.builtin").lsp_document_symbols)
+nnoremap("<Leader>fs", function() require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 }) end)
 nnoremap("<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 
 
