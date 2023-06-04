@@ -244,7 +244,7 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     priority = 78,
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    dependencies = { "hrsh7th/cmp-nvim-lsp", "b0o/schemastore.nvim" },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
       capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -281,6 +281,15 @@ local plugins = {
               unformatted = { "dd" },
               wrapLineLength = 0,
             },
+          },
+        },
+      }))
+
+      require("lspconfig").jsonls.setup(config({
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
           },
         },
       }))
