@@ -352,6 +352,11 @@ local plugins = {
               ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
             },
           },
+          redhat = {
+            telemetry = {
+              enabled = false,
+            },
+          },
         },
       }))
     end,
