@@ -51,6 +51,7 @@ bind \cg "stty sane; nvim +'Telescope live_grep'"
 set -x EDITOR nvim
 set -x GOKRAZY_PARENT_DIR ~/personal
 set -x GOKRAZY_INSTANCE gokrazy
+set -x GOPRIVATE github.com/livechat
 
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.npm-global/bin
