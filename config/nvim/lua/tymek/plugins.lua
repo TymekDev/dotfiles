@@ -36,7 +36,6 @@ local opts = {
 local plugins = {
   {
     "TymekDev/tokyonight.nvim",
-    lazy = false,
     priority = 99,
     config = function()
       require("tokyonight").setup({
