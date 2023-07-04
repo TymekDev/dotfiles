@@ -485,6 +485,8 @@ local plugins = {
       require("lsp-inlayhints").setup()
     end,
   },
+  "folke/zen-mode.nvim",
+  "folke/twilight.nvim",
 }
 
 require("lazy").setup(plugins, opts)
