@@ -13,6 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- lazy.nvim bootstrap end
 
+vim.g.mapleader = " "
 require("lazy").setup(
   "tymek.plugins",
   {
