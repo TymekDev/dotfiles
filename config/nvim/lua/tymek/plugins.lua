@@ -170,6 +170,13 @@ return {
               end,
             })
 
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = { "sql" },
+              callback = function()
+                vim.cmd.TSBufDisable("highlight")
+              end,
+            })
+
             vim.keymap.set({ "n", "x" }, "<Leader>go", function()
               require("tymek.git").open({ "", "labs", "master" })
             end)
