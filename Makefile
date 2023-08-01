@@ -9,6 +9,7 @@ BREW_CASKS = 1password \
 						 font-jetbrains-mono-nerd-font \
 						 gimp \
 						 karabiner-elements \
+						 linearmouse \
 						 obs \
 						 raycast \
 						 runelite \
@@ -16,7 +17,8 @@ BREW_CASKS = 1password \
 						 slack \
 						 spotify \
 						 steam \
-						 telegram-desktop
+						 telegram-desktop \
+						 wezterm
 BREW_FORMULAE = asciinema \
 								bat \
 								difftastic \
@@ -30,6 +32,7 @@ BREW_FORMULAE = asciinema \
 								ijq \
 								imagemagick \
 								jq \
+								n \
 								node \
 								pnpm \
 								ripgrep \
