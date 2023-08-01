@@ -52,6 +52,7 @@ set -x EDITOR nvim
 set -x GOKRAZY_PARENT_DIR ~/personal
 set -x GOKRAZY_INSTANCE gokrazy
 set -x GOPRIVATE github.com/livechat
+set -x N_PREFIX ~/.local/share/n
 
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.npm-global/bin
