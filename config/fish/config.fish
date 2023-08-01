@@ -47,6 +47,7 @@ bind \cj accept-autosuggestion execute
 bind \ck forward-word
 bind \cf "stty sane; nvim +'Telescope find_files'"
 bind \cg "stty sane; nvim +'Telescope live_grep'"
+bind \en "fish_commandline_prepend 'nvim (' && fish_commandline_append ' )'"
 
 set -x EDITOR nvim
 set -x GOKRAZY_PARENT_DIR ~/personal

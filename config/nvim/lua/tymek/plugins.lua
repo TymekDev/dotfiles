@@ -244,6 +244,7 @@ return {
       require("lspconfig").gopls.setup(config({
         settings = {
           gopls = {
+            buildFlags = { "-tags", "integration" },
             gofumpt = true,
             hints = {
               assignVariableTypes = true,
