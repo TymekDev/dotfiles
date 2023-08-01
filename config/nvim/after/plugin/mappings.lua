@@ -45,6 +45,13 @@ vim.keymap.set("n", "<C-l>", function() -- Next quickfix list
   vim.cmd.cwindow()
 end)
 
+vim.keymap.set("n", "<Leader>gm", require("harpoon.ui").toggle_quick_menu)
+vim.keymap.set("n", "<Leader>ga", require("harpoon.mark").add_file)
+vim.keymap.set("n", "<Leader>g1", function() require("harpoon").nav_file(1) end)
+vim.keymap.set("n", "<Leader>g1", function() require("harpoon").nav_file(2) end)
+vim.keymap.set("n", "<Leader>g3", function() require("harpoon").nav_file(3) end)
+vim.keymap.set("n", "<Leader>g4", function() require("harpoon").nav_file(4) end)
+
 
 -- Special buffers and external commands
 nnoremap("<Leader><C-e>", { cmd = "Ex" })

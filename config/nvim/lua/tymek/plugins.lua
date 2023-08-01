@@ -472,4 +472,8 @@ return {
   },
   "folke/zen-mode.nvim",
   "folke/twilight.nvim",
+  {
+    "ThePrimeagen/harpoon",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
 }
