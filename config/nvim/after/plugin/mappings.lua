@@ -1,56 +1,58 @@
--- TODO: move to which-key.nvim
+-- Splits
+vim.keymap.set({ "n", "x" }, "gh", "<C-w>h")
+vim.keymap.set({ "n", "x" }, "gj", "<C-w>j")
+vim.keymap.set({ "n", "x" }, "gk", "<C-w>k")
+vim.keymap.set({ "n", "x" }, "gl", "<C-w>l")
 
--- NOTE: there are also LSP-specifc mappings inside lua/tymek/lsp/init.lua
-local nnoremap = require("tymek.keymap").nnoremap
-local xnoremap = require("tymek.keymap").xnoremap
 
-
-vim.keymap.set("n", "<Leader>h", "<C-w>h")
-vim.keymap.set("n", "<Leader>j", "<C-w>j")
-vim.keymap.set("n", "<Leader>k", "<C-w>k")
-vim.keymap.set("n", "<Leader>l", "<C-w>l")
-
+-- Tabs
 vim.keymap.set({ "n", "x" }, "<C-p>", vim.cmd.tabprevious)
 vim.keymap.set({ "n", "x" }, "<C-n>", vim.cmd.tabnext)
 
-vim.keymap.set({ "n", "x" }, "<C-u>", "<C-u>zz") -- Half screen up and center on cursor
-vim.keymap.set({ "n", "x" }, "<C-d>", "<C-d>zz") -- Half screen down and center on cursor
 
-vim.keymap.set("n", "n", "nzzzv")                -- Next search result, center on cursor, and open folds
-vim.keymap.set("n", "N", "Nzzzv")                -- Previous search result, center on cursor, and open folds
+-- Screen
+vim.keymap.set({ "n", "x" }, "<C-u>", "<C-u>zz") -- Half a screen up with center on cursor
+vim.keymap.set({ "n", "x" }, "<C-d>", "<C-d>zz") -- Half a screen down with center on cursor
 
-vim.keymap.set("n", "<C-h>", function()          -- Previous quickfix list
+
+-- Search Results
+vim.keymap.set({ "n", "x" }, "n", "nzzzv") -- Next search result, center on cursor, and open folds
+vim.keymap.set({ "n", "x" }, "N", "Nzzzv") -- Previous search result, center on cursor, and open folds
+
+
+-- Quickfix list
+vim.keymap.set({ "n", "x" }, "<C-h>", function() -- Previous quickfix list with opening if non-empty
   vim.cmd.colder({ count = vim.api.nvim_eval("v:count1") })
   vim.cmd.cwindow()
 end)
-
-vim.keymap.set("n", "<C-j>", function() -- Next quickfix entry (with wrapping)
+vim.keymap.set({ "n", "x" }, "<C-j>", function() -- Next quickfix entry with wrapping and opening if non-empty
   local ok, msg = pcall(vim.cmd.cnext, { count = vim.api.nvim_eval("v:count1") })
   if ok == false and msg == "Vim:E553: No more items" then
     vim.cmd.cfirst()
   end
   vim.cmd.cwindow()
 end)
-
-vim.keymap.set("n", "<C-k>", function() -- Previous quickfix entry (with wrapping)
+vim.keymap.set({ "n", "x" }, "<C-k>", function() -- Previous quickfix entry with wrapping and opening if non-empty
   local ok, msg = pcall(vim.cmd.cprev, { count = vim.api.nvim_eval("v:count1") })
   if ok == false and msg == "Vim:E553: No more items" then
     vim.cmd.clast()
   end
   vim.cmd.cwindow()
 end)
-
-vim.keymap.set("n", "<C-l>", function() -- Next quickfix list
+vim.keymap.set({ "n", "x" }, "<C-l>", function() -- Next quickfix list with opening if non-empty
   vim.cmd.cnewer({ count = vim.api.nvim_eval("v:count1") })
   vim.cmd.cwindow()
 end)
 
-vim.keymap.set("n", "<Leader>gm", require("harpoon.ui").toggle_quick_menu)
-vim.keymap.set("n", "<Leader>ga", require("harpoon.mark").add_file)
-vim.keymap.set("n", "<Leader>g1", function() require("harpoon.ui").nav_file(1) end)
-vim.keymap.set("n", "<Leader>g2", function() require("harpoon.ui").nav_file(2) end)
-vim.keymap.set("n", "<Leader>g3", function() require("harpoon.ui").nav_file(3) end)
-vim.keymap.set("n", "<Leader>g4", function() require("harpoon.ui").nav_file(4) end)
+local nnoremap = require("tymek.keymap").nnoremap
+local xnoremap = require("tymek.keymap").xnoremap
+
+vim.keymap.set("n", "<Leader>hm", require("harpoon.ui").toggle_quick_menu)
+vim.keymap.set("n", "<Leader>ha", require("harpoon.mark").add_file)
+vim.keymap.set("n", "<Leader>h1", function() require("harpoon.ui").nav_file(1) end)
+vim.keymap.set("n", "<Leader>h2", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", "<Leader>h3", function() require("harpoon.ui").nav_file(3) end)
+vim.keymap.set("n", "<Leader>h4", function() require("harpoon.ui").nav_file(4) end)
 
 
 -- Special buffers and external commands
