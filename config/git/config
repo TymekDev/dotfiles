@@ -34,6 +34,8 @@
   # [e]dit [m]odified
   em = "! nvim $(git status --porcelain | sed -n 's/^ M *//p' | sed \"s#^#$(git rev-parse --show-toplevel)/#\")"
 
+  pr = "! gh pr view --web"
+
 [core]
   editor = "nvim"
 
