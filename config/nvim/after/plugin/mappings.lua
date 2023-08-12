@@ -13,6 +13,7 @@ vim.keymap.set({ "n", "x" }, "<C-n>", vim.cmd.tabnext)
 -- Screen
 vim.keymap.set({ "n", "x" }, "<C-u>", "<C-u>zz") -- Half a screen up with center on cursor
 vim.keymap.set({ "n", "x" }, "<C-d>", "<C-d>zz") -- Half a screen down with center on cursor
+vim.keymap.set({ "n", "x" }, "<C-b>", "<NOP>")
 
 
 -- Search Results
@@ -44,45 +45,101 @@ vim.keymap.set({ "n", "x" }, "<C-l>", function() -- Next quickfix list with open
   vim.cmd.cwindow()
 end)
 
-local nnoremap = require("tymek.keymap").nnoremap
-local xnoremap = require("tymek.keymap").xnoremap
-
-vim.keymap.set("n", "<Leader>hm", require("harpoon.ui").toggle_quick_menu)
-vim.keymap.set("n", "<Leader>ha", require("harpoon.mark").add_file)
-vim.keymap.set("n", "<Leader>h1", function() require("harpoon.ui").nav_file(1) end)
-vim.keymap.set("n", "<Leader>h2", function() require("harpoon.ui").nav_file(2) end)
-vim.keymap.set("n", "<Leader>h3", function() require("harpoon.ui").nav_file(3) end)
-vim.keymap.set("n", "<Leader>h4", function() require("harpoon.ui").nav_file(4) end)
-
-
--- Special buffers and external commands
-nnoremap("<Leader><C-e>", { cmd = "Ex" })
-nnoremap("<Leader><C-u>", { cmd = "UndotreeToggle" })
-nnoremap("<Leader><C-g>", { cmd = "Git" })
-
-vim.keymap.set({ "n", "x" }, "<C-b>", "<NOP>")
-vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
-
-vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
-
 
 -- Registers
-xnoremap("<Leader>p", '"_dP') -- don't overwrite paste register
-nnoremap("<Leader>y", '"+y')  -- copy to system register
-xnoremap("<Leader>y", '"+y')
-nnoremap("<Leader>Y", '"+Y')
-xnoremap("<Leader>Y", '"+Y')
+vim.keymap.set("x", "<Leader>p", '"_dP')         -- Don't overwrite paste register
+vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y') -- Use system register
+vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y')
+vim.keymap.set({ "n", "x" }, "<Leader>d", '"+d')
+vim.keymap.set({ "n", "x" }, "<Leader>D", '"+D')
 
 
 -- Toggles
-nnoremap("<Leader>Q", { cmd = "QuickScopeToggle" })
-nnoremap("<Leader>W", { cmd = "WiderActiveBufToggle" })
-nnoremap("<Leader>R", function() vim.o.relativenumber = not vim.o.relativenumber end)
+vim.keymap.set({ "n", "x" }, "<Leader>Q", "<Cmd>QuickScopeToggle<CR>")
+vim.keymap.set({ "n", "x" }, "<Leader>W", "<Cmd>WiderActiveBufToggle<CR>")
+vim.keymap.set({ "n", "x" }, "<Leader>R", function() vim.o.relativenumber = not vim.o.relativenumber end)
 
 
--- Editing
-nnoremap("<Leader>a", "<Plug>(EasyAlign)")
-xnoremap("<Leader>a", "<Plug>(EasyAlign)")
+-- junegunn/vim-easy-align
+vim.keymap.set({ "n", "x" }, "<Leader>a", "<Plug>(EasyAlign)")
+
+
+-- nvim-telescope/telescope.nvim
+vim.keymap.set({ "n", "x", "i" }, "<C-f>", require("telescope.builtin").find_files)       -- [f]iles
+vim.keymap.set({ "n", "x", "i" }, "<C-g>", require("telescope.builtin").live_grep)        -- [g]rep
+vim.keymap.set({ "n", "x" }, "<Leader>fc", require("telescope.builtin").commands)         -- [c]ommands
+vim.keymap.set({ "n", "x" }, "<Leader>fch", require("telescope.builtin").command_history) -- [c]ommand [h]istory
+vim.keymap.set({ "n", "x" }, "<Leader>fh", require("telescope.builtin").help_tags)        -- [h]elp
+vim.keymap.set({ "n", "x" }, "<Leader>fq", require("telescope.builtin").quickfix)         -- [q]uickfix
+vim.keymap.set({ "n", "x" }, "<Leader>fe", function()                                     -- [e]xplore (:Ex)
+  require("telescope").extensions.file_browser.file_browser({ cwd = "%:p:h" })
+end)
+
+
+-- ThePrimeagen/harpoon
+vim.keymap.set({ "n", "x" }, "<Leader>hm", require("harpoon.ui").toggle_quick_menu)
+vim.keymap.set({ "n", "x" }, "<Leader>ha", require("harpoon.mark").add_file)
+vim.keymap.set({ "n", "x" }, "<Leader>h1", function() require("harpoon.ui").nav_file(1) end)
+vim.keymap.set({ "n", "x" }, "<Leader>h2", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set({ "n", "x" }, "<Leader>h3", function() require("harpoon.ui").nav_file(3) end)
+vim.keymap.set({ "n", "x" }, "<Leader>h4", function() require("harpoon.ui").nav_file(4) end)
+
+
+-- hrsh7th/nvim-cmp
+vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
+require("cmp").setup({
+  mapping = {
+    ["<C-e>"] = require("cmp").mapping({
+      i = require("cmp").mapping.abort(),
+      c = require("cmp").mapping.close(),
+    }),
+    ["<C-u>"] = require("cmp").mapping(require("cmp").mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-d>"] = require("cmp").mapping(require("cmp").mapping.scroll_docs(4), { "i", "c" }),
+    ["<C-n>"] = require("cmp").mapping(require("cmp").mapping.select_next_item(), { "i", "c" }),
+    ["<C-p>"] = require("cmp").mapping(require("cmp").mapping.select_prev_item(), { "i", "c" }),
+    ["<C-j>"] = require("cmp").mapping(require("cmp").mapping.confirm({ select = true }), { "i", "c" }),
+  },
+})
+
+
+-- TODO: move to on_attach
+local M = {}
+
+M.lsp = function()
+  vim.keymap.set("n", "K", vim.lsp.buf.hover)
+  vim.keymap.set("n", "gK", vim.diagnostic.open_float)
+  vim.keymap.set("n", "<Leader>K", vim.lsp.buf.signature_help)
+
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition)       -- [d]efinition
+  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition)  -- [t]ype definition
+  vim.keymap.set("n", "gr", vim.lsp.buf.rename)           -- [r]ename
+  vim.keymap.set("n", "gca", vim.lsp.buf.code_action)     -- [c]ode [a]ction
+
+  vim.keymap.set("n", "gqd", vim.diagnostic.setqflist)    -- [d]iagnostics
+  vim.keymap.set("n", "gqi", vim.lsp.buf.implementation)  -- [i]mplementation
+  vim.keymap.set("n", "gqr", vim.lsp.buf.references)      -- [r]eferences
+  vim.keymap.set("n", "gqs", vim.lsp.buf.document_symbol) -- [s]ybmol
+
+  vim.keymap.set("n", "<Leader>fd", require("telescope.builtin").diagnostics)
+  vim.keymap.set("n", "<Leader>fi", require("telescope.builtin").lsp_implementations)
+  vim.keymap.set("n", "<Leader>fr", require("telescope.builtin").lsp_references)
+  vim.keymap.set("n", "<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+  vim.keymap.set("n", "<Leader>fs", function()
+    require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 })
+  end)
+end
+
+M.lsp()
+
+
+local nnoremap = require("tymek.keymap").nnoremap
+local xnoremap = require("tymek.keymap").xnoremap
+
+vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
+
+-- TODO: move to repos.nvim
+-- FIXME: this somethimes opens URL with a full path instead of path relative to git root
+vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
 
 vim.keymap.set("n", "<Leader>t", ":t.<Left><Left>")
 vim.keymap.set("n", "<Leader>m", ":m.<Left><Left>")
@@ -90,17 +147,6 @@ vim.keymap.set("n", "<Leader>m", ":m.<Left><Left>")
 -- TODO: make these work with count (jump & fix N times) and .
 vim.keymap.set("n", "zf", "]s1z=") -- Fix next bad word with first suggestion
 vim.keymap.set("n", "zF", "[s1z=") -- Fix previous bad word with first suggestion
-
-
--- Telescope
-nnoremap("<Leader>fq", require("telescope.builtin").quickfix)                                                       -- [q]uickfix
-nnoremap("<Leader>fe", function() require("telescope").extensions.file_browser.file_browser({ cwd = "%:p:h" }) end) -- [e]xplore (:Ex)
-vim.keymap.set({ "n", "x" }, "<C-f>", require("telescope.builtin").find_files)                                      -- [f]iles
-vim.keymap.set({ "n", "x" }, "<C-g>", require("telescope.builtin").live_grep)                                       -- [g]rep
-nnoremap("<Leader>fh", require("telescope.builtin").help_tags)                                                      -- [h]elp
-nnoremap("<Leader>fc", require("telescope.builtin").commands)                                                       -- [c]ommands
-nnoremap("<Leader>fch", require("telescope.builtin").command_history)                                               -- [c]ommand history
-nnoremap("<Leader>fb", require("telescope.builtin").current_buffer_fuzzy_find)                                      -- [b]uffer
 
 
 -- TODO: refactor using which-key.nvim
@@ -119,54 +165,12 @@ vim.keymap.set("n", "<Leader>gn", require("gitsigns").next_hunk)
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 
--- TODO: clean these up, possibly make them nop
-nnoremap("K", vim.lsp.buf.hover) -- FIXME: this breaks links in :help
-nnoremap("gd", vim.lsp.buf.definition)
-nnoremap("gt", vim.lsp.buf.type_definition)
-nnoremap("gr", vim.lsp.buf.rename)
-nnoremap("gK", vim.diagnostic.open_float)
-vim.keymap.set("n", "<Leader>K", vim.lsp.buf.signature_help)
-nnoremap("gca", vim.lsp.buf.code_action)
-
-nnoremap("gqd", vim.diagnostic.setqflist)    -- [d]iagnostics
-nnoremap("gqi", vim.lsp.buf.implementation)  -- [i]mplementation
-nnoremap("gqr", vim.lsp.buf.references)      -- [r]eferences
-nnoremap("gqs", vim.lsp.buf.document_symbol) -- [s]ybmol
-
 -- gn/gp + gk vs gj/gk + gK
-vim.keymap.set({ "n", "x" }, "gj", vim.diagnostic.goto_next)
-vim.keymap.set({ "n", "x" }, "gk", vim.diagnostic.goto_prev)
-
-vim.keymap.set("n", "<Leader>gd", function()
-  vim.cmd.vsplit()
-  vim.lsp.buf.definition()
-end)
-vim.keymap.set("n", "<Leader>gt", function()
-  vim.cmd.vsplit()
-  vim.lsp.buf.type_definition()
-end)
-
-nnoremap("<Leader>fd", require("telescope.builtin").diagnostics)
-nnoremap("<Leader>fi", require("telescope.builtin").lsp_implementations)
-nnoremap("<Leader>fr", require("telescope.builtin").lsp_references)
-nnoremap("<Leader>fs", function() require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 }) end)
-nnoremap("<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+-- vim.keymap.set({ "n", "x" }, "gj", vim.diagnostic.goto_next)
+-- vim.keymap.set({ "n", "x" }, "gk", vim.diagnostic.goto_prev)
 
 
-vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
-require("cmp").setup({
-  mapping = {
-    ["<C-e>"] = require("cmp").mapping({
-      i = require("cmp").mapping.abort(),
-      c = require("cmp").mapping.close(),
-    }),
-    ["<C-u>"] = require("cmp").mapping(require("cmp").mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-d>"] = require("cmp").mapping(require("cmp").mapping.scroll_docs(4), { "i", "c" }),
-    ["<C-n>"] = require("cmp").mapping(require("cmp").mapping.select_next_item(), { "i", "c" }),
-    ["<C-p>"] = require("cmp").mapping(require("cmp").mapping.select_prev_item(), { "i", "c" }),
-    ["<C-j>"] = require("cmp").mapping(require("cmp").mapping.confirm({ select = true }), { "i", "c" }),
-  },
-})
+
 
 -- TODO: sort this out
 --
@@ -200,3 +204,8 @@ require("cmp").setup({
 
 -- require("dap-go").debug_test()
 -- ? debug_last_test()
+-- Special buffers and external commands
+
+nnoremap("<Leader><C-e>", { cmd = "Ex" })
+nnoremap("<Leader><C-u>", { cmd = "UndotreeToggle" })
+nnoremap("<Leader><C-g>", { cmd = "Git" })
