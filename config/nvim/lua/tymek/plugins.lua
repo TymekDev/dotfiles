@@ -185,7 +185,13 @@ return {
       })
     end,
   },
-  "tpope/vim-surround",
+  {
+    "tpope/vim-surround",
+    config = function()
+      vim.keymap.del("i", "<C-g>s")
+      vim.keymap.del("i", "<C-g>S")
+    end,
+  },
   "tpope/vim-repeat",
   "tpope/vim-rsi",
   "tpope/vim-eunuch",
