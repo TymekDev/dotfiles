@@ -47,6 +47,7 @@ INSTALL_CASKS = $(addprefix install-,${BREW_CASKS})
 INSTALL_FORMULAE = $(addprefix install-,${BREW_FORMULAE})
 INSTALL_HEADS = $(addprefix install-,${BREW_HEADS})
 
+
 .PHONY: restow
 restow: install-stow
 	mkdir -p ~/.config ~/.local
