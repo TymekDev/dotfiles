@@ -55,7 +55,6 @@ return {
     end,
   },
   {
-    -- TODO: add mappings (stage_hunk, next_hunk, prev_hunk)
     "lewis6991/gitsigns.nvim", -- TODO: review config
     config = function()
       require("gitsigns").setup()
