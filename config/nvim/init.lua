@@ -28,4 +28,4 @@ vim.api.nvim_cmd({
   args = { "cfilter" },
 }, {})
 
-require("tymek.mappings")
+require("tymek.mappings").setup()
