@@ -5,6 +5,8 @@
 --   g + <any>             - LSP stuff
 --   <Leader> + f + <any>  - Telescope
 --   <Leader> + h + <any>  - Harpoon
+-- TODO: add git mappings (next/prev hunk, stage hunk)
+-- TODO: add diagnostics jump mappings (vim.diagnostic.goto_*)
 
 
 -- Splits
@@ -67,6 +69,22 @@ vim.keymap.set({ "n", "x" }, "<Leader>D", '"+D')
 vim.keymap.set({ "n", "x" }, "<Leader>Q", "<Cmd>QuickScopeToggle<CR>")
 vim.keymap.set({ "n", "x" }, "<Leader>W", "<Cmd>WiderActiveBufToggle<CR>")
 vim.keymap.set({ "n", "x" }, "<Leader>R", function() vim.o.relativenumber = not vim.o.relativenumber end)
+vim.keymap.set({ "n", "x" }, "<Leader>S", function() vim.opt_local.spell = not vim.opt_local.spell:get() end)
+
+
+-- Spelling
+vim.keymap.set("n", "zf", "]s1z=") -- Fix next bad word with first suggestion
+vim.keymap.set("n", "zF", "[s1z=") -- Fix previous bad word with first suggestion
+
+
+-- Miscellaneous
+vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+
+
+-- Commands opening an entire buffer
+vim.keymap.set({ "n", "x" }, "<Leader><C-e>", "<Cmd>Ex<CR>")
+vim.keymap.set({ "n", "x" }, "<Leader><C-g>", "<Cmd>Git<CR>")
 
 
 -- junegunn/vim-easy-align
@@ -140,63 +158,20 @@ end
 
 M.lsp()
 
-
-local nnoremap = require("tymek.keymap").nnoremap
-local xnoremap = require("tymek.keymap").xnoremap
-
-vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
-
--- TODO: move to repos.nvim
--- FIXME: this somethimes opens URL with a full path instead of path relative to git root
-vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
-
-vim.keymap.set("n", "<Leader>t", ":t.<Left><Left>")
-vim.keymap.set("n", "<Leader>m", ":m.<Left><Left>")
-
--- TODO: make these work with count (jump & fix N times) and .
-vim.keymap.set("n", "zf", "]s1z=") -- Fix next bad word with first suggestion
-vim.keymap.set("n", "zF", "[s1z=") -- Fix previous bad word with first suggestion
-
-
--- TODO: refactor using which-key.nvim
-local function git(args)
-  return function()
-    require("plenary.job"):new({ command = "git", args = args }):start()
-  end
-end
-
-vim.keymap.set("n", "<Leader>Gl", git({ "pull" }))
-vim.keymap.set("n", "<Leader>Gp", git({ "push" }))
-vim.keymap.set("n", "<Leader>gp", require("gitsigns").prev_hunk)
-vim.keymap.set("n", "<Leader>gn", require("gitsigns").next_hunk)
-
-
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
-
-
--- gn/gp + gk vs gj/gk + gK
--- vim.keymap.set({ "n", "x" }, "gj", vim.diagnostic.goto_next)
--- vim.keymap.set({ "n", "x" }, "gk", vim.diagnostic.goto_prev)
-
-
+-- DAP
+vim.keymap.set("n", "<Leader>dc", require("dap").continue)
 
 
 -- TODO: sort this out
---
+vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
+vim.keymap.set("n", "<Leader>gp", require("gitsigns").prev_hunk)
+vim.keymap.set("n", "<Leader>gn", require("gitsigns").next_hunk)
+-- vim.keymap.set({ "n", "x" }, "gj", vim.diagnostic.goto_next)
+-- vim.keymap.set({ "n", "x" }, "gk", vim.diagnostic.goto_prev)
+
 -- <leader>dn next
 -- <leader>di in
 -- <leader>do out
-
--- local dap, dapui = require("dap"), require("dapui")
--- dap.listeners.after.event_initialized["dapui_config"] = function()
---   dapui.open()
--- end
--- dap.listeners.before.event_terminated["dapui_config"] = function()
---   dapui.close()
--- end
--- dap.listeners.before.event_exited["dapui_config"] = function()
---   dapui.close()
--- end
 
 -- require("dap").continue()
 -- require("dap").toggle_breakpoint()
@@ -214,7 +189,3 @@ vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 -- require("dap-go").debug_test()
 -- ? debug_last_test()
 -- Special buffers and external commands
-
-nnoremap("<Leader><C-e>", { cmd = "Ex" })
-nnoremap("<Leader><C-u>", { cmd = "UndotreeToggle" })
-nnoremap("<Leader><C-g>", { cmd = "Git" })
