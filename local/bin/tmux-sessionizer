@@ -1,18 +1,22 @@
 #!/usr/bin/env bash
 
-dirs=(
-  ~
+subdirs_of=(
   ~/personal
-  ~/personal/frontendmasters
-  ~/personal/gokrazy/www
-  ~/personal/playground
-  ~/personal/zadanka
   ~/work
-  ~/work/sso
   ~/work/sso/feature
   ~/work/sso/hotfix
 )
-selected=$(find ${dirs[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null | sed "s,^$HOME,~," | fzf-tmux -h | sed "s,^~,$HOME," )
+dirs=(
+  ~/Documents
+  ~/Downloads
+  ~/personal
+  ~/work
+  ~/work/sso/labs
+  ~/work/sso/master
+  $(find ${subdirs_of[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null)
+)
+
+selected=$(echo ${dirs[@]} | sed 's/ /\n/g' | sort | sed "s,^$HOME,~," | fzf-tmux -h | sed "s,^~,$HOME," )
 selected_name=$(basename "$selected" | tr . _)
 
 if [[ -z $selected ]]; then
