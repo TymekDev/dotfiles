@@ -27,3 +27,5 @@ vim.api.nvim_cmd({
   cmd = "packadd",
   args = { "cfilter" },
 }, {})
+
+require("tymek.mappings").setup()

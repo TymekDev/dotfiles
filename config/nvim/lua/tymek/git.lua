@@ -1,3 +1,5 @@
+-- TODO: move to repos.nvim
+-- FIXME: this sometimes opens URL with a full path instead of path relative to git root
 local M = {}
 
 local function system_call(tbl)

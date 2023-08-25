@@ -9,6 +9,8 @@ local function lsp_on_attach(client)
   end
 
   require("lsp-inlayhints").on_attach(client, vim.api.nvim_get_current_buf())
+
+  require("tymek.mappings").setup_lsp()
 end
 
 return {
@@ -185,7 +187,13 @@ return {
       })
     end,
   },
-  "tpope/vim-surround",
+  {
+    "tpope/vim-surround",
+    config = function()
+      vim.keymap.del("i", "<C-g>s")
+      vim.keymap.del("i", "<C-g>S")
+    end,
+  },
   "tpope/vim-repeat",
   "tpope/vim-rsi",
   "tpope/vim-eunuch",
@@ -309,7 +317,7 @@ return {
       }))
 
       require("lspconfig").tsserver.setup(config({
-        filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+        filetypes = { "typescript", "typescriptreact" },
         settings = {
           typescript = {
             inlayHints = {
@@ -440,6 +448,9 @@ return {
     dependencies = { "mfussenegger/nvim-dap" },
     config = function()
       require("dapui").setup()
+      require("dap").listeners.after.event_initialized["dapui_config"] = require("dapui").open
+      require("dap").listeners.before.event_terminated["dapui_config"] = require("dapui").close
+      require("dap").listeners.before.event_exited["dapui_config"] = require("dapui").close
     end,
   },
   {

@@ -9,6 +9,7 @@ abbr --add gce  git commit --amend --no-edit
 abbr --add gcm  git commit -m
 abbr --add gco  git checkout
 abbr --add gcp  git cherry-pick
+abbr --add gcw  git commit --amend --only
 abbr --add gcpm git commit -pm
 abbr --add gd   git diff
 abbr --add gds  git diff --staged
