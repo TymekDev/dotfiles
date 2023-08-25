@@ -1,3 +1,12 @@
+-- Mappings overview
+--   g + h/j/k/l           - splits
+--   Ctrl + n/p            - tabs
+--   Ctrl + h/j/k/l        - quickfix list
+--   g + <any>             - LSP stuff
+--   <Leader> + f + <any>  - Telescope
+--   <Leader> + h + <any>  - Harpoon
+
+
 -- Splits
 vim.keymap.set({ "n", "x" }, "gh", "<C-w>h")
 vim.keymap.set({ "n", "x" }, "gj", "<C-w>j")
