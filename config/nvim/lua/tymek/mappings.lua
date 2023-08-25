@@ -162,33 +162,30 @@ M.setup = function()
   -- require("dap-go").debug_test()
   -- ? debug_last_test()
   -- Special buffers and external commands
-
-  -- TODO: move to on_attach
-  M.lsp()
 end
 
-M.lsp = function()
-  vim.keymap.set("n", "K", vim.lsp.buf.hover)
-  vim.keymap.set("n", "gK", vim.diagnostic.open_float)
-  vim.keymap.set("n", "<Leader>K", vim.lsp.buf.signature_help)
+M.setup_lsp = function()
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+  vim.keymap.set("n", "gK", vim.diagnostic.open_float, { buffer = 0 })
+  vim.keymap.set("n", "<Leader>K", vim.lsp.buf.signature_help, { buffer = 0 })
 
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition)       -- [d]efinition
-  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition)  -- [t]ype definition
-  vim.keymap.set("n", "gr", vim.lsp.buf.rename)           -- [r]ename
-  vim.keymap.set("n", "gca", vim.lsp.buf.code_action)     -- [c]ode [a]ction
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })       -- [d]efinition
+  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })  -- [t]ype definition
+  vim.keymap.set("n", "gr", vim.lsp.buf.rename, { buffer = 0 })           -- [r]ename
+  vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { buffer = 0 })     -- [c]ode [a]ction
 
-  vim.keymap.set("n", "gqd", vim.diagnostic.setqflist)    -- [d]iagnostics
-  vim.keymap.set("n", "gqi", vim.lsp.buf.implementation)  -- [i]mplementation
-  vim.keymap.set("n", "gqr", vim.lsp.buf.references)      -- [r]eferences
-  vim.keymap.set("n", "gqs", vim.lsp.buf.document_symbol) -- [s]ybmol
+  vim.keymap.set("n", "gqd", vim.diagnostic.setqflist, { buffer = 0 })    -- [d]iagnostics
+  vim.keymap.set("n", "gqi", vim.lsp.buf.implementation, { buffer = 0 })  -- [i]mplementation
+  vim.keymap.set("n", "gqr", vim.lsp.buf.references, { buffer = 0 })      -- [r]eferences
+  vim.keymap.set("n", "gqs", vim.lsp.buf.document_symbol, { buffer = 0 }) -- [s]ybmol
 
-  vim.keymap.set("n", "<Leader>fd", require("telescope.builtin").diagnostics)
-  vim.keymap.set("n", "<Leader>fi", require("telescope.builtin").lsp_implementations)
-  vim.keymap.set("n", "<Leader>fr", require("telescope.builtin").lsp_references)
-  vim.keymap.set("n", "<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+  vim.keymap.set("n", "<Leader>fd", require("telescope.builtin").diagnostics, { buffer = 0 })
+  vim.keymap.set("n", "<Leader>fi", require("telescope.builtin").lsp_implementations, { buffer = 0 })
+  vim.keymap.set("n", "<Leader>fr", require("telescope.builtin").lsp_references, { buffer = 0 })
+  vim.keymap.set("n", "<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols, { buffer = 0 })
   vim.keymap.set("n", "<Leader>fs", function()
-    require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 })
-  end)
+    require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 }, { buffer = 0 })
+  end, { buffer = 0 })
 end
 
 return M

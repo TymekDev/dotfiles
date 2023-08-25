@@ -9,6 +9,8 @@ local function lsp_on_attach(client)
   end
 
   require("lsp-inlayhints").on_attach(client, vim.api.nvim_get_current_buf())
+
+  require("tymek.mappings").setup_lsp()
 end
 
 return {
