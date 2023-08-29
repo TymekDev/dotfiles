@@ -21,6 +21,7 @@ BREW_CASKS = 1password \
 						 wezterm
 BREW_FORMULAE = asciinema \
 								bat \
+								curl \
 								difftastic \
 								entr \
 								exa \

@@ -66,6 +66,12 @@ fish_add_path --move ~/.local/bin
 if test (uname) = "Darwin"
   set -x SHELL /opt/homebrew/bin/fish
   eval "$(/opt/homebrew/bin/brew shellenv)"
+  set -l CURL_PATH /opt/homebrew/opt/curl
+  if test -d $CURL_PATH
+    fish_add_path $CURL_PATH/bin
+    set -xp MANPATH $CURL_PATH/share/man
+    source $CURL_PATH/share/fish/vendor_completions.d/curl.fish
+  end
 end
 # homebrew end
 
