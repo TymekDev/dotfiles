@@ -64,7 +64,7 @@ unstow: install-stow
 
 .PHONY: from-scratch
 from-scratch: install dotfiles
-	${BREW_BIN}/fish | sudo tee -a /etc/shells
+	echo "${BREW_BIN}/fish" | sudo tee -a /etc/shells
 	chsh -s ${BREW_BIN}/fish
 	git remote set-url origin git@github.com:TymekDev/dotfiles
 
