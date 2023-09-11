@@ -95,7 +95,7 @@ ${INSTALL_HEADS}: install-brew
 
 .PHONY: install-rust
 install-rust:
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	[ -x $${HOME}/.cargo/bin/rustc ] || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 .PHONY: install-tpm
 install-tpm: install-tmux
