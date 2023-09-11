@@ -70,7 +70,7 @@ from-scratch: install dotfiles
 
 .PHONY: dotfiles
 dotfiles: install-tpm restow install-neovim
-	[ -n "$$TMUX" ] && tmux source-file ~/.config/tmux/tmux.conf
+	[ -n "$$TMUX" ] && ${BREW_BIN}/tmux source-file ~/.config/tmux/tmux.conf || exit 0
 	~/.config/tmux/plugins/tpm/bin/install_plugins
 
 .PHONY: install-brew
