@@ -8,9 +8,9 @@ SHELL = /bin/sh
 BREW = ${BREW_BIN}/brew
 BREW_BIN = /opt/homebrew/bin
 BREW_CASKS = 1password \
-						 brave-browser \
 						 discord \
 						 docker \
+						 firefox \
 						 font-jetbrains-mono-nerd-font \
 						 gimp \
 						 karabiner-elements \
