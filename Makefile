@@ -1,3 +1,8 @@
+# FIXME: some brew formulae and/or casks have different names than binaries (nvim/neovim, rg/ripgrep)
+# FIXME: some brew formulae and/or casks are not installed in ${BREW_BIN}
+# FIXME: neovim does not install its plugins making tmux install jittery
+# FIXME: some programs require PATH properly set up. This implies that fish should be configured earlier on
+# FIXME: some directories should be created a priori, because stowing them first creates a symlink to the repo and random files appear in git status
 SHELL = /bin/sh
 
 BREW = ${BREW_BIN}/brew
