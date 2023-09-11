@@ -20,8 +20,7 @@ BREW_CASKS = 1password \
 						 signal \
 						 slack \
 						 spotify \
-						 telegram-desktop \
-						 wezterm
+						 telegram-desktop
 BREW_FORMULAE = asciinema \
 								bat \
 								curl \
@@ -105,7 +104,7 @@ install-tpm: install-tmux
 
 .PHONY: install-wezterm
 install-wezterm:
-	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install --cask $(subst install-,,$@)
+	[ -x ${BREW_BIN}/wezterm ] || ${BREW} install --cask wezterm
 	tempfile=$$(mktemp) \
 		&& curl -o $$tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
 		&& tic -x -o ~/.terminfo $$tempfile \
