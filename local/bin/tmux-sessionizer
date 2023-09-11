@@ -3,16 +3,12 @@
 subdirs_of=(
   ~/personal
   ~/work
-  ~/work/sso/feature
-  ~/work/sso/hotfix
 )
 dirs=(
   ~/Documents
   ~/Downloads
   ~/personal
   ~/work
-  ~/work/sso/labs
-  ~/work/sso/master
   $(find ${subdirs_of[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null)
 )
 
