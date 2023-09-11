@@ -17,11 +17,9 @@ BREW_CASKS = 1password \
 						 linearmouse \
 						 obs \
 						 raycast \
-						 runelite \
 						 signal \
 						 slack \
 						 spotify \
-						 steam \
 						 telegram-desktop \
 						 wezterm
 BREW_FORMULAE = asciinema \
