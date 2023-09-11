@@ -45,7 +45,7 @@ BREW_FORMULAE = asciinema \
 								tarsnap \
 								tmux \
 								watch
-BREW_HEADS = nvim
+BREW_HEADS = neovim
 
 INSTALL_CASKS = $(addprefix install-,${BREW_CASKS})
 INSTALL_FORMULAE = $(addprefix install-,${BREW_FORMULAE})
@@ -70,7 +70,7 @@ from-scratch: install dotfiles
 	git remote set-url origin git@github.com:TymekDev/dotfiles
 
 .PHONY: dotfiles
-dotfiles: install-tpm restow nvim
+dotfiles: install-tpm restow install-neovim
 	[ -n "$$TMUX" ] && tmux source-file ~/.config/tmux/tmux.conf
 	~/.config/tmux/plugins/tpm/bin/install_plugins
 
