@@ -305,7 +305,9 @@ return {
         },
       }))
 
-      require("lspconfig").r_language_server.setup(config())
+      require("lspconfig").r_language_server.setup(config({
+        cmd = { "R", "--vanilla", "--slave", "-e", "languageserver::run()" },
+      }))
 
       require("lspconfig").rust_analyzer.setup(config())
 
