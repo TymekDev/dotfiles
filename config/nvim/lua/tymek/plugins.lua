@@ -305,6 +305,8 @@ return {
         },
       }))
 
+      require("lspconfig").r_language_server.setup(config())
+
       require("lspconfig").rust_analyzer.setup(config())
 
       require("lspconfig").tailwindcss.setup(config({
