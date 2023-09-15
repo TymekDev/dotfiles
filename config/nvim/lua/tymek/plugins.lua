@@ -491,4 +491,21 @@ return {
     "ThePrimeagen/harpoon",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup({
+        load = {
+          ["core.defaults"] = {},
+          ["core.concealer"] = {},
+          ["core.autocommands"] = {},            -- required by core.esupports.indent
+          ["core.integrations.treesitter"] = {}, -- required by core.esupports.indent
+          ["core.esupports.indent"] = {},
+        },
+      })
+    end,
+  },
+  "tpope/vim-speeddating",
 }
