@@ -413,6 +413,7 @@ return {
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
           { name = "cmp_nvim_r" },
+          { name = "neorg" },
           { name = "luasnip" },
           {
             name = "path",
@@ -503,8 +504,9 @@ return {
           ["core.defaults"] = {},
           ["core.concealer"] = {},
           ["core.autocommands"] = {},            -- required by core.esupports.indent
-          ["core.integrations.treesitter"] = {}, -- required by core.esupports.indent
+          ["core.integrations.treesitter"] = {}, -- required by core.esupports.indent and core.completion
           ["core.esupports.indent"] = {},
+          ["core.completion"] = { config = { engine = "nvim-cmp" } },
         },
       })
     end,
