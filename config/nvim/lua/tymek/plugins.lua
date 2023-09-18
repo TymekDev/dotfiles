@@ -400,6 +400,7 @@ return {
         },
       },
       "hrsh7th/cmp-path",
+      "jalvesaq/cmp-nvim-r",
     },
     config = function()
       require("cmp").setup({
@@ -411,6 +412,7 @@ return {
         sources = require("cmp").config.sources({
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
+          { name = "cmp_nvim_r" },
           { name = "luasnip" },
           {
             name = "path",
@@ -508,4 +510,5 @@ return {
     end,
   },
   "tpope/vim-speeddating",
+  "jalvesaq/Nvim-R",
 }
