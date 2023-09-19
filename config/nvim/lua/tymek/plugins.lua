@@ -512,5 +512,10 @@ return {
     end,
   },
   "tpope/vim-speeddating",
-  "jalvesaq/Nvim-R",
+  {
+    "jalvesaq/Nvim-R",
+    config = function()
+      vim.cmd("let R_assign = 0")
+    end,
+  },
 }
