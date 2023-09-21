@@ -511,7 +511,13 @@ return {
       })
     end,
   },
-  "tpope/vim-speeddating",
+  {
+    "tpope/vim-speeddating",
+    config = function()
+      vim.api.nvim_cmd({ cmd = "SpeedDatingFormat", bang = true, args = { "%v" } }, {})
+      vim.api.nvim_cmd({ cmd = "SpeedDatingFormat", bang = true, args = { "%^v" } }, {})
+    end,
+  },
   {
     "jalvesaq/Nvim-R",
     config = function()
