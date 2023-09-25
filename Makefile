@@ -44,6 +44,7 @@ BREW_FORMULAE = asciinema \
 								tarsnap \
 								tmux \
 								watch
+# FIXME: I now use bob (https://github.com/MordechaiHadad/bob) for Neovim management
 BREW_HEADS = neovim
 
 INSTALL_CASKS = $(addprefix install-,${BREW_CASKS})
