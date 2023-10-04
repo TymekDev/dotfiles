@@ -24,6 +24,10 @@ config.keys = {
   cmd_to_meta("c"), -- fish           navigate to a dir directory with fzf
   cmd_to_meta("b"), -- fish & vim-rsi backward one word
   cmd_to_meta("."), -- fish           insert previous command's last argument
+
+  -- These two send SIGQUIT to R console
+  { key = "4",  mods = "CTRL", action = wezterm.action.Nop },
+  { key = "\\", mods = "CTRL", action = wezterm.action.Nop },
 }
 
 return config
