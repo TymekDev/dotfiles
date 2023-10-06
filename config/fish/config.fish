@@ -27,6 +27,7 @@ abbr --add gpr  gh pr view --web
 abbr --add grb  git rebase --autostash --interactive
 abbr --add grbc git rebase --continue
 abbr --add grs  git restore
+abbr --add grsp git restore -p
 abbr --add grss git restore --staged
 abbr --add gs   git status
 abbr --add gst  git stash
