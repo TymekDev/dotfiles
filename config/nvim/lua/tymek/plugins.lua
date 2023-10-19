@@ -325,7 +325,7 @@ return {
       }))
 
       require("lspconfig").tsserver.setup(config({
-        filetypes = { "typescript", "typescriptreact" },
+        filetypes = { "typescript", "typescriptreact", "javascript" },
         settings = {
           typescript = {
             inlayHints = {
