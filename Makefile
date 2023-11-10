@@ -23,6 +23,7 @@ BREW_CASKS = 1password \
 						 telegram-desktop
 BREW_FORMULAE = asciinema \
 								bat \
+								coreutils \
 								curl \
 								difftastic \
 								entr \
@@ -35,6 +36,7 @@ BREW_FORMULAE = asciinema \
 								ijq \
 								imagemagick \
 								jq \
+								moreutils \
 								n \
 								node \
 								pnpm \
