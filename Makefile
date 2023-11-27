@@ -39,6 +39,7 @@ BREW_FORMULAE = asciinema \
 								n \
 								node \
 								pnpm \
+								rclone \
 								ripgrep \
 								sqlite \
 								stow \
