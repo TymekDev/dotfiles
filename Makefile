@@ -16,7 +16,6 @@ BREW_CASKS = 1password \
 						 karabiner-elements \
 						 linearmouse \
 						 obs \
-						 raycast \
 						 signal \
 						 slack \
 						 spotify \
