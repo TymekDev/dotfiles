@@ -54,7 +54,6 @@ bind \en "fish_commandline_prepend 'nvim (' && fish_commandline_append ' )'"
 set -x EDITOR nvim
 set -x GOKRAZY_PARENT_DIR ~/personal
 set -x GOKRAZY_INSTANCE gokrazy
-set -x GOPRIVATE github.com/livechat
 set -x N_PREFIX ~/.local/share/n
 if test (uname) = "Darwin"
   set -x SSH_AUTH_SOCK ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock

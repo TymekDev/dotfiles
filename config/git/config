@@ -84,6 +84,3 @@
 
 [commit]
   gpgsign = true
-
-[url "ssh://git@github.com/livechat"]
-  insteadOf = "https://github.com/livechat"
