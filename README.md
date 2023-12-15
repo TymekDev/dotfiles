@@ -67,6 +67,11 @@ Other than `dotfiles` and `from-scratch`, the following targets are available:
 [lazy.nvim]: https://github.com/folke/lazy.nvim
 [`1ad9d73`]: https://github.com/TymekDev/dotfiles/commit/1ad9d73abd3099247377322dea3b3524c8dd77f3
 
+## Known Issues
+Some are listed in [`Makefile`][]. Additionally:
+
+- Karabiner does not really work for porting. Another Mac's keyboard has a
+  different identifier?
 
 ## License
 
