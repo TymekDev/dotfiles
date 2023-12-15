@@ -3,6 +3,8 @@
 # FIXME: neovim does not install its plugins making tmux install jittery
 # FIXME: some programs require PATH properly set up. This implies that fish should be configured earlier on
 # FIXME: some directories should be created a priori, because stowing them first creates a symlink to the repo and random files appear in git status
+# TODO: split off non-work programs: discord, telegram-desktop, obs, signal, tarsnap
+# TODO: switch from exa to exy, add rig, add bob
 SHELL = /bin/sh
 
 BREW = ${BREW_BIN}/brew
