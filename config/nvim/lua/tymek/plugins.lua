@@ -3,7 +3,9 @@ local function lsp_on_attach(client)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = 0,
       callback = function()
-        vim.lsp.buf.format()
+        if require("tymek.config").lsp_formatting_active then
+          vim.lsp.buf.format()
+        end
       end,
     })
   end
