@@ -70,10 +70,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     config = function()
-      -- TODO: Delete once https://github.com/serenadeai/tree-sitter-scss/pull/19 gets merged
       local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_configs.scss.install_info.url = "https://github.com/goncharov/tree-sitter-scss"
-      parser_configs.scss.install_info.revision = "30c9dc19d3292fa8d1134373f0f0abd8547076e8"
+      parser_configs.scss.install_info.url = "https://github.com/TymekDev/tree-sitter-scss"
 
       require("nvim-treesitter.configs").setup({
         auto_install = true,
