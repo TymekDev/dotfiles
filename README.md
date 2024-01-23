@@ -52,6 +52,12 @@ Other than `dotfiles` and `from-scratch`, the following targets are available:
 - `install` - installs everything with `install-` prefix
 - `install-*` - numerous targets for installing tools, one at a time
 
+### Manual Tweaks
+
+- [Disable Firefox title bar][]
+
+[Disable Firefox title bar]: https://blog.tymek.dev/firefox-css-2
+
 ## Notable Commits in History
 
 - Commit deleting unused configs: ([`b9d3554`][]) _chore: remove unused configs_
