@@ -132,10 +132,6 @@ M.setup = function()
   })
 
 
-  -- github/copilot.vim
-  vim.keymap.set("i", "<M-j>", "copilot#Accept('\\<CR>')", { expr = true, replace_keycodes = false })
-
-
   -- DAP
   vim.keymap.set("n", "<Leader>dc", require("dap").continue)
 
