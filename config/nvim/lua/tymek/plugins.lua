@@ -501,7 +501,9 @@ return {
     "ray-x/lsp_signature.nvim",
     config = function()
       require("lsp_signature").setup({
+        floating_window = false,
         hint_enable = false,
+        toggle_key = "<M-k>",
       })
     end,
   },
