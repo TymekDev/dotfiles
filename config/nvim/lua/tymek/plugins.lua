@@ -562,6 +562,11 @@ return {
           },
         },
       })
+
+      vim.api.nvim_cmd({
+        cmd = "highlight",
+        args = { "CopilotSuggestion", "guifg=#808080", "gui=italic" }
+      }, {})
     end,
   },
 }
