@@ -547,4 +547,5 @@ return {
       vim.cmd("let R_assign = 0")
     end,
   },
+  "github/copilot.vim",
 }
