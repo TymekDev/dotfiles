@@ -74,7 +74,6 @@ return {
       parser_configs.scss.install_info.url = "https://github.com/TymekDev/tree-sitter-scss"
       parser_configs.scss.install_info.revision = "master"
 
-
       require("nvim-treesitter.configs").setup({
         auto_install = true,
         highlight = { enable = true },
@@ -367,8 +366,10 @@ return {
               kubernetes = "*.k8s.yaml",
               ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
               ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-              ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
-              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+              ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] =
+              "*api*.{yml,yaml}",
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
+              "*docker-compose*.{yml,yaml}",
             },
           },
           redhat = {
