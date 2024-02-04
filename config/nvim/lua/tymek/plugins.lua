@@ -570,4 +570,5 @@ return {
       }, {})
     end,
   },
+  "NoahTheDuke/vim-just",
 }
