@@ -140,8 +140,6 @@ M.setup = function()
   vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
   vim.keymap.set("n", "<Leader>gp", require("gitsigns").prev_hunk)
   vim.keymap.set("n", "<Leader>gn", require("gitsigns").next_hunk)
-  -- vim.keymap.set({ "n", "x" }, "gj", vim.diagnostic.goto_next)
-  -- vim.keymap.set({ "n", "x" }, "gk", vim.diagnostic.goto_prev)
 
   -- <leader>dn next
   -- <leader>di in
@@ -174,6 +172,9 @@ M.setup_lsp = function()
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 }) -- [t]ype definition
   vim.keymap.set("n", "gr", vim.lsp.buf.rename, { buffer = 0 })          -- [r]ename
   vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { buffer = 0 })    -- [c]ode [a]ction
+
+  vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
+  vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
 
   vim.keymap.set("n", "gqd", vim.diagnostic.setqflist, { buffer = 0 })    -- [d]iagnostics
   vim.keymap.set("n", "gqi", vim.lsp.buf.implementation, { buffer = 0 })  -- [i]mplementation
