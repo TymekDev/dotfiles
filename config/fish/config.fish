@@ -78,8 +78,10 @@ end
 # homebrew end
 
 # pnpm
-set -gx PNPM_HOME "/Users/tymek/Library/pnpm"
-fish_add_path $PNPM_HOME
+if test (uname) = "Darwin"
+  set -gx PNPM_HOME ~/Library/pnpm
+  fish_add_path $PNPM_HOME
+end
 # pnpm end
 
 # tokyonight
