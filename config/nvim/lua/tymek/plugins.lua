@@ -179,36 +179,6 @@ return {
     dependencies = { "tpope/vim-fugitive" },
   },
   {
-    "TymekDev/repos.nvim",
-    config = function()
-      require("repos").setup({
-        callbacks = {
-          ["sso"] = function(root)
-            vim.opt.makeprg = "make -C " .. root
-            vim.opt.shellpipe = "2>/dev/null | sed 's#^[^[:blank:]]#" .. root .. "/src/&#' | tee"
-            vim.api.nvim_create_autocmd("FileType", {
-              pattern = { "go", "markdown" },
-              callback = function()
-                vim.opt_local.textwidth = 0
-              end,
-            })
-
-            vim.api.nvim_create_autocmd("FileType", {
-              pattern = { "sql" },
-              callback = function()
-                vim.cmd.TSBufDisable("highlight")
-              end,
-            })
-
-            vim.keymap.set({ "n", "x" }, "<Leader>go", function()
-              require("tymek.git").open({ "", "labs", "master" })
-            end)
-          end,
-        },
-      })
-    end,
-  },
-  {
     "tpope/vim-surround",
     config = function()
       vim.keymap.del("i", "<C-g>s")
