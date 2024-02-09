@@ -7,8 +7,9 @@
 # TODO: switch from exa to exy, add rig, add bob
 SHELL = /bin/sh
 
+BREW_DIR = /opt/homebrew
+BREW_BIN = ${BREW_DIR}/bin
 BREW = ${BREW_BIN}/brew
-BREW_BIN = /opt/homebrew/bin
 BREW_CASKS = 1password \
 						 discord \
 						 docker \
@@ -32,7 +33,6 @@ BREW_FORMULAE = asciinema \
 								exa \
 								fd \
 								fish \
-								fzf \
 								go \
 								gh \
 								ijq \
@@ -85,7 +85,7 @@ install-brew:
 	${BREW} tap homebrew/cask-fonts
 
 .PHONY: install
-install: ${INSTALL_CASKS} ${INSTALL_FORMULAE} ${INSTALL_HEADS} install-rust install-tpm install-wezterm
+install: ${INSTALL_CASKS} ${INSTALL_FORMULAE} ${INSTALL_HEADS} install-fzf install-rust install-tpm install-wezterm
 
 .PHONY: ${INSTALL_CASKS} 
 ${INSTALL_CASKS}: install-brew
@@ -98,6 +98,11 @@ ${INSTALL_FORMULAE}: install-brew
 .PHONY: ${INSTALL_HEADS}
 ${INSTALL_HEADS}: install-brew
 	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install --HEAD $(subst install-,,$@)
+
+.PHONY: install-fzf
+install-fzf:
+	[ -x ${BREW_BIN}/fzf ] || ${BREW} install fzf
+	${BREW_DIR}/opt/fzf/install
 
 .PHONY: install-rust
 install-rust:
