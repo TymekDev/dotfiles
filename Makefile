@@ -4,7 +4,7 @@
 # FIXME: some programs require PATH properly set up. This implies that fish should be configured earlier on
 # FIXME: some directories should be created a priori, because stowing them first creates a symlink to the repo and random files appear in git status
 # TODO: split off non-work programs: discord, telegram-desktop, obs, signal, tarsnap
-# TODO: switch from exa to exy, add rig, add bob
+# TODO: switch from add rig, add bob
 SHELL = /bin/sh
 
 BREW_DIR = /opt/homebrew
@@ -30,7 +30,7 @@ BREW_FORMULAE = asciinema \
 								curl \
 								difftastic \
 								entr \
-								exa \
+								eza \
 								fd \
 								fish \
 								go \
