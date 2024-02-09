@@ -55,6 +55,11 @@ Other than `dotfiles` and `from-scratch`, the following targets are available:
 ### Manual Tweaks
 
 - [Disable Firefox title bar][]
+- Add the following snippet at the very bottom of `~/.ssh/config`:
+  ```
+  Host *
+    IdentityAgent "SSH_AUTH_SOCK"
+  ```
 
 [Disable Firefox title bar]: https://blog.tymek.dev/firefox-css-2
 
