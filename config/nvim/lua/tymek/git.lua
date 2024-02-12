@@ -19,6 +19,8 @@ end
 
 -- TODO: check for SSH vs HTTPS
 -- TODO: check for different remote vendors
+-- TODO: for SSH part before `:` does not have to be an URL.
+-- It might be a name from ~/.ssh/config that resolves to a hostname.
 local function current_file_url(refs)
   local ref = try_refs(refs)
   ref = string.gsub(ref, "^refs/remotes/", "")
