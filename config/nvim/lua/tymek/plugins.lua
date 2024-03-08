@@ -25,6 +25,7 @@ return {
         on_highlights = function(hl, c)
           hl.QuickScopePrimary = { fg = c.orange }
           hl.QuickScopeSecondary = {}
+          hl["@r.reactive.call"] = { fg = c.red } -- TODO: pick a color
         end,
       })
 
