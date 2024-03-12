@@ -24,7 +24,7 @@ abbr --add gm   git merge
 abbr --add gp   git push
 abbr --add gpf  git push --force-with-lease
 abbr --add gpr  gh pr view --web
-abbr --add grb  git rebase --autostash --interactive
+abbr --add grb  git rebase --autosquash --autostash --interactive
 abbr --add grbc git rebase --continue
 abbr --add grs  git restore
 abbr --add grsp git restore -p
