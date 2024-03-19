@@ -446,7 +446,7 @@ return {
   -- },
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap" },
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     config = function()
       require("dapui").setup()
       require("dap").listeners.after.event_initialized["dapui_config"] = require("dapui").open
