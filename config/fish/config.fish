@@ -1,4 +1,5 @@
 abbr --add ga   git add
+abbr --add gab  git absorb
 abbr --add gap  git add -p
 abbr --add gb   git branch
 abbr --add gc   git commit
