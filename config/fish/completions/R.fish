@@ -7,3 +7,4 @@ complete -c R -l no-site-file
 complete -c R -l vanilla
 complete -c R -l version
 complete -c R -o f -l file -r
+complete -c R -o q -l quiet
