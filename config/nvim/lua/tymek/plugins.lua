@@ -508,6 +508,7 @@ return {
     "jalvesaq/Nvim-R",
     config = function()
       vim.cmd("let R_assign = 0")
+      vim.cmd("let R_nvim_wd = 1")
     end,
   },
   {
