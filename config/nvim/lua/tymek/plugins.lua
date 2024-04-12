@@ -35,9 +35,7 @@ return {
   {
     "nvim-lualine/lualine.nvim", -- TODO: review config
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("lualine").setup()
-    end,
+    config = true,
   },
   {
     "lukas-reineke/indent-blankline.nvim", -- TODO: review config
@@ -64,9 +62,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim", -- TODO: review config
-    config = function()
-      require("gitsigns").setup()
-    end,
+    config = true,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -105,9 +101,7 @@ return {
   {
     "windwp/nvim-ts-autotag",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
+    config = true,
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
@@ -197,16 +191,12 @@ return {
   {
     "folke/neodev.nvim",
     priority = 90, -- NOTE: has to be set up before nvim-lspconfig
-    config = function()
-      require("neodev").setup()
-    end,
+    config = true,
   },
   {
     "williamboman/mason.nvim",
     priority = 89, -- NOTE: has to be set up before mason-lspconfig.nvim
-    config = function()
-      require("mason").setup()
-    end,
+    config = true,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -446,17 +436,13 @@ return {
   {
     "thehamsta/nvim-dap-virtual-text",
     dependencies = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("nvim-dap-virtual-text").setup()
-    end,
+    config = true,
   },
   {
     "leoluz/nvim-dap-go",
     dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
     build = ":MasonInstall delve",
-    config = function()
-      require("dap-go").setup()
-    end,
+    config = true,
   },
   {
     "ray-x/lsp_signature.nvim",
@@ -470,9 +456,7 @@ return {
   },
   {
     "lvimuser/lsp-inlayhints.nvim",
-    config = function()
-      require("lsp-inlayhints").setup()
-    end,
+    config = true,
   },
   "folke/zen-mode.nvim",
   "folke/twilight.nvim",
