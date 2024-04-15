@@ -509,6 +509,8 @@ return {
           auto_trigger = true,
           keymap = {
             accept = "<M-j>",
+            accept_word = "<C-k>", --  FIXME: this overrides digraphs mapping
+            accept_line = "<M-l>",
           },
         },
       })
