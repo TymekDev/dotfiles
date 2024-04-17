@@ -18,6 +18,7 @@ symbol = " "
 
 [directory]
 read_only = " 󰌾"
+fish_style_pwd_dir_length = 1
 
 [docker_context]
 symbol = " "
