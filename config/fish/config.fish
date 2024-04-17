@@ -91,3 +91,5 @@ if test -e $THEME_PATH
   source $THEME_PATH
 end
 # tokyonight end
+
+starship init fish | source

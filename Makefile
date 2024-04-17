@@ -44,6 +44,7 @@ BREW_FORMULAE = asciinema \
 								pnpm \
 								rclone \
 								ripgrep \
+								starship \
 								sqlite \
 								stow \
 								tarsnap \
