@@ -1,3 +1,5 @@
+format = "$all$time$line_break$status$character"
+
 [aws]
 symbol = "  "
 
@@ -159,8 +161,17 @@ symbol = " "
 [scala]
 symbol = " "
 
+[status]
+disabled = false
+format = '[\[$status\]]($style) '
+
 [swift]
 symbol = " "
+
+[time]
+disabled = false
+format = "at [ $time]($style) "
+time_format = '%R'
 
 [zig]
 symbol = " "
