@@ -147,6 +147,7 @@ symbol = " "
 
 [rlang]
 symbol = "󰟔 "
+detect_files = [ ".Rprofile", "DESCRIPTION", "renv.lock" ]
 
 [ruby]
 symbol = " "
