@@ -1,4 +1,4 @@
-format = "$all$time$line_break$status$character"
+format = "$all$time$status$line_break$character"
 
 [aws]
 symbol = "  "
@@ -163,7 +163,7 @@ symbol = " "
 
 [status]
 disabled = false
-format = '[\[$status\]]($style) '
+format = "with [exit code $status]($style) "
 
 [swift]
 symbol = " "
