@@ -94,7 +94,7 @@ M.setup = function()
 
 
   -- nvim-telescope/telescope.nvim
-  vim.keymap.set({ "n", "x", "i" }, "<C-f>", require("telescope.builtin").find_files)       -- [f]iles
+  vim.keymap.set({ "n", "x" }, "<C-f>", require("telescope.builtin").find_files)            -- [f]iles
   vim.keymap.set({ "n", "x", "i" }, "<C-g>", require("telescope.builtin").live_grep)        -- [g]rep
   vim.keymap.set({ "n", "x" }, "<Leader><C-g>", require("telescope.builtin").grep_string)
   vim.keymap.set({ "n", "x" }, "<Leader>fc", require("telescope.builtin").commands)         -- [c]ommands
