@@ -477,9 +477,6 @@ return {
         load = {
           ["core.defaults"] = {},
           ["core.concealer"] = {},
-          ["core.autocommands"] = {},            -- required by core.esupports.indent
-          ["core.integrations.treesitter"] = {}, -- required by core.esupports.indent and core.completion
-          ["core.esupports.indent"] = {},
           ["core.completion"] = { config = { engine = "nvim-cmp" } },
         },
       })
