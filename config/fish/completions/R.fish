@@ -1,5 +1,5 @@
 complete -c R -c r -c radian -f
-complete -c R -c r -c radian -l help
+complete -c R -c r -c radian -o h -l help
 complete -c R -c r -c radian -l no-environ
 complete -c R -c r -c radian -l no-init-file
 complete -c R -c r -c radian -l no-save
