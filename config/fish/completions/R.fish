@@ -1,10 +1,10 @@
-complete -c R -f
-complete -c R -l help
-complete -c R -l no-environ
-complete -c R -l no-init-file
-complete -c R -l no-save
-complete -c R -l no-site-file
-complete -c R -l vanilla
-complete -c R -l version
-complete -c R -o f -l file -r
-complete -c R -o q -l quiet
+complete -c R -c r -c radian -f
+complete -c R -c r -c radian -l help
+complete -c R -c r -c radian -l no-environ
+complete -c R -c r -c radian -l no-init-file
+complete -c R -c r -c radian -l no-save
+complete -c R -c r -c radian -l no-site-file
+complete -c R -c r -c radian -l vanilla
+complete -c R -c r -c radian -l version
+complete -c R -c r -c radian -o f -l file -r
+complete -c R -c r -c radian -o q -l quiet
