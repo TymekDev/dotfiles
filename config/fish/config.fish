@@ -42,6 +42,7 @@ abbr --add ta tmux attach-session
 
 alias g  git
 alias k  kubectl
+alias r  radian
 alias ls "eza --git --group-directories-first --time-style long-iso"
 alias nv nvim
 
