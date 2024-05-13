@@ -235,6 +235,8 @@ return {
 
       require("lspconfig").cssls.setup(config())
 
+      require("lspconfig").emmet_language_server.setup(config())
+
       require("lspconfig").gopls.setup(config({
         settings = {
           gopls = {
