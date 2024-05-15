@@ -88,7 +88,7 @@ local format_diff = function(diff)
 end
 
 M.put_missing = function(bufnr)
-  local bufnr = bufnr or 0
+  bufnr = bufnr or 0
   local diff = tbl_diff(get_namespaced_calls(bufnr), get_box_imports(bufnr))
   drop_box_use(diff)
   vim.api.nvim_put(format_diff(diff), "l", true, false)
