@@ -1,10 +1,6 @@
 local M = {}
 
-local get_root = function(bufnr)
-  local parser = vim.treesitter.get_parser(bufnr, "r", {})
-  local tree = parser:parse()[1]
-  return tree:root()
-end
+local get_root = require("tymek.treesitter").get_root_factory("r")
 
 local query_namespaced_calls = [[
   (namespace_get

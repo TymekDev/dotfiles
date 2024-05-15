@@ -1,10 +1,6 @@
 local M = {}
 
-local get_root = function(bufnr)
-  local parser = vim.treesitter.get_parser(bufnr, "r", {})
-  local tree = parser:parse()[1]
-  return tree:root()
-end
+local get_root = require("tymek.treesitter").get_root_factory("r")
 
 local get_reactives_declaration = function(bufnr)
   local query = [[
@@ -34,36 +30,21 @@ local format_names = function(tbl)
   return table.concat(tbl_quoted, " ")
 end
 
-local highlight_calls = function(bufnr)
+M.highlight_calls = function(bufnr)
+  bufnr = bufnr or 0
   local reactives_names = get_reactives_declaration(bufnr)
   local query = string.format([[
   (call
     function: (identifier) @fName
     (#any-of? @fName %s))
   ]], format_names(reactives_names))
-  local ts_query = vim.treesitter.query.parse("r", query)
-  local ns = vim.api.nvim_create_namespace("reactive_calls")
-  vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
-  for _, node, _ in ts_query:iter_captures(get_root(bufnr), bufnr) do
-    local start_row, start_col, end_row, end_col = vim.treesitter.get_node_range(node)
-    vim.highlight.range(
-      bufnr,
-      ns,
-      "@r.reactive.call",
-      { start_row, start_col },
-      { end_row, end_col }
-    )
-  end
-end
-
-M.setup_highlight_calls = function(bufnr)
-  bufnr = bufnr or 0
-  vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
-    buffer = bufnr,
-    callback = function()
-      highlight_calls(bufnr)
-    end,
-  })
+  require("tymek.treesitter").highlight_nodes(
+    bufnr,
+    "r",
+    query,
+    vim.api.nvim_create_namespace("reactive_calls"),
+    "@r.reactive.call"
+  )
 end
 
 return M
