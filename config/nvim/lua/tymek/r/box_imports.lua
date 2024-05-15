@@ -8,7 +8,7 @@ local query_namespaced_calls = [[
     function: (identifier) @function)
 ]]
 
-local query_box_imports = [[
+M.query_box_imports = [[
   (call
     function: (namespace_get
       namespace: (identifier) @namespace (#eq? @namespace "box")
@@ -46,7 +46,7 @@ local get_namespaced_calls = function(bufnr)
 end
 
 local get_box_imports = function(bufnr)
-  return get_map(bufnr, query_box_imports, "box.use.namespace", "box.use.function")
+  return get_map(bufnr, M.query_box_imports, "box.use.namespace", "box.use.function")
 end
 
 local tbl_diff = function(tbl_a, tbl_b)
