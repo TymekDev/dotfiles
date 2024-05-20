@@ -129,6 +129,7 @@ M.setup = function()
       ["<C-j>"] = require("cmp").mapping(require("cmp").mapping.confirm({ select = true }), { "i", "c" }),
     },
   })
+  vim.keymap.set("c", "<Tab>", "<NOP>")
 
 
   -- DAP
