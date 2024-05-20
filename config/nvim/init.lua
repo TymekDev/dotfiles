@@ -29,7 +29,7 @@ require("lazy").setup(
           "man",
           "matchit",
           -- "matchparen",
-          -- "netrwPlugin",
+          "netrwPlugin",
           "nvim",
           "rplugin",
           -- "shada",

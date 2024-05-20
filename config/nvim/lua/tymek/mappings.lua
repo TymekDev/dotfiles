@@ -85,7 +85,6 @@ M.setup = function()
 
 
   -- Commands opening an entire buffer
-  vim.keymap.set({ "n", "x" }, "<Leader><C-e>", "<Cmd>Ex<CR>")
   vim.keymap.set({ "n", "x" }, "<Leader><C-g>", "<Cmd>Git<CR>")
 
 
