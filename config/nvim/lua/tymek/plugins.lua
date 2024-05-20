@@ -141,10 +141,6 @@ return {
     end,
   },
   {
-    "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-  },
-  {
     "unblevable/quick-scope",
     config = function()
       vim.g.qs_hi_priority = 20

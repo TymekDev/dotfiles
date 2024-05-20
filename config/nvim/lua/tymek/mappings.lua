@@ -101,9 +101,6 @@ M.setup = function()
   vim.keymap.set({ "n", "x" }, "<Leader>fch", require("telescope.builtin").command_history) -- [c]ommand [h]istory
   vim.keymap.set({ "n", "x" }, "<Leader>fh", require("telescope.builtin").help_tags)        -- [h]elp
   vim.keymap.set({ "n", "x" }, "<Leader>fq", require("telescope.builtin").quickfix)         -- [q]uickfix
-  vim.keymap.set({ "n", "x" }, "<Leader>fe", function()                                     -- [e]xplore (:Ex)
-    require("telescope").extensions.file_browser.file_browser({ cwd = "%:p:h" })
-  end)
 
 
   -- ThePrimeagen/harpoon
