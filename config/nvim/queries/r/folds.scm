@@ -1,5 +1,5 @@
 [
+ (brace_list)
  (call)
- (left_assignment
-   value: (function_definition))
+ (subset)
 ] @fold
