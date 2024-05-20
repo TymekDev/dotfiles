@@ -269,6 +269,8 @@ return {
         },
       }))
 
+      require("lspconfig").htmx.setup(config())
+
       require("lspconfig").jsonls.setup(config({
         settings = {
           json = {
