@@ -100,6 +100,9 @@ M.setup = function()
   vim.keymap.set({ "n", "x" }, "<Leader>fch", require("telescope.builtin").command_history) -- [c]ommand [h]istory
   vim.keymap.set({ "n", "x" }, "<Leader>fh", require("telescope.builtin").help_tags)        -- [h]elp
   vim.keymap.set({ "n", "x" }, "<Leader>fq", require("telescope.builtin").quickfix)         -- [q]uickfix
+  vim.keymap.set({ "n", "x" }, "<Leader>fd", function()
+    require("telescope.builtin").find_files({ find_command = { "fd", "--type", "d" } })
+  end, { desc = "[f]ind [d]irectories (via telescope.nvim)" })
 
 
   -- ThePrimeagen/harpoon
