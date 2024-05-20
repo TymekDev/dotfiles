@@ -20,6 +20,27 @@ require("lazy").setup(
     install = {
       colorscheme = { "tokyonight" },
     },
+    performance = {
+      rtp = {
+        disabled_plugins = {
+          "editorconfig",
+          "gzip",
+          "health",
+          "man",
+          "matchit",
+          -- "matchparen",
+          -- "netrwPlugin",
+          "nvim",
+          "rplugin",
+          -- "shada",
+          -- "spellfile",
+          "tarPlugin",
+          "tohtml",
+          "tutor",
+          "zipPlugin",
+        },
+      },
+    },
   }
 )
 
