@@ -295,7 +295,12 @@ return {
       }))
 
       require("lspconfig").r_language_server.setup(config({
-        cmd = { "R", "--vanilla", "--slave", "-e", "languageserver::run()" },
+        cmd = {
+          "R",
+          "--vanilla",
+          "--slave", "-e",
+          "options(languageserver.formatting_style = function(options) { style <- rhino:::rhino_style(); style$space$style_space_around_math_token <- NULL; style }); languageserver::run()"
+        },
       }))
 
       require("lspconfig").rust_analyzer.setup(config())
