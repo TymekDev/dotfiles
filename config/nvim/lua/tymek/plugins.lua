@@ -472,32 +472,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   {
-    "nvim-neorg/neorg",
-    dependencies = {
-      {
-        "vhyrro/luarocks.nvim",
-        config = true,
-      }
-    },
-    config = function()
-      require("neorg").setup({
-        load = {
-          ["core.defaults"] = {},
-          ["core.concealer"] = {},
-          ["core.completion"] = { config = { engine = "nvim-cmp" } },
-          ["core.dirman"] = {
-            config = {
-              default_workspace = "work",
-              workspaces = {
-                work = "~/work/notes",
-              },
-            },
-          },
-        },
-      })
-    end,
-  },
-  {
     "tpope/vim-speeddating",
     config = function()
       vim.api.nvim_cmd({ cmd = "SpeedDatingFormat", bang = true, args = { "%v" } }, {})
