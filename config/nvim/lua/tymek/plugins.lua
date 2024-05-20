@@ -191,6 +191,7 @@ return {
   "tpope/vim-abolish",
   {
     "folke/neodev.nvim",
+    lazy = true,
     priority = 90, -- NOTE: has to be set up before nvim-lspconfig
     config = true,
   },
