@@ -75,7 +75,6 @@ if test (uname) = "Darwin"
   if test -d $CURL_PATH
     fish_add_path $CURL_PATH/bin
     set -xp MANPATH $CURL_PATH/share/man
-    source $CURL_PATH/share/fish/vendor_completions.d/curl.fish
   end
 end
 # homebrew end
