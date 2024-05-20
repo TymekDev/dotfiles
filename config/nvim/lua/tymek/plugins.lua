@@ -200,6 +200,7 @@ return {
     config = true,
   },
   {
+    -- TODO: remove this plugin and move binaries installation to dotfiles setup
     "williamboman/mason-lspconfig.nvim",
     priority = 88, -- NOTE: has to be set up before nvim-lspconfig
     dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
@@ -210,6 +211,7 @@ return {
     end,
   },
   {
+    -- TODO: remove this plugin and move binaries installation to dotfiles setup
     "jay-babu/mason-null-ls.nvim",
     priority = 87, -- NOTE: has to be set up before null-ls.nvim
     dependencies = { "jose-elias-alvarez/null-ls.nvim", "williamboman/mason.nvim" },
@@ -354,6 +356,7 @@ return {
     end,
   },
   {
+    -- TODO: replace with conform.nvim
     "jose-elias-alvarez/null-ls.nvim", -- TODO: review config
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
