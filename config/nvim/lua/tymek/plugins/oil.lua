@@ -1,6 +1,7 @@
 return {
   "stevearc/oil.nvim",
   event = "VeryLazy",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "-", "<Cmd>Oil<CR>", desc = "Open parent directory (via oil.nvim)" }
   },
