@@ -105,15 +105,6 @@ M.setup = function()
   end, { desc = "[f]ind [d]irectories (via telescope.nvim)" })
 
 
-  -- ThePrimeagen/harpoon
-  vim.keymap.set({ "n", "x" }, "<Leader>hm", require("harpoon.ui").toggle_quick_menu)
-  vim.keymap.set({ "n", "x" }, "<Leader>ha", require("harpoon.mark").add_file)
-  vim.keymap.set({ "n", "x" }, "<Leader>h1", function() require("harpoon.ui").nav_file(1) end)
-  vim.keymap.set({ "n", "x" }, "<Leader>h2", function() require("harpoon.ui").nav_file(2) end)
-  vim.keymap.set({ "n", "x" }, "<Leader>h3", function() require("harpoon.ui").nav_file(3) end)
-  vim.keymap.set({ "n", "x" }, "<Leader>h4", function() require("harpoon.ui").nav_file(4) end)
-
-
   -- hrsh7th/nvim-cmp
   vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
   require("cmp").setup({

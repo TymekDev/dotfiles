@@ -470,10 +470,6 @@ return {
   "folke/zen-mode.nvim",
   "folke/twilight.nvim",
   {
-    "ThePrimeagen/harpoon",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
     "tpope/vim-speeddating",
     config = function()
       vim.api.nvim_cmd({ cmd = "SpeedDatingFormat", bang = true, args = { "%v" } }, {})
