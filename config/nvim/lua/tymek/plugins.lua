@@ -84,11 +84,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        context = { enable = true },
-      })
-    end,
+    config = true,
   },
   {
     "nvim-treesitter/playground",
