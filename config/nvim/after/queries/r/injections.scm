@@ -1,6 +1,11 @@
 ; extends
 (call
-  function: (identifier) @function (#eq? @function "JS")
+  function: [
+    (dollar (identifier) @function)
+    (identifier) @function
+  ]
+
+  (#any-of? @function "run_js" "JS")
 
   (arguments
     (string) @injection.content
