@@ -25,6 +25,7 @@ return {
         on_highlights = function(hl, c)
           hl["@r.reactive.call"] = { fg = c.red }     -- TODO: pick a color
           hl["@r.box.unused.import"] = { fg = c.red } -- TODO: pick a color
+          hl.NvimSurroundHighlight = { link = "IncSearch" }
         end,
       })
 
@@ -156,14 +157,6 @@ return {
     "junegunn/gv.vim",
     dependencies = { "tpope/vim-fugitive" },
   },
-  {
-    "tpope/vim-surround",
-    config = function()
-      vim.keymap.del("i", "<C-g>s")
-      vim.keymap.del("i", "<C-g>S")
-    end,
-  },
-  "tpope/vim-repeat",
   {
     "tpope/vim-rsi",
     config = function()
