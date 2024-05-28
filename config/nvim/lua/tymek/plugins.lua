@@ -23,8 +23,6 @@ return {
       require("tokyonight").setup({
         lualine_bold = true,
         on_highlights = function(hl, c)
-          hl.QuickScopePrimary = { fg = c.orange }
-          hl.QuickScopeSecondary = {}
           hl["@r.reactive.call"] = { fg = c.red }     -- TODO: pick a color
           hl["@r.box.unused.import"] = { fg = c.red } -- TODO: pick a color
         end,
@@ -134,13 +132,6 @@ return {
           },
         },
       })
-    end,
-  },
-  {
-    "unblevable/quick-scope",
-    config = function()
-      vim.g.qs_hi_priority = 20
-      vim.g.qs_second_highlight = 0
     end,
   },
   {

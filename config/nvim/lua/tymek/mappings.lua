@@ -68,7 +68,6 @@ M.setup = function()
 
 
   -- Toggles
-  vim.keymap.set({ "n", "x" }, "<Leader>Q", "<Cmd>QuickScopeToggle<CR>")
   vim.keymap.set({ "n", "x" }, "<Leader>W", "<Cmd>WiderActiveBufToggle<CR>")
   vim.keymap.set({ "n", "x" }, "<Leader>R", function() vim.o.relativenumber = not vim.o.relativenumber end)
   vim.keymap.set({ "n", "x" }, "<Leader>S", function() vim.opt_local.spell = not vim.opt_local.spell:get() end)
