@@ -93,15 +93,15 @@ M.setup = function()
 
   -- nvim-telescope/telescope.nvim
   vim.keymap.set({ "n", "x" }, "<C-f>", require("telescope.builtin").find_files)            -- [f]iles
-  vim.keymap.set({ "n", "x", "i" }, "<C-g>", require("telescope.builtin").live_grep)        -- [g]rep
+  vim.keymap.set({ "n", "x" }, "<C-g>", require("telescope.builtin").live_grep)             -- [g]rep
   vim.keymap.set({ "n", "x" }, "<Leader><C-g>", require("telescope.builtin").grep_string)
   vim.keymap.set({ "n", "x" }, "<Leader>fc", require("telescope.builtin").commands)         -- [c]ommands
   vim.keymap.set({ "n", "x" }, "<Leader>fch", require("telescope.builtin").command_history) -- [c]ommand [h]istory
   vim.keymap.set({ "n", "x" }, "<Leader>fh", require("telescope.builtin").help_tags)        -- [h]elp
   vim.keymap.set({ "n", "x" }, "<Leader>fq", require("telescope.builtin").quickfix)         -- [q]uickfix
-  vim.keymap.set({ "n", "x" }, "<Leader>fd", function()
-    require("telescope.builtin").find_files({ find_command = { "fd", "--type", "d" } })
-  end, { desc = "[f]ind [d]irectories (via telescope.nvim)" })
+  vim.keymap.set({ "n", "x" }, "<Leader>-", function()
+    require("telescope.builtin").find_files({ find_command = { "fd", "--type", "d", "--hidden" } })
+  end, { desc = "find directories (via telescope.nvim)" })
 
 
   -- hrsh7th/nvim-cmp
