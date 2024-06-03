@@ -1,3 +1,4 @@
+vim.opt_local.conceallevel = 1
 vim.opt_local.spell = true
 
 vim.api.nvim_set_hl(0, "@neorg.markup.italic.norg", { italic = true })
