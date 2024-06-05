@@ -11,4 +11,18 @@ return {
       },
     },
   },
+
+  -- color highlighting and format conversion
+  {
+    "uga-rosa/ccc.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "<Leader>c", "<Cmd>CccConvert<CR>", desc = "Convert color format (via ccc.nvim)" },
+    },
+    opts = {
+      highlighter = {
+        auto_enable = true,
+      },
+    },
+  },
 }
