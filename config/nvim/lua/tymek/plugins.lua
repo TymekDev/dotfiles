@@ -100,15 +100,6 @@ return {
     config = true,
   },
   {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("ts_context_commentstring").setup({
-        enable_autocmd = false,
-      })
-    end,
-  },
-  {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -140,14 +131,6 @@ return {
     config = function()
       require("nvim-autopairs").setup({
         fast_wrap = {},
-      })
-    end,
-  },
-  {
-    "numToStr/Comment.nvim", -- TODO: review config
-    config = function()
-      require("Comment").setup({
-        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
       })
     end,
   },
