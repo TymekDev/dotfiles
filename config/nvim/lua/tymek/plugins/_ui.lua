@@ -17,12 +17,17 @@ return {
     "uga-rosa/ccc.nvim",
     event = "VeryLazy",
     keys = {
-      { "<Leader>c", "<Cmd>CccConvert<CR>", desc = "Convert color format (via ccc.nvim)" },
+      { "<Leader>cc", "<Cmd>CccConvert<CR>", desc = "Convert a color format (via ccc.nvim)" },
+      { "<Leader>cp", "<Cmd>CccPick<CR>",    desc = "Pick a color (via ccc.nvim)" },
     },
-    opts = {
-      highlighter = {
-        auto_enable = true,
-      },
-    },
+    config = function()
+      local ccc = require("ccc")
+      ccc.setup({
+        highlighter = { auto_enable = true },
+        alpha_show = false,
+        inputs = { ccc.input.hsl },
+        outputs = { ccc.output.css_hsl },
+      })
+    end,
   },
 }
