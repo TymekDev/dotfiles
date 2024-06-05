@@ -178,10 +178,6 @@ M.setup_lsp = function()
   vim.keymap.set("n", "<Leader>fs", function()
     require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 }, { buffer = 0 })
   end, { buffer = 0 })
-
-  vim.keymap.set("n", "<Leader>F", function()
-    require("tymek.config").lsp_formatting_active = not require("tymek.config").lsp_formatting_active
-  end)
 end
 
 return M

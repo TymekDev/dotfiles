@@ -1,15 +1,4 @@
 local function lsp_on_attach(client)
-  if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = 0,
-      callback = function()
-        if require("tymek.config").lsp_formatting_active then
-          vim.lsp.buf.format()
-        end
-      end,
-    })
-  end
-
   require("lsp-inlayhints").on_attach(client, vim.api.nvim_get_current_buf())
 
   require("tymek.mappings").setup_lsp()
@@ -171,18 +160,6 @@ return {
     end,
   },
   {
-    -- TODO: remove this plugin and move binaries installation to dotfiles setup
-    "jay-babu/mason-null-ls.nvim",
-    priority = 87, -- NOTE: has to be set up before null-ls.nvim
-    dependencies = { "jose-elias-alvarez/null-ls.nvim", "williamboman/mason.nvim" },
-    config = function()
-      require("mason-null-ls").setup({
-        automatic_installation = true,
-        ensure_installed = { "gofumpt" },
-      })
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
     priority = 78,
     dependencies = { "hrsh7th/cmp-nvim-lsp", "b0o/schemastore.nvim" },
@@ -315,33 +292,6 @@ return {
           },
         },
       }))
-    end,
-  },
-  {
-    -- TODO: replace with conform.nvim
-    "jose-elias-alvarez/null-ls.nvim", -- TODO: review config
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("null-ls").setup({
-        on_attach = lsp_on_attach,
-        sources = {
-          -- TODO: browse through linters, formatters etc.
-          -- TODO: add linters!
-          require("null-ls").builtins.formatting.goimports,
-          require("null-ls").builtins.formatting.prettierd.with({
-            extra_filetypes = { "astro" },
-            disabled_filetypes = { "markdown", "yaml" },
-          }),
-          -- require("null-ls").builtins.diagnostics.checkmake,
-          -- require("null-ls").builtins.diagnostics.commitlint,
-          -- require("null-ls").builtins.diagnostics.eslint_d, -- TODO: is this needed with LSP, prettier, etc.?
-          -- require("null-ls").builtins.diagnostics.fish,
-          require("null-ls").builtins.diagnostics.golangci_lint, -- FIXME: golangci-lint works only if go.mod is in repository's root
-          -- require("null-ls").builtins.diagnostics.luacheck,
-          -- require("null-ls").builtins.diagnostics.shellcheck,
-          -- require("null-ls").builtins.diagnostics.tsc,
-        },
-      })
     end,
   },
   {
