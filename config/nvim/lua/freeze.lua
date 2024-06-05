@@ -62,4 +62,28 @@ M.generate_and_copy = function(lines, opts)
   end)
 end
 
+M.setup = function()
+  vim.api.nvim_create_user_command(
+    "Freeze",
+    ---@param opts { args: string, line1: number, line2: number }
+    function(opts)
+      local opts_freeze = {}
+      if opts.args ~= "" then
+        opts_freeze.theme = themes[opts.args]
+        if opts_freeze.theme == nil then
+          error(string.format("Theme not found: '%s'", opts.args))
+        end
+      end
+      M.generate_and_copy({ opts.line1, opts.line2 }, opts_freeze)
+    end,
+    {
+      range = true,
+      nargs = "?",
+      complete = function()
+        return vim.tbl_keys(themes)
+      end,
+    }
+  )
+end
+
 return M
