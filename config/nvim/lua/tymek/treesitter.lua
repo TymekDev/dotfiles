@@ -10,13 +10,7 @@ end
 
 M.highlight_node = function(bufnr, node, hl_namespace, hl_group)
   local start_row, start_col, end_row, end_col = vim.treesitter.get_node_range(node)
-  vim.highlight.range(
-    bufnr,
-    hl_namespace,
-    hl_group,
-    { start_row, start_col },
-    { end_row, end_col }
-  )
+  vim.highlight.range(bufnr, hl_namespace, hl_group, { start_row, start_col }, { end_row, end_col })
 end
 
 M.highlight_nodes = function(bufnr, lang, query, hl_namespace, hl_group)

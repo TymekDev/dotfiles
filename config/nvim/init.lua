@@ -14,35 +14,32 @@ vim.opt.rtp:prepend(lazypath)
 -- lazy.nvim bootstrap end
 
 vim.g.mapleader = " "
-require("lazy").setup(
-  "tymek.plugins",
-  {
-    install = {
-      colorscheme = { "tokyonight" },
-    },
-    performance = {
-      rtp = {
-        disabled_plugins = {
-          "editorconfig",
-          "gzip",
-          "health",
-          "man",
-          "matchit",
-          -- "matchparen",
-          "netrwPlugin",
-          "nvim",
-          "rplugin",
-          -- "shada",
-          -- "spellfile",
-          "tarPlugin",
-          "tohtml",
-          "tutor",
-          "zipPlugin",
-        },
+require("lazy").setup("tymek.plugins", {
+  install = {
+    colorscheme = { "tokyonight" },
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "editorconfig",
+        "gzip",
+        "health",
+        "man",
+        "matchit",
+        -- "matchparen",
+        "netrwPlugin",
+        "nvim",
+        "rplugin",
+        -- "shada",
+        -- "spellfile",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
       },
     },
-  }
-)
+  },
+})
 
 vim.api.nvim_cmd({
   cmd = "packadd",

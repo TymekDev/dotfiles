@@ -33,11 +33,14 @@ end
 M.highlight_calls = function(bufnr)
   bufnr = bufnr or 0
   local reactives_names = get_reactives_declaration(bufnr)
-  local query = string.format([[
+  local query = string.format(
+    [[
   (call
     function: (identifier) @fName
     (#any-of? @fName %s))
-  ]], format_names(reactives_names))
+  ]],
+    format_names(reactives_names)
+  )
   require("tymek.treesitter").highlight_nodes(
     bufnr,
     "r",

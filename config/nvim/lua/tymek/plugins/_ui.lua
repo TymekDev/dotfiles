@@ -18,7 +18,7 @@ return {
     event = "VeryLazy",
     keys = {
       { "<Leader>cc", "<Cmd>CccConvert<CR>", desc = "Convert a color format (via ccc.nvim)" },
-      { "<Leader>cp", "<Cmd>CccPick<CR>",    desc = "Pick a color (via ccc.nvim)" },
+      { "<Leader>cp", "<Cmd>CccPick<CR>", desc = "Pick a color (via ccc.nvim)" },
     },
     config = function()
       local ccc = require("ccc")

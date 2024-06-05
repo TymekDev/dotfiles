@@ -26,7 +26,7 @@ config.keys = {
   cmd_to_meta("."), -- fish               insert previous command's last argument
 
   -- These two send SIGQUIT to R console
-  { key = "4",  mods = "CTRL", action = wezterm.action.Nop },
+  { key = "4", mods = "CTRL", action = wezterm.action.Nop },
   { key = "\\", mods = "CTRL", action = wezterm.action.Nop },
 }
 

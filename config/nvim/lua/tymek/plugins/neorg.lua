@@ -5,7 +5,7 @@ return {
     {
       "vhyrro/luarocks.nvim",
       config = true,
-    }
+    },
   },
   opts = {
     load = {

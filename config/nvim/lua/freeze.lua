@@ -66,7 +66,7 @@ local themes = {
   vulcan = "vulcan",
   witchhazel = "witchhazel",
   xcode_dark = "xcode-dark",
-  xcode = "xcode"
+  xcode = "xcode",
 }
 
 ---@class FreezeOptions
@@ -95,8 +95,9 @@ end
 ---@return string[]
 local cmd_copy = function(path)
   return {
-    "osascript", "-e",
-    string.format('set the clipboard to (read (POSIX file "%s") as  {«class PNGf»})', path)
+    "osascript",
+    "-e",
+    string.format('set the clipboard to (read (POSIX file "%s") as  {«class PNGf»})', path),
   }
 end
 

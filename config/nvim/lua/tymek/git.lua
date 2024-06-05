@@ -28,7 +28,6 @@ local function current_file_url(refs)
   local remote = string.match(ref, "^[^/]*")
   local remote_url = system_call({ "git", "remote", "get-url", remote })
 
-
   remote_url = string.gsub(remote_url, "^ssh://", "")
   remote_url = string.gsub(remote_url, "/$", "")
   local repo = string.gsub(remote_url, "^git@github%.com.", "")

@@ -17,22 +17,18 @@ M.setup = function()
   vim.keymap.set({ "n", "x" }, "gk", "<C-w>k")
   vim.keymap.set({ "n", "x" }, "gl", "<C-w>l")
 
-
   -- Tabs
   vim.keymap.set({ "n", "x" }, "<C-p>", vim.cmd.tabprevious)
   vim.keymap.set({ "n", "x" }, "<C-n>", vim.cmd.tabnext)
-
 
   -- Screen
   vim.keymap.set({ "n", "x" }, "<C-u>", "<C-u>zz") -- Half a screen up with center on cursor
   vim.keymap.set({ "n", "x" }, "<C-d>", "<C-d>zz") -- Half a screen down with center on cursor
   vim.keymap.set({ "n", "x" }, "<C-b>", "<NOP>")
 
-
   -- Search Results
   vim.keymap.set({ "n", "x" }, "n", "nzzzv") -- Next search result, center on cursor, and open folds
   vim.keymap.set({ "n", "x" }, "N", "Nzzzv") -- Previous search result, center on cursor, and open folds
-
 
   -- Quickfix list
   vim.keymap.set({ "n", "x" }, "<C-h>", function() -- Previous quickfix list with opening if non-empty
@@ -58,51 +54,47 @@ M.setup = function()
     vim.cmd.cwindow()
   end)
 
-
   -- Registers
-  vim.keymap.set("x", "<Leader>p", '"_dP')         -- Don't overwrite paste register
+  vim.keymap.set("x", "<Leader>p", '"_dP') -- Don't overwrite paste register
   vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y') -- Use system register
   vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y')
   vim.keymap.set({ "n", "x" }, "<Leader>d", '"+d')
   vim.keymap.set({ "n", "x" }, "<Leader>D", '"+D')
 
-
   -- Toggles
   vim.keymap.set({ "n", "x" }, "<Leader>W", "<Cmd>WiderActiveBufToggle<CR>")
-  vim.keymap.set({ "n", "x" }, "<Leader>R", function() vim.o.relativenumber = not vim.o.relativenumber end)
-  vim.keymap.set({ "n", "x" }, "<Leader>S", function() vim.opt_local.spell = not vim.opt_local.spell:get() end)
-
+  vim.keymap.set({ "n", "x" }, "<Leader>R", function()
+    vim.o.relativenumber = not vim.o.relativenumber
+  end)
+  vim.keymap.set({ "n", "x" }, "<Leader>S", function()
+    vim.opt_local.spell = not vim.opt_local.spell:get()
+  end)
 
   -- Spelling
   vim.keymap.set("n", "zf", "]s1z=") -- Fix next bad word with first suggestion
   vim.keymap.set("n", "zF", "[s1z=") -- Fix previous bad word with first suggestion
 
-
   -- Miscellaneous
   vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
   vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
-
   -- Commands opening an entire buffer
   vim.keymap.set({ "n", "x" }, "<Leader><C-g>", "<Cmd>Git<CR>")
-
 
   -- junegunn/vim-easy-align
   vim.keymap.set({ "n", "x" }, "<Leader>a", "<Plug>(EasyAlign)")
 
-
   -- nvim-telescope/telescope.nvim
-  vim.keymap.set({ "n", "x" }, "<C-f>", require("telescope.builtin").find_files)            -- [f]iles
-  vim.keymap.set({ "n", "x" }, "<C-g>", require("telescope.builtin").live_grep)             -- [g]rep
+  vim.keymap.set({ "n", "x" }, "<C-f>", require("telescope.builtin").find_files) -- [f]iles
+  vim.keymap.set({ "n", "x" }, "<C-g>", require("telescope.builtin").live_grep) -- [g]rep
   vim.keymap.set({ "n", "x" }, "<Leader><C-g>", require("telescope.builtin").grep_string)
-  vim.keymap.set({ "n", "x" }, "<Leader>fc", require("telescope.builtin").commands)         -- [c]ommands
+  vim.keymap.set({ "n", "x" }, "<Leader>fc", require("telescope.builtin").commands) -- [c]ommands
   vim.keymap.set({ "n", "x" }, "<Leader>fch", require("telescope.builtin").command_history) -- [c]ommand [h]istory
-  vim.keymap.set({ "n", "x" }, "<Leader>fh", require("telescope.builtin").help_tags)        -- [h]elp
-  vim.keymap.set({ "n", "x" }, "<Leader>fq", require("telescope.builtin").quickfix)         -- [q]uickfix
+  vim.keymap.set({ "n", "x" }, "<Leader>fh", require("telescope.builtin").help_tags) -- [h]elp
+  vim.keymap.set({ "n", "x" }, "<Leader>fq", require("telescope.builtin").quickfix) -- [q]uickfix
   vim.keymap.set({ "n", "x" }, "<Leader>-", function()
     require("telescope.builtin").find_files({ find_command = { "fd", "--type", "d", "--hidden" } })
   end, { desc = "find directories (via telescope.nvim)" })
-
 
   -- hrsh7th/nvim-cmp
   vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
@@ -121,10 +113,8 @@ M.setup = function()
   })
   vim.keymap.set("c", "<Tab>", "<NOP>")
 
-
   -- DAP
   vim.keymap.set("n", "<Leader>dc", require("dap").continue)
-
 
   -- TODO: sort this out
   vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
@@ -158,17 +148,17 @@ M.setup_lsp = function()
   vim.keymap.set("n", "gK", vim.diagnostic.open_float, { buffer = 0 })
   vim.keymap.set("n", "<Leader>K", vim.lsp.buf.signature_help, { buffer = 0 })
 
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })      -- [d]efinition
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 }) -- [d]efinition
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 }) -- [t]ype definition
-  vim.keymap.set("n", "gr", vim.lsp.buf.rename, { buffer = 0 })          -- [r]ename
-  vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { buffer = 0 })    -- [c]ode [a]ction
+  vim.keymap.set("n", "gr", vim.lsp.buf.rename, { buffer = 0 }) -- [r]ename
+  vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { buffer = 0 }) -- [c]ode [a]ction
 
   vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
   vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
 
-  vim.keymap.set("n", "gqd", vim.diagnostic.setqflist, { buffer = 0 })    -- [d]iagnostics
-  vim.keymap.set("n", "gqi", vim.lsp.buf.implementation, { buffer = 0 })  -- [i]mplementation
-  vim.keymap.set("n", "gqr", vim.lsp.buf.references, { buffer = 0 })      -- [r]eferences
+  vim.keymap.set("n", "gqd", vim.diagnostic.setqflist, { buffer = 0 }) -- [d]iagnostics
+  vim.keymap.set("n", "gqi", vim.lsp.buf.implementation, { buffer = 0 }) -- [i]mplementation
+  vim.keymap.set("n", "gqr", vim.lsp.buf.references, { buffer = 0 }) -- [r]eferences
   vim.keymap.set("n", "gqs", vim.lsp.buf.document_symbol, { buffer = 0 }) -- [s]ybmol
 
   vim.keymap.set("n", "<Leader>fd", require("telescope.builtin").diagnostics, { buffer = 0 })

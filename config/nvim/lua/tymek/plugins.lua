@@ -12,7 +12,7 @@ return {
       require("tokyonight").setup({
         lualine_bold = true,
         on_highlights = function(hl, c)
-          hl["@r.reactive.call"] = { fg = c.red }     -- TODO: pick a color
+          hl["@r.reactive.call"] = { fg = c.red } -- TODO: pick a color
           hl["@r.box.unused.import"] = { fg = c.red } -- TODO: pick a color
           hl.NvimSurroundHighlight = { link = "IncSearch" }
         end,
@@ -96,7 +96,9 @@ return {
       local function wrap(action)
         return function(prompt_bufnr)
           vim.cmd.stopinsert()
-          vim.schedule(function() action(prompt_bufnr) end)
+          vim.schedule(function()
+            action(prompt_bufnr)
+          end)
         end
       end
 
@@ -239,8 +241,9 @@ return {
         cmd = {
           "R",
           "--vanilla",
-          "--slave", "-e",
-          "options(languageserver.formatting_style = function(options) { style <- rhino:::rhino_style(); style$space$style_space_around_math_token <- NULL; style }); languageserver::run()"
+          "--slave",
+          "-e",
+          "options(languageserver.formatting_style = function(options) { style <- rhino:::rhino_style(); style$space$style_space_around_math_token <- NULL; style }); languageserver::run()",
         },
       }))
 
@@ -279,10 +282,8 @@ return {
               kubernetes = "*.k8s.yaml",
               ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
               ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-              ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] =
-              "*api*.{yml,yaml}",
-              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
-              "*docker-compose*.{yml,yaml}",
+              ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+              ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
             },
           },
           redhat = {
@@ -341,7 +342,7 @@ return {
       require("cmp").setup.cmdline(":", {
         sources = require("cmp").config.sources({
           { name = "cmdline" },
-        })
+        }),
       })
     end,
   },
@@ -414,7 +415,7 @@ return {
 
       vim.api.nvim_cmd({
         cmd = "highlight",
-        args = { "CopilotSuggestion", "guifg=#808080", "gui=italic" }
+        args = { "CopilotSuggestion", "guifg=#808080", "gui=italic" },
       }, {})
     end,
   },
