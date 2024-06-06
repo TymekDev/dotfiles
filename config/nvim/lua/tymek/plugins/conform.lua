@@ -23,6 +23,9 @@ return {
         { "gofumpt", "gofmt" },
         "goimports",
       },
+      html = {
+        { "prettierd", "prettier" },
+      },
       javascript = {
         { "prettierd", "prettier" },
       },
