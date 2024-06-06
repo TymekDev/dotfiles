@@ -10,7 +10,7 @@ return {
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
         return
       end
-      return { timeout_ms = 500, lsp_fallback = true }
+      return { timeout_ms = 2000, lsp_fallback = true }
     end,
     formatters_by_ft = {
       astro = {
