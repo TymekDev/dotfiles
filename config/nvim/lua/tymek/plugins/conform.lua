@@ -23,6 +23,9 @@ return {
       lua = {
         "stylua",
       },
+      yaml = {
+        "yamlfmt",
+      },
     },
   },
   init = function()
