@@ -13,27 +13,15 @@ return {
       return { timeout_ms = 2000, lsp_fallback = true }
     end,
     formatters_by_ft = {
-      astro = {
-        { "prettierd", "prettier" },
-      },
-      css = {
+      ["*"] = {
         { "prettierd", "prettier" },
       },
       go = {
         { "gofumpt", "gofmt" },
         "goimports",
       },
-      html = {
-        { "prettierd", "prettier" },
-      },
-      javascript = {
-        { "prettierd", "prettier" },
-      },
       lua = {
         "stylua",
-      },
-      scss = {
-        { "prettierd", "prettier" },
       },
     },
   },
