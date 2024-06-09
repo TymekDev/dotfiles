@@ -76,7 +76,7 @@ local themes = {
 local defaults = {
   config = "full",
   ["font.family"] = "JetBrainsMono Nerd Font",
-  theme = themes.catppuccin_mocha,
+  theme = themes.tokyonight_storm,
 }
 
 ---@param flags table<string, string>
