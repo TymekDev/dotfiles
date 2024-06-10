@@ -11,10 +11,7 @@ return {
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
         return
       end
-      if vim.bo[bufnr].filetype == "html" then
-        return { timeout_ms = 2000 }
-      end
-      return { timeout_ms = 2000, lsp_fallback = true }
+      return { timeout_ms = 2000 }
     end,
     formatters_by_ft = {
       ["*"] = {
