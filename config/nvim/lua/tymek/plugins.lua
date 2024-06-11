@@ -91,31 +91,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      -- See: https://github.com/nvim-telescope/telescope.nvim/issues/559
-      local function wrap(action)
-        return function(prompt_bufnr)
-          vim.cmd.stopinsert()
-          vim.schedule(function()
-            action(prompt_bufnr)
-          end)
-        end
-      end
-
-      local actions = require("telescope.actions")
-      require("telescope").setup({
-        defaults = {
-          mappings = {
-            i = {
-              ["<CR>"] = wrap(actions.select_default),
-              ["<C-x>"] = wrap(actions.select_horizontal),
-              ["<C-v>"] = wrap(actions.select_vertical),
-              ["<C-t>"] = wrap(actions.select_tab),
-            },
-          },
-        },
-      })
-    end,
+    config = true,
   },
   {
     "windwp/nvim-autopairs",
