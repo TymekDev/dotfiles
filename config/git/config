@@ -63,6 +63,9 @@
 [push]
   autoSetupRemote = true
 
+[rebase]
+  autoSquash = true
+
 [worktree]
   guessRemote = true
 
