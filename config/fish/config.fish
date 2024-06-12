@@ -66,6 +66,7 @@ fish_add_path ~/Library/Python/3.9/bin
 fish_add_path /usr/local/go/bin
 fish_add_path --move ~/.local/bin
 fish_add_path --move ~/.local/share/bob/nvim-bin
+fish_add_path --move ~/.local/share/n/bin
 
 # homebrew
 if test (uname) = "Darwin"
