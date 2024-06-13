@@ -6,10 +6,14 @@ local get_reactives_declaration = function(bufnr)
   local query = [[
   (left_assignment
     name: (identifier) @reactive.declaration
-    value: (
-      call
-      function: (identifier) @fName
-      (#any-of? @fName "reactive" "eventReactive")))
+    value: [
+      (call
+        function: (identifier) @fName)
+      (pipe
+        left: (call
+                function: (identifier) @fName))
+    ]
+    (#any-of? @fName "reactive" "eventReactive"))
   ]]
   local ts_query = vim.treesitter.query.parse("r", query)
   local result = {}
