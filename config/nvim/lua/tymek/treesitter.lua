@@ -13,11 +13,17 @@ M.highlight_node = function(bufnr, node, hl_namespace, hl_group)
   vim.highlight.range(bufnr, hl_namespace, hl_group, { start_row, start_col }, { end_row, end_col })
 end
 
-M.highlight_nodes = function(bufnr, lang, query, hl_namespace, hl_group)
+---@param predicate? fun(capture_name: string, node: TSNode): boolean
+M.highlight_nodes = function(bufnr, lang, query, hl_namespace, hl_group, predicate)
+  predicate = predicate or function(_, _)
+    return true
+  end
   local ts_query = vim.treesitter.query.parse(lang, query)
   vim.api.nvim_buf_clear_namespace(bufnr, hl_namespace, 0, -1)
-  for _, node, _ in ts_query:iter_captures(M.get_root_factory(lang)(bufnr), bufnr) do
-    M.highlight_node(bufnr, node, hl_namespace, hl_group)
+  for id, node, _ in ts_query:iter_captures(M.get_root_factory(lang)(bufnr), bufnr) do
+    if predicate(ts_query.captures[id], node) then
+      M.highlight_node(bufnr, node, hl_namespace, hl_group)
+    end
   end
 end
 
