@@ -40,7 +40,6 @@ BREW_FORMULAE = asciinema \
 								jq \
 								moreutils \
 								n \
-								node \
 								pnpm \
 								rclone \
 								ripgrep \
