@@ -53,15 +53,6 @@ return {
     end,
   },
   {
-    "folke/todo-comments.nvim", -- TODO: review config
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("todo-comments").setup({
-        signs = false,
-      })
-    end,
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
