@@ -17,7 +17,7 @@ return {
     "uga-rosa/ccc.nvim",
     event = "VeryLazy",
     keys = {
-      { "<Leader>cc", "<Cmd>CccConvert<CR>", desc = "Convert a color format (via ccc.nvim)" },
+      { "<Leader>cc", "<Cmd>CccConvert<CR>", desc = "Convert the color format (via ccc.nvim)" },
       { "<Leader>cp", "<Cmd>CccPick<CR>", desc = "Pick a color (via ccc.nvim)" },
     },
     config = function()

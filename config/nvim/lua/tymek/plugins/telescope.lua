@@ -6,7 +6,7 @@ return {
     {
       "<Leader>ff",
       "<Cmd>Telescope resume<CR>",
-      desc = "Open and restore a previously viewed picker (via telescope.nvim)",
+      desc = "Open and restore the previously viewed picker (via telescope.nvim)",
     },
   },
   config = true,
