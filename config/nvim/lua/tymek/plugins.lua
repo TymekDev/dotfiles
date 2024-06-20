@@ -1,4 +1,16 @@
 local function lsp_on_attach(client)
+  if vim.bo[vim.api.nvim_get_current_buf()].filetype == "r" then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = 0,
+      callback = function(opts)
+        if vim.g.disable_autoformat or vim.b[opts.buf].disable_autoformat then
+          return
+        end
+        vim.lsp.buf.format()
+      end,
+    })
+  end
+
   require("lsp-inlayhints").on_attach(client, vim.api.nvim_get_current_buf())
 
   require("tymek.mappings").setup_lsp()
