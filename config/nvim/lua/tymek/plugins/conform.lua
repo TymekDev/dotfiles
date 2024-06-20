@@ -14,7 +14,7 @@ return {
       return { timeout_ms = 2000 }
     end,
     formatters_by_ft = {
-      ["*"] = {
+      ["_"] = {
         { "prettierd", "prettier" },
       },
       go = {
