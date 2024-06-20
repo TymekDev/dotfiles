@@ -62,10 +62,6 @@ return {
     end,
   },
   {
-    "lewis6991/gitsigns.nvim", -- TODO: review config
-    config = true,
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
