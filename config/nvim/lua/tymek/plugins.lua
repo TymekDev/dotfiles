@@ -367,27 +367,5 @@ return {
       vim.cmd("let R_nvim_wd = 1")
     end,
   },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = {
-          auto_trigger = true,
-          keymap = {
-            accept = "<M-j>",
-            accept_word = "<C-k>", --  FIXME: this overrides digraphs mapping
-            accept_line = "<M-l>",
-          },
-        },
-      })
-
-      vim.api.nvim_cmd({
-        cmd = "highlight",
-        args = { "CopilotSuggestion", "guifg=#808080", "gui=italic" },
-      }, {})
-    end,
-  },
   "NoahTheDuke/vim-just",
 }
