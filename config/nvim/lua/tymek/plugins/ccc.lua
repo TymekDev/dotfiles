@@ -1,4 +1,3 @@
--- FIXME: highlighter breaks on converting to hex / removing a colored text (including conversion)
 return {
   "uga-rosa/ccc.nvim",
   event = "BufEnter",
@@ -9,7 +8,10 @@ return {
   config = function()
     local ccc = require("ccc")
     ccc.setup({
-      highlighter = { auto_enable = true },
+      highlighter = {
+        auto_enable = true,
+        lsp = false,
+      },
       alpha_show = false,
       inputs = { ccc.input.hsl },
       outputs = { ccc.output.css_hsl },
