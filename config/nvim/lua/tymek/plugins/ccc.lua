@@ -1,7 +1,7 @@
 -- FIXME: highlighter breaks on converting to hex / removing a colored text (including conversion)
 return {
   "uga-rosa/ccc.nvim",
-  event = "VeryLazy",
+  event = "BufEnter",
   keys = {
     { "<Leader>cc", "<Cmd>CccConvert<CR>", desc = "Convert the color format (via ccc.nvim)" },
     { "<Leader>cp", "<Cmd>CccPick<CR>", desc = "Pick a color (via ccc.nvim)" },
