@@ -1,6 +1,5 @@
 return {
   "uga-rosa/ccc.nvim",
-  event = "BufEnter",
   keys = {
     { "<Leader>cc", "<Cmd>CccConvert<CR>", desc = "Convert the color format (via ccc.nvim)" },
     { "<Leader>cp", "<Cmd>CccPick<CR>", desc = "Pick a color (via ccc.nvim)" },
@@ -8,10 +7,6 @@ return {
   config = function()
     local ccc = require("ccc")
     ccc.setup({
-      highlighter = {
-        auto_enable = true,
-        lsp = false,
-      },
       alpha_show = false,
       inputs = { ccc.input.hsl },
       outputs = { ccc.output.css_hsl },
