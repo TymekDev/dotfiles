@@ -3,6 +3,7 @@ local config = wezterm.config_builder()
 
 config.term = "wezterm"
 config.color_scheme = "tokyonight_storm"
+config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 20
 config.window_padding = {
   top = 0,
