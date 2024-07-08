@@ -35,9 +35,7 @@ M.highlight_unused_imports = function(bufnr)
         return false
       end
       local func = vim.treesitter.get_node_text(node, bufnr)
-      if not calls[func] then
-        return true
-      end
+      return not calls[func]
     end
   )
 end
