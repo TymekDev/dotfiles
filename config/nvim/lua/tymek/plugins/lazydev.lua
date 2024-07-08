@@ -6,11 +6,12 @@ return {
     ---@type lazydev.Config
     opts = {
       library = {
-        "~/.config/nvim/lua/",
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+        { path = "wezterm-types", mods = { "wezterm" } },
       },
     },
   },
-  { -- optional completion source for require statements and module annotations
+  {
     "hrsh7th/nvim-cmp",
     ---@module "cmp.types"
     ---@type fun(_, opts: cmp.ConfigSchema)
@@ -18,8 +19,10 @@ return {
       opts.sources = opts.sources or {}
       table.insert(opts.sources, {
         name = "lazydev",
-        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        group_index = 0,
       })
     end,
   },
+  { "Bilal2453/luvit-meta", lazy = true }, -- vim.uv
+  { "justinsgithub/wezterm-types", lazy = true }, -- wezterm
 }
