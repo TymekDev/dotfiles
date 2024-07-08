@@ -1,3 +1,5 @@
+---@module "lazy"
+---@type LazySpec
 return {
   "nvim-telescope/telescope.nvim",
   lazy = false, -- TODO: remove this once I move all telescope mappings to 'keys'
