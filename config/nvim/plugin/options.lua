@@ -20,7 +20,6 @@ vim.opt.softtabstop = 2
 vim.opt.spelllang = { "en" }
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.swapfile = false
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true
 vim.opt.ttimeoutlen = 100
