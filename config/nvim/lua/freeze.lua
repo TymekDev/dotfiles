@@ -1,6 +1,6 @@
 local M = {}
 
----@enum FreezeTheme
+---@enum freeze.Theme
 local themes = {
   abap = "abap",
   algol = "algol",
@@ -69,10 +69,10 @@ local themes = {
   xcode = "xcode",
 }
 
----@class FreezeOptions
+---@class freeze.Options
 ---@field config? "base"|"full"|"user"|string
 ---@field font.family? string
----@field theme? FreezeTheme
+---@field theme? freeze.Theme
 local defaults = {
   config = "full",
   ["font.family"] = "JetBrainsMono Nerd Font",
@@ -115,7 +115,7 @@ local run_cmd = function(cmd, on_success)
 end
 
 ---@overload fun(lines: [number, number])
----@overload fun(lines: [number, number], opts: FreezeOptions)
+---@overload fun(lines: [number, number], opts: freeze.Options)
 M.generate_and_copy = function(lines, opts)
   ---@type table<string, string>
   local flags = vim.tbl_deep_extend("force", defaults, opts or {})
