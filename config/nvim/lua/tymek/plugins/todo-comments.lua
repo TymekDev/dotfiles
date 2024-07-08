@@ -2,6 +2,8 @@ return {
   "folke/todo-comments.nvim", -- TODO: review config
   event = "VeryLazy",
   dependencies = { "nvim-lua/plenary.nvim" },
+  ---@module "todo-comments"
+  ---@type TodoConfig
   opts = {
     signs = false,
     keywords = {

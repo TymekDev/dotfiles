@@ -110,12 +110,6 @@ return {
   "tpope/vim-eunuch",
   "tpope/vim-abolish",
   {
-    "folke/neodev.nvim",
-    ft = "lua",
-    priority = 90, -- NOTE: has to be set up before nvim-lspconfig
-    config = true,
-  },
-  {
     "williamboman/mason.nvim",
     priority = 89, -- NOTE: has to be set up before mason-lspconfig.nvim
     config = true,
@@ -191,15 +185,6 @@ return {
       require("lspconfig").lua_ls.setup(config({
         settings = {
           Lua = {
-            runtime = {
-              version = "LuaJIT",
-            },
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              library = vim.api.nvim_get_runtime_file("", true),
-            },
             telemetry = {
               enable = false,
             },

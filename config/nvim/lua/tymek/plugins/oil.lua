@@ -5,6 +5,8 @@ return {
   keys = {
     { "-", "<Cmd>Oil<CR>", desc = "Open the parent directory (via oil.nvim)" },
   },
+  ---@module "oil"
+  ---@type oil.setupOpts
   opts = {
     use_default_keymaps = false,
     keymaps = {

@@ -7,7 +7,7 @@ return {
   config = function()
     local ccc = require("ccc")
     ccc.setup({
-      alpha_show = false,
+      alpha_show = "hide",
       inputs = { ccc.input.hsl },
       outputs = { ccc.output.css_hsl },
     })

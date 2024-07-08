@@ -1,6 +1,9 @@
 return {
   "lewis6991/gitsigns.nvim", -- TODO: review config
   event = "VeryLazy",
+  ---@module "gitsigns"
+  ---@type Gitsigns.Config
+  ---@diagnostic disable-next-line: missing-fields
   opts = {
     on_attach = function()
       vim.keymap.set(
