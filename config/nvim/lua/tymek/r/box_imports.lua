@@ -3,21 +3,23 @@ local M = {}
 local get_root = require("tymek.treesitter").get_root_factory("r")
 
 local query_namespaced_calls = [[
-  (namespace_get
-    namespace: (identifier) @namespace
-    function: (identifier) @function)
+  (namespace_operator
+    lhs: (identifier) @namespace
+    rhs: (identifier) @function)
 ]]
 
 M.query_box_imports = [[
   (call
-    function: (namespace_get
-      namespace: (identifier) @namespace (#eq? @namespace "box")
-      function: (identifier) @function (#eq? @function "use"))
+    function: (namespace_operator
+      lhs: (identifier) @namespace (#eq? @namespace "box")
+      rhs: (identifier) @function (#eq? @function "use"))
     arguments: (arguments
-      (subset
-        (identifier) @box.use.namespace
-        (arguments
-          (identifier) @box.use.function))))
+      argument: (argument
+        (subset
+          function: (identifier) @box.use.namespace
+          arguments: (arguments
+            argument: (argument
+              (identifier) @box.use.function))))))
 ]]
 
 local get_map = function(bufnr, query, capture_name_key, capture_name_value)

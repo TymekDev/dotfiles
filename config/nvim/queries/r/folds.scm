@@ -1,5 +1,5 @@
 [
- (brace_list)
+ (braced_expression)
  (call)
  (subset)
 ] @fold

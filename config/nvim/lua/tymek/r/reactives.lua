@@ -4,14 +4,16 @@ local get_root = require("tymek.treesitter").get_root_factory("r")
 
 local get_reactives_declaration = function(bufnr)
   local query = [[
-  (left_assignment
-    name: (identifier) @reactive.declaration
-    value: [
+  (binary_operator 
+    lhs: (identifier) @reactive.declaration
+    "<-"
+    rhs: [
       (call
         function: (identifier) @fName)
-      (pipe
-        left: (call
-                function: (identifier) @fName))
+      (binary_operator
+        lhs: (call
+                function: (identifier) @fName)
+        "|>")
     ]
     (#any-of? @fName "reactive" "eventReactive"))
   ]]

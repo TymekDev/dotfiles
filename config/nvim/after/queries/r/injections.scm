@@ -1,24 +1,25 @@
 ; extends
 (call
   function: [
-    (dollar (identifier) @function)
-    (identifier) @function
+    (extract_operator
+      "$"
+      rhs: (identifier) @function)
+    (identifier) @function2
   ]
-
+  arguments: (arguments
+    argument: (argument
+      value: (string
+        content: (string_content) @injection.content)))
   (#any-of? @function "run_js" "JS")
-
-  (arguments
-    (string) @injection.content
-    (#offset! @injection.content 0 1 0 -1)
-    (#set! injection.language "javascript")
-  )
+  (#any-of? @function2 "run_js" "JS")
+  (#set! injection.language "javascript")
 )
 
 (call
   function: (identifier) @function (#eq? @function "glue_sql")
   arguments: (arguments
-    (string) @injection.content
-    (#offset! @injection.content 0 1 0 -1)
-    (#set! injection.language "sql")
-  )
+    argument: (argument
+      value: (string
+        content: (string_content) @injection.content)))
+  (#set! injection.language "sql")
 )
