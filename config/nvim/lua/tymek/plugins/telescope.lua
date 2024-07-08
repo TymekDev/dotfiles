@@ -9,5 +9,16 @@ return {
       desc = "Open and restore the previously viewed picker (via telescope.nvim)",
     },
   },
-  config = true,
+  opts = {
+    defaults = {
+      mappings = {
+        i = {
+          ["<C-f>"] = false,
+        },
+        n = {
+          ["<C-f>"] = false,
+        },
+      },
+    },
+  },
 }
