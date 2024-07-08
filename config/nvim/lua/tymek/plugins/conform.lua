@@ -26,6 +26,9 @@ return {
       lua = {
         "stylua",
       },
+      query = {
+        "format-queries",
+      },
       yaml = {
         "yamlfmt",
       },
