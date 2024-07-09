@@ -12,16 +12,25 @@ M.get_root_factory = function(lang)
   end
 end
 
----@param bufnr integer
----@param lang string
----@param query string
----@return table<string, true> # A map with @target capture matches as keys.
-M.get_target_matches = function(bufnr, lang, query)
+---Returns a mapping of capture group matches.
+---Outer keys consist of capture_name_outer capture group matches.
+---Optionally, inner keys consist of capture_name_inner capture group matches.
+---@overload fun(bufnr: integer, lang: string, query: string, capture_name_outer: string): table<string, table>
+---@overload fun(bufnr: integer, lang: string, query: string, capture_name_outer: string, capture_name_inner: string): table<string, table<string, table>>
+M.get_matches = function(bufnr, lang, query, capture_name_outer, capture_name_inner)
   local ts_query = vim.treesitter.query.parse(lang, query)
+  local outer
   local result = {}
-  for id, node, _ in ts_query:iter_captures(get_root(bufnr, lang), bufnr) do
-    if ts_query.captures[id] == "target" then
-      result[vim.treesitter.get_node_text(node, bufnr)] = true
+  for id, node, _ in ts_query:iter_captures(get_root(bufnr), bufnr) do
+    local capture_name = ts_query.captures[id]
+    if capture_name == capture_name_outer then
+      outer = vim.treesitter.get_node_text(node, bufnr)
+      if not result[outer] then
+        result[outer] = {}
+      end
+    elseif capture_name == capture_name_inner then
+      local inner = vim.treesitter.get_node_text(node, bufnr)
+      result[outer][inner] = {}
     end
   end
   return result

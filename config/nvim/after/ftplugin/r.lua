@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
   desc = "Highlight reactives and eventReactives declared in the current buffer",
   buffer = 0,
   callback = function(args)
-    local reactives_names = vim.tbl_keys(ts.get_target_matches(args.buf, "r", queries.reactives_declarations))
+    local reactives_names = vim.tbl_keys(ts.get_matches(args.buf, "r", queries.reactives_declarations, "target"))
     ts.highlight_nodes(
       args.buf,
       "r",
@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
   desc = "Highlight unused imports in box::use()",
   buffer = 0,
   callback = function(args)
-    local calls = ts.get_target_matches(args.buf, "r", queries.calls())
+    local calls = ts.get_matches(args.buf, "r", queries.calls(), "target")
     ts.highlight_nodes(
       args.buf,
       "r",
