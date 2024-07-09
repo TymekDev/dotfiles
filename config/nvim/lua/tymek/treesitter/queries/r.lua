@@ -1,20 +1,5 @@
 local M = {}
 
-M.reactives_declarations = [[
-(binary_operator
-  lhs: (identifier) @target
-  "<-"
-  rhs: [
-    (call
-      function: (identifier) @fName)
-    (binary_operator
-      lhs: (call
-        function: (identifier) @fName)
-      "|>")
-  ]
-  (#any-of? @fName "reactive" "eventReactive"))
-]]
-
 ---@overload fun(): string
 ---@overload fun(names: string[]): string
 M.calls = function(names)
@@ -38,5 +23,20 @@ M.calls = function(names)
     )
   )
 end
+
+M.reactives_declarations = [[
+(binary_operator
+  lhs: (identifier) @target
+  "<-"
+  rhs: [
+    (call
+      function: (identifier) @fName)
+    (binary_operator
+      lhs: (call
+        function: (identifier) @fName)
+      "|>")
+  ]
+  (#any-of? @fName "reactive" "eventReactive"))
+]]
 
 return M
