@@ -1,17 +1,45 @@
+local queries = require("tymek.treesitter.queries.r")
+local ts = require("tymek.treesitter")
+
 -- FIXME: how to *not* use vim.cmd here?
 vim.cmd([[let r_indent_align_args=0]])
 vim.opt_local.textwidth = 100
 
 vim.keymap.set("n", "<Leader>bi", require("tymek.r.box_imports").put_missing, { buffer = 0 })
 vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
+  desc = "Highlight reactives and eventReactives declared in the current buffer",
   buffer = 0,
-  callback = function()
-    require("tymek.r.reactives").highlight_calls()
+  callback = function(args)
+    local reactives_names = vim.tbl_keys(ts.get_target_matches(args.buf, "r", queries.reactives_declarations))
+    ts.highlight_nodes(
+      args.buf,
+      "r",
+      queries.calls(reactives_names),
+      vim.api.nvim_create_namespace("reactive_calls"),
+      "@r.reactive.call"
+    )
   end,
 })
 vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
+  -- NOTE: This works only for imports from packages (i.e. not from files).
+  -- NOTE: There might be false positives when importing non-function objects.
+  desc = "Highlight unused imports in box::use()",
   buffer = 0,
-  callback = function()
-    require("tymek.r.box_unused_imports").highlight_unused_imports()
+  callback = function(args)
+    local calls = ts.get_target_matches(args.buf, "r", queries.calls())
+    ts.highlight_nodes(
+      args.buf,
+      "r",
+      require("tymek.r.box_imports").query_box_imports,
+      vim.api.nvim_create_namespace("box_unused_imports"),
+      "@r.box.unused.import",
+      function(capture_name, node)
+        if capture_name ~= "box.use.function" then
+          return false
+        end
+        local call = vim.treesitter.get_node_text(node, args.buf)
+        return not calls[call]
+      end
+    )
   end,
 })

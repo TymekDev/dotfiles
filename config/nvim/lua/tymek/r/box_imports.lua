@@ -1,3 +1,4 @@
+-- TODO: refactor and remove get_root_factory once it's done
 local M = {}
 
 local get_root = require("tymek.treesitter").get_root_factory("r")
