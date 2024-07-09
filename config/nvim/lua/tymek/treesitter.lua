@@ -27,14 +27,4 @@ M.highlight_nodes = function(bufnr, lang, query, hl_namespace, hl_group, predica
   end
 end
 
-M.setup_highlight = function(bufnr, callback)
-  bufnr = bufnr or 0
-  vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
-    buffer = bufnr,
-    callback = function()
-      callback()
-    end,
-  })
-end
-
 return M
