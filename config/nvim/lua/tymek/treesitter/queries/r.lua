@@ -1,5 +1,21 @@
 local M = {}
 
+M.box_imports = [[
+(call
+  function: (namespace_operator
+    lhs: (identifier) @namespace
+    (#eq? @namespace "box")
+    rhs: (identifier) @function
+    (#eq? @function "use"))
+  arguments: (arguments
+    argument: (argument
+      (subset
+        function: (identifier) @box.use.namespace
+        arguments: (arguments
+          argument: (argument
+            (identifier) @box.use.function))))))
+]]
+
 ---@overload fun(): string
 ---@overload fun(names: string[]): string
 M.calls = function(names)
@@ -23,6 +39,12 @@ M.calls = function(names)
     )
   )
 end
+
+M.calls_namespaced = [[
+(namespace_operator
+  lhs: (identifier) @namespace
+  rhs: (identifier) @function)
+]]
 
 M.reactives_declarations = [[
 (binary_operator

@@ -5,7 +5,7 @@ local ts = require("tymek.treesitter")
 vim.cmd([[let r_indent_align_args=0]])
 vim.opt_local.textwidth = 100
 
-vim.keymap.set("n", "<Leader>bi", require("tymek.r.box_imports").put_missing, { buffer = 0 })
+vim.keymap.set("n", "<Leader>bi", require("tymek.treesitter.r").put_missing_box_imports, { buffer = 0 })
 vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
   desc = "Highlight reactives and eventReactives declared in the current buffer",
   buffer = 0,
@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
     ts.highlight_nodes(
       args.buf,
       "r",
-      require("tymek.r.box_imports").query_box_imports,
+      queries.box_imports,
       vim.api.nvim_create_namespace("box_unused_imports"),
       "@r.box.unused.import",
       function(capture_name, node)
