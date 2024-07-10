@@ -118,8 +118,6 @@ M.setup = function()
 
   -- TODO: sort this out
   vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
-  vim.keymap.set("n", "<Leader>gp", require("gitsigns").prev_hunk)
-  vim.keymap.set("n", "<Leader>gn", require("gitsigns").next_hunk)
 
   -- <leader>dn next
   -- <leader>di in
