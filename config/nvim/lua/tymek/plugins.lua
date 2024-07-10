@@ -96,7 +96,6 @@ return {
     end,
   },
   "junegunn/vim-easy-align", -- TODO: review config
-  "tpope/vim-fugitive",
   {
     "junegunn/gv.vim",
     dependencies = { "tpope/vim-fugitive" },
