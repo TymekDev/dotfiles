@@ -74,15 +74,6 @@ return {
     config = true,
   },
   {
-    "nvim-treesitter/playground",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        playground = { enable = true },
-      })
-    end,
-  },
-  {
     "windwp/nvim-ts-autotag",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = true,
@@ -96,10 +87,6 @@ return {
     end,
   },
   "junegunn/vim-easy-align", -- TODO: review config
-  {
-    "junegunn/gv.vim",
-    dependencies = { "tpope/vim-fugitive" },
-  },
   {
     "tpope/vim-rsi",
     config = function()
@@ -337,18 +324,10 @@ return {
   "folke/zen-mode.nvim",
   "folke/twilight.nvim",
   {
-    "tpope/vim-speeddating",
-    config = function()
-      vim.api.nvim_cmd({ cmd = "SpeedDatingFormat", bang = true, args = { "%v" } }, {})
-      vim.api.nvim_cmd({ cmd = "SpeedDatingFormat", bang = true, args = { "%^v" } }, {})
-    end,
-  },
-  {
     "jalvesaq/Nvim-R",
     config = function()
       vim.cmd("let R_assign = 0")
       vim.cmd("let R_nvim_wd = 1")
     end,
   },
-  "NoahTheDuke/vim-just",
 }
