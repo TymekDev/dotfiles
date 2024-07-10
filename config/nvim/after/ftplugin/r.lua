@@ -1,8 +1,7 @@
 local queries = require("tymek.treesitter.queries.r")
 local ts = require("tymek.treesitter")
 
--- FIXME: how to *not* use vim.cmd here?
-vim.cmd([[let r_indent_align_args=0]])
+vim.g.r_indent_align_args = false
 vim.opt_local.textwidth = 100
 
 vim.keymap.set("n", "<Leader>bi", require("tymek.treesitter.r").put_missing_box_imports, { buffer = 0 })
