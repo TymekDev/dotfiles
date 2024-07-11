@@ -8,5 +8,3 @@ vim.api.nvim_create_user_command("WiderActiveBufToggle", function()
   end
   wider_active_buf = not wider_active_buf
 end, {})
-
-require("freeze").setup()
