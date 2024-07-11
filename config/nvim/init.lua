@@ -18,6 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 require("lazy").setup("tymek.plugins", {
+  dev = {
+    path = "~/personal",
+  },
   install = {
     colorscheme = { "tokyonight" },
   },
