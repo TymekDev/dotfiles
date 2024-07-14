@@ -51,6 +51,8 @@ bind \cj accept-autosuggestion execute
 bind \ck forward-word
 bind \cf "stty sane; nvim +'Telescope find_files'"
 bind \cg "stty sane; nvim +'Telescope live_grep'"
+# FEAT: make this update automatic
+bind \et "update-theme-fish"
 bind \en "fish_commandline_prepend 'nvim (' && fish_commandline_append ' )'"
 
 set -x EDITOR nvim
@@ -87,11 +89,6 @@ if test (uname) = "Darwin"
 end
 # pnpm end
 
-# tokyonight
-set -l THEME_PATH $HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/tokyonight_storm.fish
-if test -e $THEME_PATH
-  source $THEME_PATH
-end
-# tokyonight end
+update-theme-fish
 
 starship init fish | source

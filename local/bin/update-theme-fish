@@ -1,0 +1,15 @@
+#!/usr/bin/env fish --no-config
+function update
+  set -f VARIANT "$(cat /tmp/tymek-theme)"
+  set -f FORMAT "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/%s.fish"
+
+  if [ "$VARIANT" = "light" ]
+    set -f THEME "tokyonight_day"
+  else
+    set -f THEME "tokyonight_storm"
+  end
+
+  source $(printf $FORMAT $THEME)
+end
+
+update

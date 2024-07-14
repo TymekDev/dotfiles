@@ -30,7 +30,7 @@ return {
         end,
       })
 
-      vim.api.nvim_cmd({ cmd = "colorscheme", args = { "tokyonight" } }, {})
+      require("tymek.theme").update()
     end,
   },
   {
@@ -328,6 +328,7 @@ return {
     config = function()
       vim.cmd("let R_assign = 0")
       vim.cmd("let R_nvim_wd = 1")
+      vim.cmd("let R_hl_term = 0")
     end,
   },
 }

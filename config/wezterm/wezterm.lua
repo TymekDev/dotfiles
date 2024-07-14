@@ -1,8 +1,8 @@
+local theme = require("theme")
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.term = "wezterm"
-config.color_scheme = "tokyonight_storm"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 19
 config.window_padding = {
@@ -30,5 +30,7 @@ config.keys = {
   { key = "4", mods = "CTRL", action = wezterm.action.Nop },
   { key = "\\", mods = "CTRL", action = wezterm.action.Nop },
 }
+
+theme.set(config)
 
 return config
