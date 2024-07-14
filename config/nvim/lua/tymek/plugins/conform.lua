@@ -21,6 +21,9 @@ return {
       ["_"] = {
         { "prettierd", "prettier" },
       },
+      sh = {
+        "shfmt",
+      },
       go = {
         { "gofumpt", "gofmt" },
         "goimports",
