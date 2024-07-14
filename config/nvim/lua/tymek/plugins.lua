@@ -23,9 +23,9 @@ return {
     config = function()
       require("tokyonight").setup({
         lualine_bold = true,
-        on_highlights = function(hl, c)
-          hl["@r.reactive.call"] = { fg = c.red } -- TODO: pick a color
-          hl["@r.box.unused.import"] = { fg = c.red } -- TODO: pick a color
+        on_highlights = function(hl, _)
+          hl["@r.reactive.call"] = { link = "Special" }
+          hl["@r.box.unused.import"] = { link = "Error" }
           hl.NvimSurroundHighlight = { link = "IncSearch" }
         end,
       })
