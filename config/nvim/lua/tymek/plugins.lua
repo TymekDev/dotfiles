@@ -253,7 +253,6 @@ return {
         },
       },
       "hrsh7th/cmp-path",
-      "jalvesaq/cmp-nvim-r",
     },
     config = function()
       require("cmp").setup({
@@ -265,7 +264,7 @@ return {
         sources = require("cmp").config.sources({
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
-          { name = "cmp_nvim_r" },
+          { name = "cmp_r" },
           { name = "luasnip" },
           {
             name = "path",
@@ -323,12 +322,4 @@ return {
   },
   "folke/zen-mode.nvim",
   "folke/twilight.nvim",
-  {
-    "jalvesaq/Nvim-R",
-    config = function()
-      vim.cmd("let R_assign = 0")
-      vim.cmd("let R_nvim_wd = 1")
-      vim.cmd("let R_hl_term = 0")
-    end,
-  },
 }
