@@ -9,5 +9,4 @@ return {
       hl_term = false,
     },
   },
-  "R-nvim/cmp-r",
 }
