@@ -1,3 +1,18 @@
+---@param bufnr integer
+---@param ... string Formatters to select a first available one from.
+---@see https://github.com/stevearc/conform.nvim/blob/eff40c4f5fdf7ae8f269b258047d1bd7cee50f02/doc/recipes.md#run-the-first-available-formatter-followed-by-more-formatters
+---@return string
+local function first(bufnr, ...)
+  local conform = require("conform")
+  for i = 1, select("#", ...) do
+    local formatter = select(i, ...)
+    if conform.get_formatter_info(formatter, bufnr).available then
+      return formatter
+    end
+  end
+  return select(1, ...)
+end
+
 ---@module "lazy"
 ---@type LazySpec
 return {
@@ -18,16 +33,18 @@ return {
       return { timeout_ms = 2000 }
     end,
     formatters_by_ft = {
-      ["_"] = {
-        { "prettierd", "prettier" },
-      },
-      sh = {
-        "shfmt",
-      },
-      go = {
-        { "gofumpt", "gofmt" },
-        "goimports",
-      },
+      ["_"] = function(bufnr)
+        return {
+          first(bufnr, "prettierd", "prettier"),
+        }
+      end,
+      sh = { "shfmt" },
+      go = function(bufnr)
+        return {
+          first(bufnr, "gofumpt", "gofmt"),
+          "goimports",
+        }
+      end,
       lua = {
         "stylua",
       },
