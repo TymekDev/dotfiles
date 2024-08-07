@@ -21,8 +21,9 @@
   # [f]ixup and [r]e[b]ase
   frb = "! f() { REF=${1:?missing REF }; git commit --fixup ${REF} && git rebase --autostash --interactive ${REF}^; }; f"
 
-  # [g]raph ([s]ingle)
-  g = "fl --graph --all"
+  # [g]raph ([s]ingle / [f]ull)
+  g = "gf -15"
+  gf = "fl --graph --all"
   gs = "fl --graph"
 
   # [l]ast [b]ranches | Source: https://ses4j.github.io/2020/04/01/git-alias-recent-branches/

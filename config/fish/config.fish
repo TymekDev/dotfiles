@@ -18,6 +18,7 @@ abbr --add gec  git ec # TODO: change this to fish function or else gitsigns in 
 abbr --add gem  git em
 abbr --add gf   git fetch
 abbr --add gg   git g
+abbr --add ggf  git gf
 abbr --add ggs  git gs
 abbr --add gl   git pull
 abbr --add glg  git log
