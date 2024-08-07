@@ -7,6 +7,7 @@ abbr --add gca  git commit --amend
 abbr --add gcam git commit -am
 abbr --add gcb  git checkout -b
 abbr --add gce  git commit --amend --no-edit
+abbr --add gcf  git commit --fixup
 abbr --add gcm  git commit -m
 abbr --add gco  git checkout
 abbr --add gcp  git cherry-pick
