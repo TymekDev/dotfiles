@@ -15,7 +15,11 @@
   (#set! injection.language "javascript"))
 
 (call
-  function: (identifier) @function
+  function: [
+    (identifier) @function
+    (namespace_operator
+      rhs: (identifier) @function)
+  ]
   arguments: (arguments
     argument: (argument
       value: (string
