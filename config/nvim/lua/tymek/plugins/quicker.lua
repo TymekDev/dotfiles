@@ -25,13 +25,19 @@ return {
         end,
         desc = "Collapse quickfix context (via quicker.nvim)",
       },
-      -- FEAT: make this wrap
       {
         "]q",
         function()
           local items = vim.fn.getqflist()
           local lnum = vim.api.nvim_win_get_cursor(0)[1]
           for i = lnum + 1, #items do
+            if items[i].valid == 1 then
+              vim.api.nvim_win_set_cursor(0, { i, 0 })
+              return
+            end
+          end
+          -- Wrap around the end of quickfix list
+          for i = 1, lnum do
             if items[i].valid == 1 then
               vim.api.nvim_win_set_cursor(0, { i, 0 })
               return
@@ -46,6 +52,13 @@ return {
           local items = vim.fn.getqflist()
           local lnum = vim.api.nvim_win_get_cursor(0)[1]
           for i = lnum - 1, 1, -1 do
+            if items[i].valid == 1 then
+              vim.api.nvim_win_set_cursor(0, { i, 0 })
+              return
+            end
+          end
+          -- Wrap around the start of quickfix list
+          for i = #items, lnum, -1 do
             if items[i].valid == 1 then
               vim.api.nvim_win_set_cursor(0, { i, 0 })
               return
