@@ -17,10 +17,6 @@ M.setup = function()
   vim.keymap.set({ "n", "x" }, "gk", "<C-w>k")
   vim.keymap.set({ "n", "x" }, "gl", "<C-w>l")
 
-  -- Tabs
-  vim.keymap.set({ "n", "x" }, "<C-p>", vim.cmd.tabprevious)
-  vim.keymap.set({ "n", "x" }, "<C-n>", vim.cmd.tabnext)
-
   -- Screen
   vim.keymap.set({ "n", "x" }, "<C-u>", "<C-u>zz") -- Half a screen up with center on cursor
   vim.keymap.set({ "n", "x" }, "<C-d>", "<C-d>zz") -- Half a screen down with center on cursor
