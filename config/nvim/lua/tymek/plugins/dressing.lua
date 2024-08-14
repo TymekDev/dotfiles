@@ -3,7 +3,6 @@
 return {
   "stevearc/dressing.nvim",
   event = "VeryLazy",
-  dependencies = { "nvim-telescope/telescope.nvim" },
   opts = {
     input = {
       relative = "cursor",
