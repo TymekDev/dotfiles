@@ -80,18 +80,6 @@ M.setup = function()
   -- junegunn/vim-easy-align
   vim.keymap.set({ "n", "x" }, "<Leader>a", "<Plug>(EasyAlign)")
 
-  -- nvim-telescope/telescope.nvim
-  vim.keymap.set({ "n", "x" }, "<C-f>", require("telescope.builtin").find_files) -- [f]iles
-  vim.keymap.set({ "n", "x" }, "<C-g>", require("telescope.builtin").live_grep) -- [g]rep
-  vim.keymap.set({ "n", "x" }, "<Leader><C-g>", require("telescope.builtin").grep_string)
-  vim.keymap.set({ "n", "x" }, "<Leader>fc", require("telescope.builtin").commands) -- [c]ommands
-  vim.keymap.set({ "n", "x" }, "<Leader>fch", require("telescope.builtin").command_history) -- [c]ommand [h]istory
-  vim.keymap.set({ "n", "x" }, "<Leader>fh", require("telescope.builtin").help_tags) -- [h]elp
-  vim.keymap.set({ "n", "x" }, "<Leader>fq", require("telescope.builtin").quickfix) -- [q]uickfix
-  vim.keymap.set({ "n", "x" }, "<Leader>-", function()
-    require("telescope.builtin").find_files({ find_command = { "fd", "--type", "d", "--hidden" } })
-  end, { desc = "find directories (via telescope.nvim)" })
-
   -- hrsh7th/nvim-cmp
   vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
   require("cmp").setup({
@@ -154,14 +142,6 @@ M.setup_lsp = function()
   vim.keymap.set("n", "gqi", vim.lsp.buf.implementation, { buffer = 0 }) -- [i]mplementation
   vim.keymap.set("n", "gqr", vim.lsp.buf.references, { buffer = 0 }) -- [r]eferences
   vim.keymap.set("n", "gqs", vim.lsp.buf.document_symbol, { buffer = 0 }) -- [s]ybmol
-
-  vim.keymap.set("n", "<Leader>fd", require("telescope.builtin").diagnostics, { buffer = 0 })
-  vim.keymap.set("n", "<Leader>fi", require("telescope.builtin").lsp_implementations, { buffer = 0 })
-  vim.keymap.set("n", "<Leader>fr", require("telescope.builtin").lsp_references, { buffer = 0 })
-  vim.keymap.set("n", "<Leader>fw", require("telescope.builtin").lsp_dynamic_workspace_symbols, { buffer = 0 })
-  vim.keymap.set("n", "<Leader>fs", function()
-    require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 }, { buffer = 0 })
-  end, { buffer = 0 })
 end
 
 return M
