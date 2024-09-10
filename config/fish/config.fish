@@ -21,6 +21,7 @@ abbr --add ggs  git gs
 abbr --add gl   git pull
 abbr --add glg  git log
 abbr --add gm   git merge
+abbr --add gmt  git mergetool
 abbr --add gp   git push
 abbr --add gpf  git push --force-with-lease
 abbr --add gpr  gh pr view --web
