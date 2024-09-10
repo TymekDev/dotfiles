@@ -74,6 +74,7 @@ M.setup = function()
   vim.keymap.set({ "n", "x" }, "<Leader>a", "<Plug>(EasyAlign)")
 
   -- hrsh7th/nvim-cmp
+  -- TODO: modve to cmp.lua
   vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
   require("cmp").setup({
     mapping = {

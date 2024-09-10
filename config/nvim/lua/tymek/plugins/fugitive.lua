@@ -6,6 +6,7 @@ return {
   keys = {
     { "<Leader>gf", "<Cmd>Git fetch<CR>", ft = "fugitive", desc = "Run `git fetch` (via vim-fugitive)" },
     { "<Leader>gl", "<Cmd>Git pull<CR>", ft = "fugitive", desc = "Run `git pull` (via vim-fugitive)" },
+    -- FEAT: change pushing to run asynchronously (using vim.system())
     { "<Leader>gp", "<Cmd>Git push<CR>", ft = "fugitive", desc = "Run `git push` (via vim-fugitive)" },
     {
       "<Leader>gP",

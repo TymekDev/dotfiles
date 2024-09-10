@@ -1,3 +1,7 @@
+-- TODO: https://github.com/stevearc/conform.nvim?tab=readme-ov-file#recipes
+-- TODO: https://github.com/stevearc/conform.nvim?tab=readme-ov-file#advanced-topics
+-- TODO: formatexpr
+
 ---@param bufnr integer
 ---@param ... string Formatters to select a first available one from.
 ---@see https://github.com/stevearc/conform.nvim/blob/eff40c4f5fdf7ae8f269b258047d1bd7cee50f02/doc/recipes.md#run-the-first-available-formatter-followed-by-more-formatters

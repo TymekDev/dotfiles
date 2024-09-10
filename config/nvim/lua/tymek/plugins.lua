@@ -1,3 +1,4 @@
+-- FIXME: :Move %<tab> doesn't remove % after expansion - probably wildchar issues
 local function lsp_on_attach(client)
   if vim.bo[vim.api.nvim_get_current_buf()].filetype == "r" then
     vim.api.nvim_create_autocmd("BufWritePre", {
