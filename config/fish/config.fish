@@ -5,14 +5,11 @@ abbr --add gb   git branch
 abbr --add gc   git commit
 abbr --add gca  git commit --amend
 abbr --add gcam git commit -am
-abbr --add gcb  git checkout -b
 abbr --add gce  git commit --amend --no-edit
 abbr --add gcf  git commit --fixup
 abbr --add gcm  git commit -m
-abbr --add gco  git checkout
 abbr --add gcp  git cherry-pick
 abbr --add gcw  git commit --amend --only
-abbr --add gcpm git commit -pm
 abbr --add gd   git diff
 abbr --add gds  git diff --staged
 abbr --add gec  git ec # TODO: change this to fish function or else gitsigns in Neovim breaks
