@@ -91,4 +91,6 @@ end
 
 update-theme-fish
 
+fzf --fish | source
+
 starship init fish | source
