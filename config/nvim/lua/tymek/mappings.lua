@@ -66,16 +66,9 @@ M.setup = function()
     vim.opt_local.spell = not vim.opt_local.spell:get()
   end)
 
-  -- Spelling
-  vim.keymap.set("n", "zf", "]s1z=") -- Fix next bad word with first suggestion
-  vim.keymap.set("n", "zF", "[s1z=") -- Fix previous bad word with first suggestion
-
   -- Miscellaneous
   vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
   vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
-
-  -- Commands opening an entire buffer
-  vim.keymap.set({ "n", "x" }, "<Leader><C-g>", "<Cmd>Git<CR>")
 
   -- junegunn/vim-easy-align
   vim.keymap.set({ "n", "x" }, "<Leader>a", "<Plug>(EasyAlign)")
@@ -96,9 +89,6 @@ M.setup = function()
     },
   })
   vim.keymap.set("c", "<Tab>", "<NOP>")
-
-  -- DAP
-  vim.keymap.set("n", "<Leader>dc", require("dap").continue)
 
   -- TODO: sort this out
   vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
