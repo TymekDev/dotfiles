@@ -5,7 +5,7 @@ return {
   ft = "norg",
   cmd = "Neorg",
   keys = {
-    { "<Leader>C", ft = "norg", desc = "Toggle concealer (via neorg.nvim)" },
+    { "<Leader>C", "<Cmd>Neorg toggle-concealer<CR>", ft = "norg", desc = "Toggle concealer (via neorg.nvim)" },
   },
   ---@module "neorg"
   ---@type neorg.configuration.user
