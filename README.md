@@ -21,6 +21,7 @@ make dotfiles
 ```
 
 Running `make dotfiles` will:
+
 - force install [tpm][] (`~/.config/tmux/plugins/tpm` gets deleted before cloning)
 - install `brew` if it is missing
 - install `stow` if it is missing
@@ -47,6 +48,7 @@ In addition to what `make dotfiles` does, `make from-scratch` installs all tools
 ### Additional `make` Targets
 
 Other than `dotfiles` and `from-scratch`, the following targets are available:
+
 - `restow` - runs `stow --restow` to update or place configs in place
 - `unstow` - runs `stow --delete` to undo `restow` target
 - `install` - installs everything with `install-` prefix
@@ -79,6 +81,7 @@ Other than `dotfiles` and `from-scratch`, the following targets are available:
 [`1ad9d73`]: https://github.com/TymekDev/dotfiles/commit/1ad9d73abd3099247377322dea3b3524c8dd77f3
 
 ## Known Issues
+
 Some are listed in [`Makefile`][]. Additionally:
 
 - Karabiner does not really work for porting. Another Mac's keyboard has a
