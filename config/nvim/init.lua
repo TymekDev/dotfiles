@@ -45,9 +45,6 @@ require("lazy").setup("tymek.plugins", {
       },
     },
   },
-  rocks = {
-    enabled = false,
-  },
 })
 
 vim.api.nvim_cmd({
