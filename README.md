@@ -62,6 +62,7 @@ Other than `dotfiles` and `from-scratch`, the following targets are available:
   Host *
     IdentityAgent "SSH_AUTH_SOCK"
   ```
+- In Neovim: enable NetRW and disable oil.nvim to download spell files (see https://github.com/stevearc/oil.nvim/issues/163)
 
 [Disable Firefox title bar]: https://blog.tymek.dev/firefox-css-2
 
