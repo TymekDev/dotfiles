@@ -2,8 +2,8 @@
 ---@type LazySpec
 return {
   "nvim-neorg/neorg",
+  lazy = false, -- FIXME: highlighting breaks when Neorg is lazy loaded
   ft = "norg",
-  cmd = "Neorg",
   keys = {
     { "<Leader>C", "<Cmd>Neorg toggle-concealer<CR>", ft = "norg", desc = "Toggle concealer (via neorg.nvim)" },
   },
