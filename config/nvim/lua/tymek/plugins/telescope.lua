@@ -11,7 +11,9 @@ return {
     {
       "<Leader>-",
       function()
-        require("telescope.builtin").find_files({ find_command = { "fd", "--type", "d", "--hidden" } })
+        require("telescope.builtin").find_files({
+          find_command = { "fd", "--type", "d", "--hidden", "--exclude", ".git" },
+        })
       end,
       desc = "Find directories (via telescope.nvim)",
     },
