@@ -5,7 +5,6 @@ subdirs_of=(
   ~/work
 )
 dirs=(
-  ~/notes
   ~/Documents
   ~/Documents/dokumenty/notatki
   ~/Downloads
