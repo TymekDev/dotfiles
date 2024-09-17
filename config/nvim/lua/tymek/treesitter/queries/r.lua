@@ -61,4 +61,10 @@ M.reactives_declarations = [[
   (#any-of? @fName "reactive" "eventReactive"))
 ]]
 
+M.roxygen2_comments = [[
+((comment) @comment.roxygen2
+  (#lua-match? @comment.roxygen2 "^#' (@%a+).*$")
+  (#gsub! @comment.roxygen2 "^#' (@%a+).*$" "%1"))
+]]
+
 return M

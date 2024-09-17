@@ -1,10 +1,11 @@
 local queries = require("tymek.treesitter.queries.r")
 local ts = require("tymek.treesitter")
+local ts_r = require("tymek.treesitter.r")
 
 vim.g.r_indent_align_args = false
 vim.opt_local.textwidth = 100
 
-vim.keymap.set("n", "<Leader>bi", require("tymek.treesitter.r").put_missing_box_imports, { buffer = 0 })
+vim.keymap.set("n", "<Leader>bi", ts_r.put_missing_box_imports, { buffer = 0 })
 vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
   desc = "Highlight reactives and eventReactives declared in the current buffer",
   buffer = 0,
@@ -40,5 +41,12 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
         return not calls[call]
       end
     )
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
+  desc = "Highlight roxygen2 tags",
+  buffer = 0,
+  callback = function(args)
+    ts_r.highlight_roxygen2_comments(args.buf)
   end,
 })

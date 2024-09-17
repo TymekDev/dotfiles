@@ -54,6 +54,45 @@ local format_box_imports = function(tbl)
   return result
 end
 
+M.highlight_roxygen2_comments = function(bufnr)
+  local ns = vim.api.nvim_create_namespace("roxygen2_comments")
+  vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+
+  local ts_query = vim.treesitter.query.parse("r", queries.roxygen2_comments)
+  for id, node, metadata in ts_query:iter_captures(ts.get_root(bufnr, "r"), bufnr) do
+    if ts_query.captures[id] ~= "comment.roxygen2" then
+      goto next
+    end
+
+    local start_row, _, end_row, _ = vim.treesitter.get_node_range(node)
+    local position = 3 -- skip initial "#' "
+
+    local highlight_length = function(hl_group, length)
+      vim.highlight.range(bufnr, ns, hl_group, { start_row, position }, { end_row, position + length })
+      position = position + length + 1
+    end
+
+    local tag_name = metadata[id].text
+    highlight_length("@operator.r", #tag_name)
+
+    if tag_name == "@import" or tag_name == "@importFrom" then
+      local line = vim.api.nvim_buf_get_text(bufnr, start_row, position, end_row, -1, {})[1]
+      if string.match(line, "^ ") ~= nil or string.match(line, "  ") ~= nil then
+        highlight_length("SpellBad", #line)
+        goto next
+      end
+
+      local words = vim.gsplit(line, " ", { trimempty = true })
+      highlight_length("@module.r", #words()) -- Package name
+      for word in words do
+        highlight_length("@function.r", #word)
+      end
+    end
+
+    ::next::
+  end
+end
+
 ---@param bufnr? integer
 M.put_missing_box_imports = function(bufnr)
   bufnr = bufnr or 0
