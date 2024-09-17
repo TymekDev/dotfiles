@@ -5,7 +5,7 @@ local M = {}
 ---@param bufnr integer
 ---@param lang string
 ---@return TSNode
-local get_root = function(bufnr, lang)
+M.get_root = function(bufnr, lang)
   local parser = vim.treesitter.get_parser(bufnr, lang, {})
   local tree = parser:parse()[1]
   return tree:root()
@@ -20,7 +20,7 @@ M.get_matches = function(bufnr, lang, query, capture_name_outer, capture_name_in
   local ts_query = vim.treesitter.query.parse(lang, query)
   local outer
   local result = {}
-  for id, node, _ in ts_query:iter_captures(get_root(bufnr, lang), bufnr) do
+  for id, node, _ in ts_query:iter_captures(M.get_root(bufnr, lang), bufnr) do
     local capture_name = ts_query.captures[id]
     if capture_name == capture_name_outer then
       outer = vim.treesitter.get_node_text(node, bufnr)
@@ -56,7 +56,7 @@ M.highlight_nodes = function(bufnr, lang, query, hl_namespace, hl_group, predica
   end
   local ts_query = vim.treesitter.query.parse(lang, query)
   vim.api.nvim_buf_clear_namespace(bufnr, hl_namespace, 0, -1)
-  for id, node, _ in ts_query:iter_captures(get_root(bufnr, lang), bufnr) do
+  for id, node, _ in ts_query:iter_captures(M.get_root(bufnr, lang), bufnr) do
     if predicate(ts_query.captures[id], node) then
       M.highlight_node(bufnr, node, hl_namespace, hl_group)
     end
