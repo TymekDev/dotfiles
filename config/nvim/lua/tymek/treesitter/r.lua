@@ -92,6 +92,19 @@ M.highlight_roxygen2_comments = function(bufnr)
       end
     end
 
+    if tag_name == "@param" then
+      local line = vim.api.nvim_buf_get_text(bufnr, start_row, position, end_row, -1, {})[1]
+      if string.match(line, "^ ") ~= nil or string.match(line, "^%S*, ") ~= nil or string.match(line, "  ") ~= nil then
+        highlight_length({ "SpellBad" }, #line)
+        goto next
+      end
+
+      local params = string.match(line, "^%S+")
+      for param in vim.gsplit(params, ",") do
+        highlight_length({ "Bold", "@variable.parameter.r" }, #param)
+      end
+    end
+
     ::next::
   end
 end
