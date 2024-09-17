@@ -67,25 +67,28 @@ M.highlight_roxygen2_comments = function(bufnr)
     local start_row, _, end_row, _ = vim.treesitter.get_node_range(node)
     local position = 3 -- skip initial "#' "
 
-    local highlight_length = function(hl_group, length)
-      vim.highlight.range(bufnr, ns, hl_group, { start_row, position }, { end_row, position + length })
+    ---@overload fun(hl_groups: string[], length: integer)
+    local highlight_length = function(hl_groups, length)
+      for hl_group in vim.iter(hl_groups) do
+        vim.highlight.range(bufnr, ns, hl_group, { start_row, position }, { end_row, position + length })
+      end
       position = position + length + 1
     end
 
     local tag_name = metadata[id].text
-    highlight_length("@operator.r", #tag_name)
+    highlight_length({ "@keyword" }, #tag_name)
 
     if tag_name == "@import" or tag_name == "@importFrom" then
       local line = vim.api.nvim_buf_get_text(bufnr, start_row, position, end_row, -1, {})[1]
       if string.match(line, "^ ") ~= nil or string.match(line, "  ") ~= nil then
-        highlight_length("SpellBad", #line)
+        highlight_length({ "SpellBad" }, #line)
         goto next
       end
 
       local words = vim.gsplit(line, " ", { trimempty = true })
-      highlight_length("@module.r", #words()) -- Package name
+      highlight_length({ "Bold", "@module.r" }, #words()) -- Package name
       for word in words do
-        highlight_length("@function.r", #word)
+        highlight_length({ "@function.r" }, #word)
       end
     end
 
