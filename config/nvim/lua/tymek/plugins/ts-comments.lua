@@ -6,5 +6,13 @@ return {
   ---@module "ts-comments"
   ---@type TSCommentsOptions
   ---@diagnostic disable-next-line: missing-fields
-  opts = {},
+  opts = {
+    lang = {
+      jsdoc = { "/** %s */ " },
+      r = {
+        "# %s",
+        "#' %s",
+      },
+    },
+  },
 }
