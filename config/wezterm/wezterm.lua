@@ -11,6 +11,7 @@ config.window_padding = {
   bottom = 0,
   left = 0,
 }
+config.window_decorations = "RESIZE"
 
 local function cmd_to_meta(key)
   return { key = key, mods = "CMD", action = wezterm.action.SendKey({ key = key, mods = "META" }) }
