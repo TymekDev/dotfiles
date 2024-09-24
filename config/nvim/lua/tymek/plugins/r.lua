@@ -8,6 +8,12 @@ return {
   "R-nvim/R.nvim",
   ft = "r",
   keys = {
+    -- EPIC: make this run on-save on tribbles
+    {
+      "<Leader>ra",
+      "<Plug>(EasyAlign)i(<CR>*,",
+      desc = "Right-align content of closest parentheses on all commas, e.g. a tribble definition (via vim-easy-align)",
+    },
     {
       "<Leader>re",
       function()
