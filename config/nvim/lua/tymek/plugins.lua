@@ -203,7 +203,7 @@ return {
         },
       }))
 
-      require("lspconfig").tsserver.setup(config({
+      require("lspconfig").ts_ls.setup(config({
         filetypes = { "typescript", "typescriptreact", "javascript" },
         settings = {
           typescript = {
