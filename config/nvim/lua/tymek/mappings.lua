@@ -120,6 +120,9 @@ M.setup_lsp = function()
   vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
   vim.keymap.set("n", "gK", vim.diagnostic.open_float, { buffer = 0 })
   vim.keymap.set("n", "<Leader>K", vim.lsp.buf.signature_help, { buffer = 0 })
+  vim.keymap.set("n", "<Leader>D", function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+  end, { buffer = 0 })
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 }) -- [d]efinition
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 }) -- [t]ype definition
