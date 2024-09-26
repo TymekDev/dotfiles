@@ -52,16 +52,18 @@ return {
       desc = "Search through documenet symbols (via telescope.nvim)",
     },
   },
-  opts = {
-    defaults = {
-      mappings = {
-        i = {
-          ["<C-f>"] = false,
-        },
-        n = {
-          ["<C-f>"] = false,
+  opts = function()
+    return {
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-f>"] = false,
+          },
+          n = {
+            ["<C-f>"] = false,
+          },
         },
       },
-    },
-  },
+    }
+  end,
 }
