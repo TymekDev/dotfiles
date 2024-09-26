@@ -58,9 +58,11 @@ return {
         mappings = {
           i = {
             ["<C-f>"] = false,
+            ["<M-a>"] = require("telescope.actions").toggle_all,
           },
           n = {
             ["<C-f>"] = false,
+            ["<M-a>"] = require("telescope.actions").toggle_all,
           },
         },
       },
