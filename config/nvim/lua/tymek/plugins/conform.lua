@@ -42,6 +42,7 @@ return {
           first(bufnr, "prettierd", "prettier"),
         }
       end,
+      d2 = { "d2" },
       go = function(bufnr)
         return {
           first(bufnr, "gofumpt", "gofmt"),
