@@ -42,22 +42,16 @@ return {
           first(bufnr, "prettierd", "prettier"),
         }
       end,
-      sh = { "shfmt" },
       go = function(bufnr)
         return {
           first(bufnr, "gofumpt", "gofmt"),
           "goimports",
         }
       end,
-      lua = {
-        "stylua",
-      },
-      query = {
-        "format-queries",
-      },
-      yaml = {
-        "yamlfmt",
-      },
+      lua = { "stylua" },
+      query = { "format-queries" },
+      sh = { "shfmt" },
+      yaml = { "yamlfmt" },
     },
   },
   init = function()
