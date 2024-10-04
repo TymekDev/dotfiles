@@ -18,6 +18,11 @@ return {
       desc = "Find directories (via telescope.nvim)",
     },
     {
+      "<Leader>fb",
+      "<Cmd>Telescope current_buffer_fuzzy_find<CR>",
+      desc = "Fuzzy find within the current buffer (via telescope.nvim)",
+    },
+    {
       "<Leader>ff",
       "<Cmd>Telescope resume<CR>",
       desc = "Open and restore the previously viewed picker (via telescope.nvim)",
