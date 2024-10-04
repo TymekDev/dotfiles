@@ -46,9 +46,7 @@ return {
     },
     {
       "<Leader>fs",
-      function()
-        require("telescope.builtin").lsp_document_symbols({ symbol_width = 50 })
-      end,
+      "<Cmd>Telescope lsp_document_symbols symbol_width=50<CR>",
       desc = "Search through documenet symbols (via telescope.nvim)",
     },
   },
