@@ -1,70 +1,76 @@
 # TymekDev's dotfiles
 
 Hey 👋 This repo holds config files for the tools that I use.
-The list of tools can be found at the top of [`Makefile`][].
-
-[`Makefile`]: Makefile
+The list of tools can be found in [`Brewfile`](Brewfile).
 
 Explore, get inspired, and beware, because _here be dragons!_
 If you have any questions feel free to reach out to me at tymek.makowski@gmail.com, enjoy!
 
 ## Setup
 
-Currently I exclusively use MacOS, therefore [`Makefile`][] heavily relies on [`brew`][].
+### MacOS
 
-[`brew`]: https://brew.sh/
+> [!CAUTION]
+> I haven't tried this setup on a clean OS yet.
 
-The minimal setup can be done using:
+<details>
+<summary><strong>Steps</strong></summary>
 
-```sh
-make dotfiles
-```
+1. Run:
+   ```sh
+   xcode-select --install
+   ```
+1. Install [`brew`](https://brew.sh/):
+   ```sh
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+1. Clone the repo:
+   ```sh
+   git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles
+   git -C ~/personal/dotfiles remote set-url origin git@github.com:TymekDev/dotfiles
+   ```
+1. Symlink config files:
+   ```sh
+   make --directory ~/personal/dotfiles
+   ```
+1. Run:
+   ```sh
+   brew bundle install
+   ```
+1. Configure [`fish`](https://fishshell.com/):
+   ```sh
+   echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
+   chsh -s /opt/homebrew/bin/fish
+   ```
+1. Start Neovim and install its plugins:
+   ```sh
+   nvim
+   ```
+1. Install [tmux plugin manager](https://github.com/tmux-plugins/tpm) and tmux plugins:
+   ```sh
+   git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+   ~/.config/tmux/plugins/tpm/bin/install_plugins
+   ```
+1. Install WezTerm terminfo:
+   ```sh
+   tempfile=$(mktemp) \
+     && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
+     && tic -x -o ~/.terminfo $tempfile \
+     && rm $tempfile
+   ```
+1. Install by hand:
+   - Tailscale: https://pkgs.tailscale.com/stable/#macos
+   - Google Chrome
+1. [Disable Firefox title bar](https://blog.tymek.dev/firefox-css-2)
+1. Add the following snippet at the very bottom of `~/.ssh/config`:
+   ```
+   Host *
+     IdentityAgent "SSH_AUTH_SOCK"
+   ```
+1. Install Neovim spell files
+   - Note: Enable NetRW and disable oil.nvim to download spell files (see https://github.com/stevearc/oil.nvim/issues/163)
 
-Running `make dotfiles` will:
-
-- force install [tpm][] (`~/.config/tmux/plugins/tpm` gets deleted before cloning)
-- install `brew` if it is missing
-- install `stow` if it is missing
-- run `stow` to place [`config`](config) and [`local`](local) contents into `~/.config` and `~/.local` respectively
-- source `~/.config/tmux/tmux.conf` configuration if `tmux` is running
-- install `tmux` plugins
-
-[tpm]: https://github.com/tmux-plugins/tpm
-
-### Install on Clean OS
-
-If you have a clean MacOS, then the following commands will get you up to speed:
-
-```sh
-xcode-select --install
-mkdir ~/personal
-git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles
-cd ~/personal/dotfiles
-make from-scratch
-```
-
-In addition to what `make dotfiles` does, `make from-scratch` installs all tools and sets `fish` to be the default shell.
-
-### Additional `make` Targets
-
-Other than `dotfiles` and `from-scratch`, the following targets are available:
-
-- `restow` - runs `stow --restow` to update or place configs in place
-- `unstow` - runs `stow --delete` to undo `restow` target
-- `install` - installs everything with `install-` prefix
-- `install-*` - numerous targets for installing tools, one at a time
-
-### Manual Tweaks
-
-- [Disable Firefox title bar][]
-- Add the following snippet at the very bottom of `~/.ssh/config`:
-  ```
-  Host *
-    IdentityAgent "SSH_AUTH_SOCK"
-  ```
-- In Neovim: enable NetRW and disable oil.nvim to download spell files (see https://github.com/stevearc/oil.nvim/issues/163)
-
-[Disable Firefox title bar]: https://blog.tymek.dev/firefox-css-2
+</details>
 
 ## Notable Commits in History
 
@@ -83,10 +89,7 @@ Other than `dotfiles` and `from-scratch`, the following targets are available:
 
 ## Known Issues
 
-Some are listed in [`Makefile`][]. Additionally:
-
-- Karabiner does not really work for porting. Another Mac's keyboard has a
-  different identifier?
+- Karabiner does not really work for porting. Another Mac's keyboard has a different identifier?
 
 ## License
 
