@@ -34,6 +34,7 @@ return {
             require("luasnip").lsp_expand(args.body)
           end,
         },
+        -- FEAT: try splitting this and using https://www.lazyvim.org/extras/lang/r#nvim-cmp-optional
         sources = require("cmp").config.sources({
           { name = "lazydev", group_index = 0 },
           { name = "nvim_lsp_signature_help" },
