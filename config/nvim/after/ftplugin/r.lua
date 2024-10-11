@@ -47,6 +47,9 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
   desc = "Highlight roxygen2 tags",
   buffer = 0,
   callback = function(args)
-    ts_r.highlight_roxygen2_comments(args.buf)
+    local ok, msg = pcall(ts_r.highlight_roxygen2_comments, args.buf)
+    if not ok then
+      vim.notify("failed to highlight roxygen2 comments: " .. msg, vim.log.levels.DEBUG)
+    end
   end,
 })

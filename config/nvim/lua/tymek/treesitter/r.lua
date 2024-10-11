@@ -64,7 +64,7 @@ M.highlight_roxygen2_comments = function(bufnr)
       goto next
     end
 
-    local start_row, _, end_row, _ = vim.treesitter.get_node_range(node)
+    local start_row, _, end_row, end_col = vim.treesitter.get_node_range(node)
     local position = 3 -- skip initial "#' "
 
     ---@overload fun(hl_groups: string[], length: integer)
@@ -79,6 +79,11 @@ M.highlight_roxygen2_comments = function(bufnr)
     highlight_length({ "@keyword" }, #tag_name)
 
     if tag_name == "@import" or tag_name == "@importFrom" then
+      if position >= end_col then -- There is no package name
+        position = position - #tag_name - 1
+        highlight_length({ "SpellBad" }, #tag_name)
+        goto next
+      end
       local line = vim.api.nvim_buf_get_text(bufnr, start_row, position, end_row, -1, {})[1]
       if string.match(line, "^ ") ~= nil or string.match(line, "  ") ~= nil then
         highlight_length({ "SpellBad" }, #line)
@@ -87,8 +92,14 @@ M.highlight_roxygen2_comments = function(bufnr)
 
       local words = vim.gsplit(line, " ", { trimempty = true })
       highlight_length({ "Bold", "@module.r" }, #words()) -- Package name
-      for word in words do
-        highlight_length({ "@function.r" }, #word)
+      if tag_name == "@importFrom" then
+        if position >= end_col then
+          vim.highlight.range(bufnr, ns, "SpellBad", { start_row, 3 }, { end_row, end_col })
+          goto next
+        end
+        for word in words do
+          highlight_length({ "@function.r" }, #word)
+        end
       end
     end
 
