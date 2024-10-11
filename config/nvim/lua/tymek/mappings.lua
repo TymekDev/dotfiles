@@ -57,15 +57,6 @@ M.setup = function()
   vim.keymap.set({ "n", "x" }, "<Leader>d", '"+d')
   vim.keymap.set({ "n", "x" }, "<Leader>D", '"+D')
 
-  -- Toggles
-  vim.keymap.set({ "n", "x" }, "<Leader>W", "<Cmd>WiderActiveBufToggle<CR>")
-  vim.keymap.set({ "n", "x" }, "<Leader>R", function()
-    vim.o.relativenumber = not vim.o.relativenumber
-  end)
-  vim.keymap.set({ "n", "x" }, "<Leader>S", function()
-    vim.opt_local.spell = not vim.opt_local.spell:get()
-  end)
-
   -- Miscellaneous
   vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
   vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
