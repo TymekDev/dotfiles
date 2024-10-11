@@ -276,6 +276,4 @@ return {
     "lvimuser/lsp-inlayhints.nvim",
     config = true,
   },
-  "folke/zen-mode.nvim",
-  "folke/twilight.nvim",
 }
