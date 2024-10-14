@@ -33,6 +33,7 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```sh
    make --directory ~/personal/dotfiles
    ```
+   - ⚠️ Make sure that `~/.config/karabiner` is a symlink ([details](https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/))
 1. Run:
    ```sh
    brew bundle install
