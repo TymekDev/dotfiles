@@ -47,11 +47,6 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```sh
    nvim
    ```
-1. Install [tmux plugin manager](https://github.com/tmux-plugins/tpm) and tmux plugins:
-   ```sh
-   git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-   ~/.config/tmux/plugins/tpm/bin/install_plugins
-   ```
 1. Install WezTerm terminfo:
    ```sh
    tempfile=$(mktemp) \
