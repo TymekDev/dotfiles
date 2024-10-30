@@ -3,6 +3,9 @@
 return {
   "tris203/precognition.nvim",
   event = "VeryLazy",
+  keys = {
+    { "<Leader>P", "<Cmd>Precognition toggle<CR>", desc = "Toggle hints (via precognition.nvim)" },
+  },
   ---@module "precognition"
   ---@type Precognition.PartialConfig
   opts = {
