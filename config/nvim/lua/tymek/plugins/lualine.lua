@@ -6,7 +6,11 @@ return {
   opts = {
     extensions = { "fugitive", "oil", "quickfix" },
     sections = {
-      lualine_y = { { "r_status", icon = "󰟔" } },
+      lualine_c = {
+        { "filename", separator = "" },
+        { "%=", separator = "" },
+        "r_status",
+      },
     },
   },
 }
