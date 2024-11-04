@@ -35,11 +35,6 @@ return {
     end,
   },
   {
-    "nvim-lualine/lualine.nvim", -- TODO: review config
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = true,
-  },
-  {
     "lukas-reineke/indent-blankline.nvim", -- TODO: review config
     dependencies = { "nvim-treesitter/nvim-treesitter-context", "nvim-treesitter/nvim-treesitter" },
     config = function()
