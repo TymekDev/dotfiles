@@ -3,5 +3,7 @@
 return {
   "nvim-lualine/lualine.nvim", -- TODO: review config
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = true,
+  opts = {
+    extensions = { "fugitive", "oil", "quickfix" },
+  },
 }
