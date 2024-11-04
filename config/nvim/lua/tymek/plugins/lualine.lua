@@ -5,5 +5,8 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     extensions = { "fugitive", "oil", "quickfix" },
+    sections = {
+      lualine_y = { { "r_status", icon = "󰟔" } },
+    },
   },
 }
