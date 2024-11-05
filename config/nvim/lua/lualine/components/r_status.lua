@@ -41,7 +41,7 @@ function M:init(options)
   M.super.init(self, options)
 
   self.highlights = {}
-  for status, meta in ipairs(r_status) do
+  for status, meta in pairs(r_status) do
     self.highlights[status] = self:create_hl(meta.color, string.format(status))
   end
 end
