@@ -1,13 +1,38 @@
+---@type table<string, fun()>
 local commands = {
-  "devtools::load_all()",
-  "logger::log_threshold(logger::DEBUG)",
+  ["devtools::load_all()"] = function()
+    vim.cmd.RSend("devtools::load_all()")
+  end,
+  ["logger::log_threshold(logger::DEBUG)"] = function()
+    vim.cmd.RSend("logger::log_threshold(logger::DEBUG)")
+  end,
+  ["renv::install(...)"] = function()
+    vim.ui.input({ prompt = "renv::install(...)" }, function(input)
+      if input == nil then
+        return
+      end
+
+      local pkgs = vim.split(input, "%s*,%s*")
+      if #pkgs == 1 then
+        vim.cmd.RSend(string.format('renv::install("%s", prompt = FALSE)', pkgs[1]))
+      end
+
+      local vec = vim
+        .iter(pkgs)
+        :map(function(pkg)
+          return string.format('"%s"', pkg)
+        end)
+        :join(", ")
+      vim.cmd.RSend(string.format("renv::install(c(%s), prompt = FALSE)", vec))
+    end)
+  end,
 }
 local command_last
 local command_execute = function()
-  vim.ui.select(commands, { prompt = "Execute in R" }, function(cmd)
+  vim.ui.select(vim.tbl_keys(commands), { prompt = "Execute in R" }, function(cmd)
     if cmd ~= nil then
       command_last = cmd
-      vim.cmd.RSend(cmd)
+      commands[cmd]()
     end
   end)
 end
@@ -29,7 +54,7 @@ return {
       "<Leader>rr",
       function()
         if command_last ~= nil then
-          vim.cmd.RSend(command_last)
+          commands[command_last]()
         else
           command_execute()
         end
