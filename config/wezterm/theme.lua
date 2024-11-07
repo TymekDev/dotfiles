@@ -1,16 +1,16 @@
 local wezterm = require("wezterm")
 local M = {}
 
----@type Mode|nil
+---@type tymek.wezterm.Mode|nil
 local force = nil
 
----@enum (key) Mode
+---@enum (key) tymek.wezterm.Mode
 local theme = {
   light = "tokyonight_day",
   dark = "tokyonight_storm",
 }
 
----@return Mode
+---@return tymek.wezterm.Mode
 local detect = function()
   if force ~= nil then
     return force
@@ -20,7 +20,7 @@ local detect = function()
   return "dark"
 end
 
----@param mode Mode
+---@param mode tymek.wezterm.Mode
 local set_colors = function(config, mode)
   local colors = wezterm.color.get_builtin_schemes()[theme[mode]]
   local active_titlebar_bg

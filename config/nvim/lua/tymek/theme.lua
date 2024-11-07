@@ -1,15 +1,15 @@
 local M = {
-  ---@type Mode
+  ---@type tymek.theme.Mode
   mode = nil,
 }
 
----@enum (key) Mode
+---@enum (key) tymek.theme.Mode
 local theme = {
   light = "tokyonight-day",
   dark = "tokyonight-storm",
 }
 
----@param callback fun(mode: Mode)
+---@param callback fun(mode: tymek.theme.Mode)
 local detect = function(callback)
   vim.system(
     {
