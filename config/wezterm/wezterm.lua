@@ -31,6 +31,12 @@ config.keys = {
   -- These two send SIGQUIT to R console
   { key = "4", mods = "CTRL", action = wezterm.action.Nop },
   { key = "\\", mods = "CTRL", action = wezterm.action.Nop },
+
+  { key = "h", mods = "CMD", action = wezterm.action.ActivatePaneDirection("Left") },
+  { key = "l", mods = "CMD", action = wezterm.action.ActivatePaneDirection("Right") },
+
+  { key = "h", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Left" }) },
+  { key = "l", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Right" }) },
 }
 
 theme.set(config)
