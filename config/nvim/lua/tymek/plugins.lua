@@ -182,11 +182,12 @@ return {
 
       require("lspconfig").r_language_server.setup(config({
         cmd = {
+          "/usr/bin/env",
+          "RENV_PROFILE=dev",
           "R",
-          "--vanilla",
           "--slave",
           "-e",
-          "options(languageserver.formatting_style = function(options) { style <- rhino:::rhino_style(); style$space$style_space_around_math_token <- NULL; style }); languageserver::run()",
+          "options(languageserver.formatting_style = function(options) styler::tidyverse_style(math_token_spacing = NULL)); languageserver::run()",
         },
       }))
 
