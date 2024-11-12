@@ -240,6 +240,7 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
+    enabled = false,
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
     config = function()
       require("dapui").setup()
@@ -250,11 +251,13 @@ return {
   },
   {
     "thehamsta/nvim-dap-virtual-text",
+    enabled = false,
     dependencies = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
     config = true,
   },
   {
     "leoluz/nvim-dap-go",
+    enabled = false,
     dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
     build = ":MasonInstall delve",
     config = true,
