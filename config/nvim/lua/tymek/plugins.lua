@@ -146,6 +146,8 @@ return {
         },
       }))
 
+      require("lspconfig").golangci_lint_ls.setup(config())
+
       require("lspconfig").html.setup(config({
         settings = {
           html = {
