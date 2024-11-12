@@ -1,5 +1,7 @@
 local theme = require("theme")
+---@type wezterm.WezTerm
 local wezterm = require("wezterm")
+---@class wezterm.Config
 local config = wezterm.config_builder()
 
 config.term = "wezterm"
