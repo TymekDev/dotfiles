@@ -65,5 +65,6 @@ return {
   opts = {
     setwd = "nvim",
     hl_term = false,
+    pdfviewer = "",
   },
 }
