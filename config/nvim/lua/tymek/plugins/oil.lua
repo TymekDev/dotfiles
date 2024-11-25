@@ -19,9 +19,11 @@ return {
   ---@module "oil"
   ---@type oil.setupOpts
   opts = {
-    use_default_keymaps = false,
     keymaps = {
-      ["<CR>"] = "actions.select",
+      ["<C-s>"] = false,
+      ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+      ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+      ["<Leader><C-v>"] = { "<C-v>", desc = "Start Visual Block mode in the oil buffer" },
     },
     view_options = {
       show_hidden = true,
