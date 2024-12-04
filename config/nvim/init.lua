@@ -31,7 +31,7 @@ require("lazy").setup("tymek.plugins", {
         "gzip",
         "health",
         "man",
-        "matchit",
+        -- "matchit",
         -- "matchparen",
         "netrwPlugin",
         "nvim",
