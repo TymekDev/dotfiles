@@ -71,7 +71,9 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = true,
+    opts = {
+      max_lines = 5,
+    },
   },
   {
     "windwp/nvim-ts-autotag",
