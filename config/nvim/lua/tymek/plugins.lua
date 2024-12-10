@@ -185,7 +185,6 @@ return {
       require("lspconfig").r_language_server.setup(config({
         cmd = {
           "/usr/bin/env",
-          "RENV_PROFILE=dev",
           "R",
           "--slave",
           "-e",
