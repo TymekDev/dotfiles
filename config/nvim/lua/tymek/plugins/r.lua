@@ -6,6 +6,19 @@ local commands = {
   ["logger::log_threshold(logger::DEBUG)"] = function()
     vim.cmd.RSend("logger::log_threshold(logger::DEBUG)")
   end,
+  ["logger::log_threshold(...)"] = function()
+    vim.ui.select(
+      { "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL" },
+      { prompt = "Select the log level" },
+      function(input)
+        if input == nil then
+          return
+        end
+
+        vim.cmd.RSend(string.format("logger::log_threshold(logger::%s)", input))
+      end
+    )
+  end,
   ["renv::install(...)"] = function()
     vim.ui.input({ prompt = "renv::install(...)" }, function(input)
       if input == nil then
