@@ -8,13 +8,11 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
 
 ## Setup
 
-### MacOS
-
 > [!CAUTION]
-> I haven't tried this setup on a clean OS yet.
+> I haven't tried the MacOS setup on a clean OS yet.
 
 <details>
-<summary><strong>Steps</strong></summary>
+<summary><h3>MacOS</h3></summary>
 
 1. Run:
    ```sh
