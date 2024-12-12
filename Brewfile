@@ -1,10 +1,12 @@
 tap "homebrew/bundle"
+tap "oven-sh/bun"
 tap "r-lib/rig"
 
 brew "act"             # Run your GitHub Actions locally
 brew "asciinema"       # Record and share terminal sessions
 brew "bat"             # Clone of cat(1) with syntax highlighting and Git integration
 brew "bob"             # Version manager for neovim
+brew "bun"             # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "caddy"           # Powerful, enterprise-ready, open source web server with automatic HTTPS
 brew "coreutils"       # GNU File, Shell, and Text utilities
 brew "cowsay"          # Configurable talking characters in ASCII art

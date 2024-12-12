@@ -60,7 +60,6 @@ bind \et "update-theme-fish"
 bind \en "fish_commandline_prepend 'nvim (' && fish_commandline_append ' )'"
 
 set -x EDITOR nvim
-set -x BUN_INSTALL ~/.local/share/bun
 set -x N_PREFIX ~/.local/share/n
 set -x OPENAI_API_KEY "op://Private/kjoegzrmj4gkwvaiugch7kac4i/credential"
 set -x AI_DEVS_API_KEY "op://Private/lj32f6k4u4uuypiu53hpslya4i/credential"
