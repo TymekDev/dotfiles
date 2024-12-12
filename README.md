@@ -29,12 +29,16 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```
 1. Symlink config files:
    ```sh
-   make --directory ~/personal/dotfiles restow
+   make \
+     --directory ~/personal/dotfiles \
+     restow
    ```
    - ⚠️ Make sure that `~/.config/karabiner` is a symlink ([details](https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/))
-1. Install programs defined in [`Brewfile`](./Brewfile) using `brew bundle`:
+1. Install programs:
    ```sh
-   brew bundle --file ~/personal/dotfiles/Brewfile install
+   make \
+     --directory ~/personal/dotfiles \
+     bundle-install
    ```
 1. Configure [`fish`](https://fishshell.com/):
    ```sh

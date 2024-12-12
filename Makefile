@@ -19,3 +19,11 @@ unstow: install-stow
 .PHONY: install-stow
 install-stow:
 	@[ -x ${BREW_BIN}/stow ] || ${BREW} install stow
+
+.PHONY: bundle-check
+bundle-check:
+	${BREW} bundle check --verbose
+
+.PHONY: bundle-install
+bundle-install:
+	${BREW} bundle install
