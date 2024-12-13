@@ -1,5 +1,4 @@
-#!/usr/bin/env fish --no-config
-function update
+function update_theme
   set -f VARIANT "$(cat /tmp/tymek-theme)"
   set -f FORMAT "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/%s.fish"
 
@@ -11,5 +10,3 @@ function update
 
   source $(printf $FORMAT $THEME)
 end
-
-update
