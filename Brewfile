@@ -2,14 +2,11 @@ tap "homebrew/bundle"
 tap "oven-sh/bun"
 tap "r-lib/rig"
 
-brew "act"             # Run your GitHub Actions locally
 brew "asciinema"       # Record and share terminal sessions
 brew "bat"             # Clone of cat(1) with syntax highlighting and Git integration
 brew "bob"             # Version manager for neovim
 brew "bun"             # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
-brew "caddy"           # Powerful, enterprise-ready, open source web server with automatic HTTPS
 brew "coreutils"       # GNU File, Shell, and Text utilities
-brew "cowsay"          # Configurable talking characters in ASCII art
 brew "curl"            # Get a file from an HTTP, HTTPS or FTP server
 brew "difftastic"      # Diff that understands syntax
 brew "entr"            # Run arbitrary commands when files change
@@ -22,7 +19,6 @@ brew "gcc"             # GNU compiler collection
 brew "gh"              # GitHub command-line tool
 brew "git-absorb"      # Automatic git commit --fixup
 brew "go"              # Open source programming language to build simple/reliable/efficient software
-brew "html-xml-utils"  # Tools for manipulating HTML and XML files
 brew "htop"            # Improved top (interactive process viewer)
 brew "ijq"             # Interactive jq
 brew "imagemagick"     # Tools and libraries to manipulate images in many formats
@@ -52,8 +48,6 @@ brew "yt-dlp"          # Feature-rich command-line audio/video downloader
 
 cask "1password"           # Password manager that keeps all passwords secure behind one password
 cask "1password-cli"       # Command-line interface for 1Password
-cask "android-studio"      # Tools for building Android applications
-cask "balenaetcher"        # Tool to flash OS images to SD cards & USB drives
 cask "chromium"            # Free and open-source web browser
 cask "deskpad"             # Virtual monitor for screen sharing
 cask "discord"             # Voice and text chat software
@@ -64,7 +58,6 @@ cask "font-jetbrains-mono-nerd-font"
 cask "gimp"                # Free and open-source image editor
 cask "inkscape"            # Vector graphics editor
 cask "karabiner-elements"  # Keyboard customiser
-cask "keycastr"            # Open-source keystroke visualiser
 cask "linearmouse"         # Customise mouse behavior
 cask "obs"                 # Open-source software for live streaming and screen recording
 cask "rectangle"           # Move and resize windows using keyboard shortcuts or snap areas
