@@ -1,6 +1,12 @@
 SHELL = /bin/sh
 
-BREW_DIR = /opt/homebrew
+ifeq "$(shell uname -s)" "Darwin"
+	BREW_DIR = /opt/homebrew
+else ifeq "$(shell uname -s)" "Linux"
+	BREW_DIR = /home/linuxbrew/.linuxbrew
+else
+	BREW_DIR = $(error operating system unsupported)
+endif
 BREW_BIN = ${BREW_DIR}/bin
 BREW = ${BREW_BIN}/brew
 
