@@ -68,6 +68,7 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
 <details>
 <summary><h3>WSL</h3></summary>
 
+1. Install WezTerm (on Windows)
 1. Install WSL
    1. Open PowerShell
    1. Run `wsl --list --online` for the list of available distros
@@ -96,7 +97,6 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```sh
    /home/linuxbrew/.linuxbrew/bin/brew bundle --file ~/personal/dotfiles/Brewfile install
    /home/linuxbrew/.linuxbrew/bin/bob use stable # installs Neovim
-   sudo apt-get install libfuse2 # required by WezTerm to run
    ```
 1. Configure [`fish`](https://fishshell.com/):
    ```sh
@@ -110,7 +110,13 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
      && tic -x -o ~/.terminfo $tempfile \
      && rm $tempfile
    ```
-1. Open WezTerm—it should start fish and have `$PATH` properly set up
+1. `rsync` the WezTerm config to the Windows host:
+   ```fish
+   rsync --delete-after --mkpath --recursive --verbose \
+     config/wezterm/ \
+     $(wslpath $(cmd.exe /C "echo %USERPROFILE%" 2>/dev/null | tr -d "\r"))/.config/wezterm
+   ```
+1. Open WezTerm—it should start fish inside WSL and have `$PATH` properly set up
 1. Start Neovim and install its plugins via `:Lazy`
 
 </details>

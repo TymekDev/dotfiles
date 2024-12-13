@@ -1,7 +1,6 @@
 tap "homebrew/bundle"
 tap "oven-sh/bun"
 tap "r-lib/rig"
-tap "wez/wezterm-linuxbrew" if OS.linux?
 
 brew "asciinema"                # Record and share terminal sessions
 brew "bat"                      # Clone of cat(1) with syntax highlighting and Git integration
