@@ -50,10 +50,7 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
      && rm $tempfile
    ```
 1. Open WezTerm—it should start fish and have `$PATH` properly set up
-1. Start Neovim and install its plugins:
-   ```sh
-   nvim
-   ```
+1. Start Neovim and install its plugins via `:Lazy`
 1. Install by hand:
    - Tailscale: https://pkgs.tailscale.com/stable/#macos
    - Google Chrome
@@ -114,10 +111,7 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
      && rm $tempfile
    ```
 1. Open WezTerm—it should start fish and have `$PATH` properly set up
-1. Start Neovim and install its plugins:
-   ```sh
-   nvim
-   ```
+1. Start Neovim and install its plugins via `:Lazy`
 
 </details>
 
@@ -148,7 +142,3 @@ Starting with the oldest:
 **Disclaimer:** I am not an author of the image at `local/share/wallpaper.webp` and I do not claim any rights to it.
 
 [MIT License](LICENSE.md)
-
-```
-
-```
