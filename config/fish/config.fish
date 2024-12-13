@@ -81,10 +81,18 @@ fish_add_path --move $BUN_INSTALL/bin
 fish_add_path --move ~/.local/share/n/bin
 
 # homebrew
+set -l BREW_DIR
 if test (uname) = "Darwin"
-  set -x SHELL /opt/homebrew/bin/fish
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  set -l CURL_PATH /opt/homebrew/opt/curl
+  set BREW_DIR /opt/homebrew
+else if test (uname) = "Linux"
+  set BREW_DIR /home/linuxbrew/.linuxbrew
+end
+
+if test -n "$BREW_DIR"
+  set -x SHELL $BREW_DIR/bin/fish
+  eval ($BREW_DIR/bin/brew shellenv)
+
+  set -l CURL_PATH $BREW_DIR/opt/curl
   if test -d $CURL_PATH
     fish_add_path $CURL_PATH/bin
     set -xp MANPATH $CURL_PATH/share/man
