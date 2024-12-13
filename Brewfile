@@ -44,25 +44,25 @@ brew "unixodbc"                 # ODBC 3 connectivity for UNIX
 brew "watch"                    # Executes a program periodically, showing output fullscreen
 brew "yt-dlp"       if OS.mac?  # Feature-rich command-line audio/video downloader
 
-cask "1password"           if OS.mac?  # Password manager that keeps all passwords secure behind one password
-cask "1password-cli"       if OS.mac?  # Command-line interface for 1Password
-cask "chromium"            if OS.mac?  # Free and open-source web browser
-cask "deskpad"             if OS.mac?  # Virtual monitor for screen sharing
-cask "discord"             if OS.mac?  # Voice and text chat software
-cask "displaylink"         if OS.mac?  # Drivers for DisplayLink docks, adapters and monitors
-cask "docker"              if OS.mac?  # App to build and share containerised applications and microservices
-cask "firefox"             if OS.mac?  # Web browser
+cask "1password"           # Password manager that keeps all passwords secure behind one password
+cask "1password-cli"       # Command-line interface for 1Password
+cask "chromium"            # Free and open-source web browser
+cask "deskpad"             # Virtual monitor for screen sharing
+cask "discord"             # Voice and text chat software
+cask "displaylink"         # Drivers for DisplayLink docks, adapters and monitors
+cask "docker"              # App to build and share containerised applications and microservices
+cask "firefox"             # Web browser
 cask "font-jetbrains-mono-nerd-font"
-cask "gimp"                if OS.mac?  # Free and open-source image editor
-cask "inkscape"            if OS.mac?  # Vector graphics editor
-cask "karabiner-elements"  if OS.mac?  # Keyboard customiser
-cask "linearmouse"         if OS.mac?  # Customise mouse behavior
-cask "obs"                 if OS.mac?  # Open-source software for live streaming and screen recording
-cask "rectangle"           if OS.mac?  # Move and resize windows using keyboard shortcuts or snap areas
-cask "rig"                             # The R Installation Manager
-cask "rstudio"                         # Data science software focusing on R and Python
-cask "slack"               if OS.mac?  # Team communication and collaboration software
-cask "spotify"             if OS.mac?  # Music streaming service
-cask "tunnelblick"         if OS.mac?  # Free and open-source OpenVPN client
-cask "wezterm"             if OS.mac?  # GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "xquartz"             if OS.mac?  # Open-source version of the X.Org X Window System
+cask "gimp"                # Free and open-source image editor
+cask "inkscape"            # Vector graphics editor
+cask "karabiner-elements"  # Keyboard customiser
+cask "linearmouse"         # Customise mouse behavior
+cask "obs"                 # Open-source software for live streaming and screen recording
+cask "rectangle"           # Move and resize windows using keyboard shortcuts or snap areas
+cask "rig"                 # The R Installation Manager
+cask "rstudio"             # Data science software focusing on R and Python
+cask "slack"               # Team communication and collaboration software
+cask "spotify"             # Music streaming service
+cask "tunnelblick"         # Free and open-source OpenVPN client
+cask "wezterm"             # GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "xquartz"             # Open-source version of the X.Org X Window System
