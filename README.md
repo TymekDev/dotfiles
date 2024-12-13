@@ -68,6 +68,59 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
 
 </details>
 
+<details>
+<summary><h3>WSL</h3></summary>
+
+1. Install WSL
+   1. Open PowerShell
+   1. Run `wsl --list --online` for the list of available distros
+   1. Install the distro `wsl --install -d <distro>`, e.g. `wsl --install -d Ubuntu-24.04`
+   1. Restart Windows
+1. After Windows boots up:
+   1. Set a UNIX username and password up
+   1. Run: `sudo apt-get update`
+   1. Run: `sudo apt-get upgrade`
+1. If necessary, carry certificates over from Windows (see [Fixing WSL Certificates](https://blog.tymek.dev/fixing-wsl-certificates/#the-fix))
+1. Install [`brew`](https://brew.sh/):
+   ```sh
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+1. Clone the repo:
+   ```sh
+   git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles
+   git -C ~/personal/dotfiles remote set-url origin git@github.com:TymekDev/dotfiles
+   ```
+   <!-- TODO: add a new SSH key -->
+1. Symlink config files:
+   ```sh
+   make --directory ~/personal/dotfiles restow
+   ```
+1. Install programs:
+   ```sh
+   /home/linuxbrew/.linuxbrew/bin/brew bundle --file ~/personal/dotfiles/Brewfile install
+   /home/linuxbrew/.linuxbrew/bin/bob use stable # installs Neovim
+   sudo apt-get install libfuse2 # required by WezTerm to run
+   ```
+1. Configure [`fish`](https://fishshell.com/):
+   ```sh
+   echo "/home/linuxbrew/.linuxbrew/bin/fish" | sudo tee -a /etc/shells
+   chsh -s /home/linuxbrew/.linuxbrew/bin/fish
+   ```
+1. Install WezTerm terminfo:
+   ```sh
+   tempfile=$(mktemp) \
+     && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
+     && tic -x -o ~/.terminfo $tempfile \
+     && rm $tempfile
+   ```
+1. Open WezTerm—it should start fish and have `$PATH` properly set up
+1. Start Neovim and install its plugins:
+   ```sh
+   nvim
+   ```
+
+</details>
+
 ## Notable Commits in History
 
 Starting with the oldest:
@@ -95,3 +148,7 @@ Starting with the oldest:
 **Disclaimer:** I am not an author of the image at `local/share/wallpaper.webp` and I do not claim any rights to it.
 
 [MIT License](LICENSE.md)
+
+```
+
+```
