@@ -46,7 +46,7 @@ M.set = function(config)
     'echo "' .. mode .. '" > /tmp/tymek-theme',
   })
   if not ok then
-    error(stderr, 0)
+    wezterm.log_error(stderr)
   end
 end
 
