@@ -7,7 +7,7 @@ BREW = ${BREW_BIN}/brew
 
 .PHONY: restow
 restow: install-stow
-	mkdir -p ~/.config ~/.local
+	mkdir -p ~/.config ~/.local/bin ~/.local/share
 	${BREW_BIN}/stow --restow --verbose --target ~/.config config
 	${BREW_BIN}/stow --restow --verbose --target ~/.local local
 
