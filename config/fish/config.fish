@@ -61,6 +61,7 @@ bind \en "fish_commandline_prepend 'nvim (' && fish_commandline_append ' )'"
 
 set -x EDITOR nvim
 set -x N_PREFIX ~/.local/share/n
+set -x BUN_INSTALL ~/.local/share/bun
 set -x OPENAI_API_KEY "op://Private/kjoegzrmj4gkwvaiugch7kac4i/credential"
 set -x AI_DEVS_API_KEY "op://Private/lj32f6k4u4uuypiu53hpslya4i/credential"
 set -x ANTHROPIC_API_KEY "op://Private/cdfzv6cs2k5i2uuyssibaihdty/credential"
@@ -76,7 +77,7 @@ fish_add_path ~/Library/Python/3.9/bin
 fish_add_path /usr/local/go/bin
 fish_add_path --move ~/.local/bin
 fish_add_path --move ~/.local/share/bob/nvim-bin
-fish_add_path --move ~/.local/share/bun/bin
+fish_add_path --move $BUN_INSTALL/bin
 fish_add_path --move ~/.local/share/n/bin
 
 # homebrew
@@ -103,6 +104,3 @@ update-theme-fish
 fzf --fish | source
 
 starship init fish | source
-
-# bun
-set --export PATH $BUN_INSTALL/bin $PATH
