@@ -1,5 +1,5 @@
 function update_theme
-  set -f VARIANT "$(cat /tmp/tymek-theme)"
+  set -f VARIANT "$(cat /tmp/tymek-theme || echo 'dark')"
   set -f FORMAT "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/%s.fish"
 
   if [ "$VARIANT" = "light" ]
