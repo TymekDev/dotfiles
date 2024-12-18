@@ -81,29 +81,6 @@ M.setup = function()
     },
   })
   vim.keymap.set("c", "<Tab>", "<NOP>")
-
-  -- TODO: sort this out
-
-  -- <leader>dn next
-  -- <leader>di in
-  -- <leader>do out
-
-  -- require("dap").continue()
-  -- require("dap").toggle_breakpoint()
-  -- step_into
-  -- step_over
-  -- step_out
-  -- set_breakpoint(vim.fn.input("Breakpoint condition: "))
-  -- ? run_last
-
-  -- require("dapui").toggle()
-  -- eval()
-  -- ? disable dap console
-  -- make splits bigger
-
-  -- require("dap-go").debug_test()
-  -- ? debug_last_test()
-  -- Special buffers and external commands
 end
 
 M.setup_lsp = function()

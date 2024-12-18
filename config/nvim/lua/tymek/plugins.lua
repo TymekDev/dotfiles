@@ -238,30 +238,6 @@ languageserver::run()
     end,
   },
   {
-    "rcarriga/nvim-dap-ui",
-    enabled = false,
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    config = function()
-      require("dapui").setup()
-      require("dap").listeners.after.event_initialized["dapui_config"] = require("dapui").open
-      require("dap").listeners.before.event_terminated["dapui_config"] = require("dapui").close
-      require("dap").listeners.before.event_exited["dapui_config"] = require("dapui").close
-    end,
-  },
-  {
-    "thehamsta/nvim-dap-virtual-text",
-    enabled = false,
-    dependencies = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
-    config = true,
-  },
-  {
-    "leoluz/nvim-dap-go",
-    enabled = false,
-    dependencies = { "mfussenegger/nvim-dap", "williamboman/mason.nvim" },
-    build = ":MasonInstall delve",
-    config = true,
-  },
-  {
     "ray-x/lsp_signature.nvim",
     config = function()
       require("lsp_signature").setup({
