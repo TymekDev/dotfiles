@@ -83,7 +83,6 @@ M.setup = function()
   vim.keymap.set("c", "<Tab>", "<NOP>")
 
   -- TODO: sort this out
-  vim.keymap.set({ "n", "x" }, "<Leader>go", require("tymek.git").open)
 
   -- <leader>dn next
   -- <leader>di in

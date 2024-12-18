@@ -12,12 +12,31 @@ return {
       end,
       desc = "Toggle zoom (via snacks.nvim/zen)",
     },
+    {
+      mode = { "n", "v" },
+      "<leader>go",
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = "Open a git-tracked file in a browser (via snacks.nvim/gitbrowse)",
+    },
   },
   ---@module "snacks"
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
     indent = { enabled = true, animate = { enabled = false } },
+    gitbrowse = {
+      remote_patterns = {
+        { "^https://(sourcecode%..*%.com)/scm/(.*)/(.*)%.git$", "https://%1/projects/%2/repos/%3" },
+        { "^https://(sourcecode%..*%.com)/scm/(.*)/(.*)$", "https://%1/projects/%2/repos/%3" },
+      },
+      url_patterns = {
+        ["sourcecode%..*%.com"] = {
+          file = "/browse/{file}?at=refs%2Fheads%2F{branch}#{line_start}-{line_end}",
+        },
+      },
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
