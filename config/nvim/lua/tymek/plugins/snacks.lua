@@ -36,8 +36,21 @@ return {
     indent = { enabled = true, animate = { enabled = false } },
     gitbrowse = {
       remote_patterns = {
-        { "^https://(sourcecode%..*%.com)/scm/(.*)/(.*)%.git$", "https://%1/projects/%2/repos/%3" },
-        { "^https://(sourcecode%..*%.com)/scm/(.*)/(.*)$", "https://%1/projects/%2/repos/%3" },
+        -- stylua: ignore start
+        { "^(https?://.*)%.git$",               "%1" },
+        { "^git@(.+):(.+)%.git$",               "https://%1/%2" },
+        { "^git@(.+):(.+)$",                    "https://%1/%2" },
+        { "^git@(.+)/(.+)$",                    "https://%1/%2" },
+        { "^ssh://git@(.*)$",                   "https://%1" },
+        { "^ssh://([^:/]+)(:%d+)/(.*)$",        "https://%1/%3" },
+        { "^ssh://([^/]+)/(.*)$",               "https://%1/%2" },
+        { "ssh%.dev%.azure%.com/v3/(.*)/(.*)$", "dev.azure.com/%1/_git/%2" },
+        { "^https://%w*@(.*)",                  "https://%1" },
+        { "^git@(.*)",                          "https://%1" },
+        { ":%d+",                               "" },
+        { "%.git$",                             "" },
+        { "/scm/(.*)/(.*)$",                    "/projects/%1/repos/%2" },
+        -- stylua: ignore end
       },
       url_patterns = {
         ["sourcecode%..*%.com"] = {
