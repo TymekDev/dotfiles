@@ -16,9 +16,9 @@ return {
       ["core.completion"] = { config = { engine = "nvim-cmp" } },
       ["core.dirman"] = {
         config = {
-          default_workspace = "personal",
           workspaces = {
             personal = "~/Documents/dokumenty/notatki",
+            work = "~/work/notes",
           },
         },
       },
