@@ -23,7 +23,8 @@ return {
     {
       "<Leader>.",
       function()
-        Snacks.scratch()
+        local file = vim.fs.basename(vim.api.nvim_buf_get_name(0))
+        Snacks.scratch({ name = "Scratch for " .. file })
       end,
       desc = "Toggle scratch buffer (via snacks.nvim/scratch)",
     },
