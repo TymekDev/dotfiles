@@ -59,6 +59,5 @@
   "vim-eunuch": { "branch": "master", "commit": "c61533c9868ce78bb7fcbe06b308d7fa7f19e447" },
   "vim-fugitive": { "branch": "master", "commit": "320b18fba2a4f2fe3c8225c778c687e0d2620384" },
   "vim-rsi": { "branch": "master", "commit": "45540637ead22f011e8215f1c90142e49d946a54" },
-  "wezterm-types": { "branch": "main", "commit": "1518752906ba3fac0060d9efab6e4d3ec15d4b5a" },
-  "zen-mode.nvim": { "branch": "main", "commit": "863f150ca321b3dd8aa1a2b69b5f411a220e144f" }
+  "wezterm-types": { "branch": "main", "commit": "1518752906ba3fac0060d9efab6e4d3ec15d4b5a" }
 }

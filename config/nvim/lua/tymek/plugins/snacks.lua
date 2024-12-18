@@ -3,6 +3,15 @@
 return {
   "folke/snacks.nvim",
   lazy = false,
+  keys = {
+    {
+      "<leader>Z",
+      function()
+        Snacks.zen.zoom()
+      end,
+      desc = "Toggle zoom (via snacks.nvim/zen)",
+    },
+  },
   ---@module "snacks"
   ---@type snacks.Config
   opts = {},
