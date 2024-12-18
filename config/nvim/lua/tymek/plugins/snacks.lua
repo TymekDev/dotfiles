@@ -20,6 +20,13 @@ return {
       end,
       desc = "Open a git-tracked file in a browser (via snacks.nvim/gitbrowse)",
     },
+    {
+      "<Leader>.",
+      function()
+        Snacks.scratch()
+      end,
+      desc = "Toggle scratch buffer (via snacks.nvim/scratch)",
+    },
   },
   ---@module "snacks"
   ---@type snacks.Config
