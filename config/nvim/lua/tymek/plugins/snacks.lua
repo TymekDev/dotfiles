@@ -2,6 +2,7 @@
 ---@type LazySpec
 return {
   "folke/snacks.nvim",
+  priority = 1000,
   lazy = false,
   keys = {
     {
@@ -14,7 +15,9 @@ return {
   },
   ---@module "snacks"
   ---@type snacks.Config
-  opts = {},
+  opts = {
+    bigfile = { enabled = true },
+  },
   init = function()
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
