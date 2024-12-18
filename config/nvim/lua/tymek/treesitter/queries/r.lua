@@ -57,6 +57,14 @@ M.reactives_declarations = [[
       lhs: (call
         function: (identifier) @fName)
       "|>")
+    (call
+      function: (extract_operator
+        rhs: (identifier) @fName))
+    (binary_operator
+      lhs: (call
+        function: (extract_operator
+          rhs: (identifier) @fName))
+      "|>")
   ]
   (#any-of? @fName "reactive" "eventReactive"))
 ]]
