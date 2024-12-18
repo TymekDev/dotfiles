@@ -46,6 +46,7 @@
   "schemastore.nvim": { "branch": "main", "commit": "f8c2a0f5d51b800ea4625808e243d9e8f7c5e1df" },
   "shiki.nvim": { "branch": "main", "commit": "19cab485f730b436d8115eed014fd45efddc6127" },
   "smear-cursor.nvim": { "branch": "main", "commit": "f0f1e41bbfefd6904fe399ba07328f5073bcd42c" },
+  "snacks.nvim": { "branch": "main", "commit": "282be8bfa8e6f46d6994ff46638d1c155b90753f" },
   "spotlight.nvim": { "branch": "main", "commit": "e97646d2d7f51aa4f5a693fafa44eae274936cab" },
   "telescope.nvim": { "branch": "master", "commit": "2eca9ba22002184ac05eddbe47a7fe2d5a384dfc" },
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
