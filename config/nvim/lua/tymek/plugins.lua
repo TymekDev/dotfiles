@@ -35,20 +35,6 @@ return {
     end,
   },
   {
-    "lukas-reineke/indent-blankline.nvim", -- TODO: review config
-    dependencies = { "nvim-treesitter/nvim-treesitter-context", "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("ibl").setup({
-        indent = {
-          char = "│",
-        },
-        scope = {
-          show_start = false,
-        },
-      })
-    end,
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()

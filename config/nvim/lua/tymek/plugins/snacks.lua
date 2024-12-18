@@ -17,6 +17,7 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
+    indent = { enabled = true, animate = { enabled = false } },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
