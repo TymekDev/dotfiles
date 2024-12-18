@@ -31,12 +31,12 @@ M.calls = function(names)
   function: (identifier) @target
   (#any-of? @target %s))
 ]],
-    table.concat( -- wrap with double quotes and concatenate
-      vim.tbl_map(function(x)
-        return string.format('"%s"', x)
-      end, names),
-      " "
-    )
+    vim
+      .iter(names)
+      :map(function(x)
+        return '"' .. x .. '"'
+      end)
+      :join(" ")
   )
 end
 
