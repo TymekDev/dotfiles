@@ -63,24 +63,6 @@ M.setup = function()
 
   -- junegunn/vim-easy-align
   vim.keymap.set({ "n", "x" }, "<Leader>a", "<Plug>(EasyAlign)")
-
-  -- hrsh7th/nvim-cmp
-  -- TODO: modve to cmp.lua
-  vim.keymap.set({ "i", "c" }, "<C-j>", require("cmp").mapping.complete())
-  require("cmp").setup({
-    mapping = {
-      ["<C-e>"] = require("cmp").mapping({
-        i = require("cmp").mapping.abort(),
-        c = require("cmp").mapping.close(),
-      }),
-      ["<C-u>"] = require("cmp").mapping(require("cmp").mapping.scroll_docs(-4), { "i", "c" }),
-      ["<C-d>"] = require("cmp").mapping(require("cmp").mapping.scroll_docs(4), { "i", "c" }),
-      ["<C-n>"] = require("cmp").mapping(require("cmp").mapping.select_next_item(), { "i", "c" }),
-      ["<C-p>"] = require("cmp").mapping(require("cmp").mapping.select_prev_item(), { "i", "c" }),
-      ["<C-j>"] = require("cmp").mapping(require("cmp").mapping.confirm({ select = true }), { "i", "c" }),
-    },
-  })
-  vim.keymap.set("c", "<Tab>", "<NOP>")
 end
 
 M.setup_lsp = function()
