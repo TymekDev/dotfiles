@@ -11,5 +11,8 @@ vim.keymap.set("n", "<Leader>S", function()
   vim.opt_local.spell = not vim.api.nvim_get_option_value("spell", { scope = "local" })
 end)
 
+-- LSP
+vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help)
+
 -- Others
 vim.keymap.set("n", "<Leader>z", "1z=")
