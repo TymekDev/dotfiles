@@ -32,7 +32,6 @@ brew "pv"                       # Monitor data's progress through a pipe
 brew "qrcp"         if OS.mac?  # Transfer files to and from your computer by scanning a QR code
 brew "rclone"       if OS.mac?  # Rsync for cloud storage
 brew "ripgrep"                  # Search tool like grep and The Silver Searcher
-brew "rust"         if OS.mac?  # Safe, concurrent, practical language
 brew "scc"                      # Fast and accurate code counter with complexity and COCOMO estimates
 brew "sqlite"                   # Command-line interface for SQLite
 brew "starship"                 # Cross-shell prompt for astronauts
