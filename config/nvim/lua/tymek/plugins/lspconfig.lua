@@ -21,78 +21,73 @@ end
 return {
   "neovim/nvim-lspconfig",
   dependencies = { "hrsh7th/cmp-nvim-lsp", "b0o/schemastore.nvim" },
-  config = function()
-    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
+  opts = function()
+    return {
+      servers = {
+        astro = {},
 
-    local function config(_config)
-      return vim.tbl_deep_extend("force", { capabilities = capabilities, on_attach = lsp_on_attach }, _config or {})
-    end
+        cssls = {},
 
-    require("lspconfig").astro.setup(config())
+        emmet_language_server = {},
 
-    require("lspconfig").cssls.setup(config())
-
-    require("lspconfig").emmet_language_server.setup(config())
-
-    require("lspconfig").gopls.setup(config({
-      settings = {
         gopls = {
-          gofumpt = true,
-          hints = {
-            assignVariableTypes = true,
-            compositeLiteralFields = true,
-            compositeLiteralTypes = true,
-            constantValues = true,
-            functionTypeParameters = true,
-            -- parameterNames = true, -- I don't find these very useful
-            rangeVariableTypes = true,
+          settings = {
+            gopls = {
+              gofumpt = true,
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                -- parameterNames = true, -- I don't find these very useful
+                rangeVariableTypes = true,
+              },
+            },
           },
         },
-      },
-    }))
 
-    require("lspconfig").golangci_lint_ls.setup(config())
+        golangci_lint_ls = {},
 
-    require("lspconfig").html.setup(config({
-      settings = {
         html = {
-          format = {
-            unformatted = { "dd" },
-            wrapLineLength = 0,
+          settings = {
+            html = {
+              format = {
+                unformatted = { "dd" },
+                wrapLineLength = 0,
+              },
+            },
           },
         },
-      },
-    }))
 
-    require("lspconfig").htmx.setup(config())
+        htmx = {},
 
-    require("lspconfig").jsonls.setup(config({
-      settings = {
-        json = {
-          schemas = require("schemastore").json.schemas(),
-          validate = { enable = true },
-        },
-      },
-    }))
-
-    require("lspconfig").lua_ls.setup(config({
-      settings = {
-        Lua = {
-          telemetry = {
-            enable = false,
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require("schemastore").json.schemas(),
+              validate = { enable = true },
+            },
           },
         },
-      },
-    }))
 
-    require("lspconfig").r_language_server.setup(config({
-      cmd = {
-        "/usr/bin/env",
-        "R",
-        "--slave",
-        "-e",
-        [[options(
+        lua_ls = {
+          settings = {
+            Lua = {
+              telemetry = {
+                enable = false,
+              },
+            },
+          },
+        },
+
+        r_language_server = {
+          cmd = {
+            "/usr/bin/env",
+            "R",
+            "--slave",
+            "-e",
+            [[options(
   languageserver.formatting_style = function(options) {
     styler::tidyverse_style(math_token_spacing = NULL)
   },
@@ -104,54 +99,67 @@ return {
 
 languageserver::run()
 ]],
-      },
-    }))
-
-    require("lspconfig").rust_analyzer.setup(config())
-
-    require("lspconfig").tailwindcss.setup(config({
-      settings = {
-        tailwindCSS = {
-          classAttributes = { "class", "className", "classList", "class:list", "ngClass" },
+          },
         },
-      },
-    }))
 
-    require("lspconfig").ts_ls.setup(config({
-      filetypes = { "typescript", "typescriptreact", "javascript" },
-      settings = {
-        typescript = {
-          inlayHints = {
-            -- includeInlayParameterNameHints = "all", -- I don't find these very useful
-            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayVariableTypeHints = true,
-            includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayEnumMemberValueHints = true,
+        rust_analyzer = {},
+
+        tailwindcss = {
+          settings = {
+            tailwindCSS = {
+              classAttributes = { "class", "className", "classList", "class:list", "ngClass" },
+            },
+          },
+        },
+
+        ts_ls = {
+          filetypes = { "typescript", "typescriptreact", "javascript" },
+          settings = {
+            typescript = {
+              inlayHints = {
+                -- includeInlayParameterNameHints = "all", -- I don't find these very useful
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
+
+        yamlls = {
+          settings = {
+            yaml = {
+              schemas = {
+                kubernetes = "*.k8s.yaml",
+                ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+                ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+                ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+                ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+              },
+            },
+            redhat = {
+              telemetry = {
+                enabled = false,
+              },
+            },
           },
         },
       },
-    }))
+    }
+  end,
+  config = function(_, opts)
+    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-    require("lspconfig").yamlls.setup(config({
-      settings = {
-        yaml = {
-          schemas = {
-            kubernetes = "*.k8s.yaml",
-            ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-            ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-            ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
-            ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
-          },
-        },
-        redhat = {
-          telemetry = {
-            enabled = false,
-          },
-        },
-      },
-    }))
+    local lspconfig = require("lspconfig")
+    for server, config in pairs(opts.servers) do
+      config.capabilities = capabilities
+      config.on_attach = lsp_on_attach
+      lspconfig[server].setup(config)
+    end
   end,
 }
