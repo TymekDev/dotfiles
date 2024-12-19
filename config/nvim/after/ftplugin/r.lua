@@ -1,4 +1,4 @@
--- vim:foldenable
+-- vim:foldenable:foldlevel=1
 local queries = require("tymek.treesitter.queries.r")
 local ts = require("tymek.treesitter")
 local ts_r = require("tymek.treesitter.r")
@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
     )
   end,
 })
+
 vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
   -- NOTE: This works only for imports from packages (i.e. not from files).
   -- NOTE: There might be false positives when importing non-function objects.
@@ -55,6 +56,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
     )
   end,
 })
+
 vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
   desc = "Highlight roxygen2 tags",
   buffer = 0,
