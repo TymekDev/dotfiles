@@ -85,23 +85,10 @@ return {
   "tpope/vim-abolish",
   {
     "williamboman/mason.nvim",
-    priority = 89, -- NOTE: has to be set up before mason-lspconfig.nvim
     config = true,
   },
   {
-    -- TODO: remove this plugin and move binaries installation to dotfiles setup
-    "williamboman/mason-lspconfig.nvim",
-    priority = 88, -- NOTE: has to be set up before nvim-lspconfig
-    dependencies = { "neovim/nvim-lspconfig", "williamboman/mason.nvim" },
-    config = function()
-      require("mason-lspconfig").setup({
-        automatic_installation = true,
-      })
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
-    priority = 78,
     dependencies = { "hrsh7th/cmp-nvim-lsp", "b0o/schemastore.nvim" },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
