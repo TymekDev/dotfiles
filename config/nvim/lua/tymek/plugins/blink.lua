@@ -24,5 +24,15 @@ return {
         auto_show_delay_ms = 200,
       },
     },
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+      providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          fallbacks = { "lsp" },
+        },
+      },
+    },
   },
 }
