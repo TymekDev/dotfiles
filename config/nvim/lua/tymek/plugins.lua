@@ -76,8 +76,4 @@ return {
       })
     end,
   },
-  {
-    "lvimuser/lsp-inlayhints.nvim",
-    config = true,
-  },
 }

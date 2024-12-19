@@ -1,4 +1,4 @@
-local function lsp_on_attach(client)
+local function lsp_on_attach()
   if vim.bo[vim.api.nvim_get_current_buf()].filetype == "r" then
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = 0,
@@ -11,7 +11,7 @@ local function lsp_on_attach(client)
     })
   end
 
-  require("lsp-inlayhints").on_attach(client, vim.api.nvim_get_current_buf())
+  vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
 
   require("tymek.mappings").setup_lsp()
 end
