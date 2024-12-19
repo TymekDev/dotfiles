@@ -6,6 +6,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "-", "<Cmd>Oil<CR>", desc = "Open the parent directory (via oil.nvim)" },
+    { "_", "<Cmd>vert Oil<CR>", desc = "Open the parent directory in a vertical split (via oil.nvim)" },
     {
       "<Leader>c",
       function()
@@ -21,6 +22,7 @@ return {
   opts = {
     keymaps = {
       ["<C-s>"] = false,
+      ["<C-h>"] = false,
       ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
       ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
       ["<Leader><C-v>"] = { "<C-v>", desc = "Start Visual Block mode in the oil buffer" },
