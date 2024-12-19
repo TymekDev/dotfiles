@@ -84,10 +84,6 @@ return {
   "tpope/vim-eunuch",
   "tpope/vim-abolish",
   {
-    "williamboman/mason.nvim",
-    config = true,
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = { "hrsh7th/cmp-nvim-lsp", "b0o/schemastore.nvim" },
     config = function()
