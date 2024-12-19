@@ -2,7 +2,7 @@
 ---@type LazySpec
 return {
   "stevearc/oil.nvim",
-  event = "VeryLazy",
+  event = "VeryLazy", -- NOTE: I have netrw disabled. Without oil.nvim loaded `:edit <directory>` doesn't work.
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "-", "<Cmd>Oil<CR>", desc = "Open the parent directory (via oil.nvim)" },
