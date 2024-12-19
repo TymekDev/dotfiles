@@ -9,7 +9,7 @@ local theme = {
   dark = "tokyonight-storm",
 }
 
----@param callback fun(mode: tymek.theme.Mode)
+---@param callback fun(mode: tymek.theme.Mode|nil)
 local detect = function(callback)
   vim.system(
     {
@@ -19,6 +19,11 @@ local detect = function(callback)
     { text = true },
     ---@param obj vim.SystemCompleted
     vim.schedule_wrap(function(obj)
+      if obj.code ~= 0 then
+        callback(nil)
+        return
+      end
+
       callback(vim.trim(obj.stdout))
     end)
   )
@@ -26,6 +31,7 @@ end
 
 M.update = function()
   detect(function(mode)
+    mode = mode or "dark"
     M.mode = mode
 
     vim.api.nvim_cmd({
