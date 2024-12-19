@@ -1,7 +1,9 @@
+-- vim:foldenable
 local is_fence = function(x)
   return string.match(x, "^=+$") ~= nil
 end
 
+-- For use in tree-sitter's .txt test files
 vim.api.nvim_buf_create_user_command(
   0,
   "Wrap",
