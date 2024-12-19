@@ -1,3 +1,7 @@
+---@module "snacks"
+---@type snacks.win?
+local win_fugitive = nil
+
 ---@module "lazy"
 ---@type LazySpec
 return {
@@ -13,6 +17,43 @@ return {
       "<Cmd>Git push --force-with-lease<CR>",
       ft = "fugitive",
       desc = "Run `git push --force-with-lease` (via vim-fugitive)",
+    },
+    {
+      "<Leader>G",
+      function()
+        if not Snacks then
+          vim.notify(vim.log.levels.ERROR, "Snacks not found. Is snacks.nvim installed?")
+          return
+        end
+
+        if win_fugitive and win_fugitive:is_floating() then
+          win_fugitive:close()
+          return
+        end
+
+        vim.cmd.Git()
+        local bufnr = vim.api.nvim_get_current_buf()
+        vim.cmd.quit()
+
+        win_fugitive = Snacks.win({
+          buf = bufnr,
+          minimal = false,
+          wo = {
+            winhighlight = "NormalFloat:Normal",
+          },
+          -- NOTE: Otheriwse, committing makes the window stuck.
+          -- EPIC: Ideally, it would open in a split or show fugitive after write.
+          on_win = function(win)
+            vim.api.nvim_create_autocmd("WinLeave", {
+              buffer = 0,
+              once = true,
+              callback = function()
+                win:close()
+              end,
+            })
+          end,
+        })
+      end,
     },
   },
 }
