@@ -1,3 +1,5 @@
+; extends
+
 [
   (braced_expression)
   (call)
