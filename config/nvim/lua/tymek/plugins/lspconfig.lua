@@ -104,13 +104,7 @@ languageserver::run()
 
         rust_analyzer = {},
 
-        tailwindcss = {
-          settings = {
-            tailwindCSS = {
-              classAttributes = { "class", "className", "classList", "class:list", "ngClass" },
-            },
-          },
-        },
+        tailwindcss = {},
 
         ts_ls = {
           filetypes = { "typescript", "typescriptreact", "javascript" },
