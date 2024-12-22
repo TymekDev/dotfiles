@@ -38,8 +38,10 @@ return {
         win_fugitive = Snacks.win({
           buf = bufnr,
           minimal = false,
+          border = "rounded",
+          height = 0.8,
           wo = {
-            winhighlight = "NormalFloat:Normal",
+            winhighlight = "NormalFloat:Normal,FloatBorder:DiagnosticNormal",
           },
           -- NOTE: Otheriwse, committing makes the window stuck.
           -- EPIC: Ideally, it would open in a split or show fugitive after write.
