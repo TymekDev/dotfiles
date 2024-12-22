@@ -20,7 +20,7 @@ end
 ---@type LazySpec
 return {
   "neovim/nvim-lspconfig",
-  dependencies = { "hrsh7th/cmp-nvim-lsp", "b0o/schemastore.nvim" },
+  dependencies = { "saghen/blink.cmp", "b0o/schemastore.nvim" },
   opts = function()
     return {
       servers = {
@@ -146,12 +146,9 @@ languageserver::run()
     }
   end,
   config = function(_, opts)
-    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-
     local lspconfig = require("lspconfig")
     for server, config in pairs(opts.servers) do
-      config.capabilities = capabilities
+      config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
       config.on_attach = lsp_on_attach
       lspconfig[server].setup(config)
     end

@@ -6,6 +6,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    enabled = false,
     -- FIXME: this appears to be loaded immediately on startup
     event = "InsertEnter",
     dependencies = {
@@ -49,6 +50,7 @@ return {
   },
   {
     "hrsh7th/cmp-cmdline",
+    enabled = false,
     event = "CmdlineEnter",
     config = function()
       local cmp = require("cmp")
