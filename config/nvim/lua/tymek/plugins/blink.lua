@@ -8,13 +8,13 @@ return {
   ---@type blink.cmp.Config
   opts = {
     keymap = {
-      ["<C-j>"] = { "show", "select_and_accept" },
-      ["<C-u>"] = { "scroll_documentation_up" },
+      preset = "none",
+      ["<C-j>"] = { "show", "select_and_accept", "fallback" },
+      ["<C-u>"] = { "scroll_documentation_up", "fallback" },
       ["<C-d>"] = { "scroll_documentation_down", "fallback" },
-      ["<C-space>"] = {},
-      ["<C-y>"] = {},
-      ["<C-b>"] = {},
-      ["<C-f>"] = {},
+      ["<C-p>"] = { "select_prev", "fallback" },
+      ["<C-n>"] = { "select_next", "fallback" },
+      ["<C-e>"] = { "hide", "fallback" },
     },
     ---@diagnostic disable-next-line: missing-fields
     completion = {
