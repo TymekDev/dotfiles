@@ -6,7 +6,6 @@ return {
   cmd = "Telescope",
   keys = {
     { "<C-f>", "<Cmd>Telescope find_files<CR>", desc = "Find files (via telescope.nvim)" },
-    { "<C-g>", "<Cmd>Telescope live_grep<CR>", desc = "Live grep (via telescope.nvim)" },
     {
       "<Leader><C-f>",
       function()
@@ -20,7 +19,6 @@ return {
       end,
       desc = "Find files in the buffer's directory (via telescope.nvim)",
     },
-    { "<Leader><C-g>", "<Cmd>Telescope grep_string<CR>", desc = "Live grep a string (via telescope.nvim)" },
     {
       "<Leader>-",
       function()
