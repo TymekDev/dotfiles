@@ -4,6 +4,10 @@ return {
   "saghen/blink.cmp",
   event = "InsertEnter",
   build = "cargo build --release",
+  dependencies = {
+    "saghen/blink.compat",
+    "R-nvim/cmp-r",
+  },
   ---@module "blink.cmp"
   ---@type blink.cmp.Config
   opts = {
@@ -30,16 +34,30 @@ return {
             { "label", "label_description", gap = 1 },
             { "source_name" },
           },
+          components = {
+            source_name = {
+              text = function(ctx)
+                if ctx.source_name == "cmp_r" then
+                  return "R.nvim"
+                end
+                return ctx.source_name
+              end,
+            },
+          },
         },
       },
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+      default = { "lsp", "path", "snippets", "buffer", "lazydev", "R.nvim" },
       providers = {
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
           fallbacks = { "lsp" },
+        },
+        ["R.nvim"] = {
+          name = "cmp_r",
+          module = "blink.compat.source",
         },
       },
     },
