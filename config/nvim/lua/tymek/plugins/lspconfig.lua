@@ -90,11 +90,7 @@ return {
             [[options(
   languageserver.formatting_style = function(options) {
     styler::tidyverse_style(math_token_spacing = NULL)
-  },
-  languageserver.server_capabilities = list(
-    completionProvider = FALSE,
-    completionItemResolve = FALSE
-  )
+  }
 )
 
 languageserver::run()
