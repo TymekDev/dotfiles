@@ -27,7 +27,7 @@ return {
         end
 
         if win_fugitive and win_fugitive:is_floating() then
-          win_fugitive:close()
+          win_fugitive:focus()
           return
         end
 
