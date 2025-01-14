@@ -12,7 +12,7 @@ vim.keymap.set("n", "<Leader>S", function()
 end)
 
 -- LSP
-vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help)
+vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help)
 
 -- Others
 vim.keymap.set("n", "<Leader>z", "1z=")
