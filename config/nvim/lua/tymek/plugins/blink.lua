@@ -16,6 +16,7 @@ return {
       ["<C-j>"] = { "show", "select_and_accept", "fallback" },
       ["<C-u>"] = { "scroll_documentation_up", "fallback" },
       ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+      ["<C-k>"] = { "show_documentation", "hide_documentation", "fallback" },
       ["<C-p>"] = { "select_prev", "fallback" },
       ["<C-n>"] = { "select_next", "fallback" },
       ["<C-e>"] = { "hide", "fallback" },
@@ -25,7 +26,7 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       documentation = {
         auto_show = true,
-        auto_show_delay_ms = 200,
+        auto_show_delay_ms = 500,
       },
       menu = {
         draw = {
