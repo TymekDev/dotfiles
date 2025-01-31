@@ -64,8 +64,8 @@ M.highlight_roxygen2_comments = function(bufnr)
       goto next
     end
 
-    local start_row, _, end_row, end_col = vim.treesitter.get_node_range(node)
-    local position = 3 -- skip initial "#' "
+    local start_row, start_col, end_row, end_col = vim.treesitter.get_node_range(node)
+    local position = start_col + 3 -- skip initial "#' "
 
     ---@overload fun(hl_groups: string[], length: integer)
     local highlight_length = function(hl_groups, length)
