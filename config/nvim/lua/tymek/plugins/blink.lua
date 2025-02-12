@@ -3,7 +3,7 @@
 return {
   "saghen/blink.cmp",
   event = "InsertEnter",
-  build = "cargo build --release",
+  version = "*",
   dependencies = {
     "saghen/blink.compat",
     "R-nvim/cmp-r",
