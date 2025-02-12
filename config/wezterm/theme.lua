@@ -36,15 +36,18 @@ local set_colors = function(config, mode)
   }
 end
 
-M.set = function(config)
+M.set = function(config, is_windows)
   local mode = detect()
   set_colors(config, mode)
-
-  local ok, _, stderr = wezterm.run_child_process({
+  local cmd = {
     "sh",
     "-c",
     'echo "' .. mode .. '" > /tmp/tymek-theme',
-  })
+  }
+  if is_windows == true then
+    table.insert(cmd, 1, "wsl")
+  end
+  local ok, _, stderr = wezterm.run_child_process(cmd)
   if not ok then
     wezterm.log_error(stderr)
   end
