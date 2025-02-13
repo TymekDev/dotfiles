@@ -24,7 +24,7 @@ return {
   opts = function()
     return {
       servers = {
-        air = {},
+        -- air = {},
 
         astro = {},
 
@@ -90,11 +90,11 @@ return {
             "--slave",
             "-e",
             [[options(
-  languageserver.server_capabilities = list(
-    documentFormattingProvider = FALSE,
-    documentRangeFormattingProvider = FALSE,
-    documentOnTypeFormattingProvider = FALSE
-  ),
+  #languageserver.server_capabilities = list(
+  #  documentFormattingProvider = FALSE,
+  #  documentRangeFormattingProvider = FALSE,
+  #  documentOnTypeFormattingProvider = FALSE
+  #),
   languageserver.formatting_style = function(options) {
     styler::tidyverse_style(math_token_spacing = NULL)
   }
