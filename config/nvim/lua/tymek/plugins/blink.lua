@@ -6,7 +6,7 @@ return {
   version = "*",
   dependencies = {
     "saghen/blink.compat",
-    "R-nvim/cmp-r",
+    "TymekDev/cmp-r",
   },
   ---@module "blink.cmp"
   ---@type blink.cmp.Config
