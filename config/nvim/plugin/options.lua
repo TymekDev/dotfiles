@@ -21,5 +21,4 @@ vim.opt.termguicolors = true
 vim.opt.ttimeoutlen = 100
 vim.opt.undofile = true
 vim.opt.wildchar = 0
-vim.opt.winwidth = 87
 vim.opt.wrap = false
