@@ -74,7 +74,6 @@ M.setup_lsp = function()
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 }) -- [d]efinition
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 }) -- [t]ype definition
-  vim.keymap.set("n", "gr", vim.lsp.buf.rename, { buffer = 0 }) -- [r]ename
   vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { buffer = 0 }) -- [c]ode [a]ction
 
   vim.keymap.set("n", "[D", function()
