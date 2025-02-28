@@ -8,6 +8,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "<C-g>", "<Cmd>FzfLua live_grep<CR>", desc = "Live grep (via fzf-lua)" },
+    { mode = "v", "<C-g>", "<Cmd>FzfLua grep_visual<CR>", desc = "Grep visual selection (via fzf-lua)" },
     {
       "<Leader><C-g>",
       function()
