@@ -6,7 +6,15 @@ local function lsp_on_attach()
         if vim.g.disable_autoformat or vim.b[opts.buf].disable_autoformat then
           return
         end
-        vim.lsp.buf.format()
+
+        vim.lsp.buf.format({
+          filter = function(client)
+            if vim.b[opts.buf].use_air then
+              return client.name == "air"
+            end
+            return client.name == "r_language_server"
+          end,
+        })
       end,
     })
   end
@@ -24,7 +32,7 @@ return {
   opts = function()
     return {
       servers = {
-        -- air = {},
+        air = {},
 
         astro = {},
 
@@ -90,11 +98,6 @@ return {
             "--slave",
             "-e",
             [[options(
-  #languageserver.server_capabilities = list(
-  #  documentFormattingProvider = FALSE,
-  #  documentRangeFormattingProvider = FALSE,
-  #  documentOnTypeFormattingProvider = FALSE
-  #),
   languageserver.formatting_style = function(options) {
     styler::tidyverse_style(math_token_spacing = NULL)
   }
@@ -149,17 +152,6 @@ languageserver::run()
     }
   end,
   config = function(_, opts)
-    require("lspconfig.configs").air = {
-      default_config = {
-        cmd = { "air", "language-server" },
-        filetypes = { "r", "rmd" },
-        root_dir = function(fname)
-          return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1]) or vim.uv.os_homedir()
-        end,
-      },
-      settings = {},
-    }
-
     local lspconfig = require("lspconfig")
     for server, config in pairs(opts.servers) do
       config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
