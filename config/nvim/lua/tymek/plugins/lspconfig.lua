@@ -70,8 +70,6 @@ return {
           },
         },
 
-        htmx = {},
-
         jsonls = {
           settings = {
             json = {
