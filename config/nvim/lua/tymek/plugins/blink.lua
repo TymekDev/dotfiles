@@ -21,6 +21,15 @@ return {
       ["<C-n>"] = { "select_next", "fallback" },
       ["<C-e>"] = { "hide", "fallback" },
     },
+    cmdline = {
+      keymap = {
+        preset = "none",
+        ["<C-j>"] = { "show", "select_and_accept", "fallback" },
+        ["<C-p>"] = { "select_prev", "fallback" },
+        ["<C-n>"] = { "select_next", "fallback" },
+        ["<C-e>"] = { "hide", "fallback" },
+      },
+    },
     ---@diagnostic disable-next-line: missing-fields
     completion = {
       ---@diagnostic disable-next-line: missing-fields
