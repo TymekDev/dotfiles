@@ -24,6 +24,10 @@ local function lsp_on_attach()
   require("tymek.mappings").setup_lsp()
 end
 
+local function root_dir_jj()
+  return vim.fs.root(0, { ".jj", ".git" })
+end
+
 ---@module "lazy"
 ---@type LazySpec
 return {
@@ -32,7 +36,9 @@ return {
   opts = function()
     return {
       servers = {
-        air = {},
+        air = {
+          root_dir = root_dir_jj,
+        },
 
         astro = {},
 
@@ -90,6 +96,7 @@ return {
         },
 
         r_language_server = {
+          root_dir = root_dir_jj,
           cmd = {
             "/usr/bin/env",
             "R",
