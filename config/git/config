@@ -87,3 +87,6 @@
 
 [commit]
   gpgsign = true
+
+[column]
+  ui = auto
