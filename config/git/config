@@ -93,3 +93,6 @@
 
 [branch]
   sort = -committerdate
+
+[rerere]
+  enabled = true
