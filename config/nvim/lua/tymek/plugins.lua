@@ -1,5 +1,3 @@
--- FIXME: :Move %<tab> doesn't remove % after expansion - probably wildchar issues
-
 return {
   {
     "folke/tokyonight.nvim",
