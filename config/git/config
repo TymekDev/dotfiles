@@ -16,7 +16,7 @@
   fcs = "fl -S"
 
   # [f]ormat [l]og
-  fl = "log --format='%C(yellow)%h  %C(blue)%ad  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short"
+  fl = "log --format='%C(yellow)%h  %C(blue)%cd  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short"
 
   # [f]ixup and [r]e[b]ase
   frb = "! f() { REF=${1:?missing REF }; git commit --fixup ${REF} && git rebase --autostash --interactive ${REF}^; }; f"
