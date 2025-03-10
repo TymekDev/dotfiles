@@ -21,6 +21,8 @@ return {
           },
         },
       },
+      -- TODO: enable once https://github.com/nvim-neorg/neorg/issues/1579 is fixed
+      ["core.esupports.metagen"] = { config = { update_date = false } },
     },
   },
 }
