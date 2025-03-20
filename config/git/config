@@ -54,6 +54,7 @@
 
 [merge]
   tool = "nvim"
+  conflictStyle = zdiff3
 
 [difftool "nvim"]
   cmd = nvim -d -c 'cd "$GIT_PREFIX"' -c 'wincmd l' "$LOCAL" "$REMOTE"
