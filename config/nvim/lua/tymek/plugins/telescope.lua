@@ -23,7 +23,7 @@ return {
       "<Leader>-",
       function()
         require("telescope.builtin").find_files({
-          find_command = { "fd", "--type", "d", "--hidden", "--exclude", ".git" },
+          find_command = { "fd", "--type", "d", "--hidden", "--exclude", ".git", "--exclude", ".jj" },
         })
       end,
       desc = "Find directories (via telescope.nvim)",
