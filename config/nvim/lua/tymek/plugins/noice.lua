@@ -3,7 +3,10 @@
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
-  dependencies = { "MunifTanjim/nui.nvim" },
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+  },
   ---@module "noice"
   ---@type NoiceConfig
   opts = {
@@ -13,11 +16,10 @@ return {
         relative = "cursor",
       },
     },
-    views = {
-      mini = {
-        relative = "cursor",
-        position = { row = 0, col = 0 },
-      },
+    routes = {
+      { filter = { event = "msg_show", find = "yanked" } },
+      { filter = { event = "msg_show", find = "%d fewer lines" } },
+      { filter = { event = "msg_show", find = "%d more lines" } },
     },
   },
 }
