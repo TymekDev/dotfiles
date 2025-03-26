@@ -5,7 +5,15 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = "Telescope",
   keys = {
-    { "<C-f>", "<Cmd>Telescope find_files<CR>", desc = "Find files (via telescope.nvim)" },
+    {
+      "<C-f>",
+      function()
+        require("telescope.builtin").find_files({
+          find_command = { "rg", "--files", "--color", "never", "--no-require-git" },
+        })
+      end,
+      desc = "Find files (via telescope.nvim)",
+    },
     {
       "<Leader><C-f>",
       function()

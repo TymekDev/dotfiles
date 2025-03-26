@@ -53,8 +53,8 @@ alias nv nvim
 bind \cs "stty sane; tmux-sessionizer"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
-bind \cf "stty sane; nvim_telescope find_files"
-bind \cg "stty sane; nvim_fzf live_grep"
+bind \cf "stty sane; nvim -c 'normal '"
+bind \cg "stty sane; nvim -c 'normal '"
 # FEAT: make this update automatic
 bind \et update_theme
 bind \en "fish_commandline_prepend 'nvim (' && fish_commandline_append ' )'"
