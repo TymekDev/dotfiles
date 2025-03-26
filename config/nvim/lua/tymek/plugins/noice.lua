@@ -20,6 +20,7 @@ return {
       { filter = { event = "msg_show", find = "yanked" } },
       { filter = { event = "msg_show", find = "%d fewer lines" } },
       { filter = { event = "msg_show", find = "%d more lines" } },
+      { filter = { event = "msg_show", find = "%d lines indented" } },
     },
   },
 }
