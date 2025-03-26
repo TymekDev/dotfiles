@@ -30,7 +30,7 @@ local function root_dir_git_jj(markers)
   table.insert(markers, ".jj")
   table.insert(markers, ".git")
   return function()
-    vim.fs.root(0, markers)
+    return vim.fs.root(0, markers)
   end
 end
 
