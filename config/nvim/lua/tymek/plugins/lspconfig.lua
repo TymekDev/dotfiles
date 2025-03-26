@@ -141,6 +141,16 @@ languageserver::run()
           },
         },
 
+        unocss = {
+          root_dir = root_dir_git_jj({
+            "unocss.config.js",
+            "unocss.config.ts",
+            "uno.config.js",
+            "uno.config.ts",
+            "slides.md",
+          }),
+        },
+
         yamlls = {
           settings = {
             yaml = {
