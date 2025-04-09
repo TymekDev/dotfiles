@@ -73,6 +73,12 @@ return {
       "<Cmd>Telescope lsp_document_symbols symbol_width=50<CR>",
       desc = "Search through documenet symbols (via telescope.nvim)",
     },
+    {
+      ft = "r",
+      "<M-s>",
+      '<Cmd>Telescope lsp_document_symbols symbols="string"<CR>',
+      desc = "Search through file's sections (via telescope.nvim)",
+    },
   },
   opts = function()
     return {
