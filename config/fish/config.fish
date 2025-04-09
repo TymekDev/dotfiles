@@ -53,7 +53,7 @@ alias nv nvim
 bind \cs "stty sane; tmux-sessionizer"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
-bind \cf "stty sane; nvim -c 'normal '"
+bind \cf "stty sane; nvim -c 'normal ' -c 'startinsert'"
 bind \cg "stty sane; nvim -c 'normal '"
 # FEAT: make this update automatic
 bind \et update_theme
