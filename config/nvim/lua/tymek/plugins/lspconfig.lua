@@ -151,6 +151,15 @@ languageserver::run()
           }),
         },
 
+        volar = {
+          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "markdown" }, -- markdown for slidev
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
+        },
+
         yamlls = {
           settings = {
             yaml = {
