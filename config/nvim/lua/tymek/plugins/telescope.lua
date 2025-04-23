@@ -10,6 +10,15 @@ return {
       function()
         require("telescope.builtin").find_files({
           find_command = { "rg", "--files", "--color", "never", "--no-require-git" },
+          attach_mappings = function(_, map)
+            map({ "n", "i" }, "<M-d>", function(_prompt_bufnr)
+              local filename = require("telescope.actions.state").get_selected_entry()[1]
+              require("telescope.actions").close(_prompt_bufnr)
+              require("oil").open(vim.fs.dirname(filename))
+            end)
+
+            return true
+          end,
         })
       end,
       desc = "Find files (via telescope.nvim)",
