@@ -71,6 +71,8 @@ return {
 
         golangci_lint_ls = {},
 
+        harper_ls = {},
+
         html = {
           settings = {
             html = {
