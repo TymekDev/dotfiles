@@ -58,12 +58,14 @@ return {
   keys = {
     -- EPIC: make this run on-save on tribbles
     {
+      ft = "r",
       "<Leader>ra",
       "<Plug>(EasyAlign)i(<CR>*,",
       desc = "Right-align content of closest parentheses on all commas, e.g. a tribble definition (via vim-easy-align)",
     },
-    { "<Leader>re", command_execute, desc = "Execute one of a predefined commands in R (via R.nvim)" },
+    { ft = "r", "<Leader>re", command_execute, desc = "Execute one of a predefined commands in R (via R.nvim)" },
     {
+      ft = "r",
       "<Leader>rr",
       function()
         if command_last ~= nil then
