@@ -18,7 +18,7 @@
           system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
-            ./disko.nix
+            ./disko/sffpc.nix
             {
               boot.loader.systemd-boot.enable = true;
               boot.loader.efi.canTouchEfiVariables = true;
