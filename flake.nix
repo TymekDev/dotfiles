@@ -17,8 +17,11 @@
         sffpc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            ./hardware-configuration/sffpc.nix
+
             disko.nixosModules.disko
             ./disko/sffpc.nix
+
             {
               boot.loader.systemd-boot.enable = true;
               boot.loader.efi.canTouchEfiVariables = true;
