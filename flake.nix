@@ -28,6 +28,7 @@
                 efiSupport = true;
                 efiInstallAsRemovable = true;
               };
+              networking.hostName = "sffpc";
               system.stateVersion = "24.11";
               users.users.tymek = {
                 isNormalUser = true;
