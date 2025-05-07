@@ -23,8 +23,11 @@
             ./disko/sffpc.nix
 
             {
-              boot.loader.systemd-boot.enable = true;
-              boot.loader.efi.canTouchEfiVariables = true;
+              boot.loader.grub = {
+                enable = true;
+                efiSupport = true;
+                efiInstallAsRemovable = true;
+              };
               system.stateVersion = "24.11";
               users.users.tymek = {
                 isNormalUser = true;
