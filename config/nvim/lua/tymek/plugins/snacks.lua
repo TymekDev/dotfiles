@@ -8,9 +8,9 @@ return {
     {
       "<leader>Z",
       function()
-        Snacks.zen.zoom()
+        Snacks.zen.zen({ toggles = { dim = false } })
       end,
-      desc = "Toggle zoom (via snacks.nvim/zen)",
+      desc = "Toggle zen (via snacks.nvim/zen)",
     },
     {
       mode = { "n", "v" },
