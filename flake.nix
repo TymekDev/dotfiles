@@ -25,6 +25,7 @@
             ./configuration/machines/sffpc.nix
             ./configuration/1password.nix
             ./configuration/fish.nix
+            ./configuration/fonts.nix
             ./configuration/fzf.nix
             ./configuration/git.nix
             ./configuration/hyprland.nix
