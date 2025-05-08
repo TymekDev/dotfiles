@@ -22,20 +22,15 @@
             disko.nixosModules.disko
             ./disko/sffpc.nix
 
-            {
-              boot.loader.grub = {
-                enable = true;
-                efiSupport = true;
-                efiInstallAsRemovable = true;
-              };
-              networking.hostName = "sffpc";
-              system.stateVersion = "24.11";
-              users.users.tymek = {
-                isNormalUser = true;
-                home = "/home/tymek";
-                extraGroups = [ "wheel" "networkmanager" ];
-              };
-            }
+            ./configuration/machines/sffpc.nix
+            ./configuration/1password.nix
+            ./configuration/fish.nix
+            ./configuration/fzf.nix
+            ./configuration/git.nix
+            ./configuration/hyprland.nix
+            ./configuration/nix.nix
+            ./configuration/starship.nix
+            ./configuration/tmux.nix
           ];
         };
       };

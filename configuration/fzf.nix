@@ -1,0 +1,4 @@
+{ ... } :
+{
+  programs.fzf.keybindings = true;
+}
