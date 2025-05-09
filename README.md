@@ -30,3 +30,15 @@
    ```sh
    sudo nixos-enter --root /mnt -c "passwd tymek"
    ```
+
+## Extending
+
+To rebuild the system after making changes run:
+
+```sh
+nixos-rebuild switch --use-remote-sudo --flake .
+```
+
+> [!NOTE]
+> If you see an error that a file is missing, then make sure it is tracked by git.
+> Flakes are git-aware and the error doesn't suggest that this might be the issue.
