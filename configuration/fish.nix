@@ -61,6 +61,11 @@
       bind \cg "stty sane; nvim -c 'normal '"
 
       fish_add_path --move ~/.local/bin
+
+      # Start hyprland automatically on tty1 (if it's not running already)
+      if not set -q HYPRLAND_INSTANCE_SIGNATURE && uwsm check may-start
+        exec uwsm start default
+      end
     '';
   };
 }
