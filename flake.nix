@@ -8,10 +8,15 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { self, nixpkgs, disko, ... } @ inputs:
+    { self, nixpkgs, disko, home-manager, ... } @ inputs:
     {
       nixosConfigurations = {
         sffpc = nixpkgs.lib.nixosSystem {
@@ -21,6 +26,18 @@
 
             disko.nixosModules.disko
             ./disko/sffpc.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useUserPackages = true;
+              home-manager.useGlobalPkgs = true;
+              home-manager.users.tymek = {
+                imports = [
+                  ./home-manager/machines/sffpc.nix
+                  ./home-manager/hyprland.nix
+                ];
+              };
+            }
 
             ./configuration/machines/sffpc.nix
             ./configuration/1password.nix
