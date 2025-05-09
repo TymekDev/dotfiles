@@ -59,6 +59,8 @@
       bind \ck forward-word
       bind \cf "stty sane; nvim -c 'normal ' -c 'startinsert'"
       bind \cg "stty sane; nvim -c 'normal '"
+
+      fish_add_path --move ~/.local/bin
     '';
   };
 }
