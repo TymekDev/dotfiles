@@ -29,6 +29,7 @@
 
             home-manager.nixosModules.home-manager
             {
+              home-manager.backupFileExtension = "hmbak";
               home-manager.useUserPackages = true;
               home-manager.useGlobalPkgs = true;
               home-manager.users.tymek = {
