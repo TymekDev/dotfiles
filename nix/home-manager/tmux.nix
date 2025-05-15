@@ -1,5 +1,17 @@
 { ... } :
+let
+  localBinScripts = paths : builtins.listToAttrs (map (name : {
+    name = ".local/bin/${name}";
+    value.source = ../../local/bin/${name};
+  }) paths);
+in
 {
+  home.file = localBinScripts [
+    "tmux-sessionizer"
+    "tmux-prefix-highlight"
+    "update-theme-tmux"
+  ];
+
   programs.tmux = {
     enable = true;
     baseIndex = 1;
