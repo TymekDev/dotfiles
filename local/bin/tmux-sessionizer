@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+subdirs_of=(
+  ~/personal
+  ~/work
+)
+dirs=(
+  ~/Documents
+  ~/Documents/dokumenty
+  ~/Documents/dokumenty/notatki
+  ~/Downloads
+  ~/personal
+  ~/work
+  $(find ${subdirs_of[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null)
+)
+
+selected=$(echo ${dirs[@]} | sed 's/ /\n/g' | sort | sed "s,^$HOME,~," | fzf-tmux -h | sed "s,^~,$HOME,")
+selected_name=$(basename "$selected" | tr . _)
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+if [[ -z $(pgrep tmux) ]]; then
+  tmux new-session -s $selected_name -c $selected
+  exit 0
+fi
+
+if ! tmux has-session -t =$selected_name 2>/dev/null; then
+  tmux new-session -ds $selected_name -c $selected
+fi
+
+if [[ -z $TMUX ]]; then
+  tmux attach-session -t =$selected_name
+else
+  tmux switch-client -t =$selected_name
+fi

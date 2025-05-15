@@ -1,0 +1,16 @@
+#!/bin/sh
+update() {
+  VARIANT="$(cat /tmp/tymek-theme || echo 'dark')"
+  FORMAT="${HOME}/.local/share/nvim/lazy/tokyonight.nvim/extras/tmux/%s.tmux"
+
+  if [ "$VARIANT" = "light" ]; then
+    THEME="tokyonight_day"
+  else
+    THEME="tokyonight_storm"
+  fi
+
+  tmux source $(printf $FORMAT $THEME)
+  tmux-prefix-highlight
+}
+
+update
