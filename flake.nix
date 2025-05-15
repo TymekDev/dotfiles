@@ -42,6 +42,7 @@
                   ./home-manager/machines/sffpc.nix
                   ./home-manager/firefox.nix
                   ./home-manager/hyprland.nix
+                  ./home-manager/tmux.nix
                 ];
               };
             }
@@ -58,7 +59,6 @@
             ./configuration/hyprland.nix
             ./configuration/nix.nix
             ./configuration/starship.nix
-            ./configuration/tmux.nix
           ];
         };
       };
