@@ -13,7 +13,32 @@
         onepassword-password-manager
       ];
 
-      search.default = "ddg";
+      search = {
+        force = true;
+        default = "ddg";
+        engines = {
+          "Nix Packages" = {
+            urls = [{
+              template = "https://search.nixos.org/packages";
+              params = [
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+            definedAliases = [ "@np" ];
+          };
+          "Nix Options" = {
+            urls = [{
+              template = "https://search.nixos.org/options";
+              params = [
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+            definedAliases = [ "@no" ];
+          };
+        };
+      };
 
       settings = {
         # Telemetry
