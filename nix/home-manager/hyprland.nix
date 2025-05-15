@@ -11,6 +11,7 @@
       dwindle.preserve_split = true;
       input.kb_layout = "pl";
       decoration.rounding = 10;
+      misc.disable_hyprland_logo = true;
 
       exec-once = [
         "uwsm app -- 1password --silent"
