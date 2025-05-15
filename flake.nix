@@ -13,10 +13,15 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { self, nixpkgs, disko, home-manager, ... } @ inputs:
+    { self, nixpkgs, disko, home-manager, nur, ... } @ inputs:
     {
       nixosConfigurations = {
         sffpc = nixpkgs.lib.nixosSystem {
@@ -35,10 +40,13 @@
               home-manager.users.tymek = {
                 imports = [
                   ./home-manager/machines/sffpc.nix
+                  ./home-manager/firefox.nix
                   ./home-manager/hyprland.nix
                 ];
               };
             }
+
+            nur.modules.nixos.default
 
             ./configuration/machines/sffpc.nix
             ./configuration/1password.nix
