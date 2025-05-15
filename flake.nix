@@ -27,10 +27,10 @@
         sffpc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hardware-configuration/sffpc.nix
+            ./nix/hardware-configuration/sffpc.nix
 
             disko.nixosModules.disko
-            ./disko/sffpc.nix
+            ./nix/disko/sffpc.nix
 
             home-manager.nixosModules.home-manager
             {
@@ -39,26 +39,26 @@
               home-manager.useGlobalPkgs = true;
               home-manager.users.tymek = {
                 imports = [
-                  ./home-manager/machines/sffpc.nix
-                  ./home-manager/firefox.nix
-                  ./home-manager/hyprland.nix
-                  ./home-manager/tmux.nix
+                  ./nix/home-manager/machines/sffpc.nix
+                  ./nix/home-manager/firefox.nix
+                  ./nix/home-manager/hyprland.nix
+                  ./nix/home-manager/tmux.nix
                 ];
               };
             }
 
             nur.modules.nixos.default
 
-            ./configuration/machines/sffpc.nix
-            ./configuration/1password.nix
-            ./configuration/environment.nix
-            ./configuration/fish.nix
-            ./configuration/fonts.nix
-            ./configuration/fzf.nix
-            ./configuration/git.nix
-            ./configuration/hyprland.nix
-            ./configuration/nix.nix
-            ./configuration/starship.nix
+            ./nix/configuration/machines/sffpc.nix
+            ./nix/configuration/1password.nix
+            ./nix/configuration/environment.nix
+            ./nix/configuration/fish.nix
+            ./nix/configuration/fonts.nix
+            ./nix/configuration/fzf.nix
+            ./nix/configuration/git.nix
+            ./nix/configuration/hyprland.nix
+            ./nix/configuration/nix.nix
+            ./nix/configuration/starship.nix
           ];
         };
       };
