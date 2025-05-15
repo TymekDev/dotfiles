@@ -26,6 +26,7 @@
 
       bind = [
         "$mainMod, Q, exec, $terminal"
+        "$mainMod, W, killactive,"
         "$mainMod, D, exec, eval \"$(tofi-drun)\""
         "$mainMod SHIFT, J, togglesplit, # dwindle"
         "$mainMod, space, fullscreen, 1"
