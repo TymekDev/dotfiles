@@ -8,6 +8,8 @@
 
   networking.hostName = "sffpc";
 
+  nixpkgs.config.allowUnfree = true;
+
   users.users.tymek = {
     isNormalUser = true;
     home = "/home/tymek";
