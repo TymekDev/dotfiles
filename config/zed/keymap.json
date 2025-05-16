@@ -8,7 +8,8 @@
       "g l": "workspace::ActivatePaneRight",
       "g k": "workspace::ActivatePaneUp",
       "g j": "workspace::ActivatePaneDown",
-      "space G": "git_panel::ToggleFocus"
+      "space G": "git_panel::ToggleFocus",
+      "g o": "editor::OpenPermalinkToLine"
       // TODO: change this mapping:
       // "g l": "vim::SelectNext",
     }
