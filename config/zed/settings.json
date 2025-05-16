@@ -1,4 +1,9 @@
 {
+  "languages": {
+    "Markdown": {
+      "show_edit_predictions": false
+    }
+  },
   "telemetry": {
     "metrics": false
   },
