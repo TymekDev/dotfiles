@@ -18,5 +18,19 @@
     "light": "One Light",
     "dark": "One Dark"
   },
-  "relative_line_numbers": true
+  "relative_line_numbers": true,
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.7
+  },
+  "cursor_blink": false,
+  "scrollbar": {
+    "show": "never"
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false
+  },
+  "project_panel": {
+    "button": false
+  }
 }

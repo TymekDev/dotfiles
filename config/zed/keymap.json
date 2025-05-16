@@ -17,5 +17,24 @@
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "[ t": "pane::ActivatePreviousItem",
+      "] t": "pane::ActivateNextItem",
+      "g h": "workspace::ActivatePaneLeft",
+      "g l": "workspace::ActivatePaneRight",
+      "g k": "workspace::ActivatePaneUp",
+      "g j": "workspace::ActivatePaneDown"
+      // TODO: change this mapping:
+      // "g l": "vim::SelectNext",
+    }
+  },
+  {
+    "context": "GitPanel && CommitEditor",
+    "bindings": {
+      "escape": "git_panel::FocusChanges"
+    }
   }
 ]
