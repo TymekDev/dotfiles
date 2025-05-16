@@ -17,5 +17,6 @@
     "mode": "system",
     "light": "One Light",
     "dark": "One Dark"
-  }
+  },
+  "relative_line_numbers": true
 }
