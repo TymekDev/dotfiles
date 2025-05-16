@@ -15,6 +15,23 @@
     }
   },
   {
+    "context": "GitPanel",
+    "bindings": {
+      "ctrl-g f": "git::Fetch",
+      "ctrl-g p": "git::Push",
+      "ctrl-g P": "git::ForcePush",
+      "ctrl-g l": "git::Pull"
+    }
+  },
+  {
+    "context": "GitPanel && ChangesList",
+    "bindings": {
+      "g j": "git_panel::FocusEditor",
+      "g l": "workspace::ActivatePaneRight",
+      "X": "git::RestoreFile"
+    }
+  },
+  {
     "context": "GitPanel && CommitEditor",
     "bindings": {
       "escape": "git_panel::FocusChanges"
