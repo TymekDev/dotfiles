@@ -15,6 +15,15 @@
     }
   },
   {
+    "context": "GitDiff > vim_mode == normal",
+    "bindings": {
+      "g X": "git::Restore",
+      "g s": "git::ToggleStaged",
+      "g c c": "git::Commit",
+      "g c a": "git::Amend"
+    }
+  },
+  {
     "context": "GitPanel",
     "bindings": {
       "ctrl-g f": "git::Fetch",
