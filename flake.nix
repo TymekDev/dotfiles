@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     disko = {
       url = "github:nix-community/disko";
@@ -21,9 +22,12 @@
   };
 
   outputs =
-    { self, nixpkgs, disko, home-manager, nur, ... } @ inputs:
+    { self, nixpkgs, nixpkgs-unstable, disko, home-manager, nur, ... } @ inputs:
     let
       system = "x86_64-linux";
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+      };
     in
     {
       nixosConfigurations = {
@@ -40,6 +44,9 @@
               home-manager.backupFileExtension = "hmbak";
               home-manager.useUserPackages = true;
               home-manager.useGlobalPkgs = true;
+              home-manager.extraSpecialArgs = {
+                inherit pkgs-unstable;
+              };
               home-manager.users.tymek = {
                 xdg.enable = true;
                 imports = [
@@ -49,6 +56,7 @@
                   ./nix/home-manager/hyprpaper.nix
                   ./nix/home-manager/tmux.nix
                   ./nix/home-manager/wezterm.nix
+                  ./nix/home-manager/zed.nix
                 ];
               };
             }
