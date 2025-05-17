@@ -45,6 +45,7 @@
                   ./nix/home-manager/hyprland.nix
                   ./nix/home-manager/hyprpaper.nix
                   ./nix/home-manager/tmux.nix
+                  ./nix/home-manager/wezterm.nix
                 ];
               };
             }
