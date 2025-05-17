@@ -8,7 +8,6 @@
       "$terminal" = "${lib.getExe pkgs.wezterm}";
       "$mainMod" = "SUPER";
 
-      dwindle.preserve_split = true;
       input.kb_layout = "pl";
       decoration.rounding = 10;
       misc.disable_hyprland_logo = true;
@@ -20,7 +19,7 @@
 
       general = {
         allow_tearing = false;
-        layout = "dwindle";
+        layout = "master";
 
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg"; # TODO: update me
       };
