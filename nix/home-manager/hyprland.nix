@@ -15,6 +15,7 @@
 
       exec-once = [
         "uwsm app -- 1password --silent"
+        "${lib.getExe pkgs.waybar}"
       ];
 
       general = {
