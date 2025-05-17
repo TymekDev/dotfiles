@@ -22,10 +22,13 @@
 
   outputs =
     { self, nixpkgs, disko, home-manager, nur, ... } @ inputs:
+    let
+      system = "x86_64-linux";
+    in
     {
       nixosConfigurations = {
         sffpc = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
           modules = [
             ./nix/hardware-configuration/sffpc.nix
 
