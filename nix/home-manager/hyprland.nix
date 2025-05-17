@@ -29,6 +29,7 @@
         "$mainMod, Q, exec, $terminal"
         "$mainMod, W, killactive,"
         "$mainMod, D, exec, eval \"$(tofi-drun)\""
+        "$mainMod SHIFT, D, exec, eval \"$(tofi-run)\""
         "$mainMod SHIFT, J, togglesplit, # dwindle"
         "$mainMod, space, fullscreen, 1"
 
