@@ -29,7 +29,7 @@
         "$mainMod, T, exec, $terminal"
         "$mainMod, D, exec, eval \"$(tofi-drun)\""
         "$mainMod SHIFT, J, togglesplit, # dwindle"
-        "$mainMod, space, fullscreen, 1"
+        "$mainMod, space, fullscreen, 0"
 
         "$mainMod, h, movefocus, l"
         "$mainMod, j, movefocus, d"
