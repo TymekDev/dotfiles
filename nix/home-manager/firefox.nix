@@ -15,7 +15,7 @@
 
       search = {
         force = true;
-        default = "ddg";
+        default = "DuckDuckGo";
         engines = {
           "Nix Packages" = {
             urls = [{
