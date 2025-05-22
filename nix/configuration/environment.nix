@@ -1,6 +1,7 @@
 { pkgs, ... } :
 {
   environment.systemPackages = with pkgs; [
+    discord
     gcc
     neovim
     telegram-desktop
