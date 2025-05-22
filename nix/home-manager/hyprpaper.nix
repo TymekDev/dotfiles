@@ -1,4 +1,3 @@
-# FIXME: prevent the initial flash of default hyprland wallpaper
 { config, ... } :
 let
   filename = "wallpaper.webp";
