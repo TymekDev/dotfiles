@@ -66,6 +66,52 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
 </details>
 
 <details>
+<summary><h3>NixOS</h3></summary>
+
+**Note:** This uses the `sffpc` host.
+Adjust the host, paths, and URIs accordingly if needed.
+
+1. Download the minimal NixOS ISO image and create a bootable USB
+1. Run the live version from the USB
+1. Use [disko](https://github.com/nix-community/disko) with [`nix/disko/sffpc.nix`](./nix/disko/sffpc.nix) to partition the disk:
+   1. Make sure that the `device` value in [`nix/disko/sffpc.nix`](./nix/disko/sffpc.nix) is up to date
+   1. Run:
+   ```sh
+   curl -o /tmp/disko.nix https://raw.githubusercontent.com/TymekDev/dotfiles/main/nix/disko/sffpc.nix
+   sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/disko.nix
+   ```
+   1. Verify that `mount | grep /mnt ` shows new entries for `/mnt` and `/mnt/boot`
+1. _**(Only if setting a new machine)**_ Retrieve `hardware-configuration.nix`:
+   1. Run:
+      ```sh
+      sudo nixos-generate-config --no-filesystems --root /mnt
+      ```
+   1. Add `/mnt/etc/nixos/hardware-configuration.nix` to this repository
+   1. Update [`flake.nix`](./flake.nix) to include the added file
+   1. Push the updated version
+1. Install the system:
+   ```sh
+   sudo nixos-install --root /mnt --flake github:TymekDev/dotfiles#sffpc --no-write-lock-file
+   ```
+1. Set a password for users defined in the configuration:
+   ```sh
+   sudo nixos-enter --root /mnt -c "passwd tymek"
+   ```
+
+<h4>Extending</h4>
+
+To rebuild the system after making changes run:
+
+```sh
+nixos-rebuild switch --use-remote-sudo --flake .
+```
+
+**Note**: If you see an error that a file is missing, then make sure it is tracked by git.
+Flakes are git-aware and the error doesn't suggest that this might be the issue.
+
+</details>
+
+<details>
 <summary><h3>WSL</h3></summary>
 
 1. Install WezTerm (on Windows)
@@ -120,6 +166,7 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
 1. Start Neovim and install its plugins via `:Lazy`
 
 </details>
+
 
 ## Notable Commits in History
 
