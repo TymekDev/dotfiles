@@ -1,9 +1,8 @@
-{ pkgs, ... } :
+{ pkgs, lib, ... } :
 {
   home.packages = [ pkgs.neovim ];
 
-  xdg.configFile."nvim" = {
-    source = ../../config/nvim;
-    recursive = true;
-  };
+  home.activation.symlinkNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    run ln -s $VERBOSE_ARG $HOME/personal/dotfiles/config/nvim $HOME/.config/nvim
+  '';
 }
