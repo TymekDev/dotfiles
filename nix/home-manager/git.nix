@@ -3,6 +3,31 @@
   programs.git = {
     enable = true;
 
+    aliases = {
+      # [d]iff [c]ommit
+      dc = "! f() { REF=\${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f";
+
+      # [d]elete [m]erged
+      dm = "! git branch --merged | grep -vE '(\\*|main|master)' | sed 's,^[+\\*] ,,' | xargs -n 1 git branch -d";
+
+      # [f]ind [c]ode ([s]ingle)
+      fc = "fl --all -S";
+      fcs = "fl -S";
+
+      # [f]ormat [l]og
+      fl = "log --format='%C(yellow)%h  %C(blue)%cd  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short";
+
+      # [g]raph ([s]ingle / [f]ull)
+      g = "gf -15";
+      gf = "fl --graph --all";
+      gs = "fl --graph";
+
+      # [l]ast [h]ash
+      lh = "rev-parse @";
+
+      pr = "! gh pr view --web";
+    };
+
     extraConfig = {
       user = {
         name = "Tymoteusz Makowski";
@@ -13,6 +38,20 @@
       gpg.format = "ssh";
       gpg."ssh".program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
       commit.gpgsign = true;
+
+      branch.sort = "-committerdate";
+      column.ui = "auto";
+      core.editor = "nvim";
+      credential.helper = "cache";
+      difftastic.enable = true;
+      init.defaultBranch = "main";
+      merge.conflictStyle = "zdiff3";
+      pull.rebase = false;
+      push.autoSetupRemote = true;
+      rebase.autoSquash = true;
+      rebase.autoStash = true;
+      rerere.enabled = true;
+      worktree.guessRemote = true;
     };
   };
 }
