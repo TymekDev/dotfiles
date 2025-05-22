@@ -52,6 +52,7 @@
                 imports = [
                   ./nix/home-manager/machines/sffpc.nix
                   ./nix/home-manager/firefox.nix
+                  ./nix/home-manager/fish.nix
                   ./nix/home-manager/git.nix
                   ./nix/home-manager/hyprland.nix
                   ./nix/home-manager/hyprpaper.nix
