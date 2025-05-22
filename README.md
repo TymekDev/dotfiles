@@ -81,7 +81,7 @@ Adjust the host, paths, and URIs accordingly if needed.
    sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/disko.nix
    ```
    1. Verify that `mount | grep /mnt ` shows new entries for `/mnt` and `/mnt/boot`
-1. _**(Only if setting a new machine)**_ Retrieve `hardware-configuration.nix`:
+1. _**(Only if setting up a new machine)**_ Retrieve `hardware-configuration.nix`:
    1. Run:
       ```sh
       sudo nixos-generate-config --no-filesystems --root /mnt
