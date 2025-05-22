@@ -177,6 +177,7 @@ Starting with the oldest:
 - Commit adding setup automation using `make`: ([`7ac8ddf`][]) _Merge branch 'make-magic'_
 - Commit switching from [packer.nvim][] to [lazy.nvim][]: ([`1ad9d73`][]) _Merge pull request #8 from TymekDev/lazy.nvim_
 - Commit replacing the `make`-based setup with a `Brewfile`: ([`fa64d51`](https://github.com/TymekDev/dotfiles/commit/fa64d51d330a540b45bb043493706dc6b5468a8c)) _refactor: use Brewfile_
+- Commit adding the NixOS configuration: ([`c844f53`](https://github.com/TymekDev/dotfiles/commit/c844f535eb858185629250faa3cda237d7ce10fc)) _Merge branch 'nixos'_
 
 [`b9d3554`]: https://github.com/TymekDev/dotfiles/commit/b9d35545c8cac900655c77b28ea1eb28c4b3e0ce
 [home-manager]: https://github.com/nix-community/home-manager
