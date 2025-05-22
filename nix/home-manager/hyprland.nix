@@ -8,9 +8,13 @@
       "$terminal" = "${lib.getExe pkgs.wezterm}";
       "$mainMod" = "SUPER";
 
-      input.kb_layout = "pl";
       decoration.rounding = 10;
       misc.disable_hyprland_logo = true;
+
+      input = {
+        kb_layout = "pl";
+        accel_profile = "flat";
+      };
 
       exec-once = [
         "uwsm app -- 1password --silent"
