@@ -1,10 +1,4 @@
 [alias]
-  # [c]lone [b]are
-  cb = "! f() {  URL=\"${1:?missing URL}\";  NAME=\"${2:-`echo $URL | sed 's#^.*/## ; s/\\.git$//'`}\";  while [ $# -ge 1 ]; do shift 1;  done;  git clone --bare $URL $NAME $@;  git -C $NAME config --local remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\";  git -C $NAME fetch;};f"
-
-  # [d]iff [b]ranch
-  db = "! echo 'Use `git diff source...branch` instead'; exit 1"
-
   # [d]iff [c]ommit
   dc = "! f() { REF=${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f"
 
@@ -18,25 +12,13 @@
   # [f]ormat [l]og
   fl = "log --format='%C(yellow)%h  %C(blue)%cd  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short"
 
-  # [f]ixup and [r]e[b]ase
-  frb = "! f() { REF=${1:?missing REF }; git commit --fixup ${REF} && git rebase --autostash --interactive ${REF}^; }; f"
-
   # [g]raph ([s]ingle / [f]ull)
   g = "gf -15"
   gf = "fl --graph --all"
   gs = "fl --graph"
 
-  # [l]ast [b]ranches | Source: https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
-  lb = "! git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '! seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'"
-
   # [l]ast [h]ash
   lh = "rev-parse @"
-
-  # [e]dit [c]onflicts
-  ec = "! nvim $(git status --porcelain | sed -n 's/^UU *//p' | sed \"s#^#$(git rev-parse --show-toplevel)/#\")"
-
-  # [e]dit [m]odified
-  em = "! nvim $(git status --porcelain | sed -n 's/^ M *//p' | sed \"s#^#$(git rev-parse --show-toplevel)/#\")"
 
   pr = "! gh pr view --web"
 
