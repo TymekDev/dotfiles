@@ -52,6 +52,7 @@
                 imports = [
                   ./nix/home-manager/machines/sffpc.nix
                   ./nix/home-manager/firefox.nix
+                  ./nix/home-manager/git.nix
                   ./nix/home-manager/hyprland.nix
                   ./nix/home-manager/hyprpaper.nix
                   ./nix/home-manager/nvim.nix
@@ -70,7 +71,6 @@
             ./nix/configuration/fish.nix
             ./nix/configuration/fonts.nix
             ./nix/configuration/fzf.nix
-            ./nix/configuration/git.nix
             ./nix/configuration/hyprland.nix
             ./nix/configuration/i18n.nix
             ./nix/configuration/nix.nix
