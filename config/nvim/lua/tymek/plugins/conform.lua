@@ -58,6 +58,7 @@ return {
       lua = { "stylua" },
       query = { "format-queries" },
       sh = { "shfmt" },
+      templ = { "templ" },
       yaml = { "yamlfmt" },
     },
   },

@@ -18,3 +18,4 @@ vim.diagnostic.config({
 })
 
 require("tymek.mappings").setup()
+require("tymek.lsp").setup()
