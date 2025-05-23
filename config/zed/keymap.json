@@ -15,6 +15,18 @@
     }
   },
   {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-j": "editor::ShowCompletions"
+    }
+  },
+  {
+    "context": "vim_mode == insert && showing_completions",
+    "bindings": {
+      "ctrl-j": "editor::ConfirmCompletion"
+    }
+  },
+  {
     "context": "GitDiff > vim_mode == normal",
     "bindings": {
       "g X": "git::Restore",
