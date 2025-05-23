@@ -29,5 +29,8 @@
   },
   "edit_predictions": {
     "mode": "subtle"
+  },
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font"
   }
 }
