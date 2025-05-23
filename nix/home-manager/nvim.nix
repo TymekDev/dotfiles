@@ -3,6 +3,6 @@
   home.packages = [ pkgs.neovim ];
 
   home.activation.symlinkNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    run [ ! -L $HOME/.config/nvim ] && ln -s $VERBOSE_ARG $HOME/personal/dotfiles/config/nvim/ -t $HOME/.config/
+    run [ ! -L $HOME/.config/nvim ] && ln -s $VERBOSE_ARG $HOME/personal/dotfiles/config/nvim/ -t $HOME/.config/ || exit 0
   '';
 }
