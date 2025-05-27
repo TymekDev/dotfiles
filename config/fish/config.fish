@@ -70,16 +70,6 @@ if test (uname) = "Darwin"
   set -x SSH_AUTH_SOCK ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 end
 
-fish_add_path ~/.cargo/bin
-fish_add_path ~/.npm-global/bin
-fish_add_path ~/go/bin
-fish_add_path ~/Library/Python/3.9/bin
-fish_add_path /usr/local/go/bin
-fish_add_path --move ~/.local/bin
-fish_add_path --move ~/.local/share/bob/nvim-bin
-fish_add_path --move $BUN_INSTALL/bin
-fish_add_path --move ~/.local/share/n/bin
-
 # homebrew
 set -l BREW_DIR
 if test (uname) = "Darwin"
@@ -106,6 +96,16 @@ if test (uname) = "Darwin"
   fish_add_path $PNPM_HOME
 end
 # pnpm end
+
+fish_add_path ~/.cargo/bin
+fish_add_path ~/.npm-global/bin
+fish_add_path ~/go/bin
+fish_add_path ~/Library/Python/3.9/bin
+fish_add_path /usr/local/go/bin
+fish_add_path --move ~/.local/bin
+fish_add_path --move ~/.local/share/bob/nvim-bin
+fish_add_path --move $BUN_INSTALL/bin
+fish_add_path --move ~/.local/share/n/bin
 
 fzf --fish | source
 
