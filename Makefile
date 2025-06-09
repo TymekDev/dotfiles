@@ -47,7 +47,7 @@ install-essentials:
 .PHONY: setup-gh-codespace
 setup-gh-codespace: restow install-essentials setup-terminfo
 	echo "${BREW_BIN}/fish" | sudo tee -a /etc/shells
-	chsh -s "${BREW_BIN}/fish"
+	sudo chsh "$$(id -un)" --shell "${BREW_BIN}/fish"
 	${BREW_BIN}/bob use stable
 
 .PHONY: setup-terminfo
