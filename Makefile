@@ -40,3 +40,10 @@ unstow: install-stow
 .PHONY: ${INSTALL_BREW_ESSENTIALS}
 ${INSTALL_BREW_ESSENTIALS}:
 	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install $(subst install-,,$@)
+
+.PHONY: setup-terminfo
+setup-terminfo:
+	tempfile=$$(mktemp) \
+		&& curl -o $$tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
+		&& tic -x -o ~/.terminfo $$tempfile \
+		&& rm $$tempfile
