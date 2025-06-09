@@ -11,8 +11,8 @@ dirs=(
   ~/Downloads
   ~/personal
   ~/work
-  $(find ${subdirs_of[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null)
 )
+dirs=$(find ${subdirs_of[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null)
 
 selected=$(echo ${dirs[@]} | sed 's/ /\n/g' | sort | sed "s,^$HOME,~," | fzf-tmux -h | sed "s,^~,$HOME,")
 selected_name=$(basename "$selected" | tr . _)
