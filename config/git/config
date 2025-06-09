@@ -62,6 +62,9 @@
 [includeIf "gitdir:~/work/**"]
   path = "~/.config/git/work"
 
+[includeIf "gitdir:/workspaces/**"]
+  path = "~/.config/git/work"
+
 [gpg]
   format = ssh
 
