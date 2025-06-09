@@ -24,7 +24,6 @@ BREW_ESSENTIALS=bat \
 								starship \
 								stow \
 								tmux
-INSTALL_BREW_ESSENTIALS=$(addprefix install-,${BREW_ESSENTIALS})
 
 .PHONY: restow
 restow: install-stow
@@ -37,12 +36,16 @@ unstow: install-stow
 	${BREW_BIN}/stow --delete --verbose --target ~/.config config
 	${BREW_BIN}/stow --delete --verbose --target ~/.local local
 
-.PHONY: ${INSTALL_BREW_ESSENTIALS}
-${INSTALL_BREW_ESSENTIALS}:
-	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install $(subst install-,,$@)
+.PHONY: install-stow
+install-stow:
+	@[ -x ${BREW_BIN}/stow ] || ${BREW} install stow
+
+.PHONY: install-essentials
+install-essentials:
+	${BREW} install ${BREW_ESSENTIALS}
 
 .PHONY: setup-gh-codespace
-setup-gh-codespace: restow setup-terminfo ${INSTALL_BREW_ESSENTIALS}
+setup-gh-codespace: restow install-essentials setup-terminfo
 	echo "${BREW_BIN}/fish" | sudo tee -a /etc/shells
 	chsh -s "${BREW_BIN}/fish"
 	${BREW_BIN}/bob use stable
