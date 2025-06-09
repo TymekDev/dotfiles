@@ -1,7 +1,7 @@
 #!/bin/sh
 update() {
   VARIANT="$(cat /tmp/tymek-theme || echo 'dark')"
-  FORMAT="${HOME}/.local/share/nvim/lazy/tokyonight.nvim/extras/tmux/%s.tmux"
+  FORMAT="$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/tmux/%s.tmux"
 
   if [ "$VARIANT" = "light" ]; then
     THEME="tokyonight_day"
