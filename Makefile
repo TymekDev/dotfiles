@@ -41,6 +41,12 @@ unstow: install-stow
 ${INSTALL_BREW_ESSENTIALS}:
 	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install $(subst install-,,$@)
 
+.PHONY: setup-gh-codespace
+setup-gh-codespace: restow setup-terminfo ${INSTALL_BREW_ESSENTIALS}
+	echo "${BREW_BIN}/fish" | sudo tee -a /etc/shells
+	chsh -s "${BREW_BIN}/fish"
+	${BREW_BIN}/bob use stable
+
 .PHONY: setup-terminfo
 setup-terminfo:
 	tempfile=$$(mktemp) \
