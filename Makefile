@@ -10,6 +10,21 @@ endif
 BREW_BIN = ${BREW_DIR}/bin
 BREW = ${BREW_BIN}/brew
 
+BREW_ESSENTIALS=bat \
+								bob \
+								difftastic \
+								eza \
+								fd \
+								fish \
+								fzf \
+								git-absorb \
+								ijq \
+								jq \
+								ripgrep \
+								starship \
+								stow \
+								tmux
+INSTALL_BREW_ESSENTIALS=$(addprefix install-,${BREW_ESSENTIALS})
 
 .PHONY: restow
 restow: install-stow
@@ -22,6 +37,6 @@ unstow: install-stow
 	${BREW_BIN}/stow --delete --verbose --target ~/.config config
 	${BREW_BIN}/stow --delete --verbose --target ~/.local local
 
-.PHONY: install-stow
-install-stow:
-	@[ -x ${BREW_BIN}/stow ] || ${BREW} install stow
+.PHONY: ${INSTALL_BREW_ESSENTIALS}
+${INSTALL_BREW_ESSENTIALS}:
+	[ -x ${BREW_BIN}/$(subst install-,,$@) ] || ${BREW} install $(subst install-,,$@)
