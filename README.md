@@ -167,6 +167,38 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 
 </details>
 
+<details>
+<summary><h3>GitHub Codespace</h3></summary>
+
+1. Make sure the devcontainer has SSH enabled and homebrew installed. For example:
+   ```json
+   {
+     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+     "features": {
+       "ghcr.io/devcontainers/features/sshd:1": {},
+       "ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {}
+     }
+   }
+   ```
+1. Create the codespace:
+   ```sh
+   gh codespace create --location 'WestEurope' --repo '...'
+   ```
+1. SSH into the codespace:
+   ```sh
+   gh codespace ssh -- -o IdentitiesOnly=yes
+   ```
+1. Clone the repo:
+   ```sh
+   git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles
+   ```
+1. Run:
+   ```sh
+   make --directory ~/personal/dotfiles setup-os-codespace
+   ```
+1. Start Neovim and install its plugins via `:Lazy`
+
+</details>
 
 ## Notable Commits in History
 
