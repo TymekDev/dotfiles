@@ -44,14 +44,14 @@ install-stow:
 install-essentials:
 	${BREW} install ${BREW_ESSENTIALS}
 
-.PHONY: setup-gh-codespace
-setup-gh-codespace: restow install-essentials setup-terminfo
+.PHONY: setup-os-codespace
+setup-os-codespace: restow install-essentials configure-terminfo
 	echo "${BREW_BIN}/fish" | sudo tee -a /etc/shells
 	sudo chsh "$$(id -un)" --shell "${BREW_BIN}/fish"
 	${BREW_BIN}/bob use stable
 
-.PHONY: setup-terminfo
-setup-terminfo:
+.PHONY: configure-terminfo
+configure-terminfo:
 	tempfile=$$(mktemp) \
 		&& curl -o $$tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
 		&& tic -x -o ~/.terminfo $$tempfile \
