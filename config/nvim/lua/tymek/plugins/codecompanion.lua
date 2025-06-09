@@ -10,6 +10,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    "ravitemer/codecompanion-history.nvim",
   },
   opts = {
     strategies = {
@@ -21,6 +22,12 @@ return {
       },
       cmd = {
         adapter = adapter,
+      },
+    },
+    extensions = {
+      history = {
+        enabled = true,
+        opts = { keymap = "gH" },
       },
     },
   },
