@@ -12,6 +12,14 @@ dirs=(
   ~/personal
   ~/work
 )
+if [[ $(uname -n | grep codespaces) ]]; then
+  subdirs_of=(
+    ~/personal
+    ~/work
+    /workspaces
+  )
+  dirs=()
+fi
 dirs=$(find ${subdirs_of[@]} -maxdepth 1 -mindepth 1 -not -name '.*' -type d 2>/dev/null)
 
 selected=$(echo ${dirs[@]} | sed 's/ /\n/g' | sort | sed "s,^$HOME,~," | fzf-tmux -h | sed "s,^~,$HOME,")
