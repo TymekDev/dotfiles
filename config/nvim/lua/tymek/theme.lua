@@ -14,7 +14,7 @@ local detect = function(callback)
   vim.system(
     {
       "cat",
-      "/tmp/tymek-theme",
+      vim.fn.expand("~/.local/state/tymek-theme"),
     },
     { text = true },
     ---@param obj vim.SystemCompleted

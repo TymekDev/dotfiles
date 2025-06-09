@@ -42,7 +42,7 @@ M.set = function(config, is_windows)
   local cmd = {
     "sh",
     "-c",
-    'echo "' .. mode .. '" > /tmp/tymek-theme',
+    'echo "' .. mode .. '" > ~/.local/state/tymek-theme',
   }
   if is_windows == true then
     table.insert(cmd, 1, "wsl")
