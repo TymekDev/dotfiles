@@ -70,6 +70,10 @@ if test (uname) = "Darwin"
   set -x SSH_AUTH_SOCK ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 end
 
+if test -f /etc/fish/conf.d/codespaces.fish
+  source /etc/fish/conf.d/codespaces.fish
+end
+
 # homebrew
 set -l BREW_DIR
 if test (uname) = "Darwin"
