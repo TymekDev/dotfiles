@@ -9,7 +9,7 @@ local function lsp_on_attach()
 
         vim.lsp.buf.format({
           filter = function(client)
-            if vim.b[opts.buf].use_air then
+            if vim.g.use_air then
               return client.name == "air"
             end
             return client.name == "r_language_server"
