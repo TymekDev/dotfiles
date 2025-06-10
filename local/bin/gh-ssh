@@ -5,6 +5,7 @@ set -e
 CODESPACES=$(gh codespace list --json name,repository)
 REPO=$(echo $CODESPACES | jq -r '.[] .repository' | gum choose)
 CS_NAME=$(echo $CODESPACES | jq -r ".[] | select(.repository == \"$REPO\") | .name")
+SESSION_NAME=$(echo $REPO | sed 's,.*/,,' | tr . _)
 
 gh codespace cp --codespace "$CS_NAME" --expand -- \
   -q \
@@ -15,5 +16,5 @@ gh codespace cp --codespace "$CS_NAME" --expand -- \
 gh codespace ssh --codespace "$CS_NAME" -- \
   -o IdentitiesOnly=yes \
   -o RequestTTY=yes \
-  -o RemoteCommand="tmux attach-session || tmux new-session -c (find '/workspaces/' -mindepth 1 -maxdepth 1 -type d -not -name '.*')" \
+  -o RemoteCommand="tmux attach-session || tmux new-session -c /workspaces/$SESSION_NAME -s $SESSION_NAME" \
   $@
