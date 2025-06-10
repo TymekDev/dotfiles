@@ -71,6 +71,7 @@ if test (uname) = "Darwin"
 end
 
 if test -f /etc/fish/conf.d/codespaces.fish
+  set -gx SHELL_LOGGED_IN true
   source /etc/fish/conf.d/codespaces.fish
 end
 
