@@ -17,6 +17,7 @@ BREW_ESSENTIALS=bat \
 								fd \
 								fish \
 								fzf \
+								gh \
 								git-absorb \
 								ijq \
 								jq \
