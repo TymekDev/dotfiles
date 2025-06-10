@@ -1,3 +1,4 @@
+# vim:ft=gitconfig
 [alias]
   # [d]iff [c]ommit
   dc = "! f() { REF=${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f"
