@@ -1,0 +1,3 @@
+# vim:ft=gitconfig
+[user]
+  email = "tymoteusz.makowski@appsilon.com"

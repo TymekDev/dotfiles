@@ -1,5 +1,3 @@
 # vim:ft=gitconfig
 [user]
-  name = "Tymoteusz Makowski"
-  email = "tymoteusz.makowski@appsilon.com"
   signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9tByXqdaKd0OpKWNYFgF0KHYANYJfCvbzSXdWaZh4A"

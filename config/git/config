@@ -26,9 +26,6 @@
 [core]
   editor = "nvim"
 
-[credential]
-  helper = "cache"
-
 [diff]
   external = "difft --syntax-highlight off"
 
@@ -57,23 +54,15 @@
 [worktree]
   guessRemote = true
 
-[includeIf "gitdir:~/personal/**"]
-  path = "~/.config/git/personal"
+[user]
+  name = "Tymoteusz Makowski"
+  email = "tymek.makowski@gmail.com"
 
-[includeIf "gitdir:~/work/**"]
-  path = "~/.config/git/work"
+[includeIf "gitdir:/Users/**"]
+  path = "~/.config/git/os-macos"
 
 [includeIf "gitdir:/workspaces/**"]
-  path = "~/.config/git/work"
-
-[gpg]
-  format = ssh
-
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
-[commit]
-  gpgsign = true
+  path = "~/.config/git/os-codespace"
 
 [column]
   ui = auto

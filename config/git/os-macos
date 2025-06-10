@@ -1,0 +1,19 @@
+# vim:ft=gitconfig
+[includeIf "gitdir:~/personal/**"]
+  path = "~/.config/git/personal-signingKey"
+
+[includeIf "gitdir:~/work/**"]
+  path = "~/.config/git/work-email"
+  path = "~/.config/git/work-signingKey"
+
+[credential]
+  helper = "cache"
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
