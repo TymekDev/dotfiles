@@ -16,4 +16,3 @@ vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help)
 
 -- Others
 vim.keymap.set("n", "<Leader>z", "1z=")
-vim.keymap.set("n", "q:", "<Nop>")
