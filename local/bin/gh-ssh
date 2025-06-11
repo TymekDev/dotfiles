@@ -14,7 +14,7 @@ gh codespace cp --codespace "$CS_NAME" --expand -- \
   remote:~/.local/state/tymek-theme || echo "Failed to copy /tmp/tymek-theme"
 
 PORT=$(shuf -i 40000-49999 -n 1)
-serve-remote-open --port $PORT &
+serve-remote-open --port $PORT 2>/dev/null &
 PID=$!
 cleanup() {
   kill $PID
