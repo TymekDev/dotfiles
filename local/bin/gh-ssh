@@ -13,8 +13,18 @@ gh codespace cp --codespace "$CS_NAME" --expand -- \
   ~/.local/state/tymek-theme \
   remote:~/.local/state/tymek-theme || echo "Failed to copy /tmp/tymek-theme"
 
+PORT=$(shuf -i 40000-49999 -n 1)
+serve-remote-open --port $PORT &
+PID=$!
+cleanup() {
+  kill $PID
+  exit
+}
+trap cleanup EXIT INT TERM
+
 gh codespace ssh --codespace "$CS_NAME" -- \
   -o IdentitiesOnly=yes \
   -o RequestTTY=yes \
   -o RemoteCommand="tmux attach-session || tmux new-session -c /workspaces/$SESSION_NAME -s $SESSION_NAME" \
+  -R 8765:localhost:$PORT \
   $@

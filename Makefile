@@ -50,6 +50,7 @@ setup-os-codespace: restow install-essentials configure-terminfo
 	echo "${BREW_BIN}/fish" | sudo tee -a /etc/shells
 	sudo chsh "$$(id -un)" --shell "${BREW_BIN}/fish"
 	${BREW_BIN}/bob use stable
+	ln -sf request-remote-open ~/.local/bin/xdg-open
 
 .PHONY: configure-terminfo
 configure-terminfo:
