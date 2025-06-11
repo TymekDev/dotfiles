@@ -1,0 +1,5 @@
+#!/bin/sh
+gh codespace ssh -- \
+  -o IdentitiesOnly=yes \
+  'git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles &&
+  make --directory ~/personal/dotfiles setup-os-codespace'
