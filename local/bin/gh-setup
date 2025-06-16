@@ -1,5 +1,28 @@
 #!/bin/sh
-gh codespace ssh -- \
+
+set -e
+
+CODESPACES=$(gh codespace list --json name,repository)
+REPO=$(echo $CODESPACES | jq -r '.[] .repository' | gum choose)
+CS_NAME=$(echo $CODESPACES | jq -r ".[] | select(.repository == \"$REPO\") | .name")
+
+cs_state() {
+  gh codespace view --codespace "$CS_NAME" --json state --jq '.state'
+}
+
+CS_STATE=$(cs_state)
+until [ "$CS_STATE" == "Available" -o "$CS_STATE" == "Shutdown" ]; do
+  sleep 15
+  CS_STATE=$(cs_state)
+done
+
+STATUS=$(gh codespace ssh --codespace "$CS_NAME" -- \
   -o IdentitiesOnly=yes \
   'git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles &&
-  make --directory ~/personal/dotfiles setup-os-codespace'
+  make --directory ~/personal/dotfiles setup-os-codespace' &&
+  echo "is ready to go!" ||
+  echo "failed to set up :-(")
+
+if [ "$(uname)" = "Darwin" ]; then
+  osascript -e "tell app \"System Events\" to display alert \"Codespace Rebuild Completed\" message \"Codespace for $REPO $MSG\""
+fi
