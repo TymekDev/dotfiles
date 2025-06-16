@@ -102,6 +102,13 @@ if test (uname) = "Darwin"
 end
 # pnpm end
 
+# pipx
+if test (uname) = "Linux"
+  set -gx PIPX_HOME /usr/local/py-utils
+  fish_add_path $PIPX_HOME/bin
+end
+# pipx end
+
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.npm-global/bin
 fish_add_path ~/go/bin
