@@ -51,6 +51,7 @@ setup-os-codespace: restow install-essentials configure-terminfo
 	sudo chsh "$$(id -un)" --shell "${BREW_BIN}/fish"
 	${BREW_BIN}/bob use stable
 	ln -sf request-remote-open ~/.local/bin/xdg-open
+	~/.local/share/bob/nvim-bin/nvim --headless "+Lazy! sync" +qa
 
 .PHONY: configure-terminfo
 configure-terminfo:
