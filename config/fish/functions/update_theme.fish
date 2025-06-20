@@ -1,12 +1,15 @@
 function update_theme
-  set -f VARIANT "$(cat ~/.local/state/tymek-theme || echo 'dark')"
-  set -f FORMAT "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/%s.fish"
+  set -f THEME "$(cat ~/.local/state/tymek-theme | jq -r '.theme' || echo 'tokyonight')"
+  set -f MODE "$(cat ~/.local/state/tymek-theme | jq -r '.mode' || echo 'dark')"
 
-  if [ "$VARIANT" = "light" ]
-    set -f THEME "tokyonight_day"
-  else
-    set -f THEME "tokyonight_storm"
+  if [ "$THEME" = "tokyonight" ]
+    if [ "$MODE" = "light" ]
+      set -f THEME "tokyonight_day"
+    else
+      set -f THEME "tokyonight_storm"
+    end
+    set -f FISH_THEME "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/$THEME.fish"
   end
 
-  source $(printf $FORMAT $THEME)
+  source $FISH_THEME
 end

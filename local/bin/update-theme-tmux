@@ -1,15 +1,18 @@
 #!/bin/sh
 update() {
-  VARIANT="$(cat ~/.local/state/tymek-theme || echo 'dark')"
-  FORMAT="$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/tmux/%s.tmux"
+  THEME=$(cat ~/.local/state/tymek-theme | jq -r '.theme' || echo 'tokyonight')
+  MODE="$(cat ~/.local/state/tymek-theme | jq -r '.mode' || echo 'dark')"
 
-  if [ "$VARIANT" = "light" ]; then
-    THEME="tokyonight_day"
-  else
-    THEME="tokyonight_storm"
+  if [ "$THEME" = "tokyonight" ]; then
+    if [ "$MODE" = "light" ]; then
+      THEME="tokyonight_day"
+    else
+      THEME="tokyonight_storm"
+    fi
+    TMUX_THEME="$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/tmux/$THEME.tmux"
   fi
 
-  tmux source $(printf $FORMAT $THEME)
+  tmux source $TMUX_THEME
   tmux-prefix-highlight
 }
 

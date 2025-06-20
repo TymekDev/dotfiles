@@ -1,28 +1,36 @@
 local wezterm = require("wezterm")
 local M = {}
 
----@type tymek.wezterm.Mode|nil
-local force = nil
+---@alias tymek.wezterm.Mode "light"|"dark"
 
----@enum (key) tymek.wezterm.Mode
-local theme = {
-  light = "tokyonight_day",
-  dark = "tokyonight_storm",
+local force = {
+  ---@type tymek.wezterm.Mode|nil
+  mode = nil,
+  ---@type tymek.wezterm.Theme
+  theme = "tokyonight",
+}
+
+---@enum (key) tymek.wezterm.Theme
+local themes = {
+  ---@type table<tymek.wezterm.Mode, string>
+  tokyonight = {
+    light = "tokyonight_day",
+    dark = "tokyonight_storm",
+  },
 }
 
 ---@return tymek.wezterm.Mode
 local detect = function()
-  if force ~= nil then
-    return force
+  if force.mode ~= nil then
+    return force.mode
   elseif wezterm.gui and wezterm.gui.get_appearance():find("Light") then
     return "light"
   end
   return "dark"
 end
 
----@param mode tymek.wezterm.Mode
-local set_colors = function(config, mode)
-  local colors = wezterm.color.get_builtin_schemes()[theme[mode]]
+local set_colors_tokyonight = function(config, mode)
+  local colors = wezterm.color.get_builtin_schemes()[themes.tokyonight[mode]]
   local active_titlebar_bg
   if mode == "light" then
     colors.background = "#f1f2f7"
@@ -38,11 +46,18 @@ end
 
 M.set = function(config, is_windows)
   local mode = detect()
-  set_colors(config, mode)
+  local theme = force.theme
+
+  if theme == "tokyonight" then
+    set_colors_tokyonight(config, mode)
+  else
+    wezterm.log_error(string.format("Unknown theme: '%s'", theme))
+  end
+
   local cmd = {
     "sh",
     "-c",
-    'echo "' .. mode .. '" > ~/.local/state/tymek-theme',
+    string.format([[echo '{"mode": "%s", "theme": "%s"}' > ~/.local/state/tymek-theme]], mode, theme),
   }
   if is_windows == true then
     table.insert(cmd, 1, "wsl")
