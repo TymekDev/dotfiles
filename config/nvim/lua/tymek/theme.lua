@@ -3,13 +3,18 @@ local M = {
   mode = nil,
 }
 
----@enum (key) tymek.theme.Mode
-local theme = {
-  light = "tokyonight-day",
-  dark = "tokyonight-storm",
+---@alias tymek.theme.Mode "light"|"dark"
+
+---@enum (key) tymek.theme.Theme
+local themes = {
+  ---@type table<tymek.theme.Mode, string>
+  tokyonight = {
+    light = "tokyonight-day",
+    dark = "tokyonight-storm",
+  },
 }
 
----@param callback fun(mode: tymek.theme.Mode|nil)
+---@param callback fun(mode: tymek.theme.Mode|nil, theme: tymek.theme.Theme|nil)
 local detect = function(callback)
   vim.system(
     {
@@ -20,26 +25,28 @@ local detect = function(callback)
     ---@param obj vim.SystemCompleted
     vim.schedule_wrap(function(obj)
       if obj.code ~= 0 then
-        callback(nil)
+        callback(nil, nil)
         return
       end
 
-      callback(vim.trim(obj.stdout))
+      local result = vim.json.decode(vim.trim(obj.stdout))
+      callback(result.mode, result.theme)
     end)
   )
 end
 
 M.update = function()
-  detect(function(mode)
+  detect(function(mode, theme)
     mode = mode or "dark"
+    theme = theme or "tokyonight"
     M.mode = mode
 
     vim.api.nvim_cmd({
       cmd = "colorscheme",
-      args = { theme[mode] },
+      args = { themes[theme][mode] },
     }, {})
 
-    if mode == "light" then
+    if theme == "tokyonight" and mode == "light" then
       vim.api.nvim_cmd({ cmd = "highlight", args = { "Normal", "guibg=#f1f2f7" } }, {})
       vim.api.nvim_cmd({ cmd = "highlight", args = { "SignColumn", "guibg=none" } }, {})
     end
