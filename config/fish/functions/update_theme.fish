@@ -2,14 +2,28 @@ function update_theme
   set -f THEME "$(cat ~/.local/state/tymek-theme | jq -r '.theme' || echo 'tokyonight')"
   set -f MODE "$(cat ~/.local/state/tymek-theme | jq -r '.mode' || echo 'dark')"
 
+  if [ "$THEME" = "rosepine" ]
+    if [ "$MODE" = "light" ]
+      set -f THEME "Rosé Pine Dawn"
+    else
+      set -f THEME "Rosé Pine Moon"
+    end
+
+    fish_config theme choose $THEME
+    return
+  end
+
   if [ "$THEME" = "tokyonight" ]
     if [ "$MODE" = "light" ]
       set -f THEME "tokyonight_day"
     else
       set -f THEME "tokyonight_storm"
     end
-    set -f FISH_THEME "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/$THEME.fish"
+
+    source "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/$THEME.fish"
+    return
   end
 
-  source $FISH_THEME
+  echo "[ERROR] Unknown theme: '$THEME'"
+  return 1
 end
