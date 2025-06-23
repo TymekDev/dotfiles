@@ -1,0 +1,7 @@
+[submodule "config/wezterm/rose-pine"]
+  path = config/wezterm/rose-pine
+  url = https://github.com/neapsix/wezterm
+  branch = main
+[submodule "config/tmux/rose-pine"]
+  path = config/tmux/rose-pine
+  url = https://github.com/rose-pine/tmux
