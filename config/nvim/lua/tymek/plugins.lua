@@ -14,6 +14,11 @@ return {
     end,
   },
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    priority = 999,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
