@@ -47,7 +47,7 @@ install-essentials:
 	${BREW} install ${BREW_ESSENTIALS}
 
 .PHONY: setup-os-codespace
-setup-os-codespace: restow install-essentials configure-terminfo
+setup-os-codespace: restow install-essentials configure-terminfo download-rose-pine
 	echo "${BREW_BIN}/fish" | sudo tee -a /etc/shells
 	sudo chsh "$$(id -un)" --shell "${BREW_BIN}/fish"
 	${BREW_BIN}/bob use stable
@@ -60,3 +60,11 @@ configure-terminfo:
 		&& curl -o $$tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
 		&& tic -x -o ~/.terminfo $$tempfile \
 		&& rm $$tempfile
+
+.PHONY: download-rose-pine
+download-rose-pine:
+	mkdir -p ~/.config/fish/themes/
+	tempdir=$$(mktemp --dir) \
+		&& git clone --depth 1 --single-branch https://github.com/rose-pine/fish $$tempdir \
+		&& mv $$tempdir/themes/* ~/.config/fish/themes/ \
+		&& rm -rf $$tempdir
