@@ -8,6 +8,11 @@ local M = {
 ---@enum (key) tymek.theme.Theme
 local themes = {
   ---@type table<tymek.theme.Mode, string>
+  rosepine = {
+    light = "rose-pine-dawn",
+    dark = "roes-pine-moon",
+  },
+  ---@type table<tymek.theme.Mode, string>
   tokyonight = {
     light = "tokyonight-day",
     dark = "tokyonight-storm",
