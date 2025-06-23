@@ -11,8 +11,6 @@ return {
           hl.NvimSurroundHighlight = { link = "IncSearch" }
         end,
       })
-
-      require("tymek.theme").update()
     end,
   },
   {
