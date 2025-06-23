@@ -13,6 +13,11 @@ local force = {
 ---@enum (key) tymek.wezterm.Theme
 local themes = {
   ---@type table<tymek.wezterm.Mode, string>
+  rosepine = {
+    light = "dawn",
+    dark = "moon",
+  },
+  ---@type table<tymek.wezterm.Mode, string>
   tokyonight = {
     light = "tokyonight_day",
     dark = "tokyonight_storm",
@@ -27,6 +32,12 @@ local detect = function()
     return "light"
   end
   return "dark"
+end
+
+local set_colors_rosepine = function(config, mode)
+  local theme = require("./rose-pine/plugin")[themes.rosepine[mode]]
+  config.colors = theme.colors()
+  config.window_frame = theme.window_frame()
 end
 
 local set_colors_tokyonight = function(config, mode)
@@ -48,7 +59,9 @@ M.set = function(config, is_windows)
   local mode = detect()
   local theme = force.theme
 
-  if theme == "tokyonight" then
+  if theme == "rosepine" then
+    set_colors_rosepine(config, mode)
+  elseif theme == "tokyonight" then
     set_colors_tokyonight(config, mode)
   else
     wezterm.log_error(string.format("Unknown theme: '%s'", theme))
