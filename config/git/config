@@ -11,7 +11,7 @@
   fcs = "fl -S"
 
   # [f]ormat [l]og
-  fl = "log --format='%C(yellow)%h  %C(blue)%cd  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short"
+  fl = "log --format='%C(yellow)%h  %C(blue)%ad/%cd  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short"
 
   # [g]raph ([s]ingle / [f]ull)
   g = "gf -15"
