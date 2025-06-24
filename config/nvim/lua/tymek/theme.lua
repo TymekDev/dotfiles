@@ -42,6 +42,11 @@ end
 
 M.update = function()
   detect(function(mode, theme)
+    if theme ~= nil and themes[theme] == nil then
+      vim.notify(string.format("[ERROR] Unknown theme: '%s'", theme), vim.log.levels.ERROR)
+      return
+    end
+
     mode = mode or "dark"
     theme = theme or "tokyonight"
     M.mode = mode
