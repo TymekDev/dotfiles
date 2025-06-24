@@ -66,7 +66,6 @@ M.setup = function()
 end
 
 M.setup_lsp = function()
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
   vim.keymap.set("n", "gK", vim.diagnostic.open_float, { buffer = 0 })
   vim.keymap.set("n", "<Leader>D", function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
@@ -74,7 +73,6 @@ M.setup_lsp = function()
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 }) -- [d]efinition
   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 }) -- [t]ype definition
-  vim.keymap.set("n", "gca", vim.lsp.buf.code_action, { buffer = 0 }) -- [c]ode [a]ction
 
   vim.keymap.set("n", "[D", function()
     vim.diagnostic.goto_prev({ severity = "ERROR" })
