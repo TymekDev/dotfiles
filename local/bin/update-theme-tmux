@@ -9,11 +9,26 @@ update() {
     else
       THEME="tokyonight_storm"
     fi
-    TMUX_THEME="$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/tmux/$THEME.tmux"
+
+    tmux source "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/tmux/$THEME.tmux"
+    tmux-prefix-highlight
+    return
   fi
 
-  tmux source $TMUX_THEME
-  tmux-prefix-highlight
+  if [ "$THEME" = "rosepine" ]; then
+    if [ "$MODE" = "light" ]; then
+      THEME="dawn"
+    else
+      THEME="moon"
+    fi
+
+    tmux set -g @rose_pine_variant $THEME
+    tmux run ~/.config/tmux/rose-pine/rose-pine.tmux
+    return
+  fi
+
+  echo "[ERROR] Unknown theme: '$THEME'"
+  return 1
 }
 
 update
