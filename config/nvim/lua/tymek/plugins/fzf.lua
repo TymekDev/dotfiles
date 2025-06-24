@@ -1,5 +1,7 @@
 -- FIXME: colors opening nvim with live_grep are off
 
+-- NOTE: git_commits, git_bcommits, and grep_curbuf seem useful.
+
 ---@module "lazy"
 ---@type LazySpec
 return {

@@ -1,3 +1,5 @@
+-- NOTE: <C-l> in LSP mappings autocompletes filtering.
+
 ---@module "lazy"
 ---@type LazySpec
 return {
