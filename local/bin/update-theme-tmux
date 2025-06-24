@@ -24,6 +24,7 @@ update() {
 
     tmux set -g @rose_pine_variant $THEME
     tmux run ~/.config/tmux/rose-pine/rose-pine.tmux
+    tmux-prefix-highlight
     return
   fi
 
