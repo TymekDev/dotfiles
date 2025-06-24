@@ -2,7 +2,7 @@
 ---@type LazySpec
 return {
   "stevearc/quicker.nvim",
-  event = "QuickFixCmdPost",
+  event = "VeryLazy",
   ---@module "quicker"
   ---@type quicker.SetupOptions
   opts = {
