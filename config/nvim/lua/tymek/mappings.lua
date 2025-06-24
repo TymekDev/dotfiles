@@ -65,23 +65,4 @@ M.setup = function()
   vim.keymap.set({ "n", "x" }, "<Leader>a", "<Plug>(EasyAlign)")
 end
 
-M.setup_lsp = function()
-  vim.keymap.set("n", "gK", vim.diagnostic.open_float, { buffer = 0 })
-  vim.keymap.set("n", "<Leader>D", function()
-    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-  end, { buffer = 0 })
-
-  vim.keymap.set("n", "[D", function()
-    vim.diagnostic.jump({ count = -1, float = true, severity = "ERROR" })
-  end)
-  vim.keymap.set("n", "]D", function()
-    vim.diagnostic.jump({ count = 1, float = true, severity = "ERROR" })
-  end)
-
-  vim.keymap.set("n", "gqd", vim.diagnostic.setqflist, { buffer = 0 }) -- [d]iagnostics
-  vim.keymap.set("n", "gqi", vim.lsp.buf.implementation, { buffer = 0 }) -- [i]mplementation
-  vim.keymap.set("n", "gqr", vim.lsp.buf.references, { buffer = 0 }) -- [r]eferences
-  vim.keymap.set("n", "gqs", vim.lsp.buf.document_symbol, { buffer = 0 }) -- [s]ybmol
-end
-
 return M

@@ -20,8 +20,6 @@ local function lsp_on_attach()
   end
 
   vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
-
-  require("tymek.mappings").setup_lsp()
 end
 
 ---@param markers? string[]
