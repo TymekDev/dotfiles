@@ -71,9 +71,6 @@ M.setup_lsp = function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
   end, { buffer = 0 })
 
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 }) -- [d]efinition
-  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 }) -- [t]ype definition
-
   vim.keymap.set("n", "[D", function()
     vim.diagnostic.jump({ count = -1, float = true, severity = "ERROR" })
   end)

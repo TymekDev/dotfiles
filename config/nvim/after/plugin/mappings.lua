@@ -13,6 +13,8 @@ end)
 
 -- LSP
 vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help)
+vim.keymap.set("n", "gd", "<Cmd>Telescope lsp_definitions<CR>")
+vim.keymap.set("n", "gt", "<Cmd>Telescope lsp_type_definitions<CR>")
 
 -- Others
 vim.keymap.set("n", "<Leader>z", "1z=")
