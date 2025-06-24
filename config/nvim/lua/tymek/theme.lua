@@ -10,7 +10,7 @@ local themes = {
   ---@type table<tymek.theme.Mode, string>
   rosepine = {
     light = "rose-pine-dawn",
-    dark = "roes-pine-moon",
+    dark = "rose-pine-moon",
   },
   ---@type table<tymek.theme.Mode, string>
   tokyonight = {
