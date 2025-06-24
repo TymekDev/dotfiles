@@ -13,11 +13,13 @@ gh codespace cp --codespace "$CS_NAME" --expand -- \
   ~/.local/state/tymek-theme \
   remote:~/.local/state/tymek-theme || echo "Failed to copy /tmp/tymek-theme"
 
+# FEAT: run this conditionally, perhaps with a flag
 PORT=$(shuf -i 40000-49999 -n 1)
 serve-remote-open --port $PORT 2>/dev/null &
 PID=$!
 cleanup() {
   kill $PID
+  echo Stopped listening for remote opens on $PORT
   exit
 }
 trap cleanup EXIT INT TERM
