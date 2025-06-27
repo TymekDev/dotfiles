@@ -7,6 +7,7 @@ return {
   dependencies = {
     "saghen/blink.compat",
     "R-nvim/cmp-r",
+    "mikavilpas/blink-ripgrep.nvim",
   },
   ---@module "blink.cmp"
   ---@type blink.cmp.Config
@@ -58,7 +59,7 @@ return {
       },
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "lazydev", "R.nvim" },
+      default = { "lsp", "path", "snippets", "buffer", "ripgrep", "lazydev", "R.nvim" },
       providers = {
         lazydev = {
           name = "LazyDev",
@@ -68,6 +69,13 @@ return {
         ["R.nvim"] = {
           name = "cmp_r",
           module = "blink.compat.source",
+        },
+        ripgrep = {
+          module = "blink-ripgrep",
+          name = "Ripgrep",
+          ---@module "blink-ripgrep"
+          ---@type blink-ripgrep.Options
+          opts = {},
         },
       },
     },
