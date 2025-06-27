@@ -11,6 +11,9 @@ vim.keymap.set("n", "<Leader>S", function()
   vim.opt_local.spell = not vim.api.nvim_get_option_value("spell", { scope = "local" })
 end)
 
+-- Tools
+vim.keymap.set("n", "<C-y>", "<Cmd>YaziTmux<CR>")
+
 -- LSP & Diagnostic
 vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help)
 vim.keymap.set("n", "gK", vim.diagnostic.open_float)
