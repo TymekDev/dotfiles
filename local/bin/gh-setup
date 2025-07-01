@@ -18,6 +18,7 @@ done
 
 STATUS=$(gh codespace ssh --codespace "$CS_NAME" -- \
   -o IdentitiesOnly=yes \
+  -o RequestTTY=yes \
   'git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles &&
   make --directory ~/personal/dotfiles setup-os-codespace' &&
   echo "is ready to go!" ||
