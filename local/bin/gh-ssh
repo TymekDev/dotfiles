@@ -11,7 +11,7 @@ gh codespace cp --codespace "$CS_NAME" --expand -- \
   -q \
   -o IdentitiesOnly=yes \
   ~/.local/state/tymek-theme \
-  remote:~/.local/state/tymek-theme || echo "Failed to copy /tmp/tymek-theme"
+  remote:~/.local/state/tymek-theme || echo "Failed to copy ~/.local/state/tymek-theme"
 
 # FEAT: run this conditionally, perhaps with a flag
 PORT=$(shuf -i 40000-49999 -n 1)
