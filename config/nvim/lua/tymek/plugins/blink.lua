@@ -75,7 +75,9 @@ return {
           name = "Ripgrep",
           ---@module "blink-ripgrep"
           ---@type blink-ripgrep.Options
-          opts = {},
+          opts = {
+            mode = "off",
+          },
         },
       },
     },
