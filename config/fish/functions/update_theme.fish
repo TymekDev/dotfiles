@@ -24,6 +24,8 @@ function update_theme --on-event fish_focus_in
     return
   end
 
-  echo "[ERROR] Unknown theme: '$THEME'"
+  if status is-interactive
+    echo "[ERROR] Unknown theme: '$THEME'"
+  end
   return 1
 end
