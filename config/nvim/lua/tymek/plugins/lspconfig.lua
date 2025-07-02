@@ -53,6 +53,7 @@ return {
         gopls = {
           settings = {
             gopls = {
+              buildFlags = { "-tags", "tests" },
               gofumpt = true,
               hints = {
                 assignVariableTypes = true,
