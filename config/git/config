@@ -50,6 +50,7 @@
 
 [rebase]
   autoSquash = true
+  autoStash = true
 
 [worktree]
   guessRemote = true
