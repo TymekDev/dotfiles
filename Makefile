@@ -24,7 +24,8 @@ BREW_ESSENTIALS=bat \
 								ripgrep \
 								starship \
 								stow \
-								tmux
+								tmux \
+								yazi
 
 .PHONY: restow
 restow: install-stow
