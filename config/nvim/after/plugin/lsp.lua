@@ -17,3 +17,8 @@ vim.lsp.enable({
 })
 
 vim.lsp.inlay_hint.enable()
+
+vim.diagnostic.config({
+  virtual_text = true,
+  severity_sort = true,
+})

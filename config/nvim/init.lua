@@ -6,9 +6,4 @@ vim.api.nvim_cmd({
   args = { "cfilter" },
 }, {})
 
-vim.diagnostic.config({
-  virtual_text = true,
-  severity_sort = true,
-})
-
 require("tymek.theme").update()
