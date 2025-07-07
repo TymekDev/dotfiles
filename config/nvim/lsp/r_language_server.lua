@@ -29,6 +29,7 @@ languageserver::run()
             end
             return client.name == "r_language_server"
           end,
+          timeout_ms = 3000,
         })
       end,
     })
