@@ -18,7 +18,6 @@ vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true
-vim.opt.ttimeoutlen = 100
 vim.opt.undofile = true
 vim.opt.wildchar = 0
 vim.opt.wrap = false
