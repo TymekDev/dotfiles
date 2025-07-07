@@ -22,16 +22,6 @@ local function lsp_on_attach()
   vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
 end
 
----@param markers? string[]
-local function root_dir_git_jj(markers)
-  markers = markers or {}
-  table.insert(markers, ".jj")
-  table.insert(markers, ".git")
-  return function()
-    return vim.fs.root(0, markers)
-  end
-end
-
 ---@module "lazy"
 ---@type LazySpec
 return {
@@ -40,9 +30,7 @@ return {
   opts = function()
     return {
       servers = {
-        air = {
-          root_dir = root_dir_git_jj({ "air.toml", ".air.toml" }),
-        },
+        air = {},
 
         astro = {},
 
@@ -101,7 +89,6 @@ return {
         },
 
         r_language_server = {
-          root_dir = root_dir_git_jj({ ".Rprofile", "renv.lock" }),
           cmd = {
             "/usr/bin/env",
             "R",
@@ -140,15 +127,7 @@ languageserver::run()
           },
         },
 
-        unocss = {
-          root_dir = root_dir_git_jj({
-            "unocss.config.js",
-            "unocss.config.ts",
-            "uno.config.js",
-            "uno.config.ts",
-            "slides.md",
-          }),
-        },
+        unocss = {},
       },
     }
   end,
