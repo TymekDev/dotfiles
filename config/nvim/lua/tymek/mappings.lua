@@ -54,8 +54,6 @@ M.setup = function()
   vim.keymap.set("x", "<Leader>p", '"_dP') -- Don't overwrite paste register
   vim.keymap.set({ "n", "x" }, "<Leader>y", '"+y') -- Use system register
   vim.keymap.set({ "n", "x" }, "<Leader>Y", '"+Y')
-  vim.keymap.set({ "n", "x" }, "<Leader>d", '"+d')
-  vim.keymap.set({ "n", "x" }, "<Leader>D", '"+D')
 
   -- Miscellaneous
   vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
