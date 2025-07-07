@@ -39,7 +39,6 @@ return {
       })
     end,
   },
-  "junegunn/vim-easy-align", -- TODO: review config
   {
     "tpope/vim-rsi",
     config = function()

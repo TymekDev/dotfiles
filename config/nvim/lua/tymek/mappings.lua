@@ -60,9 +60,6 @@ M.setup = function()
   -- Miscellaneous
   vim.keymap.set({ "n", "x" }, "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
   vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
-
-  -- junegunn/vim-easy-align
-  vim.keymap.set({ "n", "x" }, "<Leader>a", "<Plug>(EasyAlign)")
 end
 
 return M
