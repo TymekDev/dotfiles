@@ -26,7 +26,7 @@ end
 ---@type LazySpec
 return {
   "neovim/nvim-lspconfig",
-  dependencies = { "saghen/blink.cmp", "b0o/schemastore.nvim" },
+  dependencies = { "saghen/blink.cmp" },
   opts = function()
     return {
       servers = {
@@ -63,7 +63,6 @@ return {
         jsonls = {
           settings = {
             json = {
-              schemas = require("schemastore").json.schemas(),
               validate = { enable = true },
             },
           },

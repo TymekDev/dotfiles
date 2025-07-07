@@ -39,7 +39,6 @@
   "rabbit.nvim": { "branch": "rewrite", "commit": "278edd5385eed45c070779d7267081df6eafceef" },
   "render-markdown.nvim": { "branch": "main", "commit": "3115ff748d6885fe1af349feb6b73de03eda8e12" },
   "rose-pine": { "branch": "main", "commit": "f93360149e9ed4df8677fbb07c7231ea0fd03b97" },
-  "schemastore.nvim": { "branch": "main", "commit": "e4f80f37cd11ed58a6e914cc30850749f021b6a7" },
   "screenkey.nvim": { "branch": "main", "commit": "16390931d847b1d5d77098daccac4e55654ac9e2" },
   "shiki.nvim": { "branch": "main", "commit": "19cab485f730b436d8115eed014fd45efddc6127" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
