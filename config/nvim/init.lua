@@ -11,5 +11,4 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-require("tymek.mappings").setup()
 require("tymek.theme").update()
