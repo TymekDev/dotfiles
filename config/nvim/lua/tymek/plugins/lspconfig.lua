@@ -149,15 +149,6 @@ languageserver::run()
             "slides.md",
           }),
         },
-
-        volar = {
-          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "markdown" }, -- markdown for slidev
-          init_options = {
-            vue = {
-              hybridMode = false,
-            },
-          },
-        },
       },
     }
   end,
