@@ -158,20 +158,6 @@ languageserver::run()
             },
           },
         },
-
-        yamlls = {
-          settings = {
-            yaml = {
-              schemaStore = { enable = false, url = "" },
-              schemas = require("schemastore").yaml.schemas(),
-            },
-            redhat = {
-              telemetry = {
-                enabled = false,
-              },
-            },
-          },
-        },
       },
     }
   end,

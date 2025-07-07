@@ -1,1 +1,4 @@
-vim.lsp.enable("templ")
+vim.lsp.enable({
+  "templ",
+  "yamlls",
+})
