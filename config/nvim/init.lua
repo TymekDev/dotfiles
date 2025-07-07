@@ -6,12 +6,6 @@ vim.api.nvim_cmd({
   args = { "cfilter" },
 }, {})
 
-vim.filetype.add({
-  extension = {
-    d2 = "d2",
-  },
-})
-
 vim.diagnostic.config({
   virtual_text = true,
   severity_sort = true,
