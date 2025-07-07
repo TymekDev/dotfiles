@@ -58,16 +58,7 @@ return {
 
         golangci_lint_ls = {},
 
-        html = {
-          settings = {
-            html = {
-              format = {
-                unformatted = { "dd" },
-                wrapLineLength = 0,
-              },
-            },
-          },
-        },
+        html = {},
 
         jsonls = {
           settings = {
@@ -105,12 +96,9 @@ languageserver::run()
           },
         },
 
-        rust_analyzer = {},
-
         tailwindcss = {},
 
         ts_ls = {
-          filetypes = { "typescript", "typescriptreact", "javascript" },
           settings = {
             typescript = {
               inlayHints = {
