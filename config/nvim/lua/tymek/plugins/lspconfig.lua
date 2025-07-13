@@ -2,5 +2,5 @@
 ---@type LazySpec
 return {
   "neovim/nvim-lspconfig",
-  event = "VeryLazy",
+  lazy = false, -- IMPORTANT: this cannot be lazy-loaded, because lsp/ definitions won't be recognized.
 }
