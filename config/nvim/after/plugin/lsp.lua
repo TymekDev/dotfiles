@@ -6,6 +6,7 @@ vim.lsp.enable({
   "gopls",
   "golangci_lint_ls",
   "html",
+  "htmx",
   "jsonls",
   "lua_ls",
   "r_language_server",
