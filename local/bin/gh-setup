@@ -29,5 +29,5 @@ else
 fi
 
 if [ "$(uname)" = "Darwin" ]; then
-  osascript -e "tell app \"System Events\" to display alert \"Codespace Rebuild Completed\" message \"Codespace for $REPO $MSG\""
+  osascript -e "tell app \"System Events\" to display alert \"Codespace Rebuild Completed\" message \"Codespace for $REPO $MSG\"" >/dev/null
 fi
