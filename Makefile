@@ -52,7 +52,10 @@ install-essentials:
 setup-os-codespace: restow install-essentials configure-terminfo download-rose-pine
 	echo "${BREW_BIN}/fish" | sudo tee -a /etc/shells
 	sudo chsh "$$(id -un)" --shell "${BREW_BIN}/fish"
-	${BREW_BIN}/bob use stable
+	tempdir=$$(mktemp --dir) \
+		&& echo "add_neovim_binary_to_path = false" > $$tempdir/config.toml \
+		&& BOB_CONFIG=$$tempdir/config.toml ${BREW_BIN}/bob use stable \
+		&& rm -r $$tempdir
 	ln -sf request-remote-open ~/.local/bin/xdg-open
 	~/.local/share/bob/nvim-bin/nvim --headless "+Lazy! sync" +qa
 
