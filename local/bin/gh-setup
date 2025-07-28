@@ -16,13 +16,17 @@ until [ "$CS_STATE" == "Available" -o "$CS_STATE" == "Shutdown" ]; do
   CS_STATE=$(cs_state)
 done
 
-STATUS=$(gh codespace ssh --codespace "$CS_NAME" -- \
+gh codespace ssh --codespace "$CS_NAME" -- \
   -o IdentitiesOnly=yes \
   -o RequestTTY=yes \
   'git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles &&
-  make --directory ~/personal/dotfiles setup-os-codespace' &&
-  echo "is ready to go!" ||
-  echo "failed to set up :-(")
+  make --directory ~/personal/dotfiles setup-os-codespace'
+
+if [ "$?" -eq 0 ]; then
+  MSG=$(echo "is ready to go!")
+else
+  MSG=$(echo "failed to set up :-(")
+fi
 
 if [ "$(uname)" = "Darwin" ]; then
   osascript -e "tell app \"System Events\" to display alert \"Codespace Rebuild Completed\" message \"Codespace for $REPO $MSG\""
