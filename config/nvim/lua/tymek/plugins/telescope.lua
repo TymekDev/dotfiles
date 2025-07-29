@@ -5,7 +5,7 @@ local find_files
 find_files = function(opts)
   opts = opts or {}
 
-  opts.find_command = { "rg", "--files", "--color", "never", "--no-require-git" }
+  opts.find_command = { "rg", "--files", "--color", "never", "--no-require-git", "--glob", "!.{git,jj}/*" }
 
   opts.prompt_title = "Find Files"
   if opts.hidden then
