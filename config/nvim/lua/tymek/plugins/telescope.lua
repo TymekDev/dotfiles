@@ -1,5 +1,39 @@
 -- NOTE: <C-l> in LSP mappings autocompletes filtering.
 
+-- NOTE: the variable has to be declared beforehand. Otherwise, the mapping doesn't find the find_files function.
+local find_files
+find_files = function(opts)
+  opts = opts or {}
+
+  opts.find_command = { "rg", "--files", "--color", "never", "--no-require-git" }
+
+  opts.prompt_title = "Find Files"
+  if opts.hidden then
+    opts.prompt_title = opts.prompt_title .. " (hidden: true)"
+  end
+
+  opts.attach_mappings = function(_, map)
+    map({ "n", "i" }, "<M-d>", function(_prompt_bufnr)
+      local filename = require("telescope.actions.state").get_selected_entry()[1]
+      require("telescope.actions").close(_prompt_bufnr)
+      require("oil").open(vim.fs.dirname(filename))
+    end)
+
+    map({ "n", "i" }, "<C-h>", function(_prompt_bufnr)
+      local prompt = require("telescope.actions.state").get_current_line()
+      require("telescope.actions").close(_prompt_bufnr)
+      find_files(vim.tbl_extend("force", opts, {
+        default_text = prompt,
+        hidden = not opts.hidden,
+      }))
+    end)
+
+    return true
+  end
+
+  require("telescope.builtin").find_files(opts)
+end
+
 ---@module "lazy"
 ---@type LazySpec
 return {
@@ -7,24 +41,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = "Telescope",
   keys = {
-    {
-      "<C-f>",
-      function()
-        require("telescope.builtin").find_files({
-          find_command = { "rg", "--files", "--color", "never", "--no-require-git" },
-          attach_mappings = function(_, map)
-            map({ "n", "i" }, "<M-d>", function(_prompt_bufnr)
-              local filename = require("telescope.actions.state").get_selected_entry()[1]
-              require("telescope.actions").close(_prompt_bufnr)
-              require("oil").open(vim.fs.dirname(filename))
-            end)
-
-            return true
-          end,
-        })
-      end,
-      desc = "Find files (via telescope.nvim)",
-    },
+    { "<C-f>", find_files, desc = "Find files (via telescope.nvim)" },
     {
       "<Leader><C-f>",
       function()
