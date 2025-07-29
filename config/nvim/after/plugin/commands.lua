@@ -102,3 +102,26 @@ vim.api.nvim_create_user_command(
     nargs = "?",
   }
 )
+
+vim.api.nvim_create_user_command("RLintPackage", function()
+  vim.system(
+    {
+      "Rscript",
+      "-e",
+      "lintr::lint_package()",
+    },
+    {},
+    vim.schedule_wrap(function(result)
+      local lines = vim.split(result.stdout, "\n")
+
+      local ok, msg = pcall(vim.fn.setqflist, {}, " ", { lines = lines, efm = [[%f:%l:%c:\ %m]] })
+      if not ok then
+        vim.notify(msg --[[@as string]], vim.log.levels.ERROR)
+      end
+
+      vim.cmd.copen()
+    end)
+  )
+end, {
+  desc = "Run lintr::lint_package() and populate the quickfix list with the results",
+})
