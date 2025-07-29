@@ -57,7 +57,7 @@ setup-os-codespace: restow install-essentials configure-terminfo download-rose-p
 		&& BOB_CONFIG=$$tempdir/config.toml ${BREW_BIN}/bob use stable \
 		&& rm -r $$tempdir
 	ln -sf request-remote-open ~/.local/bin/xdg-open
-	~/.local/share/bob/nvim-bin/nvim --headless "+Lazy! sync" +qa
+	~/.local/share/bob/nvim-bin/nvim --headless "+Lazy! restore" +qa
 
 .PHONY: configure-terminfo
 configure-terminfo:
