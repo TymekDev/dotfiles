@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "oven-sh/bun"
 tap "r-lib/rig"
+tap "go-task/tap"
 
 brew "asciinema"                # Record and share terminal sessions
 brew "bat"                      # Clone of cat(1) with syntax highlighting and Git integration
@@ -19,6 +20,7 @@ brew "gcc"                      # GNU compiler collection
 brew "gh"           if OS.mac?  # GitHub command-line tool
 brew "git-absorb"               # Automatic git commit --fixup
 brew "go"           if OS.mac?  # Open source programming language to build simple/reliable/efficient software
+brew "go-task"                  # Task is a task runner/build tool that aims to be simpler and easier to use
 brew "htop"                     # Improved top (interactive process viewer)
 brew "ijq"                      # Interactive jq
 brew "imagemagick"  if OS.mac?  # Tools and libraries to manipulate images in many formats

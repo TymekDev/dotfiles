@@ -19,6 +19,7 @@ BREW_ESSENTIALS=bat \
 								fzf \
 								gh \
 								git-absorb \
+								go-task/tap/go-task \
 								ijq \
 								jq \
 								ripgrep \
