@@ -125,12 +125,12 @@ M.cycle = function(win, pane)
   local new
   for i, name in ipairs(theme_names) do
     if name == current then
-      new = theme_names[i + 1] or theme_names[1]
+      new = theme_names[i + 1]
       break
     end
   end
 
-  theme_write(new)
+  theme_write(new or theme_names[1])
 
   win:perform_action(wezterm.action.SendString("\x1B[O\x1B[I"), pane)
 end
