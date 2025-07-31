@@ -69,6 +69,19 @@ local theme_read = function()
   return theme
 end
 
+---@param theme tymek.wezterm.Theme
+local theme_write = function(theme)
+  local cmd = {
+    "sh",
+    "-c",
+    string.format([[echo '%s' > ~/.local/state/tymek-theme/theme]], theme),
+  }
+  local ok, _, stderr = wezterm.run_child_process(cmd)
+  if not ok then
+    wezterm.log_error(stderr)
+  end
+end
+
 ---@return tymek.wezterm.Mode
 local mode_detect = function()
   if wezterm.gui and wezterm.gui.get_appearance():find("Light") then
@@ -98,6 +111,24 @@ M.setup = function(config)
 
   local theme = theme_read()
   theme_set(config, theme, mode)
+end
+
+M.cycle = function()
+  local current = theme_read()
+  local theme_names = {}
+  for name, _ in pairs(themes) do
+    table.insert(theme_names, name)
+  end
+
+  local new
+  for i, name in ipairs(theme_names) do
+    if name == current then
+      new = theme_names[i + 1] or theme_names[1]
+      break
+    end
+  end
+
+  theme_write(new)
 end
 
 return M
