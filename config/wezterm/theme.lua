@@ -52,6 +52,23 @@ local theme_set = function(config, theme, mode)
   end
 end
 
+---@return tymek.wezterm.Theme|nil
+local theme_read = function()
+  local ok, theme, stderr = wezterm.run_child_process({
+    "sh",
+    "-c",
+    "cat ~/.local/state/tymek-theme/theme",
+  })
+  if not ok then
+    wezterm.log_error(stderr)
+    return nil
+  end
+
+  theme = string.gsub(theme, "\n$", "")
+
+  return theme
+end
+
 ---@return tymek.wezterm.Mode
 local mode_detect = function()
   if wezterm.gui and wezterm.gui.get_appearance():find("Light") then
@@ -71,23 +88,6 @@ local mode_write = function(mode)
   if not ok then
     wezterm.log_error(stderr)
   end
-end
-
----@return tymek.wezterm.Theme|nil
-local theme_read = function()
-  local ok, theme, stderr = wezterm.run_child_process({
-    "sh",
-    "-c",
-    "cat ~/.local/state/tymek-theme/theme",
-  })
-  if not ok then
-    wezterm.log_error(stderr)
-    return nil
-  end
-
-  theme = string.gsub(theme, "\n$", "")
-
-  return theme
 end
 
 M.setup = function(config)
