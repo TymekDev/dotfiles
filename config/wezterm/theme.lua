@@ -113,7 +113,9 @@ M.setup = function(config)
   theme_set(config, theme, mode)
 end
 
-M.cycle = function()
+---@param win Window
+---@param pane Pane
+M.cycle = function(win, pane)
   local current = theme_read()
   local theme_names = {}
   for name, _ in pairs(themes) do
@@ -129,6 +131,8 @@ M.cycle = function()
   end
 
   theme_write(new)
+
+  win:perform_action(wezterm.action.SendString("\x1B[O\x1B[I"), pane)
 end
 
 return M
