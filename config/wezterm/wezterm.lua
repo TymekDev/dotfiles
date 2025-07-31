@@ -46,13 +46,6 @@ config.keys = {
   { key = "l", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Right" }) },
 }
 
-local is_windows = package.config:sub(1, 1) == "\\"
-if is_windows then
-  config.default_domain = "WSL:Ubuntu-24.04"
-  config.font_size = 14
-  config.prefer_egl = true
-end
-
-theme.set(config, is_windows)
+theme.set(config)
 
 return config

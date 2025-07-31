@@ -55,7 +55,7 @@ local set_colors_tokyonight = function(config, mode)
   }
 end
 
-M.set = function(config, is_windows)
+M.set = function(config)
   local mode = detect()
   local theme = force.theme
 
@@ -72,9 +72,6 @@ M.set = function(config, is_windows)
     "-c",
     string.format([[echo '{"mode": "%s", "theme": "%s"}' > ~/.local/state/tymek-theme]], mode, theme),
   }
-  if is_windows == true then
-    table.insert(cmd, 1, "wsl")
-  end
   local ok, _, stderr = wezterm.run_child_process(cmd)
   if not ok then
     wezterm.log_error(stderr)
