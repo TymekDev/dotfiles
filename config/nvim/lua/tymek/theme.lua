@@ -27,14 +27,14 @@ local detect = function(callback)
       vim.fn.expand("~/.local/state/tymek-theme"),
     },
     { text = true },
-    ---@param obj vim.SystemCompleted
-    vim.schedule_wrap(function(obj)
-      if obj.code ~= 0 then
+    ---@param out vim.SystemCompleted
+    vim.schedule_wrap(function(out)
+      if out.code ~= 0 then
         callback(nil, nil)
         return
       end
 
-      local result = vim.json.decode(vim.trim(obj.stdout))
+      local result = vim.json.decode(vim.trim(out.stdout))
       callback(result.theme, result.mode)
     end)
   )
