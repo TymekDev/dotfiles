@@ -19,7 +19,7 @@ local themes = {
   },
 }
 
----@param callback fun(mode: tymek.theme.Mode|nil, theme: tymek.theme.Theme|nil)
+---@param callback fun(theme: tymek.theme.Theme|nil, mode: tymek.theme.Mode|nil)
 local detect = function(callback)
   vim.system(
     {
@@ -35,13 +35,13 @@ local detect = function(callback)
       end
 
       local result = vim.json.decode(vim.trim(obj.stdout))
-      callback(result.mode, result.theme)
+      callback(result.theme, result.mode)
     end)
   )
 end
 
 M.update = function()
-  detect(function(mode, theme)
+  detect(function(theme, mode)
     if theme ~= nil and themes[theme] == nil then
       vim.notify(string.format("[ERROR] Unknown theme: '%s'", theme), vim.log.levels.ERROR)
       return
