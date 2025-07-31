@@ -1,7 +1,7 @@
 #!/bin/sh
 update() {
-  THEME=$(cat ~/.local/state/tymek-theme | jq -r '.theme' || echo 'tokyonight')
-  MODE="$(cat ~/.local/state/tymek-theme | jq -r '.mode' || echo 'dark')"
+  THEME=$(cat ~/.local/state/tymek-theme/theme || echo 'tokyonight')
+  MODE="$(cat ~/.local/state/tymek-theme/mode || echo 'dark')"
 
   if [ "$THEME" = "tokyonight" ]; then
     if [ "$MODE" = "light" ]; then

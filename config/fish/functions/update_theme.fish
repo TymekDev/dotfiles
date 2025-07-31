@@ -1,6 +1,6 @@
 function update_theme --on-event fish_focus_in
-  set -f THEME "$(cat ~/.local/state/tymek-theme | jq -r '.theme' || echo 'tokyonight')"
-  set -f MODE "$(cat ~/.local/state/tymek-theme | jq -r '.mode' || echo 'dark')"
+  set -f THEME "$(cat ~/.local/state/tymek-theme/theme || echo 'tokyonight')"
+  set -f MODE "$(cat ~/.local/state/tymek-theme/mode || echo 'dark')"
 
   if [ "$THEME" = "rosepine" ]
     if [ "$MODE" = "light" ]

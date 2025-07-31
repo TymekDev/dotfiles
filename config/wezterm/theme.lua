@@ -1,14 +1,8 @@
+---@type Wezterm
 local wezterm = require("wezterm")
 local M = {}
 
 ---@alias tymek.wezterm.Mode "light"|"dark"
-
-local force = {
-  ---@type tymek.wezterm.Mode|nil
-  mode = nil,
-  ---@type tymek.wezterm.Theme
-  theme = "tokyonight",
-}
 
 ---@enum (key) tymek.wezterm.Theme
 local themes = {
@@ -23,16 +17,6 @@ local themes = {
     dark = "tokyonight_storm",
   },
 }
-
----@return tymek.wezterm.Mode
-local detect = function()
-  if force.mode ~= nil then
-    return force.mode
-  elseif wezterm.gui and wezterm.gui.get_appearance():find("Light") then
-    return "light"
-  end
-  return "dark"
-end
 
 local set_colors_rosepine = function(config, mode)
   local theme = require("./rose-pine/plugin")[themes.rosepine[mode]]
@@ -55,10 +39,10 @@ local set_colors_tokyonight = function(config, mode)
   }
 end
 
-M.set = function(config)
-  local mode = detect()
-  local theme = force.theme
-
+---@param config Config
+---@param theme tymek.wezterm.Theme|nil
+---@param mode tymek.wezterm.Mode
+local theme_set = function(config, theme, mode)
   if theme == "rosepine" then
     set_colors_rosepine(config, mode)
   elseif theme == "tokyonight" then
@@ -66,16 +50,54 @@ M.set = function(config)
   else
     wezterm.log_error(string.format("Unknown theme: '%s'", theme))
   end
+end
 
+---@return tymek.wezterm.Mode
+local mode_detect = function()
+  if wezterm.gui and wezterm.gui.get_appearance():find("Light") then
+    return "light"
+  end
+  return "dark"
+end
+
+---@param mode tymek.wezterm.Mode
+local mode_write = function(mode)
   local cmd = {
     "sh",
     "-c",
-    string.format([[echo '{"mode": "%s", "theme": "%s"}' > ~/.local/state/tymek-theme]], mode, theme),
+    string.format([[echo '%s' > ~/.local/state/tymek-theme/mode]], mode),
   }
   local ok, _, stderr = wezterm.run_child_process(cmd)
   if not ok then
     wezterm.log_error(stderr)
   end
+end
+
+---@return tymek.wezterm.Theme|nil
+local theme_read = function()
+  local ok, theme, stderr = wezterm.run_child_process({
+    "sh",
+    "-c",
+    "cat ~/.local/state/tymek-theme/theme",
+  })
+  if not ok then
+    wezterm.log_error(stderr)
+    return nil
+  end
+
+  theme = string.gsub(theme, "\n$", "")
+
+  return theme
+end
+
+M.setup = function(config)
+  wezterm.add_to_config_reload_watch_list(wezterm.home_dir .. "/.local/state/tymek-theme/theme")
+
+  local mode = mode_detect()
+  mode_write(mode)
+
+  local theme = theme_read()
+  theme_set(config, theme, mode)
 end
 
 return M

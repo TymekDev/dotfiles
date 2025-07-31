@@ -19,25 +19,34 @@ local themes = {
   },
 }
 
----@param callback fun(theme: tymek.theme.Theme|nil, mode: tymek.theme.Mode|nil)
-local detect = function(callback)
+---@param filename "theme"|"mode"
+---@param callback fun(result: string|nil)
+local read = function(filename, callback)
   vim.system(
     {
       "cat",
-      vim.fn.expand("~/.local/state/tymek-theme"),
+      vim.fn.expand(string.format("~/.local/state/tymek-theme/%s", filename)),
     },
     { text = true },
     ---@param out vim.SystemCompleted
     vim.schedule_wrap(function(out)
       if out.code ~= 0 then
-        callback(nil, nil)
+        callback(nil)
         return
       end
 
-      local result = vim.json.decode(vim.trim(out.stdout))
-      callback(result.theme, result.mode)
+      callback(vim.trim(out.stdout))
     end)
   )
+end
+
+---@param callback fun(theme: tymek.theme.Theme|nil, mode: tymek.theme.Mode|nil)
+local detect = function(callback)
+  read("theme", function(theme)
+    read("mode", function(mode)
+      callback(theme, mode)
+    end)
+  end)
 end
 
 M.update = function()

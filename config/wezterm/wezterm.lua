@@ -46,6 +46,6 @@ config.keys = {
   { key = "l", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Right" }) },
 }
 
-theme.set(config)
+theme.setup(config)
 
 return config
