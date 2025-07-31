@@ -132,6 +132,7 @@ M.cycle = function(win, pane)
 
   theme_write(new or theme_names[1])
 
+  -- Focus Out -> Focus In sequences. Without Focus Out, Neovim doesn't run its FocusGained autocommands.
   win:perform_action(wezterm.action.SendString("\x1B[O\x1B[I"), pane)
 end
 
