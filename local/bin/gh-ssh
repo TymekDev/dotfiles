@@ -7,11 +7,11 @@ REPO=$(echo $CODESPACES | jq -r '.[] .repository' | gum choose)
 CS_NAME=$(echo $CODESPACES | jq -r ".[] | select(.repository == \"$REPO\") | .name")
 SESSION_NAME=$(echo $REPO | sed 's,.*/,,' | tr . _)
 
-gh codespace cp --codespace "$CS_NAME" --expand -- \
+gh codespace cp --codespace "$CS_NAME" --expand --recursive -- \
   -q \
   -o IdentitiesOnly=yes \
-  ~/.local/state/tymek-theme \
-  remote:~/.local/state/tymek-theme || echo "Failed to copy ~/.local/state/tymek-theme"
+  ~/.local/state/tymek-theme/ \
+  remote:~/.local/state/ || echo "Failed to copy ~/.local/state/tymek-theme/"
 
 # FEAT: run this conditionally, perhaps with a flag
 PORT=$(shuf -i 40000-49999 -n 1)
