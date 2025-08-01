@@ -49,16 +49,29 @@ install-stow:
 install-essentials:
 	${BREW} install ${BREW_ESSENTIALS}
 
-.PHONY: setup-os-codespace
-setup-os-codespace: restow install-essentials configure-terminfo download-rose-pine
+.PHONY: install-all
+install-all:
+	${BREW} bundle install
+
+.PHONY: setup-shared
+setup-shared: configure-terminfo download-rose-pine
+	# fish
 	echo "${BREW_BIN}/fish" | sudo tee -a /etc/shells
-	sudo chsh "$$(id -un)" --shell "${BREW_BIN}/fish"
+	# Neovim with plugins
 	tempdir=$$(mktemp --dir) \
 		&& echo "add_neovim_binary_to_path = false" > $$tempdir/config.toml \
 		&& BOB_CONFIG=$$tempdir/config.toml ${BREW_BIN}/bob use stable \
 		&& rm -r $$tempdir
-	ln -sf request-remote-open ~/.local/bin/xdg-open
 	~/.local/share/bob/nvim-bin/nvim --headless "+Lazy! restore" +qa
+
+.PHONY: setup-os-macos
+setup-os-macos: restow install-all setup-shared
+	chsh -s "${BREW_BIN}/fish"
+
+.PHONY: setup-os-codespace
+setup-os-codespace: restow install-essentials setup-shared
+	sudo chsh "$$(id -un)" --shell "${BREW_BIN}/fish"
+	ln -sf request-remote-open ~/.local/bin/xdg-open
 
 .PHONY: configure-terminfo
 configure-terminfo:

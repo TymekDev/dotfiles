@@ -29,28 +29,9 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```
 1. Symlink config files:
    ```sh
-   make --directory ~/personal/dotfiles restow
+   make --directory ~/personal/dotfiles setup-os-macos
    ```
    - ⚠️ Make sure that `~/.config/karabiner` is a symlink ([details](https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/))
-1. Install programs:
-   ```sh
-   /opt/homebrew/bin/brew bundle --file ~/personal/dotfiles/Brewfile install
-   /opt/homebrew/bin/bob use stable # installs Neovim
-   ```
-1. Configure [`fish`](https://fishshell.com/):
-   ```sh
-   echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
-   chsh -s /opt/homebrew/bin/fish
-   ```
-1. Install WezTerm terminfo:
-   ```sh
-   tempfile=$(mktemp) \
-     && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
-     && tic -x -o ~/.terminfo $tempfile \
-     && rm $tempfile
-   ```
-1. Open WezTerm—it should start fish and have `$PATH` properly set up
-1. Start Neovim and install its plugins via `:Lazy`
 1. Install by hand:
    - Tailscale: https://pkgs.tailscale.com/stable/#macos
    - Google Chrome
