@@ -30,7 +30,7 @@ BREW_ESSENTIALS=bat \
 
 .PHONY: restow
 restow: install-stow
-	mkdir -p ~/.config ~/.local/bin ~/.local/share ~/.local/state/tymek-theme ~/personal ~/work
+	mkdir -p ~/.config ~/.local/bin ~/.local/share ~/.local/state ~/personal ~/work ~/.config/fish ~/.local/state/tymek-theme
 	git submodule sync
 	git submodule update --init --checkout
 	${BREW_BIN}/stow --restow --verbose --target ~/.config config
