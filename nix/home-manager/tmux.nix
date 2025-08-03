@@ -17,6 +17,7 @@ in
     baseIndex = 1;
     clock24 = true;
     escapeTime = 0;
+    focusEvents = true;
     historyLimit = 10000;
     keyMode = "vi";
     prefix = "C-space";
@@ -30,7 +31,6 @@ in
       bind-key c new-window -c "#{pane_current_path}"
       bind-key C new-window
 
-      set-option -g focus-events on
       run-shell "update-theme-tmux"
       set-hook -g client-focus-in 'run-shell "update-theme-tmux"'
     '';
