@@ -59,7 +59,6 @@
                   ./nix/home-manager/nvim.nix
                   ./nix/home-manager/tmux.nix
                   ./nix/home-manager/wezterm.nix
-                  ./nix/home-manager/zed.nix
                 ];
               };
             }
