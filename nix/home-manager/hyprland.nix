@@ -40,10 +40,10 @@
         "$mainMod, k, movefocus, u"
         "$mainMod, l, movefocus, r"
 
-        "$mainMod SHIFT, h, movewindow, l"
-        "$mainMod SHIFT, j, movewindow, d"
-        "$mainMod SHIFT, k, movewindow, u"
-        "$mainMod SHIFT, l, movewindow, r"
+        "SUPER CTRL, h, movewindow, l"
+        "SUPER CTRL, j, movewindow, d"
+        "SUPER CTRL, k, movewindow, u"
+        "SUPER CTRL, l, movewindow, r"
 
         "CTRL, 1, workspace, 1"
         "CTRL, 2, workspace, 2"
