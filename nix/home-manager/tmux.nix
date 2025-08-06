@@ -6,6 +6,7 @@ let
   }) paths);
 in
 {
+  # TODO: will this work if I have home.file in another place too?
   home.file = localBinScripts [
     "tmux-sessionizer"
     "tmux-prefix-highlight"
