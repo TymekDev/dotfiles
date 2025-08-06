@@ -12,8 +12,6 @@ abbr --add gcp  git cherry-pick
 abbr --add gcw  git commit --amend --only
 abbr --add gd   git diff
 abbr --add gds  git diff --staged
-abbr --add gec  git ec # TODO: change this to fish function or else gitsigns in Neovim breaks
-abbr --add gem  git em
 abbr --add gf   git fetch
 abbr --add gg   git g
 abbr --add ggf  git gf
