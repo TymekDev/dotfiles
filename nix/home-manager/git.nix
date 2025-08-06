@@ -3,6 +3,8 @@
   programs.git = {
     enable = true;
 
+    difftastic.enable = true;
+
     aliases = {
       # [d]iff [c]ommit
       dc = "! f() { REF=\${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f";
@@ -43,7 +45,6 @@
       column.ui = "auto";
       core.editor = "nvim";
       credential.helper = "cache";
-      difftastic.enable = true;
       init.defaultBranch = "main";
       merge.conflictStyle = "zdiff3";
       pull.rebase = false;
