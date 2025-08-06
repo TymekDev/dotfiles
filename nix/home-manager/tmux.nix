@@ -31,6 +31,9 @@ in
       bind-key c new-window -c "#{pane_current_path}"
       bind-key C new-window
 
+      set-option -g set-titles on
+      set-option -g set-titles-string "#S#{?#{==:#h,sffpc},, @ #h}"
+
       run-shell "update-theme-tmux"
       set-hook -g client-focus-in 'run-shell "update-theme-tmux"'
     '';
