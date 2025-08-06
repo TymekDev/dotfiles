@@ -47,6 +47,8 @@
       credential.helper = "cache";
       init.defaultBranch = "main";
       merge.conflictStyle = "zdiff3";
+      merge.tool = "nvim";
+      mergetool."nvim".cmd = ''nvim -d -c 'cd "$GIT_PREFIX"' -c 'wincmd J' "$MERGED" "$LOCAL" "$BASE" "$REMOTE"'';
       pull.rebase = false;
       push.autoSetupRemote = true;
       rebase.autoSquash = true;
