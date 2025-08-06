@@ -1,7 +1,6 @@
 { pkgs, ... } :
 {
   environment.systemPackages = with pkgs; [
-    bat
     discord
     fd
     gcc # used by nvim-treesitter to install grammars
