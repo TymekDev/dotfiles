@@ -17,5 +17,6 @@
 
   environment.variables = {
     EDITOR = "nvim";
+    TZ = "Europe/Warsaw";
   };
 }
