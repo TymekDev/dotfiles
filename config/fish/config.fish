@@ -39,12 +39,7 @@ abbr --add gwt  git worktree
 abbr --add ta tmux attach-session
 abbr --add tls tmux list-sessions
 
-abbr --add aia ANTHROPIC_API_KEY=\(op read \$ANTHROPIC_API_KEY\)
-abbr --add aio OPENAI_API_KEY=\(op read \$OPENAI_API_KEY\)
-
 alias g  git
-alias k  kubectl
-alias r  radian
 alias ls "eza --git --group-directories-first --time-style long-iso"
 alias nv nvim
 
