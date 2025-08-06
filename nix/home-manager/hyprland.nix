@@ -16,6 +16,11 @@
         accel_profile = "flat";
       };
 
+      monitor = [
+        # name, resolution, position, scale, ...
+        "DP-3, preferred, auto, 1, transform, 3"
+      ];
+
       exec-once = [
         "uwsm app -- 1password --silent"
         "${lib.getExe pkgs.waybar}"
