@@ -1,9 +1,0 @@
-#!/usr/bin/env fish
-
-if test -n "$argv"
-  set input "$argv"
-else
-  read input
-end
-
-echo "print($input)" | python3
