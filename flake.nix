@@ -51,6 +51,7 @@
                 xdg.enable = true;
                 imports = [
                   ./nix/home-manager/machines/sffpc.nix
+                  ./nix/home-manager/bat.nix
                   ./nix/home-manager/firefox.nix
                   ./nix/home-manager/fish.nix
                   ./nix/home-manager/git.nix
