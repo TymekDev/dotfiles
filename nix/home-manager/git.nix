@@ -3,6 +3,8 @@
   programs.git = {
     enable = true;
 
+    difftastic.enable = true;
+
     aliases = {
       # [d]iff [c]ommit
       dc = "! f() { REF=\${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f";
@@ -43,9 +45,10 @@
       column.ui = "auto";
       core.editor = "nvim";
       credential.helper = "cache";
-      difftastic.enable = true;
       init.defaultBranch = "main";
       merge.conflictStyle = "zdiff3";
+      merge.tool = "nvim";
+      mergetool."nvim".cmd = ''nvim -d -c 'cd "$GIT_PREFIX"' -c 'wincmd J' "$MERGED" "$LOCAL" "$BASE" "$REMOTE"'';
       pull.rebase = false;
       push.autoSetupRemote = true;
       rebase.autoSquash = true;

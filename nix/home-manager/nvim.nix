@@ -1,5 +1,6 @@
 { pkgs, lib, ... } :
 {
+  # TODO: does this get joined if I have `home.packages = [ foo ];` in another place?
   home.packages = [ pkgs.neovim ];
 
   home.activation.symlinkNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''

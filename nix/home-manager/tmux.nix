@@ -6,6 +6,7 @@ let
   }) paths);
 in
 {
+  # TODO: will this work if I have home.file in another place too?
   home.file = localBinScripts [
     "tmux-sessionizer"
     "tmux-prefix-highlight"
@@ -23,13 +24,16 @@ in
     prefix = "C-space";
     terminal = "$TERM";
 
-   extraConfig = ''
+    extraConfig = ''
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "fish_clipboard_copy"
 
       bind-key C-s run-shell tmux-sessionizer
       bind-key c new-window -c "#{pane_current_path}"
       bind-key C new-window
+
+      set-option -g set-titles on
+      set-option -g set-titles-string "#S#{?#{==:#h,sffpc},, @ #h}"
 
       run-shell "update-theme-tmux"
       set-hook -g client-focus-in 'run-shell "update-theme-tmux"'

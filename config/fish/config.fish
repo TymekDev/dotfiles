@@ -12,8 +12,6 @@ abbr --add gcp  git cherry-pick
 abbr --add gcw  git commit --amend --only
 abbr --add gd   git diff
 abbr --add gds  git diff --staged
-abbr --add gec  git ec # TODO: change this to fish function or else gitsigns in Neovim breaks
-abbr --add gem  git em
 abbr --add gf   git fetch
 abbr --add gg   git g
 abbr --add ggf  git gf
@@ -41,12 +39,7 @@ abbr --add gwt  git worktree
 abbr --add ta tmux attach-session
 abbr --add tls tmux list-sessions
 
-abbr --add aia ANTHROPIC_API_KEY=\(op read \$ANTHROPIC_API_KEY\)
-abbr --add aio OPENAI_API_KEY=\(op read \$OPENAI_API_KEY\)
-
 alias g  git
-alias k  kubectl
-alias r  radian
 alias ls "eza --git --group-directories-first --time-style long-iso"
 alias nv nvim
 

@@ -18,8 +18,6 @@
       gcw   = "git commit --amend --only";
       gd    = "git diff";
       gds   = "git diff --staged";
-      gec   = "git ec"; # TODO: change this to fish function or else gitsigns in Neovim breaks
-      gem   = "git em";
       gf    = "git fetch";
       gg    = "git g";
       ggf   = "git gf";
@@ -67,6 +65,8 @@
       bind \cg "stty sane; nvim -c 'normal '"
     '';
 
+    # TODO: update_theme
+    # TODO: `fzf --fish | source` - is it needed?
     shellInit = ''
       fish_add_path --move ~/.local/bin
     '';
