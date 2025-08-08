@@ -1,0 +1,12 @@
+version: 3
+tasks:
+  nixos-rebuild:
+    desc: Rebuild NixOS using flake.nix
+    deps:
+      - remove-tofi-drun-cache
+    cmd: nixos-rebuild switch --use-remote-sudo --flake .
+  remove-tofi-drun-cache:
+    desc: Remove tofi-drun cache, so tofi-drun has a up-to-date list of programs
+    preconditions:
+      - sh: test $(uname) = "Linux"
+    cmd: rm --force $XDG_CACHE_HOME/tofi-drun
