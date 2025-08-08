@@ -13,7 +13,7 @@
   users.users.tymek = {
     isNormalUser = true;
     home = "/home/tymek";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "input" ];
   };
 
   time.timeZone = "Europe/Warsaw";
