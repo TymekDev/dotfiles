@@ -57,10 +57,10 @@ Adjust the host, paths, and URIs accordingly if needed.
 1. Use [disko](https://github.com/nix-community/disko) with [`nix/disko/sffpc.nix`](./nix/disko/sffpc.nix) to partition the disk:
    1. Make sure that the `device` value in [`nix/disko/sffpc.nix`](./nix/disko/sffpc.nix) is up to date
    1. Run:
-   ```sh
-   curl -o /tmp/disko.nix https://raw.githubusercontent.com/TymekDev/dotfiles/main/nix/disko/sffpc.nix
-   sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/disko.nix
-   ```
+      ```sh
+      curl -o /tmp/disko.nix https://raw.githubusercontent.com/TymekDev/dotfiles/main/nix/disko/sffpc.nix
+      sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/disko.nix
+      ```
    1. Verify that `mount | grep /mnt ` shows new entries for `/mnt` and `/mnt/boot`
 1. _**(Only if setting up a new machine)**_ Retrieve `hardware-configuration.nix`:
    1. Run:
