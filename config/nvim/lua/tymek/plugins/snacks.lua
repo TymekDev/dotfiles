@@ -35,6 +35,7 @@ return {
     bigfile = { enabled = true },
     indent = { enabled = true, animate = { enabled = false } },
     gitbrowse = {
+      what = "permalink",
       remote_patterns = {
         -- stylua: ignore start
         { "^(https?://.*)%.git$",               "%1" },
