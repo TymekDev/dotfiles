@@ -56,6 +56,12 @@ return {
         ["sourcecode%..*%.com"] = {
           file = "/browse/{file}?at=refs%2Fheads%2F{branch}#{line_start}-{line_end}",
         },
+        ["codeberg%.org"] = {
+          branch = "/src/branch/{branch}",
+          file = "/src/branch/{branch}/{file}#L{line_start}-L{line_end}",
+          permalink = "/src/commit/{commit}/{file}#L{line_start}-L{line_end}",
+          commit = "/commit/{commit}",
+        },
       },
     },
   },
