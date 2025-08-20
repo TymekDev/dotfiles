@@ -1,5 +1,8 @@
 version: 3
 tasks:
+  default:
+    desc: List available tasks
+    cmd: task --list-all
   nixos-rebuild:
     desc: Rebuild NixOS using flake.nix
     platforms:
@@ -14,3 +17,9 @@ tasks:
     platforms:
       - linux
     cmd: rm --force $XDG_CACHE_HOME/tofi-drun
+  upgrade:
+    desc: Upgrade installed programs
+    cmds:
+      - cmd: brew bundle install --verbose
+        platforms:
+          - darwin
