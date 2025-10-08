@@ -4,3 +4,7 @@ default-command = ["log", "-n", "10"]
 [user]
 name = "Tymoteusz Makowski"
 email = "tymek.makowski@gmail.com"
+
+[signing]
+behavior = "own"
+backend = "ssh"
