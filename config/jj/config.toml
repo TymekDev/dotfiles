@@ -8,3 +8,6 @@ email = "tymek.makowski@gmail.com"
 [signing]
 behavior = "own"
 backend = "ssh"
+
+[revsets]
+log = "present(@) | ancestors(immutable_heads()) | present(trunk())"
