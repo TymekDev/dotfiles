@@ -24,6 +24,7 @@ brew "go-task"                  # Task is a task runner/build tool that aims to 
 brew "htop"                     # Improved top (interactive process viewer)
 brew "ijq"                      # Interactive jq
 brew "imagemagick"  if OS.mac?  # Tools and libraries to manipulate images in many formats
+brew "jj"                       # Git-compatible distributed version control system
 brew "jq"                       # Lightweight and flexible command-line JSON processor
 brew "luarocks"     if OS.mac?  # Package manager for the Lua programming language
 brew "mpv"          if OS.mac?  # Media player based on MPlayer and mplayer2

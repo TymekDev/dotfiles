@@ -21,6 +21,7 @@ BREW_ESSENTIALS=bat \
 								git-absorb \
 								go-task/tap/go-task \
 								ijq \
+								jj \
 								jq \
 								ripgrep \
 								starship \
