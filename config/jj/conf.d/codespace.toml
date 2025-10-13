@@ -1,0 +1,7 @@
+--when.repositories = ["/workspaces"]
+
+[user]
+email = "tymoteusz.makowski@appsilon.com"
+
+[signing]
+backend = "none"
