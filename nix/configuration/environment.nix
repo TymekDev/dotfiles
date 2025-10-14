@@ -11,7 +11,6 @@
     jq
     nodejs_22
     ripgrep
-    telegram-desktop
     tofi # dynamic menu for hyprland
     uhk-agent
     yazi
