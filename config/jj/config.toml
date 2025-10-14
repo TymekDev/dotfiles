@@ -1,7 +1,7 @@
 #:schema https://jj-vcs.github.io/jj/latest/config-schema.json
 
 [ui]
-default-command = ["log", "-n", "10"]
+default-command = ["l", "-n", "10"]
 
 [user]
 name = "Tymoteusz Makowski"
@@ -11,5 +11,5 @@ email = "tymek.makowski@gmail.com"
 behavior = "own"
 backend = "ssh"
 
-[revsets]
-log = "present(@) | ancestors(immutable_heads()..) | present(trunk())"
+[aliases]
+l = ["log", "-r",  "present(@) | ancestors(immutable_heads()..) | present(trunk())"]
