@@ -26,10 +26,7 @@
 
       config.keys = {
         { key = "w", mods = "SUPER", action = wezterm.action.Nop },
-
         { key = "t", mods = "SUPER|SHIFT", action = wezterm.action_callback(theme.cycle_theme) },
-        { key = "m", mods = "SUPER|SHIFT", action = wezterm.action_callback(theme.cycle_mode) },
-        { key = "m", mods = "SUPER|SHIFT|META", action = wezterm.action_callback(theme.enable_auto_mode) },
       }
 
       theme.setup(config)

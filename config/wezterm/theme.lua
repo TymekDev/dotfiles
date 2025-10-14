@@ -90,23 +90,6 @@ local mode_detect = function()
   return "dark"
 end
 
----@return tymek.wezterm.Mode|nil
-local mode_read = function()
-  local ok, mode, stderr = wezterm.run_child_process({
-    "sh",
-    "-c",
-    "cat ~/.local/state/tymek-theme/mode",
-  })
-  if not ok then
-    wezterm.log_error(stderr)
-    return nil
-  end
-
-  mode = string.gsub(mode, "\n$", "")
-
-  return mode
-end
-
 ---@param mode tymek.wezterm.Mode
 local mode_write = function(mode)
   local cmd = {
@@ -122,10 +105,10 @@ end
 
 M.setup = function(config)
   wezterm.add_to_config_reload_watch_list(wezterm.home_dir .. "/.local/state/tymek-theme/theme")
-  wezterm.add_to_config_reload_watch_list(wezterm.home_dir .. "/.local/state/tymek-theme/mode")
-  wezterm.add_to_config_reload_watch_list(wezterm.home_dir .. "/.local/state/tymek-theme/mode-force")
 
-  local mode = mode_read() or mode_detect()
+  local mode = mode_detect()
+  mode_write(mode)
+
   local theme = theme_read()
   theme_set(config, theme, mode)
 end
@@ -148,52 +131,6 @@ M.cycle_theme = function(win, pane)
   end
 
   theme_write(new or theme_names[1])
-
-  -- Focus Out -> Focus In sequences. Without Focus Out, Neovim doesn't run its FocusGained autocommands.
-  win:perform_action(wezterm.action.SendString("\x1B[O\x1B[I"), pane)
-end
-
----@param win Window
----@param pane Pane
-M.enable_auto_mode = function(win, pane)
-  local ok, _, stderr = wezterm.run_child_process({
-    "sh",
-    "-c",
-    "rm ~/.local/state/tymek-theme/mode-force",
-  })
-  if not ok then
-    wezterm.log_error(stderr)
-  end
-
-  mode_write(mode_detect())
-
-  -- Focus Out -> Focus In sequences. Without Focus Out, Neovim doesn't run its FocusGained autocommands.
-  win:perform_action(wezterm.action.SendString("\x1B[O\x1B[I"), pane)
-end
-
----@param win Window
----@param pane Pane
-M.cycle_mode = function(win, pane)
-  local current = mode_read()
-
-  local ok, _, stderr = wezterm.run_child_process({
-    "sh",
-    "-c",
-    "touch ~/.local/state/tymek-theme/mode-force",
-  })
-  if not ok then
-    wezterm.log_error(stderr)
-  end
-
-  ---@type tymek.wezterm.Mode
-  local new
-  if current == "dark" then
-    new = "light"
-  else
-    new = "dark"
-  end
-
-  mode_write(new)
 
   -- Focus Out -> Focus In sequences. Without Focus Out, Neovim doesn't run its FocusGained autocommands.
   win:perform_action(wezterm.action.SendString("\x1B[O\x1B[I"), pane)

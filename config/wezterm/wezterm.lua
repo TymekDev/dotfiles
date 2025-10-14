@@ -46,8 +46,6 @@ config.keys = {
   { key = "l", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Right" }) },
 
   { key = "t", mods = "CMD|SHIFT", action = wezterm.action_callback(theme.cycle_theme) },
-  { key = "m", mods = "CMD|SHIFT", action = wezterm.action_callback(theme.cycle_mode) },
-  { key = "m", mods = "CMD|SHIFT|OPT", action = wezterm.action_callback(theme.enable_auto_mode) },
 }
 
 theme.setup(config)
