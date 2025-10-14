@@ -55,6 +55,7 @@
                   ./nix/home-manager/darkman.nix
                   ./nix/home-manager/firefox.nix
                   ./nix/home-manager/fish.nix
+                  ./nix/home-manager/fzf.nix
                   ./nix/home-manager/git.nix
                   ./nix/home-manager/hyprland.nix
                   ./nix/home-manager/hyprpaper.nix
@@ -72,7 +73,6 @@
             ./nix/configuration/environment.nix
             ./nix/configuration/fish.nix
             ./nix/configuration/fonts.nix
-            ./nix/configuration/fzf.nix
             ./nix/configuration/hyprland.nix
             ./nix/configuration/i18n.nix
             ./nix/configuration/nix.nix
