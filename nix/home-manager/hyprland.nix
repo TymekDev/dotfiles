@@ -10,6 +10,8 @@
 
       decoration.rounding = 10;
       misc.disable_hyprland_logo = true;
+      misc.focus_on_activate = true;
+      cursor.no_warps = true;
 
       input = {
         kb_layout = "pl";
