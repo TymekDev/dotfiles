@@ -21,6 +21,14 @@
         "DP-3, preferred, auto, 1, transform, 3"
       ];
 
+      workspace = [
+        "1, monitor:DP-2"
+        "2, monitor:DP-2"
+        "3, monitor:DP-2"
+        "4, monitor:DP-2"
+        "5, monitor:DP-3"
+      ];
+
       exec-once = [
         "uwsm app -- 1password --silent"
         "${lib.getExe pkgs.waybar}"
