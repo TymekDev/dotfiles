@@ -12,4 +12,4 @@ behavior = "own"
 backend = "ssh"
 
 [revsets]
-log = "present(@) | ancestors(immutable_heads()) | present(trunk())"
+log = "present(@) | ancestors(immutable_heads()..) | present(trunk())"
