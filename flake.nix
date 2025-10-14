@@ -60,6 +60,7 @@
                   ./nix/home-manager/hyprland.nix
                   ./nix/home-manager/hyprpaper.nix
                   ./nix/home-manager/nvim.nix
+                  ./nix/home-manager/obs.nix
                   ./nix/home-manager/starship.nix
                   ./nix/home-manager/tmux.nix
                   ./nix/home-manager/wezterm.nix
@@ -77,7 +78,6 @@
             ./nix/configuration/hyprland.nix
             ./nix/configuration/i18n.nix
             ./nix/configuration/nix.nix
-            ./nix/configuration/obs.nix
           ];
         };
       };
