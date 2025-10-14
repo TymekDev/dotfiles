@@ -12,14 +12,15 @@ tasks:
     cmds:
       - git status --porcelain '*.nix' '**/*.nix' | grep '^??' > /dev/null && echo -e "\033[33m\nWARNING\033[0m There are unstaged Nix files. The rebuild might fail.\n" || exit 0
       - nixos-rebuild switch --use-remote-sudo --flake .
+  nixos-upgrade:
+    desc: Upgrade installed programs
+    platforms:
+      - linux
+    cmds:
+      - nix flake update
+      - task: nixos-rebuild
   remove-tofi-drun-cache:
     desc: Remove tofi-drun cache, so tofi-drun has a up-to-date list of programs
     platforms:
       - linux
     cmd: rm --force $XDG_CACHE_HOME/tofi-drun
-  upgrade:
-    desc: Upgrade installed programs
-    cmds:
-      - cmd: brew bundle install --verbose
-        platforms:
-          - darwin
