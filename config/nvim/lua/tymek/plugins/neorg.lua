@@ -2,6 +2,7 @@
 ---@type LazySpec
 return {
   "nvim-neorg/neorg",
+  enabled = false,
   lazy = false, -- FIXME: highlighting breaks when Neorg is lazy loaded
   ft = "norg",
   keys = {
