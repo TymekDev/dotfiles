@@ -46,8 +46,8 @@
       bind = [
         "$mainMod, Q, killactive,"
         "$mainMod, T, exec, $terminal"
-        "$mainMod, D, exec, eval \"$(tofi-drun)\""
-        "$mainMod, space, fullscreenstate, 2"
+        "$mainMod, space, exec, eval \"$(tofi-drun)\""
+        "$mainMod, F, fullscreenstate, 2"
 
         "$mainMod, h, movefocus, l"
         "$mainMod, j, movefocus, d"
