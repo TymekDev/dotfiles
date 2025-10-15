@@ -50,13 +50,6 @@
       nv = "nvim";
     };
 
-    loginShellInit = ''
-      # Start hyprland automatically on tty1 (if it's not running already)
-      if not set -q HYPRLAND_INSTANCE_SIGNATURE && uwsm check may-start
-        exec uwsm start default
-      end
-    '';
-
     interactiveShellInit = ''
       bind \cs "stty sane; tmux-sessionizer"
       bind \cj accept-autosuggestion execute

@@ -75,6 +75,7 @@
             ./nix/configuration/environment.nix
             ./nix/configuration/fish.nix
             ./nix/configuration/fonts.nix
+            ./nix/configuration/greeter.nix
             ./nix/configuration/hyprland.nix
             ./nix/configuration/i18n.nix
             ./nix/configuration/nix.nix
