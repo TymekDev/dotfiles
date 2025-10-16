@@ -2,6 +2,7 @@
 
 [ui]
 default-command = ["l", "-n", "10"]
+diff-formatter = ["difft", "--syntax-highlight", "off", "--color", "always", "$left", "$right"]
 
 [user]
 name = "Tymoteusz Makowski"
