@@ -43,10 +43,14 @@
         };
 
       output = {
-        DP-2.background = "${../../local/share/wallpaper.jpg} fill";
-        DP-3 = {
-          transform = "90";
+        DP-2 = {
           background = "${../../local/share/wallpaper.jpg} fill";
+          position = "0 0";
+        };
+        DP-3 = {
+          background = "${../../local/share/wallpaper.jpg} fill";
+          position = "2560 0";
+          transform = "90";
         };
       };
 
