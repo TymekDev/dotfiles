@@ -2,6 +2,7 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = null;
     systemd.enable = false;
 
     settings = {
