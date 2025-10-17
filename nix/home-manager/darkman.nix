@@ -1,4 +1,4 @@
-{ pkgs, ... } :
+{ pkgs, ... }:
 {
   services.darkman = {
     enable = true;
@@ -20,8 +20,6 @@
       };
     };
 
-    extraPortals = [
-      pkgs.darkman
-    ];
+    extraPortals = [ pkgs.darkman ];
   };
 }

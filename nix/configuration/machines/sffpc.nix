@@ -1,4 +1,4 @@
-{ pkgs, ... } :
+{ pkgs, ... }:
 {
   boot.loader.grub = {
     enable = true;
@@ -13,7 +13,11 @@
   users.users.tymek = {
     isNormalUser = true;
     home = "/home/tymek";
-    extraGroups = [ "wheel" "networkmanager" "input" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "input"
+    ];
   };
 
   time.timeZone = "Europe/Warsaw";

@@ -22,12 +22,18 @@
   };
 
   outputs =
-    { self, nixpkgs, nixpkgs-unstable, disko, home-manager, nur, ... } @ inputs:
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      disko,
+      home-manager,
+      nur,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-      };
+      pkgs-unstable = import nixpkgs-unstable { inherit system; };
     in
     {
       nixosConfigurations = {
@@ -44,9 +50,7 @@
               home-manager.backupFileExtension = "hmbak";
               home-manager.useUserPackages = true;
               home-manager.useGlobalPkgs = true;
-              home-manager.extraSpecialArgs = {
-                inherit pkgs-unstable;
-              };
+              home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
               home-manager.users.tymek = {
                 xdg.enable = true;
                 imports = [

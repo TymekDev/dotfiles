@@ -1,4 +1,4 @@
-{ config, ... } :
+{ config, ... }:
 let
   filename = "wallpaper.webp";
 in
@@ -13,13 +13,9 @@ in
       enable = true;
 
       settings = {
-        preload = [
-          path
-        ];
+        preload = [ path ];
 
-        wallpaper = [
-          ",${path}"
-        ];
+        wallpaper = [ ",${path}" ];
       };
     };
 }

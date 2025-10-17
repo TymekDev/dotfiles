@@ -1,4 +1,4 @@
-{ pkgs, lib, ... } :
+{ pkgs, lib, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -46,7 +46,7 @@
       bind = [
         "$mainMod, Q, killactive,"
         "$mainMod, T, exec, $terminal"
-        "$mainMod, space, exec, eval \"$(tofi-drun)\""
+        ''$mainMod, space, exec, eval "$(tofi-drun)"''
         "$mainMod, F, fullscreenstate, 2"
 
         "$mainMod, h, movefocus, l"
@@ -80,9 +80,7 @@
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
       ];
 
-      animations.animation = [
-        "global, 0"
-      ];
+      animations.animation = [ "global, 0" ];
     };
   };
 }

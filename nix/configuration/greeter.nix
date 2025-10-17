@@ -1,4 +1,4 @@
-{ pkgs, ... } :
+{ pkgs, ... }:
 {
   # TODO: customize the look
   programs.regreet = {

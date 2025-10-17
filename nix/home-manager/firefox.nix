@@ -1,8 +1,11 @@
-{ pkgs, ... } :
+{ pkgs, ... }:
 {
   programs.firefox = {
     enable = true;
-    languagePacks = [ "en-US" "pl" ];
+    languagePacks = [
+      "en-US"
+      "pl"
+    ];
 
     profiles.default = {
       isDefault = true;
@@ -18,23 +21,39 @@
         default = "ddg";
         engines = {
           "Nix Packages" = {
-            urls = [{
-              template = "https://search.nixos.org/packages";
-              params = [
-                { name = "type"; value = "packages"; }
-                { name = "query"; value = "{searchTerms}"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
             definedAliases = [ "@np" ];
           };
           "Nix Options" = {
-            urls = [{
-              template = "https://search.nixos.org/options";
-              params = [
-                { name = "type"; value = "packages"; }
-                { name = "query"; value = "{searchTerms}"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://search.nixos.org/options";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
             definedAliases = [ "@no" ];
           };
         };

@@ -1,9 +1,13 @@
-{ ... } :
+{ ... }:
 let
-  localBinScripts = paths : builtins.listToAttrs (map (name : {
-    name = ".local/bin/${name}";
-    value.source = ../../local/bin/${name};
-  }) paths);
+  localBinScripts =
+    paths:
+    builtins.listToAttrs (
+      map (name: {
+        name = ".local/bin/${name}";
+        value.source = ../../local/bin/${name};
+      }) paths
+    );
 in
 {
   # TODO: will this work if I have home.file in another place too?
