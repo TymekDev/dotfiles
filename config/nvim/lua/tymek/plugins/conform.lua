@@ -55,6 +55,7 @@ return {
           "goimports",
         }
       end,
+      nix = { "nixfmt" },
       lua = { "stylua" },
       query = { "format-queries" },
       sh = { "shfmt" },
