@@ -52,22 +52,9 @@
               home-manager.useGlobalPkgs = true;
               home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
               home-manager.users.tymek = {
-                xdg.enable = true;
                 imports = [
                   ./nix/home-manager/machines/sffpc.nix
-                  ./nix/home-manager/bat.nix
-                  ./nix/home-manager/darkman.nix
-                  ./nix/home-manager/firefox.nix
-                  ./nix/home-manager/fish.nix
-                  ./nix/home-manager/fzf.nix
-                  ./nix/home-manager/git.nix
-                  ./nix/home-manager/hyprland.nix
-                  ./nix/home-manager/hyprpaper.nix
-                  ./nix/home-manager/nvim.nix
-                  ./nix/home-manager/obs.nix
-                  ./nix/home-manager/starship.nix
-                  ./nix/home-manager/tmux.nix
-                  ./nix/home-manager/wezterm.nix
+                  ./nix/home-manager/default.nix
                 ];
               };
             }
