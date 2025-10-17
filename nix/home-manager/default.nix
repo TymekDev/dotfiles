@@ -13,6 +13,7 @@
     ./nvim.nix
     ./obs.nix
     ./starship.nix
+    ./sway.nix
     ./tmux.nix
     ./wezterm.nix
   ];

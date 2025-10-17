@@ -7,6 +7,7 @@
     ./greeter.nix
     ./hyprland.nix
     ./i18n.nix
+    ./sway.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
