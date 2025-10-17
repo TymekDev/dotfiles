@@ -15,9 +15,4 @@
     uhk-agent
     yazi
   ];
-
-  environment.variables = {
-    EDITOR = "nvim";
-    TZ = "Europe/Warsaw";
-  };
 }

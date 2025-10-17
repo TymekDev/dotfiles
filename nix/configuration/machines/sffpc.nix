@@ -21,6 +21,7 @@
   };
 
   time.timeZone = "Europe/Warsaw";
+  environment.variables.TZ = "Europe/Warsaw";
 
   services.blueman.enable = true;
 
