@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   boot.loader.grub = {
     enable = true;
@@ -7,21 +7,6 @@
   };
 
   networking.hostName = "sffpc";
-
-  nixpkgs.config.allowUnfree = true;
-
-  users.users.tymek = {
-    isNormalUser = true;
-    home = "/home/tymek";
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "input"
-    ];
-  };
-
-  time.timeZone = "Europe/Warsaw";
-  environment.variables.TZ = "Europe/Warsaw";
 
   services.blueman.enable = true;
 

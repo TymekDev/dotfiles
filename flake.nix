@@ -75,14 +75,7 @@
             nur.modules.nixos.default
 
             ./nix/configuration/machines/sffpc.nix
-            ./nix/configuration/1password.nix
-            ./nix/configuration/environment.nix
-            ./nix/configuration/fish.nix
-            ./nix/configuration/fonts.nix
-            ./nix/configuration/greeter.nix
-            ./nix/configuration/hyprland.nix
-            ./nix/configuration/i18n.nix
-            ./nix/configuration/nix.nix
+            ./nix/configuration/default.nix
           ];
         };
       };
