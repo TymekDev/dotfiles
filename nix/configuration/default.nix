@@ -5,7 +5,6 @@
     ./fish.nix
     ./fonts.nix
     ./greeter.nix
-    ./hyprland.nix
     ./i18n.nix
     ./sway.nix
   ];

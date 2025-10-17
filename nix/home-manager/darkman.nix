@@ -15,7 +15,7 @@
     config = {
       common.default = [ "gtk" ];
 
-      hyprland = {
+      sway = {
         "org.freedesktop.impl.portal.Settings" = [ "darkman" ];
       };
     };
