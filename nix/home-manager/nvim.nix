@@ -3,6 +3,14 @@
   home.packages = with pkgs; [
     gcc # used by nvim-treesitter to install grammars
     neovim
+
+    # Language servers
+    lua-language-server
+    nixd
+
+    # Formatters
+    nixfmt-rfc-style
+    stylua
   ];
 
   home.activation.symlinkNvim = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
