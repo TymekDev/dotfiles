@@ -9,6 +9,7 @@ vim.lsp.enable({
   "htmx",
   "jsonls",
   "lua_ls",
+  "nixd",
   "r_language_server",
   "tailwindcss",
   "taplo",
