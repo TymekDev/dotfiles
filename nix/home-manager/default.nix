@@ -8,7 +8,6 @@
     ./fish.nix
     ./fzf.nix
     ./git.nix
-    ./hyprpaper.nix
     ./nvim.nix
     ./obs.nix
     ./starship.nix
