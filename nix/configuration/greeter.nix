@@ -15,21 +15,10 @@
 
     settings = {
       default_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland --config ${pkgs.writeText "greetd-hyprland-config" ''
-          monitor = DP-2, preferred, auto, 1
-          monitor = , disable
-
-          misc {
-            disable_hyprland_logo = true
-            disable_splash_rendering = true
-            disable_hyprland_qtutils_check = true
-          }
-
-          animations {
-            animation = global, 0
-          }
-
-          exec-once = ${pkgs.greetd.regreet}/bin/regreet; hyprctl dispatch exit
+        command = "${pkgs.sway}/bin/sway --config ${pkgs.writeText "greetd-sway-config" ''
+          include /etc/sway/config.d/*
+          output DP-3 disable
+          exec "${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
         ''}";
         user = "greeter";
       };
