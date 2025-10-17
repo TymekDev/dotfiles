@@ -23,14 +23,13 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       nixpkgs-unstable,
       disko,
       home-manager,
       nur,
       ...
-    }@inputs:
+    }:
     let
       system = "x86_64-linux";
       pkgs-unstable = import nixpkgs-unstable { inherit system; };
