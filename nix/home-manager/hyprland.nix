@@ -1,5 +1,9 @@
 { pkgs, lib, ... }:
 {
+  home.packages = with pkgs; [
+    tofi
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;

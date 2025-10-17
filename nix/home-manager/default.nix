@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./machines/sffpc.nix
@@ -15,6 +15,20 @@
     ./starship.nix
     ./tmux.nix
     ./wezterm.nix
+  ];
+
+  home.packages = with pkgs; [
+    discord
+    fd
+    gh
+    git-absorb
+    go-task
+    ijq
+    jq
+    nodejs_22
+    ripgrep
+    uhk-agent
+    yazi
   ];
 
   xdg.enable = true;

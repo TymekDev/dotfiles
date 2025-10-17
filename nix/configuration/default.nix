@@ -2,7 +2,6 @@
 {
   imports = [
     ./1password.nix
-    ./environment.nix
     ./fish.nix
     ./fonts.nix
     ./greeter.nix
