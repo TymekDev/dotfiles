@@ -38,6 +38,7 @@ in
 
       set-option -g set-titles on
       set-option -g set-titles-string "#S#{?#{==:#h,sffpc},, @ #h}"
+      set-option -ga update-environment SWAYSOCK
 
       run-shell "update-theme-tmux"
       set-hook -g client-focus-in 'run-shell "update-theme-tmux"'
