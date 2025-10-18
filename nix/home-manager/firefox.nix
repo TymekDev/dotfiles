@@ -60,6 +60,8 @@
       };
 
       settings = {
+        "general.autoScroll" = true;
+
         # Telemetry
         "browser.newtabpage.activity-stream.feeds.telemetry" = false;
         "browser.ping-centre.telemetry" = false;
