@@ -21,6 +21,9 @@
           command = "1password --silent";
           always = true;
         }
+        {
+          command = "swaymsg focus output DP-2";
+        }
       ];
 
       keybindings =
