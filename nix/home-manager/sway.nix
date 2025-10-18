@@ -24,6 +24,10 @@
         {
           command = "swaymsg focus output DP-2";
         }
+        {
+          command = "blueman-tray";
+          always = true;
+        }
       ];
 
       keybindings =
