@@ -30,6 +30,10 @@
         }
       ];
 
+      bars = [
+        { command = "${pkgs.waybar}/bin/waybar"; }
+      ];
+
       keybindings =
         let
           mod = config.wayland.windowManager.sway.config.modifier;
