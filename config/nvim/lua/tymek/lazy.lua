@@ -34,7 +34,7 @@ M.setup = function()
           "editorconfig",
           "gzip",
           "health",
-          "man",
+          -- "man",
           -- "matchit",
           -- "matchparen",
           "netrwPlugin",
