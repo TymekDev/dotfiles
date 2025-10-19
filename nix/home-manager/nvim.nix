@@ -7,6 +7,7 @@
     # Language servers
     lua-language-server
     nixd
+    vscode-langservers-extracted
 
     # Formatters
     nixfmt-rfc-style
