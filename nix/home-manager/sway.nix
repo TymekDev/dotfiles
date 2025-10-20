@@ -25,7 +25,7 @@
           command = "swaymsg focus output DP-2";
         }
         {
-          command = "blueman-tray";
+          command = "blueman-applet";
           always = true;
         }
       ];
