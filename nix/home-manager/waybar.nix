@@ -86,6 +86,7 @@
       window#waybar {
         background-color: rgba(43, 48, 59, 0.5);
         border-bottom: 2px solid rgba(100, 114, 125, 0.5);
+        color: #ffffff;
       }
 
       #workspaces button {
@@ -93,6 +94,7 @@
         box-shadow: inset 0 -2px transparent;
         border-radius: 0;
         padding: 0 5px;
+        color: #ffffff;
       }
 
       #workspaces button.focused.visible {
