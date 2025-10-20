@@ -7,6 +7,7 @@
 
     settings.main = {
       height = 30;
+      spacing = 8;
 
       modules-left = [
         "sway/workspaces"
@@ -120,6 +121,12 @@
         to {
           background-color: #8a110f;
         }
+      }
+
+      #mode {
+        background-color: #285577;
+        font-style: italic;
+        padding: 0 12px;
       }
     '';
   };
