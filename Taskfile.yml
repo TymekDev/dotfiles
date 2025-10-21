@@ -18,3 +18,11 @@ tasks:
     cmds:
       - nix flake update
       - task: nixos-rebuild
+  run-uhk-agent:
+    desc: Runs UHK Agent from the unstable NixOS channel
+    platforms:
+      - linux
+    env:
+      NIXPKGS_ALLOW_UNFREE: 1
+    cmds:
+      - nix run github:nixos/nixpkgs/nixos-unstable#uhk-agent --impure
