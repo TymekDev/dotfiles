@@ -4,6 +4,9 @@
   lib,
   ...
 }:
+let
+  cfg = config.wayland.windowManager.sway.config;
+in
 {
   wayland.windowManager.sway = {
     enable = true;
@@ -37,10 +40,13 @@
       keybindings =
         let
           grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
-          mod = config.wayland.windowManager.sway.config.modifier;
+          mod = cfg.modifier;
         in
-        lib.mkOptionDefault {
-          Print = "exec ${grimshot} copy area";
+        {
+          "${mod}+Return" = "exec ${cfg.terminal}";
+          "${mod}+Space" = "exec ${cfg.menu}";
+
+          "Print" = "exec ${grimshot} copy area";
           "Shift+Print" = "exec ${grimshot} copy anything";
 
           "${mod}+Shift+q" = "kill";
@@ -54,6 +60,44 @@
               -B 'Reboot' 'systemctl reboot' \
               -B 'Sleep' 'systemctl suspend'
           '';
+
+          "${mod}+Escape" = "focus mode_toggle";
+          "${mod}+Shift+Space" = "floating toggle";
+
+          "${mod}+f" = "fullscreen toggle";
+          "${mod}+r" = "mode resize";
+          "${mod}+a" = "focus parent";
+          "${mod}+z" = "focus child";
+
+          "${mod}+q" = "split toggle";
+          "${mod}+b" = "splith";
+          "${mod}+v" = "splitv";
+
+          "${mod}+e" = "layout toggle split";
+          "${mod}+s" = "layout stacking";
+          "${mod}+w" = "layout tabbed";
+
+          "${mod}+h" = "focus left";
+          "${mod}+j" = "focus down";
+          "${mod}+k" = "focus up";
+          "${mod}+l" = "focus right";
+
+          "${mod}+Shift+h" = "move left";
+          "${mod}+Shift+j" = "move down";
+          "${mod}+Shift+k" = "move up";
+          "${mod}+Shift+l" = "move right";
+
+          "${mod}+1" = "workspace number 1";
+          "${mod}+2" = "workspace number 2";
+          "${mod}+3" = "workspace number 3";
+          "${mod}+4" = "workspace number 4";
+          "${mod}+5" = "workspace number 5";
+
+          "${mod}+Shift+1" = "move container to workspace number 1";
+          "${mod}+Shift+2" = "move container to workspace number 2";
+          "${mod}+Shift+3" = "move container to workspace number 3";
+          "${mod}+Shift+4" = "move container to workspace number 4";
+          "${mod}+Shift+5" = "move container to workspace number 5";
         };
 
       output = {
