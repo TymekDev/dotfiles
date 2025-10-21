@@ -10,6 +10,8 @@ in
 {
   services.swaync.enable = true;
 
+  services.swayosd.enable = true;
+
   wayland.windowManager.sway = {
     enable = true;
     package = null;
@@ -42,6 +44,7 @@ in
       keybindings =
         let
           grimshot = args: "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot ${args}";
+          swayosd = args: "exec ${config.services.swayosd.package}/bin/swayosd-client ${args}";
           mod = cfg.modifier;
         in
         {
@@ -100,6 +103,12 @@ in
           "${mod}+Shift+3" = "move container to workspace number 3";
           "${mod}+Shift+4" = "move container to workspace number 4";
           "${mod}+Shift+5" = "move container to workspace number 5";
+
+          "--locked XF86AudioLowerVolume" = swayosd "--output-volume -5";
+          "--locked XF86AudioRaiseVolume" = swayosd "--output-volume +5";
+          "--locked XF86AudioPrev" = swayosd "--playerctl previous";
+          "--locked XF86AudioNext" = swayosd "--playerctl next";
+          "--locked XF86AudioPlay" = swayosd "--playerctl play-pause";
         };
 
       output = {
