@@ -8,6 +8,8 @@ let
   cfg = config.wayland.windowManager.sway.config;
 in
 {
+  services.swaync.enable = true;
+
   wayland.windowManager.sway = {
     enable = true;
     package = null;

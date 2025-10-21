@@ -12,7 +12,6 @@
     ./obs.nix
     ./starship.nix
     ./sway.nix
-    ./swaync.nix
     ./tmux.nix
     ./waybar.nix
     ./wezterm.nix
