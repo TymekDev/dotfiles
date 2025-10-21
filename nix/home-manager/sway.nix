@@ -39,15 +39,15 @@ in
 
       keybindings =
         let
-          grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
+          grimshot = args: "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot ${args}";
           mod = cfg.modifier;
         in
         {
           "${mod}+Return" = "exec ${cfg.terminal}";
           "${mod}+Space" = "exec ${cfg.menu}";
 
-          "Print" = "exec ${grimshot} copy area";
-          "Shift+Print" = "exec ${grimshot} copy anything";
+          "Print" = grimshot "copy area";
+          "Shift+Print" = grimshot "copy anything";
 
           "${mod}+Shift+q" = "kill";
           "${mod}+Shift+r" = "reload";
