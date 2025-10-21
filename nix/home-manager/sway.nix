@@ -36,12 +36,15 @@
 
       keybindings =
         let
+          grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
           mod = config.wayland.windowManager.sway.config.modifier;
         in
         lib.mkOptionDefault {
+          Print = "exec ${grimshot} copy area";
+          "Shift+Print" = "exec ${grimshot} copy anything";
+
           "${mod}+Shift+q" = "kill";
           "${mod}+Shift+r" = "reload";
-
           "${mod}+Shift+e" = ''
             exec swaynag \
               -t  warning \
