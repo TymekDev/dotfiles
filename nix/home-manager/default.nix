@@ -28,6 +28,7 @@
     jq
     nodejs_22
     ripgrep
+    spotify
     uhk-agent
     yazi
   ];
