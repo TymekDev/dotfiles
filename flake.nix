@@ -83,10 +83,19 @@
               home-manager.useUserPackages = true;
               home-manager.useGlobalPkgs = true;
               home-manager.users.tymek = {
+                home.activation.symlinkGit = home-manager.lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+                  run [ ! -L ~/.config/git ] && ln -s $VERBOSE_ARG $HOME/personal/dotfiles/config/git/ -t $HOME/.config/ || exit 0
+                '';
 
                 imports = [
                   ./nix/home-manager/machines/maczek.nix
                   ./nix/home-manager/bat.nix
+                  ./nix/home-manager/fish.nix
+                  ./nix/home-manager/fzf.nix
+                  ./nix/home-manager/nvim.nix
+                  ./nix/home-manager/starship.nix
+                  ./nix/home-manager/tmux.nix
+                  ./nix/home-manager/wezterm.nix
                 ];
               };
             }
