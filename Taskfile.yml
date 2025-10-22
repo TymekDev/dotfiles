@@ -5,23 +5,20 @@ tasks:
     cmd: task --list-all
   rebuild:
     desc: Rebuild NixOS using flake.nix
-    platforms:
-      - linux
+    platforms: [linux]
     cmds:
       - cmd: git status --porcelain '*.nix' '**/*.nix' | grep '^??' > /dev/null && echo -e "\033[33m\nWARNING\033[0m There are unstaged Nix files. The rebuild might fail.\n" || exit 0
         silent: true
       - cmd: nixos-rebuild switch --use-remote-sudo --flake .
   upgrade:
     desc: Upgrade installed programs
-    platforms:
-      - linux
+    platforms: [linux]
     cmds:
       - nix flake update
       - task: nixos-rebuild
   run-uhk-agent:
     desc: Runs UHK Agent from the unstable NixOS channel
-    platforms:
-      - linux
+    platforms: [linux]
     env:
       NIXPKGS_ALLOW_UNFREE: 1
     cmds:
