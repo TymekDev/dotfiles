@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    ./machines/sffpc.nix
     ./bat.nix
     ./darkman.nix
     ./firefox.nix
