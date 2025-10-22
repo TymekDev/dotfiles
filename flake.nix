@@ -66,47 +66,26 @@
       };
 
       darwinConfigurations = {
-        maczek =
-          let
-            system = "aarch64-darwin";
-            cfg =
-              { pkgs, ... }:
-              {
-                users.users.tymek = {
-                  home = "/Users/tymek";
-                };
+        maczek = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.backupFileExtension = "hmbak";
+              home-manager.useUserPackages = true;
+              home-manager.useGlobalPkgs = true;
+              home-manager.users.tymek = {
 
-                nixpkgs.config.allowUnfree = true;
-
-                nix.settings.experimental-features = [
-                  "flakes"
-                  "nix-command"
+                imports = [
+                  ./nix/home-manager/machines/maczek.nix
+                  ./nix/home-manager/bat.nix
                 ];
-
-                nixpkgs.hostPlatform = system;
-
-                system.stateVersion = 6;
               };
-          in
-          darwin.lib.darwinSystem {
-            inherit system;
-            modules = [
-              cfg
+            }
 
-              home-manager.darwinModules.home-manager
-              {
-                home-manager.backupFileExtension = "hmbak";
-                home-manager.useUserPackages = true;
-                home-manager.useGlobalPkgs = true;
-                home-manager.users.tymek = {
-                  imports = [
-                    ./nix/home-manager/machines/maczek.nix
-                    ./nix/home-manager/bat.nix
-                  ];
-                };
-              }
-            ];
-          };
+            ./nix/configuration/machines/maczek.nix
+          ];
+        };
       };
     };
 }
