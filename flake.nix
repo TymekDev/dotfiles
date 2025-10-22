@@ -2,8 +2,7 @@
   description = "TymekDev's NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     disko = {
       url = "github:nix-community/disko";
@@ -11,7 +10,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,7 +23,6 @@
   outputs =
     {
       nixpkgs,
-      nixpkgs-unstable,
       disko,
       home-manager,
       nur,
@@ -32,7 +30,6 @@
     }:
     let
       system = "x86_64-linux";
-      pkgs-unstable = import nixpkgs-unstable { inherit system; };
     in
     {
       nixosConfigurations = {
@@ -49,7 +46,6 @@
               home-manager.backupFileExtension = "hmbak";
               home-manager.useUserPackages = true;
               home-manager.useGlobalPkgs = true;
-              home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
               home-manager.users.tymek = {
                 imports = [
                   ./nix/home-manager/machines/sffpc.nix
