@@ -98,6 +98,7 @@ if test (uname) = "Linux"
 end
 # pipx end
 
+fish_add_path /run/current-system/sw/bin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.npm-global/bin
 fish_add_path ~/go/bin

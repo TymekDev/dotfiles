@@ -28,10 +28,13 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    git -C ~/personal/dotfiles remote set-url origin git@github.com:TymekDev/dotfiles
    ```
 1. Symlink config files:
+
    ```sh
    make --directory ~/personal/dotfiles setup-os-macos
    ```
+
    - ⚠️ Make sure that `~/.config/karabiner` is a symlink ([details](https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/))
+
 1. Install by hand:
    - Tailscale: https://pkgs.tailscale.com/stable/#macos
    - Google Chrome
@@ -43,6 +46,35 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```
 1. Install Neovim spell files
    - Note: Enable NetRW and disable oil.nvim to download spell files (see https://github.com/stevearc/oil.nvim/issues/163)
+
+</details>
+
+<details>
+<summary><h3>MacOS with Nix</h3></summary>
+
+_Note: I ran this on top of [the MacOS setup](#MacOS), so it might require some prior steps from that list._
+
+1. Install Nix:
+   ```sh
+   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+   ```
+   **Explicitly deny installing Determinate Nix distribution!**
+1. Install nix-darwin:
+   ```sh
+   sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .
+   ```
+
+<h4>Extending</h4>
+To rebuild the system after making changes run:
+
+```sh
+sudo darwin-rebuild switch --flake .
+# or
+task rebuild
+```
+
+**Note**: If you see an error that a file is missing, then make sure it is tracked by git.
+Flakes are git-aware and the error doesn't suggest that this might be the issue.
 
 </details>
 
