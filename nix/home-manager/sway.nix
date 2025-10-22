@@ -47,7 +47,7 @@ in
         in
         {
           "${mod}+Return" = "exec ${cfg.terminal}";
-          "${mod}+Space" = "exec ${cfg.menu}";
+          "${mod}+D" = "exec ${cfg.menu}";
 
           "Print" = grimshot "copy area";
           "Shift+Print" = grimshot "copy anything";
@@ -64,7 +64,7 @@ in
               -B 'Sleep' 'systemctl suspend'
           '';
 
-          "${mod}+Escape" = "focus mode_toggle";
+          "${mod}+Space" = "focus mode_toggle";
           "${mod}+Shift+Space" = "floating toggle";
 
           "${mod}+f" = "fullscreen toggle";
