@@ -2,6 +2,8 @@
 {
   services.playerctld.enable = true;
 
+  services.swaync.enable = true;
+
   programs.waybar = {
     enable = true;
 
