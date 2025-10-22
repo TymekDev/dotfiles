@@ -48,8 +48,6 @@ bind \cj accept-autosuggestion execute
 bind \ck forward-word
 bind \cf "stty sane; nvim -c 'normal ' -c 'startinsert'"
 bind \cg "stty sane; nvim -c 'normal '"
-# FEAT: make this update automatic
-bind \et update_theme
 bind \en "fish_commandline_prepend 'nvim (' && fish_commandline_append ' )'"
 
 set -x EDITOR nvim

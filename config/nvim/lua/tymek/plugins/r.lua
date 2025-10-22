@@ -56,7 +56,6 @@ return {
   "R-nvim/R.nvim",
   ft = "r",
   keys = {
-    -- EPIC: make this run on-save on tribbles
     {
       ft = "r",
       "<Leader>ra",

@@ -7,7 +7,6 @@ return {
   ---@type quicker.SetupOptions
   opts = {
     max_filename_width = function()
-      -- TODO: parametrize this and add a mapping to increase this value
       return 30
     end,
     keys = {
