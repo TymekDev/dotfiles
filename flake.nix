@@ -38,6 +38,10 @@
       nixosConfigurations = {
         sffpc = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = {
+            isDarwin = false;
+            isLinux = true;
+          };
           modules = [
             ./nix/hardware-configuration/sffpc.nix
 
@@ -68,6 +72,10 @@
       darwinConfigurations = {
         maczek = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
+          specialArgs = {
+            isDarwin = true;
+            isLinux = false;
+          };
           modules = [
             home-manager.darwinModules.home-manager
             {
@@ -84,6 +92,7 @@
             }
 
             ./nix/configuration/machines/maczek.nix
+            ./nix/configuration/default.nix
           ];
         };
       };

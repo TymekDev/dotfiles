@@ -1,9 +1,16 @@
-{ ... }:
+{
+  lib,
+  isDarwin,
+  isLinux,
+  ...
+}:
 {
   imports = [
-    ./1password.nix
     ./fish.nix
     ./fonts.nix
+  ]
+  ++ lib.optionals isLinux [
+    ./1password.nix
     ./greeter.nix
     ./i18n.nix
     ./sway.nix
@@ -19,13 +26,19 @@
   time.timeZone = "Europe/Warsaw";
   environment.variables.TZ = "Europe/Warsaw";
 
-  users.users.tymek = {
-    isNormalUser = true;
-    home = "/home/tymek";
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "input"
-    ];
-  };
+  users.users.tymek = lib.mkMerge [
+    (lib.mkIf isDarwin {
+      home = "/Users/tymek";
+    })
+
+    (lib.mkIf isLinux {
+      isNormalUser = true;
+      home = "/home/tymek";
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "input"
+      ];
+    })
+  ];
 }
