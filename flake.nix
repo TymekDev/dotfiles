@@ -28,13 +28,10 @@
       nur,
       ...
     }:
-    let
-      system = "x86_64-linux";
-    in
     {
       nixosConfigurations = {
         sffpc = nixpkgs.lib.nixosSystem {
-          inherit system;
+          system = "x86_64-linux";
           modules = [
             ./nix/hardware-configuration/sffpc.nix
 
