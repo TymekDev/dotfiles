@@ -56,6 +56,7 @@ cask "docker"              # App to build and share containerised applications a
 cask "firefox"             # Web browser
 cask "font-jetbrains-mono-nerd-font"
 cask "gimp"                # Free and open-source image editor
+cask "hammerspoon"         # Desktop automation application
 cask "inkscape"            # Vector graphics editor
 cask "karabiner-elements"  # Keyboard customiser
 cask "linearmouse"         # Customise mouse behavior

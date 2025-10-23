@@ -68,6 +68,7 @@ setup-shared: configure-terminfo download-rose-pine
 .PHONY: setup-os-macos
 setup-os-macos: restow install-all setup-shared
 	chsh -s "${BREW_BIN}/fish"
+	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 
 .PHONY: setup-os-codespace
 setup-os-codespace: restow install-essentials setup-shared
