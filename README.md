@@ -84,7 +84,7 @@ Adjust the host, paths, and URIs accordingly if needed.
 To rebuild the system after making changes run:
 
 ```sh
-nixos-rebuild switch --use-remote-sudo --flake .
+nixos-rebuild switch --sudo --flake .
 ```
 
 **Note**: If you see an error that a file is missing, then make sure it is tracked by git.

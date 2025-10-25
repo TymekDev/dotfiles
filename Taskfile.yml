@@ -9,7 +9,7 @@ tasks:
     cmds:
       - cmd: git status --porcelain '*.nix' '**/*.nix' | grep '^??' > /dev/null && echo -e "\033[33m\nWARNING\033[0m There are unstaged Nix files. The rebuild might fail.\n" || exit 0
         silent: true
-      - cmd: nixos-rebuild switch --use-remote-sudo --flake .
+      - cmd: nixos-rebuild switch --sudo --flake .
   upgrade:
     desc: Upgrade installed programs
     platforms: [linux]
