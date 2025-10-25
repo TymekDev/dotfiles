@@ -7,6 +7,7 @@
     ./fish.nix
     ./fzf.nix
     ./git.nix
+    ./jj.nix
     ./nvim.nix
     ./obs.nix
     ./starship.nix
