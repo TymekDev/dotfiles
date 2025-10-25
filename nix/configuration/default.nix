@@ -9,6 +9,11 @@
     ./sway.nix
   ];
 
+  networking.firewall.allowedTCPPorts = [
+    8000
+    8080
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [
