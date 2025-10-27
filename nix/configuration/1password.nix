@@ -1,5 +1,7 @@
 { pkgs-unstable, ... }:
 {
+  environment.variables.SSH_AUTH_SOCK = "$HOME/.1password/agent.sock";
+
   programs = {
     _1password = {
       enable = true;
