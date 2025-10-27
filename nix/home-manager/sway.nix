@@ -33,6 +33,7 @@ in
         { command = "1password --silent"; }
         { command = "swaymsg focus output DP-2"; }
         { command = "blueman-applet"; }
+        { command = "swayosd-server"; }
       ];
 
       bars = [
