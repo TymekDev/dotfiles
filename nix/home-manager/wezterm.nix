@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs-unstable, lib, ... }:
 {
   xdg.configFile."wezterm/theme.lua".source = ../../config/wezterm/theme.lua;
 
@@ -8,6 +8,7 @@
 
   programs.wezterm = {
     enable = true;
+    package = pkgs-unstable.wezterm;
 
     extraConfig = ''
       local theme = require("theme")
