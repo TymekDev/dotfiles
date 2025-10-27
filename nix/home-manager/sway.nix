@@ -17,7 +17,15 @@ in
     config = {
       modifier = "Mod4";
 
-      input."*".xkb_layout = "pl";
+      input = {
+        "type:pointer" = {
+          accel_profile = "flat";
+          pointer_accel = "0";
+        };
+        "type:keyboard" = {
+          xkb_layout = "pl";
+        };
+      };
 
       terminal = lib.getExe pkgs.wezterm;
 
