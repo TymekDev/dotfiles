@@ -10,6 +10,7 @@
     ./jj.nix
     ./nvim.nix
     ./obs.nix
+    ./rclone.nix
     ./starship.nix
     ./sway.nix
     ./tmux.nix
