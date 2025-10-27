@@ -32,12 +32,16 @@
     }:
     let
       system = "x86_64-linux";
-      pkgs-unstable = import nixpkgs-unstable { inherit system; };
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in
     {
       nixosConfigurations = {
         sffpc = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit pkgs-unstable; };
           modules = [
             ./nix/hardware-configuration/sffpc.nix
 
