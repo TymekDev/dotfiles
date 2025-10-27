@@ -30,15 +30,9 @@ in
       terminal = lib.getExe pkgs.wezterm;
 
       startup = [
-        {
-          command = "1password --silent";
-        }
-        {
-          command = "swaymsg focus output DP-2";
-        }
-        {
-          command = "blueman-applet";
-        }
+        { command = "1password --silent"; }
+        { command = "swaymsg focus output DP-2"; }
+        { command = "blueman-applet"; }
       ];
 
       bars = [
