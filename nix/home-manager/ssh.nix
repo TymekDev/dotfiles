@@ -1,4 +1,12 @@
 { config, lib, ... }:
+let
+  # NOTE: I'd rather have the config stored here, but importing from ssh to rclone doesn't seem to work.
+  fromRclone =
+    remote: with config.programs.rclone.remotes."${remote}".config; {
+      inherit port user;
+      hostname = host;
+    };
+in
 {
   programs.ssh = {
     enable = true;
@@ -8,17 +16,8 @@
     };
 
     matchBlocks = {
-      helix = {
-        hostname = "helix.lambda.town";
-        port = 2116;
-        user = "tymek";
-      };
-
-      hetzner = {
-        hostname = "u375346.your-storagebox.de";
-        port = 23;
-        user = "u375346";
-      };
+      helix = fromRclone "helix";
+      hetzner = fromRclone "hetzner";
     };
   };
 }
