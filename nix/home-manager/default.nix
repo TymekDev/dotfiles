@@ -11,6 +11,7 @@
     ./nvim.nix
     ./obs.nix
     ./rclone.nix
+    ./ssh.nix
     ./starship.nix
     ./sway.nix
     ./tmux.nix
