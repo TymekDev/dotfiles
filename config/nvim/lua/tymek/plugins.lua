@@ -7,10 +7,6 @@ return {
       parser_configs.scss.install_info.revision = "master"
 
       require("nvim-treesitter.configs").setup({
-        -- Make sure the comment parser gets never installed. See:
-        --  - https://github.com/folke/ts-comments.nvim/issues/55#issuecomment-2363200467
-        --  - https://github.com/folke/ts-comments.nvim/discussions/57
-        ignore_install = { "comment" },
         auto_install = true,
         highlight = { enable = true },
       })
