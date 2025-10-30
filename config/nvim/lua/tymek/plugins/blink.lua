@@ -2,7 +2,8 @@
 ---@type LazySpec
 return {
   "saghen/blink.cmp",
-  event = "InsertEnter",
+  -- '?*' requires the filename to have >=1 character. It avoids empty buffers and telescope prompt
+  event = "InsertEnter ?*",
   version = "*",
   dependencies = {
     "saghen/blink.compat",
