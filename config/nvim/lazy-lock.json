@@ -35,7 +35,6 @@
   "pathlib.nvim": { "branch": "main", "commit": "57e5598af6fe253761c1b48e0b59b7cd6699e2c1" },
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
   "quicker.nvim": { "branch": "master", "commit": "12a2291869a326424b1cbee937f4f80334433012" },
-  "rabbit.nvim": { "branch": "rewrite", "commit": "4785aa59b43b4306904a4646b842847a69704040" },
   "render-markdown.nvim": { "branch": "main", "commit": "691651de4e02cbea9ff50c62d7d3a679abc95564" },
   "rose-pine": { "branch": "main", "commit": "72a04c4065345b51b56aed4859ea1d884f734097" },
   "screenkey.nvim": { "branch": "main", "commit": "16390931d847b1d5d77098daccac4e55654ac9e2" },
