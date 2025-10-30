@@ -3,17 +3,20 @@
 return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
-  event = "InsertEnter",
+  keys = {
+    {
+      mode = "i",
+      "<M-j>",
+      function()
+        require("copilot.suggestion").accept()
+      end,
+    },
+  },
   ---@module "copilot"
   ---@type CopilotConfig
   opts = {
     panel = {
       enabled = false,
-    },
-    suggestion = {
-      keymap = {
-        accept = "<M-j>",
-      },
     },
   },
 }
