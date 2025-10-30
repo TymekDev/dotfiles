@@ -56,6 +56,20 @@
             ];
             definedAliases = [ "@no" ];
           };
+          "MDN" = {
+            urls = [
+              {
+                template = "https://developer.mozilla.org/en-US/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            definedAliases = [ "@mdn" ];
+          };
         };
       };
 
