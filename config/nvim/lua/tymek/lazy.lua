@@ -49,6 +49,9 @@ M.setup = function()
         },
       },
     },
+    change_detection = {
+      enabled = false,
+    },
   })
 end
 
