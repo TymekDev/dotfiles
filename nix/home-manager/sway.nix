@@ -53,6 +53,8 @@ in
           "Print" = grimshot "copy area";
           "Shift+Print" = grimshot "copy anything";
 
+          "${mod}+Shift+m" = "exec ${pkgs.darkman}/bin/darkman toggle";
+
           "${mod}+Shift+q" = "kill";
           "${mod}+Shift+r" = "reload";
           "${mod}+Shift+e" = ''
