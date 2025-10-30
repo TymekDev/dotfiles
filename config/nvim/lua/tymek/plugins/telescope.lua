@@ -75,6 +75,7 @@ return {
       desc = "Open and restore the previously viewed picker (via telescope.nvim)",
     },
     { "<Leader>fh", "<Cmd>Telescope help_tags<CR>", desc = "Search through help tags (via telescope.nvim)" },
+    { "<Leader>fk", "<Cmd>Telescope keymaps<CR>", desc = "Search through keymaps (via telescope.nvim)" },
     { "<Leader>fq", "<Cmd>Telescope quickfix<CR>", desc = "Search through the quickfix list (via telescope.nvim)" },
     {
       "<Leader>fd",
