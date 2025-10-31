@@ -6,6 +6,7 @@
     ./fonts.nix
     ./greeter.nix
     ./i18n.nix
+    ./openssh.nix
     ./sway.nix
   ];
 
