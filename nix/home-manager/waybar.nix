@@ -9,7 +9,7 @@
 
     settings.main = {
       height = 30;
-      spacing = 8;
+      spacing = 12;
 
       modules-left = [
         "sway/workspaces"
@@ -58,14 +58,13 @@
 
       # TODO: revisit spacing with styling
       tray = {
-        "show-passive-items" = true;
-        "spacing" = 8;
-        "reverse-direction" = true;
+        show-passive-items = true;
+        spacing = 4;
+        reverse-direction = true;
       };
 
       "custom/swaync" = {
-        tooltip = true;
-        format = "<span size='18pt'>{icon}</span>";
+        format = "{icon}";
         format-icons = {
           notification = "󱅫";
           none = "󰂜";
@@ -90,6 +89,10 @@
         background-color: rgba(43, 48, 59, 0.5);
         border-bottom: 2px solid rgba(100, 114, 125, 0.5);
         color: #ffffff;
+      }
+
+      .modules-right {
+        padding-right: 10px;
       }
 
       #workspaces button {
@@ -129,6 +132,15 @@
         background-color: #285577;
         font-style: italic;
         padding: 0 12px;
+      }
+
+      #custom-swaync {
+        /* NOTE: those attributes somehow make the icon look centered */
+        font-family: "JetBrainsMono Nerd Font Mono";
+        font-size: 28px;
+        margin-top: -2px;
+        margin-bottom: -2px;
+        margin-left: 2px;
       }
     '';
   };
