@@ -38,4 +38,6 @@
   hardware.bluetooth.powerOnBoot = true;
 
   hardware.keyboard.uhk.enable = true;
+
+  hardware.opentabletdriver.enable = true;
 }
