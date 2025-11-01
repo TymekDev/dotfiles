@@ -10,6 +10,16 @@ in
 {
   services.swayosd.enable = true;
 
+  programs.swaylock = {
+    enable = true;
+
+    settings = {
+      image = ../../local/share/wallpaper.jpg;
+      ignore-empty-password = true;
+      indicator-idle-visible = true;
+    };
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     package = null;
