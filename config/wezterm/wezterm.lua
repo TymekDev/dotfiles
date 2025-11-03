@@ -23,7 +23,6 @@ config.keys = {
   cmd_to_meta("s"), -- telescope.nvim
   cmd_to_meta("["), -- copilot.lua        cycle between suggestions
   cmd_to_meta("]"), -- copilot.lua        cycle between suggestions
-  cmd_to_meta("d"), -- fish & vim-rsi     delete one word forward
   cmd_to_meta("f"), -- fish & vim-rsi     forward one word
   cmd_to_meta("h"), -- fish               open manpage for current command
   cmd_to_meta("j"), -- copilot.lua        accept suggestion
