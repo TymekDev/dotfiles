@@ -1,0 +1,81 @@
+/* Colors */
+window#waybar {
+  color: #ffffff;
+}
+
+#workspaces,
+.modules-center,
+.modules-right {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#workspaces button {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+#workspaces button.empty {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#workspaces button.focused.visible {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* The shared rest */
+window#waybar {
+  background-color: unset;
+}
+
+#workspaces,
+#mode,
+.modules-center,
+.modules-right {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 0 16px;
+  margin: 0 10px;
+  /* Adds up to 30px height */
+  font-size: 14px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+
+#workspaces button {
+  font-size: 0;
+  border-radius: 50%;
+  min-width: 14px;
+  min-height: 14px;
+  margin: 8px 8px;
+  padding: 0;
+}
+
+#workspaces button.urgent {
+  animation-name: blink-danger;
+  animation-duration: 500ms;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink-danger {
+  to {
+    background-color: red;
+  }
+}
+
+#mode {
+  background-color: #285577;
+  color: #ffffff;
+  font-style: italic;
+  min-width: 50px;
+}
+
+#custom-swaync {
+  /* NOTE: those attributes somehow make the icon look centered */
+  font-family: "JetBrainsMono Nerd Font Mono";
+  font-size: 28px;
+  margin-top: -2px;
+  margin-bottom: -2px;
+  margin-left: 2px;
+}

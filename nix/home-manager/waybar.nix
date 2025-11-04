@@ -4,6 +4,11 @@
 
   services.swaync.enable = true;
 
+  xdg.configFile = {
+    "waybar/style-dark.css".source = ./waybar-style-dark.css;
+    "waybar/style-light.css".source = ./waybar-style-light.css;
+  };
+
   programs.waybar = {
     enable = true;
 
@@ -56,6 +61,16 @@
         on-click = "pactl set-sink-mute 0 toggle";
       };
 
+      "sway/workspaces" = {
+        format = "";
+        persistent-workspaces = {
+          "1" = [ "DP-2" ];
+          "2" = [ "DP-2" ];
+          "3" = [ "DP-2" ];
+          "4" = [ "DP-2" ];
+        };
+      };
+
       # TODO: revisit spacing with styling
       tray = {
         show-passive-items = true;
@@ -83,65 +98,5 @@
         escape = true;
       };
     };
-
-    style = ''
-      window#waybar {
-        background-color: rgba(43, 48, 59, 0.5);
-        border-bottom: 2px solid rgba(100, 114, 125, 0.5);
-        color: #ffffff;
-      }
-
-      .modules-right {
-        padding-right: 10px;
-      }
-
-      #workspaces button {
-        /* Use box-shadow instead of border so the text isn't offset */
-        box-shadow: inset 0 -2px transparent;
-        border-radius: 0;
-        padding: 0 5px;
-        color: #ffffff;
-      }
-
-      #workspaces button.focused.visible {
-        box-shadow: inset 0 -2px #ffffff;
-        background-color: #64727D;
-      }
-
-      #workspaces button.visible { /* active workspace on an inactive monitor */
-        box-shadow: inset 0 -2px #b3b3b3;
-        background-color: #32393e;
-      }
-
-      #workspaces button.urgent {
-        animation-name: blink-danger;
-        animation-duration: 750ms;
-        animation-timing-function: steps(12);
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-        box-shadow: inset 0 -2px #eb4d4b;
-      }
-
-      @keyframes blink-danger {
-        to {
-          background-color: #8a110f;
-        }
-      }
-
-      #mode {
-        background-color: #285577;
-        font-style: italic;
-        padding: 0 12px;
-      }
-
-      #custom-swaync {
-        /* NOTE: those attributes somehow make the icon look centered */
-        font-family: "JetBrainsMono Nerd Font Mono";
-        font-size: 28px;
-        margin-top: -2px;
-        margin-bottom: -2px;
-        margin-left: 2px;
-      }
-    '';
   };
 }
