@@ -3,7 +3,7 @@
 set -e
 
 CODESPACES=$(gh codespace list --json name,repository)
-REPO=$(echo $CODESPACES | jq -r '.[] .repository' | gum choose)
+REPO=$(echo $CODESPACES | jq -r '.[] .repository' | fzf)
 CS_NAME=$(echo $CODESPACES | jq -r ".[] | select(.repository == \"$REPO\") | .name")
 
 cs_state() {
