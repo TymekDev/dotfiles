@@ -64,6 +64,7 @@ setup-shared: configure-terminfo download-rose-pine
 		&& BOB_CONFIG=$$tempdir/config.toml ${BREW_BIN}/bob use stable \
 		&& rm -r $$tempdir
 	~/.local/share/bob/nvim-bin/nvim --headless "+Lazy! restore" +qa
+	~/.local/share/bob/nvim-bin/nvim --headless "+TSInstall r" +qa
 
 .PHONY: setup-os-macos
 setup-os-macos: restow install-all setup-shared
