@@ -11,6 +11,17 @@
     efiInstallAsRemovable = true;
   };
 
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+
+    keyboard.uhk.enable = true;
+
+    opentabletdriver.enable = true;
+  };
+
   networking.hostName = "sffpc";
 
   services.blueman.enable = true;
