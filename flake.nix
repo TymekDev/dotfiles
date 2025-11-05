@@ -43,12 +43,13 @@
           inherit system;
           specialArgs = { inherit pkgs-unstable; };
           modules = [
-            ./nix/hardware-configuration/sffpc.nix
-
             disko.nixosModules.disko
-            ./nix/disko/sffpc.nix
-
             home-manager.nixosModules.home-manager
+            nur.modules.nixos.default
+
+            ./nix/machines/sffpc
+            ./nix/configuration
+
             {
               home-manager.backupFileExtension = "hmbak";
               home-manager.useUserPackages = true;
@@ -56,16 +57,10 @@
               home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
               home-manager.users.tymek = {
                 imports = [
-                  ./nix/home-manager/machines/sffpc.nix
-                  ./nix/home-manager/default.nix
+                  ./nix/home-manager
                 ];
               };
             }
-
-            nur.modules.nixos.default
-
-            ./nix/configuration/machines/sffpc.nix
-            ./nix/configuration/default.nix
           ];
         };
       };

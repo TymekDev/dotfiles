@@ -1,5 +1,10 @@
 { ... }:
 {
+  imports = [
+    ./disko.nix
+    ./hardware.nix
+  ];
+
   boot.loader.grub = {
     enable = true;
     efiSupport = true;
