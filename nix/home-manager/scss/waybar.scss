@@ -60,6 +60,10 @@ window#waybar {
   min-width: 50px;
 }
 
+#mpris.paused {
+  color: if($dark, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4));
+}
+
 #custom-swaync {
   /* NOTE: those attributes somehow make the icon look centered */
   font-family: "JetBrainsMono Nerd Font Mono";
