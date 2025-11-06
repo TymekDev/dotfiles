@@ -9,7 +9,4 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-
-  time.timeZone = "Europe/Warsaw";
-  environment.variables.TZ = "Europe/Warsaw";
 }
