@@ -57,7 +57,10 @@
             ./nix/configuration/nixos
 
             {
-              config.dotfiles.username = "tymek";
+              dotfiles = {
+                username = "tymek";
+                desktop = "sway";
+              };
             }
           ];
         };

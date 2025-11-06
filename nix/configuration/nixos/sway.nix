@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
-  programs.sway.enable = true;
+  programs.sway.enable = config.dotfiles.isSway;
 }
