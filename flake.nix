@@ -43,6 +43,11 @@
           inherit system;
           specialArgs = { inherit pkgs-unstable; };
           modules = [
+            # TODO: I don't like how this differs between pkgs and pkgs-unstable. How do I make that uniform?
+            {
+              nixpkgs.config.allowUnfree = true;
+            }
+
             disko.nixosModules.disko
             home-manager.nixosModules.home-manager
             nur.modules.nixos.default

@@ -7,6 +7,4 @@
     ./fonts.nix
     ./user.nix
   ];
-
-  nixpkgs.config.allowUnfree = true;
 }
