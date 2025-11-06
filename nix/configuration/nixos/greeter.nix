@@ -5,7 +5,7 @@
     enable = true;
 
     settings.background = {
-      path = ../../local/share/wallpaper.jpg;
+      path = ../../../local/share/wallpaper.jpg;
       fit = "Cover";
     };
   };

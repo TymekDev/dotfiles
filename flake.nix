@@ -48,7 +48,8 @@
             nur.modules.nixos.default
 
             ./nix/machines/sffpc
-            ./nix/configuration
+            ./nix/configuration/common
+            ./nix/configuration/nixos
 
             {
               home-manager.backupFileExtension = "hmbak";
