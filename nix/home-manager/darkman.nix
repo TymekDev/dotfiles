@@ -13,8 +13,6 @@
     enable = true;
 
     config = {
-      common.default = [ "gtk" ];
-
       sway = {
         "org.freedesktop.impl.portal.Settings" = [ "darkman" ];
       };
