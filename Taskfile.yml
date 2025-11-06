@@ -16,6 +16,12 @@ tasks:
     cmds:
       - nix flake update
       - task: nixos-rebuild
+  rollback:
+    desc: Rollback to the previous NixOS build
+    platforms: [linux]
+    prompt: About to rollback to the previous build. Proceed?
+    cmds:
+      - nixos-rebuild switch --use-remote-sudo --rollback
   run-uhk-agent:
     desc: Runs UHK Agent from the unstable NixOS channel
     platforms: [linux]
