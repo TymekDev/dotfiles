@@ -1,6 +1,10 @@
-{ ... }:
+{ config, ... }:
+let
+  username = config.dotfiles.username;
+in
 {
   imports = [
+    ./config.nix
     ./home-manager.nix
     ./fish.nix
     ./fonts.nix
@@ -11,9 +15,9 @@
   time.timeZone = "Europe/Warsaw";
   environment.variables.TZ = "Europe/Warsaw";
 
-  users.users.tymek = {
+  users.users.${username} = {
     isNormalUser = true;
-    home = "/home/tymek";
+    home = "/home/${username}";
     extraGroups = [
       "wheel"
       "networkmanager"

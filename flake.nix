@@ -50,6 +50,10 @@
             ./nix/machines/sffpc
             ./nix/configuration/common
             ./nix/configuration/nixos
+
+            {
+              config.dotfiles.username = "tymek";
+            }
           ];
         };
       };

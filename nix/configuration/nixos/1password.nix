@@ -1,4 +1,4 @@
-{ pkgs-unstable, ... }:
+{ config, pkgs-unstable, ... }:
 {
   environment.variables.SSH_AUTH_SOCK = "$HOME/.1password/agent.sock";
 
@@ -10,7 +10,7 @@
 
     _1password-gui = {
       enable = true;
-      polkitPolicyOwners = [ "tymek" ];
+      polkitPolicyOwners = [ config.dotfiles.username ];
       package = pkgs-unstable._1password-gui;
     };
   };

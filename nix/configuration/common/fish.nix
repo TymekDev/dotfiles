@@ -1,5 +1,5 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
-  users.users.tymek.shell = pkgs.fish;
+  users.users.${config.dotfiles.username}.shell = pkgs.fish;
   programs.fish.enable = true;
 }
