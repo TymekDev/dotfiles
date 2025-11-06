@@ -29,22 +29,22 @@ window#waybar {
   min-height: 14px;
   margin: 8px 8px;
   padding: 0;
-}
 
-#workspaces button.empty {
-  background-color: if($dark, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-}
+  &.empty {
+    background-color: if($dark, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+  }
 
-#workspaces button.focused.visible {
-  background-color: if($dark, #ffffff, #000000);
-}
+  &.focused.visible {
+    background-color: if($dark, #ffffff, #000000);
+  }
 
-#workspaces button.urgent {
-  animation-name: blink-danger;
-  animation-duration: 500ms;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  &.urgent {
+    animation-name: blink-danger;
+    animation-duration: 500ms;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
 }
 
 @keyframes blink-danger {
