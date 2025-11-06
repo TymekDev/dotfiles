@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./home-manager.nix
     ./fish.nix
     ./fonts.nix
   ];

@@ -50,18 +50,6 @@
             ./nix/machines/sffpc
             ./nix/configuration/common
             ./nix/configuration/nixos
-
-            {
-              home-manager.backupFileExtension = "hmbak";
-              home-manager.useUserPackages = true;
-              home-manager.useGlobalPkgs = true;
-              home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
-              home-manager.users.tymek = {
-                imports = [
-                  ./nix/home-manager
-                ];
-              };
-            }
           ];
         };
       };
