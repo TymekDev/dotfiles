@@ -8,11 +8,6 @@
     ./sway.nix
   ];
 
-  networking.firewall.allowedTCPPorts = [
-    8000
-    8080
-  ];
-
   nix.settings.experimental-features = [
     "flakes"
     "nix-command"
