@@ -15,7 +15,7 @@ tasks:
     platforms: [linux]
     cmds:
       - nix flake update
-      - task: nixos-rebuild
+      - task: rebuild
   rollback:
     desc: Rollback to the previous NixOS build
     platforms: [linux]
