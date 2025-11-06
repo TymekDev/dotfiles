@@ -42,7 +42,8 @@ window#waybar {
     background-color: if($dark, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
   }
 
-  &.focused.visible {
+  &.focused.visible,
+  &:hover {
     background-color: if($dark, #ffffff, #000000);
   }
 
