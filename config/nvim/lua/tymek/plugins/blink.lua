@@ -3,7 +3,10 @@
 return {
   "saghen/blink.cmp",
   -- '?*' requires the filename to have >=1 character. It avoids empty buffers and telescope prompt
-  event = "InsertEnter ?*",
+  event = {
+    "InsertEnter ?*",
+    "CmdlineEnter",
+  },
   version = "*",
   dependencies = {
     "saghen/blink.compat",
