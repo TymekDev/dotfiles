@@ -15,7 +15,6 @@
     ./starship.nix
     ./sway.nix
     ./tmux.nix
-    ./waybar.nix
     ./wezterm.nix
   ];
 

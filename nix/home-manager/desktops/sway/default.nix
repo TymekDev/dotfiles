@@ -5,5 +5,6 @@
     ./swaylock.nix
     ./swaync.nix
     ./swayosd.nix
+    ./waybar.nix
   ];
 }
