@@ -85,12 +85,13 @@ in
         in
         {
           "${mod}+Return" = "exec ${cfg.terminal}";
-          "${mod}+D" = "exec ${cfg.menu}";
+          "${mod}+Space" = "exec ${cfg.menu}";
 
           "Print" = grimshot "copy area";
           "Shift+Print" = grimshot "copy anything";
 
           "${mod}+Shift+m" = "exec ${pkgs.darkman}/bin/darkman toggle";
+          "${mod}+Shift+Space" = "exec 1password --quick-access";
 
           "${mod}+Shift+q" = "kill";
           "${mod}+Shift+r" = "reload";
@@ -104,8 +105,8 @@ in
               -B 'Sleep' 'systemctl suspend'
           '';
 
-          "${mod}+Space" = "focus mode_toggle";
-          "${mod}+Shift+Space" = "floating toggle";
+          "${mod}+d" = "focus mode_toggle";
+          "${mod}+Shift+d" = "floating toggle";
 
           "${mod}+f" = "fullscreen toggle";
           "${mod}+r" = "mode resize";
