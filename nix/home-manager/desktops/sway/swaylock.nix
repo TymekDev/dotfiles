@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (config.dotfiles) isSway;
 in
@@ -6,11 +11,16 @@ in
   config = lib.mkIf isSway {
     programs.swaylock = {
       enable = true;
+      package = pkgs.swaylock-effects;
 
       settings = {
-        image = ../../../../local/share/wallpaper.jpg;
         ignore-empty-password = true;
         indicator-idle-visible = true;
+
+        clock = true;
+        screenshots = true;
+        effect-pixelate = 25;
+        effect-vignette = "0.5:0.5";
       };
     };
 
