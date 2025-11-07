@@ -14,7 +14,7 @@ in
       (
         { config, lib, ... }:
         let
-          osOptions = (import ./config.nix { inherit config lib; }).options;
+          osOptions = (import ./dotfiles.nix { inherit config lib; }).options;
         in
         {
           options.dotfiles = osOptions.dotfiles;

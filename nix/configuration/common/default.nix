@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./config.nix
+    ./dotfiles.nix
     ./home-manager.nix
     ./fonts.nix
     ./user.nix
