@@ -11,41 +11,6 @@ let
   mod = cfg.modifier;
 in
 {
-  services.swayosd.enable = true;
-
-  programs.swaylock = {
-    enable = true;
-
-    settings = {
-      image = ../../local/share/wallpaper.jpg;
-      ignore-empty-password = true;
-      indicator-idle-visible = true;
-    };
-  };
-
-  services.swayidle = {
-    enable = true;
-
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
-      }
-    ];
-
-    timeouts = [
-      {
-        timeout = 300;
-        command = "${pkgs.swaylock}/bin/swaylock -f";
-      }
-      {
-        timeout = 600;
-        command = "${pkgs.sway}/bin/swaymsg 'output * power off'";
-        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * power on'";
-      }
-    ];
-  };
-
   wayland.windowManager.sway = {
     enable = true;
     package = null;
@@ -69,7 +34,6 @@ in
         { command = "1password --silent"; }
         { command = "swaymsg focus output DP-2"; }
         { command = "blueman-applet"; }
-        { command = "swayosd-server"; }
       ];
 
       bars = [
@@ -81,7 +45,7 @@ in
           grimshot =
             args:
             "exec ${pkgs-unstable.sway-contrib.grimshot}/bin/grimshot ${args} && ${swayosd "--custom-message 'yoink' --custom-icon 'edit-copy'"}";
-          swayosd = args: "exec ${config.services.swayosd.package}/bin/swayosd-client ${args}";
+          swayosd = args: "exec swayosd-client ${args}";
         in
         {
           "${mod}+Return" = "exec ${cfg.terminal}";
