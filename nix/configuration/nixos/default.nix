@@ -12,4 +12,6 @@
     "flakes"
     "nix-command"
   ];
+
+  services.playerctld.enable = true;
 }

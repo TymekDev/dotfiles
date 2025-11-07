@@ -15,8 +15,6 @@ let
 in
 
 {
-  services.playerctld.enable = true;
-
   services.swaync.enable = true;
 
   xdg.configFile = {
