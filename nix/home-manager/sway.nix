@@ -28,7 +28,7 @@ in
         };
       };
 
-      terminal = lib.getExe pkgs.wezterm;
+      terminal = lib.getExe config.programs.wezterm.package;
 
       startup = [
         { command = "1password --silent"; }
@@ -37,7 +37,7 @@ in
       ];
 
       bars = [
-        { command = "${pkgs.waybar}/bin/waybar"; }
+        { command = lib.getExe config.programs.waybar.package; }
       ];
 
       keybindings =

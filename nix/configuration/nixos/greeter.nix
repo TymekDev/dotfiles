@@ -21,10 +21,10 @@
 
       settings = {
         default_session = {
-          command = "${pkgs.sway}/bin/sway --config ${pkgs.writeText "greetd-sway-config" ''
+          command = "${lib.getExe config.programs.sway.package} --config ${pkgs.writeText "greetd-sway-config" ''
             include /etc/sway/config.d/*
             output DP-3 disable
-            exec "${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
+            exec "${lib.getExe config.programs.regreet.package}; swaymsg exit"
           ''}";
           user = "greeter";
         };
