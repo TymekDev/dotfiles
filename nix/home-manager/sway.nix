@@ -1,7 +1,6 @@
 # FIXME: sometimes (after power off?) the dmenu begins to start at the secondary monitor (which is now listed first by swaymsg -t get_outputs)
 {
   config,
-  pkgs,
   pkgs-unstable,
   lib,
   ...
@@ -34,10 +33,6 @@ in
         { command = "1password --silent"; }
         { command = "swaymsg focus output DP-2"; }
         { command = "blueman-applet"; }
-      ];
-
-      bars = [
-        { command = lib.getExe config.programs.waybar.package; }
       ];
 
       keybindings =

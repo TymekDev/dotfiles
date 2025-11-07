@@ -25,6 +25,10 @@ in
       "waybar/style-light.css".source = buildStyle "light";
     };
 
+    wayland.windowManager.sway.config.bars = [
+      { command = lib.getExe config.programs.waybar.package; }
+    ];
+
     programs.waybar = {
       enable = true;
 
