@@ -116,7 +116,7 @@ in
 
           "${mod}+e" = "layout toggle split";
           "${mod}+s" = "layout stacking";
-          "${mod}+w" = "layout tabbed";
+          "${mod}+t" = "layout tabbed";
 
           "${mod}+h" = "focus left";
           "${mod}+j" = "focus down";
