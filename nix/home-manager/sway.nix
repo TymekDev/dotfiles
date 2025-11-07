@@ -7,6 +7,7 @@
 }:
 let
   cfg = config.wayland.windowManager.sway.config;
+  mod = cfg.modifier;
 in
 {
   services.swayosd.enable = true;
@@ -80,7 +81,6 @@ in
             args:
             "exec ${pkgs-unstable.sway-contrib.grimshot}/bin/grimshot ${args} && ${swayosd "--custom-message 'yoink' --custom-icon 'edit-copy'"}";
           swayosd = args: "exec ${config.services.swayosd.package}/bin/swayosd-client ${args}";
-          mod = cfg.modifier;
         in
         {
           "${mod}+Return" = "exec ${cfg.terminal}";
@@ -147,6 +147,17 @@ in
           "--locked XF86AudioNext" = swayosd "--playerctl next";
           "--locked XF86AudioPlay" = swayosd "--playerctl play-pause";
         };
+
+      modes = {
+        resize = {
+          Escape = "mode default";
+          "${mod}+R" = "mode default";
+          h = "resize shrink width 10 px or 10 ppt";
+          j = "resize shrink height 10 px or 10 ppt";
+          k = "resize grow height 10 px or 10 ppt";
+          l = "resize grow width 10 px or 10 ppt";
+        };
+      };
 
       output = {
         DP-2 = {
