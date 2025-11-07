@@ -38,7 +38,9 @@
       };
 
       gpg.format = "ssh";
-      gpg."ssh".program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
+
+      # FIXME: I think this uses a different verision than the one installed system-wide
+      gpg."ssh".program = lib.getExe' pkgs._1password-gui "op-ssh-sign";
       commit.gpgsign = true;
 
       branch.sort = "-committerdate";
