@@ -13,7 +13,6 @@
     ./rclone.nix
     ./ssh.nix
     ./starship.nix
-    ./sway.nix
     ./tmux.nix
     ./wezterm.nix
   ];
