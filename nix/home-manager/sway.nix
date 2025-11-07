@@ -54,7 +54,7 @@ in
           "Print" = grimshot "copy area";
           "Shift+Print" = grimshot "copy anything";
 
-          "${mod}+Shift+m" = "exec ${pkgs.darkman}/bin/darkman toggle";
+          "${mod}+Shift+m" = "exec darkman toggle";
           "${mod}+Shift+Space" = "exec 1password --quick-access";
 
           "${mod}+Shift+q" = "kill";
