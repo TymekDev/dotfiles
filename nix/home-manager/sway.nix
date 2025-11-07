@@ -52,6 +52,7 @@ in
           "${mod}+Shift+m" = "exec darkman toggle";
           "${mod}+Shift+Space" = "exec 1password --quick-access";
 
+          "${mod}+Ctrl+q" = "exec swaylock -f";
           "${mod}+Shift+q" = "kill";
           "${mod}+Shift+r" = "reload";
           "${mod}+Shift+e" = ''
