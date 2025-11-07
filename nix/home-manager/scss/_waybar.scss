@@ -1,7 +1,7 @@
 $dark: true !default;
 
 window#waybar {
-  background-color: unset;
+  background: unset;
   color: if($dark, #ffffff, #000000);
 }
 
@@ -9,7 +9,7 @@ window#waybar {
 #mode,
 #mpris,
 .modules-right {
-  background-color: if($dark, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.8));
+  background: if($dark, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.8));
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   padding: 0 16px;
@@ -22,7 +22,7 @@ window#waybar {
 }
 
 #workspaces button {
-  background-color: if($dark, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4));
+  background: if($dark, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4));
   font-size: 0;
   border-radius: 50%;
   min-width: 18px;
@@ -39,12 +39,12 @@ window#waybar {
   }
 
   &.empty {
-    background-color: if($dark, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    background: if($dark, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
   }
 
   &.focused.visible,
   &:hover {
-    background-color: if($dark, #ffffff, #000000);
+    background: if($dark, #ffffff, #000000);
   }
 
   &.urgent {
@@ -58,12 +58,12 @@ window#waybar {
 
 @keyframes blink-danger {
   to {
-    background-color: red;
+    background: red;
   }
 }
 
 #mode {
-  background-color: #285577;
+  background: #285577;
   color: #ffffff;
   font-style: italic;
   min-width: 50px;
