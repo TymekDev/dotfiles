@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   lib,
   ...
 }:
@@ -77,7 +78,7 @@ in
         let
           grimshot =
             args:
-            "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot ${args} && ${swayosd "--custom-message 'yoink' --custom-icon 'edit-copy'"}";
+            "exec ${pkgs-unstable.sway-contrib.grimshot}/bin/grimshot ${args} && ${swayosd "--custom-message 'yoink' --custom-icon 'edit-copy'"}";
           swayosd = args: "exec ${config.services.swayosd.package}/bin/swayosd-client ${args}";
           mod = cfg.modifier;
         in
