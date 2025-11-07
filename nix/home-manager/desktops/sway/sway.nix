@@ -10,6 +10,7 @@ let
 
   cfg = config.wayland.windowManager.sway.config;
   mod = cfg.modifier;
+  modMove = "${mod}+Shift";
 in
 {
   config = lib.mkIf isSway {
@@ -89,10 +90,10 @@ in
             "${mod}+k" = "focus up";
             "${mod}+l" = "focus right";
 
-            "${mod}+Shift+h" = "move left";
-            "${mod}+Shift+j" = "move down";
-            "${mod}+Shift+k" = "move up";
-            "${mod}+Shift+l" = "move right";
+            "${modMove}+h" = "move left";
+            "${modMove}+j" = "move down";
+            "${modMove}+k" = "move up";
+            "${modMove}+l" = "move right";
 
             "${mod}+1" = "workspace number 1";
             "${mod}+2" = "workspace number 2";
@@ -100,11 +101,11 @@ in
             "${mod}+4" = "workspace number 4";
             "${mod}+5" = "workspace number 5";
 
-            "${mod}+Shift+1" = "move container to workspace number 1";
-            "${mod}+Shift+2" = "move container to workspace number 2";
-            "${mod}+Shift+3" = "move container to workspace number 3";
-            "${mod}+Shift+4" = "move container to workspace number 4";
-            "${mod}+Shift+5" = "move container to workspace number 5";
+            "${modMove}+1" = "move container to workspace number 1";
+            "${modMove}+2" = "move container to workspace number 2";
+            "${modMove}+3" = "move container to workspace number 3";
+            "${modMove}+4" = "move container to workspace number 4";
+            "${modMove}+5" = "move container to workspace number 5";
 
             "--locked XF86AudioLowerVolume" = swayosd "--output-volume -5";
             "--locked XF86AudioRaiseVolume" = swayosd "--output-volume +5";
