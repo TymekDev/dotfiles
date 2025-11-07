@@ -32,6 +32,9 @@
     spotify
     uhk-agent
     yazi
+
+    # my custom stuff
+    tarsnap-1pass
   ];
 
   xdg.enable = true;
