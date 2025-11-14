@@ -3,6 +3,7 @@
   imports = [
     ./desktops/sway
     ./bat.nix
+    ./direnv.nix
     ./firefox.nix
     ./fish.nix
     ./fzf.nix

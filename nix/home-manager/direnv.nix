@@ -1,0 +1,4 @@
+{ ... }:
+{
+  programs.direnv.enable = true;
+}
