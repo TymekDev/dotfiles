@@ -121,6 +121,7 @@ M.cycle_theme = function(win, pane)
   for name, _ in pairs(themes) do
     table.insert(theme_names, name)
   end
+  table.sort(theme_names)
 
   local new
   for i, name in ipairs(theme_names) do
