@@ -21,9 +21,11 @@ tasks:
       - cmd: nixos-rebuild boot --use-remote-sudo --flake .
   upgrade:
     desc: Upgrade installed programs
-    platforms: [linux]
     cmds:
-      - nix flake update
+      - platforms: [linux]
+        cmd: nix flake update
+      - platforms: [darwin]
+        cmd: brew bundle install --verbose
       - task: rebuild
   rollback:
     desc: Rollback to the previous NixOS build
