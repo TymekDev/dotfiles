@@ -9,7 +9,7 @@ let
   inherit (config.dotfiles) isSway;
 
   cfg = config.wayland.windowManager.sway.config;
-  mod = cfg.modifier;
+  mod = "Mod4";
   modMove = "${mod}+Shift";
 in
 {
@@ -19,7 +19,7 @@ in
       package = null;
 
       config = {
-        modifier = "Mod4";
+        modifier = mod;
 
         input = {
           "type:pointer" = {
