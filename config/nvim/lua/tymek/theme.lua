@@ -50,6 +50,17 @@ local detect = function(callback)
 end
 
 M.update = function()
+  if vim.env.TERM == "xterm-ghostty" then
+    read("theme", function(theme)
+      if theme == "rosepine" then
+        theme = "rose-pine"
+      end
+      vim.api.nvim_cmd({ cmd = "colorscheme", args = { theme } }, {})
+      require("nvim-highlight-colors").turnOn()
+    end)
+    return
+  end
+
   detect(function(theme, mode)
     if theme ~= nil and themes[theme] == nil then
       vim.notify(string.format("[ERROR] Unknown theme: '%s'", theme), vim.log.levels.ERROR)
