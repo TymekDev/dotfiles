@@ -1,6 +1,6 @@
 #!/bin/sh
 update() {
-  THEME=$(cat ~/.local/state/tymek-theme/theme || echo 'tokyonight')
+  THEME="$(cat ~/.local/state/tymek-theme/theme || echo 'tokyonight')"
   MODE="$(cat ~/.local/state/tymek-theme/mode || echo 'dark')"
 
   if [ "$THEME" = "tokyonight" ]; then
