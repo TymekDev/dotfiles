@@ -9,7 +9,7 @@ let
 in
 {
   config = lib.mkIf hasWezterm {
-    xdg.configFile."wezterm/theme.lua".source = ../../config/wezterm/theme.lua;
+    xdg.configFile."wezterm/theme.lua".source = ../../../config/wezterm/theme.lua;
 
     home.activation.weztermMkdirThemeDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       run mkdir $VERBOSE_ARG --parents $HOME/.local/state/tymek-theme

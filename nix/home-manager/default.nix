@@ -2,6 +2,7 @@
 {
   imports = [
     ./desktops/sway
+    ./terminals/wezterm.nix
     ./bat.nix
     ./direnv.nix
     ./firefox.nix
@@ -15,7 +16,6 @@
     ./ssh.nix
     ./starship.nix
     ./tmux.nix
-    ./wezterm.nix
   ];
 
   home.packages = with pkgs; [
