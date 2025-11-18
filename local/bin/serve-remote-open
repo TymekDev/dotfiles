@@ -24,17 +24,17 @@ class OpenURLHandler(MyBaseHandler):
         post_data = self.rfile.read(content_length).decode("utf-8")
         form_data = parse_qs(post_data)
 
-        if not "url" in form_data:
+        if "url" not in form_data:
             self.respond(400)
             return
 
         url = form_data["url"][0]
         url_parsed = urlparse(url)
 
-        if not url_parsed.scheme in allowed_schemes:
+        if url_parsed.scheme not in allowed_schemes:
             self.respond(422)
             return
-        if not url_parsed.hostname in allowed_hostnames:
+        if url_parsed.hostname not in allowed_hostnames:
             self.respond(422)
             return
 
