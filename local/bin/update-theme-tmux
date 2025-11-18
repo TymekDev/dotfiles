@@ -1,7 +1,10 @@
 #!/bin/sh
 update() {
+  MODE="$1"
   THEME="$(cat ~/.local/state/tymek-theme/theme || echo 'tokyonight')"
-  MODE="$(cat ~/.local/state/tymek-theme/mode || echo 'dark')"
+  if [ -z "$MODE" ]; then
+    MODE="$(cat ~/.local/state/tymek-theme/mode || echo 'dark')"
+  fi
 
   if [ "$THEME" = "tokyonight" ]; then
     if [ "$MODE" = "light" ]; then
@@ -31,4 +34,4 @@ update() {
   return 1
 }
 
-update
+update "$1"
