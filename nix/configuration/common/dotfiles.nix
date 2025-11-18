@@ -20,9 +20,22 @@ in
               ]
             );
           };
+          terminals = mkOption {
+            description = "The terminal emulators to include";
+            default = [ "wezterm" ];
+            type = types.listOf (
+              types.enum [
+                "wezterm"
+              ]
+            );
+          };
 
           isSway = mkOption {
             default = config.dotfiles.desktop == "sway";
+            visible = false;
+          };
+          hasWezterm = mkOption {
+            default = builtins.elem "wezterm" config.dotfiles.terminals;
             visible = false;
           };
         };
