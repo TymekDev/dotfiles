@@ -6,6 +6,7 @@ return {
     priority = 999,
     config = function()
       require("tokyonight").setup({
+        style = "storm",
         lualine_bold = true,
         on_highlights = function(hl, _)
           hl["@r.reactive.call"] = { link = "Special" }
