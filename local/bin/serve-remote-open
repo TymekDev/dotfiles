@@ -8,48 +8,49 @@ allowed_schemes = ["http", "https"]
 allowed_hostnames = ["localhost", "127.0.0.1", "github.com"]
 
 
-class MyBaseHandler(BaseHTTPRequestHandler):
-    def respond(self, code):
-        self.send_response(code)
-        self.end_headers()
-
-
-class OpenURLHandler(MyBaseHandler):
+class MainHandler(BaseHTTPRequestHandler):
     def do_POST(self):
-        if self.path != "/open":
-            self.respond(404)
+        if self.path == "/open":
+            self.__handle_open()
             return
 
+        self.__respond(404)
+
+    def __respond(self, code, message=None):
+        self.send_response(code, message)
+        self.end_headers()
+
+    def __handle_open(self):
         content_length = int(self.headers["Content-Length"])
         post_data = self.rfile.read(content_length).decode("utf-8")
         form_data = parse_qs(post_data)
 
         if "url" not in form_data:
-            self.respond(400)
+            self.__respond(400)
             return
 
         url = form_data["url"][0]
         url_parsed = urlparse(url)
 
         if url_parsed.scheme not in allowed_schemes:
-            self.respond(422)
+            self.__respond(422)
             return
         if url_parsed.hostname not in allowed_hostnames:
-            self.respond(422)
+            self.__respond(422)
             return
 
         try:
             subprocess.run(["open", url])
-            self.respond(200)
+            self.__respond(200)
             return
         except Exception:
-            self.respond(500)
+            self.__respond(500)
             return
 
 
 def run_server(port):
     server_address = ("", port)
-    httpd = HTTPServer(server_address, OpenURLHandler)
+    httpd = HTTPServer(server_address, MainHandler)
     print(f"Listening for remote opens on port {port}")
     httpd.serve_forever()
 
