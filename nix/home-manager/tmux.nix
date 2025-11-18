@@ -41,6 +41,8 @@ in
 
       run-shell "update-theme-tmux"
       set-hook -g client-focus-in 'run-shell "update-theme-tmux"'
+      set-hook -g client-light-theme 'run-shell "update-theme-tmux light"'
+      set-hook -g client-dark-theme 'run-shell "update-theme-tmux dark"'
     '';
   };
 }
