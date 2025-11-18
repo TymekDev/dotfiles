@@ -8,7 +8,13 @@ allowed_schemes = ["http", "https"]
 allowed_hostnames = ["localhost", "127.0.0.1", "github.com"]
 
 
-class OpenURLHandler(BaseHTTPRequestHandler):
+class MyBaseHandler(BaseHTTPRequestHandler):
+    def respond(self, code):
+        self.send_response(code)
+        self.end_headers()
+
+
+class OpenURLHandler(MyBaseHandler):
     def do_POST(self):
         if self.path != "/open":
             self.respond(404)
@@ -36,13 +42,9 @@ class OpenURLHandler(BaseHTTPRequestHandler):
             subprocess.run(["open", url])
             self.respond(200)
             return
-        except Exception as e:
+        except Exception:
             self.respond(500)
             return
-
-    def respond(self, code):
-        self.send_response(code)
-        self.end_headers()
 
 
 def run_server(port):
