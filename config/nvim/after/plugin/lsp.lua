@@ -10,6 +10,7 @@ vim.lsp.enable({
   "jsonls",
   "lua_ls",
   "nixd",
+  "pylsp",
   "r_language_server",
   "tailwindcss",
   "taplo",
