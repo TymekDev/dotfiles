@@ -2,6 +2,7 @@
 {
   imports = [
     ./desktops/sway
+    ./terminals/ghostty.nix
     ./terminals/wezterm.nix
     ./bat.nix
     ./direnv.nix

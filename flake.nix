@@ -56,6 +56,10 @@
               dotfiles = {
                 username = "tymek";
                 desktop = "sway";
+                terminals = [
+                  "ghostty"
+                  "wezterm"
+                ];
               };
             }
           ];

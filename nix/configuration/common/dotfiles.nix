@@ -25,6 +25,7 @@ in
             default = [ "wezterm" ];
             type = types.listOf (
               types.enum [
+                "ghostty"
                 "wezterm"
               ]
             );
@@ -32,6 +33,10 @@ in
 
           isSway = mkOption {
             default = config.dotfiles.desktop == "sway";
+            visible = false;
+          };
+          hasGhostty = mkOption {
+            default = builtins.elem "ghostty" config.dotfiles.terminals;
             visible = false;
           };
           hasWezterm = mkOption {
