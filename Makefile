@@ -77,11 +77,19 @@ setup-os-codespace: restow install-essentials setup-shared
 	ln -sf request-remote-open ~/.local/bin/xdg-open
 
 .PHONY: configure-terminfo
-configure-terminfo:
+configure-terminfo: configure-terminfo-wezterm configure-terminfo-ghostty
+
+.PHONY: configure-terminfo-wezterm
+configure-terminfo-wezterm:
 	tempfile=$$(mktemp) \
 		&& curl -o $$tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
 		&& tic -x -o ~/.terminfo $$tempfile \
 		&& rm $$tempfile
+
+.PHONY: configure-terminfo-ghostty
+configure-terminfo-ghostty:
+	@[ -x ${BREW_DIR}/opt/ncurses/bin/infocmp ] || ${BREW} install ncurses
+	${BREW_DIR}/opt/ncurses/bin/infocmp xterm-ghostty | tic -o ~/.terminfo/ -x -
 
 .PHONY: download-rose-pine
 download-rose-pine:
