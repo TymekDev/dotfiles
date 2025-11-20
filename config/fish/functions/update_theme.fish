@@ -1,6 +1,10 @@
-function update_theme --on-event fish_focus_in
+function update_theme --on-event fish_focus_in --on-event fish_prompt
   set -f THEME "$(cat ~/.local/state/tymek-theme/theme || echo 'tokyonight')"
-  set -f MODE "$(cat ~/.local/state/tymek-theme/mode || echo 'dark')"
+  if type -q rod
+    set -f MODE "$(rod print | tr '[:upper:]' '[:lower:]')"
+  else
+    set -f MODE "$(cat ~/.local/state/tymek-theme/mode || echo 'dark')"
+  end
 
   if [ "$THEME" = "rosepine" ]
     if [ "$MODE" = "light" ]
