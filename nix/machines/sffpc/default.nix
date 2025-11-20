@@ -3,6 +3,7 @@
   imports = [
     ./disko.nix
     ./hardware.nix
+    ./hibernation.nix
   ];
 
   boot.loader.grub = {
