@@ -10,7 +10,7 @@ function update_theme --on-event fish_focus_in
     end
 
     fish_config theme choose $THEME
-    return
+    return 0
   end
 
   if [ "$THEME" = "tokyonight" ]
@@ -21,7 +21,7 @@ function update_theme --on-event fish_focus_in
     end
 
     source "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/$THEME.fish"
-    return
+    return 0
   end
 
   if status is-interactive
