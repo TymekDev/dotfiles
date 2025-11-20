@@ -111,6 +111,10 @@ M.setup = function(config)
 
   local theme = theme_read()
   theme_set(config, theme, mode)
+
+  wezterm.on("window-config-reloaded", function(win, pane)
+    win:perform_action(wezterm.action.SendString("\x1B[O\x1B[I"), pane)
+  end)
 end
 
 ---@param win Window
