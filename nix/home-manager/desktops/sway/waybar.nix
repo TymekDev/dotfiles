@@ -65,11 +65,16 @@ in
         # TODO: update this config
         mpris = {
           format = "{dynamic}";
-          format-paused = "{status_icon} <i>{dynamic}</i>";
           interval = 1;
-          status-icons = {
-            paused = "⏸";
-          };
+          dynamic-order = [
+            "title"
+            "artist"
+            "position"
+            "length"
+          ];
+          on-scroll-up = "playerctld shift";
+          on-scroll-down = "playerctld unshift";
+          tooltip = false;
         };
 
         pulseaudio = {
