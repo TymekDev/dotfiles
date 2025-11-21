@@ -19,6 +19,7 @@
           "$left"
           "$right"
         ];
+        pager = "less -FXR";
       };
 
       user = {
