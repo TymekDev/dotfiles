@@ -39,6 +39,7 @@ in
           "Nix Packages" = engine "@np" "https://search.nixos.org/packages" "query";
           "Nix Options" = engine "@no" "https://search.nixos.org/options" "query";
           "MDN" = engine "@mdn" "https://developer.mozilla.org/en-US/search" "q";
+          "OSRS Wiki" = engine "@osrs" "https://oldschool.runescape.wiki/" "search";
         };
       };
 
