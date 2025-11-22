@@ -1,4 +1,20 @@
 { pkgs, ... }:
+let
+  engine = alias: url: queryParamName: {
+    definedAliases = [ alias ];
+    urls = [
+      {
+        template = url;
+        params = [
+          {
+            name = queryParamName;
+            value = "{searchTerms}";
+          }
+        ];
+      }
+    ];
+  };
+in
 {
   programs.firefox = {
     enable = true;
@@ -20,56 +36,9 @@
         force = true;
         default = "ddg";
         engines = {
-          "Nix Packages" = {
-            urls = [
-              {
-                template = "https://search.nixos.org/packages";
-                params = [
-                  {
-                    name = "type";
-                    value = "packages";
-                  }
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
-            definedAliases = [ "@np" ];
-          };
-          "Nix Options" = {
-            urls = [
-              {
-                template = "https://search.nixos.org/options";
-                params = [
-                  {
-                    name = "type";
-                    value = "packages";
-                  }
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
-            definedAliases = [ "@no" ];
-          };
-          "MDN" = {
-            urls = [
-              {
-                template = "https://developer.mozilla.org/en-US/search";
-                params = [
-                  {
-                    name = "q";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
-            definedAliases = [ "@mdn" ];
-          };
+          "Nix Packages" = engine "@np" "https://search.nixos.org/packages" "query";
+          "Nix Options" = engine "@no" "https://search.nixos.org/options" "query";
+          "MDN" = engine "@mdn" "https://developer.mozilla.org/en-US/search" "q";
         };
       };
 
