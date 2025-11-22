@@ -30,6 +30,11 @@ in
               ]
             );
           };
+          gaming = mkOption {
+            description = "Gaming-related stuff to include";
+            default = [ ];
+            type = types.listOf (types.enum [ "osrs" ]);
+          };
 
           isSway = mkOption {
             default = config.dotfiles.desktop == "sway";
@@ -41,6 +46,10 @@ in
           };
           hasWezterm = mkOption {
             default = builtins.elem "wezterm" config.dotfiles.terminals;
+            visible = false;
+          };
+          hasOSRS = mkOption {
+            default = builtins.elem "osrs" config.dotfiles.gaming;
             visible = false;
           };
         };

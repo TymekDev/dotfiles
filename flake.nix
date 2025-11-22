@@ -60,6 +60,9 @@
                   "ghostty"
                   "wezterm"
                 ];
+                gaming = [
+                  "osrs"
+                ];
               };
             }
           ];
