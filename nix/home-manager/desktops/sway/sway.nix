@@ -39,6 +39,25 @@ in
           { command = "blueman-applet"; }
         ];
 
+        window.commands =
+          let
+            floating = criteria: {
+              command = "floating enable";
+              inherit criteria;
+            };
+            sticky = criteria: {
+              command = "sticky enable";
+              inherit criteria;
+            };
+          in
+          [
+            (sticky { app_id = "1password"; })
+            (floating { app_id = "1password"; })
+            (floating { class = "net-runelite-client-RuneLite"; })
+            (floating { class = "net-runelite-launcher-Launcher"; })
+            (floating { class = "BoltLauncher"; })
+          ];
+
         keybindings =
           let
             grimshot =
