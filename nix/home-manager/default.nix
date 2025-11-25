@@ -35,6 +35,7 @@
 
     # my custom stuff
     tarsnap-1pass
+    tarsnap-1pass-backup
   ];
 
   xdg.enable = true;

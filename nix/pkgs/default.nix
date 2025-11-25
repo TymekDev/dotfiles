@@ -7,6 +7,8 @@
     (final: prev: {
       tarsnap-1pass = final.callPackage ./tarsnap-1pass.nix { };
 
+      tarsnap-1pass-backup = final.callPackage ./tarsnap-1pass-backup.nix { };
+
       tmux = prev.tmux.overrideAttrs (
         finalAttrs: prevAttrs: {
           version = "348f16093c35cbb318281e68f4405dae5b2627d1";
