@@ -10,7 +10,7 @@ let
 
   cfg = config.wayland.windowManager.sway.config;
   mod = "Mod4";
-  modMove = "${mod}+Ctrl";
+  modMove = "${mod}+Shift";
 in
 {
   config = lib.mkIf isSway {
