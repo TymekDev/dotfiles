@@ -83,6 +83,7 @@ in
                 -t  warning \
                 -m 'Sup?' \
                 -B 'Poweroff' 'systemctl poweroff' \
+                -B 'Hibernate' 'systemctl hibernate' \
                 -B 'Exit sway' 'swaymsg exit' \
                 -B 'Reboot' 'systemctl reboot' \
                 -B 'Sleep' 'systemctl suspend'
