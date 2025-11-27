@@ -83,10 +83,10 @@ in
                 -t  warning \
                 -m 'Sup?' \
                 -B 'Poweroff' 'systemctl poweroff' \
-                -B 'Hibernate' 'systemctl hibernate' \
+                -Z 'Hibernate' 'systemctl hibernate' \
                 -B 'Exit sway' 'swaymsg exit' \
                 -B 'Reboot' 'systemctl reboot' \
-                -B 'Sleep' 'systemctl suspend'
+                -Z 'Sleep' 'systemctl suspend'
             '';
 
             "${mod}+d" = "focus mode_toggle";
