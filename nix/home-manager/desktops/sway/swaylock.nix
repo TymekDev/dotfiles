@@ -34,17 +34,21 @@ in
         }
       ];
 
-      timeouts = [
-        {
-          timeout = 300;
-          command = "swaylock -f";
-        }
-        {
-          timeout = 600;
-          command = "swaymsg 'output * power off'";
-          resumeCommand = "swaymsg 'output * power on'";
-        }
-      ];
+      timeouts =
+        let
+          minutes = seconds: 60 * seconds;
+        in
+        [
+          {
+            timeout = minutes 5;
+            command = "swaylock -f";
+          }
+          {
+            timeout = minutes 10;
+            command = "swaymsg 'output * power off'";
+            resumeCommand = "swaymsg 'output * power on'";
+          }
+        ];
     };
   };
 }
