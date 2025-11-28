@@ -48,6 +48,10 @@ in
             command = "swaymsg 'output * power off'";
             resumeCommand = "swaymsg 'output * power on'";
           }
+          {
+            timeout = minutes 30;
+            command = "systemctl hibernate";
+          }
         ];
     };
   };
