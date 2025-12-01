@@ -24,8 +24,8 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```
 1. Clone the repo:
    ```sh
-   git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles
-   git -C ~/personal/dotfiles remote set-url origin git@github.com:TymekDev/dotfiles
+   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
+   git -C ~/personal/dotfiles remote set-url origin ssh://git@codeberg.org/TymekDev/dotfiles.git
    ```
 1. Symlink config files:
    ```sh
@@ -58,7 +58,7 @@ Adjust the host, paths, and URIs accordingly if needed.
    1. Make sure that the `device` value in [`nix/disko/sffpc.nix`](./nix/disko/sffpc.nix) is up to date
    1. Run:
       ```sh
-      curl -o /tmp/disko.nix https://raw.githubusercontent.com/TymekDev/dotfiles/main/nix/disko/sffpc.nix
+      curl -o /tmp/disko.nix https://codeberg.org/TymekDev/dotfiles/raw/branch/main/nix/machines/sffpc/disko.nix
       sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount /tmp/disko.nix
       ```
    1. Verify that `mount | grep /mnt ` shows new entries for `/mnt` and `/mnt/boot`
@@ -72,7 +72,7 @@ Adjust the host, paths, and URIs accordingly if needed.
    1. Push the updated version
 1. Install the system:
    ```sh
-   sudo nixos-install --root /mnt --flake github:TymekDev/dotfiles#sffpc --no-write-lock-file
+   sudo nixos-install --root /mnt --flake git+https://codeberg.org/TymekDev/dotfiles#sffpc --no-write-lock-file
    ```
 1. Set a password for users defined in the configuration:
    ```sh
@@ -112,8 +112,8 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
    ```
 1. Clone the repo:
    ```sh
-   git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles
-   git -C ~/personal/dotfiles remote set-url origin git@github.com:TymekDev/dotfiles
+   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
+   git -C ~/personal/dotfiles remote set-url origin ssh://git@codeberg.org/TymekDev/dotfiles.git
    ```
    <!-- TODO: add a new SSH key -->
 1. Symlink config files:
@@ -171,7 +171,7 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
    ```
 1. Clone the repo:
    ```sh
-   git clone https://github.com/TymekDev/dotfiles ~/personal/dotfiles
+   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
    ```
 1. Run:
    ```sh
@@ -189,16 +189,16 @@ Starting with the oldest:
 - Commit removing [home-manager][]: ([`2d5d745`][]) _refactor: purge home-manager and Nix_
 - Commit adding setup automation using `make`: ([`7ac8ddf`][]) _Merge branch 'make-magic'_
 - Commit switching from [packer.nvim][] to [lazy.nvim][]: ([`1ad9d73`][]) _Merge pull request #8 from TymekDev/lazy.nvim_
-- Commit replacing the `make`-based setup with a `Brewfile`: ([`fa64d51`](https://github.com/TymekDev/dotfiles/commit/fa64d51d330a540b45bb043493706dc6b5468a8c)) _refactor: use Brewfile_
-- Commit adding the NixOS configuration: ([`c844f53`](https://github.com/TymekDev/dotfiles/commit/c844f535eb858185629250faa3cda237d7ce10fc)) _Merge branch 'nixos'_
+- Commit replacing the `make`-based setup with a `Brewfile`: ([`fa64d51`](https://codeberg.org/TymekDev/dotfiles/commit/fa64d51d330a540b45bb043493706dc6b5468a8c)) _refactor: use Brewfile_
+- Commit adding the NixOS configuration: ([`c844f53`](https://codeberg.org/TymekDev/dotfiles/commit/c844f535eb858185629250faa3cda237d7ce10fc)) _Merge branch 'nixos'_
 
-[`b9d3554`]: https://github.com/TymekDev/dotfiles/commit/b9d35545c8cac900655c77b28ea1eb28c4b3e0ce
+[`b9d3554`]: https://codeberg.org/TymekDev/dotfiles/commit/b9d35545c8cac900655c77b28ea1eb28c4b3e0ce
 [home-manager]: https://github.com/nix-community/home-manager
-[`2d5d745`]: https://github.com/TymekDev/dotfiles/commit/2d5d74539d6d9e3f77b0ebee929179ddf1538112
-[`7ac8ddf`]: https://github.com/TymekDev/dotfiles/commit/7ac8ddfef4f80cf7da00452e4f4b3777b2b016f1
+[`2d5d745`]: https://codeberg.org/TymekDev/dotfiles/commit/2d5d74539d6d9e3f77b0ebee929179ddf1538112
+[`7ac8ddf`]: https://codeberg.org/TymekDev/dotfiles/commit/7ac8ddfef4f80cf7da00452e4f4b3777b2b016f1
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [lazy.nvim]: https://github.com/folke/lazy.nvim
-[`1ad9d73`]: https://github.com/TymekDev/dotfiles/commit/1ad9d73abd3099247377322dea3b3524c8dd77f3
+[`1ad9d73`]: https://codeberg.org/TymekDev/dotfiles/commit/1ad9d73abd3099247377322dea3b3524c8dd77f3
 
 ## Known Issues
 

@@ -1,7 +1,7 @@
 ---@module "lazy"
 ---@type LazySpec
 return {
-  "TymekDev/freeze.nvim",
+  "https://codeberg.org/TymekDev/freeze.nvim",
   cmd = "Freeze",
   ---@module "freeze"
   ---@type freeze.Options
