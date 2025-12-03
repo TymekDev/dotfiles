@@ -64,14 +64,8 @@ in
 
         # TODO: update this config
         mpris = {
-          format = "{dynamic}";
+          format = "„{title}” by {artist} <small>[{position}/{length}]</small>";
           interval = 1;
-          dynamic-order = [
-            "title"
-            "artist"
-            "position"
-            "length"
-          ];
           on-scroll-up = "playerctld shift";
           on-scroll-down = "playerctld unshift";
           tooltip = false;
