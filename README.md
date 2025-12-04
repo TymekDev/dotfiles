@@ -39,7 +39,7 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
 1. Add the following snippet at the very bottom of `~/.ssh/config`:
    ```
    Host *
-     IdentityAgent "SSH_AUTH_SOCK"
+     IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
    ```
 1. Install Neovim spell files
    - Note: Enable NetRW and disable oil.nvim to download spell files (see https://github.com/stevearc/oil.nvim/issues/163)
