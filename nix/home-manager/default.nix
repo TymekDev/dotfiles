@@ -3,7 +3,7 @@
   imports = [
     ./desktops/sway
     ./terminals/ghostty.nix
-    ./terminals/wezterm.nix
+    ./terminals/wezterm
     ./bat.nix
     ./direnv.nix
     ./firefox.nix
