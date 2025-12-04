@@ -16,7 +16,10 @@ let
 in
 {
   config = lib.mkIf hasWezterm {
+    # NOTE: I cannot use ./wezterm.lua and similar, because those files are included as source in
+    # /nix/store/ and the out-of-store symlink ends up being an in-store symlink.
     xdg.configFile = {
+      "wezterm/wezterm.lua".source = mkSymlink "nix/home-manager/terminals/wezterm/wezterm.lua";
       "wezterm/theme.lua".source = mkSymlink "config/wezterm/theme.lua";
     };
 
@@ -27,31 +30,6 @@ in
     programs.wezterm = {
       enable = true;
       package = pkgs-unstable.wezterm;
-
-      extraConfig = ''
-        local theme = require("theme")
-        local wezterm = require("wezterm")
-        local config = wezterm.config_builder()
-
-        config.term = "wezterm"
-        config.font = wezterm.font("JetBrainsMono Nerd Font")
-        config.font_size = 14
-        config.window_padding = {
-          top = 0,
-          right = 0,
-          bottom = 0,
-          left = 0,
-        }
-
-        config.keys = {
-          { key = "w", mods = "SUPER", action = wezterm.action.Nop },
-          { key = "t", mods = "SUPER|SHIFT", action = wezterm.action_callback(theme.cycle_theme) },
-        }
-
-        theme.setup(config)
-
-        return config
-      '';
     };
   };
 }
