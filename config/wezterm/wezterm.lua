@@ -1,3 +1,4 @@
+local sessionizer = require("sessionizer")
 local theme = require("theme")
 ---@type Wezterm
 local wezterm = require("wezterm")
@@ -44,6 +45,8 @@ config.keys = {
   { key = "l", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Right" }) },
 
   { key = "t", mods = "CMD|SHIFT", action = wezterm.action_callback(theme.cycle_theme) },
+
+  { key = "s", mods = "CTRL", action = sessionizer.create_callback({ "~/personal", "~/work" }) },
 }
 
 theme.setup(config)
