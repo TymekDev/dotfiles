@@ -103,6 +103,12 @@ local mode_write = function(mode)
   end
 end
 
+---@param win Window
+---@param pane Pane
+local send_focus_in = function(win, pane)
+  win:perform_action(wezterm.action.SendString("\x1B[I"), pane)
+end
+
 M.setup = function(config)
   wezterm.add_to_config_reload_watch_list(wezterm.home_dir .. "/.local/state/tymek-theme/theme")
 
@@ -113,7 +119,7 @@ M.setup = function(config)
   theme_set(config, theme, mode)
 
   wezterm.on("window-config-reloaded", function(win, pane)
-    win:perform_action(wezterm.action.SendString("\x1B[O\x1B[I"), pane)
+    send_focus_in(win, pane)
   end)
 end
 
@@ -137,8 +143,7 @@ M.cycle_theme = function(win, pane)
 
   theme_write(new or theme_names[1])
 
-  -- Focus Out -> Focus In sequences. Without Focus Out, Neovim doesn't run its FocusGained autocommands.
-  win:perform_action(wezterm.action.SendString("\x1B[O\x1B[I"), pane)
+  send_focus_in(win, pane)
 end
 
 return M
