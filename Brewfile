@@ -67,5 +67,5 @@ cask "rstudio"             # Data science software focusing on R and Python
 cask "slack"               # Team communication and collaboration software
 cask "spotify"             # Music streaming service
 cask "tunnelblick"         # Free and open-source OpenVPN client
-cask "wezterm"             # GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm@nightly"     # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "xquartz"             # Open-source version of the X.Org X Window System
