@@ -76,7 +76,6 @@ local sessionize = function(window, pane, choices)
         local name = home_as_tilde(id)
         if name == "~" then
           name = "default"
-          print(name)
         end
 
         window:perform_action(
