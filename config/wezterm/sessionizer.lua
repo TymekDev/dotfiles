@@ -64,6 +64,9 @@ local switch_to_id = function(window, pane, id)
     name = "default"
   end
 
+  wezterm.GLOBAL.last_id = wezterm.GLOBAL.current_id or id
+  wezterm.GLOBAL.current_id = id
+
   window:perform_action(
     wezterm.action.SwitchToWorkspace({
       -- NOTE: I don't use label purposefully, so I can use wezterm.format for the InputSelector
@@ -97,6 +100,18 @@ M.select = function(window, pane, subdirs_of)
     }),
     pane
   )
+end
+
+---@param window Window
+---@param pane Pane
+M.switch_to_last = function(window, pane)
+  local last_id = wezterm.GLOBAL.last_id
+  if not last_id then
+    wezterm.log_warn("switch_to_last: last ID not found")
+    return
+  end
+
+  switch_to_id(window, pane, last_id)
 end
 
 return M
