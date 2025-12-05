@@ -58,6 +58,22 @@ local dirs_to_choices = function(dirs)
   return choices
 end
 
+local switch_to_id = function(window, pane, id)
+  local name = home_as_tilde(id)
+  if name == "~" then
+    name = "default"
+  end
+
+  window:perform_action(
+    wezterm.action.SwitchToWorkspace({
+      -- NOTE: I don't use label purposefully, so I can use wezterm.format for the InputSelector
+      name = name,
+      spawn = { cwd = id },
+    }),
+    pane
+  )
+end
+
 ---@param window Window
 ---@param pane Pane
 ---@param choices InputSelectorItem[]
@@ -73,19 +89,7 @@ local sessionize = function(window, pane, choices)
           return -- cancelled with escape
         end
 
-        local name = home_as_tilde(id)
-        if name == "~" then
-          name = "default"
-        end
-
-        window:perform_action(
-          wezterm.action.SwitchToWorkspace({
-            -- NOTE: I don't use label purposefully, so I can use wezterm.format for the InputSelector
-            name = name,
-            spawn = { cwd = id },
-          }),
-          pane
-        )
+        switch_to_id(window, pane, id)
       end),
     }),
     pane
