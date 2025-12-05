@@ -68,7 +68,7 @@ local sessionize = function(window, pane, choices)
       fuzzy = true,
       fuzzy_description = "> ",
       choices = choices,
-      action = wezterm.action_callback(function(inner_window, inner_pane, id)
+      action = wezterm.action_callback(function(_, _, id)
         if not id then
           return -- cancelled with escape
         end
@@ -79,13 +79,13 @@ local sessionize = function(window, pane, choices)
           print(name)
         end
 
-        inner_window:perform_action(
+        window:perform_action(
           wezterm.action.SwitchToWorkspace({
             -- NOTE: I don't use label purposefully, so I can use wezterm.format for the InputSelector
             name = name,
             spawn = { cwd = id },
           }),
-          inner_pane
+          pane
         )
       end),
     }),
