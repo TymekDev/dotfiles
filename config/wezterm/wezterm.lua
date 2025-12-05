@@ -46,7 +46,13 @@ config.keys = {
 
   { key = "t", mods = "CMD|SHIFT", action = wezterm.action_callback(theme.cycle_theme) },
 
-  { key = "s", mods = "CTRL", action = sessionizer.create_callback({ "~/personal", "~/work" }) },
+  {
+    key = "s",
+    mods = "CTRL",
+    action = wezterm.action_callback(function(win, pane)
+      sessionizer.select(win, pane, { "~/personal", "~/work" })
+    end),
+  },
 }
 
 theme.setup(config)

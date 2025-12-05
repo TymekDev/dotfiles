@@ -76,8 +76,11 @@ end
 
 ---@param window Window
 ---@param pane Pane
----@param choices InputSelectorItem[]
-local sessionize = function(window, pane, choices)
+---@param subdirs_of string[] Those directories and their direct subdirectories will be available for selection.
+M.select = function(window, pane, subdirs_of)
+  local dirs = list_subdirs(subdirs_of)
+  local choices = dirs_to_choices(dirs)
+
   window:perform_action(
     wezterm.action.InputSelector({
       title = "🔭 Sessionizing...",
@@ -94,15 +97,6 @@ local sessionize = function(window, pane, choices)
     }),
     pane
   )
-end
-
----@param subdirs_of string[] Those directories and their direct subdirectories will be available for selection.
-M.create_action = function(subdirs_of)
-  return wezterm.action_callback(function(window, pane)
-    local dirs = list_subdirs(subdirs_of)
-    local choices = dirs_to_choices(dirs)
-    sessionize(window, pane, choices)
-  end)
 end
 
 return M

@@ -17,7 +17,13 @@ config.keys = {
   { key = "w", mods = "SUPER", action = wezterm.action.Nop },
   { key = "t", mods = "SUPER|SHIFT", action = wezterm.action_callback(theme.cycle_theme) },
 
-  { key = "s", mods = "CTRL", action = sessionizer.create_action({ "~/personal" }) },
+  {
+    key = "s",
+    mods = "CTRL",
+    action = wezterm.action_callback(function(win, pane)
+      sessionizer.select(win, pane, { "~/personal" })
+    end),
+  },
 }
 
 theme.setup(config)
