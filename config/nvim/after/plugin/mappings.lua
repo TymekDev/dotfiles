@@ -13,7 +13,6 @@ end)
 
 -- Tools
 vim.keymap.set("n", "<C-y>", "<Cmd>YaziTmux<CR>")
-vim.keymap.set("n", "<C-s>", "<Cmd>silent !tmux run-shell tmux-sessionizer<CR>")
 
 -- LSP & Diagnostic
 vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help)

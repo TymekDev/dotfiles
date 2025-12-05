@@ -51,7 +51,6 @@
     };
 
     interactiveShellInit = ''
-      bind \cs "stty sane; tmux-sessionizer"
       bind \cj accept-autosuggestion execute
       bind \ck forward-word
       bind \cf "stty sane; nvim -c 'normal ' -c 'startinsert'"

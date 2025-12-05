@@ -43,7 +43,6 @@ alias g  git
 alias ls "eza --git --group-directories-first --time-style long-iso"
 alias nv nvim
 
-bind \cs "stty sane; tmux-sessionizer"
 bind \cj accept-autosuggestion execute
 bind \ck forward-word
 bind \cf "stty sane; nvim -c 'normal ' -c 'startinsert'"
