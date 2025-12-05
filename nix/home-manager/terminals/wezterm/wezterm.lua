@@ -13,15 +13,23 @@ config.window_padding = {
   left = 0,
 }
 
+config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
   { key = "w", mods = "SUPER", action = wezterm.action.Nop },
   { key = "t", mods = "SUPER|SHIFT", action = wezterm.action_callback(theme.cycle_theme) },
 
   {
     key = "s",
-    mods = "CTRL",
+    mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
       sessionizer.select(win, pane, { "~/personal" })
+    end),
+  },
+  {
+    key = "l",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
+      sessionizer.switch_to_last(win, pane)
     end),
   },
 }

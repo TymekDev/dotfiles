@@ -64,6 +64,7 @@ local switch_to_id = function(window, pane, id)
     name = "default"
   end
 
+  -- FIXME: this becomes out-of-sync when the workspace gets closed
   wezterm.GLOBAL.last_id = wezterm.GLOBAL.current_id or id
   wezterm.GLOBAL.current_id = id
 
