@@ -39,7 +39,7 @@ end
 ---@return InputSelectorItem[]
 local dirs_to_choices = function(dirs)
   if not dirs or #dirs == 0 then
-    wezterm.log_warn("sessionizer: no dirs to show")
+    wezterm.log_warn("dirs_to_choices: no dirs were provided")
     return {}
   end
 
