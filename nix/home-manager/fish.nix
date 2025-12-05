@@ -41,9 +41,6 @@
       gsts = "git stash show -p";
       gsw = "git switch";
       gwt = "git worktree";
-
-      ta = "tmux attach-session";
-      tls = "tmux list-sessions";
     };
 
     shellAliases = {
