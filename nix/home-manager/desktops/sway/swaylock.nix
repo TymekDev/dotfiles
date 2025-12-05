@@ -24,35 +24,40 @@ in
       };
     };
 
-    services.swayidle = {
-      enable = true;
+    services.swayidle =
+      let
+        swaylock = lib.getExe config.programs.swaylock.package;
+        swaymsg = lib.getExe' pkgs.sway "swaymsg";
+      in
+      {
+        enable = true;
 
-      events = [
-        {
-          event = "before-sleep";
-          command = "swaylock -f";
-        }
-      ];
-
-      timeouts =
-        let
-          minutes = seconds: 60 * seconds;
-        in
-        [
+        events = [
           {
-            timeout = minutes 5;
-            command = "swaylock -f";
-          }
-          {
-            timeout = minutes 10;
-            command = "swaymsg 'output * power off'";
-            resumeCommand = "swaymsg 'output * power on'";
-          }
-          {
-            timeout = minutes 30;
-            command = "systemctl hibernate";
+            event = "before-sleep";
+            command = "${swaylock} -f";
           }
         ];
-    };
+
+        timeouts =
+          let
+            minutes = seconds: 60 * seconds;
+          in
+          [
+            {
+              timeout = minutes 5;
+              command = "${swaylock} -f";
+            }
+            {
+              timeout = minutes 10;
+              command = "${swaymsg} 'output * power off'";
+              resumeCommand = "${swaymsg} 'output * power on'";
+            }
+            {
+              timeout = minutes 30;
+              command = "${lib.getExe' pkgs.systemd "systemctl"} hibernate";
+            }
+          ];
+      };
   };
 }
