@@ -58,6 +58,28 @@ local dirs_to_choices = function(dirs)
   return choices
 end
 
+---@param choices InputSelectorItem[]
+---@return InputSelectorItem[]
+local format_choices = function(choices)
+  local active_workspace = wezterm.mux.get_active_workspace()
+  local workspaces = {}
+  for _, ws in ipairs(wezterm.mux.get_workspace_names()) do
+    workspaces[ws] = 0
+  end
+
+  for _, choice in ipairs(choices) do
+    if choice.label == active_workspace then
+      choice.label = "󰐍  " .. choice.label
+    elseif workspaces[choice.label] ~= nil then
+      choice.label = "󰏦  " .. choice.label
+    else
+      choice.label = "   " .. choice.label
+    end
+  end
+
+  return choices
+end
+
 local switch_to_id = function(window, pane, id)
   local name = home_as_tilde(id)
   if name == "~" then
@@ -90,7 +112,7 @@ M.select = function(window, pane, subdirs_of)
       title = "🔭 Sessionizing...",
       fuzzy = true,
       fuzzy_description = "> ",
-      choices = choices,
+      choices = format_choices(choices),
       action = wezterm.action_callback(function(_, _, id)
         if not id then
           return -- cancelled with escape
