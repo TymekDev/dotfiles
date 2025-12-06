@@ -84,7 +84,7 @@ local format_choices = function(choices)
 end
 
 local switch_to_id = function(window, pane, id)
-  wezterm.GLOBAL.last_id = wezterm.mux.get_active_workspace()
+  wezterm.GLOBAL.sessionizer_last_id = wezterm.mux.get_active_workspace()
 
   window:perform_action(
     wezterm.action.SwitchToWorkspace({
@@ -124,13 +124,13 @@ end
 ---@param window Window
 ---@param pane Pane
 M.switch_to_last = function(window, pane)
-  local last_id = wezterm.GLOBAL.last_id
-  if not last_id then
+  local id = wezterm.GLOBAL.sessionizer_last_id
+  if not id then
     wezterm.log_warn("switch_to_last: last ID not found")
     return
   end
 
-  switch_to_id(window, pane, last_id)
+  switch_to_id(window, pane, id)
 end
 
 return M
