@@ -32,6 +32,18 @@ config.keys = {
       sessionizer.switch_to_last(win, pane)
     end),
   },
+  {
+    key = "c",
+    mods = "LEADER",
+    action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+  },
+  {
+    key = "C",
+    mods = "LEADER",
+    action = wezterm.action.SpawnCommandInNewTab({
+      cwd = wezterm.mux.get_active_workspace(),
+    }),
+  },
 
   {
     key = "T",
