@@ -26,11 +26,16 @@ config.keys = {
     end),
   },
   {
-    key = "l",
+    key = "L",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
       sessionizer.switch_to_last(win, pane)
     end),
+  },
+  {
+    key = "l",
+    mods = "LEADER",
+    action = wezterm.action.ActivateLastTab,
   },
   {
     key = "c",
@@ -94,6 +99,14 @@ config.keys = {
     end),
   },
 }
+
+for i = 1, 8 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = "LEADER",
+    action = wezterm.action.ActivateTab(i - 1),
+  })
+end
 
 theme.setup(config)
 
