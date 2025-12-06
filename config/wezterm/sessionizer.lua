@@ -84,9 +84,7 @@ local format_choices = function(choices)
 end
 
 local switch_to_id = function(window, pane, id)
-  -- FIXME: this becomes out-of-sync when the workspace gets closed
-  wezterm.GLOBAL.last_id = wezterm.GLOBAL.current_id or id
-  wezterm.GLOBAL.current_id = id
+  wezterm.GLOBAL.last_id = wezterm.mux.get_active_workspace()
 
   window:perform_action(
     wezterm.action.SwitchToWorkspace({
