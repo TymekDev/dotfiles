@@ -4,13 +4,6 @@ local M = {}
 
 ---@alias InputSelectorItem {id: string, label: string}
 
----@param path string
----@return string
-local home_as_tilde = function(path)
-  local result, _ = string.gsub(path, "^" .. wezterm.home_dir, "~")
-  return result
-end
-
 ---@param dirs string[]
 ---@return string[]
 local list_subdirs = function(dirs)
@@ -46,7 +39,8 @@ local dirs_to_choices = function(dirs)
   ---@type InputSelectorItem[]
   local choices = {}
   for _, dir in ipairs(dirs) do
-    table.insert(choices, { id = dir, label = home_as_tilde(dir) })
+    local label, _ = string.gsub(dir, "^" .. wezterm.home_dir, "~")
+    table.insert(choices, { id = dir, label = label })
   end
 
   table.sort(choices, function(a, b)
@@ -56,6 +50,14 @@ local dirs_to_choices = function(dirs)
   table.insert(choices, 1, { id = wezterm.home_dir, label = "default" })
 
   return choices
+end
+
+local id_to_name = function(id)
+  local name = id
+  if name == wezterm.home_dir then
+    name = "default"
+  end
+  return name
 end
 
 ---@param choices InputSelectorItem[]
@@ -68,9 +70,10 @@ local format_choices = function(choices)
   end
 
   for _, choice in ipairs(choices) do
-    if choice.label == active_workspace then
+    local name = id_to_name(choice.id)
+    if name == active_workspace then
       choice.label = "󰐍  " .. choice.label
-    elseif workspaces[choice.label] ~= nil then
+    elseif workspaces[name] ~= nil then
       choice.label = "󰏦  " .. choice.label
     else
       choice.label = "   " .. choice.label
@@ -81,11 +84,6 @@ local format_choices = function(choices)
 end
 
 local switch_to_id = function(window, pane, id)
-  local name = home_as_tilde(id)
-  if name == "~" then
-    name = "default"
-  end
-
   -- FIXME: this becomes out-of-sync when the workspace gets closed
   wezterm.GLOBAL.last_id = wezterm.GLOBAL.current_id or id
   wezterm.GLOBAL.current_id = id
@@ -93,7 +91,7 @@ local switch_to_id = function(window, pane, id)
   window:perform_action(
     wezterm.action.SwitchToWorkspace({
       -- NOTE: I don't use label purposefully, so I can use wezterm.format for the InputSelector
-      name = name,
+      name = id_to_name(id),
       spawn = { cwd = id },
     }),
     pane
