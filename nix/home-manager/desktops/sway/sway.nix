@@ -61,16 +61,18 @@ in
         keybindings =
           let
             grimshot =
-              args:
-              "exec ${lib.getExe pkgs-unstable.sway-contrib.grimshot} ${args} && ${swayosd "--custom-message 'yoink' --custom-icon 'edit-copy'"}";
+              args: desc:
+              "exec ${lib.getExe pkgs-unstable.sway-contrib.grimshot} ${args} && ${swayosd "--custom-message 'yoinked ${desc}' --custom-icon 'edit-copy'"}";
             swayosd = args: "exec swayosd-client ${args}";
           in
           {
             "${mod}+Return" = "exec ${cfg.terminal}";
             "${mod}+Space" = "exec ${cfg.menu}";
 
-            "Print" = grimshot "copy area";
-            "Shift+Print" = grimshot "copy anything";
+            "Print" = grimshot "copy area" "the selected area";
+            "Shift+Print" = grimshot "copy anything" "whatever you selected";
+            "Ctrl+Print" = grimshot "copy active" "the active window";
+            "Ctrl+Shift+Print" = grimshot "copy output" "the active monitor";
 
             "${mod}+Shift+m" = "exec darkman toggle";
             "${mod}+Shift+Space" = "exec 1password --quick-access";
