@@ -6,7 +6,6 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.term = "wezterm"
-config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 19
 config.window_padding = {
   top = 0,

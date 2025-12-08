@@ -54,7 +54,6 @@ cask "discord"             # Voice and text chat software
 cask "displaylink"         # Drivers for DisplayLink docks, adapters and monitors
 cask "docker"              # App to build and share containerised applications and microservices
 cask "firefox"             # Web browser
-cask "font-jetbrains-mono-nerd-font"
 cask "gimp"                # Free and open-source image editor
 cask "hammerspoon"         # Desktop automation application
 cask "inkscape"            # Vector graphics editor
