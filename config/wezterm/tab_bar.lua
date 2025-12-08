@@ -6,13 +6,18 @@ wezterm.on("update-status", function(window, pane)
   local workspace, _ = string.gsub(wezterm.mux.get_active_workspace(), "^" .. wezterm.home_dir, "~")
   local colors = window:effective_config().resolved_palette.tab_bar
 
+  local bg = { Color = colors.active_tab.bg_color }
+  if window:leader_is_active() then
+    bg = { AnsiColor = "Yellow" }
+  end
+
   window:set_left_status(wezterm.format({
-    { Background = { Color = colors.active_tab.bg_color } },
+    { Background = bg },
     { Foreground = { Color = colors.active_tab.fg_color } },
     { Text = " " .. workspace .. " " },
 
     { Background = { Color = colors.background } },
-    { Foreground = { Color = colors.active_tab.bg_color } },
+    { Foreground = bg },
     { Text = "" },
   }))
 end)
