@@ -21,13 +21,10 @@ local themes = {
 local set_colors_rosepine = function(config, mode)
   local theme = require("./rose-pine/plugin")[themes.rosepine[mode]]
   config.colors = theme.colors()
-  config.use_fancy_tab_bar = false
-  config.tab_max_width = 20
 end
 
 local set_colors_tokyonight = function(config, mode)
   local colors = wezterm.color.get_builtin_schemes()[themes.tokyonight[mode]]
-  local active_titlebar_bg
   if mode == "light" then
     colors.background = "#f1f2f7"
     colors.tab_bar.background = "#e1e2e7"
@@ -35,8 +32,6 @@ local set_colors_tokyonight = function(config, mode)
     colors.tab_bar.background = "#1f2335" -- taken from lualine
   end
   config.colors = colors
-  config.use_fancy_tab_bar = false
-  config.tab_max_width = 20
 end
 
 ---@param config Config

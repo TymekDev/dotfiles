@@ -1,4 +1,5 @@
 local sessionizer = require("sessionizer")
+local tab_bar = require("tab_bar")
 local theme = require("theme")
 ---@type Wezterm
 local wezterm = require("wezterm")
@@ -55,6 +56,7 @@ config.keys = {
   },
 }
 
+tab_bar.setup(config)
 theme.setup(config)
 
 return config
