@@ -45,9 +45,14 @@ config.keys = {
   {
     key = "C",
     mods = "LEADER",
-    action = wezterm.action.SpawnCommandInNewTab({
-      cwd = wezterm.mux.get_active_workspace(),
-    }),
+    action = wezterm.action_callback(function(win, pane)
+      local dir = wezterm.mux.get_active_workspace()
+      if dir == "default" then
+        dir = wezterm.home_dir
+      end
+
+      win:perform_action(wezterm.action.SpawnCommandInNewTab({ cwd = dir }), pane)
+    end),
   },
 
   {
