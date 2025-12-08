@@ -20,6 +20,7 @@ local function cmd_to_meta(key)
   return { key = key, mods = "CMD", action = wezterm.action.SendKey({ key = key, mods = "META" }) }
 end
 
+config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
   cmd_to_meta("a"), -- telescope.nvim
   cmd_to_meta("s"), -- telescope.nvim
@@ -49,9 +50,38 @@ config.keys = {
 
   {
     key = "s",
-    mods = "CTRL",
+    mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
       sessionizer.select(win, pane, { "~/personal", "~/work" })
+    end),
+  },
+  {
+    key = "L",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
+      sessionizer.switch_to_last(win, pane)
+    end),
+  },
+  {
+    key = "l",
+    mods = "LEADER",
+    action = wezterm.action.ActivateLastTab,
+  },
+  {
+    key = "c",
+    mods = "LEADER",
+    action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+  },
+  {
+    key = "C",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
+      local dir = wezterm.mux.get_active_workspace()
+      if dir == "default" then
+        dir = wezterm.home_dir
+      end
+
+      win:perform_action(wezterm.action.SpawnCommandInNewTab({ cwd = dir }), pane)
     end),
   },
 }
