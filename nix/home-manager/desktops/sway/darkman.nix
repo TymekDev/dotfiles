@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 let
   inherit (config.dotfiles) isSway;
 in
@@ -16,16 +11,6 @@ in
         lat = 52.2;
         lng = 21.0;
       };
-    };
-
-    xdg.portal = {
-      enable = true;
-
-      config.sway = {
-        "org.freedesktop.impl.portal.Settings" = [ "darkman" ];
-      };
-
-      extraPortals = [ pkgs.darkman ];
     };
   };
 }
