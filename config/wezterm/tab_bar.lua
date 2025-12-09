@@ -52,11 +52,12 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     tail = SEP
   end
 
-  local title_prefix = string.format(" %d %s", tab_index, SEP_OUTLINE)
+  local sep_prefix = SEP_OUTLINE
   local extras_width = wezterm.column_width(SEP)
-    + wezterm.column_width(title_prefix)
-    + 2 -- spaces around the title
+    + wezterm.column_width(tostring(tab_index))
+    + wezterm.column_width(sep_prefix)
     + wezterm.column_width(tail)
+    + 4 -- spaces around the title and the tab index
   title = wezterm.truncate_right(title, max_width - extras_width)
 
   -- TODO: tab.is_last_active indicator
@@ -65,7 +66,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     { Text = SEP },
     "ResetAttributes",
 
-    { Text = title_prefix },
+    { Text = " " .. tab_index .. " " },
+    { Text = sep_prefix },
     { Text = " " .. title .. " " },
 
     { Foreground = { Color = bg } },
