@@ -20,16 +20,6 @@ in
               ]
             );
           };
-          terminals = mkOption {
-            description = "The terminal emulators to include";
-            default = [ "wezterm" ];
-            type = types.listOf (
-              types.enum [
-                "ghostty"
-                "wezterm"
-              ]
-            );
-          };
           gaming = mkOption {
             description = "Gaming-related stuff to include";
             default = [ ];
@@ -38,14 +28,6 @@ in
 
           isSway = mkOption {
             default = config.dotfiles.desktop == "sway";
-            visible = false;
-          };
-          hasGhostty = mkOption {
-            default = builtins.elem "ghostty" config.dotfiles.terminals;
-            visible = false;
-          };
-          hasWezterm = mkOption {
-            default = builtins.elem "wezterm" config.dotfiles.terminals;
             visible = false;
           };
           hasOSRS = mkOption {
