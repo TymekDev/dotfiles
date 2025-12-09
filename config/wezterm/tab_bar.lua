@@ -2,49 +2,81 @@
 local wezterm = require("wezterm")
 local M = {}
 
+local SEP = ""
+
+---@param window Window
+---@return integer
+local active_tab_index = function(window)
+  for _, tab_info in ipairs(window:mux_window():tabs_with_info()) do
+    if tab_info.is_active then
+      return tab_info.index
+    end
+  end
+  error("active tab not found")
+end
+
 wezterm.on("update-status", function(window, pane)
   local workspace, _ = string.gsub(wezterm.mux.get_active_workspace(), "^" .. wezterm.home_dir, "~")
-  local colors = window:effective_config().resolved_palette.tab_bar
+  ---@type Palette
+  local colors = window:effective_config().colors
+  print(colors)
 
-  local bg = { Color = colors.active_tab.bg_color }
+  local bg_tab = colors.ansi[8] -- TODO: update me
   if window:leader_is_active() then
-    bg = { AnsiColor = "Yellow" }
+    bg_tab = colors.ansi[4]
+  end
+
+  local bg_next = colors.tab_bar.inactive_tab.bg_color
+  if active_tab_index(window) == 0 then
+    bg_next = colors.tab_bar.active_tab.bg_color
   end
 
   window:set_left_status(wezterm.format({
-    { Background = bg },
-    { Foreground = { Color = colors.active_tab.fg_color } },
+    { Foreground = { Color = colors.tab_bar.active_tab.fg_color } },
+    { Background = { Color = bg_tab } },
     { Text = " " .. workspace .. " " },
 
-    { Background = { Color = colors.background } },
-    { Foreground = bg },
-    { Text = "" },
+    { Foreground = { Color = bg_tab } },
+    { Background = { Color = colors.tab_bar.background } },
+    { Text = SEP },
+
+    { Foreground = { Color = colors.tab_bar.background } },
+    { Background = { Color = bg_next } },
+    { Text = SEP },
   }))
 end)
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local colors = config.resolved_palette.tab_bar
-  local bar_bg = colors.background
-  local tab_bg = colors.active_tab.bg_color
-  if not tab.is_active then
-    tab_bg = colors.inactive_tab.bg_color
+  local tab_index = tab.tab_index + 1
+  local title = tab.active_pane.title
+  ---@type Palette
+  local colors = config.colors
+
+  local bg = colors.tab_bar.inactive_tab.bg_color
+  if tab.is_active then
+    bg = colors.tab_bar.active_tab.bg_color
   end
 
-  -- Account for characters that we add for styling
-  local title = " " .. tab.active_pane.title:sub(1, max_width - 4) .. " "
-  title, _ = string.gsub(title, "  $", " ")
+  local bg_next = colors.tab_bar.inactive_tab.bg_color
+  if tab_index == #tabs then -- the last tab
+    bg_next = colors.tab_bar.background
+  elseif tabs[tab_index + 1].is_active then -- the tab on the right is active
+    bg_next = colors.tab_bar.active_tab.bg_color
+  end
 
+  local title_prefix = string.format(" %d  ", tab_index)
+  local title_suffix = " "
+  title = wezterm.truncate_right(
+    title,
+    max_width - wezterm.column_width(title_prefix) - wezterm.column_width(title_suffix) - wezterm.column_width(SEP)
+  )
+
+  -- TODO: tab.is_last_active indicator
   return wezterm.format({
-    { Background = { Color = tab_bg } },
-    { Foreground = { Color = bar_bg } },
-    { Text = "" },
-    "ResetAttributes",
-
-    { Text = title },
-
-    { Background = { Color = bar_bg } },
-    { Foreground = { Color = tab_bg } },
-    { Text = "" },
+    { Text = title_prefix .. title .. title_suffix },
+    { Foreground = { Color = bg } },
+    { Background = { Color = bg_next } },
+    { Text = SEP },
   })
 end)
 
