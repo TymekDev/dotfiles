@@ -1,5 +1,8 @@
 { ... }:
 {
+  xdg.configFile."fish/functions/update_theme.fish".source =
+    ../../config/fish/functions/update_theme.fish;
+
   programs.fish = {
     enable = true;
 
@@ -54,8 +57,6 @@
       bind \cg "stty sane; nvim -c 'normal '"
     '';
 
-    # TODO: update_theme
-    # TODO: `fzf --fish | source` - is it needed?
     shellInit = ''
       fish_add_path --move ~/.local/bin
     '';
