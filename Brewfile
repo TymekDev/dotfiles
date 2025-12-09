@@ -40,7 +40,6 @@ brew "sqlite"                   # Command-line interface for SQLite
 brew "starship"                 # Cross-shell prompt for astronauts
 brew "stow"                     # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "tarsnap-gui"  if OS.mac?  # Cross-platform GUI for the Tarsnap command-line client
-brew "tmux"                     # Terminal multiplexer
 brew "tree-sitter"  if OS.mac?  # Parser generator tool and incremental parsing library
 brew "unixodbc"                 # ODBC 3 connectivity for UNIX
 brew "watch"                    # Executes a program periodically, showing output fullscreen

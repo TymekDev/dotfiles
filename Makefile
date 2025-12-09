@@ -26,7 +26,6 @@ BREW_ESSENTIALS=bat \
 								ripgrep \
 								starship \
 								stow \
-								tmux \
 								yazi
 
 .PHONY: restow

@@ -7,15 +7,6 @@ return {
   keys = {
     { "-", "<Cmd>Oil<CR>", desc = "Open the parent directory (via oil.nvim)" },
     { "_", "<Cmd>vert Oil<CR>", desc = "Open the parent directory in a vertical split (via oil.nvim)" },
-    {
-      "<Leader>c",
-      function()
-        vim.system({ "tmux", "new-window", "-c", require("oil").get_current_dir(0) })
-      end,
-      ft = "oil",
-      nowait = true,
-      desc = "Open the current directory in a new tmux window (via oil.nvim)",
-    },
   },
   ---@module "oil"
   ---@type oil.setupOpts

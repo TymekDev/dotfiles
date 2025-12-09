@@ -27,6 +27,5 @@ trap cleanup EXIT INT TERM
 gh codespace ssh --codespace "$CS_NAME" -- \
   -o IdentitiesOnly=yes \
   -o RequestTTY=yes \
-  -o RemoteCommand="tmux attach-session || tmux new-session -c /workspaces/$SESSION_NAME -s $SESSION_NAME" \
   -R 8765:localhost:$PORT \
   $@

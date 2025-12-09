@@ -36,9 +36,6 @@ abbr --add gsts git stash show -p
 abbr --add gsw  git switch
 abbr --add gwt  git worktree
 
-abbr --add ta tmux attach-session
-abbr --add tls tmux list-sessions
-
 alias g  git
 alias ls "eza --git --group-directories-first --time-style long-iso"
 alias nv nvim
