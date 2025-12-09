@@ -52,11 +52,15 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   ---@type Palette
   local colors = config.colors
   local bg_inactive = colors.tab_bar.inactive_tab.bg_color
+  local fg_inactive = colors.tab_bar.inactive_tab.fg_color
   local bg_active = colors.tab_bar.active_tab.bg_color
+  local fg_active = colors.tab_bar.active_tab.fg_color
 
+  local fg = fg_inactive
   local bg = bg_inactive
   if tab.is_active then
     bg = bg_active
+    fg = fg_active
   end
 
   local bg_next = bg_inactive
@@ -71,6 +75,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
   -- TODO: tab.is_last_active indicator
   return wezterm.format({
+    { Foreground = { Color = fg } },
     { Background = { Color = bg } },
     { Text = title_prefix },
     { Text = " " .. title .. " " },
