@@ -2,6 +2,7 @@
 local wezterm = require("wezterm")
 local M = {}
 
+-- TODO: parametrize this, add left/right, and outline
 local SEP = ""
 
 ---@param window Window
@@ -19,7 +20,6 @@ wezterm.on("update-status", function(window, pane)
   local workspace, _ = string.gsub(wezterm.mux.get_active_workspace(), "^" .. wezterm.home_dir, "~")
   ---@type Palette
   local colors = window:effective_config().colors
-  print(colors)
 
   local bg_tab = colors.ansi[8] -- TODO: update me
   if window:leader_is_active() then
@@ -64,16 +64,13 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     bg_next = colors.tab_bar.active_tab.bg_color
   end
 
-  local title_prefix = string.format(" %d  ", tab_index)
-  local title_suffix = " "
-  title = wezterm.truncate_right(
-    title,
-    max_width - wezterm.column_width(title_prefix) - wezterm.column_width(title_suffix) - wezterm.column_width(SEP)
-  )
+  local title_prefix = string.format(" %d ", tab_index)
+  title = wezterm.truncate_right(title, max_width - 2 - wezterm.column_width(title_prefix) - wezterm.column_width(SEP))
 
   -- TODO: tab.is_last_active indicator
   return wezterm.format({
-    { Text = title_prefix .. title .. title_suffix },
+    { Text = title_prefix },
+    { Text = " " .. title .. " " },
     { Foreground = { Color = bg } },
     { Background = { Color = bg_next } },
     { Text = SEP },
