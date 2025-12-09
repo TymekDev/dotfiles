@@ -99,8 +99,13 @@ end
 ---@param window Window
 ---@param pane Pane
 ---@param subdirs_of string[] Those directories and their direct subdirectories will be available for selection.
-M.select = function(window, pane, subdirs_of)
+---@param ... string Extra directories to include
+M.select = function(window, pane, subdirs_of, ...)
   local dirs = list_subdirs(subdirs_of)
+  for _, dir in ipairs({ ... }) do
+    dir, _ = string.gsub(dir, "^~", wezterm.home_dir)
+    table.insert(dirs, dir)
+  end
   local choices = dirs_to_choices(dirs)
 
   window:perform_action(
