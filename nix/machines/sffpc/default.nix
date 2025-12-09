@@ -10,6 +10,7 @@
     enable = true;
     efiSupport = true;
     efiInstallAsRemovable = true;
+    timeoutStyle = "hidden";
   };
 
   hardware = {
