@@ -20,7 +20,6 @@ in
     "wezterm/wezterm.lua".source = mkSymlink "nix/home-manager/terminals/wezterm/wezterm.lua";
     "wezterm/sessionizer.lua".source = mkSymlink "config/wezterm/sessionizer.lua";
     "wezterm/theme.lua".source = mkSymlink "config/wezterm/theme.lua";
-    "wezterm/rose-pine".source = mkSymlink "config/wezterm/rose-pine";
   };
 
   home.activation.weztermMkdirThemeDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

@@ -3,29 +3,18 @@ local M = {
   mode = nil,
 }
 
----@alias tymek.theme.Mode "light"|"dark"
-
----@enum (key) tymek.theme.Theme
+---@enum (key) tymek.theme.Mode
 local themes = {
-  ---@type table<tymek.theme.Mode, string>
-  rosepine = {
-    light = "rose-pine-dawn",
-    dark = "rose-pine-moon",
-  },
-  ---@type table<tymek.theme.Mode, string>
-  tokyonight = {
-    light = "tokyonight-day",
-    dark = "tokyonight-storm",
-  },
+  light = "tokyonight-day",
+  dark = "tokyonight-storm",
 }
 
----@param filename "theme"|"mode"
 ---@param callback fun(result: string|nil)
-local read = function(filename, callback)
+local read_mode = function(callback)
   vim.system(
     {
       "cat",
-      vim.fn.expand(string.format("~/.local/state/tymek-theme/%s", filename)),
+      vim.fn.expand("~/.local/state/tymek-theme/mode"),
     },
     { text = true },
     ---@param out vim.SystemCompleted
@@ -40,32 +29,17 @@ local read = function(filename, callback)
   )
 end
 
----@param callback fun(theme: tymek.theme.Theme|nil, mode: tymek.theme.Mode|nil)
-local detect = function(callback)
-  read("theme", function(theme)
-    read("mode", function(mode)
-      callback(theme, mode)
-    end)
-  end)
-end
-
 M.update = function()
-  detect(function(theme, mode)
-    if theme ~= nil and themes[theme] == nil then
-      vim.notify(string.format("[ERROR] Unknown theme: '%s'", theme), vim.log.levels.ERROR)
-      return
-    end
-
+  read_mode(function(mode)
     mode = mode or "dark"
-    theme = theme or "tokyonight"
     M.mode = mode
 
     vim.api.nvim_cmd({
       cmd = "colorscheme",
-      args = { themes[theme][mode] },
+      args = { themes[mode] },
     }, {})
 
-    if theme == "tokyonight" and mode == "light" then
+    if mode == "light" then
       vim.api.nvim_cmd({ cmd = "highlight", args = { "Normal", "guibg=#f1f2f7" } }, {})
       vim.api.nvim_cmd({ cmd = "highlight", args = { "SignColumn", "guibg=none" } }, {})
     end
