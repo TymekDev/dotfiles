@@ -19,6 +19,7 @@ in
   xdg.configFile = {
     "wezterm/wezterm.lua".source = mkSymlink "nix/home-manager/terminals/wezterm/wezterm.lua";
     "wezterm/sessionizer.lua".source = mkSymlink "config/wezterm/sessionizer.lua";
+    "wezterm/tab_bar.lua".source = mkSymlink "config/wezterm/tab_bar.lua";
     "wezterm/theme.lua".source = mkSymlink "config/wezterm/theme.lua";
   };
 

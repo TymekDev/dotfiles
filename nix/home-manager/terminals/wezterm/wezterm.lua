@@ -1,4 +1,5 @@
 local sessionizer = require("sessionizer")
+local tab_bar = require("tab_bar")
 local theme = require("theme")
 ---@type Wezterm
 local wezterm = require("wezterm")
@@ -16,7 +17,6 @@ config.window_padding = {
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
   { key = "w", mods = "SUPER", action = wezterm.action.Nop },
-  { key = "t", mods = "SUPER|SHIFT", action = wezterm.action_callback(theme.cycle_theme) },
 
   {
     key = "s",
@@ -113,6 +113,7 @@ for i = 1, 8 do
   })
 end
 
+tab_bar.setup(config)
 theme.setup(config)
 
 return config
