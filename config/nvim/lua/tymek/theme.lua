@@ -1,7 +1,4 @@
-local M = {
-  ---@type tymek.theme.Mode
-  mode = nil,
-}
+local M = {}
 
 ---@enum (key) tymek.theme.Mode
 local themes = {
@@ -9,18 +6,15 @@ local themes = {
   dark = "tokyonight-storm",
 }
 
----@param callback fun(result: string|nil)
+---@param callback fun(mode: tymek.theme.Mode)
 local read_mode = function(callback)
   vim.system(
-    {
-      "cat",
-      vim.fn.expand("~/.local/state/tymek-theme/mode"),
-    },
+    { "are-we-dark-yet" },
     { text = true },
     ---@param out vim.SystemCompleted
     vim.schedule_wrap(function(out)
       if out.code ~= 0 then
-        callback(nil)
+        vim.notify("failed to read the system appearance:" .. out.stderr, vim.log.levels.ERROR)
         return
       end
 
@@ -31,9 +25,6 @@ end
 
 M.update = function()
   read_mode(function(mode)
-    mode = mode or "dark"
-    M.mode = mode
-
     vim.api.nvim_cmd({
       cmd = "colorscheme",
       args = { themes[mode] },

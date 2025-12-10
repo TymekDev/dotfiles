@@ -84,6 +84,6 @@ config.keys = {
 }
 
 tab_bar.setup(config)
-theme.setup(config)
+theme.update(config)
 
 return config
