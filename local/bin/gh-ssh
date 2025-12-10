@@ -3,9 +3,8 @@
 set -e
 
 CODESPACES=$(gh codespace list --json name,repository)
-REPO=$(echo $CODESPACES | jq -r '.[] .repository' | fzf)
-CS_NAME=$(echo $CODESPACES | jq -r ".[] | select(.repository == \"$REPO\") | .name")
-SESSION_NAME=$(echo $REPO | sed 's,.*/,,' | tr . _)
+REPO=$(echo "$CODESPACES" | jq -r '.[] .repository' | fzf)
+CS_NAME=$(echo "$CODESPACES" | jq -r ".[] | select(.repository == \"$REPO\") | .name")
 
 gh codespace cp --codespace "$CS_NAME" --expand --recursive -- \
   -q \
@@ -15,11 +14,11 @@ gh codespace cp --codespace "$CS_NAME" --expand --recursive -- \
 
 # FEAT: run this conditionally, perhaps with a flag
 PORT=$(shuf -i 40000-49999 -n 1)
-serve-remote-open --port $PORT 2>/dev/null &
+serve-remote-open --port "$PORT" 2>/dev/null &
 PID=$!
 cleanup() {
   kill $PID
-  echo Stopped listening for remote opens on $PORT
+  echo Stopped listening for remote opens on "$PORT"
   exit
 }
 trap cleanup EXIT INT TERM
@@ -27,5 +26,5 @@ trap cleanup EXIT INT TERM
 gh codespace ssh --codespace "$CS_NAME" -- \
   -o IdentitiesOnly=yes \
   -o RequestTTY=yes \
-  -R 8765:localhost:$PORT \
-  $@
+  -R 8765:localhost:"$PORT" \
+  "$@"

@@ -3,15 +3,15 @@
 set -e
 
 CODESPACES=$(gh codespace list --json name,repository)
-REPO=$(echo $CODESPACES | jq -r '.[] .repository' | fzf)
-CS_NAME=$(echo $CODESPACES | jq -r ".[] | select(.repository == \"$REPO\") | .name")
+REPO=$(echo "$CODESPACES" | jq -r '.[] .repository' | fzf)
+CS_NAME=$(echo "$CODESPACES" | jq -r ".[] | select(.repository == \"$REPO\") | .name")
 
 cs_state() {
   gh codespace view --codespace "$CS_NAME" --json state --jq '.state'
 }
 
 CS_STATE=$(cs_state)
-until [ "$CS_STATE" == "Available" -o "$CS_STATE" == "Shutdown" ]; do
+until [ "$CS_STATE" = "Available" ] || [ "$CS_STATE" = "Shutdown" ]; do
   sleep 15
   CS_STATE=$(cs_state)
 done
@@ -23,9 +23,9 @@ gh codespace ssh --codespace "$CS_NAME" -- \
   make --directory ~/personal/dotfiles setup-os-codespace'
 
 if [ "$?" -eq 0 ]; then
-  MSG=$(echo "is ready to go!")
+  MSG="is ready to go!"
 else
-  MSG=$(echo "failed to set up :-(")
+  MSG="failed to set up :-("
 fi
 
 if [ "$(uname)" = "Darwin" ]; then
