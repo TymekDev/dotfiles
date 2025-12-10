@@ -1,10 +1,12 @@
 vim.lsp.enable({
   "air",
   "astro",
+  "bashls",
   "cssls",
   "emmet_language_server",
-  "gopls",
+  "fish_lsp",
   "golangci_lint_ls",
+  "gopls",
   "html",
   "htmx",
   "jsonls",

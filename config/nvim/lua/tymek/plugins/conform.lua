@@ -49,6 +49,7 @@ return {
         }
       end,
       d2 = { "d2" },
+      fish = { "fish_indent" },
       go = function(bufnr)
         return {
           first(bufnr, "gofumpt", "gofmt"),
@@ -59,7 +60,7 @@ return {
       lua = { "stylua" },
       python = { "ruff_format" },
       query = { "format-queries" },
-      sh = { "shfmt" },
+      sh = { "shfmt", "shellcheck" },
       templ = { "templ" },
       yaml = { "yamlfmt" },
     },
