@@ -39,11 +39,6 @@ M.update = function()
       args = { themes[mode] },
     }, {})
 
-    if mode == "light" then
-      vim.api.nvim_cmd({ cmd = "highlight", args = { "Normal", "guibg=#f1f2f7" } }, {})
-      vim.api.nvim_cmd({ cmd = "highlight", args = { "SignColumn", "guibg=none" } }, {})
-    end
-
     require("nvim-highlight-colors").turnOn()
   end)
 end
