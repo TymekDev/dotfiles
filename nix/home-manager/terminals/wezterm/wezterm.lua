@@ -115,6 +115,6 @@ for i = 1, 8 do
 end
 
 tab_bar.setup(config)
-theme.setup(config)
+theme.update(config)
 
 return config
