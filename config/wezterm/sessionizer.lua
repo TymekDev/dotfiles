@@ -40,14 +40,19 @@ local dirs_to_choices = function(dirs)
   local choices = {}
   for _, dir in ipairs(dirs) do
     local label, _ = string.gsub(dir, "^" .. wezterm.home_dir, "~")
+    if label == "~" then
+      label = wezterm.format({
+        { Text = "~ " },
+        { Attribute = { Italic = true } },
+        { Text = "(default)" },
+      })
+    end
     table.insert(choices, { id = dir, label = label })
   end
 
   table.sort(choices, function(a, b)
     return a.label < b.label
   end)
-
-  table.insert(choices, 1, { id = wezterm.home_dir, label = "default" })
 
   return choices
 end
@@ -99,10 +104,10 @@ end
 ---@param window Window
 ---@param pane Pane
 ---@param subdirs_of string[] Those directories and their direct subdirectories will be available for selection.
----@param ... string Extra directories to include
-M.select = function(window, pane, subdirs_of, ...)
+---@param extra_dirs string[]? Additional directories to include
+M.select = function(window, pane, subdirs_of, extra_dirs)
   local dirs = list_subdirs(subdirs_of)
-  for _, dir in ipairs({ ... }) do
+  for _, dir in ipairs(extra_dirs or {}) do
     dir, _ = string.gsub(dir, "^~", wezterm.home_dir)
     table.insert(dirs, dir)
   end
