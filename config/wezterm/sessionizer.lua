@@ -50,10 +50,6 @@ local dirs_to_choices = function(dirs)
     table.insert(choices, { id = dir, label = label })
   end
 
-  table.sort(choices, function(a, b)
-    return a.label < b.label
-  end)
-
   return choices
 end
 
@@ -74,18 +70,29 @@ local format_choices = function(choices)
     workspaces[ws] = 0
   end
 
+  table.sort(choices, function(a, b)
+    return a.label < b.label
+  end)
+
+  local offset = 0
+  local result = {}
   for _, choice in ipairs(choices) do
     local name = id_to_name(choice.id)
     if name == active_workspace then
       choice.label = "󰐍  " .. choice.label
+      table.insert(result, 1, choice)
+      offset = offset + 1
     elseif workspaces[name] ~= nil then
       choice.label = "󰏦  " .. choice.label
+      table.insert(result, 1 + offset, choice)
+      offset = offset + 1
     else
       choice.label = "   " .. choice.label
+      table.insert(result, choice)
     end
   end
 
-  return choices
+  return result
 end
 
 local switch_to_id = function(window, pane, id)
