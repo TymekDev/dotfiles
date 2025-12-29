@@ -1,11 +1,15 @@
 { pkgs, lib, ... }:
 {
+  programs.difftastic = {
+    enable = true;
+
+    git.enable = true;
+  };
+
   programs.git = {
     enable = true;
 
-    difftastic.enable = true;
-
-    aliases = {
+    settings.alias = {
       # [d]iff [c]ommit
       dc = "! f() { REF=\${1:-HEAD}; if [ $# -ge 1 ]; then shift 1; fi; git diff $REF~1 $REF $@; }; f";
 
@@ -30,7 +34,7 @@
       pr = "! gh pr view --web";
     };
 
-    extraConfig = {
+    settings = {
       user = {
         name = "Tymoteusz Makowski";
         email = "tymek.makowski@gmail.com";

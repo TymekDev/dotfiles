@@ -8,7 +8,7 @@ let
   # Credit to Winston: https://code.winston.sh/winston/flake/src/commit/ea16b8325243824523fc72ef94f4f9d8d5ddac9b/home/apps/wm/waybar.nix#L151-L167
   buildStyle =
     appearance:
-    pkgs.runCommandNoCC "hm_waybarstyle${appearance}.css" {
+    pkgs.runCommand "hm_waybarstyle${appearance}.css" {
       nativeBuildInputs = [ pkgs.dart-sass ];
       style = ''
         @use "${./scss}/waybar" with (
