@@ -23,7 +23,7 @@ config.keys = {
     key = "s",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
-      sessionizer.select(win, pane, { "~/personal" }, { "~", "~/Documents" })
+      sessionizer.select(win, pane, { "~/personal" }, { "~", "~/Documents", "~/Documents/dokumenty" })
     end),
   },
   {
