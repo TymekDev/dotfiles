@@ -56,6 +56,7 @@ in
             (floating { class = "net-runelite-client-RuneLite"; })
             (floating { class = "net-runelite-launcher-Launcher"; })
             (floating { class = "BoltLauncher"; })
+            (floating { title = "Wargaming.net Game Center"; })
           ];
 
         keybindings =
