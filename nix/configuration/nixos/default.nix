@@ -2,6 +2,7 @@
 {
   imports = [
     ./1password.nix
+    ./gaming.nix
     ./greeter.nix
     ./i18n.nix
     ./openssh.nix
