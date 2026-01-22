@@ -25,6 +25,12 @@ wezterm.on("update-status", function(window, pane)
     { Background = { Color = colors.tab_bar.background } },
     { Text = SEP },
   }))
+
+  -- FEAT: improve me! But how...?
+  window:set_right_status(wezterm.format({
+    { Foreground = { Color = colors.ansi[4] } },
+    { Text = string.format("%s %s ", wezterm.nerdfonts.fa_clock_o, wezterm.strftime("%H:%M")) },
+  }))
 end)
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
