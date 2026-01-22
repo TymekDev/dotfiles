@@ -39,7 +39,7 @@
       "pointer" : {
         "acceleration" : 0,
         "disableAcceleration" : false,
-        "speed" : 0.4
+        "speed" : 0.5
       },
       "scrolling" : {
         "acceleration" : 1,
