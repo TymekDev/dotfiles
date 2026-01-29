@@ -58,6 +58,7 @@ in
             (floating { class = "net-runelite-launcher-Launcher"; })
             (floating { class = "BoltLauncher"; })
             (floating { title = "Wargaming.net Game Center"; })
+            (floating { title = "EVE Launcher"; })
           ];
 
         keybindings =
