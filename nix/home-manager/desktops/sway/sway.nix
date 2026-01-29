@@ -11,6 +11,7 @@ let
   cfg = config.wayland.windowManager.sway.config;
   mod = "Mod4";
   modMove = "${mod}+Shift";
+  modeResize = "Mod4+Ctrl+Shift+r";
 in
 {
   config = lib.mkIf isSway {
@@ -96,7 +97,7 @@ in
             "${mod}+Shift+d" = "floating toggle";
 
             "${mod}+f" = "fullscreen toggle";
-            "${mod}+r" = "mode resize";
+            "${modeResize}" = "mode resize"; # With "${mod}+r" I turned it on by accident way too often
             "${mod}+a" = "focus parent";
             "${mod}+z" = "focus child";
 
@@ -140,7 +141,7 @@ in
         modes = {
           resize = {
             Escape = "mode default";
-            "${mod}+R" = "mode default";
+            "${modeResize}" = "mode default";
             h = "resize shrink width 10 px or 10 ppt";
             j = "resize shrink height 10 px or 10 ppt";
             k = "resize grow height 10 px or 10 ppt";
