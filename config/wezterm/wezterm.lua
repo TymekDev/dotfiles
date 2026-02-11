@@ -49,7 +49,12 @@ config.keys = {
     key = "s",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
-      sessionizer.select(win, pane, { "~/personal", "~/work" }, { "~", "~/Downloads", "~/Downloads" })
+      sessionizer.select(
+        win,
+        pane,
+        { "~/personal", "~/work" },
+        { "~", "~/Documents", "~/Documents/dokumenty", "~/Downloads" }
+      )
     end),
   },
   {
