@@ -51,7 +51,7 @@ cask "chromium"            # Free and open-source web browser
 cask "deskpad"             # Virtual monitor for screen sharing
 cask "discord"             # Voice and text chat software
 cask "displaylink"         # Drivers for DisplayLink docks, adapters and monitors
-cask "docker"              # App to build and share containerised applications and microservices
+cask "docker-desktop"      # App to build and share containerised applications and microservices
 cask "firefox"             # Web browser
 cask "gimp"                # Free and open-source image editor
 cask "hammerspoon"         # Desktop automation application
