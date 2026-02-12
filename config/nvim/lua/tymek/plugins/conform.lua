@@ -58,7 +58,7 @@ return {
       end,
       nix = { "nixfmt" },
       lua = { "stylua" },
-      python = { "ruff_format" },
+      python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       query = { "format-queries" },
       sh = { "shfmt", "shellcheck" },
       templ = { "templ" },
