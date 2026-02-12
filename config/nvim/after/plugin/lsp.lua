@@ -12,15 +12,15 @@ vim.lsp.enable({
   "jsonls",
   "lua_ls",
   "nixd",
-  "pyright",
   "r_language_server",
   "ruff",
   "tailwindcss",
   "taplo",
   "templ",
   "ts_ls",
-  "yamlls",
+  "ty",
   "unocss",
+  "yamlls",
 })
 
 vim.lsp.inlay_hint.enable()
