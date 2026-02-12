@@ -24,4 +24,30 @@ cmd_w = hs.hotkey.bind({ "cmd" }, "w", function()
   cmd_w:enable()
 end)
 
+local modFocus = { "cmd", "ctrl" }
+hs.hotkey.bind(modFocus, "h", function()
+  local win = hs.window.focusedWindow()
+  if win then
+    win:focusWindowWest(nil, true)
+  end
+end)
+hs.hotkey.bind(modFocus, "j", function()
+  local win = hs.window.focusedWindow()
+  if win then
+    win:focusWindowSouth(nil, true)
+  end
+end)
+hs.hotkey.bind(modFocus, "k", function()
+  local win = hs.window.focusedWindow()
+  if win then
+    win:focusWindowNorth(nil, true)
+  end
+end)
+hs.hotkey.bind(modFocus, "l", function()
+  local win = hs.window.focusedWindow()
+  if win then
+    win:focusWindowEast(nil, true)
+  end
+end)
+
 hs.hotkey.setLogLevel("warning")
