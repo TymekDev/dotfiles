@@ -2,10 +2,9 @@
 --   defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 hs.loadSpoon("EmmyLua")
 
--- FIXME: this clashes with inputs that have an alternative submit method on Cmd+Enter
--- hs.hotkey.bind({ "cmd" }, "return", function()
---   hs.application.launchOrFocus("wezterm")
--- end)
+hs.hotkey.bind({ "cmd", "ctrl" }, "return", function()
+  hs.application.launchOrFocus("wezterm")
+end)
 
 ---@type hs.hotkey
 local cmd_w
