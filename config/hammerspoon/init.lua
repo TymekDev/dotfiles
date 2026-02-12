@@ -24,6 +24,8 @@ cmd_w = hs.hotkey.bind({ "cmd" }, "w", function()
   cmd_w:enable()
 end)
 
+hs.hotkey.bind({ "cmd" }, "h", function() end)
+
 local modFocus = { "cmd", "ctrl" }
 hs.hotkey.bind(modFocus, "h", function()
   local win = hs.window.focusedWindow()
