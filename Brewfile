@@ -10,6 +10,7 @@ brew "bun"                      # Incredibly fast JavaScript runtime, bundler, t
 brew "coreutils"                # GNU File, Shell, and Text utilities
 brew "curl"                     # Get a file from an HTTP, HTTPS or FTP server
 brew "difftastic"               # Diff that understands syntax
+brew "direnv"                   # Load/unload environment variables based on $PWD
 brew "entr"                     # Run arbitrary commands when files change
 brew "eza"                      # Modern, maintained replacement for ls
 brew "fd"                       # Simple, fast and user-friendly alternative to find
