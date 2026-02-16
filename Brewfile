@@ -42,6 +42,7 @@ brew "stow"                     # Organize software neatly under a single direct
 brew "tarsnap-gui"  if OS.mac?  # Cross-platform GUI for the Tarsnap command-line client
 brew "tree-sitter"  if OS.mac?  # Parser generator tool and incremental parsing library
 brew "unixodbc"                 # ODBC 3 connectivity for UNIX
+brew "uv"                       # Extremely fast Python package installer and resolver, written in Rust
 brew "watch"                    # Executes a program periodically, showing output fullscreen
 brew "yt-dlp"       if OS.mac?  # Feature-rich command-line audio/video downloader
 
