@@ -13,4 +13,4 @@ behavior = "own"
 backend = "ssh"
 
 [aliases]
-l = ["log", "-r",  "present(@) | ancestors(immutable_heads()..) | present(trunk())"]
+l = ["log", "-r",  "present(@) | ancestors(immutable_heads()..) | present(trunk()) | remote_bookmarks()"]

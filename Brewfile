@@ -19,6 +19,7 @@ brew "fish"                     # User-friendly command-line shell for UNIX-like
 brew "fzf"                      # Command-line fuzzy finder written in Go
 brew "gcc"                      # GNU compiler collection
 brew "gh"           if OS.mac?  # GitHub command-line tool
+brew "git"                      # Distributed revision control system
 brew "git-absorb"               # Automatic git commit --fixup
 brew "go"           if OS.mac?  # Open source programming language to build simple/reliable/efficient software
 brew "go-task"                  # Task is a task runner/build tool that aims to be simpler and easier to use
