@@ -8,7 +8,6 @@ vim.lsp.enable({
   "golangci_lint_ls",
   "gopls",
   "html",
-  "htmx",
   "jsonls",
   "lua_ls",
   "nixd",
