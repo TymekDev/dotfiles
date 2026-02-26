@@ -102,7 +102,7 @@ local switch_to_id = function(window, pane, id)
     wezterm.action.SwitchToWorkspace({
       -- NOTE: I don't use label purposefully, so I can use wezterm.format for the InputSelector
       name = id_to_name(id),
-      spawn = { cwd = id },
+      spawn = { cwd = id, domain = "DefaultDomain" },
     }),
     pane
   )
