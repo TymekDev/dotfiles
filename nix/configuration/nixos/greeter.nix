@@ -5,6 +5,7 @@
   ...
 }:
 {
+  # NOTE: cosmic-greeter makes sway not work properly, so I am sticking with regreet.
   config = lib.mkIf config.dotfiles.isSway {
     # TODO: customize the look
     programs.regreet = {
