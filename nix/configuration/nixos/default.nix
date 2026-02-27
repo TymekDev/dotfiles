@@ -2,6 +2,7 @@
 {
   imports = [
     ./1password.nix
+    ./cosmic.nix
     ./flatpak.nix
     ./gaming.nix
     ./greeter.nix
