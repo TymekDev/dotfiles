@@ -10,7 +10,7 @@
     vscode-langservers-extracted
 
     # Formatters
-    nixfmt-rfc-style
+    nixfmt
     stylua
   ];
 
