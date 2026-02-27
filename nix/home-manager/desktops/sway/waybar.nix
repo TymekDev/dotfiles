@@ -47,6 +47,7 @@ in
 
         modules-right = [
           "pulseaudio"
+          "idle_inhibitor"
           "tray"
           "clock"
           "custom/swaync"
@@ -69,6 +70,14 @@ in
           on-scroll-up = "playerctld shift";
           on-scroll-down = "playerctld unshift";
           tooltip = false;
+        };
+
+        idle_inhibitor = {
+          format = "Idle {icon}";
+          format-icons = {
+            activated = "🚫";
+            deactivated = "󰒲";
+          };
         };
 
         pulseaudio = {
