@@ -1,6 +1,6 @@
 {
   config,
-  pkgs-unstable,
+  pkgs,
   lib,
   ...
 }:
@@ -11,6 +11,6 @@ in
   environment.systemPackages =
     [ ]
     ++ lib.optionals hasOSRS [
-      pkgs-unstable.bolt-launcher
+      pkgs.bolt-launcher
     ];
 }

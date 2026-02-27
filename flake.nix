@@ -2,28 +2,27 @@
   description = "TymekDev's NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixos-unstable";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixos-unstable";
     };
 
     nur = {
       url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixos-unstable";
     };
   };
 
   outputs =
     {
-      nixpkgs,
       nixpkgs-unstable,
       disko,
       home-manager,
@@ -32,16 +31,11 @@
     }:
     let
       system = "x86_64-linux";
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
     in
     {
       nixosConfigurations = {
-        sffpc = nixpkgs.lib.nixosSystem {
+        sffpc = nixpkgs-unstable.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit pkgs-unstable; };
           modules = [
             disko.nixosModules.disko
             home-manager.nixosModules.home-manager

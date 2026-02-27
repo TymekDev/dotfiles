@@ -1,4 +1,4 @@
-{ config, pkgs-unstable, ... }:
+{ config, ... }:
 let
   osDotfiles = config.dotfiles;
 in
@@ -7,7 +7,6 @@ in
     useUserPackages = true;
     useGlobalPkgs = true;
     backupFileExtension = "hmbak";
-    extraSpecialArgs = { inherit pkgs-unstable; };
     users.${config.dotfiles.username}.imports = [
       ../../home-manager
 

@@ -1,7 +1,7 @@
 # FIXME: sometimes (after power off?) the dmenu begins to start at the secondary monitor (which is now listed first by swaymsg -t get_outputs)
 {
   config,
-  pkgs-unstable,
+  pkgs,
   lib,
   ...
 }:
@@ -65,7 +65,7 @@ in
           let
             grimshot =
               args: desc:
-              "exec ${lib.getExe pkgs-unstable.sway-contrib.grimshot} ${args} && ${swayosd "--custom-message 'yoinked ${desc}' --custom-icon 'edit-copy'"}";
+              "exec ${lib.getExe pkgs.sway-contrib.grimshot} ${args} && ${swayosd "--custom-message 'yoinked ${desc}' --custom-icon 'edit-copy'"}";
             swayosd = args: "exec swayosd-client ${args}";
           in
           {

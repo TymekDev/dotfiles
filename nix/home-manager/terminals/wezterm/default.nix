@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
   lib,
   ...
 }:
@@ -25,6 +24,5 @@ in
 
   programs.wezterm = {
     enable = true;
-    package = pkgs-unstable.wezterm;
   };
 }
