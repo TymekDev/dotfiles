@@ -6,7 +6,7 @@ OS="$(uname -s)"
 if [ "$OS" = "Darwin" ]; then
   defaults read -g AppleInterfaceStyle &>/dev/null && echo "dark" || echo "light"
 elif [ "$OS" = "Linux" ]; then
-  if [ -n "$CODESPACES" ]; then
+  if [ -n "${CODESPACES:-}" ]; then
     echo "light" # I use Codespaces at work during the day
     exit 0
   fi
