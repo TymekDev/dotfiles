@@ -9,6 +9,7 @@
     ./i18n.nix
     ./openssh.nix
     ./sway.nix
+    ./tailscale.nix
   ];
 
   nix.settings.experimental-features = [
