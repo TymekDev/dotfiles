@@ -77,14 +77,12 @@ config.keys = {
   {
     key = "C",
     mods = "LEADER",
-    action = wezterm.action_callback(function(win, pane)
-      local dir = wezterm.mux.get_active_workspace()
-      if dir == "default" then
-        dir = wezterm.home_dir
+    action = wezterm.action_callback(
+      function(win, pane) -- NOTE: we need the wrapper to get the active workspace when the mapping runs (not when it is defined)
+        local dir = sessionizer.active_workspace_dir()
+        win:perform_action(wezterm.action.SpawnCommandInNewTab({ cwd = dir }), pane)
       end
-
-      win:perform_action(wezterm.action.SpawnCommandInNewTab({ cwd = dir }), pane)
-    end),
+    ),
   },
 }
 

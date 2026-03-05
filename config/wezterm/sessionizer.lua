@@ -108,6 +108,14 @@ local switch_to_id = function(window, pane, id)
   )
 end
 
+M.active_workspace_dir = function()
+  local dir = wezterm.mux.get_active_workspace()
+  if dir == "default" then
+    dir = wezterm.home_dir
+  end
+  return dir
+end
+
 ---@param window Window
 ---@param pane Pane
 ---@param subdirs_of string[] Those directories and their direct subdirectories will be available for selection.
