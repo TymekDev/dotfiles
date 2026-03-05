@@ -19,6 +19,11 @@ local function cmd_to_meta(key)
   return { key = key, mods = "CMD", action = wezterm.action.SendKey({ key = key, mods = "META" }) }
 end
 
+---@param args string[]
+local function shell_cmd(args)
+  return { os.getenv("SHELL"), "-c", wezterm.shell_join_args(args) }
+end
+
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
   cmd_to_meta("a"), -- telescope.nvim
@@ -45,6 +50,7 @@ config.keys = {
   { key = "h", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Left" }) },
   { key = "l", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Right" }) },
 
+  -- Sessionizer stuff
   {
     key = "s",
     mods = "LEADER",
@@ -83,6 +89,17 @@ config.keys = {
         win:perform_action(wezterm.action.SpawnCommandInNewTab({ cwd = dir }), pane)
       end
     ),
+  },
+
+  -- Commands mappings
+  {
+    key = "O",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
+      local dir = sessionizer.active_workspace_dir()
+      local cmd = shell_cmd({ "opencode", dir })
+      win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd }), pane)
+    end),
   },
 }
 
