@@ -1,5 +1,12 @@
-{ config, lib, ... }:
+# TODO: support nix-darwin
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
+  inherit (pkgs.stdenv) isLinux;
   # NOTE: I'd rather have the config stored here, but importing from ssh to rclone doesn't seem to work.
   fromRclone =
     remote: with config.programs.rclone.remotes."${remote}".config; {
@@ -8,7 +15,7 @@ let
     };
 in
 {
-  programs.ssh = {
+  programs.ssh = lib.mkIf isLinux {
     enable = true;
 
     matchBlocks."*" = lib.hm.dag.entryAfter (builtins.attrNames config.programs.ssh.matchBlocks) {

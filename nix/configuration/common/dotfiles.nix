@@ -1,6 +1,19 @@
-{ config, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (lib) mkOption types;
+  inherit (pkgs.stdenv) isLinux isDarwin;
+  home =
+    if isLinux then
+      "home"
+    else if isDarwin then
+      "Users"
+    else
+      throw "Unsupported OS";
 in
 {
   options = {
@@ -11,6 +24,11 @@ in
             description = "The username of the user";
             type = types.str;
           };
+          uid = mkOption {
+            description = "The UID of the user (nix-darwin only)";
+            default = null;
+            type = types.nullOr types.int;
+          };
           desktop = mkOption {
             description = "The desktop environment to use (linux only)";
             default = null;
@@ -20,18 +38,13 @@ in
               ]
             );
           };
-          gaming = mkOption {
-            description = "Gaming-related stuff to include";
-            default = [ ];
-            type = types.listOf (types.enum [ "osrs" ]);
-          };
 
           isSway = mkOption {
             default = config.dotfiles.desktop == "sway";
             visible = false;
           };
-          hasOSRS = mkOption {
-            default = builtins.elem "osrs" config.dotfiles.gaming;
+          home = mkOption {
+            default = "/${home}/${config.dotfiles.username}";
             visible = false;
           };
         };

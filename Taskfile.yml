@@ -8,11 +8,13 @@ tasks:
     cmd: git status --porcelain '*.nix' '**/*.nix' | grep '^??' > /dev/null && echo -e "\033[33m\nWARNING\033[0m There are unstaged Nix files. The rebuild might fail.\n" || exit 0
     silent: true
   rebuild:
-    desc: Rebuild NixOS using flake.nix
-    platforms: [linux]
+    desc: Rebuild NixOS or nix-darwin using flake.nix
     cmds:
       - task: .flake-check
-      - cmd: nixos-rebuild switch --sudo --flake .
+      - platforms: [linux]
+        cmd: nixos-rebuild switch --sudo --flake .
+      - platforms: [darwin]
+        cmd: sudo darwin-rebuild switch --flake .
   rebuild-boot:
     desc: Rebuild NixOS boot and kernel options using flake.nix
     platforms: [linux]
@@ -24,6 +26,7 @@ tasks:
     cmds:
       - platforms: [linux]
         cmd: nix flake update
+      # TODO: migrate to nix-darwin
       - platforms: [darwin]
         cmd: brew bundle install --verbose
       - task: rebuild

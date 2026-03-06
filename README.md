@@ -1,7 +1,7 @@
 # TymekDev's dotfiles
 
 Hey 👋 This repo holds config files for the tools that I use.
-The list of tools can be found in [`Brewfile`](Brewfile).
+It's mostly Nix-pilled as of March 2026.
 
 Explore, get inspired, and beware, because _here be dragons!_
 If you have any questions feel free to reach out to me at tymek.makowski@gmail.com, enjoy!
@@ -12,11 +12,15 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
 > I haven't tried the MacOS setup on a clean OS yet.
 
 <details>
-<summary><h3>MacOS</h3></summary>
+<summary><h3>MacOS (with nix-darwin)</h3></summary>
 
 1. Run:
    ```sh
    xcode-select --install
+   ```
+1. Install Lix:
+   ```sh
+   curl -sSf -L https://install.lix.systems/lix | sh -s -- install
    ```
 1. Install [`brew`](https://brew.sh/):
    ```sh
@@ -27,15 +31,11 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
    git -C ~/personal/dotfiles remote set-url origin ssh://git@codeberg.org/TymekDev/dotfiles.git
    ```
-1. Symlink config files:
+1. Verify the username and uid in [the flake](./flake.nix) are the same as the `id` command reports
+1. Rebuild the system from the flake
    ```sh
-   make --directory ~/personal/dotfiles setup-os-macos
+   sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake ~/personal/dotfiles
    ```
-   - ⚠️ Make sure that `~/.config/karabiner` is a symlink ([details](https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/))
-1. Install by hand:
-   - Tailscale: https://pkgs.tailscale.com/stable/#macos
-   - Google Chrome
-1. [Disable Firefox title bar](https://blog.tymek.dev/firefox-css-2)
 1. Add the following snippet at the very bottom of `~/.ssh/config`:
    ```
    Host *
@@ -171,7 +171,7 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
    ```
 1. Clone the repo:
    ```sh
-   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
+   git clone --revision ecd8d41b84a57b37271f8afc6a6a8c7a44eb0c05 https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
    ```
 1. Run:
    ```sh
@@ -191,6 +191,7 @@ Starting with the oldest:
 - Commit switching from [packer.nvim][] to [lazy.nvim][]: ([`1ad9d73`][]) _Merge pull request #8 from TymekDev/lazy.nvim_
 - Commit replacing the `make`-based setup with a `Brewfile`: ([`fa64d51`](https://codeberg.org/TymekDev/dotfiles/commit/fa64d51d330a540b45bb043493706dc6b5468a8c)) _refactor: use Brewfile_
 - Commit adding the NixOS configuration: ([`c844f53`](https://codeberg.org/TymekDev/dotfiles/commit/c844f535eb858185629250faa3cda237d7ce10fc)) _Merge branch 'nixos'_
+- Mostly switched to nix-darwin on macOS: ([`7aa7741`](https://codeberg.org/TymekDev/dotfiles/commit/7aa7741083174dd55aa184a7514a864266383478))
 
 [`b9d3554`]: https://codeberg.org/TymekDev/dotfiles/commit/b9d35545c8cac900655c77b28ea1eb28c4b3e0ce
 [home-manager]: https://github.com/nix-community/home-manager

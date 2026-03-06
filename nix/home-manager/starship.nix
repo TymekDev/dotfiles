@@ -13,6 +13,12 @@
 
       directory.fish_style_pwd_dir_length = 1;
 
+      rlang.detect_files = [
+        ".Rprofile"
+        "DESCRIPTION"
+        "renv.lock"
+      ];
+
       time = {
         disabled = false;
         format = "at [ $time]($style) ";

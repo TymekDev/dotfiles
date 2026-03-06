@@ -5,6 +5,11 @@
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -24,6 +29,7 @@
   outputs =
     {
       nixpkgs-unstable,
+      nix-darwin,
       disko,
       home-manager,
       nur,
@@ -50,9 +56,26 @@
               dotfiles = {
                 username = "tymek";
                 desktop = "sway";
-                gaming = [
-                  "osrs"
-                ];
+              };
+            }
+          ];
+        };
+      };
+
+      darwinConfigurations = {
+        maczek = nix-darwin.lib.darwinSystem {
+          modules = [
+            home-manager.darwinModules.home-manager
+
+            ./nix/machines/maczek
+            ./nix/configuration/common
+            ./nix/configuration/darwin
+            ./nix/pkgs
+
+            {
+              dotfiles = {
+                username = "tymek";
+                uid = 501;
               };
             }
           ];

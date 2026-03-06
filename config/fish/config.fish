@@ -54,7 +54,6 @@ bind \en "fish_commandline_prepend 'nvim (' && fish_commandline_append ' )'"
 
 set -x EDITOR nvim
 set -x TZ 'Europe/Warsaw'
-set -x N_PREFIX ~/.local/share/n
 set -x BUN_INSTALL ~/.local/share/bun
 
 if test (uname) = "Darwin"
@@ -64,34 +63,19 @@ end
 if test -f /etc/fish/conf.d/codespaces.fish
   set -gx SHELL_LOGGED_IN true
   source /etc/fish/conf.d/codespaces.fish
-end
 
-# homebrew
-set -l BREW_DIR
-if test (uname) = "Darwin"
-  set BREW_DIR /opt/homebrew
-else if test (uname) = "Linux"
-  set BREW_DIR /home/linuxbrew/.linuxbrew
-end
+  set -l BREW_DIR /home/linuxbrew/.linuxbrew
+  if test -n "$BREW_DIR"
+    set -x SHELL $BREW_DIR/bin/fish
+    eval ($BREW_DIR/bin/brew shellenv)
 
-if test -n "$BREW_DIR"
-  set -x SHELL $BREW_DIR/bin/fish
-  eval ($BREW_DIR/bin/brew shellenv)
-
-  set -l CURL_PATH $BREW_DIR/opt/curl
-  if test -d $CURL_PATH
-    fish_add_path $CURL_PATH/bin
-    set -xp MANPATH $CURL_PATH/share/man
+    set -l CURL_PATH $BREW_DIR/opt/curl
+    if test -d $CURL_PATH
+      fish_add_path $CURL_PATH/bin
+      set -xp MANPATH $CURL_PATH/share/man
+    end
   end
 end
-# homebrew end
-
-# pnpm
-if test (uname) = "Darwin"
-  set -gx PNPM_HOME ~/Library/pnpm
-  fish_add_path $PNPM_HOME
-end
-# pnpm end
 
 # pipx
 if test (uname) = "Linux"
@@ -100,15 +84,8 @@ if test (uname) = "Linux"
 end
 # pipx end
 
-fish_add_path ~/.cargo/bin
-fish_add_path ~/.npm-global/bin
-fish_add_path ~/go/bin
-fish_add_path ~/Library/Python/3.9/bin
-fish_add_path /usr/local/go/bin
 fish_add_path --move ~/.local/bin
-fish_add_path --move ~/.local/share/bob/nvim-bin
 fish_add_path --move $BUN_INSTALL/bin
-fish_add_path --move ~/.local/share/n/bin
 
 fzf --fish | source
 

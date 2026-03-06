@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+# TODO: support nix-darwin
+{ pkgs, lib, ... }:
 let
+  inherit (pkgs.stdenv) isLinux;
   engine = alias: url: queryParamName: {
     definedAliases = [ alias ];
     urls = [
@@ -16,7 +18,7 @@ let
   };
 in
 {
-  programs.firefox = {
+  programs.firefox = lib.mkIf isLinux {
     enable = true;
     languagePacks = [
       "en-US"
