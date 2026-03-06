@@ -8,8 +8,15 @@ in
 ]]
 local expr_pkgs = string.format("(import %s.inputs.nixpkgs { })", expr_flake)
 
-local expr_hostname = string.format('(%s.lib.trim (builtins.readFile "/etc/hostname"))', expr_pkgs)
-local expr_nixos_options = string.format("%s.nixosConfigurations.${%s}.options", expr_flake, expr_hostname)
+local is_darwin = vim.fn.has("mac") == 1
+local system = "nixos"
+if is_darwin then
+  system = "darwin"
+end
+
+local hostname = vim.fn.hostname():match("^([^%.]+)")
+local expr_system_options = string.format("%s.%sConfigurations.%s.options", expr_flake, system, hostname)
+local expr_home_manager_options = string.format("%s.home-manager.users.type.getSubOptions []", expr_system_options)
 
 ---@type vim.lsp.Config
 return {
@@ -19,12 +26,8 @@ return {
         expr = expr_pkgs,
       },
       options = {
-        nixos = {
-          expr = expr_nixos_options,
-        },
-        home_manager = {
-          expr = string.format("%s.home-manager.users.type.getSubOptions []", expr_nixos_options),
-        },
+        [system] = { expr = expr_system_options },
+        ["home-manager"] = { expr = expr_home_manager_options },
       },
     },
   },
