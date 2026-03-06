@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+let
+  inherit (pkgs.stdenv) isDarwin;
+in
 {
   imports = [
     ./desktops/sway
@@ -16,6 +19,7 @@
     ./starship.nix
   ];
 
+  # TODO: split desktop apps like Discord and Spotify?
   home.packages = with pkgs; [
     discord
     fd
@@ -25,6 +29,7 @@
     ijq
     jq
     nodejs_22
+    opencode
     ripgrep
     spotify
     yazi
@@ -32,6 +37,13 @@
     # my custom stuff
     tarsnap-1pass
     tarsnap-1pass-backup
+  ]
+  # TODO: migrate this into home-manager modules
+  ++ lib.optionals isDarwin [
+    difftastic
+    eza
+    git
+    jj
   ];
 
   xdg.enable = true;
