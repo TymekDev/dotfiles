@@ -63,27 +63,19 @@ end
 if test -f /etc/fish/conf.d/codespaces.fish
   set -gx SHELL_LOGGED_IN true
   source /etc/fish/conf.d/codespaces.fish
-end
 
-# homebrew
-set -l BREW_DIR
-if test (uname) = "Darwin"
-  set BREW_DIR /opt/homebrew
-else if test (uname) = "Linux"
-  set BREW_DIR /home/linuxbrew/.linuxbrew
-end
+  set -l BREW_DIR /home/linuxbrew/.linuxbrew
+  if test -n "$BREW_DIR"
+    set -x SHELL $BREW_DIR/bin/fish
+    eval ($BREW_DIR/bin/brew shellenv)
 
-if test -n "$BREW_DIR"
-  set -x SHELL $BREW_DIR/bin/fish
-  eval ($BREW_DIR/bin/brew shellenv)
-
-  set -l CURL_PATH $BREW_DIR/opt/curl
-  if test -d $CURL_PATH
-    fish_add_path $CURL_PATH/bin
-    set -xp MANPATH $CURL_PATH/share/man
+    set -l CURL_PATH $BREW_DIR/opt/curl
+    if test -d $CURL_PATH
+      fish_add_path $CURL_PATH/bin
+      set -xp MANPATH $CURL_PATH/share/man
+    end
   end
 end
-# homebrew end
 
 # pipx
 if test (uname) = "Linux"
