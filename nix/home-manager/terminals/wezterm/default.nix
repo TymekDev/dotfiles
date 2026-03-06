@@ -1,9 +1,13 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
   mkSymlink =
-    path:
-    config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.home}/personal/dotfiles/${path}";
+    path: config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.home}/personal/dotfiles/${path}";
 in
 {
   # NOTE: I cannot use ./wezterm.lua and similar, because those files are included as source in

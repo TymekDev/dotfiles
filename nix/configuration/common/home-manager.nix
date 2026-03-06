@@ -11,7 +11,12 @@ in
       ../../home-manager
 
       (
-        { config, pkgs, lib, ... }:
+        {
+          config,
+          pkgs,
+          lib,
+          ...
+        }:
         let
           osOptions = (import ./dotfiles.nix { inherit config pkgs lib; }).options;
         in

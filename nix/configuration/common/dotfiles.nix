@@ -1,8 +1,19 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (lib) mkOption types;
   inherit (pkgs.stdenv) isLinux isDarwin;
-  home = if isLinux then "home" else if isDarwin then "Users" else throw "Unsupported OS";
+  home =
+    if isLinux then
+      "home"
+    else if isDarwin then
+      "Users"
+    else
+      throw "Unsupported OS";
 in
 {
   options = {

@@ -32,6 +32,6 @@ in
     };
   }
   // lib.optionalAttrs isDarwin {
-    knownUsers = [config.dotfiles.username];
+    knownUsers = [ config.dotfiles.username ];
   };
 }

@@ -1,5 +1,10 @@
 # TODO: support nix-darwin
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (pkgs.stdenv) isLinux;
   # NOTE: I'd rather have the config stored here, but importing from ssh to rclone doesn't seem to work.
