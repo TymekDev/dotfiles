@@ -5,6 +5,8 @@
   homebrew = {
     enable = true;
 
+    enableFishIntegration = true;
+
     taps = [
       "r-lib/rig"
     ];
@@ -21,6 +23,7 @@
       "karabiner-elements"
       "linearmouse"
       "rectangle"
+      "signal"
       "spotify"
       "wezterm@nightly"
 
