@@ -14,7 +14,6 @@
     casks = [
       "1password"
       "1password-cli"
-      "deskpad"
       "discord"
       "displaylink"
       "docker-desktop"
@@ -29,9 +28,12 @@
 
       # Work stuff
       "chromium"
+      "deskpad"
+      "meetingbar"
       "rig"
       "slack"
       "tunnelblick"
+      "zoom"
     ];
   };
 }
