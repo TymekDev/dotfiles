@@ -14,24 +14,4 @@ return {
 languageserver::run()
 ]],
   },
-  on_attach = function()
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = 0,
-      callback = function(opts)
-        if vim.g.disable_autoformat or vim.b[opts.buf].disable_autoformat then
-          return
-        end
-
-        vim.lsp.buf.format({
-          filter = function(client)
-            if vim.g.use_air then
-              return client.name == "air"
-            end
-            return client.name == "r_language_server"
-          end,
-          timeout_ms = 3000,
-        })
-      end,
-    })
-  end,
 }

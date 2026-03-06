@@ -67,10 +67,3 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
     end
   end,
 })
-
-vim.api.nvim_create_user_command("AirToggle", function(opts)
-  vim.g.use_air = not vim.g.use_air
-end, {
-  desc = "Toggle between using Air and languageserver",
-  bang = true,
-})
