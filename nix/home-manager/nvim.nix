@@ -1,5 +1,15 @@
-{ pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  ...
+}:
+let
+  mkSymlink =
+    path: config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.home}/personal/dotfiles/${path}";
+in
+{
+  xdg.configFile."nvim".source = mkSymlink "config/nvim";
+
   home.packages = with pkgs; [
     gcc # used by nvim-treesitter to install grammars
     neovim
@@ -13,10 +23,6 @@
     nixfmt
     stylua
   ];
-
-  home.activation.symlinkNvim = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    run [ ! -L ~/.config/nvim ] && ln -s $VERBOSE_ARG $HOME/personal/dotfiles/config/nvim/ -t $HOME/.config/ || exit 0
-  '';
 
   home.sessionVariables.EDITOR = "nvim";
 }
