@@ -28,10 +28,13 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    git -C ~/personal/dotfiles remote set-url origin ssh://git@codeberg.org/TymekDev/dotfiles.git
    ```
 1. Symlink config files:
+
    ```sh
    make --directory ~/personal/dotfiles setup-os-macos
    ```
+
    - ⚠️ Make sure that `~/.config/karabiner` is a symlink ([details](https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/))
+
 1. Install by hand:
    - Tailscale: https://pkgs.tailscale.com/stable/#macos
    - Google Chrome
@@ -43,6 +46,28 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```
 1. Install Neovim spell files
    - Note: Enable NetRW and disable oil.nvim to download spell files (see https://github.com/stevearc/oil.nvim/issues/163)
+
+</details>
+
+<details>
+<summary><h3>nix-darwin</h3></summary>
+
+**Note**: I built this upon [the MacOS setup](#MacOS), so it might need parts of that.
+
+1. Clone the repo:
+   ```sh
+   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
+   git -C ~/personal/dotfiles remote set-url origin ssh://git@codeberg.org/TymekDev/dotfiles.git
+   ```
+1. Verify the username and uid in the configuration (via the `id` command)
+1. Install Lix:
+   ```sh
+   curl -sSf -L https://install.lix.systems/lix | sh -s -- install
+   ```
+1. Rebuild the system from the flake
+   ```sh
+   sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake ~/personal/dotfiles
+   ```
 
 </details>
 
