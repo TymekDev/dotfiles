@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "oven-sh/bun"
 tap "r-lib/rig"
 tap "go-task/tap"
+tap "anomalyco/tap"
 
 brew "asciinema"                # Record and share terminal sessions
 brew "bat"                      # Clone of cat(1) with syntax highlighting and Git integration
@@ -31,6 +32,7 @@ brew "jq"                       # Lightweight and flexible command-line JSON pro
 brew "luarocks"     if OS.mac?  # Package manager for the Lua programming language
 brew "mpv"          if OS.mac?  # Media player based on MPlayer and mplayer2
 brew "n"                        # Node version management
+brew "opencode"
 brew "pandoc"                   # Swiss-army knife of markup format conversion
 brew "pre-commit"               # Framework for managing multi-language pre-commit hooks
 brew "pv"                       # Monitor data's progress through a pipe
