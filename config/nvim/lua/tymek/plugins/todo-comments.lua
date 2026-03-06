@@ -2,6 +2,7 @@
 ---@type LazySpec
 return {
   "folke/todo-comments.nvim", -- TODO: review config
+  enabled = false,
   event = "VeryLazy",
   dependencies = { "nvim-lua/plenary.nvim" },
   ---@module "todo-comments"
