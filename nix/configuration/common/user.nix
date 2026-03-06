@@ -6,7 +6,6 @@
 }:
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
-  home = if isLinux then "home" else if isDarwin then "Users" else throw "Unsupported OS";
 in
 {
   # Allows setting the user shell to fish
@@ -14,7 +13,7 @@ in
 
   users = {
     users.${config.dotfiles.username} = {
-      home = "/${home}/${config.dotfiles.username}";
+      inherit (config.dotfiles) home;
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILkf84+zcnJNPvvNC2uskzM860ewSX5tLo57A7jA8Yre"

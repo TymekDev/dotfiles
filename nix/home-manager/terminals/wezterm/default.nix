@@ -1,16 +1,8 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, ... }:
 let
-  inherit (pkgs.stdenv) isLinux;
-
-  home = if isLinux then "home" else throw "Unsupported OS";
   mkSymlink =
     path:
-    config.lib.file.mkOutOfStoreSymlink "/${home}/${config.dotfiles.username}/personal/dotfiles/${path}";
+    config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.home}/personal/dotfiles/${path}";
 in
 {
   # NOTE: I cannot use ./wezterm.lua and similar, because those files are included as source in

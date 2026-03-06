@@ -1,6 +1,8 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   inherit (lib) mkOption types;
+  inherit (pkgs.stdenv) isLinux isDarwin;
+  home = if isLinux then "home" else if isDarwin then "Users" else throw "Unsupported OS";
 in
 {
   options = {
@@ -28,6 +30,10 @@ in
 
           isSway = mkOption {
             default = config.dotfiles.desktop == "sway";
+            visible = false;
+          };
+          home = mkOption {
+            default = "/${home}/${config.dotfiles.username}";
             visible = false;
           };
         };
