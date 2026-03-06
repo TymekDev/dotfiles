@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv) isDarwin isLinux;
 in
 {
   imports = [
@@ -19,11 +19,9 @@ in
     ./starship.nix
   ];
 
-  # TODO: split desktop apps like Discord and Spotify?
   home.packages =
     with pkgs;
     [
-      discord
       fd
       gh
       git-absorb
@@ -33,7 +31,6 @@ in
       nodejs_22
       opencode
       ripgrep
-      spotify
       yazi
 
       # my custom stuff
@@ -46,6 +43,10 @@ in
       eza
       git
       jj
+    ]
+    ++ lib.optionals isLinux [
+      discord
+      spotify
     ];
 
   xdg.enable = true;

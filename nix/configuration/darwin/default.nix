@@ -1,5 +1,9 @@
 { ... }:
 {
+  imports = [
+    ./homebrew.nix
+  ];
+
   nix.settings.experimental-features = [
     "flakes"
     "nix-command"
