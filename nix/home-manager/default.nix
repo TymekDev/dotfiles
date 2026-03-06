@@ -11,7 +11,6 @@
     ./git.nix
     ./jj.nix
     ./nvim.nix
-    ./obs.nix
     ./rclone.nix
     ./ssh.nix
     ./starship.nix
@@ -28,7 +27,6 @@
     nodejs_22
     ripgrep
     spotify
-    uhk-agent
     yazi
 
     # my custom stuff
