@@ -56,9 +56,6 @@
               dotfiles = {
                 username = "tymek";
                 desktop = "sway";
-                gaming = [
-                  "osrs"
-                ];
               };
             }
           ];
