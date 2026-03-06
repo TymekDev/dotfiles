@@ -65,11 +65,12 @@
       darwinConfigurations = {
         maczek = nix-darwin.lib.darwinSystem {
           modules = [
+            home-manager.darwinModules.home-manager
+
             ./nix/machines/maczek
-            ./nix/configuration/common/dotfiles.nix
-            ./nix/configuration/common/fonts.nix
-            ./nix/configuration/common/user.nix
+            ./nix/configuration/common
             ./nix/configuration/darwin
+            ./nix/pkgs
 
             {
               dotfiles = {
