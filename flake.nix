@@ -5,6 +5,11 @@
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -24,6 +29,7 @@
   outputs =
     {
       nixpkgs-unstable,
+      nix-darwin,
       disko,
       home-manager,
       nur,
@@ -55,6 +61,28 @@
                 ];
               };
             }
+          ];
+        };
+      };
+
+      darwinConfigurations = {
+        maczek = nix-darwin.lib.darwinSystem {
+          modules = [
+            ({pkgs, ...}:{
+              nix.settings.experimental-features = [
+                "flakes"
+                "nix-command"
+              ];
+              nixpkgs.hostPlatform = "aarch64-darwin";
+              programs.fish.enable = true;
+              system.stateVersion = 6;
+              users.knownUsers = ["tymek"];
+              users.users.tymek = {
+                uid = 501;
+                home = "/Users/tymek";
+                shell = pkgs.fish;
+              };
+            })
           ];
         };
       };
