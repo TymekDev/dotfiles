@@ -1,5 +1,10 @@
-{ ... }:
+{ pkgs, lib, ... }:
+let
+  inherit (pkgs.stdenv) isDarwin;
+in
 {
+  xdg.configFile."rclone/rclone.conf".source = lib.mkIf isDarwin ../../config/rclone/rclone.conf;
+
   programs.rclone = {
     enable = true;
 
