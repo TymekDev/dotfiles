@@ -1,6 +1,10 @@
+# TODO: support nix-darwin
 { pkgs, lib, ... }:
+let
+  inherit (pkgs.stdenv) isLinux;
+in
 {
-  programs.jujutsu = {
+  programs.jujutsu = lib.mkIf isLinux {
     enable = true;
 
     settings = {

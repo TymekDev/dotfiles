@@ -1,10 +1,14 @@
-{ ... }:
+# TODO: support nix-darwin
+{ pkgs, lib, ... }:
+let
+  inherit (pkgs.stdenv) isLinux;
+in
 {
   xdg.configFile."fish/functions/update_theme.fish".source = ../../config/fish/functions/update_theme.fish;
 
   home.file.".local/bin/are-we-dark-yet".source = ../../local/bin/are-we-dark-yet;
 
-  programs.fish = {
+  programs.fish = lib.mkIf isLinux {
     enable = true;
 
     shellAbbrs = {
