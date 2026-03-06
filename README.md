@@ -1,7 +1,7 @@
 # TymekDev's dotfiles
 
 Hey 👋 This repo holds config files for the tools that I use.
-The list of tools can be found in [`Brewfile`](Brewfile).
+It's mostly Nix-pilled as of March 2026.
 
 Explore, get inspired, and beware, because _here be dragons!_
 If you have any questions feel free to reach out to me at tymek.makowski@gmail.com, enjoy!
@@ -12,54 +12,12 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
 > I haven't tried the MacOS setup on a clean OS yet.
 
 <details>
-<summary><h3>MacOS</h3></summary>
+<summary><h3>MacOS (with nix-darwin)</h3></summary>
 
 1. Run:
    ```sh
    xcode-select --install
    ```
-1. Install [`brew`](https://brew.sh/):
-   ```sh
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
-1. Clone the repo:
-   ```sh
-   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
-   git -C ~/personal/dotfiles remote set-url origin ssh://git@codeberg.org/TymekDev/dotfiles.git
-   ```
-1. Symlink config files:
-
-   ```sh
-   make --directory ~/personal/dotfiles setup-os-macos
-   ```
-
-   - ⚠️ Make sure that `~/.config/karabiner` is a symlink ([details](https://karabiner-elements.pqrs.org/docs/manual/misc/configuration-file-path/))
-
-1. Install by hand:
-   - Tailscale: https://pkgs.tailscale.com/stable/#macos
-   - Google Chrome
-1. [Disable Firefox title bar](https://blog.tymek.dev/firefox-css-2)
-1. Add the following snippet at the very bottom of `~/.ssh/config`:
-   ```
-   Host *
-     IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-   ```
-1. Install Neovim spell files
-   - Note: Enable NetRW and disable oil.nvim to download spell files (see https://github.com/stevearc/oil.nvim/issues/163)
-
-</details>
-
-<details>
-<summary><h3>nix-darwin</h3></summary>
-
-**Note**: I built this upon [the MacOS setup](#MacOS), so it might need parts of that.
-
-1. Clone the repo:
-   ```sh
-   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
-   git -C ~/personal/dotfiles remote set-url origin ssh://git@codeberg.org/TymekDev/dotfiles.git
-   ```
-1. Verify the username and uid in the configuration (via the `id` command)
 1. Install Lix:
    ```sh
    curl -sSf -L https://install.lix.systems/lix | sh -s -- install
@@ -68,10 +26,23 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```sh
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
+1. Clone the repo:
+   ```sh
+   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
+   git -C ~/personal/dotfiles remote set-url origin ssh://git@codeberg.org/TymekDev/dotfiles.git
+   ```
+1. Verify the username and uid in [the flake](./flake.nix) are the same as the `id` command reports
 1. Rebuild the system from the flake
    ```sh
    sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake ~/personal/dotfiles
    ```
+1. Add the following snippet at the very bottom of `~/.ssh/config`:
+   ```
+   Host *
+     IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+   ```
+1. Install Neovim spell files
+   - Note: Enable NetRW and disable oil.nvim to download spell files (see https://github.com/stevearc/oil.nvim/issues/163)
 
 </details>
 
@@ -200,7 +171,7 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
    ```
 1. Clone the repo:
    ```sh
-   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
+   git clone --revision ecd8d41b84a57b37271f8afc6a6a8c7a44eb0c05 https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
    ```
 1. Run:
    ```sh
