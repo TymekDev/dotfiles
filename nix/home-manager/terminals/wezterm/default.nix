@@ -25,6 +25,6 @@ in
   };
 
   programs.wezterm = {
-    enable = true;
+    enable = isLinux; # use homebrew on macOS
   };
 }
