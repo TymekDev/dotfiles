@@ -36,6 +36,12 @@ abbr --add gsts git stash show -p
 abbr --add gsw  git switch
 abbr --add gwt  git worktree
 
+abbr --add jc  jj commit
+abbr --add jcm jj commit -m
+abbr --add jd  jj diff
+abbr --add jdl jj diff -r @- # jj diff last
+abbr --add js  jj status
+
 alias g  git
 alias ls "eza --git --group-directories-first --time-style long-iso"
 alias nv nvim
