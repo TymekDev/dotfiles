@@ -65,21 +65,18 @@
       darwinConfigurations = {
         maczek = nix-darwin.lib.darwinSystem {
           modules = [
-            ({pkgs, ...}:{
-              nix.settings.experimental-features = [
-                "flakes"
-                "nix-command"
-              ];
-              nixpkgs.hostPlatform = "aarch64-darwin";
-              programs.fish.enable = true;
-              system.stateVersion = 6;
-              users.knownUsers = ["tymek"];
-              users.users.tymek = {
+            ./nix/machines/maczek
+            ./nix/configuration/common/dotfiles.nix
+            ./nix/configuration/common/fonts.nix
+            ./nix/configuration/common/user.nix
+            ./nix/configuration/darwin
+
+            {
+              dotfiles = {
+                username = "tymek";
                 uid = 501;
-                home = "/Users/tymek";
-                shell = pkgs.fish;
               };
-            })
+            }
           ];
         };
       };

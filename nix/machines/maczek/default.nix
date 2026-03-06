@@ -1,0 +1,4 @@
+{ ... }:
+{
+  system.stateVersion = 6;
+}

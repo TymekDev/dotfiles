@@ -11,6 +11,11 @@ in
             description = "The username of the user";
             type = types.str;
           };
+          uid = mkOption {
+            description = "The UID of the user (nix-darwin only)";
+            default = null;
+            type = types.nullOr types.int;
+          };
           desktop = mkOption {
             description = "The desktop environment to use (linux only)";
             default = null;
