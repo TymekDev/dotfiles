@@ -1,6 +1,14 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
+
+  mkSymlink =
+    path: config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.home}/personal/dotfiles/${path}";
 in
 {
   imports = [
@@ -50,6 +58,10 @@ in
     ];
 
   xdg.enable = true;
+  xdg.configFile = lib.mkIf isDarwin {
+    "karabiner".source = mkSymlink "config/karabiner";
+    "linearmouse".source = mkSymlink "config/linearmouse";
+  };
 
   home.stateVersion = "24.11";
 }
