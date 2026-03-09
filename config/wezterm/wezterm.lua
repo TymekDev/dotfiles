@@ -79,7 +79,17 @@ config.keys = {
   {
     key = "c",
     mods = "LEADER",
-    action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+    action = wezterm.action_callback(function(win, pane)
+      local args = {}
+      if pane:get_domain_name() ~= "local" then
+        local url = pane:get_current_working_dir()
+        if url and url.file_path then
+          args = { "sh", "-c", "cd " .. wezterm.shell_quote_arg(url.file_path) .. ' && exec "$SHELL"' }
+        end
+      end
+
+      win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = args, domain = "CurrentPaneDomain" }), pane)
+    end),
   },
   {
     key = "C",
