@@ -28,6 +28,7 @@
 
       # Work stuff
       "chromium"
+      "claude"
       "deskpad"
       "meetingbar"
       "rig"
