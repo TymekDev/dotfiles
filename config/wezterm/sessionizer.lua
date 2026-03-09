@@ -98,11 +98,17 @@ end
 local switch_to_id = function(window, pane, id)
   wezterm.GLOBAL.sessionizer_last_id = wezterm.mux.get_active_workspace()
 
+  local spawn = { cwd = id, domain = "DefaultDomain" }
+  if string.find(id, "^SSH:") then
+    -- TODO: make Codespace connections connect to the right directory
+    spawn = { domain = { DomainName = id } }
+  end
+
   window:perform_action(
     wezterm.action.SwitchToWorkspace({
       -- NOTE: I don't use label purposefully, so I can use wezterm.format for the InputSelector
       name = id_to_name(id),
-      spawn = { cwd = id, domain = "DefaultDomain" },
+      spawn = spawn,
     }),
     pane
   )
@@ -127,6 +133,12 @@ M.select = function(window, pane, subdirs_of, extra_dirs)
     table.insert(dirs, dir)
   end
   local choices = dirs_to_choices(dirs)
+
+  for _, domain in ipairs(wezterm.default_ssh_domains()) do
+    if string.find(domain.name, "^SSH:") then
+      table.insert(choices, { id = domain.name, label = domain.name })
+    end
+  end
 
   window:perform_action(
     wezterm.action.InputSelector({
