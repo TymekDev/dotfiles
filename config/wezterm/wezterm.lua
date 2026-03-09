@@ -24,6 +24,9 @@ end
 ---@param pane Pane
 local function shell_cmd(args, pane)
   if not pane or pane:get_domain_name() == "local" then
+    if #args == 0 then
+      return { os.getenv("SHELL") }
+    end
     return { os.getenv("SHELL"), "-c", wezterm.shell_join_args(args) }
   end
 
@@ -33,10 +36,15 @@ local function shell_cmd(args, pane)
     cd_prefix = "cd " .. wezterm.shell_quote_arg(url.file_path) .. " && "
   end
 
+  local args_suffix = ""
+  if #args > 0 then
+    args_suffix = " -c " .. wezterm.shell_quote_arg(wezterm.shell_join_args(args))
+  end
+
   return {
     "sh",
     "-c",
-    cd_prefix .. 'exec "$SHELL" -c ' .. wezterm.shell_quote_arg(wezterm.shell_join_args(args)),
+    cd_prefix .. 'exec "$SHELL"' .. args_suffix,
   }
 end
 
@@ -95,15 +103,8 @@ config.keys = {
     key = "c",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
-      local args = {}
-      if pane:get_domain_name() ~= "local" then
-        local url = pane:get_current_working_dir()
-        if url and url.file_path then
-          args = { "sh", "-c", "cd " .. wezterm.shell_quote_arg(url.file_path) .. ' && exec "$SHELL"' }
-        end
-      end
-
-      win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = args, domain = "CurrentPaneDomain" }), pane)
+      local cmd = shell_cmd({}, pane)
+      win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd, domain = "CurrentPaneDomain" }), pane)
     end),
   },
   {
