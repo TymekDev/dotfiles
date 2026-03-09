@@ -21,8 +21,23 @@ local function cmd_to_meta(key)
 end
 
 ---@param args string[]
-local function shell_cmd(args)
-  return { os.getenv("SHELL"), "-c", wezterm.shell_join_args(args) }
+---@param pane Pane
+local function shell_cmd(args, pane)
+  if not pane or pane:get_domain_name() == "local" then
+    return { os.getenv("SHELL"), "-c", wezterm.shell_join_args(args) }
+  end
+
+  local cd_prefix = ""
+  local url = pane:get_current_working_dir()
+  if url and url.file_path then
+    cd_prefix = "cd " .. wezterm.shell_quote_arg(url.file_path) .. " && "
+  end
+
+  return {
+    "sh",
+    "-c",
+    cd_prefix .. 'exec "$SHELL" -c ' .. wezterm.shell_quote_arg(wezterm.shell_join_args(args)),
+  }
 end
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
@@ -107,7 +122,7 @@ config.keys = {
     key = "G",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
-      local cmd = shell_cmd({ "nvim", "+Git", "+only" })
+      local cmd = shell_cmd({ "nvim", "+Git", "+only" }, pane)
       win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd }), pane)
     end),
   },
@@ -116,7 +131,7 @@ config.keys = {
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
       local dir = sessionizer.active_workspace_dir()
-      local cmd = shell_cmd({ "opencode", dir })
+      local cmd = shell_cmd({ "opencode", dir }, pane)
       win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd }), pane)
     end),
   },
@@ -125,7 +140,7 @@ config.keys = {
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
       local dir = sessionizer.active_workspace_dir()
-      local cmd = shell_cmd({ "task", "--dir", dir, "--list", "--json" })
+      local cmd = shell_cmd({ "task", "--dir", dir, "--list", "--json" }, pane)
       local ok, stdout, stderr = wezterm.run_child_process(cmd)
       if not ok then
         wezterm.log_error("failed to run the command:", stderr, "\nThe command:", cmd)
@@ -157,7 +172,7 @@ config.keys = {
 
             win:perform_action(
               wezterm.action.SpawnCommandInNewTab({
-                args = shell_cmd({ "task", "--dir", dir, id }),
+                args = shell_cmd({ "task", "--dir", dir, id }, pane),
               }),
               pane
             )
