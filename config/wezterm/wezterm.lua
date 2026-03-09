@@ -104,6 +104,14 @@ config.keys = {
 
   -- Commands mappings
   {
+    key = "G",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
+      local cmd = shell_cmd({ "nvim", "+Git", "+only" })
+      win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd }), pane)
+    end),
+  },
+  {
     key = "O",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
