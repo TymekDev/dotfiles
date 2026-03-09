@@ -100,8 +100,14 @@ local switch_to_id = function(window, pane, id)
 
   local spawn = { cwd = id, domain = "DefaultDomain" }
   if string.find(id, "^SSH:") then
-    -- TODO: make Codespace connections connect to the right directory
-    spawn = { domain = { DomainName = id } }
+    spawn = {
+      args = {
+        "sh",
+        "-c",
+        '[ -n "$CODESPACES" ] && cd "$(dirname "$(find /workspaces -mindepth 2 -maxdepth 2 -type d -name ".git")")" && exec "$SHELL" || exec "$SHELL"',
+      },
+      domain = { DomainName = id },
+    }
   end
 
   window:perform_action(
