@@ -1,9 +1,18 @@
 # TODO: support nix-darwin
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (pkgs.stdenv) isLinux;
 in
 {
+
+  xdg.configFile."fish/conf.d/fzf-git.fish".source =
+    lib.mkIf config.programs.fzf.enable "${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.fish";
+
   xdg.configFile."fish/functions/update_theme.fish".source =
     ../../config/fish/functions/update_theme.fish;
 
