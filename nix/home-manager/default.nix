@@ -50,7 +50,7 @@ in
       difftastic
       eza
       git
-      jj
+      jujutsu
     ]
     ++ lib.optionals isLinux [
       discord
