@@ -74,6 +74,8 @@ config.keys = {
   { key = "h", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Left" }) },
   { key = "l", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Right" }) },
 
+  { key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+
   -- Sessionizer stuff
   {
     key = "s",
