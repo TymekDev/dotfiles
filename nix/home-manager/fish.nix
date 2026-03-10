@@ -1,4 +1,4 @@
-# TODO: support nix-darwin
+# TODO: is there a better way to use fish funtions than relying on them being globally available?
 {
   config,
   pkgs,
@@ -6,19 +6,17 @@
   ...
 }:
 let
-  inherit (pkgs.stdenv) isLinux;
+  hasFzfGit = config.programs.fzf.enable;
 in
 {
 
   xdg.configFile."fish/conf.d/fzf-git.fish".source =
-    lib.mkIf config.programs.fzf.enable "${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.fish";
+    lib.mkIf hasFzfGit "${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.fish";
 
-  xdg.configFile."fish/functions/update_theme.fish".source =
-    ../../config/fish/functions/update_theme.fish;
-
+  # TODO: move to nix/pkgs/are-we-dark-yet.nix and install it (so it's available to Neovim)
   home.file.".local/bin/are-we-dark-yet".source = ../../local/bin/are-we-dark-yet;
 
-  programs.fish = lib.mkIf isLinux {
+  programs.fish = {
     enable = true;
 
     shellAbbrs = {
@@ -37,7 +35,7 @@ in
       gd = "git diff";
       gds = "git diff --staged";
       gf = "git fetch";
-      gg = "git g";
+      gg = if hasFzfGit then "__fzf_git_sh hashes" else "git g";
       ggf = "git gf";
       ggs = "git gs";
       gl = "git pull";
@@ -57,11 +55,18 @@ in
       gstl = "git stash list";
       gstp = "git stash pop";
       gsts = "git stash show -p";
-      gsw = "git switch";
+      gsw = if hasFzfGit then "git switch (__fzf_git_sh branches)" else "git switch";
       gwt = "git worktree";
+
+      jc = "jj commit";
+      jcm = "jj commit -m";
+      jd = "jj diff";
+      jdl = "jj diff -r @-"; # jj diff last
+      js = "jj status";
     };
 
     shellAliases = {
+      ls = "${lib.getExe pkgs.eza} --git --group-directories-first --time-style long-iso";
       nv = "nvim";
     };
 
@@ -74,6 +79,42 @@ in
 
     shellInit = ''
       fish_add_path --move ~/.local/bin
+
+      update_theme # this is needed for the event handlers to work
     '';
+
+    functions = {
+      update_theme = {
+        onEvent = [
+          "fish_focus_in"
+          "fish_prompt"
+        ];
+        body = ''
+          if test "$(are-we-dark-yet)" = light
+              set -f THEME tokyonight_day
+          else
+              set -f THEME tokyonight_storm
+          end
+
+          source "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/$THEME.fish"
+          return 0
+        '';
+      };
+    };
+
+    completions = {
+      R = ''
+        complete -c R -c r -c radian -f
+        complete -c R -c r -c radian -o h -l help
+        complete -c R -c r -c radian -l no-environ
+        complete -c R -c r -c radian -l no-init-file
+        complete -c R -c r -c radian -l no-save
+        complete -c R -c r -c radian -l no-site-file
+        complete -c R -c r -c radian -l vanilla
+        complete -c R -c r -c radian -l version
+        complete -c R -c r -c radian -o f -l file -r
+        complete -c R -c r -c radian -o q -l quiet
+      '';
+    };
   };
 }

@@ -48,7 +48,6 @@ in
     # TODO: migrate this into home-manager modules
     ++ lib.optionals isDarwin [
       difftastic
-      eza
       git
       jujutsu
     ]
