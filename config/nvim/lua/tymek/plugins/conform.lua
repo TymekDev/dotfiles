@@ -56,7 +56,7 @@ return {
           "goimports",
         }
       end,
-      nix = { "nixfmt" },
+      nix = { "nixfmt", "injected" },
       lua = { "stylua" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       query = { "format-queries" },
