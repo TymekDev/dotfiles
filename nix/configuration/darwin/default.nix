@@ -2,6 +2,7 @@
 {
   imports = [
     ./homebrew.nix
+    ./settings.nix
   ];
 
   nix.settings.experimental-features = [
