@@ -13,6 +13,7 @@ in
 {
   imports = [
     ./desktops/sway
+    ./terminals/ghostty
     ./terminals/wezterm
     ./bat.nix
     ./direnv.nix

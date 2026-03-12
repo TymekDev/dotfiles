@@ -18,6 +18,7 @@
       "displaylink"
       "docker-desktop"
       "firefox"
+      "ghostty"
       "hammerspoon"
       "karabiner-elements"
       "linearmouse"
