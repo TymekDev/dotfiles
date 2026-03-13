@@ -73,6 +73,7 @@ in
           {
             "${mod}+Return" = "exec ${cfg.terminal}";
             "${mod}+Space" = "exec ${cfg.menu}";
+            "${mod}+q" = "kill";
 
             "Print" = grimshot "copy area" "the selected area";
             "Shift+Print" = grimshot "copy anything" "whatever you selected";
@@ -83,7 +84,6 @@ in
             "${mod}+Shift+Space" = "exec 1password --quick-access";
 
             "${mod}+Ctrl+q" = "exec swaylock -f";
-            "${mod}+Shift+q" = "kill";
             "${mod}+Shift+r" = "reload";
             "${mod}+Shift+e" = ''
               exec swaynag \
@@ -104,7 +104,6 @@ in
             "${mod}+a" = "focus parent";
             "${mod}+z" = "focus child";
 
-            "${mod}+q" = "split toggle";
             "${mod}+b" = "splith";
             "${mod}+v" = "splitv";
 
