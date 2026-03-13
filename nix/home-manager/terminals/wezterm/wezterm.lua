@@ -18,8 +18,6 @@ config.exit_behavior = "Hold"
 config.adjust_window_size_when_changing_font_size = false
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-  { key = "w", mods = "SUPER", action = wezterm.action.Nop },
-
   {
     key = "s",
     mods = "LEADER",
