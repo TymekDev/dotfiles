@@ -13,6 +13,7 @@ config.window_padding = {
   bottom = 0,
   left = 0,
 }
+config.exit_behavior = "Hold"
 
 config.adjust_window_size_when_changing_font_size = false
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
