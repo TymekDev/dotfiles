@@ -12,6 +12,8 @@ let
   mod = "Mod4";
   modMove = "${mod}+Shift";
   modeResize = "Mod4+Ctrl+Shift+r";
+  modWorkspace = "Ctrl";
+  modWorkspaceMove = "${modWorkspace}+Mod4";
 in
 {
   config = lib.mkIf isSway {
@@ -120,17 +122,17 @@ in
             "${modMove}+k" = "move up";
             "${modMove}+l" = "move right";
 
-            "${mod}+1" = "workspace number 1";
-            "${mod}+2" = "workspace number 2";
-            "${mod}+3" = "workspace number 3";
-            "${mod}+4" = "workspace number 4";
-            "${mod}+5" = "workspace number 5";
+            "${modWorkspace}+1" = "workspace number 1";
+            "${modWorkspace}+2" = "workspace number 2";
+            "${modWorkspace}+3" = "workspace number 3";
+            "${modWorkspace}+4" = "workspace number 4";
+            "${modWorkspace}+5" = "workspace number 5";
 
-            "${modMove}+1" = "move container to workspace number 1";
-            "${modMove}+2" = "move container to workspace number 2";
-            "${modMove}+3" = "move container to workspace number 3";
-            "${modMove}+4" = "move container to workspace number 4";
-            "${modMove}+5" = "move container to workspace number 5";
+            "${modWorkspaceMove}+1" = "move container to workspace number 1";
+            "${modWorkspaceMove}+2" = "move container to workspace number 2";
+            "${modWorkspaceMove}+3" = "move container to workspace number 3";
+            "${modWorkspaceMove}+4" = "move container to workspace number 4";
+            "${modWorkspaceMove}+5" = "move container to workspace number 5";
 
             "--locked XF86AudioLowerVolume" = swayosd "--output-volume -5";
             "--locked XF86AudioRaiseVolume" = swayosd "--output-volume +5";
