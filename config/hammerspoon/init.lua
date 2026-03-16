@@ -21,7 +21,21 @@ cmd_w = hs.hotkey.bind({ "cmd" }, "w", function()
   cmd_w:enable()
 end)
 
-hs.hotkey.bind({ "cmd" }, "h", function() end)
+local cmd_h
+cmd_h = hs.hotkey.bind({ "cmd" }, "h", function()
+  local win = hs.window.focusedWindow()
+  if
+    win and win
+      :application()--[[@as hs.application]]
+      :name() ~= "WezTerm"
+  then
+    return
+  end
+
+  cmd_h:disable()
+  hs.eventtap.keyStroke({ "cmd" }, "h")
+  cmd_h:enable()
+end)
 
 local modFocus = { "cmd", "ctrl" }
 hs.hotkey.bind(modFocus, "h", function()
