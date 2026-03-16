@@ -1,3 +1,0 @@
-# vim:ft=gitconfig
-[include]
-  path = "~/.config/git/work-email"

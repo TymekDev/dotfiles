@@ -52,8 +52,6 @@ in
     ]
     # TODO: migrate this into home-manager modules
     ++ lib.optionals isDarwin [
-      difftastic
-      git
       jujutsu
     ]
     ++ lib.optionals isLinux [

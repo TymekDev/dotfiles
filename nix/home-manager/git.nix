@@ -1,17 +1,46 @@
-# TODO: support nix-darwin
 { pkgs, lib, ... }:
 let
-  inherit (pkgs.stdenv) isLinux;
+  inherit (pkgs.stdenv) isDarwin;
+
+  workEmail = "tymoteusz.makowski@appsilon.com";
+  op-ssh-sign =
+    if isDarwin then
+      "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+    else
+      lib.getExe' pkgs._1password-gui "op-ssh-sign";
 in
 {
-  programs.difftastic = lib.mkIf isLinux {
+  programs.difftastic = {
     enable = true;
 
     git.enable = true;
   };
 
-  programs.git = lib.mkIf isLinux {
+  programs.git = {
     enable = true;
+
+    includes = [
+      (lib.mkIf isDarwin {
+        condition = "gitdir:~/work/";
+        contents = {
+          user = {
+            email = workEmail;
+            signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9tByXqdaKd0OpKWNYFgF0KHYANYJfCvbzSXdWaZh4A";
+          };
+        };
+      })
+
+      {
+        # GitHub Codespaces
+        condition = "gitdir:/workspaces/";
+        contents = {
+          # TODO: shouldn't I disable signingKey here?
+          user.email = workEmail;
+          gpg.format = "openpgp";
+          commit.gpgsign = false;
+        };
+      }
+    ];
 
     settings.alias = {
       # [d]iff [c]ommit
@@ -25,7 +54,7 @@ in
       fcs = "fl -S";
 
       # [f]ormat [l]og
-      fl = "log --format='%C(yellow)%h  %C(blue)%cd  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short";
+      fl = "log --format='%C(yellow)%h  %C(blue)%cd %C(dim)%ad%C(reset)  %C(auto)%s  %C(cyan)<%cn> %C(auto)%d' --date=short";
 
       # [g]raph ([s]ingle / [f]ull)
       g = "gf -15";
@@ -46,9 +75,7 @@ in
       };
 
       gpg.format = "ssh";
-
-      # FIXME: I think this uses a different verision than the one installed system-wide
-      gpg."ssh".program = lib.getExe' pkgs._1password-gui "op-ssh-sign";
+      gpg."ssh".program = op-ssh-sign;
       commit.gpgsign = true;
 
       branch.sort = "-committerdate";
