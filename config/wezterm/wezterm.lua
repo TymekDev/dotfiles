@@ -140,6 +140,26 @@ config.keys = {
     end),
   },
   {
+    key = "F",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
+      local name = pane:get_domain_name()
+      win:perform_action(
+        wezterm.action.PromptInputLine({
+          description = "Port for the local forward ",
+          action = wezterm.action_callback(function(_, _, line)
+            if not line or line == "" then
+              return
+            end
+
+            codespaces.local_forward_port(name, tonumber(line))
+          end),
+        }),
+        pane
+      )
+    end),
+  },
+  {
     key = "T",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)

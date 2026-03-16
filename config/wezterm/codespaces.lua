@@ -53,6 +53,28 @@ M.list_domains = function(window)
   return result
 end
 
+---@param domain_name string
+---@param port integer
+M.local_forward_port = function(domain_name, port)
+  if not M.is_codespace_domain(domain_name) then
+    wezterm.log_warn("local_forward_port: not a codespace domain:", domain_name)
+    return
+  end
+
+  local host, _ = domain_name:gsub("^" .. DOMAIN_NAME_PREFIX, "")
+  local port_map = string.format("%d:localhost:%d", port, port)
+  local args = ssh_command({
+    "-O",
+    "forward",
+    "-L",
+    port_map,
+    host,
+  })
+
+  wezterm.background_child_process(args)
+  wezterm.log_info("Started local forward -L", port_map, "to", host)
+end
+
 ---@param config Config
 M.setup = function(config)
   config.exec_domains = config.exec_domains or {}
