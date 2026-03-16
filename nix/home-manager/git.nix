@@ -3,11 +3,8 @@ let
   inherit (pkgs.stdenv) isDarwin;
 
   workEmail = "tymoteusz.makowski@appsilon.com";
-  op-ssh-sign =
-    if isDarwin then
-      "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-    else
-      lib.getExe' pkgs._1password-gui "op-ssh-sign";
+  opSshSign =
+    if isDarwin then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" else "op-ssh-sign";
 in
 {
   programs.difftastic = {
@@ -75,7 +72,7 @@ in
       };
 
       gpg.format = "ssh";
-      gpg."ssh".program = op-ssh-sign;
+      gpg."ssh".program = opSshSign;
       commit.gpgsign = true;
 
       branch.sort = "-committerdate";

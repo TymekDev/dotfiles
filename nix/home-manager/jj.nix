@@ -1,7 +1,10 @@
 # TODO: support nix-darwin
 { pkgs, lib, ... }:
 let
-  inherit (pkgs.stdenv) isLinux;
+  inherit (pkgs.stdenv) isDarwin isLinux;
+
+  opSshSign =
+    if isDarwin then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" else "op-ssh-sign";
 in
 {
   programs.jujutsu = lib.mkIf isLinux {
@@ -35,9 +38,7 @@ in
         behavior = "own";
         backend = "ssh";
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILkf84+zcnJNPvvNC2uskzM860ewSX5tLo57A7jA8Yre";
-
-        # FIXME: I think this uses a different verision than the one installed system-wide
-        backends.ssh.program = lib.getExe' pkgs._1password-gui "op-ssh-sign";
+        backends.ssh.program = opSshSign;
       };
 
       aliases = {
