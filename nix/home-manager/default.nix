@@ -21,6 +21,7 @@ in
     ./fish.nix
     ./fzf.nix
     ./git.nix
+    ./hammerspoon.nix
     ./jj.nix
     ./nvim.nix
     ./opencode.nix

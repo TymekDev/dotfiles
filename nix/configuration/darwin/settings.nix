@@ -6,6 +6,12 @@
   # system.keyboard
 
   system.defaults = {
+    CustomUserPreferences = {
+      "org.hammerspoon.Hammerspoon" = {
+        MJConfigFile = "~/.config/hammerspoon/init.lua";
+      };
+    };
+
     NSGlobalDomain = {
       AppleInterfaceStyleSwitchesAutomatically = true;
       AppleScrollerPagingBehavior = true;
