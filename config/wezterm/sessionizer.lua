@@ -95,6 +95,7 @@ local format_choices = function(choices)
   return result
 end
 
+-- NOTE: not using label allows to have them fancy-formatted for the selector
 local switch_to_id = function(window, pane, id)
   wezterm.GLOBAL.sessionizer_last_id = wezterm.mux.get_active_workspace()
 
@@ -112,7 +113,6 @@ local switch_to_id = function(window, pane, id)
 
   window:perform_action(
     wezterm.action.SwitchToWorkspace({
-      -- NOTE: I don't use label purposefully, so I can use wezterm.format for the InputSelector
       name = id_to_name(id),
       spawn = spawn,
     }),
