@@ -6,7 +6,6 @@
 }:
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
-  enable = isLinux; # use homebrew on macOS
   mkSymlink =
     path: config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.home}/personal/dotfiles/${path}";
 in
@@ -25,9 +24,5 @@ in
     "wezterm/wezterm.lua".source = mkSymlink "nix/home-manager/terminals/wezterm/wezterm.lua";
   };
 
-  programs.wezterm = {
-    inherit enable;
-  };
-
-  home.packages = lib.mkIf (!enable) [ pkgs.wezterm.terminfo ];
+  programs.wezterm.enable = true;
 }

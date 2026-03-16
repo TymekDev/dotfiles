@@ -24,6 +24,8 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
+
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs =
@@ -33,6 +35,7 @@
       disko,
       home-manager,
       nur,
+      mac-app-util,
       ...
     }:
     let
@@ -66,6 +69,12 @@
         maczek = nix-darwin.lib.darwinSystem {
           modules = [
             home-manager.darwinModules.home-manager
+            mac-app-util.darwinModules.default
+            {
+              home-manager.sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
+            }
 
             ./nix/machines/maczek
             ./nix/configuration/common

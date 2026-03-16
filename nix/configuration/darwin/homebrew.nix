@@ -25,7 +25,6 @@
       "rectangle"
       "signal"
       "spotify"
-      "wezterm@nightly"
 
       # Work stuff
       "chromium"
