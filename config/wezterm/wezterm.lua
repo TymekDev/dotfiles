@@ -16,6 +16,10 @@ config.window_padding = {
 config.window_decorations = "RESIZE"
 config.exit_behavior = "Hold"
 
+local local_mux_domain = "sessionizer"
+config.default_gui_startup_args = { "connect", local_mux_domain }
+config.unix_domains = { { name = local_mux_domain } }
+
 local function cmd_to_meta(key)
   return { key = key, mods = "CMD", action = wezterm.action.SendKey({ key = key, mods = "META" }) }
 end
