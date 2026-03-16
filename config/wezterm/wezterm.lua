@@ -6,7 +6,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.term = "wezterm"
-config.font_size = 19
+config.font_size = 16
+config.cell_width = 0.9
 config.window_padding = {
   top = 0,
   right = 0,
