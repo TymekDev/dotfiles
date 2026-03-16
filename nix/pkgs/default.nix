@@ -4,6 +4,8 @@
 
   nixpkgs.overlays = [
     (final: prev: {
+      are-we-dark-yet = final.callPackage ./are-we-dark-yet.nix { };
+
       tarsnap-1pass = final.callPackage ./tarsnap-1pass.nix { };
 
       tarsnap-1pass-backup = final.callPackage ./tarsnap-1pass-backup.nix { };

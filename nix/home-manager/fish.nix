@@ -13,9 +13,6 @@ in
   xdg.configFile."fish/conf.d/fzf-git.fish".source =
     lib.mkIf hasFzfGit "${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.fish";
 
-  # TODO: move to nix/pkgs/are-we-dark-yet.nix and install it (so it's available to Neovim)
-  home.file.".local/bin/are-we-dark-yet".source = ../../local/bin/are-we-dark-yet;
-
   programs.fish = {
     enable = true;
 

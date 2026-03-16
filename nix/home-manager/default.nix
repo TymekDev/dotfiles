@@ -48,6 +48,7 @@ in
       yazi
 
       # my custom stuff
+      are-we-dark-yet
       tarsnap-1pass
       tarsnap-1pass-backup
     ]
