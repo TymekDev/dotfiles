@@ -1,3 +1,4 @@
+local codespaces = require("codespaces")
 local sessionizer = require("sessionizer")
 local tab_bar = require("tab_bar")
 local theme = require("theme")
@@ -195,6 +196,7 @@ for i = 1, 8 do
   })
 end
 
+codespaces.setup(config)
 tab_bar.setup(config)
 theme.update(config)
 

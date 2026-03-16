@@ -1,3 +1,4 @@
+local codespaces = require("codespaces")
 ---@type Wezterm
 local wezterm = require("wezterm")
 local M = {}
@@ -100,15 +101,8 @@ local switch_to_id = function(window, pane, id)
   wezterm.GLOBAL.sessionizer_last_id = wezterm.mux.get_active_workspace()
 
   local spawn = { cwd = id, domain = "DefaultDomain" }
-  if string.find(id, "^SSH:") then
-    spawn = {
-      args = {
-        "sh",
-        "-c",
-        '[ -n "$CODESPACES" ] && cd "$(dirname "$(find /workspaces -mindepth 2 -maxdepth 2 -type d -name ".git")")" && exec "$SHELL" || exec "$SHELL"',
-      },
-      domain = { DomainName = id },
-    }
+  if codespaces.is_codespace_domain(id) then
+    spawn.domain = { DomainName = id }
   end
 
   window:perform_action(
@@ -140,10 +134,8 @@ M.select = function(window, pane, subdirs_of, extra_dirs)
   end
   local choices = dirs_to_choices(dirs)
 
-  for _, domain in ipairs(wezterm.default_ssh_domains()) do
-    if string.find(domain.name, "^SSH:") then
-      table.insert(choices, { id = domain.name, label = domain.name })
-    end
+  for _, cs_domain in ipairs(codespaces.list_domains(window)) do
+    table.insert(choices, { id = cs_domain, label = cs_domain })
   end
 
   window:perform_action(
