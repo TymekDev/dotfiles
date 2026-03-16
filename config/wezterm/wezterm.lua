@@ -55,16 +55,11 @@ end
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-  cmd_to_meta("a"), -- telescope.nvim
-  cmd_to_meta("s"), -- telescope.nvim
   cmd_to_meta("["), -- copilot.lua        cycle between suggestions
   cmd_to_meta("]"), -- copilot.lua        cycle between suggestions
-  cmd_to_meta("f"), -- fish & vim-rsi     forward one word
-  cmd_to_meta("h"), -- fish               open manpage for current command
   cmd_to_meta("j"), -- copilot.lua        accept suggestion
-  cmd_to_meta("k"), -- lsp_signature.nvim toggle signature help
-  cmd_to_meta("b"), -- fish & vim-rsi     backward one word
-  cmd_to_meta("."), -- fish               insert previous command's last argument
+  cmd_to_meta("k"), -- copilot.lua        accept word suggestion
+  cmd_to_meta("l"), -- copilot.lua        accept line suggestion
 
   cmd_to_meta("p"), -- R in nvim
   cmd_to_meta(","), -- R in nvim
