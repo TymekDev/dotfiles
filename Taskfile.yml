@@ -24,11 +24,7 @@ tasks:
   upgrade:
     desc: Upgrade installed programs
     cmds:
-      - platforms: [linux]
-        cmd: nix flake update
-      # TODO: migrate to nix-darwin
-      - platforms: [darwin]
-        cmd: brew bundle install --verbose
+      - cmd: nix flake update
       - task: rebuild
   rollback:
     desc: Rollback to the previous NixOS build
