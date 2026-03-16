@@ -23,6 +23,7 @@ in
     ./git.nix
     ./jj.nix
     ./nvim.nix
+    ./opencode.nix
     ./rclone.nix
     ./ssh.nix
     ./starship.nix
@@ -42,7 +43,6 @@ in
       ijq
       jq
       nodejs_22
-      opencode
       ripgrep
       yazi
 
