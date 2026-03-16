@@ -8,6 +8,32 @@ local M = {}
 
 local DOMAIN_NAME_PREFIX = "Codespace:"
 
+---@param ... string|string[]
+---@return string[]
+local ssh_command = function(...)
+  local result = {
+    "ssh",
+    "-o",
+    "ControlMaster=auto",
+    "-o",
+    "ControlPersist=600",
+    "-o",
+    "ControlPath=~/.ssh/sockets/%r@%h:%p",
+  }
+
+  for _, arg in ipairs({ ... }) do
+    if type(arg) == "table" then
+      for _, sub_arg in ipairs(arg) do
+        table.insert(result, sub_arg)
+      end
+    else
+      table.insert(result, arg)
+    end
+  end
+
+  return result
+end
+
 ---@param name string
 M.is_codespace_domain = function(name)
   return name:find("^" .. DOMAIN_NAME_PREFIX) ~= nil
@@ -37,24 +63,7 @@ M.setup = function(config)
       table.insert(
         config.exec_domains,
         wezterm.exec_domain(DOMAIN_NAME_PREFIX .. host, function(cmd)
-          local args = {
-            "ssh",
-            "-o",
-            "ControlMaster=auto",
-            "-o",
-            "ControlPersist=600",
-            "-o",
-            "ControlPath=~/.ssh/sockets/%r@%h:%p",
-            "-R",
-            "8765:localhost:8765",
-            host,
-          }
-
-          for _, arg in ipairs(cmd.args or {}) do
-            table.insert(args, arg)
-          end
-
-          cmd.args = args
+          cmd.args = ssh_command("-R", "8765:localhost:8765", host, cmd.args or {})
 
           return cmd
         end)
