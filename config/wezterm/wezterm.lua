@@ -125,7 +125,7 @@ config.keys = {
     key = "G",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
-      local cmd = shell_cmd({ "nvim", "+Git", "+only" }, pane)
+      local cmd = shell_cmd({ "nvim", "+set titlestring=Fugitive", "+Git", "+only" }, pane)
       win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd }), pane)
     end),
   },
