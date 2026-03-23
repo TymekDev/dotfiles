@@ -1,4 +1,3 @@
-# TODO: is there a better way to use fish funtions than relying on them being globally available?
 {
   config,
   pkgs,
@@ -84,8 +83,6 @@ in
       if test -f /etc/fish/conf.d/codespaces.fish
           source /etc/fish/conf.d/codespaces.fish
       end
-
-      update_theme # this is needed for the event handlers to work
     '';
 
     functions = {
