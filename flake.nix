@@ -98,5 +98,28 @@
           ];
         };
       };
+
+      homeConfigurations = {
+        codespace = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
+          modules = [
+            ./nix/configuration/common/dotfiles.nix
+            ./nix/configuration/common/home-manager.nix
+
+            {
+              nix.settings.experimental-features = [
+                "nix-command"
+                "flakes"
+              ];
+            }
+
+            {
+              dotfiles = {
+                username = "codespace";
+              };
+            }
+          ];
+        };
+      };
     };
 }
