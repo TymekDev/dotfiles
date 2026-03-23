@@ -28,5 +28,7 @@ in
 
   programs.wezterm.enable = hasGUI;
 
-  home.packages = lib.mkIf (!hasGUI) [ pkgs.wezterm.terminfo ];
+  home.sessionSearchVariables = lib.mkIf (!hasGUI) {
+    TERMINFO_DIRS = [ "${pkgs.wezterm.terminfo}/share/terminfo" ];
+  };
 }
