@@ -29,29 +29,14 @@ end
 ---@param args string[]
 ---@param pane Pane
 local function shell_cmd(args, pane)
-  if not pane or pane:get_domain_name() == "local" then
+  if pane:get_domain_name() == LOCAL_MUX_DOMAIN then
     if #args == 0 then
       return { os.getenv("SHELL") }
     end
     return { os.getenv("SHELL"), "-c", wezterm.shell_join_args(args) }
   end
 
-  local cd_prefix = ""
-  local url = pane:get_current_working_dir()
-  if url and url.file_path then
-    cd_prefix = "cd " .. wezterm.shell_quote_arg(url.file_path) .. " && "
-  end
-
-  local args_suffix = ""
-  if #args > 0 then
-    args_suffix = " -c " .. wezterm.shell_quote_arg(wezterm.shell_join_args(args))
-  end
-
-  return {
-    "sh",
-    "-c",
-    cd_prefix .. 'exec "$SHELL"' .. args_suffix,
-  }
+  return args
 end
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
@@ -105,10 +90,7 @@ config.keys = {
   {
     key = "c",
     mods = "LEADER",
-    action = wezterm.action_callback(function(win, pane)
-      local cmd = shell_cmd({}, pane)
-      win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd, domain = "CurrentPaneDomain" }), pane)
-    end),
+    action = wezterm.action.SpawnCommandInNewTab({}),
   },
   {
     key = "C",
@@ -126,8 +108,9 @@ config.keys = {
     key = "G",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
+      local dir = sessionizer.active_workspace_dir()
       local cmd = shell_cmd({ "nvim", "+set titlestring=Fugitive", "+Git", "+only" }, pane)
-      win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd }), pane)
+      win:perform_action(wezterm.action.SpawnCommandInNewTab({ cwd = dir, args = cmd }), pane)
     end),
   },
   {
@@ -135,8 +118,8 @@ config.keys = {
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
       local dir = sessionizer.active_workspace_dir()
-      local cmd = shell_cmd({ "opencode", dir }, pane)
-      win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd }), pane)
+      local cmd = shell_cmd({ "opencode" }, pane)
+      win:perform_action(wezterm.action.SpawnCommandInNewTab({ cwd = dir, args = cmd }), pane)
     end),
   },
   {
