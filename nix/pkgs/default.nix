@@ -6,6 +6,8 @@
     opencode.overlays.default
 
     (final: prev: {
+      arf = final.callPackage ./arf.nix { };
+
       are-we-dark-yet = final.callPackage ./are-we-dark-yet.nix { };
 
       tarsnap-1pass = final.callPackage ./tarsnap-1pass.nix { };

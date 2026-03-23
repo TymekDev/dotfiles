@@ -37,6 +37,7 @@ in
   home.packages =
     with pkgs;
     [
+      arf
       fd
       gh
       git-absorb
