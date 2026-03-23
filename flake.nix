@@ -106,7 +106,10 @@
             ./nix/configuration/common/dotfiles.nix
             ./nix/home-manager
 
-            { dotfiles.username = "codespace"; }
+            {
+              dotfiles.username = "codespace";
+              home.username = "codespace";
+            }
 
             {
               nix.settings.experimental-features = [
