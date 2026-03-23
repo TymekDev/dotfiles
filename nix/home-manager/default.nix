@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (config.dotfiles) isCodespace;
+  inherit (config.dotfiles) hasGUI isCodespace;
   inherit (pkgs.stdenv) isDarwin isLinux;
 
   mkSymlink =
@@ -52,15 +52,14 @@ in
       # my custom stuff
       are-we-dark-yet
     ]
-    # TODO: migrate this into home-manager modules
     ++ lib.optionals isDarwin [
-      jujutsu
-      tarsnap-1pass
-      tarsnap-1pass-backup
+      jujutsu # TODO: migrate this into home-manager modules
     ]
-    ++ lib.optionals (isLinux && !isCodespace) [
+    ++ lib.optionals (hasGUI && isLinux) [
       discord
       spotify
+    ]
+    ++ lib.optionals (!isCodespace) [
       tarsnap-1pass
       tarsnap-1pass-backup
     ];

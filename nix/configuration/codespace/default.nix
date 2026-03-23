@@ -1,11 +1,8 @@
 { config, pkgs, ... }:
-let
-  username = config.dotfiles.username;
-in
 {
   home = {
-    username = username;
-    homeDirectory = "/home/${username}";
+    inherit (config.dotfiles) username;
+    homeDirectory = config.dotfiles.home;
   };
 
   nix.package = pkgs.nix;

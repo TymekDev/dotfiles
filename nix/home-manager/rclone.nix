@@ -1,5 +1,11 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
+  inherit (config.dotfiles) isCodespace;
   inherit (pkgs.stdenv) isDarwin;
 in
 {
@@ -8,7 +14,7 @@ in
   };
 
   programs.rclone = {
-    enable = true;
+    enable = !isCodespace;
 
     remotes = {
       helix.config = {

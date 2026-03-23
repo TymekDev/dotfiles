@@ -16,8 +16,8 @@ let
     };
 in
 {
-  programs.ssh = lib.mkIf (isLinux && !isCodespace) {
-    enable = true;
+  programs.ssh = {
+    enable = isLinux && !isCodespace;
 
     matchBlocks."*" = lib.hm.dag.entryAfter (builtins.attrNames config.programs.ssh.matchBlocks) {
       identityAgent = "~/.1password/agent.sock";

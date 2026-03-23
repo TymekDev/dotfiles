@@ -1,3 +1,4 @@
+# TODO: flesh out Codespace support
 { pkgs, lib, ... }:
 let
   inherit (pkgs.stdenv) isDarwin;

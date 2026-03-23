@@ -38,13 +38,19 @@ in
               ]
             );
           };
+          isCodespace = mkOption {
+            description = "Whether we're running in a GitHub Codespace Linux environment";
+            type = types.bool;
+            default = false;
+          };
 
-          isSway = mkOption {
-            default = config.dotfiles.desktop == "sway";
+          hasGUI = mkOption {
+            default = isDarwin || (isLinux && !config.dotfiles.isCodespace);
             visible = false;
           };
-          isCodespace = mkOption {
-            default = builtins.getEnv "CODESPACES" == "true";
+          # TODO: drop desktop option in favor of hasGUI && isLinux
+          isSway = mkOption {
+            default = config.dotfiles.hasGUI && config.dotfiles.desktop == "sway";
             visible = false;
           };
           home = mkOption {

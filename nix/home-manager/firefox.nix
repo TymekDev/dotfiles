@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (config.dotfiles) isCodespace;
+  inherit (config.dotfiles) hasGUI;
   inherit (pkgs.stdenv) isLinux;
 
   engine = alias: url: queryParamName: {
@@ -25,7 +25,7 @@ let
   };
 in
 {
-  programs.firefox = lib.mkIf (isLinux && !isCodespace) {
+  programs.firefox = lib.mkIf (hasGUI && isLinux) {
     enable = true;
     languagePacks = [
       "en-US"

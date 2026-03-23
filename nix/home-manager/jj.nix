@@ -2,7 +2,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }:
 let
@@ -13,8 +12,8 @@ let
     if isDarwin then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" else "op-ssh-sign";
 in
 {
-  programs.jujutsu = lib.mkIf (isLinux && !isCodespace) {
-    enable = true;
+  programs.jujutsu = {
+    enable = isLinux && !isCodespace;
 
     settings = {
       ui = {
