@@ -1,6 +1,11 @@
-# TODO: flesh out Codespace support
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
+  inherit (config.dotfiles) isCodespace;
   inherit (pkgs.stdenv) isDarwin;
 
   workEmail = "tymoteusz.makowski@appsilon.com";
@@ -27,18 +32,13 @@ in
           };
         };
       })
-
-      {
-        # GitHub Codespaces
-        condition = "gitdir:/workspaces/";
-        contents = {
-          # TODO: shouldn't I disable signingKey here?
-          user.email = workEmail;
-          gpg.format = "openpgp";
-          commit.gpgsign = false;
-        };
-      }
     ];
+
+    signing = {
+      format = if isCodespace then null else "ssh";
+      signByDefault = true;
+      signer = lib.mkIf (!isCodespace) opSshSign;
+    };
 
     settings.alias = {
       # [d]iff [c]ommit
@@ -71,10 +71,6 @@ in
         email = "tymek.makowski@gmail.com";
         signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILkf84+zcnJNPvvNC2uskzM860ewSX5tLo57A7jA8Yre";
       };
-
-      gpg.format = "ssh";
-      gpg."ssh".program = opSshSign;
-      commit.gpgsign = true;
 
       branch.sort = "-committerdate";
       column.ui = "auto";
