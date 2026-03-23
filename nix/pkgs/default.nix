@@ -41,5 +41,10 @@ in
   ]
   ++ lib.optionals (!isCodespace) [
     opencode.overlays.default
+  ]
+  ++ lib.optionals isCodespace [
+    (final: prev: {
+      nix-codespace-rebuild = final.callPackage ./nix-codespace-rebuild.nix { };
+    })
   ];
 }
