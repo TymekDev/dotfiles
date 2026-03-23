@@ -1,4 +1,3 @@
-# TODO: support nix-darwin
 {
   config,
   pkgs,
