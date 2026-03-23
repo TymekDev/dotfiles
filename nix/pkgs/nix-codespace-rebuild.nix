@@ -10,6 +10,6 @@ writeShellApplication {
     fi
 
     nix run github:nix-community/home-manager -- \
-      switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles''${REF}#$(id -un)"
+      switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles''${REF}#$(id -un)" --refresh
   '';
 }
