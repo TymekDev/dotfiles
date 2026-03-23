@@ -107,6 +107,7 @@
             username:
             home-manager.lib.homeManagerConfiguration {
               inherit pkgs;
+              extraSpecialArgs = { inherit opencode; };
               modules = [
                 ./nix/configuration/common/dotfiles.nix
                 ./nix/configuration/codespace
