@@ -40,7 +40,6 @@ in
     [
       arf
       fd
-      gh
       git-absorb
       go-task
       ijq
@@ -60,6 +59,7 @@ in
       spotify
     ]
     ++ lib.optionals (!isCodespace) [
+      gh
       tarsnap-1pass
       tarsnap-1pass-backup
     ];
