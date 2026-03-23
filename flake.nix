@@ -36,6 +36,7 @@
 
   outputs =
     {
+      self,
       nixpkgs-unstable,
       nix-darwin,
       disko,
@@ -122,6 +123,25 @@
         {
           codespace = mkConfig "codespace";
           vscode = mkConfig "vscode";
+        };
+
+      apps.${system}.rebuild-codespace =
+        let
+          pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
+        in
+        {
+          type = "app";
+          program = toString (
+            pkgs.writeShellScript "codespace-switch" ''
+              set -euo pipefail
+              exec nix \
+                run github:nix-community/home-manager \
+                --experimental-features 'flakes nix-command' \
+                -- \
+                switch --flake "${self}#''$(whoami)" \
+                --experimental-features 'flakes nix-command'
+            ''
+          );
         };
     };
 }
