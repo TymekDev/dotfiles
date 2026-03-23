@@ -112,6 +112,7 @@
 
               {
                 dotfiles.username = "codespace";
+                dotfiles.isCodespace = true;
                 home.username = "codespace";
                 home.homeDirectory = "/home/codespace";
                 nix.package = pkgs.nix;
