@@ -1,10 +1,16 @@
-{ opencode, ... }:
+{
+  config,
+  lib,
+  opencode,
+  ...
+}:
+let
+  inherit (config.dotfiles) isCodespace;
+in
 {
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
-    opencode.overlays.default
-
     (final: prev: {
       arf = final.callPackage ./arf.nix { };
 
@@ -32,5 +38,8 @@
         }
       );
     })
+  ]
+  ++ lib.optionals (!isCodespace) [
+    opencode.overlays.default
   ];
 }
