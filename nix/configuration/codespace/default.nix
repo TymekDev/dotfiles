@@ -8,8 +8,11 @@
 
   nix.package = pkgs.nix;
 
-  nix.settings.experimental-features = [
-    "flakes"
-    "nix-command"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
+    use-xdg-base-directories = true;
+  };
 }
