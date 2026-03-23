@@ -156,6 +156,7 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
    sh <(curl -L https://nixos.org/nix/install) --no-daemon
    ```
 1. Build the home-manager configuration:
+
    ```sh
    nix run github:nix-community/home-manager \
      --experimental-features "flakes nix-command" \
@@ -163,6 +164,9 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
      switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles#$(whoami)" \
      --experimental-features "flakes nix-command"
    ```
+
+   - Note: if the latest version doesn't get fetched after a recent push, then try adding the `--refresh` flag
+
 1. Subsequent rebuilds can be done with the `nix-codespace-rebuild` script
 
 </details>
