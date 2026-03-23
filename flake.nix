@@ -103,7 +103,10 @@
         codespace = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
           modules = [
+            ./nix/configuration/common/dotfiles.nix
             ./nix/home-manager
+
+            { dotfiles.username = "codespace"; }
 
             {
               nix.settings.experimental-features = [
