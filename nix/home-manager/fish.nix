@@ -77,6 +77,10 @@ in
     shellInit = ''
       fish_add_path --move ~/.local/bin
 
+      if test -f ~/.nix-profile/etc/profile.d/nix.fish
+          source ~/.nix-profile/etc/profile.d/nix.fish
+      end
+
       update_theme # this is needed for the event handlers to work
     '';
 
