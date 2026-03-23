@@ -99,40 +99,29 @@
         };
       };
 
-      homeConfigurations = {
-        codespace =
-          let
-            pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
-          in
-          home-manager.lib.homeManagerConfiguration {
-            pkgs = pkgs;
-            modules = [
-              ./nix/configuration/common/dotfiles.nix
-              ./nix/home-manager
+      homeConfigurations =
+        let
+          pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
+          mkConfig =
+            username:
+            home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
+              modules = [
+                ./nix/configuration/common/dotfiles.nix
+                ./nix/configuration/codespace
+                ./nix/home-manager
+                ./nix/pkgs
 
-              {
-                dotfiles.username = "codespace";
-                dotfiles.isCodespace = true;
-                home.username = "codespace";
-                home.homeDirectory = "/home/codespace";
-                nix.package = pkgs.nix;
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    arf = final.callPackage ./nix/pkgs/arf.nix { };
-
-                    are-we-dark-yet = final.callPackage ./nix/pkgs/are-we-dark-yet.nix { };
-                  })
-                ];
-              }
-
-              {
-                nix.settings.experimental-features = [
-                  "nix-command"
-                  "flakes"
-                ];
-              }
-            ];
-          };
-      };
+                {
+                  dotfiles.username = username;
+                  dotfiles.isCodespace = true;
+                }
+              ];
+            };
+        in
+        {
+          codespace = mkConfig "codespace";
+          vscode = mkConfig "vscode";
+        };
     };
 }
