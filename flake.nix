@@ -100,26 +100,31 @@
       };
 
       homeConfigurations = {
-        codespace = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
-          modules = [
-            ./nix/configuration/common/dotfiles.nix
-            ./nix/home-manager
+        codespace =
+          let
+            pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
+          in
+          home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs;
+            modules = [
+              ./nix/configuration/common/dotfiles.nix
+              ./nix/home-manager
 
-            {
-              dotfiles.username = "codespace";
-              home.username = "codespace";
-              home.homeDirectory = "/home/codespace";
-            }
+              {
+                dotfiles.username = "codespace";
+                home.username = "codespace";
+                home.homeDirectory = "/home/codespace";
+                nix.package = pkgs.nix;
+              }
 
-            {
-              nix.settings.experimental-features = [
-                "nix-command"
-                "flakes"
-              ];
-            }
-          ];
-        };
+              {
+                nix.settings.experimental-features = [
+                  "nix-command"
+                  "flakes"
+                ];
+              }
+            ];
+          };
       };
     };
 }
