@@ -123,6 +123,15 @@ config.keys = {
     end),
   },
   {
+    key = "R",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
+      local dir = sessionizer.active_workspace_dir()
+      local cmd = shell_cmd({ "arf" }, pane)
+      win:perform_action(wezterm.action.SpawnCommandInNewTab({ cwd = dir, args = cmd }), pane)
+    end),
+  },
+  {
     key = "F",
     mods = "LEADER",
     action = wezterm.action_callback(function(win, pane)
