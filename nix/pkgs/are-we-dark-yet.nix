@@ -10,7 +10,7 @@ writeShellApplication {
   text = ''
     OS="$(uname -s)"
     if [ -n "''${CODESPACES:-}" ]; then
-      echo "light" # I use Codespaces at work during the day
+      curl --fail --silent localhost:8765/mode || echo "light"
     elif [ "$OS" = "Darwin" ]; then
       defaults read -g AppleInterfaceStyle &>/dev/null && echo "dark" || echo "light"
     elif [ "$OS" = "Linux" ]; then
