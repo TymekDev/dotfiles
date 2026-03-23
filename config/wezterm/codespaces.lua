@@ -100,7 +100,7 @@ M.setup = function(config)
             host,
             "-o",
             "RequestTTY=yes",
-            "cd " .. dir .. ' && exec "$SHELL"' .. args
+            "cd " .. dir .. " && fish --login" .. args .. ' || exec "$SHELL" --login' .. args
           )
 
           return cmd
