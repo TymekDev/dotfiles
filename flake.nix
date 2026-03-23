@@ -107,6 +107,7 @@
             ./nix/configuration/common/home-manager.nix
 
             {
+              home.stateVersion = "24.11";
               nix.settings.experimental-features = [
                 "nix-command"
                 "flakes"
