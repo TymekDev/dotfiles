@@ -60,6 +60,7 @@ in
     ]
     ++ lib.optionals (!isCodespace) [
       gh
+      serve-remote-open
       tarsnap-1pass
       tarsnap-1pass-backup
     ];
