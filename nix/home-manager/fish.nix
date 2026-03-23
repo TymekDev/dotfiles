@@ -81,6 +81,10 @@ in
           source ~/.nix-profile/etc/profile.d/nix.fish
       end
 
+      if test -f /etc/fish/conf.d/codespaces.fish
+          source /etc/fish/conf.d/codespaces.fish
+      end
+
       update_theme # this is needed for the event handlers to work
     '';
 
