@@ -89,6 +89,15 @@ in
     '';
 
     functions = {
+      copy.body = ''
+        read -z input
+
+        if test (echo "$input" | wc -l | tr -d '[:space:]') = 2
+            echo -n "$input" | tr -d '\n' | fish_clipboard_copy
+        else
+            echo -n "$input" | fish_clipboard_copy
+        end
+      '';
       update_theme = {
         onEvent = [
           "fish_focus_in"
