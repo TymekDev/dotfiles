@@ -5,6 +5,7 @@
   ...
 }:
 let
+  inherit (config.dotfiles) hasGUI isCodespace;
   inherit (pkgs.stdenv) isDarwin isLinux;
 
   mkSymlink =
@@ -39,7 +40,6 @@ in
     [
       arf
       fd
-      gh
       git-absorb
       go-task
       ijq
@@ -50,16 +50,19 @@ in
 
       # my custom stuff
       are-we-dark-yet
-      tarsnap-1pass
-      tarsnap-1pass-backup
     ]
-    # TODO: migrate this into home-manager modules
     ++ lib.optionals isDarwin [
-      jujutsu
+      jujutsu # TODO: migrate this into home-manager modules
     ]
-    ++ lib.optionals isLinux [
+    ++ lib.optionals (hasGUI && isLinux) [
       discord
       spotify
+    ]
+    ++ lib.optionals (!isCodespace) [
+      gh
+      serve-remote-open
+      tarsnap-1pass
+      tarsnap-1pass-backup
     ];
 
   xdg.enable = true;

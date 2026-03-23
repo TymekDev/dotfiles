@@ -1,14 +1,22 @@
-{ opencode, ... }:
+{
+  config,
+  lib,
+  opencode,
+  ...
+}:
+let
+  inherit (config.dotfiles) isCodespace;
+in
 {
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
-    opencode.overlays.default
-
     (final: prev: {
       arf = final.callPackage ./arf.nix { };
 
       are-we-dark-yet = final.callPackage ./are-we-dark-yet.nix { };
+
+      serve-remote-open = final.callPackage ./serve-remote-open.nix { };
 
       tarsnap-1pass = final.callPackage ./tarsnap-1pass.nix { };
 
@@ -31,6 +39,14 @@
           };
         }
       );
+    })
+  ]
+  ++ lib.optionals (!isCodespace) [
+    opencode.overlays.default
+  ]
+  ++ lib.optionals isCodespace [
+    (final: prev: {
+      nix-codespace-rebuild = final.callPackage ./nix-codespace-rebuild.nix { };
     })
   ];
 }

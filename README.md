@@ -151,33 +151,26 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 <details>
 <summary><h3>GitHub Codespace</h3></summary>
 
-1. Make sure the devcontainer has SSH enabled and homebrew installed. For example:
-   ```json
-   {
-     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-     "features": {
-       "ghcr.io/devcontainers/features/sshd:1": {},
-       "ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {}
-     }
-   }
-   ```
-1. Create the codespace:
+1. Install Nix:
    ```sh
-   gh codespace create --location 'WestEurope' --repo '...'
+   sh <(curl -L https://nixos.org/nix/install) --no-daemon
    ```
-1. SSH into the codespace:
+1. Build the home-manager configuration:
+
    ```sh
-   gh codespace ssh -- -o IdentitiesOnly=yes
+   NIX_CONFIG="experimental-features = flakes nix-command
+   access-tokens = github.com=$(gh auth token)" \
+     ~/.nix-profile/bin/nix run github:nix-community/home-manager --\
+     switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles#$(id -un)"
    ```
-1. Clone the repo:
+
+   - Note: if the latest version doesn't get fetched after a recent push, then try adding the `--refresh` flag
+   - Note: Subsequent rebuilds can be done with the installed `nix-codespace-rebuild` script
+
+1. Set the shell:
    ```sh
-   git clone --revision ecd8d41b84a57b37271f8afc6a6a8c7a44eb0c05 https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
+   sudo chsh "$(id -un)" --shell "/home/$(id -un)/.local/state/nix/profile/bin/fish"
    ```
-1. Run:
-   ```sh
-   make --directory ~/personal/dotfiles setup-os-codespace
-   ```
-1. Start Neovim and install its plugins via `:Lazy`
 
 </details>
 

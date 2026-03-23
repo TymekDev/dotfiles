@@ -1,10 +1,16 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
+  inherit (config.dotfiles) hasGUI;
   inherit (pkgs.stdenv) isDarwin;
 in
 {
   programs.ghostty = {
-    enable = true;
+    enable = hasGUI;
     package = lib.mkIf isDarwin null; # use homebrew
 
     settings = {

@@ -1,14 +1,19 @@
 # TODO: support nix-darwin
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 let
+  inherit (config.dotfiles) isCodespace;
   inherit (pkgs.stdenv) isDarwin isLinux;
 
   opSshSign =
     if isDarwin then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" else "op-ssh-sign";
 in
 {
-  programs.jujutsu = lib.mkIf isLinux {
-    enable = true;
+  programs.jujutsu = {
+    enable = isLinux && !isCodespace;
 
     settings = {
       ui = {

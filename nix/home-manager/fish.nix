@@ -1,4 +1,3 @@
-# TODO: is there a better way to use fish funtions than relying on them being globally available?
 {
   config,
   pkgs,
@@ -77,10 +76,25 @@ in
     shellInit = ''
       fish_add_path --move ~/.local/bin
 
-      update_theme # this is needed for the event handlers to work
+      if test -f ~/.local/state/nix/profile/etc/profile.d/nix.fish
+          source ~/.local/state/nix/profile/etc/profile.d/nix.fish
+      end
+
+      if test -f /etc/fish/conf.d/codespaces.fish
+          source /etc/fish/conf.d/codespaces.fish
+      end
     '';
 
     functions = {
+      copy.body = ''
+        read -z input
+
+        if test (echo "$input" | wc -l | tr -d '[:space:]') = 2
+            echo -n "$input" | tr -d '\n' | fish_clipboard_copy
+        else
+            echo -n "$input" | fish_clipboard_copy
+        end
+      '';
       update_theme = {
         onEvent = [
           "fish_focus_in"

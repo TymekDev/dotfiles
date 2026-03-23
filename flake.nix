@@ -98,5 +98,31 @@
           ];
         };
       };
+
+      homeConfigurations =
+        let
+          pkgs = import nixpkgs-unstable { system = "x86_64-linux"; };
+          mkConfig =
+            username:
+            home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
+              extraSpecialArgs = { inherit opencode; };
+              modules = [
+                ./nix/configuration/common/dotfiles.nix
+                ./nix/configuration/codespace
+                ./nix/home-manager
+                ./nix/pkgs
+
+                {
+                  dotfiles.username = username;
+                  dotfiles.isCodespace = true;
+                }
+              ];
+            };
+        in
+        {
+          codespace = mkConfig "codespace";
+          vscode = mkConfig "vscode";
+        };
     };
 }
