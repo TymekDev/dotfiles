@@ -77,8 +77,8 @@ in
     shellInit = ''
       fish_add_path --move ~/.local/bin
 
-      if test -f ~/.nix-profile/etc/profile.d/nix.fish
-          source ~/.nix-profile/etc/profile.d/nix.fish
+      if test -f ~/.local/state/nix/profile/etc/profile.d/nix.fish
+          source ~/.local/state/nix/profile/etc/profile.d/nix.fish
       end
 
       if test -f /etc/fish/conf.d/codespaces.fish
