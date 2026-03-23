@@ -148,6 +148,7 @@ config.keys = {
     action = wezterm.action_callback(function(win, pane)
       local dir = sessionizer.active_workspace_dir()
       local cmd = shell_cmd({ "task", "--dir", dir, "--list", "--json" }, pane)
+      -- FIXME: this doesn't work in Codespaces - run_child_process is local
       local ok, stdout, stderr = wezterm.run_child_process(cmd)
       if not ok then
         wezterm.log_error("failed to run the command:", stderr, "\nThe command:", cmd)

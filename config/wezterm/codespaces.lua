@@ -1,5 +1,4 @@
 -- FEAT: mapping for serve-remote-open
--- TODO: mapping for local port forwarding
 
 ---@type Wezterm
 local wezterm = require("wezterm")
@@ -85,7 +84,24 @@ M.setup = function(config)
       table.insert(
         config.exec_domains,
         wezterm.exec_domain(DOMAIN_NAME_PREFIX .. host, function(cmd)
-          cmd.args = ssh_command("-R", "8765:localhost:8765", host, cmd.args or {})
+          local dir = cmd.cwd
+          if not dir or M.is_codespace_domain(dir) then -- sessionizer passes the workspace name as cwd
+            dir = "/workspaces/" .. host
+          end
+
+          local args = ""
+          if cmd.args and #cmd.args > 0 then
+            args = " -c " .. wezterm.shell_quote_arg(wezterm.shell_join_args(cmd.args))
+          end
+
+          cmd.args = ssh_command(
+            "-R",
+            "8765:localhost:8765",
+            host,
+            "-o",
+            "RequestTTY=yes",
+            "cd " .. dir .. ' && exec "$SHELL"' .. args
+          )
 
           return cmd
         end)
