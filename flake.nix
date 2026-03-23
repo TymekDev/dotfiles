@@ -116,6 +116,13 @@
                 home.username = "codespace";
                 home.homeDirectory = "/home/codespace";
                 nix.package = pkgs.nix;
+                nixpkgs.overlays = [
+                  (final: prev: {
+                    arf = final.callPackage ./nix/pkgs/arf.nix { };
+
+                    are-we-dark-yet = final.callPackage ./nix/pkgs/are-we-dark-yet.nix { };
+                  })
+                ];
               }
 
               {
