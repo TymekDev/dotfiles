@@ -155,21 +155,19 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
    ```sh
    sh <(curl -L https://nixos.org/nix/install) --no-daemon
    ```
-1. Configure `nix`:
-   ```sh
-   mkdir -p ~/.config/nix
-   echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
-   echo "access-tokens = github.com=$(gh auth token)" >> ~/.config/nix/nix.conf
-   ```
 1. Build the home-manager configuration:
 
    ```sh
-    ~/.nix-profile/bin/nix run github:nix-community/home-manager -- \
-      switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles#$(id -un)"
+   NIX_CONFIG="experimental-features = flakes nix-command
+   access-tokens = github.com=$(gh auth token)" \
+     ~/.nix-profile/bin/nix run github:nix-community/home-manager --\
+     switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles#$(id -un)"
    ```
 
    - Note: if the latest version doesn't get fetched after a recent push, then try adding the `--refresh` flag
    - Note: Subsequent rebuilds can be done with the installed `nix-codespace-rebuild` script
+
+1.
 
 </details>
 
