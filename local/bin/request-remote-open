@@ -1,2 +1,0 @@
-#!/bin/sh
-curl --data-urlencode "url=$1" http://localhost:8765/open
