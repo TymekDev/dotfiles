@@ -94,4 +94,45 @@ M.setup = function(config)
   end
 end
 
+---@param domain_name string
+---@return table?
+M.status = function(domain_name)
+  if not M.is_codespace_domain(domain_name) then
+    wezterm.log_warn("status: not a codespace domain:", domain_name)
+    return
+  end
+
+  local host, _ = domain_name:gsub("^" .. DOMAIN_NAME_PREFIX, "")
+
+  local ok, _, stderr = wezterm.run_child_process(ssh_command("-O", "check", host))
+  if not ok then
+    return
+  end
+
+  local pid = stderr:match("Master running %(pid=(%d+)%)")
+
+  local _, stdout, _ = wezterm.run_child_process({
+    "lsof",
+    "-p",
+    pid,
+    "-a",
+    "-i",
+    "4",
+    "-P",
+  })
+
+  local ports = {}
+  for _, line in ipairs(wezterm.split_by_newlines(stdout)) do
+    local port = line:match("localhost:(%d+) %(LISTEN%)")
+    if port ~= nil then
+      table.insert(ports, port)
+    end
+  end
+
+  return {
+    pid = pid,
+    ports = ports,
+  }
+end
+
 return M

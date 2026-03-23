@@ -79,6 +79,19 @@ local format_choices = function(choices)
   local result = {}
   for _, choice in ipairs(choices) do
     local name = id_to_name(choice.id)
+
+    if codespaces.is_codespace_domain(name) then
+      local status = codespaces.status(name)
+      if status ~= nil and #status.ports > 0 then
+        choice.label = choice.label
+          .. " "
+          .. wezterm.format({
+            { Attribute = { Intensity = "Bold" } },
+            { Text = "[Ports: " .. table.concat(status.ports, ", ") .. "]" },
+          })
+      end
+    end
+
     if name == active_workspace then
       choice.label = "󰐍  " .. choice.label
       table.insert(result, 1, choice)
