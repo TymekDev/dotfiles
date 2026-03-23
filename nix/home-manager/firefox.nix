@@ -1,7 +1,14 @@
 # TODO: support nix-darwin
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
+  inherit (config.dotfiles) isCodespace;
   inherit (pkgs.stdenv) isLinux;
+
   engine = alias: url: queryParamName: {
     definedAliases = [ alias ];
     urls = [
@@ -18,7 +25,7 @@ let
   };
 in
 {
-  programs.firefox = lib.mkIf isLinux {
+  programs.firefox = lib.mkIf (isLinux && !isCodespace) {
     enable = true;
     languagePacks = [
       "en-US"

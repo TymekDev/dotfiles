@@ -43,6 +43,10 @@ in
             default = config.dotfiles.desktop == "sway";
             visible = false;
           };
+          isCodespace = mkOption {
+            default = builtins.getEnv "CODESPACES" == "true";
+            visible = false;
+          };
           home = mkOption {
             default = "/${home}/${config.dotfiles.username}";
             visible = false;

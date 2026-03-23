@@ -6,6 +6,7 @@
   ...
 }:
 let
+  inherit (config.dotfiles) isCodespace;
   inherit (pkgs.stdenv) isLinux;
   # NOTE: I'd rather have the config stored here, but importing from ssh to rclone doesn't seem to work.
   fromRclone =
@@ -15,7 +16,7 @@ let
     };
 in
 {
-  programs.ssh = lib.mkIf isLinux {
+  programs.ssh = lib.mkIf (isLinux && !isCodespace) {
     enable = true;
 
     matchBlocks."*" = lib.hm.dag.entryAfter (builtins.attrNames config.programs.ssh.matchBlocks) {
