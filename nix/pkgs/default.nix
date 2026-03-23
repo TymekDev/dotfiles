@@ -1,8 +1,10 @@
-{ ... }:
+{ opencode, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
+    opencode.overlays.default
+
     (final: prev: {
       are-we-dark-yet = final.callPackage ./are-we-dark-yet.nix { };
 

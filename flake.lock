@@ -312,6 +312,27 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774223123,
+        "narHash": "sha256-73PJ3u+SMRJvBDLyXmh1mQzHa2s7uXFAFuwIwAjIeF0=",
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "rev": "0d6c60136562cca785b428aed446428d61f42616",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anomalyco",
+        "ref": "0d6c60136562cca785b428aed446428d61f42616",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "disko": "disko",
@@ -320,7 +341,8 @@
         "nix-darwin": "nix-darwin",
         "nixos-unstable": "nixos-unstable",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nur": "nur"
+        "nur": "nur",
+        "opencode": "opencode"
       }
     },
     "systems": {
