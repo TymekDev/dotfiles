@@ -151,33 +151,19 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 <details>
 <summary><h3>GitHub Codespace</h3></summary>
 
-1. Make sure the devcontainer has SSH enabled and homebrew installed. For example:
-   ```json
-   {
-     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-     "features": {
-       "ghcr.io/devcontainers/features/sshd:1": {},
-       "ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {}
-     }
-   }
-   ```
-1. Create the codespace:
+1. Install Nix:
    ```sh
-   gh codespace create --location 'WestEurope' --repo '...'
+   sh <(curl -L https://nixos.org/nix/install) --no-daemon
    ```
-1. SSH into the codespace:
+1. Build the home-manager configuration:
    ```sh
-   gh codespace ssh -- -o IdentitiesOnly=yes
+   nix run github:nix-community/home-manager \
+     --experimental-features "flakes nix-command" \
+     -- \
+     switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles#$(whoami)" \
+     --experimental-features "flakes nix-command"
    ```
-1. Clone the repo:
-   ```sh
-   git clone --revision ecd8d41b84a57b37271f8afc6a6a8c7a44eb0c05 https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
-   ```
-1. Run:
-   ```sh
-   make --directory ~/personal/dotfiles setup-os-codespace
-   ```
-1. Start Neovim and install its plugins via `:Lazy`
+1. Subsequent rebuilds can be done with the `nix-codespace-rebuild` script
 
 </details>
 
