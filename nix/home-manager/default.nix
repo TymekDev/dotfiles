@@ -32,7 +32,7 @@ in
   ];
 
   home.sessionVariables = lib.optionalAttrs isDarwin {
-    SSH_AUTH_SOCK = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+    SSH_AUTH_SOCK = "${config.dotfiles.home}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
   };
 
   home.packages =
