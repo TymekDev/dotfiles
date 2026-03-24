@@ -12,7 +12,7 @@ in
 
   nixpkgs.overlays = [
     (final: prev: {
-      arf = final.callPackage ./arf.nix { };
+      arf = final.callPackage ./arf-bin.nix { };
 
       are-we-dark-yet = final.callPackage ./are-we-dark-yet.nix { };
 
