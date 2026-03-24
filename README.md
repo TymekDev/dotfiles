@@ -155,12 +155,16 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
    ```sh
    sh <(curl -L https://nixos.org/nix/install) --no-daemon
    ```
+1. Source the shell integration:
+   ```sh
+   .  ~/.local/state/nix/profiles/profile/etc/profile.d/nix.sh
+   ```
 1. Build the home-manager configuration:
 
    ```sh
    NIX_CONFIG="experimental-features = flakes nix-command
-   access-tokens = github.com=$(gh auth token)" \
-     ~/.nix-profile/bin/nix run github:nix-community/home-manager --\
+   access-tokens = github.com=$GITHUB_TOKEN" \
+     nix run github:nix-community/home-manager --\
      switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles#$(id -un)"
    ```
 
