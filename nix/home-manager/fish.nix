@@ -71,6 +71,10 @@ in
       bind ctrl-k forward-word
       bind ctrl-f "stty sane; nvim -c 'normal ' -c 'startinsert'"
       bind ctrl-g "stty sane; nvim -c 'normal '"
+
+      # Mod+u/Mod+o in my UHK 60v2
+      bind alt-left backward-bigword
+      bind alt-right forward-bigword-end
     '';
 
     shellInit = ''
