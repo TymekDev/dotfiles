@@ -175,6 +175,14 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
    ```sh
    sudo chsh "$(id -un)" --shell "/home/$(id -un)/.local/state/nix/profile/bin/fish"
    ```
+1. Install Neovim plugins:
+
+   ```sh
+   nvim --headless '+Lazy! restore' '+qa'
+   nvim --headless '+TSInstall r' '+qa'
+   ```
+
+   - Note: lazy.nvim will complain about `lazy-lock.json` not being writeable.
 
 </details>
 
