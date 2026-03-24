@@ -61,6 +61,7 @@ in
     ++ lib.optionals (!isCodespace) [
       gh
       serve-remote-open
+      setup-codespace-ssh
       tarsnap-1pass
       tarsnap-1pass-backup
     ];

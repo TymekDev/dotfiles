@@ -18,6 +18,8 @@ in
 
       serve-remote-open = final.callPackage ./serve-remote-open.nix { };
 
+      setup-codespace-ssh = final.callPackage ./setup-codespace-ssh.nix { };
+
       tarsnap-1pass = final.callPackage ./tarsnap-1pass.nix { };
 
       tarsnap-1pass-backup = final.callPackage ./tarsnap-1pass-backup.nix { };
