@@ -179,7 +179,7 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 
    ```sh
    nvim --headless '+Lazy! restore' '+qa'
-   nvim --headless '+TSInstall r' '+qa'
+   nvim --headless '+TSInstallSync r markdown rnoweb yaml' '+qa'
    ```
 
    - Note: lazy.nvim will complain about `lazy-lock.json` not being writeable.
