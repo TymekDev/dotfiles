@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  environment.variables.SSH_AUTH_SOCK = "$HOME/.1password/agent.sock";
+  environment.variables.SSH_AUTH_SOCK = "${config.dotfiles.home}/.1password/agent.sock";
 
   programs = {
     _1password = {

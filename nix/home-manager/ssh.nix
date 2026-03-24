@@ -1,12 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, ... }:
 let
   inherit (config.dotfiles) isCodespace;
-  inherit (pkgs.stdenv) isLinux;
+
   # NOTE: I'd rather have the config stored here, but importing from ssh to rclone doesn't seem to work.
   fromRclone =
     remote: with config.programs.rclone.remotes."${remote}".config; {
@@ -16,15 +11,24 @@ let
 in
 {
   programs.ssh = {
-    enable = isLinux && !isCodespace;
+    enable = !isCodespace;
+    enableDefaultConfig = false;
 
-    matchBlocks."*" = lib.hm.dag.entryAfter (builtins.attrNames config.programs.ssh.matchBlocks) {
-      identityAgent = "~/.1password/agent.sock";
-    };
+    includes = [ "codespaces" ];
 
     matchBlocks = {
       helix = fromRclone "helix";
       hetzner = fromRclone "hetzner";
+
+      "appsilon.github.com" = {
+        hostname = "github.com";
+        identityFile = "${config.dotfiles.home}/.ssh/id_ed25519_github";
+        identitiesOnly = true;
+      };
+
+      "*" = {
+        identityAgent = "SSH_AUTH_SOCK";
+      };
     };
   };
 }
