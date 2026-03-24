@@ -44,6 +44,7 @@ in
       go-task
       ijq
       jq
+      nodejs_22 # needed by Copilot.lua
       ripgrep
       yazi
 
