@@ -52,7 +52,7 @@ in
       gstl = "git stash list";
       gstp = "git stash pop";
       gsts = "git stash show -p";
-      gsw = if hasFzfGit then "git switch (__fzf_git_sh branches)" else "git switch";
+      gsw = "git switch";
       gwt = "git worktree";
 
       jc = "jj commit";
