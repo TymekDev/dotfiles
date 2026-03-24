@@ -44,7 +44,6 @@ in
       go-task
       ijq
       jq
-      nodejs_22
       ripgrep
       yazi
 
