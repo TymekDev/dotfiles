@@ -153,7 +153,7 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 
 1. Install Nix:
    ```sh
-   sh <(curl -L https://nixos.org/nix/install) --no-daemon
+   NIX_CONFIG="use-xdg-base-directories = true" sh <(curl -L https://nixos.org/nix/install) --no-daemon
    ```
 1. Source the shell integration:
    ```sh
