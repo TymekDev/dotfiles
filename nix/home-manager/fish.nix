@@ -9,8 +9,9 @@ let
 in
 {
 
-  xdg.configFile."fish/conf.d/fzf-git.fish".source =
-    lib.mkIf hasFzfGit "${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.fish";
+  xdg.configFile = lib.mkIf hasFzfGit {
+    "fish/conf.d/fzf-git.fish".source = "${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.fish";
+  };
 
   programs.fish = {
     enable = true;
