@@ -67,10 +67,10 @@ in
     };
 
     interactiveShellInit = ''
-      bind \cj accept-autosuggestion execute
-      bind \ck forward-word
-      bind \cf "stty sane; nvim -c 'normal ' -c 'startinsert'"
-      bind \cg "stty sane; nvim -c 'normal '"
+      bind ctrl-j accept-autosuggestion execute
+      bind ctrl-k forward-word
+      bind ctrl-f "stty sane; nvim -c 'normal ' -c 'startinsert'"
+      bind ctrl-g "stty sane; nvim -c 'normal '"
     '';
 
     shellInit = ''
