@@ -19,4 +19,8 @@
   home.file.".local/bin/xdg-open".source = pkgs.writeShellScript "request-remote-open" ''
     curl --data-urlencode "url=$1" http://localhost:8765/open
   '';
+
+  home.sessionVariables = {
+    TZ = "Europe/Warsaw";
+  };
 }
