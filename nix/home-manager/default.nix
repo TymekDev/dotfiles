@@ -40,6 +40,7 @@ in
     [
       arf
       fd
+      gh
       git-absorb
       go-task
       ijq
@@ -59,7 +60,6 @@ in
       spotify
     ]
     ++ lib.optionals (!isCodespace) [
-      gh
       serve-remote-open
       setup-codespace-ssh
       tarsnap-1pass
