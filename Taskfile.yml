@@ -26,6 +26,8 @@ tasks:
     cmds:
       - cmd: nix flake update
       - task: rebuild
+      - platforms: [darwin]
+        cmd: brew upgrade
   rollback:
     desc: Rollback to the previous NixOS build
     platforms: [linux]
