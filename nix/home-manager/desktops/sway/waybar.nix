@@ -16,7 +16,7 @@ let
         );
       '';
       passAsFile = [ "style" ];
-    } "sass --no-source-map $stylePath $out";
+    } ''sass --no-source-map "$stylePath" "$out"'';
 in
 {
   config = lib.mkIf config.dotfiles.isSway {
