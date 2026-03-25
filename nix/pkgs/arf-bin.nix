@@ -1,10 +1,10 @@
 {
+  config,
   lib,
   stdenv,
   fetchurl,
   autoPatchelfHook,
 }:
-
 let
   platform =
     {
@@ -37,15 +37,14 @@ stdenv.mkDerivation {
     inherit (platform) hash;
   };
 
-  nativeBuildInputs = lib.optionals stdenv.isLinux [ autoPatchelfHook ];
-  buildInputs = lib.optionals stdenv.isLinux [ stdenv.cc.cc.lib ];
+  buildInputs = lib.optionals (stdenv.isLinux) [ stdenv.cc.cc.lib ];
 
   sourceRoot = "arf-console-${platform.target}";
 
   installPhase = ''
     runHook preInstall
-    mkdir -p $out/bin
-    install -m755 arf $out/bin/arf
+    mkdir -p "$out"/bin
+    install -m 755 arf "$out"/bin/arf
     runHook postInstall
   '';
 
