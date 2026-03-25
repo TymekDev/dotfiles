@@ -8,7 +8,6 @@ let
   hasFzfGit = config.programs.fzf.enable;
 in
 {
-  # FIXME: those mappings get in the way of my own.
   xdg.configFile = lib.mkIf hasFzfGit {
     "fish/conf.d/fzf-git.fish".source = "${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.fish";
   };

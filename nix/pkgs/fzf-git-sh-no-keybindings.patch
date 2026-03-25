@@ -1,0 +1,18 @@
+diff --git a/fzf-git.fish b/fzf-git.fish
+--- a/fzf-git.fish
++++ b/fzf-git.fish
+@@ -13,14 +13,3 @@
+         commandline -f repaint
+     end
+ end
+-
+-set --local commands branches each_ref files hashes lreflogs remotes stashes tags worktrees
+-
+-for command in $commands
+-    set --function key (string sub --length=1 $command)
+-
+-    eval "bind -M default \cg$key   '__fzf_git_sh $command'"
+-    eval "bind -M insert  \cg$key   '__fzf_git_sh $command'"
+-    eval "bind -M default \cg\c$key '__fzf_git_sh $command'"
+-    eval "bind -M insert  \cg\c$key '__fzf_git_sh $command'"
+-end

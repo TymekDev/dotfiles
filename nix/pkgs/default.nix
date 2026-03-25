@@ -24,6 +24,10 @@ in
 
       tarsnap-1pass-backup = final.callPackage ./tarsnap-1pass-backup.nix { };
 
+      fzf-git-sh = prev.fzf-git-sh.overrideAttrs (prevAttrs: {
+        patches = (prevAttrs.patches or [ ]) ++ [ ./fzf-git-sh-no-keybindings.patch ];
+      });
+
       # TODO: remove this once https://github.com/wezterm/wezterm/pull/7444 is merged and available on nixpkgs
       wezterm = prev.wezterm.overrideAttrs (
         finalAttrs: prevAttrs: {
