@@ -11,19 +11,23 @@ in
 {
   xdg.configFile."nvim".source = if isCodespace then ../../config/nvim else mkSymlink "config/nvim";
 
-  home.packages = with pkgs; [
-    gcc # used by nvim-treesitter to install grammars
-    neovim
+  home.packages =
+    with pkgs;
+    [
+      neovim
 
-    # Language servers
-    lua-language-server
-    nixd
-    vscode-langservers-extracted
+      # Language servers
+      lua-language-server
+      nixd
+      vscode-langservers-extracted
 
-    # Formatters
-    nixfmt
-    stylua
-  ];
+      # Formatters
+      nixfmt
+      stylua
+    ]
+    ++ lib.optionals (!isCodespace) [
+      gcc # used by nvim-treesitter to install grammars
+    ];
 
   home.sessionVariables.EDITOR = "nvim";
 }

@@ -21,6 +21,7 @@ in
 
   programs.git = {
     enable = true;
+    package = lib.mkIf isCodespace null;
 
     includes = [
       (lib.mkIf isDarwin {
