@@ -9,7 +9,7 @@
     };
 
     _1password-gui = {
-      enable = true;
+      enable = config.dotfiles.isLinuxWithGUI;
       polkitPolicyOwners = [ config.dotfiles.username ];
       package = pkgs._1password-gui;
     };

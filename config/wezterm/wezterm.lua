@@ -16,6 +16,7 @@ config.window_padding = {
   left = 0,
 }
 config.window_decorations = "RESIZE"
+-- FIXME: this stopped working locally after adding unix_domains
 config.exit_behavior = "Hold"
 
 local LOCAL_MUX_DOMAIN = "sessionizer"
@@ -88,6 +89,7 @@ config.keys = {
     action = wezterm.action.ActivateLastTab,
   },
   {
+    -- FIXME: this breaks when run from a tab opened with Leader+G
     key = "c",
     mods = "LEADER",
     action = wezterm.action.SpawnCommandInNewTab({}),

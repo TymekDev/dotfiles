@@ -19,7 +19,7 @@ let
     } ''sass --no-source-map "$stylePath" "$out"'';
 in
 {
-  config = lib.mkIf config.dotfiles.isSway {
+  config = lib.mkIf config.dotfiles.isLinuxWithGUI {
     xdg.configFile = {
       "waybar/style-dark.css".source = buildStyle "dark";
       "waybar/style-light.css".source = buildStyle "light";
@@ -51,7 +51,6 @@ in
           "tray"
           "clock"
           "custom/swaync"
-          # TODO: custom/quit
         ];
 
         clock = {
@@ -63,7 +62,6 @@ in
           };
         };
 
-        # TODO: update this config
         mpris = {
           format = "„{title}” by {artist} <small>[{position}/{length}]</small>";
           interval = 1;
@@ -99,7 +97,6 @@ in
           };
         };
 
-        # TODO: revisit spacing with styling
         tray = {
           show-passive-items = true;
           spacing = 4;

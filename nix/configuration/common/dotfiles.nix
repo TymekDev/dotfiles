@@ -29,15 +29,6 @@ in
             default = null;
             type = types.nullOr types.int;
           };
-          desktop = mkOption {
-            description = "The desktop environment to use (linux only)";
-            default = null;
-            type = types.nullOr (
-              types.enum [
-                "sway"
-              ]
-            );
-          };
           isCodespace = mkOption {
             description = "Whether we're running in a GitHub Codespace Linux environment";
             type = types.bool;
@@ -48,9 +39,8 @@ in
             default = isDarwin || (isLinux && !config.dotfiles.isCodespace);
             visible = false;
           };
-          # TODO: drop desktop option in favor of hasGUI && isLinux
-          isSway = mkOption {
-            default = config.dotfiles.hasGUI && config.dotfiles.desktop == "sway";
+          isLinuxWithGUI = mkOption {
+            default = isLinux && config.dotfiles.hasGUI;
             visible = false;
           };
           home = mkOption {

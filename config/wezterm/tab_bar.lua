@@ -2,7 +2,6 @@
 local wezterm = require("wezterm")
 local M = {}
 
--- TODO: parametrize this, add left/right, and outline
 local SEP = ""
 local SEP_OUTLINE = ""
 
@@ -11,7 +10,7 @@ wezterm.on("update-status", function(window, pane)
   ---@type Palette
   local colors = window:effective_config().colors
 
-  local bg_tab = colors.ansi[8] -- TODO: update me
+  local bg_tab = colors.ansi[8]
   if window:leader_is_active() then
     bg_tab = colors.ansi[4]
   end
@@ -26,13 +25,13 @@ wezterm.on("update-status", function(window, pane)
     { Text = SEP },
   }))
 
-  -- FEAT: improve me! But how...?
   window:set_right_status(wezterm.format({
     { Foreground = { Color = colors.ansi[4] } },
     { Text = string.format("%s %s ", wezterm.nerdfonts.fa_clock_o, wezterm.strftime("%H:%M")) },
   }))
 end)
 
+-- FIXME: truncate tabs that would overlap with the clock on the right
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local tab_index = tab.tab_index + 1
   local title = tab.active_pane.title

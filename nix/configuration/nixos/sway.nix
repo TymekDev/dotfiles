@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.dotfiles.isSway {
+  config = lib.mkIf config.dotfiles.isLinuxWithGUI {
     programs.sway.enable = true;
 
     xdg.portal = {

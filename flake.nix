@@ -65,7 +65,6 @@
             {
               dotfiles = {
                 username = "tymek";
-                desktop = "sway";
               };
             }
           ];

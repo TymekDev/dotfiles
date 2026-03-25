@@ -1,9 +1,11 @@
-{ config, pkgs, lib, ... }:
-let
-  inherit (config.dotfiles) isSway;
-in
 {
-  config = lib.mkIf isSway {
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  config = lib.mkIf config.dotfiles.isLinuxWithGUI {
     home.pointerCursor = {
       name = "BreezeX-RosePine-Linux";
       package = pkgs.rose-pine-cursor;

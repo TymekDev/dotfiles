@@ -4,11 +4,8 @@
   lib,
   ...
 }:
-let
-  inherit (config.dotfiles) isSway;
-in
 {
-  config = lib.mkIf isSway {
+  config = lib.mkIf config.dotfiles.isLinuxWithGUI {
     programs.swaylock = {
       enable = true;
       package = pkgs.swaylock-effects;

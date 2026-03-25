@@ -6,8 +6,7 @@
 }:
 {
   # NOTE: cosmic-greeter makes sway not work properly, so I am sticking with regreet.
-  config = lib.mkIf config.dotfiles.isSway {
-    # TODO: customize the look
+  config = lib.mkIf config.dotfiles.isLinuxWithGUI {
     programs.regreet = {
       enable = true;
 

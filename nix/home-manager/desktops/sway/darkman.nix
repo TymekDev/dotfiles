@@ -1,9 +1,6 @@
 { config, lib, ... }:
-let
-  inherit (config.dotfiles) isSway;
-in
 {
-  config = lib.mkIf isSway {
+  config = lib.mkIf config.dotfiles.isLinuxWithGUI {
     services.darkman = {
       enable = true;
 

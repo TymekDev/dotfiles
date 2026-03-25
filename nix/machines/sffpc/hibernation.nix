@@ -1,6 +1,5 @@
 { ... }:
 {
-  # FIXME: lock before hibernation
   boot.initrd.systemd.enable = true;
 
   swapDevices = [

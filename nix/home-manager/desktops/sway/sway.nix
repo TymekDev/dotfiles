@@ -6,8 +6,6 @@
   ...
 }:
 let
-  inherit (config.dotfiles) isSway;
-
   cfg = config.wayland.windowManager.sway.config;
   mod = "Mod4";
   modMove = "${mod}+Shift";
@@ -16,7 +14,7 @@ let
   modWorkspaceMove = "${modWorkspace}+Mod4";
 in
 {
-  config = lib.mkIf isSway {
+  config = lib.mkIf config.dotfiles.isLinuxWithGUI {
     wayland.windowManager.sway = {
       enable = true;
       package = null;
