@@ -76,9 +76,12 @@ return {
       desc = "Repeat last command executed with <Leader>re (via R.nvim)",
     },
   },
-  opts = {
+  ---@module "r"
+  ---@type RConfig
+  opts = { -- NOTE: DON'T USE external_term. It's buggy and has a leak of sorts.
     setwd = "nvim",
     hl_term = false,
     pdfviewer = "",
+    R_app = "arf",
   },
 }
