@@ -13,8 +13,6 @@ local ssh_command = function(...)
   local result = {
     "ssh",
     "-o",
-    "ControlMaster=auto",
-    "-o",
     "ControlPersist=600",
     "-o",
     "ControlPath=~/.ssh/sockets/%r@%h:%p",
@@ -31,6 +29,23 @@ local ssh_command = function(...)
   end
 
   return result
+end
+
+---@param host string
+local ensure_control_master = function(host)
+  local ok, _, _ = wezterm.run_child_process(ssh_command("-O", "check", host))
+  if ok then
+    return
+  end
+
+  wezterm.log_info("Starting background SSH control master for", host)
+  wezterm.run_child_process(ssh_command({
+    "-o",
+    "ControlMaster=yes",
+    "-N",
+    "-f",
+    host,
+  }))
 end
 
 ---@param name string
@@ -84,6 +99,8 @@ M.setup = function(config)
       table.insert(
         config.exec_domains,
         wezterm.exec_domain(DOMAIN_NAME_PREFIX .. host, function(cmd)
+          ensure_control_master(host)
+
           local dir = cmd.cwd
           if not dir or M.is_codespace_domain(dir) then -- sessionizer passes the workspace name as cwd
             dir = "/workspaces/" .. host
