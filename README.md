@@ -93,62 +93,6 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 </details>
 
 <details>
-<summary><h3>WSL</h3></summary>
-
-1. Install WezTerm (on Windows)
-1. Install WSL
-   1. Open PowerShell
-   1. Run `wsl --list --online` for the list of available distros
-   1. Install the distro `wsl --install -d <distro>`, e.g. `wsl --install -d Ubuntu-24.04`
-   1. Restart Windows
-1. After Windows boots up:
-   1. Set a UNIX username and password up
-   1. Run: `sudo apt-get update`
-   1. Run: `sudo apt-get upgrade`
-1. If necessary, carry certificates over from Windows (see [Fixing WSL Certificates](https://blog.tymek.dev/fixing-wsl-certificates/#the-fix))
-1. Install [`brew`](https://brew.sh/):
-   ```sh
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
-1. Clone the repo:
-   ```sh
-   git clone https://codeberg.org/TymekDev/dotfiles ~/personal/dotfiles
-   git -C ~/personal/dotfiles remote set-url origin ssh://git@codeberg.org/TymekDev/dotfiles.git
-   ```
-   <!-- TODO: add a new SSH key -->
-1. Symlink config files:
-   ```sh
-   make --directory ~/personal/dotfiles restow
-   ```
-1. Install programs:
-   ```sh
-   /home/linuxbrew/.linuxbrew/bin/brew bundle --file ~/personal/dotfiles/Brewfile install
-   /home/linuxbrew/.linuxbrew/bin/bob use stable # installs Neovim
-   ```
-1. Configure [`fish`](https://fishshell.com/):
-   ```sh
-   echo "/home/linuxbrew/.linuxbrew/bin/fish" | sudo tee -a /etc/shells
-   chsh -s /home/linuxbrew/.linuxbrew/bin/fish
-   ```
-1. Install WezTerm terminfo:
-   ```sh
-   tempfile=$(mktemp) \
-     && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo \
-     && tic -x -o ~/.terminfo $tempfile \
-     && rm $tempfile
-   ```
-1. `rsync` the WezTerm config to the Windows host:
-   ```fish
-   rsync --delete-after --mkpath --recursive --verbose \
-     config/wezterm/ \
-     $(wslpath $(cmd.exe /C "echo %USERPROFILE%" 2>/dev/null | tr -d "\r"))/.config/wezterm
-   ```
-1. Open WezTerm—it should start fish inside WSL and have `$PATH` properly set up
-1. Start Neovim and install its plugins via `:Lazy`
-
-</details>
-
-<details>
 <summary><h3>GitHub Codespace</h3></summary>
 
 1. Install Nix:
