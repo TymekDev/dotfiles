@@ -33,7 +33,13 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    indent = { enabled = true, animate = { enabled = false } },
+    indent = {
+      enabled = true,
+      chunk = { enabled = true, only_current = true },
+      indent = { enabled = false },
+      scope = { enabled = false },
+      animate = { enabled = false },
+    },
     gitbrowse = {
       what = "permalink",
       remote_patterns = {
