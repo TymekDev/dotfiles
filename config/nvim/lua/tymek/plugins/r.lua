@@ -78,10 +78,10 @@ return {
   },
   ---@module "r"
   ---@type RConfig
-  opts = { -- NOTE: DON'T USE external_term. It's buggy and has a leak of sorts.
+  opts = { -- NOTE: DON'T USE external_term = "wezterm" (or "wezterm_split"). It's buggy and has a leak of sorts.
     setwd = "nvim",
     hl_term = false,
     pdfviewer = "",
-    R_app = "arf",
+    -- R_app = "arf",
   },
 }
