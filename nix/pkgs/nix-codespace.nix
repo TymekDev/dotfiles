@@ -9,6 +9,7 @@ writeShellApplication {
       echo ""
       echo "Commands:"
       echo "  rebuild [ref]  Rebuild Home Manager configuration"
+      echo "  version        Print the dotfiles commit of the current configuration"
     }
 
     case "''${1:-}" in
@@ -20,6 +21,10 @@ writeShellApplication {
       fi
       nix run github:nix-community/home-manager -- \
         switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles''${REF}#$(id -un)" --refresh
+      ;;
+    version)
+      shift
+      cat ~/.cache/nix/gitv3/*/FETCH_HEAD
       ;;
     --help | -h)
       usage
