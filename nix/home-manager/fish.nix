@@ -124,6 +124,12 @@ in
     };
 
     completions = {
+      nix-codespace = ''
+        complete -c nix-codespace -f
+        complete -c nix-codespace -n __fish_use_subcommand -a rebuild -d "Rebuild Home Manager configuration"
+        complete -c nix-codespace -n __fish_use_subcommand -a version -d "Print the dotfiles commit of the current configuration"
+        complete -c nix-codespace -n "__fish_seen_subcommand_from rebuild version" -f
+      '';
       R = ''
         complete -c R -c r -c radian -f
         complete -c R -c r -c radian -o h -l help
