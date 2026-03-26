@@ -113,7 +113,7 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
    ```
 
    - Note: if the latest version doesn't get fetched after a recent push, then try adding the `--refresh` flag
-   - Note: Subsequent rebuilds can be done with the installed `nix-codespace-rebuild` script
+   - Note: Subsequent rebuilds can be done with the installed `nix-codespace rebuild` command
 
 1. Set the shell:
    ```sh

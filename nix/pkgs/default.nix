@@ -52,7 +52,7 @@ in
   ]
   ++ lib.optionals isCodespace [
     (final: prev: {
-      nix-codespace-rebuild = final.callPackage ./nix-codespace-rebuild.nix { };
+      nix-codespace = final.callPackage ./nix-codespace.nix { };
     })
   ];
 }

@@ -3,7 +3,7 @@
   home = {
     inherit (config.dotfiles) username;
     homeDirectory = config.dotfiles.home;
-    packages = [ pkgs.nix-codespace-rebuild ];
+    packages = [ pkgs.nix-codespace ];
   };
 
   nix.package = pkgs.nix;
