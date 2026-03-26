@@ -80,6 +80,12 @@ in
     shellInit = ''
       fish_add_path --move ~/.local/bin
 
+      if test -d /usr/local/py-utils
+          set -gx PIPX_HOME /usr/local/py-utils
+          set -gx PIPX_BIN_DIR /usr/local/py-utils/bin
+          fish_add_path --append $PIPX_BIN_DIR
+      end
+
       if test -f ~/.local/state/nix/profile/etc/profile.d/nix.fish
           source ~/.local/state/nix/profile/etc/profile.d/nix.fish
       end
