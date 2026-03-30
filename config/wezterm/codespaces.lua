@@ -12,6 +12,8 @@ local DOMAIN_NAME_PREFIX = "Codespace:"
 local ssh_command = function(...)
   local result = {
     "ssh",
+    "-o",
+    "ControlPersist=3600",
   }
 
   for _, arg in ipairs({ ... }) do
