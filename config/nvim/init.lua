@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-require("tymek.lazy").setup()
+-- require("tymek.lazy").setup()
 
 vim.api.nvim_cmd({
   cmd = "packadd",
