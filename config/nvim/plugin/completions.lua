@@ -1,20 +1,10 @@
----@module "lazy"
----@type LazySpec
-return {
-  "saghen/blink.cmp",
-  -- '?*' requires the filename to have >=1 character. It avoids empty buffers and telescope prompt
-  event = {
-    "InsertEnter ?*",
-    "CmdlineEnter",
-  },
-  version = "*",
-  dependencies = {
-    "saghen/blink.compat",
-    "R-nvim/cmp-r",
-  },
-  ---@module "blink.cmp"
-  ---@type blink.cmp.Config
-  opts = {
+local augroup = vim.api.nvim_create_augroup("load:blink.cmp", { clear = true })
+local load_blink = function()
+  vim.pack.add({
+    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
+  }, { confirm = false })
+
+  require("blink.cmp").setup({
     keymap = {
       preset = "none",
       ["<C-j>"] = { "show", "select_and_accept", "fallback" },
@@ -34,9 +24,7 @@ return {
         ["<C-e>"] = { "hide", "fallback" },
       },
     },
-    ---@diagnostic disable-next-line: missing-fields
     completion = {
-      ---@diagnostic disable-next-line: missing-fields
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 500,
@@ -48,32 +36,47 @@ return {
             { "label", "label_description", gap = 1 },
             { "source_name" },
           },
-          components = {
-            source_name = {
-              text = function(ctx)
-                if ctx.source_name == "cmp_r" then
-                  return "R.nvim"
-                end
-                return ctx.source_name
-              end,
-            },
-          },
         },
       },
     },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "lazydev", "R.nvim" },
+      default = { "lsp", "path", "snippets", "buffer", "lazydev" },
       providers = {
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
           fallbacks = { "lsp" },
         },
-        ["R.nvim"] = {
-          name = "cmp_r",
-          module = "blink.compat.source",
-        },
       },
     },
-  },
-}
+  })
+
+  vim.api.nvim_del_augroup_by_id(augroup)
+end
+
+vim.api.nvim_create_autocmd("InsertEnter", { once = true, pattern = "?*", callback = load_blink, group = augroup })
+vim.api.nvim_create_autocmd("CmdlineEnter", { once = true, callback = load_blink, group = augroup })
+
+local load_copilot = function()
+  vim.pack.add({ "https://github.com/zbirenbaum/copilot.lua" }, { confirm = false })
+  require("copilot").setup({
+    should_attach = function(_, bufname)
+      if string.match(bufname, "env") then
+        return false
+      end
+      return true
+    end,
+    panel = { enabled = false },
+    suggestion = {
+      enabled = true,
+      auto_trigger = true,
+      keymap = {
+        accept = "<M-j>",
+        accept_word = "<M-k>",
+        accept_line = "<M-l>",
+      },
+    },
+  })
+end
+
+vim.api.nvim_create_autocmd("InsertEnter", { once = true, pattern = "?*", callback = load_copilot })
