@@ -130,6 +130,9 @@ in
         complete -c nix-codespace -n __fish_use_subcommand -a version -d "Print the dotfiles commit of the current configuration"
         complete -c nix-codespace -n "__fish_seen_subcommand_from rebuild version" -f
       '';
+      nix-cs = ''
+        complete -c nix-cs --wraps nix-codespace
+      '';
       R = ''
         complete -c R -c r -c radian -f
         complete -c R -c r -c radian -o h -l help
