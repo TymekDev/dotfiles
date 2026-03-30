@@ -6,9 +6,12 @@ return {
       require("nvim-treesitter.parsers").scss.install_info.url = "https://codeberg.org/TymekDev/tree-sitter-scss"
       require("nvim-treesitter.parsers").scss.install_info.revision = "master"
 
-      require("nvim-treesitter").setup({
-        auto_install = true,
-        highlight = { enable = true },
+      require("nvim-treesitter").setup()
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(ev)
+          pcall(vim.treesitter.start, ev.buf)
+        end,
       })
 
       vim.opt.foldmethod = "expr"

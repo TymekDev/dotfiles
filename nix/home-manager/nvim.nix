@@ -15,6 +15,7 @@ in
     with pkgs;
     [
       neovim
+      tree-sitter # TODO: switch to installing compiled grammars directly?
 
       # Language servers
       lua-language-server
