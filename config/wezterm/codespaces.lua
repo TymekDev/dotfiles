@@ -12,10 +12,6 @@ local DOMAIN_NAME_PREFIX = "Codespace:"
 local ssh_command = function(...)
   local result = {
     "ssh",
-    "-o",
-    "ControlPersist=600",
-    "-o",
-    "ControlPath=~/.ssh/sockets/%r@%h:%p",
   }
 
   for _, arg in ipairs({ ... }) do
