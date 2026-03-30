@@ -26,12 +26,6 @@
     };
 
     mac-app-util.url = "github:hraban/mac-app-util";
-
-    opencode = {
-      # TODO: change to master once https://github.com/NixOS/nixpkgs/pull/501259 is merged
-      url = "github:anomalyco/opencode?ref=0d6c60136562cca785b428aed446428d61f42616";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
@@ -42,7 +36,6 @@
       home-manager,
       nur,
       mac-app-util,
-      opencode,
       ...
     }:
     let
@@ -73,7 +66,6 @@
 
       darwinConfigurations = {
         maczek = nix-darwin.lib.darwinSystem {
-          specialArgs = { inherit opencode; };
           modules = [
             home-manager.darwinModules.home-manager
             mac-app-util.darwinModules.default
@@ -105,7 +97,6 @@
             username:
             home-manager.lib.homeManagerConfiguration {
               inherit pkgs;
-              extraSpecialArgs = { inherit opencode; };
               modules = [
                 ./nix/configuration/common/dotfiles.nix
                 ./nix/configuration/codespace

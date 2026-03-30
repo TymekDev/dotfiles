@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  opencode,
   ...
 }:
 let
@@ -48,9 +47,6 @@ in
         }
       );
     })
-  ]
-  ++ lib.optionals (!isCodespace) [
-    opencode.overlays.default
   ]
   ++ lib.optionals isCodespace [
     (final: prev: {
