@@ -67,7 +67,7 @@ in
     };
 
     settings = {
-      user = {
+      user = lib.mkIf (!isCodespace) {
         name = "Tymoteusz Makowski";
         email = "tymek.makowski@gmail.com";
         signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILkf84+zcnJNPvvNC2uskzM860ewSX5tLo57A7jA8Yre";
