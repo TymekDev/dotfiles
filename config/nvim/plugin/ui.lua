@@ -1,3 +1,4 @@
+-- The one and only colorscheme
 vim.pack.add({ "https://github.com/folke/tokyonight.nvim" }, { confirm = false })
 require("tokyonight").setup({ ---@diagnostic disable-line: missing-fields
   style = "storm",
@@ -38,6 +39,28 @@ vim.api.nvim_create_autocmd("FocusGained", {
   end,
 })
 
+--  File browser
+vim.pack.add({ "https://github.com/stevearc/oil.nvim" }, { confirm = false })
+require("oil").setup({
+  view_options = {
+    show_hidden = true,
+  },
+  keymaps = {
+    ["<C-s>"] = false,
+    ["<C-h>"] = false,
+    ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+    ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+    ["<Leader><C-v>"] = { "<C-v>", desc = "Start Visual Block mode in the oil buffer" },
+  },
+})
+vim.keymap.set("n", "-", "<Cmd>Oil<CR>", { desc = "Open the parent directory (via oil.nvim)" })
+
+-- Icon pack used by various plugins
+vim.schedule(function()
+  vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" }, { confirm = false })
+end)
+
+-- Floating vim.ui.input
 vim.schedule(function()
   vim.pack.add({ "https://github.com/stevearc/dressing.nvim" }, { confirm = false })
   require("dressing").setup({
@@ -48,16 +71,19 @@ vim.schedule(function()
   })
 end)
 
+-- Color codes highlighting
 vim.schedule(function()
   vim.pack.add({ "https://github.com/brenoprata10/nvim-highlight-colors" }, { confirm = false })
   require("nvim-highlight-colors").setup({ enable_tailwind = true })
 end)
 
+-- TODO comments highlighting
 vim.schedule(function()
   vim.pack.add({ "https://github.com/folke/todo-comments.nvim" }, { confirm = false })
   require("todo-comments").setup({ signs = false })
 end)
 
+-- Sign column git changes, misc
 vim.schedule(function()
   vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" }, { confirm = false })
   require("gitsigns").setup({
@@ -78,6 +104,7 @@ vim.schedule(function()
   })
 end)
 
+-- Everything quickfix list
 vim.schedule(function()
   vim.pack.add({ "https://github.com/stevearc/quicker.nvim" }, { confirm = false })
   require("quicker").setup({
