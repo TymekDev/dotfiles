@@ -1,12 +1,12 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     config = function()
-      local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_configs.scss.install_info.url = "https://codeberg.org/TymekDev/tree-sitter-scss"
-      parser_configs.scss.install_info.revision = "master"
+      require("nvim-treesitter.parsers").scss.install_info.url = "https://codeberg.org/TymekDev/tree-sitter-scss"
+      require("nvim-treesitter.parsers").scss.install_info.revision = "master"
 
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter").setup({
         auto_install = true,
         highlight = { enable = true },
       })
