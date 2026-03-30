@@ -22,6 +22,7 @@
       "hammerspoon"
       "karabiner-elements"
       "linearmouse"
+      "opencode-desktop"
       "rectangle"
       "signal"
       "spotify"

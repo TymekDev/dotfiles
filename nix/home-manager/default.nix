@@ -57,6 +57,7 @@ in
     ]
     ++ lib.optionals (hasGUI && isLinux) [
       discord
+      opencode-desktop
       spotify
     ]
     ++ lib.optionals (!isCodespace) [
