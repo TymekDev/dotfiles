@@ -7,10 +7,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FocusGained", {
-  callback = require("tymek.theme").update,
-})
-
 vim.api.nvim_create_autocmd("OptionSet", {
   pattern = "diff",
   callback = function()
