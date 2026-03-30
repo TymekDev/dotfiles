@@ -1,9 +1,7 @@
 {
-  config,
   lib,
   stdenv,
   fetchurl,
-  autoPatchelfHook,
 }:
 let
   platform =
