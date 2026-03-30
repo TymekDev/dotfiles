@@ -38,16 +38,22 @@ vim.api.nvim_create_autocmd("FocusGained", {
   end,
 })
 
-vim.pack.add({ "https://github.com/stevearc/dressing.nvim" }, { confirm = false })
-require("dressing").setup({
-  input = {
-    relative = "cursor",
-    insert_only = false,
-  },
-})
+vim.schedule(function()
+  vim.pack.add({ "https://github.com/stevearc/dressing.nvim" }, { confirm = false })
+  require("dressing").setup({
+    input = {
+      relative = "cursor",
+      insert_only = false,
+    },
+  })
+end)
 
-vim.pack.add({ "https://github.com/brenoprata10/nvim-highlight-colors" }, { confirm = false })
-require("nvim-highlight-colors").setup({ enable_tailwind = true })
+vim.schedule(function()
+  vim.pack.add({ "https://github.com/brenoprata10/nvim-highlight-colors" }, { confirm = false })
+  require("nvim-highlight-colors").setup({ enable_tailwind = true })
+end)
 
-vim.pack.add({ "https://github.com/folke/todo-comments.nvim" }, { confirm = false })
-require("todo-comments").setup({ signs = false })
+vim.schedule(function()
+  vim.pack.add({ "https://github.com/folke/todo-comments.nvim" }, { confirm = false })
+  require("todo-comments").setup({ signs = false })
+end)
