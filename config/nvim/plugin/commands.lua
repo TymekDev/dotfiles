@@ -10,7 +10,7 @@ vim.keymap.set("n", "<Leader>G", function()
   end
 
   Snacks.win({
-    file = "fugitive://" .. vim.b.gitsigns_status_dict.gitdir .. "//",
+    file = "fugitive://" .. Snacks.git.get_root() .. "/.git//",
     minimal = false,
     border = "rounded",
     height = 0.8,
