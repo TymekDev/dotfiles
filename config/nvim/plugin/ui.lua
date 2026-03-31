@@ -64,9 +64,7 @@ require("oil").setup({
 vim.keymap.set("n", "-", "<Cmd>Oil<CR>", { desc = "Open the parent directory (via oil.nvim)" })
 
 -- Icon pack used by various plugins
-vim.schedule(function()
-  vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" }, { confirm = false })
-end)
+vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" }, { confirm = false })
 
 -- Floating vim.ui.input
 vim.schedule(function()

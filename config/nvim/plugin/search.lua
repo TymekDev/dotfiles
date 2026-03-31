@@ -5,9 +5,6 @@ vim.pack.add({
 -- NOTE: git_commits, git_bcommits, and grep_curbuf seem useful. Maybe try them out
 local actions = require("fzf-lua.actions")
 require("fzf-lua").setup({
-  defaults = {
-    file_icons = false,
-  },
   actions = {
     files = {
       true,
