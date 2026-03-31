@@ -46,10 +46,9 @@ require("oil").setup({
     show_hidden = true,
   },
   keymaps = {
-    ["<C-s>"] = false,
     ["<C-h>"] = false,
+    ["<C-s>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
     ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-    ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
     ["<Leader><C-v>"] = { "<C-v>", desc = "Start Visual Block mode in the oil buffer" },
   },
 })
