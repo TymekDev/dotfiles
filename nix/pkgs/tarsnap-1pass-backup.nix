@@ -10,6 +10,6 @@ writeShellApplication {
   text = ''
     cd ~/Documents/dokumenty
     ARCHIVE_NAME="dokumenty-$(uname -n)_$(date +%Y-%m-%d_%H-%M)"
-    tarsnap-1pass -f "$ARCHIVE_NAME" --cachedir ~/.cache/tarsnap -c . && echo "Created $ARCHIVE_NAME"
+    tarsnap-1pass -f "$ARCHIVE_NAME" -c . && echo "Created $ARCHIVE_NAME"
   '';
 }

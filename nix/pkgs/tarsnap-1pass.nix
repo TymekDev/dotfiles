@@ -16,6 +16,6 @@ writeShellApplication {
     trap cleanup EXIT INT TERM
 
     op read "op://Private/Tarsnap.key/tarsnap.key" --force --out-file "$KEYFILE" > /dev/null
-    tarsnap --keyfile "$KEYFILE" "$@"
+    tarsnap --keyfile "$KEYFILE" --cachedir ~/.cache/tarsnap "$@"
   '';
 }
