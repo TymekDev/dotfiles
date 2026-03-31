@@ -59,6 +59,9 @@ return {
       nix = { "nixfmt", "injected" },
       lua = { "stylua" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+      r = function(bufnr)
+        return { first(bufnr, "air", "styler") }
+      end,
       query = { "format-queries" },
       sh = { "shfmt", "shellcheck" },
       templ = { "templ" },
