@@ -32,14 +32,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Context at the top of the window
-vim.schedule(function()
-  vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter-context" }, { confirm = false })
-  require("treesitter-context").setup({
-    max_lines = 5,
-  })
-end)
-
 -- HTML-ish tags
 vim.pack.add({ "https://github.com/windwp/nvim-ts-autotag" }, { confirm = false })
 require("nvim-ts-autotag").setup()
