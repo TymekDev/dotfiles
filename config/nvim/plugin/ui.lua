@@ -17,6 +17,15 @@ require("tokyonight").setup({ ---@diagnostic disable-line: missing-fields
 
 vim.cmd.colorscheme("tokyonight")
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "IncSearch",
+      timeout = 50,
+    })
+  end,
+})
+
 vim.api.nvim_create_autocmd("FocusGained", {
   callback = function()
     vim.system(

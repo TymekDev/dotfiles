@@ -79,3 +79,17 @@ vim.keymap.set({ "n", "v" }, "<Leader>Y", '"+Y')
 -- Others
 vim.keymap.set("n", "<Leader>z", "1z=")
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+
+vim.api.nvim_create_autocmd("OptionSet", { -- set those mappings only in diff mode
+  pattern = "diff",
+  callback = function()
+    vim.keymap.set("v", "do", ":diffget<CR>", {
+      buffer = 0,
+      desc = "Diff obtain the selected range",
+    })
+    vim.keymap.set("v", "dp", ":diffput<CR>", {
+      buffer = 0,
+      desc = "Diff put the selected range",
+    })
+  end,
+})
