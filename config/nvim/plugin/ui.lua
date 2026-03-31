@@ -7,10 +7,10 @@ require("tokyonight").setup({ ---@diagnostic disable-line: missing-fields
     hl["@r.reactive.call"] = { link = "Special" }
     hl["@r.box.unused.import"] = { link = "Error" }
     hl.NvimSurroundHighlight = { link = "IncSearch" }
+    hl.SignColumn.bg = c.none
 
     if c.bg == "#e1e2e7" then -- light mode
       hl.Normal.bg = "#f1f2f7"
-      hl.SignColumn.bg = c.none
     end
   end,
 })
