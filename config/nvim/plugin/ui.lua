@@ -181,3 +181,19 @@ vim.schedule(function()
     },
   })
 end)
+
+vim.schedule(function()
+  vim.pack.add({ "https://github.com/nvim-lualine/lualine.nvim" }, { confirm = false })
+  require("lualine").setup({
+    options = {
+      extensions = { "fugitive", "oil", "quickfix" },
+      sections = {
+        lualine_c = {
+          { "filename", separator = "" },
+          { "%=", separator = "" },
+          "r_status",
+        },
+      },
+    },
+  })
+end)
