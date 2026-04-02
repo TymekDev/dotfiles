@@ -1,5 +1,6 @@
 -- vim:foldenable:foldlevel=1
 local queries = require("tymek.treesitter.queries.r")
+local r = require("tymek.r")
 local ts = require("tymek.treesitter")
 local ts_r = require("tymek.treesitter.r")
 
@@ -24,41 +25,13 @@ vim.keymap.set("n", "<Leader>ra", "<Plug>(EasyAlign)i(<CR>*,", {
   buffer = 0,
   desc = "Right-align content of closest parentheses on all commas, e.g. a tribble definition (via vim-easy-align)",
 })
-vim.keymap.set("n", "<Leader>re", require("tymek.r").exec_command)
-vim.keymap.set("n", "<Leader>rr", require("tymek.r").exec_last_command)
 
-local run_lintr = function(code)
-  vim.system(
-    {
-      "Rscript",
-      "-e",
-      code,
-    },
-    {},
-    vim.schedule_wrap(function(result)
-      local lines = vim.split(result.stdout, "\n")
+-- I want those global to run them not only from R files. But I don't want them defined until I open an R file
+vim.keymap.set("n", "<Leader>re", r.exec_command)
+vim.keymap.set("n", "<Leader>rr", r.exec_last_command)
 
-      local ok, msg = pcall(vim.fn.setqflist, {}, " ", { lines = lines, efm = [[%f:%l:%c:\ %m]] })
-      if not ok then
-        vim.notify(msg --[[@as string]], vim.log.levels.ERROR)
-      end
-
-      vim.cmd.copen()
-    end)
-  )
-end
-
-vim.api.nvim_create_user_command("RLintPackage", function()
-  run_lintr("lintr::lint_package()")
-end, {
-  desc = "Run lintr::lint_package() and populate the quickfix list with the results",
-})
-
-vim.api.nvim_create_user_command("RLintRhino", function()
-  run_lintr("rhino::lint_r()")
-end, {
-  desc = "Run rhino::lint_r() and populate the quickfix list with the results",
-})
+vim.api.nvim_create_user_command("RLintPackage", r.lint_package, {})
+vim.api.nvim_create_user_command("RLintRhino", r.lint_rhino, {})
 
 vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
   desc = "Highlight reactives and eventReactives declared in the current buffer",

@@ -46,6 +46,27 @@ local COMMANDS = {
   end,
 }
 
+local run_lintr = function(code)
+  vim.system(
+    {
+      "Rscript",
+      "-e",
+      code,
+    },
+    {},
+    vim.schedule_wrap(function(result)
+      local lines = vim.split(result.stdout, "\n")
+
+      local ok, msg = pcall(vim.fn.setqflist, {}, " ", { lines = lines, efm = [[%f:%l:%c:\ %m]] })
+      if not ok then
+        vim.notify(msg --[[@as string]], vim.log.levels.ERROR)
+      end
+
+      vim.cmd.copen()
+    end)
+  )
+end
+
 M.exec_last_command = function()
   if M.last_command == nil then
     M.select_command()
@@ -61,6 +82,14 @@ M.exec_command = function()
       COMMANDS[cmd]()
     end
   end)
+end
+
+M.lint_package = function()
+  run_lintr("lintr::lint_package()")
+end
+
+M.lint_rhino = function()
+  run_lintr("rhino::lint_r()")
 end
 
 return M
