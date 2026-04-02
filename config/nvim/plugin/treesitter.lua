@@ -16,13 +16,33 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.pack.add({
   { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 }, { confirm = false })
-require("nvim-treesitter").setup()
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "?*",
+  pattern = {
+    "astro",
+    "bash",
+    "css",
+    "fish",
+    "go",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "nix",
+    "python",
+    "r",
+    "rust",
+    "scss",
+    "templ",
+    "toml",
+    "typescript",
+    "yaml",
+  },
   callback = function(ev)
+    require("nvim-treesitter").install(ev.match):wait(10 * 1000)
     -- syntax highlighting, provided by Neovim
-    pcall(vim.treesitter.start, ev.buf)
+    vim.treesitter.start(ev.buf)
     -- folds, provided by Neovim
     vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     vim.wo.foldmethod = "expr"
