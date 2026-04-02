@@ -41,7 +41,8 @@ in
       gp = "git push";
       gpf = "git push --force-with-lease";
       gpr = "gh pr view --web";
-      grb = "git rebase --autostash --interactive";
+      grb = "git rebase";
+      grbi = "git rebase --interactive";
       grbc = "git rebase --continue";
       grs = "git restore";
       grsp = "git restore -p";
