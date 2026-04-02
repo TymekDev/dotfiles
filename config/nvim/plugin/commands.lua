@@ -1,3 +1,8 @@
+vim.api.nvim_cmd({
+  cmd = "packadd",
+  args = { "cfilter" },
+}, {})
+
 vim.pack.add({
   "https://github.com/tpope/vim-eunuch",
   "https://github.com/tpope/vim-fugitive",

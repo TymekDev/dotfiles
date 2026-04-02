@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.opt.colorcolumn = "+1"
 vim.opt.expandtab = true
 vim.opt.foldenable = false
