@@ -129,6 +129,7 @@ in
         complete -c nix-codespace -n __fish_use_subcommand -a rebuild -d "Rebuild Home Manager configuration"
         complete -c nix-codespace -n __fish_use_subcommand -a version -d "Print the dotfiles commit of the current configuration"
         complete -c nix-codespace -n "__fish_seen_subcommand_from rebuild version" -f
+        complete -c nix-codespace -n "__fish_seen_subcommand_from rebuild" -a "(git ls-remote -b https://code.tymek.dev/TymekDev/dotfiles 2>/dev/null | grep -o '[^/]\+\$')" -d "Branch ref"
       '';
       nix-cs = ''
         complete -c nix-cs --wraps nix-codespace
