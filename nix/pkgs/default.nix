@@ -51,6 +51,7 @@ in
   ++ lib.optionals isCodespace [
     (final: prev: {
       nix-codespace = final.callPackage ./nix-codespace.nix { };
+      nvim-persistent = final.callPackage ./nvim-persistent.nix { };
     })
   ];
 }

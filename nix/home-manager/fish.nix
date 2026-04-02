@@ -5,6 +5,8 @@
   ...
 }:
 let
+  inherit (config.dotfiles) isCodespace;
+
   hasFzfGit = config.programs.fzf.enable;
 in
 {
@@ -65,6 +67,9 @@ in
     shellAliases = {
       ls = "${lib.getExe pkgs.eza} --git --group-directories-first --time-style long-iso";
       nv = "nvim";
+    }
+    // lib.optionalAttrs isCodespace {
+      nvim = lib.getExe pkgs.nvim-persistent;
     };
 
     interactiveShellInit = ''

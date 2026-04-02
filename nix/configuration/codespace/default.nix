@@ -3,7 +3,10 @@
   home = {
     inherit (config.dotfiles) username;
     homeDirectory = config.dotfiles.home;
-    packages = [ pkgs.nix-codespace ];
+    packages = [
+      pkgs.nix-codespace
+      pkgs.nvim-persistent
+    ];
   };
 
   nix.package = pkgs.nix;
