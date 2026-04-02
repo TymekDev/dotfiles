@@ -20,6 +20,12 @@ vim.keymap.set("n", "<Leader>bi", ts_r.put_missing_box_imports, { buffer = 0 })
 vim.keymap.set("n", "<M-s>", function()
   require("fzf-lua").lsp_document_symbols({ regex_filter = "String" })
 end, { buffer = 0 })
+vim.keymap.set("n", "<Leader>ra", "<Plug>(EasyAlign)i(<CR>*,", {
+  buffer = 0,
+  desc = "Right-align content of closest parentheses on all commas, e.g. a tribble definition (via vim-easy-align)",
+})
+vim.keymap.set("n", "<Leader>re", require("tymek.r").exec_command)
+vim.keymap.set("n", "<Leader>rr", require("tymek.r").exec_last_command)
 
 local run_lintr = function(code)
   vim.system(
