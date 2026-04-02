@@ -15,7 +15,7 @@ end, {
   buffer = 0,
   desc = "Append a native pipe to the end of the current line",
 })
-vim.keymap.set("i", "<M-,>", " <- ")
+vim.keymap.set("i", "<M-,>", " <- ", { buffer = 0 })
 vim.keymap.set("n", "<Leader>bi", ts_r.put_missing_box_imports, { buffer = 0 })
 
 local run_lintr = function(code)
