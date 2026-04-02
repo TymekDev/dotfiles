@@ -17,6 +17,9 @@ end, {
 })
 vim.keymap.set("i", "<M-,>", " <- ", { buffer = 0 })
 vim.keymap.set("n", "<Leader>bi", ts_r.put_missing_box_imports, { buffer = 0 })
+vim.keymap.set("n", "<M-s>", function()
+  require("fzf-lua").lsp_document_symbols({ regex_filter = "String" })
+end, { buffer = 0 })
 
 local run_lintr = function(code)
   vim.system(
