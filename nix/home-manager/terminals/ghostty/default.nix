@@ -14,10 +14,9 @@ in
     package = lib.mkIf isDarwin null; # use homebrew
 
     settings = {
-      font-size = 19;
-      adjust-cell-width = "-10%";
-      theme = "TokyoNight Day";
-      background = "#f1f2f7"; # NOTE: this doesn't support the light/dark syntax.
+      font-family = "JetBrains Mono";
+      font-size = 16;
+      theme = "light:TokyoNight Day,dark:TokyoNight Storm";
 
       # NOTE: I don't think uppercase letters work in the keybinds
       keybind =
