@@ -43,6 +43,7 @@ vim.api.nvim_create_user_command("WiderActiveBufToggle", function()
   end
   wider_active_buf = not wider_active_buf
 end, {})
+vim.keymap.set("n", "<Leader>W", "<Cmd>WiderActiveBufToggle<CR>")
 
 vim.api.nvim_create_user_command("Task", function(args)
   require("snacks.terminal").open({ "task", args.args }, {

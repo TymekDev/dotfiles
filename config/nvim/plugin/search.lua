@@ -27,6 +27,7 @@ vim.keymap.set("n", "<Leader>fh", "<Cmd>FzfLua helptags<CR>", { desc = "Search t
 vim.keymap.set("n", "<Leader>fb", "<Cmd>FzfLua grep_curbuf<CR>")
 vim.keymap.set("n", "<Leader>fd", "<Cmd>FzfLua diagnostics_document<CR>")
 vim.keymap.set("n", "<Leader>fr", "<Cmd>FzfLua lsp_references<CR>")
+vim.keymap.set("n", "gd", "<Cmd>FzfLua lsp_definitions<CR>")
 
 vim.keymap.set("n", "<Leader>-", function()
   require("fzf-lua").files({
