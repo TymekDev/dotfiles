@@ -122,11 +122,9 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 1. Install Neovim plugins:
 
    ```sh
-   nvim --headless '+Lazy! restore' '+qa'
-   nvim --headless '+TSInstallSync r markdown rnoweb yaml' '+qa'
+   nvim --headless '+lua vim.pack.update({}, { version = "offline", target = "lockfile" })' '+qa'
+   nvim --headless '+lua require("nvim-treesitter").install({ "r", "markdown", "rnoweb", "yaml", }):wait(3 * 60 * 1000)' '+qa'
    ```
-
-   - Note: lazy.nvim will complain about `lazy-lock.json` not being writeable.
 
 </details>
 

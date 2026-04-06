@@ -15,8 +15,6 @@ in
 
       are-we-dark-yet = final.callPackage ./are-we-dark-yet.nix { };
 
-      neovim = final.callPackage ./neovim-bin.nix { };
-
       serve-remote-open = final.callPackage ./serve-remote-open.nix { };
 
       setup-codespace-ssh = final.callPackage ./setup-codespace-ssh.nix { };

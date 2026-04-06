@@ -1,5 +1,6 @@
 -- vim:foldenable:foldlevel=1
 local queries = require("tymek.treesitter.queries.r")
+local r = require("tymek.r")
 local ts = require("tymek.treesitter")
 local ts_r = require("tymek.treesitter.r")
 
@@ -15,8 +16,22 @@ end, {
   buffer = 0,
   desc = "Append a native pipe to the end of the current line",
 })
-vim.keymap.set("i", "<M-,>", " <- ")
+vim.keymap.set("i", "<M-,>", " <- ", { buffer = 0 })
 vim.keymap.set("n", "<Leader>bi", ts_r.put_missing_box_imports, { buffer = 0 })
+vim.keymap.set("n", "<M-s>", function()
+  require("fzf-lua").lsp_document_symbols({ regex_filter = "String" })
+end, { buffer = 0 })
+vim.keymap.set("n", "<Leader>ra", "<Plug>(EasyAlign)i(<CR>*,", {
+  buffer = 0,
+  desc = "Right-align content of closest parentheses on all commas, e.g. a tribble definition (via vim-easy-align)",
+})
+
+-- I want those global to run them not only from R files. But I don't want them defined until I open an R file
+vim.keymap.set("n", "<Leader>re", r.exec_command)
+vim.keymap.set("n", "<Leader>rr", r.exec_last_command)
+
+vim.api.nvim_create_user_command("RLintPackage", r.lint_package, {})
+vim.api.nvim_create_user_command("RLintRhino", r.lint_rhino, {})
 
 vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
   desc = "Highlight reactives and eventReactives declared in the current buffer",

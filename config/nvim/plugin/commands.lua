@@ -1,3 +1,37 @@
+vim.api.nvim_cmd({
+  cmd = "packadd",
+  args = { "cfilter" },
+}, {})
+
+vim.pack.add({
+  "https://github.com/tpope/vim-eunuch",
+  "https://github.com/tpope/vim-fugitive",
+}, { confirm = false })
+
+vim.keymap.set("n", "<Leader>G", function()
+  if not Snacks then
+    vim.notify(vim.log.levels.ERROR, "Snacks not found. Is snacks.nvim installed?")
+    return
+  end
+
+  Snacks.win({
+    file = "fugitive://" .. Snacks.git.get_root() .. "/.git//",
+    minimal = false,
+    border = "rounded",
+    height = 0.8,
+    -- NOTE: without the closing autocmd, the committing made the floating window stuck.
+    on_win = function(win)
+      vim.api.nvim_create_autocmd("WinLeave", {
+        buffer = 0,
+        once = true,
+        callback = function()
+          win:close()
+        end,
+      })
+    end,
+  })
+end)
+
 local wider_active_buf = vim.api.nvim_get_option_value("winwidth", {})
   > vim.api.nvim_get_option_info2("winwidth", {}).default
 vim.api.nvim_create_user_command("WiderActiveBufToggle", function()
@@ -9,41 +43,7 @@ vim.api.nvim_create_user_command("WiderActiveBufToggle", function()
   end
   wider_active_buf = not wider_active_buf
 end, {})
-
-vim.api.nvim_create_user_command("MarkdownTableSeparator", "s/[^|]/-/g", {})
-
-local run_lintr = function(code)
-  vim.system(
-    {
-      "Rscript",
-      "-e",
-      code,
-    },
-    {},
-    vim.schedule_wrap(function(result)
-      local lines = vim.split(result.stdout, "\n")
-
-      local ok, msg = pcall(vim.fn.setqflist, {}, " ", { lines = lines, efm = [[%f:%l:%c:\ %m]] })
-      if not ok then
-        vim.notify(msg --[[@as string]], vim.log.levels.ERROR)
-      end
-
-      vim.cmd.copen()
-    end)
-  )
-end
-
-vim.api.nvim_create_user_command("RLintPackage", function()
-  run_lintr("lintr::lint_package()")
-end, {
-  desc = "Run lintr::lint_package() and populate the quickfix list with the results",
-})
-
-vim.api.nvim_create_user_command("RLintRhino", function()
-  run_lintr("rhino::lint_r()")
-end, {
-  desc = "Run rhino::lint_r() and populate the quickfix list with the results",
-})
+vim.keymap.set("n", "<Leader>W", "<Cmd>WiderActiveBufToggle<CR>")
 
 vim.api.nvim_create_user_command("Task", function(args)
   require("snacks.terminal").open({ "task", args.args }, {

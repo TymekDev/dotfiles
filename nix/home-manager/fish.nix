@@ -75,7 +75,7 @@ in
     interactiveShellInit = ''
       bind ctrl-j accept-autosuggestion execute
       bind ctrl-k forward-word
-      bind ctrl-f "stty sane; nvim -c 'normal ' -c 'startinsert'"
+      bind ctrl-f "stty sane; nvim -c 'normal '"
       bind ctrl-g "stty sane; nvim -c 'normal '"
 
       # Mod+u/Mod+o in my UHK 60v2
@@ -123,7 +123,7 @@ in
               set -f THEME tokyonight_storm
           end
 
-          source "$HOME/.local/share/nvim/lazy/tokyonight.nvim/extras/fish/$THEME.fish"
+          source "$HOME/.local/share/nvim/site/pack/core/opt/tokyonight.nvim/extras/fish/$THEME.fish"
           return 0
         '';
       };

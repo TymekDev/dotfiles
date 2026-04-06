@@ -1,5 +1,10 @@
+local M = {}
+
+---@type string?
+local last_command
+
 ---@type table<string, fun()>
-local commands = {
+local COMMANDS = {
   ["devtools::load_all()"] = function()
     vim.cmd.RSend("devtools::load_all()")
   end,
@@ -40,48 +45,51 @@ local commands = {
     end)
   end,
 }
-local command_last
-local command_execute = function()
-  vim.ui.select(vim.tbl_keys(commands), { prompt = "Execute in R" }, function(cmd)
+
+local run_lintr = function(code)
+  vim.system(
+    {
+      "Rscript",
+      "-e",
+      code,
+    },
+    {},
+    vim.schedule_wrap(function(result)
+      local lines = vim.split(result.stdout, "\n")
+
+      local ok, msg = pcall(vim.fn.setqflist, {}, " ", { lines = lines, efm = [[%f:%l:%c:\ %m]] })
+      if not ok then
+        vim.notify(msg --[[@as string]], vim.log.levels.ERROR)
+      end
+
+      vim.cmd.copen()
+    end)
+  )
+end
+
+M.exec_last_command = function()
+  if M.last_command == nil then
+    M.select_command()
+    return
+  end
+  COMMANDS[last_command]()
+end
+
+M.exec_command = function()
+  vim.ui.select(vim.tbl_keys(COMMANDS), { prompt = "Execute in R" }, function(cmd)
     if cmd ~= nil then
-      command_last = cmd
-      commands[cmd]()
+      last_command = cmd
+      COMMANDS[cmd]()
     end
   end)
 end
 
----@module "lazy"
----@type LazySpec
-return {
-  "R-nvim/R.nvim",
-  ft = "r",
-  keys = {
-    {
-      ft = "r",
-      "<Leader>ra",
-      "<Plug>(EasyAlign)i(<CR>*,",
-      desc = "Right-align content of closest parentheses on all commas, e.g. a tribble definition (via vim-easy-align)",
-    },
-    { ft = "r", "<Leader>re", command_execute, desc = "Execute one of a predefined commands in R (via R.nvim)" },
-    {
-      ft = "r",
-      "<Leader>rr",
-      function()
-        if command_last ~= nil then
-          commands[command_last]()
-        else
-          command_execute()
-        end
-      end,
-      desc = "Repeat last command executed with <Leader>re (via R.nvim)",
-    },
-  },
-  ---@module "r"
-  ---@type RConfig
-  opts = { -- NOTE: DON'T USE external_term = "wezterm" (or "wezterm_split"). It's buggy and has a leak of sorts.
-    setwd = "nvim",
-    hl_term = false,
-    pdfviewer = "",
-    -- R_app = "arf",
-  },
-}
+M.lint_package = function()
+  run_lintr("lintr::lint_package()")
+end
+
+M.lint_rhino = function()
+  run_lintr("rhino::lint_r()")
+end
+
+return M
