@@ -140,6 +140,7 @@ Starting with the oldest:
 - Commit adding the NixOS configuration: ([`c844f53`](https://codeberg.org/TymekDev/dotfiles/commit/c844f535eb858185629250faa3cda237d7ce10fc)) _Merge branch 'nixos'_
 - Mostly switched to nix-darwin on macOS: ([`7aa7741`](https://codeberg.org/TymekDev/dotfiles/commit/7aa7741083174dd55aa184a7514a864266383478))
 - Nix-based GitHub Codespace config: ([`8ec654d`](https://codeberg.org/TymekDev/dotfiles/commit/8ec654d8668186f6c5d2ecbd80037b3e6a211ad2))
+- Replaced lazy.nvim with `vim.pack`: ([`1ce3839`](https://codeberg.org/TymekDev/dotfiles/commit/1ce38390398c1958cb65031b8b34d37cbca91a97))
 
 [`b9d3554`]: https://codeberg.org/TymekDev/dotfiles/commit/b9d35545c8cac900655c77b28ea1eb28c4b3e0ce
 [home-manager]: https://github.com/nix-community/home-manager
