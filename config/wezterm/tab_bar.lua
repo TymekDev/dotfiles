@@ -35,6 +35,7 @@ end)
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local tab_index = tab.tab_index + 1
   local title = tab.active_pane.title
+  title = title:gsub("^%[codespaces%] ", "")
   ---@type Palette
   local colors = config.colors
   local bg_inactive = colors.tab_bar.inactive_tab.bg_color
