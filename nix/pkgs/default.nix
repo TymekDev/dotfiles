@@ -30,6 +30,7 @@ in
       # TODO: remove this once https://github.com/wezterm/wezterm/pull/7444 is merged and available on nixpkgs
       wezterm = prev.wezterm.overrideAttrs (
         finalAttrs: prevAttrs: {
+          patches = (prevAttrs.patches or [ ]) ++ [ ./wezterm-csi-2031.patch ];
           version = "c1c57af8556fd78a51f9556bdbbb56c3c38e0b57";
           src = final.fetchFromGitHub {
             owner = "JafarAbdi";
