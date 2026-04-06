@@ -62,6 +62,22 @@ config.keys = {
   { key = "l", mods = "CMD|SHIFT", action = wezterm.action.SplitPane({ direction = "Right" }) },
 
   { key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+  {
+    key = "o",
+    mods = "CMD",
+    action = wezterm.action.QuickSelectArgs({
+      label = "open url",
+      patterns = {
+        "https?://[^⏎\\s]+",
+      },
+      skip_action_on_paste = true,
+      action = wezterm.action_callback(function(win, pane)
+        local url = win:get_selection_text_for_pane(pane)
+        wezterm.log_info("opening: " .. url)
+        wezterm.open_with(url)
+      end),
+    }),
+  },
 
   -- Sessionizer stuff
   {
