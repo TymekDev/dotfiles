@@ -112,12 +112,13 @@ in
         end
       '';
       update_theme = {
+        # TODO: migrate to variable theme support. Stitch it from files in the repo and ditch this function entirely.
         onEvent = [
           "fish_focus_in"
           "fish_prompt"
         ];
         body = ''
-          if test "$(are-we-dark-yet)" = light
+          if test "$fish_terminal_color_theme" = light
               set -f THEME tokyonight_day
           else
               set -f THEME tokyonight_storm

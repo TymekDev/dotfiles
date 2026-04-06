@@ -26,28 +26,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-vim.api.nvim_create_autocmd("FocusGained", {
-  callback = function()
-    vim.system(
-      { "are-we-dark-yet" },
-      { text = true },
-      ---@param out vim.SystemCompleted
-      function(out)
-        if out.code ~= 0 then
-          vim.notify("failed to read the system appearance:" .. out.stderr, vim.log.levels.ERROR)
-          return
-        end
-
-        local mode = vim.trim(out.stdout)
-        vim.schedule(function()
-          vim.o.background = mode
-          require("nvim-highlight-colors").turnOn()
-        end)
-      end
-    )
-  end,
-})
-
 --  File browser
 vim.pack.add({ "https://github.com/stevearc/oil.nvim" }, { confirm = false })
 require("oil").setup({
@@ -81,6 +59,7 @@ end)
 vim.schedule(function()
   vim.pack.add({ "https://github.com/brenoprata10/nvim-highlight-colors" }, { confirm = false })
   require("nvim-highlight-colors").setup({ enable_tailwind = true })
+  vim.api.nvim_create_autocmd("ColorScheme", { callback = require("nvim-highlight-colors").turnOn })
 end)
 
 -- TODO comments highlighting

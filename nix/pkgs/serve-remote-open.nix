@@ -1,20 +1,12 @@
 {
-  lib,
   stdenv,
   writers,
-  are-we-dark-yet,
 }:
 let
   openCommand = if stdenv.isDarwin then "open" else "xdg-open";
 in
 writers.writePython3Bin "serve-remote-open"
   {
-    makeWrapperArgs = [
-      "--prefix"
-      "PATH"
-      ":"
-      "${lib.getBin are-we-dark-yet}/bin"
-    ];
     flakeIgnore = [
       "E501"
     ];
@@ -32,23 +24,6 @@ writers.writePython3Bin "serve-remote-open"
 
 
     class Handler(BaseHTTPRequestHandler):
-        def do_GET(self):
-            if self.path != "/mode":
-                self.respond(404)
-                return
-
-            try:
-                result = subprocess.run(["are-we-dark-yet"], capture_output=True, text=True)
-                if result.returncode != 0:
-                    self.respond(500)
-                    return
-                self.send_response(200)
-                self.send_header("Content-Type", "text/plain")
-                self.end_headers()
-                self.wfile.write(result.stdout.strip().encode("utf-8"))
-            except Exception:
-                self.respond(500)
-
         def do_POST(self):
             if self.path != "/open":
                 self.respond(404)

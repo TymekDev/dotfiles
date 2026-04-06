@@ -48,9 +48,6 @@ in
       nodejs_22 # needed by Copilot.lua
       ripgrep
       yazi
-
-      # my custom stuff
-      are-we-dark-yet
     ]
     ++ lib.optionals isDarwin [
       jujutsu # TODO: migrate this into home-manager modules
