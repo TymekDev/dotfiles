@@ -28,6 +28,10 @@ tasks:
       - task: rebuild
       - platforms: [darwin]
         cmd: brew upgrade
+  upgrade-plugins:
+    desc: Upgrade Neovim plugins via vim.pack
+    # NOTE: force = true doesn't seem to update the lock file. Saving the confirmation buffer does, though. Hence the `+w`.
+    cmd: nvim --headless '+lua vim.pack.update()' '+w' '+qa'
   rollback:
     desc: Rollback to the previous NixOS build
     platforms: [linux]
