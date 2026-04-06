@@ -30,7 +30,7 @@ end
 ---@param args string[]
 ---@param pane Pane
 local function shell_cmd(args, pane)
-  if pane:get_domain_name() == LOCAL_MUX_DOMAIN then
+  if pane:get_domain_name() == LOCAL_MUX_DOMAIN or pane:get_domain_name() == "local" then
     if #args == 0 then
       return { os.getenv("SHELL") }
     end
