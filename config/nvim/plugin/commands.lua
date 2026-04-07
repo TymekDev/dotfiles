@@ -57,18 +57,34 @@ local list_tasks = function()
     "taskfile.dist.yaml",
   })
 
-  local result = vim.system({ "task", "--list", "--silent", "--taskfile", taskfile }, { text = true }):wait(1000)
+  local result = vim.system({ "task", "--list-all", "--json", "--taskfile", taskfile }, { text = true }):wait(1000)
   if result.code ~= 0 then
-    vim.notify("Failed to retrieve Taskfile tasks: " .. result.stderr, vim.log.levels.ERROR)
+    vim.notify("Failed to retrieve tasks from '" .. taskfile .. "': " .. result.stderr, vim.log.levels.ERROR)
     return {}
   end
 
-  return vim.split(vim.trim(result.stdout), "\n")
+  local tasks = vim.json.decode(result.stdout).tasks
+  return vim.iter(tasks):fold({}, function(acc, task)
+    acc[task.name] = task.desc or ""
+    return acc
+  end)
 end
 
 vim.api.nvim_create_user_command("Task", function(args)
   if args.args == "" then
-    vim.ui.select(list_tasks(), {}, function(task)
+    local tasks = list_tasks()
+    local task_names = vim.tbl_keys(tasks)
+    table.sort(task_names)
+
+    local width = vim.iter(task_names):fold(0, function(acc, task_name)
+      return math.max(acc, #task_name)
+    end)
+
+    vim.ui.select(task_names, {
+      format_item = function(task_name)
+        return string.format("%-" .. width .. "s  %s", task_name, tasks[task_name])
+      end,
+    }, function(task)
       if not task then
         return
       end
@@ -88,5 +104,7 @@ vim.api.nvim_create_user_command("Task", function(args)
   })
 end, {
   nargs = "?",
-  complete = list_tasks,
+  complete = function()
+    return vim.tbl_keys(list_tasks())
+  end,
 })
