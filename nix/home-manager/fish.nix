@@ -8,9 +8,34 @@ let
   inherit (config.dotfiles) isCodespace;
 
   hasFzfGit = config.programs.fzf.enable;
+
+  themeName = "tokyonight";
+  theme =
+    let
+      repo = fetchGit {
+        url = "https://github.com/folke/tokyonight.nvim";
+        rev = "cdc07ac78467a233fd62c493de29a17e0cf2b2b6";
+      };
+    in
+    lib.concatLines [
+      "[light]"
+      (builtins.readFile "${repo}/extras/fish_themes/tokyonight_day.theme")
+      "[dark]"
+      (builtins.readFile "${repo}/extras/fish_themes/tokyonight_storm.theme")
+      ''
+        [unknown]
+        fish_color_normal --reset
+        fish_color_autosuggestion brblack
+        fish_color_cancel -r
+        fish_color_command --reset
+      ''
+    ];
 in
 {
-  xdg.configFile = lib.mkIf hasFzfGit {
+  xdg.configFile = {
+    "fish/themes/${themeName}.theme".text = theme;
+  }
+  // lib.optionalAttrs hasFzfGit {
     "fish/conf.d/fzf-git.fish".source = "${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.fish";
   };
 
@@ -81,6 +106,8 @@ in
       # Mod+u/Mod+o in my UHK 60v2
       bind alt-left backward-bigword
       bind alt-right forward-bigword-end
+
+      fish_config theme choose ${themeName}
     '';
 
     shellInit = ''
@@ -111,23 +138,6 @@ in
             echo -n "$input" | fish_clipboard_copy
         end
       '';
-      update_theme = {
-        # TODO: migrate to variable theme support. Stitch it from files in the repo and ditch this function entirely.
-        onEvent = [
-          "fish_focus_in"
-          "fish_prompt"
-        ];
-        body = ''
-          if test "$fish_terminal_color_theme" = light
-              set -f THEME tokyonight_day
-          else
-              set -f THEME tokyonight_storm
-          end
-
-          source "$HOME/.local/share/nvim/site/pack/core/opt/tokyonight.nvim/extras/fish/$THEME.fish"
-          return 0
-        '';
-      };
     };
 
     completions = {
