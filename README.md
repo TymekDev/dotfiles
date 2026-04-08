@@ -36,10 +36,9 @@ If you have any questions feel free to reach out to me at tymek.makowski@gmail.c
    ```sh
    sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake ~/personal/dotfiles
    ```
-1. Add the following snippet at the very bottom of `~/.ssh/config`:
-   ```
-   Host *
-     IdentityAgent "SSH_AUTH_SOCK"
+1. Add WezTerm to "Input Monitoring" under "Privacy & Security". Rebuild again to set keyboard remaps:
+   ```sh
+   task --taskfile ~/personal/dotfiles/Taskfile.yml rebuild
    ```
 1. Install Neovim spell files
    - Note: Enable NetRW and disable oil.nvim to download spell files (see https://github.com/stevearc/oil.nvim/issues/163)
@@ -149,10 +148,6 @@ Starting with the oldest:
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [lazy.nvim]: https://github.com/folke/lazy.nvim
 [`1ad9d73`]: https://codeberg.org/TymekDev/dotfiles/commit/1ad9d73abd3099247377322dea3b3524c8dd77f3
-
-## Known Issues
-
-- Karabiner does not really work for porting. Another Mac's keyboard has a different identifier?
 
 ## License
 

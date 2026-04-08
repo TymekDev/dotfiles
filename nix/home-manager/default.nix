@@ -66,7 +66,6 @@ in
 
   xdg.enable = true;
   xdg.configFile = lib.mkIf isDarwin {
-    "karabiner".source = mkSymlink "config/karabiner";
     "linearmouse".source = mkSymlink "config/linearmouse";
   };
 

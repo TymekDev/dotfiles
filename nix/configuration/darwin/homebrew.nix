@@ -20,7 +20,6 @@
       "firefox"
       "ghostty"
       "hammerspoon"
-      "karabiner-elements"
       "linearmouse"
       "opencode-desktop"
       "rectangle"
