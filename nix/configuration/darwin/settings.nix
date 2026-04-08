@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   system.startup.chime = false;
 
@@ -51,9 +51,16 @@
       mru-spaces = false;
       tilesize = 48;
       wvous-br-corner = 1; # disabled bottom right hot corner
-      # TODO: fill this out
-      # persistent-apps
-      # persistent-others
+      persistent-apps = [
+        { app = "/Applications/Firefox.app"; }
+        { app = "/Applications/Nix Apps/WezTerm.app"; }
+        { app = "/Applications/Windows App.app"; }
+        { app = "/Applications/Slack.app"; }
+        { app = "/Applications/Spotify.app"; }
+      ];
+      persistent-others = [
+        { folder = "${config.dotfiles.home}/Downloads"; }
+      ];
     };
 
     finder = {
