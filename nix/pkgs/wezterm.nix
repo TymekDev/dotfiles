@@ -10,7 +10,7 @@ let
       d = meta.lastModifiedDate;
     in
     "${builtins.substring 0 8 d}-${builtins.substring 8 6 d}";
-  version = "${date}-${meta.shortRev}-tymek";
+  version = "${date}-${meta.shortRev}-patched";
 in
 prev.wezterm.overrideAttrs (
   finalAttrs: prevAttrs: {
