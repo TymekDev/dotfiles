@@ -46,6 +46,7 @@ vim.schedule(function()
         return { first(bufnr, "air", "styler") }
       end,
       query = { "format-queries" },
+      rust = { "rustfmt" },
       sh = { "shfmt", "shellcheck" },
       templ = { "templ" },
       yaml = { "yamlfmt" },
