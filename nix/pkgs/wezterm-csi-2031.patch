@@ -1,0 +1,381 @@
+diff --git a/codec/src/lib.rs b/codec/src/lib.rs
+index 7869a47bd..e71850234 100644
+--- a/codec/src/lib.rs
++++ b/codec/src/lib.rs
+@@ -441,7 +441,7 @@ macro_rules! pdu {
+ /// The overall version of the codec.
+ /// This must be bumped when backwards incompatible changes
+ /// are made to the types and protocol.
+-pub const CODEC_VERSION: usize = 45;
++pub const CODEC_VERSION: usize = 46;
+ 
+ // Defines the Pdu enum.
+ // Each struct has an explicit identifying number.
+@@ -502,6 +502,7 @@ pdu! {
+     GetPaneDirection: 60,
+     GetPaneDirectionResponse: 61,
+     AdjustPaneSize: 62,
++    SetPaneAppearance: 63,
+ }
+ 
+ impl Pdu {
+@@ -841,6 +842,12 @@ pub struct SetFocusedPane {
+     pub pane_id: PaneId,
+ }
+ 
++#[derive(Deserialize, Serialize, PartialEq, Debug)]
++pub struct SetPaneAppearance {
++    pub pane_id: PaneId,
++    pub is_dark: bool,
++}
++
+ #[derive(Deserialize, Serialize, PartialEq, Debug)]
+ pub struct GetClientList;
+ 
+diff --git a/mux/src/localpane.rs b/mux/src/localpane.rs
+index dac7e394d..3d18ced44 100644
+--- a/mux/src/localpane.rs
++++ b/mux/src/localpane.rs
+@@ -489,6 +489,10 @@ impl Pane for LocalPane {
+         self.terminal.lock().focus_changed(focused);
+     }
+ 
++    fn appearance_changed(&self, appearance: wezterm_term::ColorAppearance) {
++        self.terminal.lock().appearance_changed(appearance);
++    }
++
+     fn has_unseen_output(&self) -> bool {
+         self.terminal.lock().has_unseen_output()
+     }
+diff --git a/mux/src/pane.rs b/mux/src/pane.rs
+index 1c46d7aef..a37f1df71 100644
+--- a/mux/src/pane.rs
++++ b/mux/src/pane.rs
+@@ -17,8 +17,8 @@ use url::Url;
+ use wezterm_dynamic::Value;
+ use wezterm_term::color::ColorPalette;
+ use wezterm_term::{
+-    Clipboard, DownloadHandler, KeyCode, KeyModifiers, MouseEvent, Progress, SemanticZone,
+-    StableRowIndex, TerminalConfiguration, TerminalSize,
++    Clipboard, ColorAppearance, DownloadHandler, KeyCode, KeyModifiers, MouseEvent, Progress,
++    SemanticZone, StableRowIndex, TerminalConfiguration, TerminalSize,
+ };
+ 
+ static PANE_ID: ::std::sync::atomic::AtomicUsize = ::std::sync::atomic::AtomicUsize::new(0);
+@@ -267,6 +267,11 @@ pub trait Pane: Downcast + Send + Sync {
+     /// Called to advise on whether this tab has focus
+     fn focus_changed(&self, _focused: bool) {}
+ 
++    /// Called to advise that the color appearance (dark/light) has changed.
++    /// This allows the terminal to send CSI 2031 notifications if the
++    /// mode is enabled.
++    fn appearance_changed(&self, _appearance: ColorAppearance) {}
++
+     /// Called to advise remote mux that this is the active tab
+     /// for the current identity
+     fn advise_focus(&self) {}
+diff --git a/term/src/terminalstate/mod.rs b/term/src/terminalstate/mod.rs
+index 3d812f978..a5b18c2ac 100644
+--- a/term/src/terminalstate/mod.rs
++++ b/term/src/terminalstate/mod.rs
+@@ -62,6 +62,27 @@ pub(crate) enum MouseEncoding {
+     SgrPixels,
+ }
+ 
++/// Represents the current color appearance mode of the terminal,
++/// as used by CSI 2031 (color palette update notification) and
++/// CSI ? 996 n (query color theme mode).
++/// <https://contour-terminal.org/vt-extensions/color-palette-update-notifications/>
++#[derive(Debug, Clone, Copy, PartialEq, Eq)]
++pub enum ColorAppearance {
++    Dark,
++    Light,
++}
++
++impl ColorAppearance {
++    /// Returns the DSR parameter value for this appearance.
++    /// 1 = dark, 2 = light, per the spec.
++    fn dsr_param(self) -> u8 {
++        match self {
++            Self::Dark => 1,
++            Self::Light => 2,
++        }
++    }
++}
++
+ impl TabStop {
+     fn new(screen_width: usize, tab_width: usize) -> Self {
+         let mut tabs = Vec::with_capacity(screen_width);
+@@ -311,6 +332,13 @@ pub struct TerminalState {
+     /// Movement events enabled
+     any_event_mouse: bool,
+     focus_tracking: bool,
++    /// When enabled (CSI ? 2031 h), the terminal sends unsolicited DSR
++    /// notifications when the color palette appearance changes.
++    color_palette_update_notification: bool,
++    /// The current color appearance of the terminal (dark/light),
++    /// used to respond to CSI ? 996 n and to send notifications
++    /// when mode 2031 is enabled.
++    current_appearance: Option<ColorAppearance>,
+     /// X10 (legacy), SGR, and SGR-Pixels style mouse tracking and
+     /// reporting is enabled
+     mouse_encoding: MouseEncoding,
+@@ -538,6 +566,8 @@ impl TerminalState {
+             application_keypad: false,
+             bracketed_paste: false,
+             focus_tracking: false,
++            color_palette_update_notification: false,
++            current_appearance: None,
+             mouse_encoding: MouseEncoding::X10,
+             keyboard_encoding: KeyboardEncoding::Xterm,
+             sixel_scrolls_right: false,
+@@ -794,6 +824,20 @@ impl TerminalState {
+         }
+     }
+ 
++    /// Advise the terminal about a change in the color appearance (dark/light).
++    /// If mode 2031 (ColorPaletteUpdateNotification) is enabled, this sends
++    /// an unsolicited DSR to the application: CSI ? 997 ; 1 n (dark) or
++    /// CSI ? 997 ; 2 n (light).
++    /// <https://contour-terminal.org/vt-extensions/color-palette-update-notifications/>
++    pub fn appearance_changed(&mut self, appearance: ColorAppearance) {
++        let changed = self.current_appearance.map_or(true, |old| old != appearance);
++        self.current_appearance = Some(appearance);
++        if changed && self.color_palette_update_notification {
++            write!(self.writer, "\x1b[?997;{}n", appearance.dsr_param()).ok();
++            self.writer.flush().ok();
++        }
++    }
++
+     /// Returns true if there is new output since the terminal
+     /// lost focus
+     pub fn has_unseen_output(&self) -> bool {
+@@ -1283,6 +1327,9 @@ impl TerminalState {
+ 
+                 self.g0_charset = CharSet::Ascii;
+                 self.g1_charset = CharSet::Ascii;
++
++                self.color_palette_update_notification = false;
++                self.current_appearance = None;
+             }
+             Device::RequestPrimaryDeviceAttributes => {
+                 let mut ident = "\x1b[?65".to_string(); // Vt500
+@@ -1336,6 +1383,15 @@ impl TerminalState {
+                 self.writer.write(b"\x1b[0n").ok();
+                 self.writer.flush().ok();
+             }
++            Device::RequestColorThemeMode => {
++                write!(
++                    self.writer,
++                    "\x1b[?997;{}n",
++                    self.current_appearance.unwrap_or(ColorAppearance::Dark).dsr_param()
++                )
++                .ok();
++                self.writer.flush().ok();
++            }
+             Device::XtSmGraphics(g) => {
+                 let response = if matches!(g.item, XtSmGraphicsItem::Unspecified(_)) {
+                     XtSmGraphics {
+@@ -1815,6 +1871,22 @@ impl TerminalState {
+                 self.decqrm_response(mode, true, self.focus_tracking);
+             }
+ 
++            Mode::SetDecPrivateMode(DecPrivateMode::Code(
++                DecPrivateModeCode::ColorPaletteUpdateNotification,
++            )) => {
++                self.color_palette_update_notification = true;
++            }
++            Mode::ResetDecPrivateMode(DecPrivateMode::Code(
++                DecPrivateModeCode::ColorPaletteUpdateNotification,
++            )) => {
++                self.color_palette_update_notification = false;
++            }
++            Mode::QueryDecPrivateMode(DecPrivateMode::Code(
++                DecPrivateModeCode::ColorPaletteUpdateNotification,
++            )) => {
++                self.decqrm_response(mode, true, self.color_palette_update_notification);
++            }
++
+             Mode::SetDecPrivateMode(DecPrivateMode::Code(DecPrivateModeCode::SGRMouse)) => {
+                 self.mouse_encoding = MouseEncoding::SGR;
+                 self.last_mouse_move.take();
+diff --git a/wezterm-client/src/client.rs b/wezterm-client/src/client.rs
+index 9dc242062..3d2820e96 100644
+--- a/wezterm-client/src/client.rs
++++ b/wezterm-client/src/client.rs
+@@ -1389,4 +1389,5 @@ impl Client {
+         GetPaneDirectionResponse
+     );
+     rpc!(adjust_pane_size, AdjustPaneSize, UnitResponse);
++    rpc!(set_pane_appearance, SetPaneAppearance, UnitResponse);
+ }
+diff --git a/wezterm-client/src/pane/clientpane.rs b/wezterm-client/src/pane/clientpane.rs
+index aad21a54c..8c167aec4 100644
+--- a/wezterm-client/src/pane/clientpane.rs
++++ b/wezterm-client/src/pane/clientpane.rs
+@@ -561,6 +561,22 @@ impl Pane for ClientPane {
+         }
+     }
+ 
++    fn appearance_changed(&self, appearance: wezterm_term::ColorAppearance) {
++        let client = Arc::clone(&self.client);
++        let remote_pane_id = self.remote_pane_id;
++        let is_dark = appearance == wezterm_term::ColorAppearance::Dark;
++        promise::spawn::spawn(async move {
++            client
++                .client
++                .set_pane_appearance(SetPaneAppearance {
++                    pane_id: remote_pane_id,
++                    is_dark,
++                })
++                .await
++        })
++        .detach();
++    }
++
+     fn erase_scrollback(&self, erase_mode: ScrollbackEraseMode) {
+         let client = Arc::clone(&self.client);
+         let remote_pane_id = self.remote_pane_id;
+diff --git a/wezterm-escape-parser/src/csi.rs b/wezterm-escape-parser/src/csi.rs
+index ffa46ad3c..d659ca90a 100644
+--- a/wezterm-escape-parser/src/csi.rs
++++ b/wezterm-escape-parser/src/csi.rs
+@@ -462,6 +462,9 @@ pub enum Device {
+     RequestTerminalNameAndVersion,
+     RequestTerminalParameters(i64),
+     XtSmGraphics(XtSmGraphics),
++    /// <https://contour-terminal.org/vt-extensions/color-palette-update-notifications/>
++    /// CSI ? 996 n — query current color theme mode (dark/light)
++    RequestColorThemeMode,
+ }
+ 
+ impl Display for Device {
+@@ -482,6 +485,7 @@ impl Display for Device {
+             Device::RequestTerminalNameAndVersion => write!(f, ">q")?,
+             Device::RequestTerminalParameters(n) => write!(f, "{};1;1;128;128;1;0x", n + 2)?,
+             Device::StatusReport => write!(f, "5n")?,
++            Device::RequestColorThemeMode => write!(f, "?996n")?,
+             Device::XtSmGraphics(g) => {
+                 write!(f, "?{};{}", g.item, g.action_or_status)?;
+                 for v in &g.value {
+@@ -959,6 +963,11 @@ pub enum DecPrivateModeCode {
+     /// xterm: adjust cursor positioning after emitting sixel
+     SixelScrollsRight = 8452,
+ 
++    /// <https://contour-terminal.org/vt-extensions/color-palette-update-notifications/>
++    /// When enabled, the terminal sends unsolicited DSR notifications
++    /// when the color palette appearance (dark/light) changes.
++    ColorPaletteUpdateNotification = 2031,
++
+     /// Windows Terminal: win32-input-mode
+     /// <https://github.com/microsoft/terminal/blob/main/doc/specs/%234999%20-%20Improved%20keyboard%20handling%20in%20Conpty.md>
+     Win32InputMode = 9001,
+@@ -1848,6 +1857,10 @@ impl<'a> CSIParser<'a> {
+                 .secondary_device_attributes(params)
+                 .map(|dev| CSI::Device(Box::new(dev))),
+ 
++            ('n', [CsiParam::P(b'?'), ..]) => self
++                .dec_dsr(params)
++                .map(|dev| CSI::Device(Box::new(dev))),
++
+             ('S', [CsiParam::P(b'?'), ..]) => XtSmGraphics::parse(params),
+             ('p', [CsiParam::Integer(_), CsiParam::P(b'$')])
+             | ('p', [CsiParam::P(b'?'), CsiParam::Integer(_), CsiParam::P(b'$')]) => {
+@@ -2095,6 +2108,18 @@ impl<'a> CSIParser<'a> {
+         }
+     }
+ 
++    /// Handle CSI ? Ps n — DEC private DSR (device status report) requests.
++    /// Currently supports:
++    /// - CSI ? 996 n — request current color theme mode (dark/light)
++    fn dec_dsr(&mut self, params: &'a [CsiParam]) -> Result<Device, ()> {
++        match params {
++            [CsiParam::P(b'?'), CsiParam::Integer(996)] => {
++                Ok(self.advance_by(2, params, Device::RequestColorThemeMode))
++            }
++            _ => Err(()),
++        }
++    }
++
+     fn decstbm(&mut self, params: &'a [CsiParam]) -> Result<CSI, ()> {
+         match params {
+             [] => Ok(CSI::Cursor(Cursor::SetTopAndBottomMargins {
+diff --git a/wezterm-gui/src/termwindow/mod.rs b/wezterm-gui/src/termwindow/mod.rs
+index 350cb8fb7..ee2dcb69c 100644
+--- a/wezterm-gui/src/termwindow/mod.rs
++++ b/wezterm-gui/src/termwindow/mod.rs
+@@ -66,7 +66,9 @@ use wezterm_dynamic::Value;
+ use wezterm_font::FontConfiguration;
+ use wezterm_term::color::ColorPalette;
+ use wezterm_term::input::LastMouseClick;
+-use wezterm_term::{Alert, Progress, StableRowIndex, TerminalConfiguration, TerminalSize};
++use wezterm_term::{
++    Alert, ColorAppearance, Progress, StableRowIndex, TerminalConfiguration, TerminalSize,
++};
+ 
+ pub mod background;
+ pub mod box_model;
+@@ -929,6 +931,22 @@ impl TermWindow {
+                 // <https://github.com/wezterm/wezterm/issues/2295>
+                 config::reload();
+                 self.config_was_reloaded();
++
++                // Notify all panes about the appearance change so that
++                // applications with CSI 2031 (color palette update
++                // notification mode) enabled can be informed.
++                let color_appearance = match appearance {
++                    Appearance::Light | Appearance::LightHighContrast => ColorAppearance::Light,
++                    Appearance::Dark | Appearance::DarkHighContrast => ColorAppearance::Dark,
++                };
++                let mux = Mux::get();
++                if let Some(window) = mux.get_window(self.mux_window_id) {
++                    for tab in window.iter() {
++                        for pane in tab.iter_panes_ignoring_zoom() {
++                            pane.pane.appearance_changed(color_appearance);
++                        }
++                    }
++                }
+                 Ok(true)
+             }
+             WindowEvent::PerformKeyAssignment(action) => {
+diff --git a/wezterm-mux-server-impl/src/sessionhandler.rs b/wezterm-mux-server-impl/src/sessionhandler.rs
+index 5c8e29577..00f270293 100644
+--- a/wezterm-mux-server-impl/src/sessionhandler.rs
++++ b/wezterm-mux-server-impl/src/sessionhandler.rs
+@@ -15,7 +15,7 @@ use std::time::Instant;
+ use termwiz::surface::SequenceNo;
+ use url::Url;
+ use wezterm_term::terminal::Alert;
+-use wezterm_term::StableRowIndex;
++use wezterm_term::{ColorAppearance, StableRowIndex};
+ 
+ #[derive(Clone)]
+ pub struct PduSender {
+@@ -370,6 +370,27 @@ impl SessionHandler {
+                 })
+                 .detach();
+             }
++            Pdu::SetPaneAppearance(SetPaneAppearance { pane_id, is_dark }) => {
++                spawn_into_main_thread(async move {
++                    catch(
++                        move || {
++                            let mux = Mux::get();
++                            let pane = mux
++                                .get_pane(pane_id)
++                                .ok_or_else(|| anyhow::anyhow!("pane {pane_id} not found"))?;
++                            let appearance = if is_dark {
++                                ColorAppearance::Dark
++                            } else {
++                                ColorAppearance::Light
++                            };
++                            pane.appearance_changed(appearance);
++                            Ok(Pdu::UnitResponse(UnitResponse {}))
++                        },
++                        send_response,
++                    )
++                })
++                .detach();
++            }
+             Pdu::GetClientList(GetClientList) => {
+                 spawn_into_main_thread(async move {
+                     catch(
