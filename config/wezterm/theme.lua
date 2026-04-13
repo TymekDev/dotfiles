@@ -15,6 +15,7 @@ M.update = function(config)
 
   if theme == "tokyonight_day" then
     colors.background = "#f1f2f7"
+    colors.tab_bar.background = "#cfd4e2" -- taken from lualine
   elseif theme == "tokyonight_storm" then
     colors.tab_bar.background = "#1f2335" -- taken from lualine
   end
