@@ -36,7 +36,7 @@ in
     ];
 
     signing = {
-      format = if isCodespace then null else "ssh";
+      format = if isCodespace then null else "ssh"; # NOTE: the explicit null is required
       signByDefault = true;
       signer = lib.mkIf (!isCodespace) opSshSign;
     };
