@@ -96,7 +96,10 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 
 1. Install Nix:
    ```sh
-   NIX_CONFIG="use-xdg-base-directories = true" sh <(curl -L https://nixos.org/nix/install) --no-daemon
+   NIX_CONFIG="experimental-features = flakes nix-command
+   access-tokens = github.com=$GITHUB_TOKEN
+   use-xdg-base-directories = true" \
+     sh <(curl -L https://nixos.org/nix/install) --no-daemon
    ```
 1. Source the shell integration:
    ```sh
@@ -106,8 +109,9 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 
    ```sh
    NIX_CONFIG="experimental-features = flakes nix-command
-   access-tokens = github.com=$GITHUB_TOKEN" \
-     nix run github:nix-community/home-manager --\
+   access-tokens = github.com=$GITHUB_TOKEN
+   use-xdg-base-directories = true" \
+     nix run github:nix-community/home-manager -- \
      switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles#$(id -un)"
    ```
 
