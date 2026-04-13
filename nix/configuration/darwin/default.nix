@@ -3,7 +3,7 @@
   imports = [
     ./homebrew.nix
     ./keyboard.nix
-    ./settings.nix
+    ./system-settings.nix
   ];
 
   # Installed via nix-darwin, so it can be found in /Applications/Nix Apps/
