@@ -6,7 +6,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
+      url = "github:TymekDev/nix-darwin?ref=builtin-keyboard-only";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 

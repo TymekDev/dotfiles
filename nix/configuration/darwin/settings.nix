@@ -9,6 +9,7 @@ in
     enableKeyMapping = true;
     nonUS.remapTilde = true;
     remapCapsLockToEscape = true;
+    builtinKeyboardOnly = true;
     userKeyMapping = [
       # Right Command -> Right Option
       {
