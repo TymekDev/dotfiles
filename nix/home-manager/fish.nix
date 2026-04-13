@@ -94,7 +94,8 @@ in
       nv = "nvim";
     }
     // lib.optionalAttrs isCodespace {
-      nvim = lib.getExe pkgs.nvim-persistent;
+      # FIXME: tokyonight.nvim doesn't work with --headless
+      # nvim = lib.getExe pkgs.nvim-persistent;
     };
 
     interactiveShellInit = ''
