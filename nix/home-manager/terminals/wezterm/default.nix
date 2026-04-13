@@ -5,10 +5,9 @@
   ...
 }:
 let
-  inherit (config.dotfiles) hasGUI;
+  inherit (config.dotfiles) isCodespace isLinuxWithGUI;
   inherit (pkgs.stdenv) isDarwin isLinux;
 
-  enable = hasGUI && isLinux;
   mkSymlink =
     path: config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.home}/personal/dotfiles/${path}";
 in
@@ -28,9 +27,9 @@ in
     "wezterm/wezterm.lua".source = mkSymlink "nix/home-manager/terminals/wezterm/wezterm.lua";
   };
 
-  programs.wezterm.enable = enable;
+  programs.wezterm.enable = isLinuxWithGUI;
 
-  home.sessionSearchVariables = lib.mkIf (!enable) {
+  home.sessionSearchVariables = lib.mkIf isCodespace {
     TERMINFO_DIRS = [ "${pkgs.wezterm.terminfo}/share/terminfo" ];
   };
 }

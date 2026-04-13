@@ -24,7 +24,11 @@ in
       fzf-git-sh = prev.fzf-git-sh.overrideAttrs (prevAttrs: {
         patches = (prevAttrs.patches or [ ]) ++ [ ./fzf-git-sh-no-keybindings.patch ];
       });
-
+    })
+  ]
+  ++ lib.optionals (!isCodespace) [
+    (final: prev: {
+      # NOTE: I just need the terminfo there, so I use the nixpkgs one as the patches don't modify the terminfo.
       wezterm = import ./wezterm.nix { inherit final prev; };
     })
   ]

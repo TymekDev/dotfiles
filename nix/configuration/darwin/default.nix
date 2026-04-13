@@ -5,6 +5,7 @@
     ./settings.nix
   ];
 
+  # Installed via nix-darwin, so it can be found in /Applications/Nix Apps/
   environment.systemPackages = with pkgs; [ wezterm ];
 
   nix.settings.experimental-features = [
