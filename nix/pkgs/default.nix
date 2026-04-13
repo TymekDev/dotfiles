@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   ...
@@ -10,6 +11,8 @@ in
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
+    inputs.neovim-nightly-overlay.overlays.default
+
     (final: prev: {
       arf = final.callPackage ./arf-bin.nix { };
 

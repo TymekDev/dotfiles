@@ -24,6 +24,8 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs =
@@ -34,7 +36,7 @@
       home-manager,
       nur,
       ...
-    }:
+    }@inputs:
     let
       system = "x86_64-linux";
     in
@@ -63,6 +65,7 @@
 
       darwinConfigurations = {
         maczek = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs; };
           modules = [
             home-manager.darwinModules.home-manager
 
@@ -88,6 +91,7 @@
             username:
             home-manager.lib.homeManagerConfiguration {
               inherit pkgs;
+              extraSpecialArgs = { inherit inputs; };
               modules = [
                 ./nix/configuration/common/dotfiles.nix
                 ./nix/configuration/codespace
