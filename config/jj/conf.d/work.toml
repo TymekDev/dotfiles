@@ -1,9 +1,0 @@
-#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
-
---when.repositories = ["~/work"]
-
-[user]
-email = "tymoteusz.makowski@appsilon.com"
-
-[signing]
-key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9tByXqdaKd0OpKWNYFgF0KHYANYJfCvbzSXdWaZh4A"

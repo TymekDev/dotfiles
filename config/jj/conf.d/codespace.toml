@@ -1,9 +1,0 @@
-#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
-
---when.repositories = ["/workspaces"]
-
-[user]
-email = "tymoteusz.makowski@appsilon.com"
-
-[signing]
-backend = "none"

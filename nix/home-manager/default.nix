@@ -49,9 +49,6 @@ in
       ripgrep
       yazi
     ]
-    ++ lib.optionals isDarwin [
-      jujutsu # TODO: migrate this into home-manager modules
-    ]
     ++ lib.optionals (hasGUI && isLinux) [
       discord
       opencode-desktop

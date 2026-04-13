@@ -1,19 +1,28 @@
-# TODO: support nix-darwin
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 let
   inherit (config.dotfiles) isCodespace;
-  inherit (pkgs.stdenv) isDarwin isLinux;
+  inherit (pkgs.stdenv) isDarwin;
 
+  workEmail = "tymoteusz.makowski@appsilon.com";
   opSshSign =
     if isDarwin then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign" else "op-ssh-sign";
 in
 {
+  xdg.configFile = lib.mkIf isDarwin {
+    "jj/conf.d/work.toml".source = pkgs.writers.writeTOML "work.toml" {
+      "--when.repositories" = [ "~/work" ];
+      user.email = workEmail;
+      signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9tByXqdaKd0OpKWNYFgF0KHYANYJfCvbzSXdWaZh4A";
+    };
+  };
+
   programs.jujutsu = {
-    enable = isLinux && !isCodespace;
+    enable = true;
 
     settings = {
       ui = {
@@ -34,12 +43,13 @@ in
         pager = "less -FXR";
       };
 
-      user = {
+      user = lib.mkIf (!isCodespace) {
         name = "Tymoteusz Makowski";
         email = "tymek.makowski@gmail.com";
       };
 
-      signing = {
+      # TODO: support Codespaces signing
+      signing = lib.mkIf (!isCodespace) {
         behavior = "own";
         backend = "ssh";
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILkf84+zcnJNPvvNC2uskzM860ewSX5tLo57A7jA8Yre";
@@ -50,7 +60,7 @@ in
         l = [
           "log"
           "-r"
-          "present(@) | ancestors(immutable_heads()..) | present(trunk())"
+          "present(@) | ancestors(immutable_heads()..) | present(trunk()) | remote_bookmarks()"
         ];
       };
     };

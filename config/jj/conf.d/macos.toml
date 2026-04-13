@@ -1,6 +1,0 @@
-#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
-
---when.platforms = ["macos"]
-
-[signing]
-backends.ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
