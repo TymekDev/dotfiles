@@ -15,7 +15,10 @@ in
 {
   xdg.configFile = lib.mkIf isDarwin {
     "jj/conf.d/work.toml".source = pkgs.writers.writeTOML "work.toml" {
-      "--when.repositories" = [ "~/work" ];
+      # NOTE: this cannot be "--when.repositories", because it won't apply correctly
+      "--when" = {
+        repositories = [ "~/work" ];
+      };
       user.email = workEmail;
       signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB9tByXqdaKd0OpKWNYFgF0KHYANYJfCvbzSXdWaZh4A";
     };
