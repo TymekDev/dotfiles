@@ -55,6 +55,7 @@ in
       spotify
     ]
     ++ lib.optionals (!isCodespace) [
+      imagemagick
       serve-remote-open
       setup-codespace-ssh
       tarsnap-1pass
