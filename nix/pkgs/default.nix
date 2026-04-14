@@ -11,6 +11,8 @@ in
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
+    inputs.neovim-nightly-overlay.overlays.default
+
     (final: prev: {
       arf = final.callPackage ./arf-bin.nix { };
 
@@ -28,8 +30,6 @@ in
     })
   ]
   ++ lib.optionals (!isCodespace) [
-    inputs.neovim-nightly-overlay.overlays.default # NOTE: it takes too long to build in Codespaces
-
     (final: prev: {
       # NOTE: I just need the terminfo there, so I use the nixpkgs one as the patches don't modify the terminfo.
       wezterm = import ./wezterm.nix { inherit final prev; };
