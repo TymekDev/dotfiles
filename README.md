@@ -94,6 +94,14 @@ Flakes are git-aware and the error doesn't suggest that this might be the issue.
 <details>
 <summary><h3>GitHub Codespace</h3></summary>
 
+Run the installation script:
+
+```sh
+bash <(curl -L https://codeberg.org/TymekDev/dotfiles/raw/branch/main/scripts/codespace-install.sh)
+```
+
+Or install manually:
+
 1. Install Nix:
    ```sh
    NIX_CONFIG="experimental-features = flakes nix-command
