@@ -46,18 +46,22 @@ in
         pager = "less -FXR";
       };
 
-      user = lib.mkIf (!isCodespace) {
+      user = {
         name = "Tymoteusz Makowski";
-        email = "tymek.makowski@gmail.com";
+        email = if isCodespace then workEmail else "tymek.makowski@gmail.com";
       };
 
-      # TODO: support Codespaces signing
-      signing = lib.mkIf (!isCodespace) {
-        behavior = "own";
-        backend = "ssh";
-        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILkf84+zcnJNPvvNC2uskzM860ewSX5tLo57A7jA8Yre";
-        backends.ssh.program = opSshSign;
-      };
+      signing = lib.mkMerge [
+        (lib.mkIf isCodespace {
+          backend = "gpg";
+        })
+        (lib.mkIf (!isCodespace) {
+          behavior = "own";
+          backend = "ssh";
+          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILkf84+zcnJNPvvNC2uskzM860ewSX5tLo57A7jA8Yre";
+          backends.ssh.program = opSshSign;
+        })
+      ];
 
       aliases = {
         l = [
