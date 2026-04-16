@@ -15,7 +15,7 @@ in
 prev.wezterm.overrideAttrs (
   finalAttrs: prevAttrs: {
     patches = (prevAttrs.patches or [ ]) ++ [
-      ./wezterm-csi-2031.patch
+      ../patches/wezterm_csi-2031.patch
     ];
     version = rev;
     src = final.fetchFromGitHub {
