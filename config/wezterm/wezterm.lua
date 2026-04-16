@@ -70,7 +70,7 @@ config.keys = {
     action = wezterm.action.QuickSelectArgs({
       label = "open url",
       patterns = {
-        "https?://[^⏎\\s]+",
+        'https?://[^"⏎\\s]+',
       },
       skip_action_on_paste = true,
       action = wezterm.action_callback(function(win, pane)
