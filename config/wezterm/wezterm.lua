@@ -153,7 +153,7 @@ config.keys = {
   },
   {
     key = "y",
-    mods = "LEADER",
+    mods = "CMD",
     action = wezterm.action_callback(function(win, pane)
       local cmd = shell_cmd({ "yazi" }, pane)
       win:perform_action(wezterm.action.SpawnCommandInNewTab({ args = cmd }), pane)
@@ -161,7 +161,7 @@ config.keys = {
   },
   {
     key = "Y",
-    mods = "LEADER",
+    mods = "CMD",
     action = wezterm.action_callback(function(win, pane)
       local dir = sessionizer.active_workspace_dir()
       local cmd = shell_cmd({ "yazi" }, pane)
