@@ -106,7 +106,7 @@ in
 
       # Mod+u/Mod+o in my UHK 60v2
       bind alt-left backward-bigword
-      bind alt-right forward-bigword-end
+      bind alt-right forward-bigword
 
       # Mod+m/Mod+. in my UHK 60v2 
       bind super-left beginning-of-line
