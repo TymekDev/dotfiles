@@ -7,6 +7,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.term = "wezterm"
+config.enable_kitty_keyboard = true
 config.font = wezterm.font("Berkeley Mono Trial")
 config.line_height = 1.1
 config.font_size = 16

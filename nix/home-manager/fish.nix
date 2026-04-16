@@ -108,6 +108,10 @@ in
       bind alt-left backward-bigword
       bind alt-right forward-bigword-end
 
+      # Mod+m/Mod+. in my UHK 60v2 
+      bind super-left beginning-of-line
+      bind super-right end-of-line
+
       fish_config theme choose ${themeName}
     '';
 
