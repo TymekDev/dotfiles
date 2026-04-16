@@ -24,6 +24,7 @@ let
         nix run github:nix-community/home-manager -- \
           switch --flake "git+https://code.tymek.dev/TymekDev/dotfiles''${REF}#$(id -un)" --refresh
         nvim --headless '+lua vim.pack.update({}, { version = "offline", target = "lockfile" })' '+qa'
+        nvim --headless '+lua require("nvim-treesitter").install({ "r", "markdown", "rnoweb", "yaml", }):wait(3 * 60 * 1000)' '+qa'
         ;;
       version)
         shift
