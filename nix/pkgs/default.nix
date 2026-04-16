@@ -24,6 +24,10 @@ in
 
       tarsnap-1pass-backup = final.callPackage ./tarsnap-1pass-backup.nix { };
 
+      fzf = prev.fzf.overrideAttrs (prevAttrs: {
+        patches = (prevAttrs.patches or [ ]) ++ [ ./fzf-light-tui-arrow-handling.patch ];
+      });
+
       fzf-git-sh = prev.fzf-git-sh.overrideAttrs (prevAttrs: {
         patches = (prevAttrs.patches or [ ]) ++ [ ./fzf-git-sh-no-keybindings.patch ];
       });
