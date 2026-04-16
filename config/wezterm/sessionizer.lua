@@ -71,12 +71,16 @@ local format_choices = function(choices)
     workspaces[ws] = 0
   end
 
+  -- Alphabetical base order
   table.sort(choices, function(a, b)
     return a.label < b.label
   end)
 
-  local offset = 0
   local result = {}
+  ---@type {choice: InputSelectorItem, timestamp: number}[]
+  local active_lru = {}
+  local lru = wezterm.GLOBAL.sessionizer_lru or {}
+
   for _, choice in ipairs(choices) do
     local name = id_to_name(choice.id)
 
@@ -95,15 +99,21 @@ local format_choices = function(choices)
     if name == active_workspace then
       choice.label = "󰐍  " .. choice.label
       table.insert(result, 1, choice)
-      offset = offset + 1
     elseif workspaces[name] ~= nil then
       choice.label = "󰏦  " .. choice.label
-      table.insert(result, 1 + offset, choice)
-      offset = offset + 1
+      table.insert(active_lru, { choice = choice, timestamp = lru[name] or 0 })
     else
       choice.label = "   " .. choice.label
       table.insert(result, choice)
     end
+  end
+
+  table.sort(active_lru, function(a, b)
+    return a.timestamp > b.timestamp
+  end)
+
+  for i, entry in ipairs(active_lru) do
+    table.insert(result, i + 1, entry.choice)
   end
 
   return result
@@ -112,6 +122,10 @@ end
 -- NOTE: not using label allows to have them fancy-formatted for the selector
 local switch_to_id = function(window, pane, id)
   wezterm.GLOBAL.sessionizer_last_id = wezterm.mux.get_active_workspace()
+
+  local lru = wezterm.GLOBAL.sessionizer_lru or {}
+  lru[id_to_name(id)] = os.time()
+  wezterm.GLOBAL.sessionizer_lru = lru
 
   local spawn = { cwd = id, domain = "DefaultDomain" }
   if codespaces.is_codespace_domain(id) then
