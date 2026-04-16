@@ -45,7 +45,6 @@ in
       go-task
       ijq
       jq
-      nodejs_22 # needed by Copilot.lua
       ripgrep
       yazi
     ]
@@ -56,6 +55,7 @@ in
     ]
     ++ lib.optionals (!isCodespace) [
       imagemagick
+      nodejs_22 # needed by Copilot.lua
       serve-remote-open
       setup-codespace-ssh
       tarsnap-1pass
