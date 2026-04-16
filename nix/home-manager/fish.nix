@@ -56,6 +56,7 @@ in
       gcp = "git cherry-pick";
       gcw = "git commit --amend --only";
       gd = "git diff";
+      gdp = "git diff --no-ext-diff"; # [g]it [d]iff [p]atch
       gds = "git diff --staged";
       gf = "git fetch";
       gg = if hasFzfGit then "__fzf_git_sh hashes" else "git g";
