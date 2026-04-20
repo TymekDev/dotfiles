@@ -1,10 +1,14 @@
 {
   writeShellApplication,
   symlinkJoin,
+  git,
 }:
 let
   nix-codespace = writeShellApplication {
     name = "nix-codespace";
+    runtimeInputs = [
+      git
+    ];
     text = ''
       usage() {
         echo "Usage: nix-codespace <command> [options]"
@@ -28,7 +32,9 @@ let
         ;;
       version)
         shift
-        cat ~/.cache/nix/gitv3/*/FETCH_HEAD
+        HEAD_PATH="$(grep -l 'TymekDev/dotfiles' ~/.cache/nix/gitv3/*/FETCH_HEAD)"
+        DIR="$(dirname "$HEAD_PATH")"
+        git -C "$DIR" log -1
         ;;
       --help | -h)
         usage
