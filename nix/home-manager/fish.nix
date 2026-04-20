@@ -59,7 +59,7 @@ in
       gdp = "git diff --no-ext-diff"; # [g]it [d]iff [p]atch
       gds = "git diff --staged";
       gf = "git fetch";
-      gg = if hasFzfGit then "__fzf_git_sh hashes" else "git g";
+      gg = "git g";
       ggf = "git gf";
       ggs = "git gs";
       gl = "git pull";
