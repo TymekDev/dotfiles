@@ -20,7 +20,6 @@ vim.schedule(function()
     "templ",
     "ts_ls",
     "ty",
-    "unocss",
     "yamlls",
   })
   vim.lsp.inlay_hint.enable()

@@ -39,7 +39,6 @@ in
       gopls
       lua-language-server
       nixd
-      nodePackages.unocss-language-server
       tailwindcss-language-server
       taplo
       templ
