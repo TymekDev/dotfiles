@@ -44,6 +44,7 @@
       nixosConfigurations = {
         sffpc = nixpkgs-unstable.lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs; };
           modules = [
             disko.nixosModules.disko
             home-manager.nixosModules.home-manager
