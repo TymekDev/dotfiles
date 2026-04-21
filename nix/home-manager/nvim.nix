@@ -42,11 +42,23 @@ in
   xdg.configFile."nvim".source = if isCodespace then ../../config/nvim else mkSymlink "config/nvim";
 
   xdg.configFile."nvim-nix/plugin/tree-sitter-parsers.lua".text = ''
-    vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/site/pack/core/opt/nvim-treesitter/runtime")
     vim.opt.runtimepath:append({
     ${lib.concatMapStringsSep ",\n" (x: ''"${x}"'') parsers}
     })
   '';
+
+  xdg.dataFile = builtins.listToAttrs (
+    lib.map (
+      pkg:
+      let
+        parserName = lib.last (lib.splitString "-" pkg.pname);
+      in
+      {
+        name = "nvim/site/queries/${parserName}";
+        value.source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.home}/.local/share/nvim/site/pack/core/opt/nvim-treesitter/runtime/queries/${parserName}";
+      }
+    ) parsers
+  );
 
   home.packages =
     with pkgs;
