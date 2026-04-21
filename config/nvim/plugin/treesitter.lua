@@ -40,11 +40,8 @@ vim.api.nvim_create_autocmd("FileType", {
     "yaml",
   },
   callback = function(ev)
-    require("nvim-treesitter").install(ev.match):await(function()
-      vim.treesitter.start(ev.buf)
-    end)
     -- syntax highlighting, provided by Neovim
-    pcall(vim.treesitter.start, ev.buf)
+    vim.treesitter.start(ev.buf)
     -- folds, provided by Neovim
     vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     vim.wo.foldmethod = "expr"

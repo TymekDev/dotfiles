@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -11,11 +12,49 @@ in
 {
   xdg.configFile."nvim".source = if isCodespace then ../../config/nvim else mkSymlink "config/nvim";
 
+  xdg.configFile."nvim-nix/plugin/tree-sitter-parsers.lua".text =
+    let
+
+      parsers =
+        with pkgs.vimPlugins.nvim-treesitter-parsers;
+        [
+          css
+          html
+          javascript
+          json
+          markdown
+          markdown_inline
+          r
+          rnoweb
+          scss
+          typescript
+          yaml
+        ]
+        ++ lib.optionals (!isCodespace) [
+          astro
+          bash
+          fish
+          go
+          lua
+          nix
+          python
+          rust
+          templ
+          toml
+
+        ];
+      quote = (x: ''"${x}"'');
+    in
+    ''
+      vim.opt.runtimepath:append({
+      ${lib.concatMapStringsSep ",\n" quote parsers}
+      })
+    '';
+
   home.packages =
     with pkgs;
     [
       neovim
-      tree-sitter # TODO: switch to installing compiled grammars directly?
 
       # Language servers
       typescript-language-server
