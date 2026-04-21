@@ -14,7 +14,6 @@ in
 
   xdg.configFile."nvim-nix/plugin/tree-sitter-parsers.lua".text =
     let
-
       parsers =
         with pkgs.vimPlugins.nvim-treesitter-parsers;
         [
@@ -41,11 +40,11 @@ in
           rust
           templ
           toml
-
         ];
       quote = (x: ''"${x}"'');
     in
     ''
+      vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/site/pack/core/opt/nvim-treesitter/runtime")
       vim.opt.runtimepath:append({
       ${lib.concatMapStringsSep ",\n" quote parsers}
       })
