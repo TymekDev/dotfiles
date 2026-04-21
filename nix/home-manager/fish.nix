@@ -83,7 +83,7 @@ in
       gsw = "git switch";
       gwt = "git worktree";
 
-      ja = "jj bookmark set -r @- "; # jj advance
+      ja = "jj bookmark set -r @-"; # jj advance
       jc = "jj commit";
       jcm = "jj commit -m";
       jd = "jj diff";
