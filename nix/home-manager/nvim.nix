@@ -18,29 +18,39 @@ in
       tree-sitter # TODO: switch to installing compiled grammars directly?
 
       # Language servers
-      astro-language-server
-      bash-language-server
-      emmet-language-server
-      fish-lsp
-      lua-language-server
-      nixd
-      tailwindcss-language-server
-      taplo
       typescript-language-server
       vscode-langservers-extracted
       yaml-language-server
 
       # Formatters
-      nixfmt
+      air-formatter
       prettierd
-      ruff
-      shellcheck
-      shfmt
-      stylua
       yamlfmt
     ]
     ++ lib.optionals (!isCodespace) [
       gcc # used by nvim-treesitter to install grammars
+
+      # Language servers
+      astro-language-server
+      bash-language-server
+      emmet-language-server
+      fish-lsp
+      golangci-lint-langserver
+      gopls
+      lua-language-server
+      nixd
+      nodePackages.unocss-language-server
+      tailwindcss-language-server
+      taplo
+      templ
+
+      # Formatters
+      nixfmt
+      ruff
+      rustfmt
+      shellcheck
+      shfmt
+      stylua
     ];
 
   home.sessionVariables.EDITOR = "nvim";
