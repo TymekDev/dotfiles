@@ -41,16 +41,12 @@ in
 {
   xdg.configFile."nvim".source = if isCodespace then ../../config/nvim else mkSymlink "config/nvim";
 
-  xdg.configFile."nvim-nix/plugin/tree-sitter-parsers.lua".text =
-    let
-      quote = (x: ''"${x}"'');
-    in
-    ''
-      vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/site/pack/core/opt/nvim-treesitter/runtime")
-      vim.opt.runtimepath:append({
-      ${lib.concatMapStringsSep ",\n" quote parsers}
-      })
-    '';
+  xdg.configFile."nvim-nix/plugin/tree-sitter-parsers.lua".text = ''
+    vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/site/pack/core/opt/nvim-treesitter/runtime")
+    vim.opt.runtimepath:append({
+    ${lib.concatMapStringsSep ",\n" (x: ''"${x}"'') parsers}
+    })
+  '';
 
   home.packages =
     with pkgs;
