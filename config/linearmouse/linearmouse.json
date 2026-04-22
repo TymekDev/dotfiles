@@ -1,65 +1,65 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.2",
-  "schemes" : [
+  "$schema": "https:\/\/schema.linearmouse.app\/0.10.2",
+  "schemes": [
     {
-      "buttons" : {
-        "universalBackForward" : true
+      "buttons": {
+        "universalBackForward": true
       },
-      "if" : {
-        "device" : {
-          "category" : "mouse",
-          "productID" : "0xc547",
-          "productName" : "USB Receiver",
-          "vendorID" : "0x46d"
+      "if": {
+        "device": {
+          "category": "mouse",
+          "productID": "0xc547",
+          "productName": "USB Receiver",
+          "vendorID": "0x46d"
         }
       },
-      "pointer" : {
-        "acceleration" : 0,
-        "speed" : 0.285
+      "pointer": {
+        "acceleration": 0,
+        "speed": 0.285
       },
-      "scrolling" : {
-        "acceleration" : 1,
-        "distance" : 3,
-        "reverse" : true,
-        "speed" : 0
+      "scrolling": {
+        "acceleration": 1,
+        "distance": 3,
+        "reverse": true,
+        "speed": 0
       }
     },
     {
-      "buttons" : {
-        "universalBackForward" : true
+      "buttons": {
+        "universalBackForward": true
       },
-      "if" : {
-        "device" : {
-          "category" : "mouse",
-          "productID" : "0xc52b",
-          "productName" : "USB Receiver",
-          "vendorID" : "0x46d"
+      "if": {
+        "device": {
+          "category": "mouse",
+          "productID": "0xc52b",
+          "productName": "USB Receiver",
+          "vendorID": "0x46d"
         }
       },
-      "pointer" : {
-        "acceleration" : 0,
-        "disableAcceleration" : false,
-        "speed" : 0.5
+      "pointer": {
+        "acceleration": 0,
+        "disableAcceleration": false,
+        "speed": 0.5
       },
-      "scrolling" : {
-        "acceleration" : 1,
-        "distance" : 3,
-        "reverse" : true,
-        "speed" : 0
+      "scrolling": {
+        "acceleration": 1,
+        "distance": 3,
+        "reverse": true,
+        "speed": 0
       }
     },
     {
-      "if" : {
-        "device" : {
-          "category" : "mouse",
-          "productID" : "0x3",
-          "productName" : "UHK 60 v2",
-          "serialNumber" : "0284619430",
-          "vendorID" : "0x37a8"
+      "if": {
+        "device": {
+          "category": "mouse",
+          "productID": "0x3",
+          "productName": "UHK 60 v2",
+          "serialNumber": "0284619430",
+          "vendorID": "0x37a8"
         }
       },
-      "scrolling" : {
-        "reverse" : true
+      "scrolling": {
+        "reverse": true
       }
     }
   ]
