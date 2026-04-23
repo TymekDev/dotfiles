@@ -65,7 +65,7 @@ config.keys = {
 
   { key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
   {
-    key = "o",
+    key = "u",
     mods = "CMD",
     action = wezterm.action.QuickSelectArgs({
       label = "open url",
@@ -134,8 +134,8 @@ config.keys = {
     end),
   },
   {
-    key = "O",
-    mods = "LEADER",
+    key = "o",
+    mods = "CMD",
     action = wezterm.action_callback(function(win, pane)
       local dir = sessionizer.active_workspace_dir()
       local cmd = shell_cmd({ "opencode" }, pane)
