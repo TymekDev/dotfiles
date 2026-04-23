@@ -8,8 +8,8 @@ local config = wezterm.config_builder()
 
 config.term = "wezterm"
 config.enable_kitty_keyboard = true
-config.font = wezterm.font("Berkeley Mono Trial")
-config.line_height = 1.1
+config.font = wezterm.font("JetBrainsMono Nerd Font Propo")
+config.custom_block_glyphs = false
 config.font_size = 16
 config.window_padding = {
   top = 0,

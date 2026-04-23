@@ -14,7 +14,7 @@ in
     package = lib.mkIf isDarwin null; # use homebrew
 
     settings = {
-      font-family = "Berkeley Mono Trial";
+      font-family = "JetBrainsMono Nerd Font Mono";
       font-size = 16;
       theme = "light:TokyoNight Day,dark:TokyoNight Storm";
 
