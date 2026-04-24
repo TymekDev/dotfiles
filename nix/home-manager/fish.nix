@@ -57,6 +57,7 @@ in
       gcw = "git commit --amend --only";
       gd = "git diff";
       gdp = "git diff --no-ext-diff"; # [g]it [d]iff [p]atch
+      gdw = "git diff --no-ext-diff --color-words"; # [g]it [d]iff [w]ords
       gds = "git diff --staged";
       gf = "git fetch";
       gg = "git g";
