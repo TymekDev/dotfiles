@@ -26,7 +26,7 @@
       if [[ -f "pyproject.toml" ]]; then
         watch_file pyproject.toml
         log_status "Syncing dependencies with uv..."
-        uv sync
+        uv sync --all-extras
       fi
     }
   '';
