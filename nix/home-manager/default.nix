@@ -48,6 +48,7 @@ in
       ripgrep
       uv
       yazi
+      yq
     ]
     ++ lib.optionals (hasGUI && isLinux) [
       discord
