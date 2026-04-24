@@ -46,6 +46,7 @@ in
       ijq
       jq
       ripgrep
+      uv
       yazi
     ]
     ++ lib.optionals (hasGUI && isLinux) [

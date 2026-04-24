@@ -90,6 +90,7 @@ in
       tailwindcss-language-server
       taplo
       templ
+      ty
 
       # Formatters
       nixfmt
